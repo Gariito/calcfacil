@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} — {{ site.siteName }}</title>
+  <meta name="description" content="{{ description or site.siteDescription }}">
+  {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ site.siteUrl }}{{ page.url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title }} — {{ site.siteName }}">
+  <meta property="og:description" content="{{ description or site.siteDescription }}">
+  <meta property="og:url" content="{{ site.siteUrl }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "{{ title }}",
+    "description": "{{ description or site.siteDescription }}",
+    "url": "{{ site.siteUrl }}{{ page.url }}",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  {{ content | safe }}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© {{ site.siteName }} {{ "" | fecha if false else 2024 }} · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>
