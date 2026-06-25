@@ -291,11 +291,14 @@ input[type="range"] {
 .breadcrumb a { color: var(--accent); text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
 
+/* ← CAMBIO: max-width y margin para centrar */
 .calc-layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 2rem;
   align-items: start;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .calc-main h1 {
