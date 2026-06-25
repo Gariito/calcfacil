@@ -1,0 +1,61 @@
+---
+layout: base.njk
+title: Conversor de longitud gratis — metros, km, pies, millas
+description: Convierte metros, kilómetros, centímetros, milímetros, millas, pies y pulgadas al instante.
+keywords: conversor longitud, metros a pies, km a millas, centimetros a pulgadas
+categoria: unidades
+categoriaLabel: Unidades
+titulo: Conversor de longitud
+icono: 📏
+tituloCorto: el conversor de longitud
+descripcion: Convierte al instante entre metros, kilómetros, centímetros, milímetros, millas, pies y pulgadas.
+explicacion: El sistema métrico (metros, km, cm) se usa en la mayor parte del mundo, mientras que el sistema imperial (pies, pulgadas, millas) sigue siendo habitual en EE.UU. y Reino Unido. Esta calculadora convierte entre todos ellos en tiempo real.
+faq:
+  - q: ¿Cuántos centímetros tiene un pie?
+    a: Un pie equivale exactamente a 30,48 centímetros.
+  - q: ¿Cuántos kilómetros es una milla?
+    a: Una milla equivale a 1,609344 kilómetros.
+  - q: ¿Cuántas pulgadas tiene un metro?
+    a: Un metro equivale a aproximadamente 39,37 pulgadas.
+relacionadas:
+  - slug: peso
+    categoria: unidades
+    titulo: Conversor de peso
+    icono: 🏋️
+  - slug: velocidad
+    categoria: unidades
+    titulo: Conversor de velocidad
+    icono: 🚗
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="long-val" placeholder="100" oninput="convLong()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="long-from" onchange="convLong()">
+      <option value="m">Metros (m)</option>
+      <option value="km">Kilómetros (km)</option>
+      <option value="cm">Centímetros (cm)</option>
+      <option value="mm">Milímetros (mm)</option>
+      <option value="mi">Millas (mi)</option>
+      <option value="ft">Pies (ft)</option>
+      <option value="in">Pulgadas (in)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="long-to" onchange="convLong()">
+  <option value="cm">Centímetros (cm)</option>
+  <option value="m">Metros (m)</option>
+  <option value="km">Kilómetros (km)</option>
+  <option value="mm">Milímetros (mm)</option>
+  <option value="mi">Millas (mi)</option>
+  <option value="ft">Pies (ft)</option>
+  <option value="in">Pulgadas (in)</option>
+</select>
+
+<div class="result-box" id="long-res">Introduce un valor</div>
