@@ -1,0 +1,59 @@
+---
+layout: base.njk
+title: Conversor de volumen gratis — litros, mililitros, galones
+description: Convierte litros, mililitros, centilitros, metros cúbicos, galones y onzas líquidas al instante.
+keywords: conversor volumen, litros a galones, mililitros a centilitros, convertir volumen
+categoria: unidades
+categoriaLabel: Unidades
+titulo: Conversor de volumen
+icono: 🧪
+tituloCorto: el conversor de volumen
+descripcion: Convierte entre litros, mililitros, centilitros, metros cúbicos, galones y onzas líquidas.
+explicacion: En el sistema métrico se usan litros y sus derivados (mL, cL). En el sistema anglosajón se usan galones y onzas líquidas (fl oz), muy habituales en recetas americanas. Esta calculadora cubre todos ellos.
+faq:
+  - q: ¿Cuántos mililitros tiene un litro?
+    a: Un litro equivale exactamente a 1000 mililitros.
+  - q: ¿Cuántos litros tiene un galón americano?
+    a: Un galón americano equivale a 3,785 litros. El galón británico es algo mayor, 4,546 litros.
+  - q: ¿Cuántos centilitros tiene una botella de vino?
+    a: Una botella estándar de vino tiene 75 cl, que equivalen a 750 mL o 0,75 L.
+relacionadas:
+  - slug: peso
+    categoria: unidades
+    titulo: Conversor de peso
+    icono: 🏋️
+  - slug: temperatura
+    categoria: unidades
+    titulo: Conversor de temperatura
+    icono: 🌡️
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="vol-val" placeholder="1" oninput="convVol()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="vol-from" onchange="convVol()">
+      <option value="L">Litros (L)</option>
+      <option value="mL">Mililitros (mL)</option>
+      <option value="cL">Centilitros (cL)</option>
+      <option value="m3">Metros cúbicos (m³)</option>
+      <option value="gal">Galones (gal)</option>
+      <option value="floz">Onzas líquidas (fl oz)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="vol-to" onchange="convVol()">
+  <option value="mL">Mililitros (mL)</option>
+  <option value="cL">Centilitros (cL)</option>
+  <option value="L">Litros (L)</option>
+  <option value="m3">Metros cúbicos (m³)</option>
+  <option value="gal">Galones (gal)</option>
+  <option value="floz">Onzas líquidas (fl oz)</option>
+</select>
+
+<div class="result-box" id="vol-res">Introduce un valor</div>

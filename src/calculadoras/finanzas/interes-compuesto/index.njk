@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: Calculadora de interés compuesto gratis
+description: Calcula el crecimiento de tu inversión o ahorro con interés compuesto. Incluye aportaciones mensuales.
+keywords: calculadora interes compuesto, ahorro largo plazo, calculadora inversion, rentabilidad ahorro
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de interés compuesto
+icono: 📈
+tituloCorto: el interés compuesto
+descripcion: Calcula cuánto crecerá tu dinero con el tiempo gracias al interés compuesto.
+explicacion: El interés compuesto es el fenómeno por el que los intereses generados se suman al capital y a su vez generan más intereses. Con el tiempo, este efecto produce un crecimiento exponencial. Einstein lo llamó la octava maravilla del mundo. Cuanto antes empieces a ahorrar o invertir, mayor será el efecto.
+faq:
+  - q: ¿Qué diferencia hay entre interés simple y compuesto?
+    a: Con interés simple solo ganas intereses sobre el capital inicial. Con interés compuesto, los intereses se reinvierten y también generan intereses, lo que produce un crecimiento mucho mayor a largo plazo.
+  - q: ¿Qué rentabilidad anual es realista esperar?
+    a: Históricamente, el mercado bursátil global ha dado una rentabilidad media de entre el 7% y el 10% anual antes de inflación. Depósitos y bonos suelen ofrecer menos.
+  - q: ¿Con qué frecuencia se capitaliza esta calculadora?
+    a: Esta calculadora capitaliza mensualmente, que es la frecuencia más habitual en fondos de inversión y cuentas de ahorro.
+relacionadas:
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+  - slug: iva
+    categoria: finanzas
+    titulo: Calculadora de IVA
+    icono: "%"
+---
+
+<label>Capital inicial (€)</label>
+<input type="number" id="ic-capital" placeholder="1000" oninput="calcIC()">
+
+<div class="row-2">
+  <div>
+    <label>Tasa de interés anual (%)</label>
+    <input type="number" id="ic-tasa" placeholder="5" oninput="calcIC()">
+  </div>
+  <div>
+    <label>Número de años</label>
+    <input type="number" id="ic-anos" placeholder="10" oninput="calcIC()">
+  </div>
+</div>
+
+<label>Aportación mensual adicional (€)</label>
+<input type="number" id="ic-aport" placeholder="0" oninput="calcIC()">
+
+<div class="result-box" id="ic-res">Introduce los datos</div>

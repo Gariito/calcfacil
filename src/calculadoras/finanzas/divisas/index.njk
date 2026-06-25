@@ -1,0 +1,65 @@
+---
+layout: base.njk
+title: Conversor de divisas gratis — euro, dólar, libra y más
+description: Convierte entre euros, dólares, libras, yenes, francos suizos y pesos al instante.
+keywords: conversor divisas, euro a dolar, cambio moneda, conversor moneda gratis
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Conversor de divisas
+icono: 💱
+tituloCorto: el conversor de divisas
+descripcion: Convierte entre las principales divisas del mundo al instante con tasas de referencia.
+explicacion: Este conversor usa tasas de cambio aproximadas con base en el euro. Las tasas reales fluctúan constantemente según los mercados financieros. Para transacciones importantes consulta siempre el tipo de cambio oficial de tu banco o de una fuente como el Banco Central Europeo.
+faq:
+  - q: ¿Las tasas son en tiempo real?
+    a: No, son tasas de referencia aproximadas. Para obtener el tipo de cambio exacto del momento consulta tu banco o una fuente oficial como el BCE.
+  - q: ¿Cuántos dólares son un euro?
+    a: Aproximadamente 1,08 USD por cada euro, aunque varía cada día según el mercado.
+  - q: ¿Por qué el banco me da menos al cambiar?
+    a: Los bancos y casas de cambio aplican una comisión o margen sobre el tipo de cambio oficial, por eso siempre recibes algo menos de lo que indica el tipo de referencia.
+relacionadas:
+  - slug: propina
+    categoria: dia-a-dia
+    titulo: Calculadora de propina
+    icono: 🍽️
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentajes
+    icono: "%"
+---
+
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--muted)">
+  ⚠️ Tasas aproximadas en base a EUR. Para transacciones reales consulta tu banco.
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Cantidad</label>
+    <input type="number" id="mon-val" placeholder="100" oninput="convMoneda()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="mon-from" onchange="convMoneda()">
+      <option value="EUR">EUR – Euro</option>
+      <option value="USD">USD – Dólar americano</option>
+      <option value="GBP">GBP – Libra esterlina</option>
+      <option value="JPY">JPY – Yen japonés</option>
+      <option value="CHF">CHF – Franco suizo</option>
+      <option value="MXN">MXN – Peso mexicano</option>
+      <option value="ARS">ARS – Peso argentino</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="mon-to" onchange="convMoneda()">
+  <option value="USD">USD – Dólar americano</option>
+  <option value="EUR">EUR – Euro</option>
+  <option value="GBP">GBP – Libra esterlina</option>
+  <option value="JPY">JPY – Yen japonés</option>
+  <option value="CHF">CHF – Franco suizo</option>
+  <option value="MXN">MXN – Peso mexicano</option>
+  <option value="ARS">ARS – Peso argentino</option>
+</select>
+
+<div class="result-box" id="mon-res">Introduce un importe</div>

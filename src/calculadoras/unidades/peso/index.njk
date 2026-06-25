@@ -1,0 +1,59 @@
+---
+layout: base.njk
+title: Conversor de peso gratis — kg, libras, onzas, gramos
+description: Convierte kilogramos, gramos, miligramos, toneladas, libras y onzas al instante.
+keywords: conversor peso, kg a libras, gramos a onzas, kilos a libras
+categoria: unidades
+categoriaLabel: Unidades
+titulo: Conversor de peso
+icono: 🏋️
+tituloCorto: el conversor de peso
+descripcion: Convierte entre kilogramos, gramos, miligramos, toneladas, libras y onzas al instante.
+explicacion: El sistema métrico usa kilogramos, gramos y toneladas métricas. El sistema imperial, habitual en EE.UU. y Reino Unido, usa libras y onzas. Esta calculadora convierte entre todos ellos en tiempo real.
+faq:
+  - q: ¿Cuántos gramos tiene una libra?
+    a: Una libra equivale a 453,592 gramos, o aproximadamente 0,454 kg.
+  - q: ¿Cuántas onzas tiene un kilogramo?
+    a: Un kilogramo equivale a aproximadamente 35,274 onzas.
+  - q: ¿Cuántos kilos son 100 libras?
+    a: 100 libras equivalen a aproximadamente 45,36 kilogramos.
+relacionadas:
+  - slug: longitud
+    categoria: unidades
+    titulo: Conversor de longitud
+    icono: 📏
+  - slug: volumen
+    categoria: unidades
+    titulo: Conversor de volumen
+    icono: 🧪
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="peso-val" placeholder="1" oninput="convPeso()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="peso-from" onchange="convPeso()">
+      <option value="kg">Kilogramos (kg)</option>
+      <option value="g">Gramos (g)</option>
+      <option value="mg">Miligramos (mg)</option>
+      <option value="t">Toneladas (t)</option>
+      <option value="lb">Libras (lb)</option>
+      <option value="oz">Onzas (oz)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="peso-to" onchange="convPeso()">
+  <option value="g">Gramos (g)</option>
+  <option value="kg">Kilogramos (kg)</option>
+  <option value="mg">Miligramos (mg)</option>
+  <option value="t">Toneladas (t)</option>
+  <option value="lb">Libras (lb)</option>
+  <option value="oz">Onzas (oz)</option>
+</select>
+
+<div class="result-box" id="peso-res">Introduce un valor</div>

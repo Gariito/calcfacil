@@ -1,0 +1,46 @@
+---
+layout: base.njk
+title: Conversor de temperatura gratis — Celsius, Fahrenheit, Kelvin
+description: Convierte grados Celsius, Fahrenheit y Kelvin al instante y de forma gratuita.
+keywords: conversor temperatura, celsius a fahrenheit, fahrenheit a celsius, kelvin
+categoria: unidades
+categoriaLabel: Unidades
+titulo: Conversor de temperatura
+icono: 🌡️
+tituloCorto: el conversor de temperatura
+descripcion: Convierte entre grados Celsius, Fahrenheit y Kelvin al instante.
+explicacion: La temperatura se mide en distintas escalas según el país. Celsius (°C) es la escala oficial en España y la mayoría del mundo. Fahrenheit (°F) se usa principalmente en EE.UU. Kelvin (K) es la escala científica usada en física y química, donde el cero absoluto equivale a -273,15 °C.
+faq:
+  - q: ¿Cuántos grados Fahrenheit son 100°C?
+    a: 100°C equivalen a 212°F. Es la temperatura de ebullición del agua.
+  - q: ¿Cuánto es 0°F en Celsius?
+    a: 0°F equivalen a aproximadamente -17,78°C.
+  - q: ¿Qué es el cero absoluto en Kelvin?
+    a: El cero absoluto es 0 K, que equivale a -273,15°C. Es la temperatura más baja teóricamente posible.
+relacionadas:
+  - slug: velocidad
+    categoria: unidades
+    titulo: Conversor de velocidad
+    icono: 🚗
+  - slug: longitud
+    categoria: unidades
+    titulo: Conversor de longitud
+    icono: 📏
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="temp-val" placeholder="100" oninput="convTemp()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="temp-from" onchange="convTemp()">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+      <option value="K">Kelvin (K)</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="temp-res">Introduce un valor</div>

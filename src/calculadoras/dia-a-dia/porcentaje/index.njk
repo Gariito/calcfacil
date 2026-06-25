@@ -1,0 +1,57 @@
+---
+layout: base.njk
+title: Calculadora de porcentajes gratis
+description: Calcula porcentajes, descuentos y aumentos al instante. También calcula qué porcentaje es un número de otro.
+keywords: calculadora porcentaje, calcular descuento, tanto por ciento, calcular porcentaje gratis
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora de porcentajes
+icono: "%"
+tituloCorto: los porcentajes
+descripcion: Calcula el porcentaje de un número o averigua qué tanto por ciento representa un valor sobre otro.
+explicacion: Los porcentajes son una de las operaciones más usadas en el día a día, desde calcular un descuento en una tienda hasta entender una subida de precio. Esta calculadora resuelve los dos casos más comunes de forma instantánea.
+faq:
+  - q: ¿Cómo calculo el 15% de 200?
+    a: Multiplica 200 por 0,15, que da 30. O usa la calculadora de arriba introduciendo 200 y 15%.
+  - q: ¿Cómo sé qué porcentaje es 30 de 200?
+    a: Divide 30 entre 200 y multiplica por 100. El resultado es 15%. Puedes calcularlo en la segunda sección.
+  - q: ¿Cómo calculo un descuento del 20%?
+    a: Introduce el precio original y el 20%. El resultado es el importe del descuento. Réstalo al precio original para obtener el precio final.
+relacionadas:
+  - slug: propina
+    categoria: dia-a-dia
+    titulo: Calculadora de propina
+    icono: 🍽️
+  - slug: divisas
+    categoria: dia-a-dia
+    titulo: Conversor de divisas
+    icono: 💱
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor base</label>
+    <input type="number" id="pct-val" placeholder="200" oninput="calcPct()">
+  </div>
+  <div>
+    <label>Porcentaje (%)</label>
+    <input type="number" id="pct-pct" placeholder="15" oninput="calcPct()">
+  </div>
+</div>
+
+<div class="result-box" id="pct-res">Introduce los datos</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <p style="font-weight:600;margin-bottom:1rem">¿Qué porcentaje es X de Y?</p>
+  <div class="row-2">
+    <div>
+      <label>X (parte)</label>
+      <input type="number" id="pct2-x" placeholder="30" oninput="calcPct2()">
+    </div>
+    <div>
+      <label>Y (total)</label>
+      <input type="number" id="pct2-y" placeholder="200" oninput="calcPct2()">
+    </div>
+  </div>
+  <div class="result-box" id="pct2-res">Introduce los datos</div>
+</div>

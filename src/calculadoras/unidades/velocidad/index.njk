@@ -1,0 +1,55 @@
+---
+layout: base.njk
+title: Conversor de velocidad gratis — km/h, mph, m/s, nudos
+description: Convierte kilómetros por hora, millas por hora, metros por segundo y nudos al instante.
+keywords: conversor velocidad, kmh a mph, mph a kmh, nudos a km/h, m/s a km/h
+categoria: unidades
+categoriaLabel: Unidades
+titulo: Conversor de velocidad
+icono: 🚗
+tituloCorto: el conversor de velocidad
+descripcion: Convierte entre km/h, mph, m/s y nudos al instante.
+explicacion: La velocidad se expresa en unidades distintas según el contexto. En carretera se usan km/h (Europa) o mph (EE.UU. y Reino Unido). En física se usa m/s. En navegación marítima y aérea se usan los nudos (millas náuticas por hora).
+faq:
+  - q: ¿Cuántos km/h son 100 mph?
+    a: 100 mph equivalen a aproximadamente 160,93 km/h.
+  - q: ¿Qué es un nudo?
+    a: Un nudo es una milla náutica por hora, equivalente a 1,852 km/h. Se usa en navegación marítima y aviación.
+  - q: ¿Cuántos m/s son 120 km/h?
+    a: 120 km/h equivalen a 33,33 m/s.
+relacionadas:
+  - slug: longitud
+    categoria: unidades
+    titulo: Conversor de longitud
+    icono: 📏
+  - slug: temperatura
+    categoria: unidades
+    titulo: Conversor de temperatura
+    icono: 🌡️
+---
+
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="vel-val" placeholder="100" oninput="convVel()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="vel-from" onchange="convVel()">
+      <option value="kmh">Kilómetros/hora (km/h)</option>
+      <option value="ms">Metros/segundo (m/s)</option>
+      <option value="mph">Millas/hora (mph)</option>
+      <option value="kn">Nudos (kn)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="vel-to" onchange="convVel()">
+  <option value="mph">Millas/hora (mph)</option>
+  <option value="ms">Metros/segundo (m/s)</option>
+  <option value="kmh">Kilómetros/hora (km/h)</option>
+  <option value="kn">Nudos (kn)</option>
+</select>
+
+<div class="result-box" id="vel-res">Introduce un valor</div>

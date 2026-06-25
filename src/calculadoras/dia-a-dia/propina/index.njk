@@ -1,0 +1,45 @@
+---
+layout: base.njk
+title: Calculadora de propina gratis — divide la cuenta fácil
+description: Calcula la propina al instante y divide la cuenta entre el número de personas.
+keywords: calculadora propina, dividir cuenta restaurante, propina porcentaje, cuanto dejar de propina
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora de propina
+icono: 🍽️
+tituloCorto: la propina
+descripcion: Calcula la propina y divide el total entre las personas de la mesa al instante.
+explicacion: Calcular la propina puede ser incómodo en un restaurante. Esta herramienta te permite elegir el porcentaje que quieres dejar y dividir automáticamente el total entre el número de comensales, para que cada uno sepa exactamente cuánto poner.
+faq:
+  - q: ¿Cuánto se deja de propina en España?
+    a: En España la propina no es obligatoria. Lo habitual es redondear la cuenta o dejar entre un 5% y un 10% en restaurantes. En hoteles o taxis se suele dejar 1–2 euros.
+  - q: ¿Y en EE.UU.?
+    a: En Estados Unidos la propina es casi obligatoria culturalmente. Lo estándar es entre el 15% y el 20% del total antes de impuestos.
+  - q: ¿Se calcula la propina sobre el total con IVA o sin IVA?
+    a: En España habitualmente sobre el total con IVA. En EE.UU. sobre el subtotal antes de impuestos.
+relacionadas:
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentajes
+    icono: "%"
+  - slug: divisas
+    categoria: dia-a-dia
+    titulo: Conversor de divisas
+    icono: 💱
+---
+
+<label>Total de la cuenta (€)</label>
+<input type="number" id="prop-total" placeholder="45.00" oninput="calcPropina()">
+
+<label>Propina (%)</label>
+<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+  <input type="range" min="0" max="30" value="10" id="prop-pct"
+    oninput="document.getElementById('prop-pct-val').textContent=this.value+'%'; calcPropina()"
+    style="flex:1;margin-bottom:0">
+  <span id="prop-pct-val" style="font-weight:600;min-width:40px;font-size:1.1rem">10%</span>
+</div>
+
+<label>Número de personas</label>
+<input type="number" id="prop-personas" placeholder="2" value="1" oninput="calcPropina()">
+
+<div class="result-box" id="prop-res">Introduce el importe</div>
