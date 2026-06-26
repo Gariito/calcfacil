@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de calorías diarias</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔥 Calculadora de calorías diarias</h1>
+        <p class="calc-intro">Calcula tu Tasa Metabólica Basal y las calorías que necesitas según tu nivel de actividad.</p>
+        <div class="card">
+          
 <div class="row-2">
   <div>
     <label>Peso (kg)</label>
@@ -86,6 +105,55 @@
 </select>
 
 <div class="result-box" id="cal-res">Introduce tus datos</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la TMB?</h2>
+          <p>La Tasa Metabólica Basal (TMB) es la cantidad de calorías que tu cuerpo necesita en reposo absoluto para mantener sus funciones vitales. Multiplicada por tu nivel de actividad, obtienes las calorías totales que necesitas al día. Esta calculadora usa la fórmula Mifflin-St Jeor, la más precisa disponible.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+            <li><a href="/calculadoras/salud/agua/">💧 Agua diaria</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas calorías debo comer para adelgazar?</summary>
+              <p>Para perder peso de forma gradual y saludable, se recomienda un déficit de 300–500 kcal diarias respecto a tu gasto total. Por ejemplo, si necesitas 2000 kcal, come entre 1500 y 1700 kcal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es la TMB?</summary>
+              <p>La Tasa Metabólica Basal es la energía mínima que consume tu cuerpo en reposo para mantener funciones como respirar, la circulación y la temperatura corporal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es fiable esta calculadora?</summary>
+              <p>Usa la fórmula Mifflin-St Jeor (2005), considerada la más precisa. Aun así, los resultados son una estimación; cada cuerpo es diferente.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

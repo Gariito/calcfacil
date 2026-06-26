@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Calculadora de propina</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍽️ Calculadora de propina</h1>
+        <p class="calc-intro">Calcula la propina y divide el total entre las personas de la mesa al instante.</p>
+        <div class="card">
+          
 <label>Total de la cuenta (€)</label>
 <input type="number" id="prop-total" placeholder="45.00" oninput="calcPropina()">
 
@@ -66,6 +85,55 @@
 <input type="number" id="prop-personas" placeholder="2" value="1" oninput="calcPropina()">
 
 <div class="result-box" id="prop-res">Introduce el importe</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la propina?</h2>
+          <p>Calcular la propina puede ser incómodo en un restaurante. Esta herramienta te permite elegir el porcentaje que quieres dejar y dividir automáticamente el total entre el número de comensales, para que cada uno sepa exactamente cuánto poner.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Calculadora de porcentajes</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/divisas/">💱 Conversor de divisas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto se deja de propina en España?</summary>
+              <p>En España la propina no es obligatoria. Lo habitual es redondear la cuenta o dejar entre un 5% y un 10% en restaurantes. En hoteles o taxis se suele dejar 1–2 euros.</p>
+            </details>
+            
+            <details>
+              <summary>¿Y en EE.UU.?</summary>
+              <p>En Estados Unidos la propina es casi obligatoria culturalmente. Lo estándar es entre el 15% y el 20% del total antes de impuestos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Se calcula la propina sobre el total con IVA o sin IVA?</summary>
+              <p>En España habitualmente sobre el total con IVA. En EE.UU. sobre el subtotal antes de impuestos.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

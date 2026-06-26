@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <span>›</span>
+      <span>Conversor de temperatura</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🌡️ Conversor de temperatura</h1>
+        <p class="calc-intro">Convierte entre grados Celsius, Fahrenheit y Kelvin al instante.</p>
+        <div class="card">
+          
 <div class="row-2">
   <div>
     <label>Valor</label>
@@ -67,6 +86,55 @@
 </div>
 
 <div class="result-box" id="temp-res">Introduce un valor</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de temperatura?</h2>
+          <p>La temperatura se mide en distintas escalas según el país. Celsius (°C) es la escala oficial en España y la mayoría del mundo. Fahrenheit (°F) se usa principalmente en EE.UU. Kelvin (K) es la escala científica usada en física y química, donde el cero absoluto equivale a -273,15 °C.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/unidades/velocidad/">🚗 Conversor de velocidad</a></li>
+            
+            <li><a href="/calculadoras/unidades/longitud/">📏 Conversor de longitud</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos grados Fahrenheit son 100°C?</summary>
+              <p>100°C equivalen a 212°F. Es la temperatura de ebullición del agua.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto es 0°F en Celsius?</summary>
+              <p>0°F equivalen a aproximadamente -17,78°C.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es el cero absoluto en Kelvin?</summary>
+              <p>El cero absoluto es 0 K, que equivale a -273,15°C. Es la temperatura más baja teóricamente posible.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

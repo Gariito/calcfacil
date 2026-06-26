@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de agua diaria recomendada — CalcFácil</title>
+  <meta name="description" content="Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.">
+  <meta name="keywords" content="cuanta agua beber, calculadora agua diaria, hidratacion, litros agua dia">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/agua/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de agua diaria recomendada — CalcFácil">
+  <meta property="og:description" content="Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/agua/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de agua diaria recomendada",
+    "description": "Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/agua/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de agua diaria</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💧 Calculadora de agua diaria</h1>
+        <p class="calc-intro">Calcula cuántos litros de agua debes beber al día según tu peso y actividad física.</p>
+        <div class="card">
+          
+<label>Peso corporal (kg)</label>
+<input type="number" id="agua-peso" placeholder="70" oninput="calcAgua()">
+
+<label>Minutos de ejercicio al día</label>
+<input type="number" id="agua-ej" placeholder="30" oninput="calcAgua()">
+
+<div class="result-box" id="agua-res">Introduce tu peso</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el agua diaria recomendada?</h2>
+          <p>La cantidad de agua que necesita cada persona depende de su peso, actividad física, clima y dieta. La fórmula más usada es 35 ml por kilo de peso corporal como base, más una compensación por el agua perdida al sudar durante el ejercicio. Recuerda que también obtienes agua de los alimentos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánta agua debo beber al día?</summary>
+              <p>La recomendación general es unos 2 litros al día, pero varía según el peso y el ejercicio. Una persona de 80 kg necesita alrededor de 2,8 L solo de base.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuenta el café o el té como agua?</summary>
+              <p>Sí, aunque el café tiene un leve efecto diurético. En general las infusiones y el té cuentan como hidratación.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo beber demasiada agua?</summary>
+              <p>En casos extremos sí (hiponatremia), pero es muy poco común. Para la mayoría de personas, beber más agua de la necesaria simplemente se elimina por la orina.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

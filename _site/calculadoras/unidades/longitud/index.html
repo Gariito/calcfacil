@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <span>›</span>
+      <span>Conversor de longitud</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📏 Conversor de longitud</h1>
+        <p class="calc-intro">Convierte al instante entre metros, kilómetros, centímetros, milímetros, millas, pies y pulgadas.</p>
+        <div class="card">
+          
 <div class="row-2">
   <div>
     <label>Valor</label>
@@ -82,6 +101,55 @@
 </select>
 
 <div class="result-box" id="long-res">Introduce un valor</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de longitud?</h2>
+          <p>El sistema métrico (metros, km, cm) se usa en la mayor parte del mundo, mientras que el sistema imperial (pies, pulgadas, millas) sigue siendo habitual en EE.UU. y Reino Unido. Esta calculadora convierte entre todos ellos en tiempo real.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/unidades/peso/">🏋️ Conversor de peso</a></li>
+            
+            <li><a href="/calculadoras/unidades/velocidad/">🚗 Conversor de velocidad</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos centímetros tiene un pie?</summary>
+              <p>Un pie equivale exactamente a 30,48 centímetros.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos kilómetros es una milla?</summary>
+              <p>Una milla equivale a 1,609344 kilómetros.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas pulgadas tiene un metro?</summary>
+              <p>Un metro equivale a aproximadamente 39,37 pulgadas.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

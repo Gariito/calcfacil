@@ -1,0 +1,37 @@
+---
+layout: calculadora.njk
+title: Calculadora de agua diaria recomendada
+description: Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.
+keywords: cuanta agua beber, calculadora agua diaria, hidratacion, litros agua dia
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de agua diaria
+icono: 💧
+tituloCorto: el agua diaria recomendada
+descripcion: Calcula cuántos litros de agua debes beber al día según tu peso y actividad física.
+explicacion: La cantidad de agua que necesita cada persona depende de su peso, actividad física, clima y dieta. La fórmula más usada es 35 ml por kilo de peso corporal como base, más una compensación por el agua perdida al sudar durante el ejercicio. Recuerda que también obtienes agua de los alimentos.
+faq:
+  - q: ¿Cuánta agua debo beber al día?
+    a: La recomendación general es unos 2 litros al día, pero varía según el peso y el ejercicio. Una persona de 80 kg necesita alrededor de 2,8 L solo de base.
+  - q: ¿Cuenta el café o el té como agua?
+    a: Sí, aunque el café tiene un leve efecto diurético. En general las infusiones y el té cuentan como hidratación.
+  - q: ¿Puedo beber demasiada agua?
+    a: En casos extremos sí (hiponatremia), pero es muy poco común. Para la mayoría de personas, beber más agua de la necesaria simplemente se elimina por la orina.
+relacionadas:
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<label>Peso corporal (kg)</label>
+<input type="number" id="agua-peso" placeholder="70" oninput="calcAgua()">
+
+<label>Minutos de ejercicio al día</label>
+<input type="number" id="agua-ej" placeholder="30" oninput="calcAgua()">
+
+<div class="result-box" id="agua-res">Introduce tu peso</div>

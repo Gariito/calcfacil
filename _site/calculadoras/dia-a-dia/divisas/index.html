@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Conversor de divisas</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💱 Conversor de divisas</h1>
+        <p class="calc-intro">Convierte entre las principales divisas del mundo al instante con tasas de referencia.</p>
+        <div class="card">
+          
 <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--muted)">
   ⚠️ Tasas aproximadas en base a EUR. Para transacciones reales consulta tu banco.
 </div>
@@ -86,6 +105,55 @@
 </select>
 
 <div class="result-box" id="mon-res">Introduce un importe</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de divisas?</h2>
+          <p>Este conversor usa tasas de cambio aproximadas con base en el euro. Las tasas reales fluctúan constantemente según los mercados financieros. Para transacciones importantes consulta siempre el tipo de cambio oficial de tu banco o de una fuente como el Banco Central Europeo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/propina/">🍽️ Calculadora de propina</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Calculadora de porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Las tasas son en tiempo real?</summary>
+              <p>No, son tasas de referencia aproximadas. Para obtener el tipo de cambio exacto del momento consulta tu banco o una fuente oficial como el BCE.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos dólares son un euro?</summary>
+              <p>Aproximadamente 1,08 USD por cada euro, aunque varía cada día según el mercado.</p>
+            </details>
+            
+            <details>
+              <summary>¿Por qué el banco me da menos al cambiar?</summary>
+              <p>Los bancos y casas de cambio aplican una comisión o margen sobre el tipo de cambio oficial, por eso siempre recibes algo menos de lo que indica el tipo de referencia.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

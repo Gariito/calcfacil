@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de IMC</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⚖️ Calculadora de IMC</h1>
+        <p class="calc-intro">Introduce tu peso y altura para calcular tu Índice de Masa Corporal al instante.</p>
+        <div class="card">
+          
 <label>Peso (kg)</label>
 <input type="number" id="imc-peso" placeholder="70" oninput="calcIMC()">
 
@@ -65,6 +84,55 @@
 </div>
 
 <div class="result-box" id="imc-res">Introduce tu peso y altura</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el IMC?</h2>
+          <p>El Índice de Masa Corporal (IMC) es una medida que relaciona el peso y la altura de una persona para estimar si su peso es saludable. Se calcula dividiendo el peso en kg entre la altura en metros al cuadrado. Aunque es una referencia útil, no tiene en cuenta la composición corporal (músculo vs grasa).</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+            <li><a href="/calculadoras/salud/agua/">💧 Agua diaria</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué IMC se considera normal?</summary>
+              <p>Un IMC entre 18,5 y 24,9 se considera peso normal. Por debajo de 18,5 es bajo peso, entre 25 y 29,9 es sobrepeso, y por encima de 30 es obesidad.</p>
+            </details>
+            
+            <details>
+              <summary>¿El IMC es igual para hombres y mujeres?</summary>
+              <p>La fórmula es la misma, pero los rangos saludables pueden variar ligeramente. Para un análisis más preciso se recomienda consultar a un médico.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo tener sobrepeso según el IMC pero estar sano?</summary>
+              <p>Sí. El IMC no distingue entre músculo y grasa. Una persona muy musculada puede tener IMC alto sin tener exceso de grasa.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

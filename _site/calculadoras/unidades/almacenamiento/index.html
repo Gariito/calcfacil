@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <span>›</span>
+      <span>Conversor de almacenamiento digital</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💾 Conversor de almacenamiento digital</h1>
+        <p class="calc-intro">Convierte entre bytes, KB, MB, GB y TB al instante.</p>
+        <div class="card">
+          
 <div class="row-2">
   <div>
     <label>Valor</label>
@@ -78,6 +97,55 @@
 </select>
 
 <div class="result-box" id="data-res">Introduce un valor</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de almacenamiento?</h2>
+          <p>El almacenamiento digital se mide en múltiplos del byte. Cada unidad es 1024 veces mayor que la anterior. Es habitual necesitar convertir entre estas unidades al comprar discos duros, memorias USB o al medir el tamaño de archivos y descargas.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/unidades/velocidad/">🚗 Conversor de velocidad</a></li>
+            
+            <li><a href="/calculadoras/unidades/longitud/">📏 Conversor de longitud</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos MB tiene 1 GB?</summary>
+              <p>1 GB equivale a 1024 MB (megabytes).</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos GB tiene 1 TB?</summary>
+              <p>1 TB equivale a 1024 GB (gigabytes).</p>
+            </details>
+            
+            <details>
+              <summary>¿Por qué mi disco duro de 1 TB aparece como 931 GB?</summary>
+              <p>Los fabricantes calculan 1 TB como 1.000.000.000.000 bytes, pero los sistemas operativos usan base 1024, por lo que el resultado visible es algo menor.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

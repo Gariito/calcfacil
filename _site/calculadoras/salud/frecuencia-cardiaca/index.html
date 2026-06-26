@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de frecuencia cardíaca</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>❤️ Calculadora de frecuencia cardíaca</h1>
+        <p class="calc-intro">Calcula tu frecuencia cardíaca máxima y tus zonas de entrenamiento según tu edad.</p>
+        <div class="card">
+          
 <label>Edad (años)</label>
 <input type="number" id="fc-edad" placeholder="30" oninput="calcFC()">
 
@@ -58,6 +77,55 @@
 <input type="number" id="fc-repo" placeholder="65" oninput="calcFC()">
 
 <div class="result-box" id="fc-res">Introduce tu edad</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la frecuencia cardíaca?</h2>
+          <p>La frecuencia cardíaca máxima (FCmáx) es el número máximo de latidos por minuto que puede alcanzar tu corazón. Se estima restando tu edad a 220. A partir de ahí se calculan las zonas de entrenamiento, que determinan la intensidad del ejercicio y los beneficios obtenidos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué es la zona aeróbica?</summary>
+              <p>Es el rango de pulsaciones entre el 50% y el 85% de la FCmáx en el que tu cuerpo usa principalmente oxígeno para obtener energía. Es ideal para mejorar la resistencia cardiovascular.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es peligroso entrenar al 100% de la FCmáx?</summary>
+              <p>Para personas sanas es posible en intervalos cortos, pero no se recomienda mantenerlo. Para entrenamientos habituales quédate entre el 60% y el 85%.</p>
+            </details>
+            
+            <details>
+              <summary>¿La fórmula 220 - edad es exacta?</summary>
+              <p>Es una estimación. La FCmáx real puede variar ±10-12 lpm entre personas de la misma edad. Para mayor precisión se recomienda una prueba de esfuerzo médica.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">

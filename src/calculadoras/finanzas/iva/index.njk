@@ -1,0 +1,48 @@
+---
+layout: calculadora.njk
+title: Calculadora de IVA gratis — precio con y sin IVA
+description: Calcula el precio con IVA o la base imponible sin IVA al 21%, 10% o 4% al instante.
+keywords: calculadora IVA, precio sin IVA, base imponible, calcular IVA 21, IVA reducido
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de IVA
+icono: "%"
+tituloCorto: el IVA
+descripcion: Calcula el precio final con IVA o la base imponible sin IVA al 21%, 10% o 4%.
+explicacion: El IVA (Impuesto sobre el Valor Añadido) es un impuesto indirecto que grava el consumo en España. El tipo general es el 21%, el reducido el 10% (alimentos preparados, transporte, hostelería) y el superreducido el 4% (alimentos básicos, libros, medicamentos). Esta calculadora permite calcular en ambas direcciones.
+faq:
+  - q: ¿Qué productos tienen IVA al 10%?
+    a: Alimentos preparados, transporte de viajeros, hostelería, flores y plantas, servicios de limpieza, viviendas de nueva construcción y entradas a espectáculos, entre otros.
+  - q: ¿Qué productos tienen IVA al 4%?
+    a: Pan, leche, huevos, frutas, verduras, cereales, quesos, libros, periódicos, medicamentos y sillas de ruedas, entre otros productos de primera necesidad.
+  - q: ¿Cómo saco el precio sin IVA de un precio final?
+    a: Divide el precio final entre 1,21 (para IVA del 21%). Por ejemplo, 121 € entre 1,21 da 100 € de base imponible.
+relacionadas:
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+---
+
+<label>Importe (€)</label>
+<input type="number" id="iva-val" placeholder="100" oninput="calcIVA()">
+
+<label>Tipo de IVA</label>
+<select id="iva-pct" onchange="calcIVA()">
+  <option value="21">21% — IVA general</option>
+  <option value="10">10% — IVA reducido</option>
+  <option value="4">4% — IVA superreducido</option>
+  <option value="0">0% — Exento de IVA</option>
+</select>
+
+<label>El importe introducido es…</label>
+<select id="iva-tipo" onchange="calcIVA()">
+  <option value="sin">Sin IVA (base imponible) → calcular precio final</option>
+  <option value="con">Con IVA (precio final) → calcular base imponible</option>
+</select>
+
+<div class="result-box" id="iva-res">Introduce un importe</div>

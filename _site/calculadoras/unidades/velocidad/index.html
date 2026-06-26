@@ -50,7 +50,26 @@
 </header>
 
 <main>
-  
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <span>›</span>
+      <span>Conversor de velocidad</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🚗 Conversor de velocidad</h1>
+        <p class="calc-intro">Convierte entre km/h, mph, m/s y nudos al instante.</p>
+        <div class="card">
+          
 <div class="row-2">
   <div>
     <label>Valor</label>
@@ -76,6 +95,55 @@
 </select>
 
 <div class="result-box" id="vel-res">Introduce un valor</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de velocidad?</h2>
+          <p>La velocidad se expresa en unidades distintas según el contexto. En carretera se usan km/h (Europa) o mph (EE.UU. y Reino Unido). En física se usa m/s. En navegación marítima y aérea se usan los nudos (millas náuticas por hora).</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/unidades/longitud/">📏 Conversor de longitud</a></li>
+            
+            <li><a href="/calculadoras/unidades/temperatura/">🌡️ Conversor de temperatura</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos km/h son 100 mph?</summary>
+              <p>100 mph equivalen a aproximadamente 160,93 km/h.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es un nudo?</summary>
+              <p>Un nudo es una milla náutica por hora, equivalente a 1,852 km/h. Se usa en navegación marítima y aviación.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos m/s son 120 km/h?</summary>
+              <p>120 km/h equivalen a 33,33 m/s.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">
