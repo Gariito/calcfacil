@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de volumen gratis — litros, mililitros, galones — CalcFácil</title>
+  <meta name="description" content="Convierte litros, mililitros, centilitros, metros cúbicos, galones y onzas líquidas al instante.">
+  <meta name="keywords" content="conversor volumen, litros a galones, mililitros a centilitros, convertir volumen">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/unidades/volumen/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de volumen gratis — litros, mililitros, galones — CalcFácil">
+  <meta property="og:description" content="Convierte litros, mililitros, centilitros, metros cúbicos, galones y onzas líquidas al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/unidades/volumen/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de volumen gratis — litros, mililitros, galones",
+    "description": "Convierte litros, mililitros, centilitros, metros cúbicos, galones y onzas líquidas al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/unidades/volumen/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="vol-val" placeholder="1" oninput="convVol()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="vol-from" onchange="convVol()">
+      <option value="L">Litros (L)</option>
+      <option value="mL">Mililitros (mL)</option>
+      <option value="cL">Centilitros (cL)</option>
+      <option value="m3">Metros cúbicos (m³)</option>
+      <option value="gal">Galones (gal)</option>
+      <option value="floz">Onzas líquidas (fl oz)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="vol-to" onchange="convVol()">
+  <option value="mL">Mililitros (mL)</option>
+  <option value="cL">Centilitros (cL)</option>
+  <option value="L">Litros (L)</option>
+  <option value="m3">Metros cúbicos (m³)</option>
+  <option value="gal">Galones (gal)</option>
+  <option value="floz">Onzas líquidas (fl oz)</option>
+</select>
+
+<div class="result-box" id="vol-res">Introduce un valor</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

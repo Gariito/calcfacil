@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC gratis — CalcFácil</title>
+  <meta name="description" content="Calcula tu Índice de Masa Corporal (IMC) gratis. Descubre si estás en tu peso ideal según tu altura y peso.">
+  <meta name="keywords" content="calculadora imc, índice de masa corporal, calcular imc gratis, peso ideal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/imc/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de IMC gratis — CalcFácil">
+  <meta property="og:description" content="Calcula tu Índice de Masa Corporal (IMC) gratis. Descubre si estás en tu peso ideal según tu altura y peso.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/imc/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de IMC gratis",
+    "description": "Calcula tu Índice de Masa Corporal (IMC) gratis. Descubre si estás en tu peso ideal según tu altura y peso.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/imc/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<label>Peso (kg)</label>
+<input type="number" id="imc-peso" placeholder="70" oninput="calcIMC()">
+
+<label>Altura (cm)</label>
+<input type="number" id="imc-altura" placeholder="170" oninput="calcIMC()">
+
+<div class="bmi-bar">
+  <div class="bmi-marker" id="imc-marker" style="left:0%"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:1rem">
+  <span>Bajo peso</span><span>Normal</span><span>Sobrepeso</span><span>Obesidad</span>
+</div>
+
+<div class="result-box" id="imc-res">Introduce tu peso y altura</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

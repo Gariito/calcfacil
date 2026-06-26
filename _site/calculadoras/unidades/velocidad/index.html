@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de velocidad gratis — km/h, mph, m/s, nudos — CalcFácil</title>
+  <meta name="description" content="Convierte kilómetros por hora, millas por hora, metros por segundo y nudos al instante.">
+  <meta name="keywords" content="conversor velocidad, kmh a mph, mph a kmh, nudos a km/h, m/s a km/h">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/unidades/velocidad/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de velocidad gratis — km/h, mph, m/s, nudos — CalcFácil">
+  <meta property="og:description" content="Convierte kilómetros por hora, millas por hora, metros por segundo y nudos al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/unidades/velocidad/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de velocidad gratis — km/h, mph, m/s, nudos",
+    "description": "Convierte kilómetros por hora, millas por hora, metros por segundo y nudos al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/unidades/velocidad/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="vel-val" placeholder="100" oninput="convVel()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="vel-from" onchange="convVel()">
+      <option value="kmh">Kilómetros/hora (km/h)</option>
+      <option value="ms">Metros/segundo (m/s)</option>
+      <option value="mph">Millas/hora (mph)</option>
+      <option value="kn">Nudos (kn)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="vel-to" onchange="convVel()">
+  <option value="mph">Millas/hora (mph)</option>
+  <option value="ms">Metros/segundo (m/s)</option>
+  <option value="kmh">Kilómetros/hora (km/h)</option>
+  <option value="kn">Nudos (kn)</option>
+</select>
+
+<div class="result-box" id="vel-res">Introduce un valor</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

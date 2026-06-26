@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de porcentajes gratis — CalcFácil</title>
+  <meta name="description" content="Calcula porcentajes, descuentos y aumentos al instante. También calcula qué porcentaje es un número de otro.">
+  <meta name="keywords" content="calculadora porcentaje, calcular descuento, tanto por ciento, calcular porcentaje gratis">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/porcentaje/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de porcentajes gratis — CalcFácil">
+  <meta property="og:description" content="Calcula porcentajes, descuentos y aumentos al instante. También calcula qué porcentaje es un número de otro.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/porcentaje/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de porcentajes gratis",
+    "description": "Calcula porcentajes, descuentos y aumentos al instante. También calcula qué porcentaje es un número de otro.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/porcentaje/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="row-2">
+  <div>
+    <label>Valor base</label>
+    <input type="number" id="pct-val" placeholder="200" oninput="calcPct()">
+  </div>
+  <div>
+    <label>Porcentaje (%)</label>
+    <input type="number" id="pct-pct" placeholder="15" oninput="calcPct()">
+  </div>
+</div>
+
+<div class="result-box" id="pct-res">Introduce los datos</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <p style="font-weight:600;margin-bottom:1rem">¿Qué porcentaje es X de Y?</p>
+  <div class="row-2">
+    <div>
+      <label>X (parte)</label>
+      <input type="number" id="pct2-x" placeholder="30" oninput="calcPct2()">
+    </div>
+    <div>
+      <label>Y (total)</label>
+      <input type="number" id="pct2-y" placeholder="200" oninput="calcPct2()">
+    </div>
+  </div>
+  <div class="result-box" id="pct2-res">Introduce los datos</div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

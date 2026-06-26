@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de almacenamiento digital gratis — GB, MB, TB, KB — CalcFácil</title>
+  <meta name="description" content="Convierte bytes, kilobytes, megabytes, gigabytes y terabytes al instante.">
+  <meta name="keywords" content="conversor bytes, GB a MB, TB a GB, kilobytes a megabytes, almacenamiento digital">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/unidades/almacenamiento/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de almacenamiento digital gratis — GB, MB, TB, KB — CalcFácil">
+  <meta property="og:description" content="Convierte bytes, kilobytes, megabytes, gigabytes y terabytes al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/unidades/almacenamiento/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de almacenamiento digital gratis — GB, MB, TB, KB",
+    "description": "Convierte bytes, kilobytes, megabytes, gigabytes y terabytes al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/unidades/almacenamiento/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="data-val" placeholder="1" oninput="convData()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="data-from" onchange="convData()">
+      <option value="GB">Gigabytes (GB)</option>
+      <option value="MB">Megabytes (MB)</option>
+      <option value="KB">Kilobytes (KB)</option>
+      <option value="TB">Terabytes (TB)</option>
+      <option value="B">Bytes (B)</option>
+    </select>
+  </div>
+</div>
+
+<label>A</label>
+<select id="data-to" onchange="convData()">
+  <option value="MB">Megabytes (MB)</option>
+  <option value="GB">Gigabytes (GB)</option>
+  <option value="KB">Kilobytes (KB)</option>
+  <option value="TB">Terabytes (TB)</option>
+  <option value="B">Bytes (B)</option>
+</select>
+
+<div class="result-box" id="data-res">Introduce un valor</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

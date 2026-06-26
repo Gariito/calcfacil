@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 <div class="calc-page">
-  <div class="container">
+  <div class="container calc-container">
 
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Ruta">
@@ -19,7 +19,6 @@ layout: base.njk
       <div class="calc-main">
         <h1>{{ icono }} {{ titulo }}</h1>
         <p class="calc-intro">{{ descripcion }}</p>
-
         <div class="card">
           {{ content | safe }}
         </div>
