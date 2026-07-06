@@ -1,0 +1,67 @@
+---
+layout: calculadora.njk
+title: Calculadora de calorías quemadas haciendo ejercicio
+description: Calcula las calorías que quemas según el tipo de ejercicio, tu peso y el tiempo de actividad.
+keywords: calorias quemadas ejercicio, calculadora calorias deporte, quemar calorias
+categoria: fitness
+categoriaLabel: Fitness
+titulo: Calorías quemadas por ejercicio
+icono: 🔥
+tituloCorto: las calorías quemadas
+descripcion: Calcula las calorías que quemas según el ejercicio, tu peso y la duración.
+explicacion: El gasto calórico durante el ejercicio depende del tipo de actividad, la intensidad, tu peso corporal y la duración. Esta calculadora usa los valores MET (equivalente metabólico) de cada actividad para estimar las calorías quemadas de forma precisa.
+faq:
+  - q: ¿Qué ejercicio quema más calorías?
+    a: La carrera, el ciclismo intenso y la natación son los que más calorías queman por hora. Correr a ritmo moderado puede quemar entre 500 y 700 kcal/hora según el peso.
+  - q: ¿Es fiable este cálculo?
+    a: Es una estimación basada en valores MET estándar. El gasto real puede variar según la intensidad exacta, tu condición física y tu metabolismo individual.
+  - q: ¿Debo comer las calorías que quemo con el ejercicio?
+    a: Depende de tu objetivo. Si quieres perder peso, no necesariamente. Si quieres mantener el peso o eres deportista de rendimiento, sí es recomendable reponerlas.
+relacionadas:
+  - slug: ritmo-carrera
+    categoria: fitness
+    titulo: Ritmo de carrera
+    icono: 🏃
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+---
+
+<label>Tu peso (kg)</label>
+<input type="number" id="cq-peso" placeholder="70" oninput="calcCalQuemadas()">
+
+<label>Tipo de ejercicio</label>
+<select id="cq-ejercicio" onchange="calcCalQuemadas()">
+  <option value="8">Correr (ritmo moderado ~10 km/h)</option>
+  <option value="11">Correr (ritmo rápido ~14 km/h)</option>
+  <option value="4">Caminar (5 km/h)</option>
+  <option value="7">Ciclismo (moderado)</option>
+  <option value="10">Ciclismo (intenso)</option>
+  <option value="6">Natación (moderada)</option>
+  <option value="9">Natación (intensa)</option>
+  <option value="5">Pesas / musculación</option>
+  <option value="7">HIIT / crossfit</option>
+  <option value="5">Yoga / pilates</option>
+  <option value="6">Fútbol</option>
+  <option value="7">Baloncesto</option>
+  <option value="4">Bailar</option>
+  <option value="3">Estiramientos</option>
+</select>
+
+<label>Duración (minutos)</label>
+<input type="number" id="cq-min" placeholder="30" oninput="calcCalQuemadas()">
+
+<div class="result-box" id="cq-res">Introduce tus datos</div>
+
+<script>
+function calcCalQuemadas() {
+  const peso = parseFloat(document.getElementById('cq-peso').value);
+  const met = parseFloat(document.getElementById('cq-ejercicio').value);
+  const min = parseFloat(document.getElementById('cq-min').value);
+  if (!peso || !min) return;
+  const kcal = met * peso * (min / 60);
+  document.getElementById('cq-res').innerHTML =
+    `${Math.round(kcal)} kcal<small>En ${min} min de ejercicio · MET: ${met}</small>`;
+}
+</script>

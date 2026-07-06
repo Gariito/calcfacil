@@ -1,0 +1,53 @@
+---
+layout: calculadora.njk
+title: Calculadora de 1 repetición máxima (1RM)
+description: Calcula tu repetición máxima para cualquier ejercicio de fuerza usando la fórmula de Epley.
+keywords: 1rm, repeticion maxima, calculadora fuerza, epley formula, press banca 1rm
+categoria: fitness
+categoriaLabel: Fitness
+titulo: Calculadora de 1RM (repetición máxima)
+icono: 🏋️
+tituloCorto: la repetición máxima
+descripcion: Calcula el peso máximo que puedes levantar en una sola repetición para cualquier ejercicio.
+explicacion: La repetición máxima (1RM) es el peso máximo que puedes levantar correctamente en una sola repetición de un ejercicio. Conocerla te permite programar mejor tu entrenamiento de fuerza. Esta calculadora usa la fórmula de Epley, la más utilizada, a partir de un peso submáximo y el número de repeticiones realizadas.
+faq:
+  - q: ¿Para qué sirve saber mi 1RM?
+    a: Para programar correctamente el entrenamiento de fuerza. Por ejemplo, para hipertrofia se trabaja al 65-80% del 1RM, y para fuerza máxima al 85-95%.
+  - q: ¿Es seguro hacer una repetición máxima real?
+    a: Puede ser arriesgado sin supervisión. Por eso esta calculadora estima el 1RM a partir de pesos submáximos, que es más seguro y casi igual de preciso.
+  - q: ¿Qué fórmula usa esta calculadora?
+    a: La fórmula de Epley — 1RM = peso × (1 + repeticiones/30) — considerada la más precisa para la mayoría de ejercicios compuestos.
+relacionadas:
+  - slug: calorias-quemadas
+    categoria: fitness
+    titulo: Calorías quemadas
+    icono: 🔥
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<label>Peso levantado (kg)</label>
+<input type="number" id="rm-peso" placeholder="80" oninput="calcRM()">
+
+<label>Número de repeticiones realizadas</label>
+<input type="number" id="rm-reps" placeholder="8" oninput="calcRM()">
+
+<div class="result-box" id="rm-res">Introduce el peso y las repeticiones</div>
+
+<script>
+function calcRM() {
+  const peso = parseFloat(document.getElementById('rm-peso').value);
+  const reps = parseFloat(document.getElementById('rm-reps').value);
+  if (!peso || !reps) return;
+  const rm = peso * (1 + reps / 30);
+  document.getElementById('rm-res').innerHTML =
+    `1RM estimado: ${rm.toFixed(1)} kg<small>
+    50% → ${(rm*0.5).toFixed(1)} kg · 
+    65% → ${(rm*0.65).toFixed(1)} kg · 
+    75% → ${(rm*0.75).toFixed(1)} kg · 
+    85% → ${(rm*0.85).toFixed(1)} kg · 
+    90% → ${(rm*0.9).toFixed(1)} kg</small>`;
+}
+</script>

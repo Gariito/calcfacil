@@ -1,0 +1,71 @@
+---
+layout: calculadora.njk
+title: Calculadora de ritmo de carrera — pace y velocidad
+description: Calcula tu pace (min/km), velocidad media y tiempo estimado para cualquier distancia.
+keywords: calculadora ritmo carrera, pace running, min por km, tiempo maraton
+categoria: fitness
+categoriaLabel: Fitness
+titulo: Calculadora de ritmo de carrera
+icono: 🏃
+tituloCorto: el ritmo de carrera
+descripcion: Calcula tu pace, velocidad y tiempo estimado para cualquier distancia.
+explicacion: El pace o ritmo de carrera es el tiempo que tardas en recorrer un kilómetro. Es la métrica más usada por los corredores para planificar entrenamientos y competiciones. Con esta calculadora puedes convertir entre pace, velocidad y tiempo total para cualquier distancia.
+faq:
+  - q: ¿Qué pace necesito para hacer una maratón en menos de 4 horas?
+    a: Para terminar una maratón (42,195 km) en menos de 4 horas necesitas mantener un pace inferior a 5:41 min/km.
+  - q: ¿Cuál es un buen pace para un principiante?
+    a: Para alguien que empieza a correr, un pace entre 7:00 y 8:00 min/km es perfectamente normal y saludable.
+  - q: ¿Cómo mejoro mi ritmo de carrera?
+    a: Combinando rodajes suaves (80% del entrenamiento) con series de velocidad y carreras de tempo. La consistencia es más importante que la intensidad.
+relacionadas:
+  - slug: calorias-quemadas
+    categoria: fitness
+    titulo: Calorías quemadas
+    icono: 🔥
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardíaca
+    icono: ❤️
+---
+
+<label>Distancia</label>
+<select id="rc-dist" onchange="calcRitmo()">
+  <option value="1">1 km</option>
+  <option value="5">5 km</option>
+  <option value="10">10 km</option>
+  <option value="21.097">Media maratón (21,097 km)</option>
+  <option value="42.195">Maratón (42,195 km)</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Horas</label>
+    <input type="number" id="rc-h" placeholder="0" oninput="calcRitmo()">
+  </div>
+  <div>
+    <label>Minutos</label>
+    <input type="number" id="rc-m" placeholder="25" oninput="calcRitmo()">
+  </div>
+</div>
+
+<label>Segundos</label>
+<input type="number" id="rc-s" placeholder="0" oninput="calcRitmo()">
+
+<div class="result-box" id="rc-res">Introduce la distancia y el tiempo</div>
+
+<script>
+function calcRitmo() {
+  const dist = parseFloat(document.getElementById('rc-dist').value);
+  const h = parseFloat(document.getElementById('rc-h').value) || 0;
+  const m = parseFloat(document.getElementById('rc-m').value) || 0;
+  const s = parseFloat(document.getElementById('rc-s').value) || 0;
+  const totalSeg = h * 3600 + m * 60 + s;
+  if (!totalSeg || !dist) return;
+  const paceSeg = totalSeg / dist;
+  const paceMin = Math.floor(paceSeg / 60);
+  const paceSec = Math.round(paceSeg % 60).toString().padStart(2, '0');
+  const vel = (dist / (totalSeg / 3600)).toFixed(2);
+  document.getElementById('rc-res').innerHTML =
+    `Pace: ${paceMin}:${paceSec} min/km<small>Velocidad media: ${vel} km/h</small>`;
+}
+</script>

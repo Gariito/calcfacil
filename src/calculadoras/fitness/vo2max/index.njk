@@ -1,0 +1,83 @@
+---
+layout: calculadora.njk
+title: Calculadora de VO2 máximo estimado
+description: Estima tu VO2 máximo, la capacidad aeróbica máxima, con el test de Cooper o datos de carrera.
+keywords: vo2 max, capacidad aerobica, test cooper, fitness cardiovascular
+categoria: fitness
+categoriaLabel: Fitness
+titulo: Calculadora de VO2 máximo
+icono: 🫁
+tituloCorto: el VO2 máximo
+descripcion: Estima tu capacidad aeróbica máxima a partir de tu ritmo de carrera o el test de Cooper.
+explicacion: El VO2 máximo es la cantidad máxima de oxígeno que tu cuerpo puede consumir durante el ejercicio intenso. Es el mejor indicador de la condición cardiovascular. Un VO2 máx alto significa que tu corazón y pulmones son muy eficientes transportando oxígeno a los músculos.
+faq:
+  - q: ¿Qué VO2 máx es bueno para mi edad?
+    a: Para hombres de 30-39 años, un VO2 máx superior a 44 ml/kg/min se considera bueno. Para mujeres de la misma edad, superior a 37 es bueno. Estos valores disminuyen con la edad.
+  - q: ¿Cómo se mejora el VO2 máx?
+    a: Con entrenamiento cardiovascular regular, especialmente intervalos de alta intensidad (HIIT) y rodajes largos. Mejoras significativas se ven en 6-12 semanas.
+  - q: ¿Es lo mismo que la resistencia?
+    a: El VO2 máx mide el potencial aeróbico máximo, mientras que la resistencia también depende de la eficiencia de carrera y el umbral de lactato.
+relacionadas:
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardíaca
+    icono: ❤️
+  - slug: calorias-quemadas
+    categoria: fitness
+    titulo: Calorías quemadas
+    icono: 🔥
+---
+
+<label>Método de estimación</label>
+<select id="vo2-metodo" onchange="toggleVO2()">
+  <option value="cooper">Test de Cooper (distancia en 12 min)</option>
+  <option value="pace">Por pace de carrera</option>
+</select>
+
+<div id="vo2-cooper">
+  <label>Distancia recorrida en 12 minutos (metros)</label>
+  <input type="number" id="vo2-dist" placeholder="2400" oninput="calcVO2()">
+</div>
+
+<div id="vo2-pace" style="display:none">
+  <div class="row-2">
+    <div>
+      <label>Pace (minutos)</label>
+      <input type="number" id="vo2-pm" placeholder="5" oninput="calcVO2()">
+    </div>
+    <div>
+      <label>Pace (segundos)</label>
+      <input type="number" id="vo2-ps" placeholder="0" oninput="calcVO2()">
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="vo2-res">Introduce tus datos</div>
+
+<script>
+function toggleVO2() {
+  const m = document.getElementById('vo2-metodo').value;
+  document.getElementById('vo2-cooper').style.display = m === 'cooper' ? 'block' : 'none';
+  document.getElementById('vo2-pace').style.display = m === 'pace' ? 'block' : 'none';
+  calcVO2();
+}
+function calcVO2() {
+  const metodo = document.getElementById('vo2-metodo').value;
+  let vo2;
+  if (metodo === 'cooper') {
+    const dist = parseFloat(document.getElementById('vo2-dist').value);
+    if (!dist) return;
+    vo2 = (dist - 504.9) / 44.73;
+  } else {
+    const pm = parseFloat(document.getElementById('vo2-pm').value) || 0;
+    const ps = parseFloat(document.getElementById('vo2-ps').value) || 0;
+    const paceSeg = pm * 60 + ps;
+    if (!paceSeg) return;
+    const vel = 1000 / paceSeg * 60;
+    vo2 = -4.6 + 0.182258 * vel + 0.000104 * vel * vel;
+  }
+  const nivel = vo2 < 30 ? 'Bajo' : vo2 < 40 ? 'Regular' : vo2 < 50 ? 'Bueno' : vo2 < 60 ? 'Muy bueno' : 'Excelente';
+  document.getElementById('vo2-res').innerHTML =
+    `VO2 máx: ${vo2.toFixed(1)} ml/kg/min<small>Nivel: ${nivel}</small>`;
+}
+</script>
