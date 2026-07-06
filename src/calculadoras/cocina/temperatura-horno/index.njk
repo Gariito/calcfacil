@@ -1,0 +1,63 @@
+---
+layout: calculadora.njk
+title: Conversor de temperatura de horno — Celsius, Fahrenheit y gas
+description: Convierte temperaturas de horno entre grados Celsius, Fahrenheit y termostato de gas al instante.
+keywords: temperatura horno celsius fahrenheit, termostato gas horno, conversion temperatura horno
+categoria: cocina
+categoriaLabel: Cocina
+titulo: Conversor de temperatura de horno
+icono: 🌡️
+tituloCorto: la temperatura de horno
+descripcion: Convierte entre Celsius, Fahrenheit y termostato de gas para hornear con precisión.
+explicacion: Las recetas anglosajonas suelen indicar temperaturas en Fahrenheit, mientras que en España usamos Celsius. Además, los hornos de gas usan una escala de termostato del 1 al 9. Esta calculadora convierte entre los tres sistemas al instante.
+faq:
+  - q: ¿Cuántos grados Celsius son 350°F?
+    a: 350°F equivalen a 175°C, que corresponde al termostato de gas 4. Es la temperatura más usada para bizcochos y galletas.
+  - q: ¿Qué diferencia hay entre horno de ventilador y convencional?
+    a: El horno de ventilador (turbo) distribuye el calor de forma más uniforme. Generalmente se recomienda reducir la temperatura unos 20°C respecto a las indicaciones para horno convencional.
+  - q: ¿A qué temperatura es "horno medio"?
+    a: Horno medio equivale a unos 180°C (350°F), termostato gas 4.
+relacionadas:
+  - slug: raciones
+    categoria: cocina
+    titulo: Calculadora de raciones
+    icono: 🍽️
+  - slug: temperatura
+    categoria: unidades
+    titulo: Conversor de temperatura
+    icono: 🌡️
+---
+
+<label>Temperatura y escala de origen</label>
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="hor-val" placeholder="180" oninput="calcHorno()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="hor-from" onchange="calcHorno()">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+      <option value="G">Termostato gas</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="hor-res">Introduce una temperatura</div>
+
+<script>
+function calcHorno() {
+  const v = parseFloat(document.getElementById('hor-val').value);
+  const f = document.getElementById('hor-from').value;
+  if (isNaN(v)) return;
+  let c;
+  if (f === 'C') c = v;
+  else if (f === 'F') c = (v - 32) * 5 / 9;
+  else c = v * 25 + 121;
+  const fahr = c * 9 / 5 + 32;
+  const gas = Math.round((c - 121) / 25);
+  document.getElementById('hor-res').innerHTML =
+    `${c.toFixed(0)}°C · ${fahr.toFixed(0)}°F · Gas ${Math.max(1,Math.min(9,gas))}<small>Horno ${c < 150 ? 'muy suave' : c < 170 ? 'suave' : c < 190 ? 'medio' : c < 220 ? 'fuerte' : 'muy fuerte'}</small>`;
+}
+</script>

@@ -1,0 +1,86 @@
+---
+layout: calculadora.njk
+title: Calculadora de pintura — litros necesarios para pintar una habitación
+description: Calcula los litros de pintura que necesitas para pintar paredes y techo según las medidas de la habitación.
+keywords: calculadora pintura, litros pintura pared, cuanta pintura necesito, pintar habitacion
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora de pintura
+icono: 🎨
+tituloCorto: la pintura necesaria
+descripcion: Calcula los litros de pintura que necesitas según las medidas de tu habitación.
+explicacion: La cantidad de pintura necesaria depende de la superficie a pintar, el número de manos y el rendimiento de la pintura (m² por litro). La mayoría de pinturas de interior rinden entre 10 y 12 m² por litro y mano. Esta calculadora descuenta automáticamente puertas y ventanas.
+faq:
+  - q: ¿Cuántas manos de pintura se necesitan normalmente?
+    a: Para colores claros sobre blanco, suelen bastar 2 manos. Si cambias a un color oscuro o cubres una mancha, puede que necesites 3.
+  - q: ¿El rendimiento de la pintura es siempre 10 m²/L?
+    a: Depende de la marca y la superficie. Las pinturas lisas rinden más (10-12 m²/L). Las rugosas o texturizadas pueden rendir menos (6-8 m²/L). Consulta siempre el envase.
+  - q: ¿Debo comprar algo de más?
+    a: Sí, siempre se recomienda comprar un 10-15% extra para retoques y posibles mermas.
+relacionadas:
+  - slug: azulejos
+    categoria: hogar
+    titulo: Calculadora de azulejos
+    icono: 🔲
+  - slug: consumo-electrico
+    categoria: hogar
+    titulo: Consumo eléctrico
+    icono: ⚡
+---
+
+<div class="row-2">
+  <div>
+    <label>Ancho de la habitación (m)</label>
+    <input type="number" id="pin-ancho" placeholder="4" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Largo de la habitación (m)</label>
+    <input type="number" id="pin-largo" placeholder="5" oninput="calcPintura()">
+  </div>
+</div>
+
+<label>Altura de las paredes (m)</label>
+<input type="number" id="pin-alto" placeholder="2.5" oninput="calcPintura()">
+
+<div class="row-2">
+  <div>
+    <label>Número de puertas</label>
+    <input type="number" id="pin-puertas" placeholder="1" value="1" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Número de ventanas</label>
+    <input type="number" id="pin-ventanas" placeholder="1" value="1" oninput="calcPintura()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Número de manos</label>
+    <input type="number" id="pin-manos" placeholder="2" value="2" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Rendimiento (m²/litro)</label>
+    <input type="number" id="pin-rend" placeholder="10" value="10" oninput="calcPintura()">
+  </div>
+</div>
+
+<div class="result-box" id="pin-res">Introduce las medidas</div>
+
+<script>
+function calcPintura() {
+  const a = parseFloat(document.getElementById('pin-ancho').value);
+  const l = parseFloat(document.getElementById('pin-largo').value);
+  const h = parseFloat(document.getElementById('pin-alto').value);
+  const puertas = (parseFloat(document.getElementById('pin-puertas').value) || 0) * 1.85;
+  const ventanas = (parseFloat(document.getElementById('pin-ventanas').value) || 0) * 1.2;
+  const manos = parseFloat(document.getElementById('pin-manos').value) || 2;
+  const rend = parseFloat(document.getElementById('pin-rend').value) || 10;
+  if (!a || !l || !h) return;
+  const superfParedes = 2 * (a + l) * h;
+  const superfNeta = superfParedes - puertas - ventanas;
+  const litros = (superfNeta * manos) / rend;
+  const litrosExtra = litros * 1.1;
+  document.getElementById('pin-res').innerHTML =
+    `${litros.toFixed(1)} litros<small>Superficie: ${superfNeta.toFixed(1)} m² · Con 10% extra: ${litrosExtra.toFixed(1)} L</small>`;
+}
+</script>

@@ -1,0 +1,58 @@
+---
+layout: calculadora.njk
+title: Calculadora de regla de tres directa e inversa
+description: Resuelve proporciones directas e inversas con la regla de tres al instante.
+keywords: regla de tres, proporcion directa, proporcion inversa, calculadora regla tres
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de regla de tres
+icono: 📏
+tituloCorto: la regla de tres
+descripcion: Resuelve reglas de tres directas e inversas al instante introduciendo tres valores.
+explicacion: La regla de tres es una forma de resolver proporciones. En la proporción directa, cuando una cantidad aumenta la otra también aumenta. En la inversa, cuando una cantidad aumenta la otra disminuye. Es una de las herramientas matemáticas más usadas en la vida cotidiana.
+faq:
+  - q: ¿Cuándo se usa la regla de tres inversa?
+    a: Cuando las dos magnitudes son inversamente proporcionales. Por ejemplo, si más trabajadores hacen el trabajo en menos tiempo, o si un coche más rápido tarda menos en llegar.
+  - q: ¿Cuál es la diferencia entre proporción directa e inversa?
+    a: En la directa, A/B = C/X. En la inversa, A×B = C×X. El resultado final (X) se calcula de forma diferente.
+  - q: ¿Para qué se usa en la vida real?
+    a: Para calcular precios por cantidad, tiempos de trabajo, escalas en mapas, recetas de cocina, combustible por kilómetro y muchísimas situaciones cotidianas.
+relacionadas:
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+  - slug: media-estadistica
+    categoria: matematicas
+    titulo: Media y estadística
+    icono: 📊
+---
+
+<label>Tipo de proporción</label>
+<select id="r3-tipo" onchange="calcR3()">
+  <option value="directa">Directa (si A sube, B sube)</option>
+  <option value="inversa">Inversa (si A sube, B baja)</option>
+</select>
+
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;font-size:0.85rem;color:var(--muted)">
+  Si <b id="r3-a-label">A</b> = <input type="number" id="r3-a" placeholder="10" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem">
+  entonces <b id="r3-b-label">B</b> = <input type="number" id="r3-b" placeholder="25" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem"><br><br>
+  Si <b>A</b> = <input type="number" id="r3-c" placeholder="6" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem">
+  entonces <b>B</b> = <b id="r3-x" style="color:var(--accent)">?</b>
+</div>
+
+<div class="result-box" id="r3-res">Introduce los tres valores conocidos</div>
+
+<script>
+function calcR3() {
+  const a = parseFloat(document.getElementById('r3-a').value);
+  const b = parseFloat(document.getElementById('r3-b').value);
+  const c = parseFloat(document.getElementById('r3-c').value);
+  const tipo = document.getElementById('r3-tipo').value;
+  if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) return;
+  const x = tipo === 'directa' ? (b * c) / a : (a * b) / c;
+  document.getElementById('r3-x').textContent = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
+  document.getElementById('r3-res').innerHTML =
+    `X = ${parseFloat(x.toFixed(8)).toLocaleString('es-ES', {maximumFractionDigits:6})}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${x.toFixed(4)}</small>`;
+}
+</script>

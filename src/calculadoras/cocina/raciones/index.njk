@@ -1,0 +1,66 @@
+---
+layout: calculadora.njk
+title: Calculadora de raciones para recetas
+description: Adapta cualquier receta al número de personas que necesites. Multiplica o reduce los ingredientes automáticamente.
+keywords: calculadora raciones, adaptar receta, multiplicar ingredientes, receta para más personas
+categoria: cocina
+categoriaLabel: Cocina
+titulo: Calculadora de raciones
+icono: 🍽️
+tituloCorto: las raciones
+descripcion: Ajusta cualquier receta al número de comensales que necesites al instante.
+explicacion: Adaptar una receta a más o menos personas es sencillo con esta calculadora. Introduce las raciones originales de la receta y las que necesitas, y obtendrás el factor de multiplicación exacto para cada ingrediente.
+faq:
+  - q: ¿Debo cambiar también el tiempo de cocción al cambiar las raciones?
+    a: No siempre. El tiempo de cocción depende más del tamaño de las piezas que de la cantidad total. Para hornear, aumentar el doble de masa no significa el doble de tiempo — revisa siempre con un palillo.
+  - q: ¿Y la temperatura del horno?
+    a: La temperatura generalmente no cambia al modificar las raciones. Lo que puede cambiar es el tiempo de cocción.
+  - q: ¿Hay ingredientes que no se escalan proporcionalmente?
+    a: Sí. La sal, la levadura, las especias y el bicarbonato no siempre se doblan exactamente — es mejor añadirlos al gusto y ajustar.
+relacionadas:
+  - slug: conversion-ingredientes
+    categoria: cocina
+    titulo: Conversión de ingredientes
+    icono: ⚖️
+  - slug: temperatura-horno
+    categoria: cocina
+    titulo: Temperatura de horno
+    icono: 🌡️
+---
+
+<div class="row-2">
+  <div>
+    <label>Raciones originales</label>
+    <input type="number" id="rac-orig" placeholder="4" oninput="calcRaciones()">
+  </div>
+  <div>
+    <label>Raciones que necesitas</label>
+    <input type="number" id="rac-nueva" placeholder="6" oninput="calcRaciones()">
+  </div>
+</div>
+
+<label>Cantidad de un ingrediente (opcional)</label>
+<input type="number" id="rac-cant" placeholder="200" oninput="calcRaciones()">
+<label>Unidad</label>
+<select id="rac-unidad" onchange="calcRaciones()">
+  <option>g</option><option>kg</option><option>ml</option>
+  <option>L</option><option>tazas</option><option>cucharadas</option>
+  <option>cucharaditas</option><option>unidades</option>
+</select>
+
+<div class="result-box" id="rac-res">Introduce las raciones</div>
+
+<script>
+function calcRaciones() {
+  const orig = parseFloat(document.getElementById('rac-orig').value);
+  const nueva = parseFloat(document.getElementById('rac-nueva').value);
+  const cant = parseFloat(document.getElementById('rac-cant').value);
+  const unidad = document.getElementById('rac-unidad').value;
+  if (!orig || !nueva) return;
+  const factor = nueva / orig;
+  let html = `Factor: ×${factor.toFixed(3)}<small>Multiplica cada ingrediente por ${factor.toFixed(3)}`;
+  if (cant) html += ` · ${cant} ${unidad} → ${(cant * factor).toFixed(1)} ${unidad}`;
+  html += '</small>';
+  document.getElementById('rac-res').innerHTML = html;
+}
+</script>

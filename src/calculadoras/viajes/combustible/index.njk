@@ -1,0 +1,58 @@
+---
+layout: calculadora.njk
+title: Calculadora de combustible para viajes en coche
+description: Calcula el coste de gasolina o diésel para cualquier trayecto según el consumo de tu coche.
+keywords: calculadora combustible, coste gasolina viaje, consumo coche, precio gasolina trayecto
+categoria: viajes
+categoriaLabel: Viajes
+titulo: Calculadora de combustible
+icono: ⛽
+tituloCorto: el combustible del viaje
+descripcion: Calcula cuánto gastarás en combustible para cualquier trayecto.
+explicacion: El coste de combustible de un viaje depende de la distancia, el consumo medio del vehículo y el precio del combustible. Esta calculadora te da el coste total y el consumo en litros para que puedas planificar tu viaje con el presupuesto claro.
+faq:
+  - q: ¿Cómo sé el consumo medio de mi coche?
+    a: Está en la ficha técnica del vehículo o en el manual. También puedes calcularlo dividiendo los litros repostados entre los kilómetros recorridos y multiplicando por 100.
+  - q: ¿Cuál es el precio actual de la gasolina en España?
+    a: El precio varía cada día. Puedes consultarlo en la web de la CNMC o en apps como Gasolineras.es. Habitualmente ronda los 1,50-1,70 €/litro para gasolina 95.
+  - q: ¿Consume más en autopista o en ciudad?
+    a: En ciudad se consume más por las paradas y arranques. En autopista a velocidad constante el consumo es más eficiente, aunque a más de 120 km/h aumenta por la resistencia del aire.
+relacionadas:
+  - slug: presupuesto
+    categoria: viajes
+    titulo: Presupuesto de viaje
+    icono: 💰
+  - slug: divisas
+    categoria: dia-a-dia
+    titulo: Conversor de divisas
+    icono: 💱
+---
+
+<label>Distancia del trayecto (km)</label>
+<input type="number" id="comb-km" placeholder="500" oninput="calcComb()">
+
+<div class="row-2">
+  <div>
+    <label>Consumo del coche (L/100km)</label>
+    <input type="number" id="comb-cons" placeholder="6.5" oninput="calcComb()">
+  </div>
+  <div>
+    <label>Precio del combustible (€/L)</label>
+    <input type="number" id="comb-precio" placeholder="1.60" oninput="calcComb()">
+  </div>
+</div>
+
+<div class="result-box" id="comb-res">Introduce los datos del trayecto</div>
+
+<script>
+function calcComb() {
+  const km = parseFloat(document.getElementById('comb-km').value);
+  const cons = parseFloat(document.getElementById('comb-cons').value);
+  const precio = parseFloat(document.getElementById('comb-precio').value);
+  if (!km || !cons || !precio) return;
+  const litros = (km * cons) / 100;
+  const coste = litros * precio;
+  document.getElementById('comb-res').innerHTML =
+    `${coste.toFixed(2)} €<small>Litros necesarios: ${litros.toFixed(1)} L · ${cons} L/100km durante ${km} km</small>`;
+}
+</script>

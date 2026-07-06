@@ -1,0 +1,69 @@
+---
+layout: calculadora.njk
+title: Calculadora de raíz cuadrada y potencias
+description: Calcula raíces cuadradas, cúbicas y potencias de cualquier número al instante.
+keywords: raiz cuadrada, potencias, calculadora raiz, elevar al cuadrado
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de raíz y potencias
+icono: √
+tituloCorto: raíces y potencias
+descripcion: Calcula raíces cuadradas, cúbicas y potencias de cualquier número.
+explicacion: Las raíces y potencias son operaciones matemáticas fundamentales. La raíz cuadrada de un número es el valor que multiplicado por sí mismo da ese número. Las potencias expresan la multiplicación repetida de un número por sí mismo. Ambas operaciones son inversas entre sí.
+faq:
+  - q: ¿Cuál es la raíz cuadrada de 2?
+    a: La raíz cuadrada de 2 es aproximadamente 1,41421356. Es un número irracional, lo que significa que sus decimales no terminan ni se repiten.
+  - q: ¿Qué es un número al cuadrado?
+    a: Un número al cuadrado es ese número multiplicado por sí mismo. Por ejemplo, 5² = 5 × 5 = 25.
+  - q: ¿Se puede calcular la raíz cuadrada de un número negativo?
+    a: En los números reales no. La raíz cuadrada de un número negativo pertenece al conjunto de los números complejos (números imaginarios).
+relacionadas:
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: 📏
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<label>Número</label>
+<input type="number" id="rp-num" placeholder="25" oninput="calcRP()">
+
+<label>Operación</label>
+<select id="rp-op" onchange="calcRP()">
+  <option value="sqrt">Raíz cuadrada (√x)</option>
+  <option value="cbrt">Raíz cúbica (∛x)</option>
+  <option value="sq">Al cuadrado (x²)</option>
+  <option value="cb">Al cubo (x³)</option>
+  <option value="pow">Potencia personalizada (xⁿ)</option>
+</select>
+
+<div id="rp-exp-wrap" style="display:none">
+  <label>Exponente (n)</label>
+  <input type="number" id="rp-exp" placeholder="4" oninput="calcRP()">
+</div>
+
+<div class="result-box" id="rp-res">Introduce un número</div>
+
+<script>
+function calcRP() {
+  const n = parseFloat(document.getElementById('rp-num').value);
+  const op = document.getElementById('rp-op').value;
+  document.getElementById('rp-exp-wrap').style.display = op === 'pow' ? 'block' : 'none';
+  if (isNaN(n)) return;
+  let r, label;
+  if (op === 'sqrt') { r = Math.sqrt(n); label = `√${n}`; }
+  else if (op === 'cbrt') { r = Math.cbrt(n); label = `∛${n}`; }
+  else if (op === 'sq') { r = n * n; label = `${n}²`; }
+  else if (op === 'cb') { r = n * n * n; label = `${n}³`; }
+  else {
+    const exp = parseFloat(document.getElementById('rp-exp').value);
+    if (isNaN(exp)) return;
+    r = Math.pow(n, exp); label = `${n}^${exp}`;
+  }
+  document.getElementById('rp-res').innerHTML =
+    `${label} = ${parseFloat(r.toFixed(10)).toLocaleString('es-ES', {maximumFractionDigits:8})}`;
+}
+</script>

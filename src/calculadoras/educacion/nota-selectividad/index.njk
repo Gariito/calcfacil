@@ -1,0 +1,84 @@
+---
+layout: calculadora.njk
+title: Calculadora de nota de selectividad (EBAU) 2024
+description: Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU. Incluye fases general y específica.
+keywords: calculadora selectividad, nota ebau, nota acceso universidad, calcular nota pau
+categoria: educacion
+categoriaLabel: Educación
+titulo: Calculadora de nota EBAU (selectividad)
+icono: 🎓
+tituloCorto: la nota de selectividad
+descripcion: Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU.
+explicacion: La nota de acceso a la universidad se calcula con la fórmula oficial — 0,6 × nota de Bachillerato + 0,4 × nota de la fase general de la EBAU. Opcionalmente se pueden sumar hasta 4 puntos extra de la fase específica (0,1 o 0,2 por las mejores asignaturas superadas).
+faq:
+  - q: ¿Cuál es la nota máxima posible en la EBAU?
+    a: La nota máxima es 14 puntos — 10 de la nota de acceso más 4 puntos de la fase específica.
+  - q: ¿Qué es la fase específica de la EBAU?
+    a: Son exámenes optativos de asignaturas relacionadas con el grado al que quieres acceder. Si las superas, suman hasta 4 puntos adicionales a tu nota de acceso.
+  - q: ¿La nota de corte cambia cada año?
+    a: Sí, la nota de corte depende de la oferta de plazas y la demanda de cada año. Las notas de corte del año anterior son orientativas pero pueden variar.
+relacionadas:
+  - slug: nota-media
+    categoria: educacion
+    titulo: Nota media
+    icono: 📝
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<label>Nota media de Bachillerato (0-10)</label>
+<input type="number" id="sel-bach" placeholder="8.5" oninput="calcSel()">
+
+<label>Nota de la fase general EBAU (0-10)</label>
+<input type="number" id="sel-fase" placeholder="7.0" oninput="calcSel()">
+
+<div style="padding:1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:1rem">
+  <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem">Fase específica (opcional) — hasta 4 puntos extra</p>
+  <div class="row-2">
+    <div>
+      <label>Asignatura 1 (nota)</label>
+      <input type="number" id="sel-e1" placeholder="9.0" oninput="calcSel()">
+    </div>
+    <div>
+      <label>Ponderación</label>
+      <select id="sel-p1" onchange="calcSel()">
+        <option value="0.2">0,2</option>
+        <option value="0.1">0,1</option>
+      </select>
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Asignatura 2 (nota)</label>
+      <input type="number" id="sel-e2" placeholder="8.0" oninput="calcSel()">
+    </div>
+    <div>
+      <label>Ponderación</label>
+      <select id="sel-p2" onchange="calcSel()">
+        <option value="0.2">0,2</option>
+        <option value="0.1">0,1</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="sel-res">Introduce tu nota de Bachillerato y la EBAU</div>
+
+<script>
+function calcSel() {
+  const bach = parseFloat(document.getElementById('sel-bach').value);
+  const fase = parseFloat(document.getElementById('sel-fase').value);
+  if (!bach || !fase) return;
+  const base = 0.6 * bach + 0.4 * fase;
+  const e1 = parseFloat(document.getElementById('sel-e1').value) || 0;
+  const p1 = parseFloat(document.getElementById('sel-p1').value);
+  const e2 = parseFloat(document.getElementById('sel-e2').value) || 0;
+  const p2 = parseFloat(document.getElementById('sel-p2').value);
+  const extra = (e1 > 5 ? e1 * p1 : 0) + (e2 > 5 ? e2 * p2 : 0);
+  const total = Math.min(base + extra, 14);
+  document.getElementById('sel-res').innerHTML =
+    `Nota de acceso: ${base.toFixed(3)}<small>Con fase específica: ${total.toFixed(3)} puntos · Máximo posible: 14,000</small>`;
+}
+</script>

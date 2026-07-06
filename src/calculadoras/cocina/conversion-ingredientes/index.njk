@@ -1,0 +1,76 @@
+---
+layout: calculadora.njk
+title: Conversor de ingredientes — tazas y cucharadas a gramos
+description: Convierte tazas, cucharadas y onzas a gramos para harina, azúcar, mantequilla, arroz y más.
+keywords: tazas a gramos, cucharadas a gramos, conversion ingredientes cocina, harina tazas gramos
+categoria: cocina
+categoriaLabel: Cocina
+titulo: Conversor de ingredientes
+icono: ⚖️
+tituloCorto: la conversión de ingredientes
+descripcion: Convierte tazas, cucharadas y cucharaditas a gramos para los ingredientes más habituales.
+explicacion: Las recetas americanas usan tazas y cucharadas como unidad de medida. Convertirlas a gramos puede ser confuso porque el peso varía según el ingrediente — una taza de harina pesa mucho menos que una taza de azúcar. Esta calculadora tiene en cuenta la densidad de cada ingrediente.
+faq:
+  - q: ¿Cuántos gramos es una taza de harina?
+    a: Una taza de harina equivale a aproximadamente 120-125 gramos, dependiendo de si está tamizada o no.
+  - q: ¿Cuántos gramos es una cucharada de mantequilla?
+    a: Una cucharada de mantequilla equivale a aproximadamente 14 gramos.
+  - q: ¿Una taza es siempre 250 ml?
+    a: La taza estándar americana es de 240 ml. La taza métrica usada en algunos países es de 250 ml. Esta calculadora usa 240 ml como referencia.
+relacionadas:
+  - slug: raciones
+    categoria: cocina
+    titulo: Calculadora de raciones
+    icono: 🍽️
+  - slug: peso
+    categoria: unidades
+    titulo: Conversor de peso
+    icono: 🏋️
+---
+
+<label>Ingrediente</label>
+<select id="ing-tipo" onchange="calcIng()">
+  <option value="125">Harina de trigo (todo uso)</option>
+  <option value="200">Azúcar blanco</option>
+  <option value="220">Azúcar moreno (compacto)</option>
+  <option value="100">Azúcar glass</option>
+  <option value="230">Sal</option>
+  <option value="240">Agua / leche</option>
+  <option value="227">Mantequilla</option>
+  <option value="85">Cacao en polvo</option>
+  <option value="190">Arroz</option>
+  <option value="185">Avena</option>
+  <option value="150">Nueces picadas</option>
+  <option value="170">Miel</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Cantidad</label>
+    <input type="number" id="ing-cant" placeholder="1" oninput="calcIng()">
+  </div>
+  <div>
+    <label>Unidad</label>
+    <select id="ing-unidad" onchange="calcIng()">
+      <option value="1">Taza (240 ml)</option>
+      <option value="0.0625">Cucharada (15 ml)</option>
+      <option value="0.020833">Cucharadita (5 ml)</option>
+      <option value="0.5">Media taza</option>
+      <option value="0.25">¼ taza</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="ing-res">Introduce la cantidad</div>
+
+<script>
+function calcIng() {
+  const grPorTaza = parseFloat(document.getElementById('ing-tipo').value);
+  const cant = parseFloat(document.getElementById('ing-cant').value);
+  const factor = parseFloat(document.getElementById('ing-unidad').value);
+  if (!cant) return;
+  const gramos = grPorTaza * cant * factor;
+  document.getElementById('ing-res').innerHTML =
+    `${gramos.toFixed(1)} g<small>${cant} ${document.getElementById('ing-unidad').options[document.getElementById('ing-unidad').selectedIndex].text} = ${gramos.toFixed(1)} gramos</small>`;
+}
+</script>

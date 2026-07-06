@@ -1,0 +1,61 @@
+---
+layout: calculadora.njk
+title: Calculadora de consumo eléctrico de electrodomésticos
+description: Calcula el consumo en kWh y el coste eléctrico mensual y anual de tus electrodomésticos.
+keywords: calculadora consumo electrico, kwh electrodomesticos, coste electricidad, factura luz
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora de consumo eléctrico
+icono: ⚡
+tituloCorto: el consumo eléctrico
+descripcion: Calcula el consumo en kWh y el coste mensual y anual de cualquier electrodoméstico.
+explicacion: El consumo eléctrico se calcula multiplicando la potencia del aparato (en vatios) por las horas de uso. El resultado en kilovatios-hora (kWh) multiplicado por el precio del kWh da el coste económico. En España el precio medio del kWh ronda los 0,18-0,25 €.
+faq:
+  - q: ¿Dónde encuentro la potencia de mi electrodoméstico?
+    a: En la etiqueta energética, en el manual o en la placa de características que suele estar en la parte trasera o inferior del aparato.
+  - q: ¿Cuánto cuesta dejar algo en standby?
+    a: Un aparato en standby consume entre 0,5 W y 5 W. Un televisor en standby 24h/365 días puede costar entre 1 y 5 € al año.
+  - q: ¿Cuál es el precio del kWh en España?
+    a: Varía según la tarifa y la hora del día. En tarifa regulada PVPC ronda los 0,10-0,30 €/kWh según la franja horaria. La media habitual es de unos 0,20 €/kWh.
+relacionadas:
+  - slug: pintura
+    categoria: hogar
+    titulo: Calculadora de pintura
+    icono: 🎨
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+---
+
+<label>Potencia del aparato (vatios W)</label>
+<input type="number" id="ele-w" placeholder="1500" oninput="calcElec()">
+
+<div class="row-2">
+  <div>
+    <label>Horas de uso al día</label>
+    <input type="number" id="ele-h" placeholder="2" oninput="calcElec()">
+  </div>
+  <div>
+    <label>Precio del kWh (€)</label>
+    <input type="number" id="ele-precio" placeholder="0.20" value="0.20" oninput="calcElec()">
+  </div>
+</div>
+
+<div class="result-box" id="ele-res">Introduce la potencia y las horas de uso</div>
+
+<script>
+function calcElec() {
+  const w = parseFloat(document.getElementById('ele-w').value);
+  const h = parseFloat(document.getElementById('ele-h').value);
+  const precio = parseFloat(document.getElementById('ele-precio').value) || 0.20;
+  if (!w || !h) return;
+  const kwh_dia = (w * h) / 1000;
+  const kwh_mes = kwh_dia * 30;
+  const kwh_año = kwh_dia * 365;
+  document.getElementById('ele-res').innerHTML =
+    `${kwh_dia.toFixed(3)} kWh/día<small>
+    Mes: ${kwh_mes.toFixed(2)} kWh → ${(kwh_mes*precio).toFixed(2)} € · 
+    Año: ${kwh_año.toFixed(1)} kWh → ${(kwh_año*precio).toFixed(2)} €</small>`;
+}
+</script>

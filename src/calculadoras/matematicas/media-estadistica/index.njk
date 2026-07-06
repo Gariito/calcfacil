@@ -1,0 +1,60 @@
+---
+layout: calculadora.njk
+title: Calculadora de media, mediana y moda
+description: Calcula la media aritmética, mediana, moda, rango y desviación típica de una serie de datos.
+keywords: calculadora media aritmetica, mediana, moda, estadistica basica, desviacion tipica
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de media, mediana y moda
+icono: 📊
+tituloCorto: la media y estadística
+descripcion: Calcula media, mediana, moda, rango y desviación típica de una lista de números.
+explicacion: Las medidas de tendencia central (media, mediana y moda) resumen un conjunto de datos con un solo valor representativo. La media es el promedio, la mediana es el valor central y la moda es el valor que más se repite. Juntas ofrecen una visión completa de la distribución de los datos.
+faq:
+  - q: ¿Cuándo es mejor usar la mediana que la media?
+    a: Cuando hay valores extremos (outliers) que distorsionan el promedio. Por ejemplo, en salarios, la mediana refleja mejor el salario "típico" porque la media se dispara por los salarios muy altos.
+  - q: ¿Puede haber más de una moda?
+    a: Sí. Si dos o más valores aparecen con la misma frecuencia máxima, todos son modas. Se llama distribución bimodal o multimodal.
+  - q: ¿Qué es la desviación típica?
+    a: Mide cuánto se alejan los datos de la media. Una desviación típica baja significa que los datos están muy agrupados cerca de la media; alta significa que están muy dispersos.
+relacionadas:
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: 📏
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<label>Introduce los números separados por comas o espacios</label>
+<input type="text" id="est-datos" placeholder="4, 7, 2, 9, 4, 1, 7, 4" oninput="calcEst()">
+
+<div class="result-box" id="est-res">Introduce una serie de números</div>
+
+<script>
+function calcEst() {
+  const raw = document.getElementById('est-datos').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => !isNaN(n) && n !== '');
+  if (nums.length < 2) return;
+  const sorted = [...nums].sort((a, b) => a - b);
+  const n = nums.length;
+  const media = nums.reduce((a, b) => a + b, 0) / n;
+  const mediana = n % 2 === 0 ? (sorted[n/2-1] + sorted[n/2]) / 2 : sorted[Math.floor(n/2)];
+  const freq = {};
+  nums.forEach(v => freq[v] = (freq[v] || 0) + 1);
+  const maxFreq = Math.max(...Object.values(freq));
+  const moda = Object.keys(freq).filter(k => freq[k] === maxFreq).join(', ');
+  const rango = sorted[n-1] - sorted[0];
+  const varianza = nums.reduce((a, b) => a + Math.pow(b - media, 2), 0) / n;
+  const desv = Math.sqrt(varianza);
+  document.getElementById('est-res').innerHTML =
+    `Media: ${media.toFixed(4)}<small>
+    Mediana: ${mediana} · 
+    Moda: ${moda} (${maxFreq}×) · 
+    Rango: ${rango} · 
+    Desv. típica: ${desv.toFixed(4)} · 
+    N: ${n} datos</small>`;
+}
+</script>

@@ -1,0 +1,76 @@
+---
+layout: calculadora.njk
+title: Calculadora de azulejos — cuántos necesitas para tu superficie
+description: Calcula cuántos azulejos necesitas para cubrir una superficie, incluyendo merma por cortes.
+keywords: calculadora azulejos, cuantos azulejos necesito, m2 azulejos, baldosas superficie
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora de azulejos
+icono: 🔲
+tituloCorto: los azulejos necesarios
+descripcion: Calcula el número de azulejos y los m² necesarios para cubrir cualquier superficie.
+explicacion: Para calcular los azulejos necesarios hay que dividir la superficie total entre el área de cada azulejo. A esto se añade un porcentaje de merma por cortes y posibles roturas, que varía entre el 10% para superficies sencillas y el 15-20% para diagonales o patrones complejos.
+faq:
+  - q: ¿Cuánto porcentaje de merma debo añadir?
+    a: Para colocación recta, un 10% es suficiente. Para colocación en diagonal o en espiga, añade entre un 15% y un 20%.
+  - q: ¿Cómo calculo los m² de una habitación irregular?
+    a: Divide la habitación en rectángulos, calcula los m² de cada uno y súmalos. Luego resta las zonas que no se van a alicatar (bañeras empotradas, muebles fijos, etc.).
+  - q: ¿Debo comprar azulejos de más?
+    a: Sí, siempre. Es recomendable guardar algunos de la misma partida por si hay roturas futuras, ya que puede ser difícil encontrar el mismo modelo.
+relacionadas:
+  - slug: pintura
+    categoria: hogar
+    titulo: Calculadora de pintura
+    icono: 🎨
+  - slug: longitud
+    categoria: unidades
+    titulo: Conversor de longitud
+    icono: 📏
+---
+
+<div class="row-2">
+  <div>
+    <label>Ancho de la superficie (m)</label>
+    <input type="number" id="az-ancho" placeholder="3" oninput="calcAzulejos()">
+  </div>
+  <div>
+    <label>Alto de la superficie (m)</label>
+    <input type="number" id="az-alto" placeholder="2.4" oninput="calcAzulejos()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Ancho del azulejo (cm)</label>
+    <input type="number" id="az-w" placeholder="30" oninput="calcAzulejos()">
+  </div>
+  <div>
+    <label>Alto del azulejo (cm)</label>
+    <input type="number" id="az-h" placeholder="60" oninput="calcAzulejos()">
+  </div>
+</div>
+
+<label>Merma por cortes (%)</label>
+<select id="az-merma" onchange="calcAzulejos()">
+  <option value="10">10% — Colocación recta sencilla</option>
+  <option value="15">15% — Colocación en offset o juntas</option>
+  <option value="20">20% — Colocación en diagonal o espiga</option>
+</select>
+
+<div class="result-box" id="az-res">Introduce las medidas</div>
+
+<script>
+function calcAzulejos() {
+  const sw = parseFloat(document.getElementById('az-ancho').value);
+  const sh = parseFloat(document.getElementById('az-alto').value);
+  const tw = parseFloat(document.getElementById('az-w').value) / 100;
+  const th = parseFloat(document.getElementById('az-h').value) / 100;
+  const merma = parseFloat(document.getElementById('az-merma').value) / 100;
+  if (!sw || !sh || !tw || !th) return;
+  const superfTotal = sw * sh;
+  const areaAzulejo = tw * th;
+  const cantidad = Math.ceil((superfTotal / areaAzulejo) * (1 + merma));
+  document.getElementById('az-res').innerHTML =
+    `${cantidad} azulejos<small>Superficie: ${superfTotal.toFixed(2)} m² · Por azulejo: ${(areaAzulejo*10000).toFixed(0)} cm²</small>`;
+}
+</script>
