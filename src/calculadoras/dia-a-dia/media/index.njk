@@ -1,0 +1,49 @@
+---
+layout: calculadora.njk
+title: Calculadora de media aritmética online
+description: Calcula la media aritmética de una lista de números al instante. Simple, rápida y gratuita.
+keywords: calculadora media, media aritmetica, calcular promedio, media de numeros
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora de media aritmética
+icono: 📊
+tituloCorto: la media aritmética
+descripcion: Calcula la media, suma, máximo y mínimo de una lista de números al instante.
+explicacion: La media aritmética es el valor promedio de un conjunto de números. Se obtiene sumando todos los valores y dividiendo entre la cantidad de números. Es la operación estadística más usada en el día a día, desde calcular la nota media hasta el gasto mensual promedio.
+faq:
+  - q: ¿Cuál es la diferencia entre media y mediana?
+    a: La media es el promedio de todos los valores. La mediana es el valor central cuando los números están ordenados. La mediana es más representativa cuando hay valores extremos muy altos o bajos.
+  - q: ¿Cuántos números puedo introducir?
+    a: Todos los que quieras, separados por comas o espacios.
+  - q: ¿Funciona con decimales?
+    a: Sí, puedes introducir números con decimales usando punto o coma.
+relacionadas:
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<label>Introduce los números separados por comas o espacios</label>
+<input type="text" id="med-nums" placeholder="10, 20, 30, 40, 50" oninput="calcMedia()">
+
+<div class="result-box" id="med-res">Introduce una lista de números</div>
+
+<script>
+function calcMedia() {
+  const raw = document.getElementById('med-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(n => parseFloat(n.replace(',','.'))).filter(n => !isNaN(n));
+  if (nums.length === 0) return;
+  const suma = nums.reduce((a,b) => a+b, 0);
+  const media = suma / nums.length;
+  const max = Math.max(...nums);
+  const min = Math.min(...nums);
+  document.getElementById('med-res').innerHTML =
+    `Media: ${parseFloat(media.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4})}
+    <small>Suma: ${suma} · Cantidad: ${nums.length} · Máx: ${max} · Mín: ${min}</small>`;
+}
+</script>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de nota de selectividad (EBAU) 2024 — CalcFácil</title>
+  <meta name="description" content="Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU. Incluye fases general y específica.">
+  <meta name="keywords" content="calculadora selectividad, nota ebau, nota acceso universidad, calcular nota pau">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/educacion/nota-selectividad/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de nota de selectividad (EBAU) 2024 — CalcFácil">
+  <meta property="og:description" content="Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU. Incluye fases general y específica.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/educacion/nota-selectividad/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de nota de selectividad (EBAU) 2024",
+    "description": "Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU. Incluye fases general y específica.",
+    "url": "https://www.calcfacil.com/calculadoras/educacion/nota-selectividad/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/educacion/">Educación</a>
+      <span>›</span>
+      <span>Calculadora de nota EBAU (selectividad)</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🎓 Calculadora de nota EBAU (selectividad)</h1>
+        <p class="calc-intro">Calcula tu nota de acceso a la universidad con la fórmula oficial de la EBAU.</p>
+        <div class="card">
+          
+<label>Nota media de Bachillerato (0-10)</label>
+<input type="number" id="sel-bach" placeholder="8.5" oninput="calcSel()">
+
+<label>Nota de la fase general EBAU (0-10)</label>
+<input type="number" id="sel-fase" placeholder="7.0" oninput="calcSel()">
+
+<div style="padding:1rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:1rem">
+  <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem">Fase específica (opcional) — hasta 4 puntos extra</p>
+  <div class="row-2">
+    <div>
+      <label>Asignatura 1 (nota)</label>
+      <input type="number" id="sel-e1" placeholder="9.0" oninput="calcSel()">
+    </div>
+    <div>
+      <label>Ponderación</label>
+      <select id="sel-p1" onchange="calcSel()">
+        <option value="0.2">0,2</option>
+        <option value="0.1">0,1</option>
+      </select>
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Asignatura 2 (nota)</label>
+      <input type="number" id="sel-e2" placeholder="8.0" oninput="calcSel()">
+    </div>
+    <div>
+      <label>Ponderación</label>
+      <select id="sel-p2" onchange="calcSel()">
+        <option value="0.2">0,2</option>
+        <option value="0.1">0,1</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="sel-res">Introduce tu nota de Bachillerato y la EBAU</div>
+
+<script>
+function calcSel() {
+  const bach = parseFloat(document.getElementById('sel-bach').value);
+  const fase = parseFloat(document.getElementById('sel-fase').value);
+  if (!bach || !fase) return;
+  const base = 0.6 * bach + 0.4 * fase;
+  const e1 = parseFloat(document.getElementById('sel-e1').value) || 0;
+  const p1 = parseFloat(document.getElementById('sel-p1').value);
+  const e2 = parseFloat(document.getElementById('sel-e2').value) || 0;
+  const p2 = parseFloat(document.getElementById('sel-p2').value);
+  const extra = (e1 > 5 ? e1 * p1 : 0) + (e2 > 5 ? e2 * p2 : 0);
+  const total = Math.min(base + extra, 14);
+  document.getElementById('sel-res').innerHTML =
+    `Nota de acceso: ${base.toFixed(3)}<small>Con fase específica: ${total.toFixed(3)} puntos · Máximo posible: 14,000</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la nota de selectividad?</h2>
+          <p>La nota de acceso a la universidad se calcula con la fórmula oficial — 0,6 × nota de Bachillerato + 0,4 × nota de la fase general de la EBAU. Opcionalmente se pueden sumar hasta 4 puntos extra de la fase específica (0,1 o 0,2 por las mejores asignaturas superadas).</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/educacion/nota-media/">📝 Nota media</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuál es la nota máxima posible en la EBAU?</summary>
+              <p>La nota máxima es 14 puntos — 10 de la nota de acceso más 4 puntos de la fase específica.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es la fase específica de la EBAU?</summary>
+              <p>Son exámenes optativos de asignaturas relacionadas con el grado al que quieres acceder. Si las superas, suman hasta 4 puntos adicionales a tu nota de acceso.</p>
+            </details>
+            
+            <details>
+              <summary>¿La nota de corte cambia cada año?</summary>
+              <p>Sí, la nota de corte depende de la oferta de plazas y la demanda de cada año. Las notas de corte del año anterior son orientativas pero pueden variar.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

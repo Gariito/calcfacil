@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de días entre dos fechas — CalcFácil</title>
+  <meta name="description" content="Calcula los días, semanas y meses que hay entre dos fechas al instante.">
+  <meta name="keywords" content="dias entre fechas, calculadora fechas, cuantos dias faltan, diferencia entre fechas">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/dias-entre-fechas/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de días entre dos fechas — CalcFácil">
+  <meta property="og:description" content="Calcula los días, semanas y meses que hay entre dos fechas al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/dias-entre-fechas/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de días entre dos fechas",
+    "description": "Calcula los días, semanas y meses que hay entre dos fechas al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/dias-entre-fechas/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Calculadora de días entre fechas</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📅 Calculadora de días entre fechas</h1>
+        <p class="calc-intro">Calcula los días, semanas y meses exactos entre dos fechas.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Fecha de inicio</label>
+    <input type="date" id="df-inicio" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+  </div>
+  <div>
+    <label>Fecha de fin</label>
+    <input type="date" id="df-fin" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+  </div>
+</div>
+
+<label>¿Incluir solo días laborables?</label>
+<select id="df-laborables" onchange="calcDias()">
+  <option value="no">No, todos los días</option>
+  <option value="si">Sí, solo días laborables (lun-vie)</option>
+</select>
+
+<div class="result-box" id="df-res">Introduce las dos fechas</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date().toISOString().split('T')[0];
+  document.getElementById('df-inicio').value = hoy;
+});
+
+function calcDias() {
+  const ini = document.getElementById('df-inicio').value;
+  const fin = document.getElementById('df-fin').value;
+  const lab = document.getElementById('df-laborables').value;
+  if (!ini || !fin) return;
+
+  const d1 = new Date(ini), d2 = new Date(fin);
+  const diff = Math.round((d2 - d1) / 86400000);
+  const label = diff < 0 ? 'La fecha de fin es anterior a la de inicio' : null;
+  if (label) { document.getElementById('df-res').textContent = label; return; }
+
+  let laborables = 0;
+  if (lab === 'si') {
+    let cur = new Date(d1);
+    while (cur < d2) {
+      const dow = cur.getDay();
+      if (dow !== 0 && dow !== 6) laborables++;
+      cur.setDate(cur.getDate() + 1);
+    }
+  }
+
+  const semanas = Math.floor(diff / 7);
+  const diasResto = diff % 7;
+  const meses = Math.floor(diff / 30.44);
+
+  document.getElementById('df-res').innerHTML =
+    `${diff} días
+    <small>${semanas} semanas y ${diasResto} días · ~${meses} meses${lab==='si'?' · '+laborables+' días laborables':''}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los días entre fechas?</h2>
+          <p>Esta calculadora calcula la diferencia exacta entre dos fechas en días, semanas, meses y años. Útil para saber cuántos días faltan para un evento, cuánto tiempo lleva un proyecto, o la diferencia de edad entre dos fechas.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/tiempo/">⏱️ Calculadora de tiempo</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuenta los días de ambas fechas?</summary>
+              <p>Cuenta desde el día inicial hasta el día final, sin incluir el día de inicio. Por ejemplo, del 1 al 3 de enero son 2 días.</p>
+            </details>
+            
+            <details>
+              <summary>¿Tiene en cuenta los años bisiestos?</summary>
+              <p>Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular cuántos días faltan para una fecha futura?</summary>
+              <p>Sí. Pon la fecha de hoy como fecha de inicio y la fecha futura como fecha de fin.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

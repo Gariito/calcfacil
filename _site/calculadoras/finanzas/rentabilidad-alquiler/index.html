@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de rentabilidad de alquiler — CalcFácil</title>
+  <meta name="description" content="Calcula la rentabilidad bruta y neta de un piso en alquiler según el precio de compra y el alquiler mensual.">
+  <meta name="keywords" content="rentabilidad alquiler, calcular rentabilidad piso, inversion inmobiliaria, yield alquiler">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/rentabilidad-alquiler/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de rentabilidad de alquiler — CalcFácil">
+  <meta property="og:description" content="Calcula la rentabilidad bruta y neta de un piso en alquiler según el precio de compra y el alquiler mensual.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/rentabilidad-alquiler/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de rentabilidad de alquiler",
+    "description": "Calcula la rentabilidad bruta y neta de un piso en alquiler según el precio de compra y el alquiler mensual.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/rentabilidad-alquiler/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de rentabilidad de alquiler</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🏘️ Calculadora de rentabilidad de alquiler</h1>
+        <p class="calc-intro">Calcula la rentabilidad bruta y neta de una inversión inmobiliaria en alquiler.</p>
+        <div class="card">
+          
+<label>Precio de compra del inmueble (€)</label>
+<input type="number" id="alq-precio" placeholder="180000" oninput="calcAlquiler()">
+
+<label>Gastos de compra — notaría, impuestos, reforma (€)</label>
+<input type="number" id="alq-gastos" placeholder="18000" oninput="calcAlquiler()">
+
+<label>Alquiler mensual (€)</label>
+<input type="number" id="alq-mes" placeholder="800" oninput="calcAlquiler()">
+
+<label>Gastos anuales — IBI, comunidad, seguro (€)</label>
+<input type="number" id="alq-gast-an" placeholder="1500" oninput="calcAlquiler()">
+
+<label>Meses al año sin inquilino (vacíos)</label>
+<input type="number" id="alq-vacios" placeholder="1" value="1" oninput="calcAlquiler()">
+
+<div class="result-box" id="alq-res">Introduce los datos del inmueble</div>
+
+<script>
+function calcAlquiler() {
+  const precio = parseFloat(document.getElementById('alq-precio').value);
+  const gastos = parseFloat(document.getElementById('alq-gastos').value) || 0;
+  const mes = parseFloat(document.getElementById('alq-mes').value);
+  const gastosAn = parseFloat(document.getElementById('alq-gast-an').value) || 0;
+  const vacios = parseFloat(document.getElementById('alq-vacios').value) || 0;
+  if (!precio || !mes) return;
+
+  const inversion = precio + gastos;
+  const ingresosAn = mes * (12 - vacios);
+  const rentBruta = (mes * 12 / precio) * 100;
+  const rentNeta = ((ingresosAn - gastosAn) / inversion) * 100;
+
+  document.getElementById('alq-res').innerHTML =
+    `Rentabilidad bruta: ${rentBruta.toFixed(2)}%
+    <small>Rentabilidad neta: ${rentNeta.toFixed(2)}% · Ingresos anuales: ${ingresosAn.toFixed(0)} € · Inversión total: ${inversion.toLocaleString('es-ES')} €</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la rentabilidad del alquiler?</h2>
+          <p>La rentabilidad del alquiler mide el retorno anual de una inversión inmobiliaria en relación a su coste. La rentabilidad bruta solo considera los ingresos por alquiler. La neta descuenta los gastos (IBI, comunidad, seguro, mantenimiento, vacíos) y los impuestos, dando una visión más realista de la inversión.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/hipoteca/">🏠 Calculadora de hipoteca</a></li>
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué rentabilidad de alquiler es buena en España?</summary>
+              <p>En España se considera buena una rentabilidad bruta superior al 5-6%. En ciudades como Madrid o Barcelona suele estar entre el 3% y el 5% por los altos precios de compra. En ciudades medianas puede superar el 7-8%.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué gastos debo tener en cuenta?</summary>
+              <p>IBI (impuesto de bienes inmuebles), comunidad de propietarios, seguro del hogar, mantenimiento y reparaciones, períodos sin inquilino (vacíos) y la gestión si usas una agencia.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo tributa el alquiler en el IRPF?</summary>
+              <p>Los ingresos por alquiler de vivienda habitual tienen una reducción del 60% en el IRPF. Es decir, solo tributas por el 40% de los ingresos netos.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

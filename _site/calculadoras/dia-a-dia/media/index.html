@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de media aritmética online — CalcFácil</title>
+  <meta name="description" content="Calcula la media aritmética de una lista de números al instante. Simple, rápida y gratuita.">
+  <meta name="keywords" content="calculadora media, media aritmetica, calcular promedio, media de numeros">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/media/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de media aritmética online — CalcFácil">
+  <meta property="og:description" content="Calcula la media aritmética de una lista de números al instante. Simple, rápida y gratuita.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/media/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de media aritmética online",
+    "description": "Calcula la media aritmética de una lista de números al instante. Simple, rápida y gratuita.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/media/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Calculadora de media aritmética</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📊 Calculadora de media aritmética</h1>
+        <p class="calc-intro">Calcula la media, suma, máximo y mínimo de una lista de números al instante.</p>
+        <div class="card">
+          
+<label>Introduce los números separados por comas o espacios</label>
+<input type="text" id="med-nums" placeholder="10, 20, 30, 40, 50" oninput="calcMedia()">
+
+<div class="result-box" id="med-res">Introduce una lista de números</div>
+
+<script>
+function calcMedia() {
+  const raw = document.getElementById('med-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(n => parseFloat(n.replace(',','.'))).filter(n => !isNaN(n));
+  if (nums.length === 0) return;
+  const suma = nums.reduce((a,b) => a+b, 0);
+  const media = suma / nums.length;
+  const max = Math.max(...nums);
+  const min = Math.min(...nums);
+  document.getElementById('med-res').innerHTML =
+    `Media: ${parseFloat(media.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4})}
+    <small>Suma: ${suma} · Cantidad: ${nums.length} · Máx: ${max} · Mín: ${min}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la media aritmética?</h2>
+          <p>La media aritmética es el valor promedio de un conjunto de números. Se obtiene sumando todos los valores y dividiendo entre la cantidad de números. Es la operación estadística más usada en el día a día, desde calcular la nota media hasta el gasto mensual promedio.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuál es la diferencia entre media y mediana?</summary>
+              <p>La media es el promedio de todos los valores. La mediana es el valor central cuando los números están ordenados. La mediana es más representativa cuando hay valores extremos muy altos o bajos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos números puedo introducir?</summary>
+              <p>Todos los que quieras, separados por comas o espacios.</p>
+            </details>
+            
+            <details>
+              <summary>¿Funciona con decimales?</summary>
+              <p>Sí, puedes introducir números con decimales usando punto o coma.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

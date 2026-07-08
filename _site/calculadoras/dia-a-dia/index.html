@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras para el día a día — CalcFácil</title>
-  <meta name="description" content="Calculadora básica, propina, porcentajes y conversor de divisas. Herramientas para el día a día.">
-  <meta name="keywords" content="calculadora online, propina restaurante, calcular porcentaje, conversor euros dolares">
+  <meta name="description" content="Calculadora online, científica, descuentos, días entre fechas, tiempo, edad y más. Herramientas gratuitas para el día a día.">
+  <meta name="keywords" content="calculadora online, calculadora cientifica, descuento, dias entre fechas, regla de tres, generador contraseñas">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadoras para el día a día — CalcFácil">
-  <meta property="og:description" content="Calculadora básica, propina, porcentajes y conversor de divisas. Herramientas para el día a día.">
+  <meta property="og:description" content="Calculadora online, científica, descuentos, días entre fechas, tiempo, edad y más. Herramientas gratuitas para el día a día.">
   <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadoras para el día a día",
-    "description": "Calculadora básica, propina, porcentajes y conversor de divisas. Herramientas para el día a día.",
+    "description": "Calculadora online, científica, descuentos, días entre fechas, tiempo, edad y más. Herramientas gratuitas para el día a día.",
     "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -41,9 +41,15 @@
     <a href="/" class="logo">Calc<span>Fácil</span></a>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
       <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
     </nav>
     <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
   </div>
@@ -58,9 +64,49 @@
       <p>Las herramientas que usas a diario, disponibles en un clic.</p>
     </div>
     <div class="calc-cards">
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/calculadora-basica/">
+        <span class="icon">🔢</span>
+        <div><h2>Calculadora básica</h2><p>Sumas, restas, multiplicaciones y divisiones. Con soporte de teclado.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/calculadora-cientifica/">
+        <span class="icon">🔬</span>
+        <div><h2>Calculadora científica</h2><p>Trigonometría, logaritmos, potencias y constantes matemáticas.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/descuento/">
+        <span class="icon">🏷️</span>
+        <div><h2>Calculadora de descuentos</h2><p>Precio final con oferta y ahorro en euros al instante.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/dias-entre-fechas/">
+        <span class="icon">📅</span>
+        <div><h2>Días entre fechas</h2><p>Calcula los días, semanas y meses entre dos fechas.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/tiempo/">
+        <span class="icon">⏱️</span>
+        <div><h2>Calculadora de tiempo</h2><p>Suma y resta horas y minutos. Calcula horas trabajadas.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/edad/">
+        <span class="icon">🎂</span>
+        <div><h2>Calculadora de edad</h2><p>Calcula tu edad exacta en años, meses y días.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/regla-de-tres/">
+        <span class="icon">⚖️</span>
+        <div><h2>Regla de tres</h2><p>Proporciones directas e inversas al instante.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/media/">
+        <span class="icon">📊</span>
+        <div><h2>Calculadora de media</h2><p>Media aritmética, suma, máximo y mínimo de una lista de números.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/conversor-numeros/">
+        <span class="icon">🔣</span>
+        <div><h2>Conversor de sistemas numéricos</h2><p>Decimal, binario, hexadecimal y octal.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/dia-a-dia/generador-contrasena/">
+        <span class="icon">🔐</span>
+        <div><h2>Generador de contraseñas</h2><p>Genera contraseñas seguras y aleatorias al instante.</p></div>
+      </a>
       <a class="calc-card-link" href="/calculadoras/dia-a-dia/propina/">
         <span class="icon">🍽️</span>
-        <div><h2>Calculadora de propina</h2><p>Calcula la propina y divide la cuenta entre el número de personas.</p></div>
+        <div><h2>Calculadora de propina</h2><p>Calcula la propina y divide la cuenta entre personas.</p></div>
       </a>
       <a class="calc-card-link" href="/calculadoras/dia-a-dia/porcentaje/">
         <span class="icon">%</span>
@@ -77,7 +123,7 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>© CalcFácil 2024 · Calculadoras gratuitas · Sin anuncios</p>
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
     <nav aria-label="Pie de página">
       <a href="/calculadoras/salud/">Salud</a>
       <a href="/calculadoras/unidades/">Unidades</a>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora online gratis — básica y sencilla — CalcFácil</title>
+  <meta name="description" content="Calculadora online gratuita para operaciones básicas. Suma, resta, multiplicación y división al instante desde el navegador.">
+  <meta name="keywords" content="calculadora online, calculadora gratis, calculadora basica, calculadora web, calculadora sin descargar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-basica/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora online gratis — básica y sencilla — CalcFácil">
+  <meta property="og:description" content="Calculadora online gratuita para operaciones básicas. Suma, resta, multiplicación y división al instante desde el navegador.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-basica/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora online gratis — básica y sencilla",
+    "description": "Calculadora online gratuita para operaciones básicas. Suma, resta, multiplicación y división al instante desde el navegador.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-basica/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Calculadora básica online</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔢 Calculadora básica online</h1>
+        <p class="calc-intro">Calculadora online gratuita para sumas, restas, multiplicaciones y divisiones al instante.</p>
+        <div class="card">
+          
+<div class="calc-display">
+  <div class="expr" id="cb-expr"></div>
+  <div class="val" id="cb-val">0</div>
+</div>
+
+<div class="kbd-grid">
+  <button class="clr" onclick="cbAc()">AC</button>
+  <button class="op" onclick="cbOp('+/-')">+/-</button>
+  <button class="op" onclick="cbOp('%')">%</button>
+  <button class="op" onclick="cbOp('÷')">÷</button>
+
+  <button onclick="cbNum('7')">7</button>
+  <button onclick="cbNum('8')">8</button>
+  <button onclick="cbNum('9')">9</button>
+  <button class="op" onclick="cbOp('×')">×</button>
+
+  <button onclick="cbNum('4')">4</button>
+  <button onclick="cbNum('5')">5</button>
+  <button onclick="cbNum('6')">6</button>
+  <button class="op" onclick="cbOp('−')">−</button>
+
+  <button onclick="cbNum('1')">1</button>
+  <button onclick="cbNum('2')">2</button>
+  <button onclick="cbNum('3')">3</button>
+  <button class="op" onclick="cbOp('+')">+</button>
+
+  <button style="grid-column:span 2" onclick="cbNum('0')">0</button>
+  <button onclick="cbDot()">.</button>
+  <button class="eq" onclick="cbEq()">=</button>
+</div>
+
+<script>
+let cb = { v:'0', expr:'', op:null, newN:true };
+function cbDisp() {
+  document.getElementById('cb-val').textContent = cb.v;
+  document.getElementById('cb-expr').textContent = cb.expr;
+}
+function cbNum(d) {
+  if (cb.newN) { cb.v = d; cb.newN = false; }
+  else cb.v = cb.v === '0' ? d : cb.v + d;
+  cbDisp();
+}
+function cbDot() {
+  if (!cb.v.includes('.')) { cb.v += '.'; cb.newN = false; }
+  cbDisp();
+}
+function cbAc() { cb = {v:'0',expr:'',op:null,newN:true}; cbDisp(); }
+function cbOp(o) {
+  if (o==='+/-') { cb.v = String(-(parseFloat(cb.v)||0)); cbDisp(); return; }
+  if (o==='%') { cb.v = String(parseFloat(cb.v)/100); cbDisp(); return; }
+  cbEq();
+  cb.op = o; cb.expr = cb.v+' '+o; cb.newN = true; cbDisp();
+}
+function cbEq() {
+  if (!cb.op) return;
+  const a = parseFloat(cb.expr), b = parseFloat(cb.v);
+  const r = cb.op==='+'?a+b:cb.op==='−'?a-b:cb.op==='×'?a*b:b!==0?a/b:'Error';
+  cb = {v:typeof r==='number'?String(parseFloat(r.toFixed(10))):r,expr:'',op:null,newN:true};
+  cbDisp();
+}
+document.addEventListener('keydown', e => {
+  if ('0123456789'.includes(e.key)) cbNum(e.key);
+  else if (e.key==='.') cbDot();
+  else if (e.key==='Enter'||e.key==='=') cbEq();
+  else if (e.key==='+') cbOp('+');
+  else if (e.key==='-') cbOp('−');
+  else if (e.key==='*') cbOp('×');
+  else if (e.key==='/') { e.preventDefault(); cbOp('÷'); }
+  else if (e.key==='Escape') cbAc();
+  else if (e.key==='Backspace') { cb.v=cb.v.length>1?cb.v.slice(0,-1):'0'; cbDisp(); }
+});
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora básica?</h2>
+          <p>Una calculadora online siempre disponible desde el navegador, sin descargas ni instalaciones. Perfecta para operaciones cotidianas rápidas desde el móvil o el ordenador. Puedes usarla tanto con el ratón como con el teclado numérico.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-cientifica/">🔬 Calculadora científica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Puedo usar el teclado con esta calculadora?</summary>
+              <p>Sí. Puedes escribir números y operaciones directamente con el teclado numérico. Pulsa Enter para obtener el resultado.</p>
+            </details>
+            
+            <details>
+              <summary>¿Guarda el historial de operaciones?</summary>
+              <p>Muestra la operación actual en la pantalla. Para operaciones largas, te recomendamos anotar los resultados intermedios.</p>
+            </details>
+            
+            <details>
+              <summary>¿Funciona en el móvil?</summary>
+              <p>Sí, está completamente adaptada para pantallas táctiles.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

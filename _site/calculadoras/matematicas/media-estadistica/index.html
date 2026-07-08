@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de media, mediana y moda — CalcFácil</title>
+  <meta name="description" content="Calcula la media aritmética, mediana, moda, rango y desviación típica de una serie de datos.">
+  <meta name="keywords" content="calculadora media aritmetica, mediana, moda, estadistica basica, desviacion tipica">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/matematicas/media-estadistica/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de media, mediana y moda — CalcFácil">
+  <meta property="og:description" content="Calcula la media aritmética, mediana, moda, rango y desviación típica de una serie de datos.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/matematicas/media-estadistica/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de media, mediana y moda",
+    "description": "Calcula la media aritmética, mediana, moda, rango y desviación típica de una serie de datos.",
+    "url": "https://www.calcfacil.com/calculadoras/matematicas/media-estadistica/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <span>›</span>
+      <span>Calculadora de media, mediana y moda</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📊 Calculadora de media, mediana y moda</h1>
+        <p class="calc-intro">Calcula media, mediana, moda, rango y desviación típica de una lista de números.</p>
+        <div class="card">
+          
+<label>Introduce los números separados por comas o espacios</label>
+<input type="text" id="est-datos" placeholder="4, 7, 2, 9, 4, 1, 7, 4" oninput="calcEst()">
+
+<div class="result-box" id="est-res">Introduce una serie de números</div>
+
+<script>
+function calcEst() {
+  const raw = document.getElementById('est-datos').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => !isNaN(n) && n !== '');
+  if (nums.length < 2) return;
+  const sorted = [...nums].sort((a, b) => a - b);
+  const n = nums.length;
+  const media = nums.reduce((a, b) => a + b, 0) / n;
+  const mediana = n % 2 === 0 ? (sorted[n/2-1] + sorted[n/2]) / 2 : sorted[Math.floor(n/2)];
+  const freq = {};
+  nums.forEach(v => freq[v] = (freq[v] || 0) + 1);
+  const maxFreq = Math.max(...Object.values(freq));
+  const moda = Object.keys(freq).filter(k => freq[k] === maxFreq).join(', ');
+  const rango = sorted[n-1] - sorted[0];
+  const varianza = nums.reduce((a, b) => a + Math.pow(b - media, 2), 0) / n;
+  const desv = Math.sqrt(varianza);
+  document.getElementById('est-res').innerHTML =
+    `Media: ${media.toFixed(4)}<small>
+    Mediana: ${mediana} · 
+    Moda: ${moda} (${maxFreq}×) · 
+    Rango: ${rango} · 
+    Desv. típica: ${desv.toFixed(4)} · 
+    N: ${n} datos</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la media y estadística?</h2>
+          <p>Las medidas de tendencia central (media, mediana y moda) resumen un conjunto de datos con un solo valor representativo. La media es el promedio, la mediana es el valor central y la moda es el valor que más se repite. Juntas ofrecen una visión completa de la distribución de los datos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">📏 Regla de tres</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuándo es mejor usar la mediana que la media?</summary>
+              <p>Cuando hay valores extremos (outliers) que distorsionan el promedio. Por ejemplo, en salarios, la mediana refleja mejor el salario &quot;típico&quot; porque la media se dispara por los salarios muy altos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puede haber más de una moda?</summary>
+              <p>Sí. Si dos o más valores aparecen con la misma frecuencia máxima, todos son modas. Se llama distribución bimodal o multimodal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es la desviación típica?</summary>
+              <p>Mide cuánto se alejan los datos de la media. Una desviación típica baja significa que los datos están muy agrupados cerca de la media; alta significa que están muy dispersos.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

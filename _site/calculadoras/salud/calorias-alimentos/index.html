@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de calorías de alimentos comunes — CalcFácil</title>
+  <meta name="description" content="Consulta las calorías de los alimentos más habituales en la dieta española y calcula el total de tu comida.">
+  <meta name="keywords" content="calorias alimentos, tabla calorias, cuantas calorias tiene, calorias comida española">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/calorias-alimentos/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de calorías de alimentos comunes — CalcFácil">
+  <meta property="og:description" content="Consulta las calorías de los alimentos más habituales en la dieta española y calcula el total de tu comida.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/calorias-alimentos/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías de alimentos comunes",
+    "description": "Consulta las calorías de los alimentos más habituales en la dieta española y calcula el total de tu comida.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/calorias-alimentos/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de calorías de alimentos</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🥗 Calculadora de calorías de alimentos</h1>
+        <p class="calc-intro">Consulta las calorías por cada 100g de los alimentos más habituales y calcula el total de tu plato.</p>
+        <div class="card">
+          
+<label>Alimento</label>
+<select id="cal-alim" onchange="calcCalAlim()">
+  <optgroup label="Carnes y pescados">
+    <option value="165">Pollo (pechuga, cocida)</option>
+    <option value="242">Ternera (solomillo)</option>
+    <option value="290">Cerdo (lomo)</option>
+    <option value="208">Salmón</option>
+    <option value="82">Merluza</option>
+    <option value="105">Atún al natural</option>
+    <option value="144">Sardinas</option>
+    <option value="85">Gambas</option>
+  </optgroup>
+  <optgroup label="Huevos y lácteos">
+    <option value="155">Huevo entero</option>
+    <option value="61">Leche entera</option>
+    <option value="36">Leche desnatada</option>
+    <option value="98">Yogur natural</option>
+    <option value="402">Queso manchego</option>
+    <option value="98">Queso fresco</option>
+    <option value="717">Mantequilla</option>
+  </optgroup>
+  <optgroup label="Cereales y legumbres">
+    <option value="130">Arroz cocido</option>
+    <option value="158">Pasta cocida</option>
+    <option value="265">Pan blanco</option>
+    <option value="247">Pan integral</option>
+    <option value="354">Avena</option>
+    <option value="116">Lentejas cocidas</option>
+    <option value="127">Garbanzos cocidos</option>
+  </optgroup>
+  <optgroup label="Frutas">
+    <option value="52">Manzana</option>
+    <option value="89">Plátano</option>
+    <option value="50">Naranja</option>
+    <option value="32">Fresa</option>
+    <option value="60">Uva</option>
+    <option value="45">Sandía</option>
+    <option value="134">Aguacate</option>
+  </optgroup>
+  <optgroup label="Verduras">
+    <option value="25">Tomate</option>
+    <option value="41">Zanahoria</option>
+    <option value="20">Lechuga</option>
+    <option value="34">Pimiento</option>
+    <option value="86">Patata cocida</option>
+    <option value="25">Espinacas</option>
+    <option value="34">Brócoli</option>
+  </optgroup>
+  <optgroup label="Grasas y aceites">
+    <option value="884">Aceite de oliva</option>
+    <option value="567">Almendras</option>
+    <option value="654">Nueces</option>
+    <option value="593">Cacahuetes</option>
+  </optgroup>
+</select>
+
+<label>Cantidad (gramos)</label>
+<input type="number" id="cal-alim-g" placeholder="100" oninput="calcCalAlim()">
+
+<div class="result-box" id="cal-alim-res">Selecciona un alimento e introduce la cantidad</div>
+
+<script>
+function calcCalAlim() {
+  const kcalPor100 = parseFloat(document.getElementById('cal-alim').value);
+  const g = parseFloat(document.getElementById('cal-alim-g').value);
+  const nombre = document.getElementById('cal-alim').options[document.getElementById('cal-alim').selectedIndex].text;
+  if (!g) { document.getElementById('cal-alim-res').innerHTML = `${nombre}: ${kcalPor100} kcal/100g`; return; }
+  const total = (kcalPor100 * g / 100);
+  document.getElementById('cal-alim-res').innerHTML =
+    `${total.toFixed(0)} kcal
+    <small>${g}g de ${nombre} · ${kcalPor100} kcal por 100g</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las calorías de los alimentos?</h2>
+          <p>Conocer las calorías de los alimentos que comes es el primer paso para controlar tu dieta. Esta calculadora incluye los alimentos más habituales en la dieta española con sus calorías por cada 100 gramos, permitiéndote calcular el total de cualquier ración.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias (TMB)</a></li>
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo se cuentan las calorías de una receta?</summary>
+              <p>Suma las calorías de cada ingrediente por separado según su peso. Si un plato lleva 150g de pollo (165 kcal/100g) y 200g de arroz (130 kcal/100g), el total es 247 + 260 = 507 kcal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Las calorías del envase son por 100g o por ración?</summary>
+              <p>Siempre mira bien la etiqueta. Los productos envasados suelen mostrar las calorías por 100g y también por ración, que puede ser una cantidad diferente.</p>
+            </details>
+            
+            <details>
+              <summary>¿El método de cocción cambia las calorías?</summary>
+              <p>Sí. Cocinar con aceite añade calorías. Hervir o cocinar al vapor no añade calorías pero puede cambiar el peso del alimento. Los alimentos crudos y cocinados pueden tener diferente peso por el agua.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

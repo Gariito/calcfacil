@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de VO2 máximo estimado — CalcFácil</title>
+  <meta name="description" content="Estima tu VO2 máximo, la capacidad aeróbica máxima, con el test de Cooper o datos de carrera.">
+  <meta name="keywords" content="vo2 max, capacidad aerobica, test cooper, fitness cardiovascular">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/fitness/vo2max/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de VO2 máximo estimado — CalcFácil">
+  <meta property="og:description" content="Estima tu VO2 máximo, la capacidad aeróbica máxima, con el test de Cooper o datos de carrera.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/fitness/vo2max/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de VO2 máximo estimado",
+    "description": "Estima tu VO2 máximo, la capacidad aeróbica máxima, con el test de Cooper o datos de carrera.",
+    "url": "https://www.calcfacil.com/calculadoras/fitness/vo2max/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/fitness/">Fitness</a>
+      <span>›</span>
+      <span>Calculadora de VO2 máximo</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🫁 Calculadora de VO2 máximo</h1>
+        <p class="calc-intro">Estima tu capacidad aeróbica máxima a partir de tu ritmo de carrera o el test de Cooper.</p>
+        <div class="card">
+          
+<label>Método de estimación</label>
+<select id="vo2-metodo" onchange="toggleVO2()">
+  <option value="cooper">Test de Cooper (distancia en 12 min)</option>
+  <option value="pace">Por pace de carrera</option>
+</select>
+
+<div id="vo2-cooper">
+  <label>Distancia recorrida en 12 minutos (metros)</label>
+  <input type="number" id="vo2-dist" placeholder="2400" oninput="calcVO2()">
+</div>
+
+<div id="vo2-pace" style="display:none">
+  <div class="row-2">
+    <div>
+      <label>Pace (minutos)</label>
+      <input type="number" id="vo2-pm" placeholder="5" oninput="calcVO2()">
+    </div>
+    <div>
+      <label>Pace (segundos)</label>
+      <input type="number" id="vo2-ps" placeholder="0" oninput="calcVO2()">
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="vo2-res">Introduce tus datos</div>
+
+<script>
+function toggleVO2() {
+  const m = document.getElementById('vo2-metodo').value;
+  document.getElementById('vo2-cooper').style.display = m === 'cooper' ? 'block' : 'none';
+  document.getElementById('vo2-pace').style.display = m === 'pace' ? 'block' : 'none';
+  calcVO2();
+}
+function calcVO2() {
+  const metodo = document.getElementById('vo2-metodo').value;
+  let vo2;
+  if (metodo === 'cooper') {
+    const dist = parseFloat(document.getElementById('vo2-dist').value);
+    if (!dist) return;
+    vo2 = (dist - 504.9) / 44.73;
+  } else {
+    const pm = parseFloat(document.getElementById('vo2-pm').value) || 0;
+    const ps = parseFloat(document.getElementById('vo2-ps').value) || 0;
+    const paceSeg = pm * 60 + ps;
+    if (!paceSeg) return;
+    const vel = 1000 / paceSeg * 60;
+    vo2 = -4.6 + 0.182258 * vel + 0.000104 * vel * vel;
+  }
+  const nivel = vo2 < 30 ? 'Bajo' : vo2 < 40 ? 'Regular' : vo2 < 50 ? 'Bueno' : vo2 < 60 ? 'Muy bueno' : 'Excelente';
+  document.getElementById('vo2-res').innerHTML =
+    `VO2 máx: ${vo2.toFixed(1)} ml/kg/min<small>Nivel: ${nivel}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el VO2 máximo?</h2>
+          <p>El VO2 máximo es la cantidad máxima de oxígeno que tu cuerpo puede consumir durante el ejercicio intenso. Es el mejor indicador de la condición cardiovascular. Un VO2 máx alto significa que tu corazón y pulmones son muy eficientes transportando oxígeno a los músculos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/frecuencia-cardiaca/">❤️ Frecuencia cardíaca</a></li>
+            
+            <li><a href="/calculadoras/fitness/calorias-quemadas/">🔥 Calorías quemadas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué VO2 máx es bueno para mi edad?</summary>
+              <p>Para hombres de 30-39 años, un VO2 máx superior a 44 ml/kg/min se considera bueno. Para mujeres de la misma edad, superior a 37 es bueno. Estos valores disminuyen con la edad.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se mejora el VO2 máx?</summary>
+              <p>Con entrenamiento cardiovascular regular, especialmente intervalos de alta intensidad (HIIT) y rodajes largos. Mejoras significativas se ven en 6-12 semanas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es lo mismo que la resistencia?</summary>
+              <p>El VO2 máx mide el potencial aeróbico máximo, mientras que la resistencia también depende de la eficiencia de carrera y el umbral de lactato.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

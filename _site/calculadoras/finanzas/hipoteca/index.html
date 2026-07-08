@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de hipoteca gratis — cuota mensual e intereses — CalcFácil</title>
+  <meta name="description" content="Calcula la cuota mensual de tu hipoteca, el total pagado y los intereses totales según el importe, plazo y tipo de interés.">
+  <meta name="keywords" content="calculadora hipoteca, cuota hipotecaria, prestamo hipotecario, calcular hipoteca gratis">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/hipoteca/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de hipoteca gratis — cuota mensual e intereses — CalcFácil">
+  <meta property="og:description" content="Calcula la cuota mensual de tu hipoteca, el total pagado y los intereses totales según el importe, plazo y tipo de interés.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/hipoteca/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de hipoteca gratis — cuota mensual e intereses",
+    "description": "Calcula la cuota mensual de tu hipoteca, el total pagado y los intereses totales según el importe, plazo y tipo de interés.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/hipoteca/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de hipoteca</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🏠 Calculadora de hipoteca</h1>
+        <p class="calc-intro">Calcula la cuota mensual de tu hipoteca y el total de intereses que pagarás.</p>
+        <div class="card">
+          
+<label>Importe del préstamo (€)</label>
+<input type="number" id="hip-monto" placeholder="150000" oninput="calcHipo()">
+
+<div class="row-2">
+  <div>
+    <label>Tipo de interés anual (%)</label>
+    <input type="number" id="hip-tasa" placeholder="3.5" oninput="calcHipo()">
+  </div>
+  <div>
+    <label>Plazo (años)</label>
+    <input type="number" id="hip-anos" placeholder="25" oninput="calcHipo()">
+  </div>
+</div>
+
+<div class="result-box" id="hip-res">Introduce los datos</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la hipoteca?</h2>
+          <p>La cuota mensual de una hipoteca se calcula con la fórmula de amortización francesa, la más común en España. Depende del importe prestado, el tipo de interés anual y el plazo de devolución. Esta calculadora te muestra tanto la cuota mensual como el coste total real del préstamo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+            <li><a href="/calculadoras/finanzas/iva/">% Calculadora de IVA</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué tipo de interés es normal en una hipoteca en España?</summary>
+              <p>En 2026, las hipotecas fijas rondan entre el 3% y el 4% anual. Las variables dependen del Euríbor más un diferencial, habitualmente entre el 0,5% y el 1%.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué plazo de hipoteca es recomendable?</summary>
+              <p>Lo más habitual es entre 20 y 30 años. A mayor plazo, menor cuota mensual pero más intereses totales. A menor plazo, pagas más cada mes pero ahorras mucho en intereses.</p>
+            </details>
+            
+            <details>
+              <summary>¿Esta calculadora incluye seguros y comisiones?</summary>
+              <p>No, calcula solo el capital e intereses (cuota financiera). Los seguros de hogar y vida obligatorios o las comisiones de apertura se suman aparte.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

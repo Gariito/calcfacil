@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regla de tres online — directa e inversa — CalcFácil</title>
+  <meta name="description" content="Resuelve reglas de tres directas e inversas al instante. La calculadora de proporciones más sencilla.">
+  <meta name="keywords" content="regla de tres, proporcion directa, proporcion inversa, calculadora regla de tres online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/regla-de-tres/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Regla de tres online — directa e inversa — CalcFácil">
+  <meta property="og:description" content="Resuelve reglas de tres directas e inversas al instante. La calculadora de proporciones más sencilla.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/regla-de-tres/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Regla de tres online — directa e inversa",
+    "description": "Resuelve reglas de tres directas e inversas al instante. La calculadora de proporciones más sencilla.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/regla-de-tres/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Regla de tres</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⚖️ Regla de tres</h1>
+        <p class="calc-intro">Resuelve cualquier proporción directa o inversa al instante con tres datos.</p>
+        <div class="card">
+          
+<label>Tipo de proporción</label>
+<select id="rt-tipo" onchange="calcRT()">
+  <option value="directa">Directa — si A sube, B sube</option>
+  <option value="inversa">Inversa — si A sube, B baja</option>
+</select>
+
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-a" placeholder="3" oninput="calcRT()"></div>
+    <div><label>entonces B =</label><input type="number" id="rt-b" placeholder="7" oninput="calcRT()"></div>
+  </div>
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-c" placeholder="5" oninput="calcRT()"></div>
+    <div>
+      <label>entonces B =</label>
+      <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="rt-res">Introduce los tres valores conocidos</div>
+
+<script>
+function calcRT() {
+  const a = parseFloat(document.getElementById('rt-a').value);
+  const b = parseFloat(document.getElementById('rt-b').value);
+  const c = parseFloat(document.getElementById('rt-c').value);
+  const tipo = document.getElementById('rt-tipo').value;
+  if (!a || !b || !c) return;
+  const x = tipo === 'directa' ? (b * c) / a : (a * b) / c;
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
+  document.getElementById('rt-x').textContent = xFmt;
+  document.getElementById('rt-res').innerHTML =
+    `X = ${xFmt}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${xFmt}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la regla de tres?</h2>
+          <p>La regla de tres es una de las operaciones matemáticas más útiles en el día a día. Se usa para calcular precios por cantidad, recetas de cocina, escalas en mapas, repartos proporcionales y mucho más. Solo necesitas conocer tres de los cuatro valores de la proporción.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuándo es directa y cuándo inversa?</summary>
+              <p>Es directa cuando al aumentar un valor el otro también aumenta (más kilómetros, más gasolina). Es inversa cuando al aumentar uno el otro disminuye (más trabajadores, menos días).</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué se usa en la vida real?</summary>
+              <p>Para calcular el precio de una cantidad diferente, adaptar recetas, convertir unidades, calcular tiempos de trabajo o repartir algo proporcionalmente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo resolver &quot;si 3 kg cuestan 7€, cuánto cuestan 5 kg&quot;?</summary>
+              <p>Sí. A = 3, B = 7, C = 5. Resultado X = 11,67€.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

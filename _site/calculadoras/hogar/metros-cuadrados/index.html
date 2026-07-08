@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de metros cuadrados de una habitación — CalcFácil</title>
+  <meta name="description" content="Calcula los metros cuadrados de una habitación, pared o superficie rectangular o circular al instante.">
+  <meta name="keywords" content="calcular metros cuadrados, m2 habitacion, metros cuadrados pared, superficie rectangular">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/metros-cuadrados/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de metros cuadrados de una habitación — CalcFácil">
+  <meta property="og:description" content="Calcula los metros cuadrados de una habitación, pared o superficie rectangular o circular al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/metros-cuadrados/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de metros cuadrados de una habitación",
+    "description": "Calcula los metros cuadrados de una habitación, pared o superficie rectangular o circular al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/hogar/metros-cuadrados/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/hogar/">Hogar</a>
+      <span>›</span>
+      <span>Calculadora de metros cuadrados</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📐 Calculadora de metros cuadrados</h1>
+        <p class="calc-intro">Calcula los metros cuadrados de habitaciones, paredes y superficies de diferentes formas.</p>
+        <div class="card">
+          
+<label>Forma de la superficie</label>
+<select id="mc-forma" onchange="toggleForma()">
+  <option value="rect">Rectangular / cuadrada</option>
+  <option value="tri">Triangular</option>
+  <option value="circ">Circular</option>
+  <option value="trap">Trapezoidal</option>
+</select>
+
+<div id="mc-rect">
+  <div class="row-2">
+    <div><label>Ancho (m)</label><input type="number" id="mc-a" placeholder="4" oninput="calcMC()"></div>
+    <div><label>Largo (m)</label><input type="number" id="mc-l" placeholder="5" oninput="calcMC()"></div>
+  </div>
+</div>
+
+<div id="mc-tri" style="display:none">
+  <div class="row-2">
+    <div><label>Base (m)</label><input type="number" id="mc-tb" placeholder="4" oninput="calcMC()"></div>
+    <div><label>Altura (m)</label><input type="number" id="mc-th" placeholder="3" oninput="calcMC()"></div>
+  </div>
+</div>
+
+<div id="mc-circ" style="display:none">
+  <label>Radio (m)</label>
+  <input type="number" id="mc-r" placeholder="2.5" oninput="calcMC()">
+</div>
+
+<div id="mc-trap" style="display:none">
+  <div class="row-2">
+    <div><label>Base mayor (m)</label><input type="number" id="mc-b1" placeholder="6" oninput="calcMC()"></div>
+    <div><label>Base menor (m)</label><input type="number" id="mc-b2" placeholder="4" oninput="calcMC()"></div>
+  </div>
+  <label>Altura (m)</label>
+  <input type="number" id="mc-h" placeholder="3" oninput="calcMC()">
+</div>
+
+<div class="result-box" id="mc-res">Introduce las medidas</div>
+
+<script>
+function toggleForma() {
+  const f = document.getElementById('mc-forma').value;
+  ['rect','tri','circ','trap'].forEach(id => {
+    document.getElementById('mc-'+id).style.display = id===f ? 'block' : 'none';
+  });
+  calcMC();
+}
+function calcMC() {
+  const f = document.getElementById('mc-forma').value;
+  let area;
+  if (f==='rect') {
+    const a = parseFloat(document.getElementById('mc-a').value);
+    const l = parseFloat(document.getElementById('mc-l').value);
+    if (!a||!l) return;
+    area = a * l;
+  } else if (f==='tri') {
+    const b = parseFloat(document.getElementById('mc-tb').value);
+    const h = parseFloat(document.getElementById('mc-th').value);
+    if (!b||!h) return;
+    area = b * h / 2;
+  } else if (f==='circ') {
+    const r = parseFloat(document.getElementById('mc-r').value);
+    if (!r) return;
+    area = Math.PI * r * r;
+  } else {
+    const b1 = parseFloat(document.getElementById('mc-b1').value);
+    const b2 = parseFloat(document.getElementById('mc-b2').value);
+    const h = parseFloat(document.getElementById('mc-h').value);
+    if (!b1||!b2||!h) return;
+    area = (b1+b2)/2 * h;
+  }
+  document.getElementById('mc-res').innerHTML =
+    `${area.toFixed(4)} m²<small>${area.toFixed(2)} m² · ${(area*10000).toFixed(0)} cm²</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los metros cuadrados?</h2>
+          <p>Calcular los metros cuadrados de una superficie es imprescindible para presupuestar reformas, comprar materiales o comparar pisos. Esta calculadora permite calcular el área de superficies rectangulares, triangulares y circulares de forma rápida y sencilla.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/hogar/pintura/">🎨 Calculadora de pintura</a></li>
+            
+            <li><a href="/calculadoras/hogar/azulejos/">🔲 Calculadora de azulejos</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo calculo los m² de una habitación rectangular?</summary>
+              <p>Multiplica el ancho por el largo en metros. Por ejemplo, una habitación de 3,5m x 4m tiene 14 m².</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo calculo los m² de una pared?</summary>
+              <p>Multiplica el ancho de la pared por su altura. Si la pared mide 4m de ancho y 2,5m de alto, tiene 10 m².</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular superficies irregulares?</summary>
+              <p>Para superficies irregulares, divídelas en rectángulos o triángulos, calcula el área de cada parte y súmalas.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+---
+layout: calculadora.njk
+title: Calculadora de tensión arterial — ¿es normal mi tensión?
+description: Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH.
+keywords: tension arterial normal, calculadora tension, hipertension, presion arterial valores
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de tensión arterial
+icono: 🩺
+tituloCorto: la tensión arterial
+descripcion: Comprueba si tu tensión arterial es normal, alta o baja según los criterios médicos actuales.
+explicacion: La tensión arterial se expresa con dos números — la sistólica (el número mayor, cuando el corazón late) y la diastólica (el número menor, entre latidos). Los valores normales según la Sociedad Europea de Hipertensión (ESH) son inferiores a 130/85 mmHg. Esta calculadora clasifica tu tensión según las categorías médicas actuales.
+faq:
+  - q: ¿Qué tensión se considera hipertensión?
+    a: Se considera hipertensión cuando la tensión sistólica es igual o superior a 140 mmHg o la diastólica igual o superior a 90 mmHg, en mediciones repetidas.
+  - q: ¿Cuándo debo tomarme la tensión?
+    a: Lo ideal es tomarla en reposo, sentado, después de 5 minutos de descanso. Evita el café, el tabaco y el ejercicio en la hora previa.
+  - q: ¿Una sola medición alta es hipertensión?
+    a: No. Para diagnosticar hipertensión se necesitan al menos 3 mediciones elevadas en diferentes días. El estrés o el nerviosismo pueden elevar puntualmente la tensión.
+relacionadas:
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardíaca
+    icono: ❤️
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<div class="row-2">
+  <div>
+    <label>Sistólica — número mayor (mmHg)</label>
+    <input type="number" id="ta-sis" placeholder="120" oninput="calcTA()">
+  </div>
+  <div>
+    <label>Diastólica — número menor (mmHg)</label>
+    <input type="number" id="ta-dia" placeholder="80" oninput="calcTA()">
+  </div>
+</div>
+
+<div class="result-box" id="ta-res">Introduce tus valores de tensión</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Clasificación de la tensión arterial (ESH 2023)</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Categoría</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Sistólica</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Diastólica</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">Óptima</td><td style="text-align:center">&lt; 120</td><td style="text-align:center">&lt; 80</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Normal</td><td style="text-align:center">120–129</td><td style="text-align:center">80–84</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">Normal-alta</td><td style="text-align:center">130–139</td><td style="text-align:center">85–89</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">HTA grado 1</td><td style="text-align:center">140–159</td><td style="text-align:center">90–99</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">HTA grado 2</td><td style="text-align:center">160–179</td><td style="text-align:center">100–109</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">HTA grado 3</td><td style="text-align:center">≥ 180</td><td style="text-align:center">≥ 110</td></tr>
+  </table>
+</div>
+
+<script>
+function calcTA() {
+  const sis = parseFloat(document.getElementById('ta-sis').value);
+  const dia = parseFloat(document.getElementById('ta-dia').value);
+  if (!sis || !dia) return;
+
+  let cat, color, consejo;
+  if (sis < 90 || dia < 60) {
+    cat = 'Tensión baja (hipotensión)'; color = '#3B82F6';
+    consejo = 'Consulta con tu médico si tienes síntomas como mareos o fatiga.';
+  } else if (sis < 120 && dia < 80) {
+    cat = 'Óptima ✓'; color = '#22C55E';
+    consejo = 'Tu tensión es excelente. Mantén hábitos saludables.';
+  } else if (sis < 130 && dia < 85) {
+    cat = 'Normal ✓'; color = '#22C55E';
+    consejo = 'Tu tensión está dentro de la normalidad.';
+  } else if (sis < 140 && dia < 90) {
+    cat = 'Normal-alta'; color = '#EAB308';
+    consejo = 'Vigila tu tensión periódicamente y cuida la dieta y el ejercicio.';
+  } else if (sis < 160 && dia < 100) {
+    cat = 'Hipertensión grado 1'; color = '#EF4444';
+    consejo = 'Consulta con tu médico. Cambios en el estilo de vida son importantes.';
+  } else if (sis < 180 && dia < 110) {
+    cat = 'Hipertensión grado 2'; color = '#DC2626';
+    consejo = 'Consulta con tu médico pronto para valorar tratamiento.';
+  } else {
+    cat = 'Hipertensión grado 3 — consulta urgente'; color = '#7C3AED';
+    consejo = 'Busca atención médica. Valores muy elevados.';
+  }
+
+  document.getElementById('ta-res').innerHTML =
+    `<span style="color:${color}">${sis}/${dia} mmHg — ${cat}</span>
+    <small>${consejo}</small>`;
+}
+</script>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de tiempo — sumar y restar horas y minutos — CalcFácil</title>
+  <meta name="description" content="Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.">
+  <meta name="keywords" content="sumar horas minutos, calculadora tiempo, restar horas, calcular duracion, horas trabajadas">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de tiempo — sumar y restar horas y minutos — CalcFácil">
+  <meta property="og:description" content="Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de tiempo — sumar y restar horas y minutos",
+    "description": "Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Calculadora de tiempo</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⏱️ Calculadora de tiempo</h1>
+        <p class="calc-intro">Suma y resta horas y minutos, calcula duraciones y convierte entre unidades de tiempo.</p>
+        <div class="card">
+          
+<label>Modo</label>
+<select id="t-modo" onchange="calcTiempo()">
+  <option value="sumar">Sumar duraciones</option>
+  <option value="restar">Restar duraciones</option>
+  <option value="diferencia">Diferencia entre horas</option>
+</select>
+
+<div id="t-duraciones">
+  <div class="row-2">
+    <div><label>Horas (1)</label><input type="number" id="t-h1" placeholder="1" oninput="calcTiempo()"></div>
+    <div><label>Minutos (1)</label><input type="number" id="t-m1" placeholder="45" oninput="calcTiempo()"></div>
+  </div>
+  <div class="row-2">
+    <div><label>Horas (2)</label><input type="number" id="t-h2" placeholder="2" oninput="calcTiempo()"></div>
+    <div><label>Minutos (2)</label><input type="number" id="t-m2" placeholder="30" oninput="calcTiempo()"></div>
+  </div>
+</div>
+
+<div id="t-horas" style="display:none">
+  <div class="row-2">
+    <div>
+      <label>Hora de inicio</label>
+      <input type="time" id="t-ini" oninput="calcTiempo()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+    </div>
+    <div>
+      <label>Hora de fin</label>
+      <input type="time" id="t-fin" oninput="calcTiempo()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="t-res">Introduce los tiempos</div>
+
+<script>
+document.getElementById('t-modo').addEventListener('change', function() {
+  const m = this.value;
+  document.getElementById('t-duraciones').style.display = m==='diferencia'?'none':'block';
+  document.getElementById('t-horas').style.display = m==='diferencia'?'block':'none';
+  calcTiempo();
+});
+
+function calcTiempo() {
+  const modo = document.getElementById('t-modo').value;
+  if (modo === 'diferencia') {
+    const ini = document.getElementById('t-ini').value;
+    const fin = document.getElementById('t-fin').value;
+    if (!ini || !fin) return;
+    const [h1,m1] = ini.split(':').map(Number);
+    const [h2,m2] = fin.split(':').map(Number);
+    let diff = (h2*60+m2) - (h1*60+m1);
+    if (diff < 0) diff += 1440;
+    const h = Math.floor(diff/60), m = diff%60;
+    document.getElementById('t-res').innerHTML =
+      `${h}h ${m}min<small>${diff} minutos en total</small>`;
+  } else {
+    const h1 = parseInt(document.getElementById('t-h1').value)||0;
+    const m1 = parseInt(document.getElementById('t-m1').value)||0;
+    const h2 = parseInt(document.getElementById('t-h2').value)||0;
+    const m2 = parseInt(document.getElementById('t-m2').value)||0;
+    let total = modo==='sumar' ? (h1*60+m1)+(h2*60+m2) : (h1*60+m1)-(h2*60+m2);
+    const neg = total < 0;
+    total = Math.abs(total);
+    const h = Math.floor(total/60), m = total%60;
+    document.getElementById('t-res').innerHTML =
+      `${neg?'-':''}${h}h ${m}min<small>${neg?'-':''}${total} minutos en total</small>`;
+  }
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora de tiempo?</h2>
+          <p>Sumar y restar horas y minutos puede ser confuso porque el sistema sexagesimal (base 60) no funciona igual que el decimal. Esta calculadora lo hace automáticamente, gestionando los cambios entre minutos y horas de forma correcta.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo sumo 1h 45min con 2h 30min?</summary>
+              <p>Introduce 1h 45min como primera duración y 2h 30min como segunda. El resultado es 4h 15min, porque 45+30=75 minutos = 1 hora y 15 minutos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular las horas trabajadas en un día?</summary>
+              <p>Sí. Introduce la hora de entrada como inicio y la de salida como fin para obtener las horas trabajadas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Funciona con segundos?</summary>
+              <p>Esta versión trabaja con horas y minutos. Para precisión de segundos usa un cronómetro.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

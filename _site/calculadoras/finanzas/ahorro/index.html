@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de ahorro — cuánto tiempo para llegar a tu objetivo — CalcFácil</title>
+  <meta name="description" content="Calcula cuánto tiempo necesitas para ahorrar una cantidad determinada según tu ahorro mensual.">
+  <meta name="keywords" content="calculadora ahorro, tiempo para ahorrar, objetivo ahorro, cuanto ahorrar al mes">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/ahorro/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de ahorro — cuánto tiempo para llegar a tu objetivo — CalcFácil">
+  <meta property="og:description" content="Calcula cuánto tiempo necesitas para ahorrar una cantidad determinada según tu ahorro mensual.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/ahorro/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de ahorro — cuánto tiempo para llegar a tu objetivo",
+    "description": "Calcula cuánto tiempo necesitas para ahorrar una cantidad determinada según tu ahorro mensual.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/ahorro/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de objetivo de ahorro</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🏦 Calculadora de objetivo de ahorro</h1>
+        <p class="calc-intro">Calcula cuánto tiempo necesitas para alcanzar tu objetivo de ahorro o cuánto debes ahorrar al mes.</p>
+        <div class="card">
+          
+<label>Modo de cálculo</label>
+<select id="aho-modo" onchange="toggleAhorro()">
+  <option value="tiempo">¿Cuánto tiempo necesito?</option>
+  <option value="mensual">¿Cuánto debo ahorrar al mes?</option>
+</select>
+
+<label>Objetivo de ahorro (€)</label>
+<input type="number" id="aho-obj" placeholder="10000" oninput="calcAhorro()">
+
+<div id="aho-mensual-wrap">
+  <label>Ahorro mensual (€)</label>
+  <input type="number" id="aho-mes" placeholder="300" oninput="calcAhorro()">
+</div>
+
+<div id="aho-plazo-wrap" style="display:none">
+  <label>Plazo deseado (meses)</label>
+  <input type="number" id="aho-plazo" placeholder="24" oninput="calcAhorro()">
+</div>
+
+<label>Rentabilidad anual estimada (%)</label>
+<input type="number" id="aho-rent" placeholder="2" value="0" oninput="calcAhorro()">
+
+<label>Ahorro inicial (€)</label>
+<input type="number" id="aho-inicial" placeholder="0" value="0" oninput="calcAhorro()">
+
+<div class="result-box" id="aho-res">Introduce los datos</div>
+
+<script>
+function toggleAhorro() {
+  const modo = document.getElementById('aho-modo').value;
+  document.getElementById('aho-mensual-wrap').style.display = modo === 'tiempo' ? 'block' : 'none';
+  document.getElementById('aho-plazo-wrap').style.display = modo === 'mensual' ? 'block' : 'none';
+  calcAhorro();
+}
+function calcAhorro() {
+  const modo = document.getElementById('aho-modo').value;
+  const obj = parseFloat(document.getElementById('aho-obj').value);
+  const rent = (parseFloat(document.getElementById('aho-rent').value) || 0) / 100 / 12;
+  const inicial = parseFloat(document.getElementById('aho-inicial').value) || 0;
+  if (!obj) return;
+
+  if (modo === 'tiempo') {
+    const mes = parseFloat(document.getElementById('aho-mes').value);
+    if (!mes) return;
+    let acum = inicial, meses = 0;
+    while (acum < obj && meses < 1200) {
+      acum = acum * (1 + rent) + mes;
+      meses++;
+    }
+    const anos = Math.floor(meses / 12);
+    const restoMeses = meses % 12;
+    document.getElementById('aho-res').innerHTML =
+      `${anos > 0 ? anos + ' años y ' : ''}${restoMeses} meses
+      <small>Total ahorrado: ${acum.toFixed(0)} € · Intereses ganados: ${(acum - inicial - mes*meses).toFixed(0)} €</small>`;
+  } else {
+    const plazo = parseFloat(document.getElementById('aho-plazo').value);
+    if (!plazo) return;
+    let mes;
+    if (rent === 0) {
+      mes = (obj - inicial) / plazo;
+    } else {
+      mes = (obj - inicial * Math.pow(1+rent, plazo)) * rent / (Math.pow(1+rent, plazo) - 1);
+    }
+    document.getElementById('aho-res').innerHTML =
+      `${mes.toFixed(2)} €/mes
+      <small>Durante ${plazo} meses para llegar a ${obj.toLocaleString('es-ES')} €</small>`;
+  }
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el objetivo de ahorro?</h2>
+          <p>Ahorrar con un objetivo claro es mucho más efectivo que ahorrar sin rumbo. Esta calculadora te ayuda a planificar cuánto tiempo tardarás en alcanzar tu meta de ahorro según lo que puedes guardar cada mes, o bien cuánto necesitas ahorrar mensualmente para llegar a tu objetivo en un plazo concreto.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+            <li><a href="/calculadoras/finanzas/hipoteca/">🏠 Calculadora de hipoteca</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto debería ahorrar cada mes?</summary>
+              <p>La regla 50/30/20 sugiere destinar el 20% de tus ingresos netos al ahorro. Si ganas 1.500€ netos, serían 300€ al mes. Adapta el porcentaje a tu situación.</p>
+            </details>
+            
+            <details>
+              <summary>¿Merece la pena tener el ahorro en una cuenta remunerada?</summary>
+              <p>Sí. Con los tipos de interés actuales, muchas cuentas de ahorro ofrecen entre el 2% y el 3% TAE. Para cantidades grandes y plazos largos, los intereses son significativos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es el fondo de emergencia?</summary>
+              <p>Es un ahorro de entre 3 y 6 meses de gastos, guardado en un lugar accesible (cuenta corriente o cuenta de ahorro). Es el primer objetivo de ahorro recomendado antes de invertir.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de contraseñas seguras online — CalcFácil</title>
+  <meta name="description" content="Genera contraseñas seguras y aleatorias al instante. Personaliza la longitud y los tipos de caracteres.">
+  <meta name="keywords" content="generador contraseñas, contraseña segura, password generator, crear contraseña aleatoria">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/generador-contrasena/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Generador de contraseñas seguras online — CalcFácil">
+  <meta property="og:description" content="Genera contraseñas seguras y aleatorias al instante. Personaliza la longitud y los tipos de caracteres.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/generador-contrasena/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Generador de contraseñas seguras online",
+    "description": "Genera contraseñas seguras y aleatorias al instante. Personaliza la longitud y los tipos de caracteres.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/generador-contrasena/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Generador de contraseñas seguras</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔐 Generador de contraseñas seguras</h1>
+        <p class="calc-intro">Genera contraseñas seguras y aleatorias al instante con los criterios que elijas.</p>
+        <div class="card">
+          
+<label>Longitud de la contraseña</label>
+<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+  <input type="range" min="6" max="32" value="16" id="pw-len"
+    oninput="document.getElementById('pw-len-val').textContent=this.value; genPW()"
+    style="flex:1;margin-bottom:0">
+  <span id="pw-len-val" style="font-weight:600;min-width:30px;font-size:1.1rem">16</span>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem">
+  <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+    <input type="checkbox" id="pw-may" checked onchange="genPW()"> Mayúsculas (A-Z)
+  </label>
+  <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+    <input type="checkbox" id="pw-min" checked onchange="genPW()"> Minúsculas (a-z)
+  </label>
+  <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+    <input type="checkbox" id="pw-num" checked onchange="genPW()"> Números (0-9)
+  </label>
+  <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+    <input type="checkbox" id="pw-sim" checked onchange="genPW()"> Símbolos (!@#$)
+  </label>
+</div>
+
+<div class="result-box" id="pw-res" style="font-family:monospace;font-size:1rem;letter-spacing:0.05em;word-break:break-all">
+  Pulsa generar
+</div>
+
+<button onclick="genPW()" style="width:100%;margin-top:0.75rem;padding:0.75rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-family:var(--font-body);cursor:pointer;font-weight:500">
+  🔄 Generar contraseña
+</button>
+<button onclick="copyPW()" style="width:100%;margin-top:0.5rem;padding:0.75rem;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:1rem;font-family:var(--font-body);cursor:pointer;font-weight:500">
+  📋 Copiar
+</button>
+
+<script>
+function genPW() {
+  const len = parseInt(document.getElementById('pw-len').value);
+  let chars = '';
+  if (document.getElementById('pw-may').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (document.getElementById('pw-min').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+  if (document.getElementById('pw-num').checked) chars += '0123456789';
+  if (document.getElementById('pw-sim').checked) chars += '!@#$%^&*()-_=+[]{}|;:,.<>?';
+  if (!chars) { document.getElementById('pw-res').textContent = 'Selecciona al menos un tipo de carácter'; return; }
+  const arr = new Uint32Array(len);
+  crypto.getRandomValues(arr);
+  const pw = Array.from(arr).map(v => chars[v % chars.length]).join('');
+  const fuerza = len < 8 ? 'Débil' : len < 12 ? 'Moderada' : len < 16 ? 'Fuerte' : 'Muy fuerte';
+  document.getElementById('pw-res').innerHTML =
+    `${pw}<small style="font-family:var(--font-body)">Seguridad: ${fuerza} · ${len} caracteres</small>`;
+}
+function copyPW() {
+  const txt = document.getElementById('pw-res').firstChild?.textContent?.trim();
+  if (!txt || txt === 'Pulsa generar') return;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ Copiado';
+    setTimeout(() => btn.textContent = '📋 Copiar', 2000);
+  });
+}
+genPW();
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el generador de contraseñas?</h2>
+          <p>Una contraseña segura debe tener al menos 12 caracteres, combinar mayúsculas, minúsculas, números y símbolos, y ser única para cada cuenta. Esta herramienta genera contraseñas aleatorias directamente en tu navegador — ningún dato se envía a ningún servidor.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Es seguro usar este generador?</summary>
+              <p>Sí. La contraseña se genera completamente en tu navegador usando la API criptográfica del sistema. No se envía ningún dato a ningún servidor.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos caracteres debe tener una contraseña segura?</summary>
+              <p>Mínimo 12 caracteres para cuentas normales. Para cuentas importantes (banco, email) se recomienda 16 o más. A partir de 20 caracteres es prácticamente imposible de descifrar por fuerza bruta.</p>
+            </details>
+            
+            <details>
+              <summary>¿Dónde guardo mis contraseñas?</summary>
+              <p>Lo más seguro es usar un gestor de contraseñas como Bitwarden (gratuito) o 1Password. Nunca guardes contraseñas en el navegador para cuentas críticas.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

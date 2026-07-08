@@ -1,0 +1,249 @@
+---
+layout: calculadora.njk
+title: Calculadora científica online gratis
+description: Calculadora científica online gratuita con funciones trigonométricas, logaritmos, raíces, potencias y más.
+keywords: calculadora cientifica online, calculadora cientifica gratis, calculadora trigonometria, seno coseno tangente online
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora científica online
+icono: 🔬
+tituloCorto: la calculadora científica
+descripcion: Calculadora científica completa con trigonometría, logaritmos, potencias y constantes matemáticas.
+explicacion: Una calculadora científica completa disponible desde el navegador, sin instalaciones. Incluye funciones trigonométricas (seno, coseno, tangente), logaritmos, raíces, potencias, factoriales y las constantes matemáticas más usadas como π y e. Ideal para estudiantes, ingenieros y profesionales.
+faq:
+  - q: ¿Los ángulos son en grados o radianes?
+    a: Puedes alternar entre grados (DEG) y radianes (RAD) con el botón correspondiente. Por defecto usa grados, que es lo más habitual en bachillerato y uso general.
+  - q: ¿Qué es el factorial?
+    a: El factorial de un número n (escrito n!) es el producto de todos los enteros positivos hasta n. Por ejemplo, 5! = 5×4×3×2×1 = 120.
+  - q: ¿Puedo usar el teclado?
+    a: Sí, puedes escribir números y operaciones básicas con el teclado. Para las funciones científicas usa los botones de la pantalla.
+  - q: ¿Qué significa ANS?
+    a: ANS (Answer) guarda el último resultado obtenido para usarlo en la siguiente operación.
+relacionadas:
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<style>
+.sci-wrap { font-family: var(--font-body); }
+.sci-display {
+  background: #1a1a18;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: right;
+  margin-bottom: 0.75rem;
+  min-height: 80px;
+}
+.sci-display .sci-expr { font-size: 0.8rem; color: #888; min-height: 1.2em; word-break: break-all; }
+.sci-display .sci-val { font-size: 1.8rem; font-weight: 600; color: #fff; word-break: break-all; font-family: var(--font-display); }
+.sci-mode {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+.sci-mode button {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.sci-mode button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.sci-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+}
+.sci-grid button {
+  padding: 0.7rem 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.1s;
+  color: var(--text);
+}
+.sci-grid button:hover { background: #e8e6e0; }
+.sci-grid button.fn { background: #F0F4FF; color: #2563EB; font-size: 0.78rem; }
+.sci-grid button.op { background: var(--accent-light); color: var(--accent); }
+.sci-grid button.eq { background: var(--accent); color: #fff; border-color: var(--accent); font-size: 1rem; }
+.sci-grid button.clr { background: #FEF2F2; color: #DC2626; border-color: #FECACA; }
+.sci-grid button.num { background: #fff; }
+</style>
+
+<div class="sci-wrap">
+  <div class="sci-display">
+    <div class="sci-expr" id="sci-expr"></div>
+    <div class="sci-val" id="sci-val">0</div>
+  </div>
+
+  <div class="sci-mode">
+    <button id="btn-deg" class="active" onclick="setMode('deg')">DEG</button>
+    <button id="btn-rad" onclick="setMode('rad')">RAD</button>
+    <span style="margin-left:auto;color:var(--muted);line-height:2">ANS: <span id="sci-ans">0</span></span>
+  </div>
+
+  <div class="sci-grid">
+    <!-- Fila 1 -->
+    <button class="fn" onclick="sciFn('sin')">sin</button>
+    <button class="fn" onclick="sciFn('cos')">cos</button>
+    <button class="fn" onclick="sciFn('tan')">tan</button>
+    <button class="fn" onclick="sciFn('log')">log</button>
+    <button class="fn" onclick="sciFn('ln')">ln</button>
+    <!-- Fila 2 -->
+    <button class="fn" onclick="sciFn('asin')">sin⁻¹</button>
+    <button class="fn" onclick="sciFn('acos')">cos⁻¹</button>
+    <button class="fn" onclick="sciFn('atan')">tan⁻¹</button>
+    <button class="fn" onclick="sciFn('sqrt')">√</button>
+    <button class="fn" onclick="sciFn('cbrt')">∛</button>
+    <!-- Fila 3 -->
+    <button class="fn" onclick="sciFn('sq')">x²</button>
+    <button class="fn" onclick="sciFn('cb')">x³</button>
+    <button class="fn" onclick="sciOp('^')">xʸ</button>
+    <button class="fn" onclick="sciFn('inv')">1/x</button>
+    <button class="fn" onclick="sciFn('fact')">n!</button>
+    <!-- Fila 4 -->
+    <button class="fn" onclick="sciConst('pi')">π</button>
+    <button class="fn" onclick="sciConst('e')">e</button>
+    <button class="fn" onclick="sciConst('ans')">ANS</button>
+    <button class="fn" onclick="sciFn('abs')">|x|</button>
+    <button class="fn" onclick="sciFn('pct')">%</button>
+    <!-- Fila 5 -->
+    <button class="clr" onclick="sciAc()">AC</button>
+    <button class="op" onclick="sciDel()">⌫</button>
+    <button class="op" onclick="sciParOpen()">(</button>
+    <button class="op" onclick="sciParClose()">)</button>
+    <button class="op" onclick="sciOp('÷')">÷</button>
+    <!-- Fila 6 -->
+    <button class="num" onclick="sciNum('7')">7</button>
+    <button class="num" onclick="sciNum('8')">8</button>
+    <button class="num" onclick="sciNum('9')">9</button>
+    <button class="num" onclick="sciOp('×')">×</button>
+    <button class="op" onclick="sciOp('−')">−</button>
+    <!-- Fila 7 -->
+    <button class="num" onclick="sciNum('4')">4</button>
+    <button class="num" onclick="sciNum('5')">5</button>
+    <button class="num" onclick="sciNum('6')">6</button>
+    <button class="num" onclick="sciNum('1')">1</button>
+    <button class="num" onclick="sciNum('2')">2</button>
+    <!-- Fila 8 -->
+    <button class="num" onclick="sciNum('3')">3</button>
+    <button class="op" onclick="sciOp('+')">+</button>
+    <button class="num" style="grid-column:span 2" onclick="sciNum('0')">0</button>
+    <button class="num" onclick="sciDot()">.</button>
+    <!-- Fila 9 -->
+    <button class="eq" style="grid-column:span 5" onclick="sciEq()">=</button>
+  </div>
+</div>
+
+<script>
+let sciState = { expr: '', display: '0', ans: 0, mode: 'deg', newN: true };
+
+function setMode(m) {
+  sciState.mode = m;
+  document.getElementById('btn-deg').classList.toggle('active', m==='deg');
+  document.getElementById('btn-rad').classList.toggle('active', m==='rad');
+}
+
+function sciDisp() {
+  document.getElementById('sci-val').textContent = sciState.display;
+  document.getElementById('sci-expr').textContent = sciState.expr;
+  document.getElementById('sci-ans').textContent = sciState.ans;
+}
+
+function sciNum(d) {
+  if (sciState.newN) { sciState.display = d; sciState.newN = false; }
+  else sciState.display = sciState.display === '0' ? d : sciState.display + d;
+  sciDisp();
+}
+
+function sciDot() {
+  if (!sciState.display.includes('.')) { sciState.display += '.'; sciState.newN = false; }
+  sciDisp();
+}
+
+function sciDel() {
+  sciState.display = sciState.display.length > 1 ? sciState.display.slice(0,-1) : '0';
+  sciDisp();
+}
+
+function sciAc() {
+  sciState.expr = ''; sciState.display = '0'; sciState.newN = true; sciDisp();
+}
+
+function sciOp(o) {
+  sciState.expr += sciState.display + ' ' + o + ' ';
+  sciState.newN = true;
+  sciDisp();
+}
+
+function sciParOpen() { sciState.expr += '('; sciDisp(); }
+function sciParClose() { sciState.expr += sciState.display + ')'; sciState.newN = true; sciDisp(); }
+
+function sciConst(c) {
+  if (c === 'pi') sciState.display = String(Math.PI);
+  else if (c === 'e') sciState.display = String(Math.E);
+  else if (c === 'ans') sciState.display = String(sciState.ans);
+  sciState.newN = true;
+  sciDisp();
+}
+
+function sciFn(fn) {
+  const v = parseFloat(sciState.display);
+  const toRad = sciState.mode === 'deg' ? Math.PI/180 : 1;
+  const fromRad = sciState.mode === 'deg' ? 180/Math.PI : 1;
+  let r;
+  switch(fn) {
+    case 'sin': r = Math.sin(v * toRad); break;
+    case 'cos': r = Math.cos(v * toRad); break;
+    case 'tan': r = Math.tan(v * toRad); break;
+    case 'asin': r = Math.asin(v) * fromRad; break;
+    case 'acos': r = Math.acos(v) * fromRad; break;
+    case 'atan': r = Math.atan(v) * fromRad; break;
+    case 'log': r = Math.log10(v); break;
+    case 'ln': r = Math.log(v); break;
+    case 'sqrt': r = Math.sqrt(v); break;
+    case 'cbrt': r = Math.cbrt(v); break;
+    case 'sq': r = v * v; break;
+    case 'cb': r = v * v * v; break;
+    case 'inv': r = 1 / v; break;
+    case 'abs': r = Math.abs(v); break;
+    case 'pct': r = v / 100; break;
+    case 'fact':
+      if (v < 0 || !Number.isInteger(v)) { r = NaN; break; }
+      r = 1; for(let i=2;i<=v;i++) r*=i; break;
+  }
+  sciState.expr = fn + '(' + v + ') =';
+  sciState.display = isNaN(r) ? 'Error' : String(parseFloat(r.toFixed(10)));
+  sciState.ans = parseFloat(sciState.display) || 0;
+  sciState.newN = true;
+  sciDisp();
+}
+
+function sciEq() {
+  try {
+    let expr = sciState.expr + sciState.display;
+    expr = expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/\^/g,'**');
+    const r = Function('"use strict"; return (' + expr + ')')();
+    sciState.ans = parseFloat(r.toFixed(10));
+    sciState.expr = expr + ' =';
+    sciState.display = String(parseFloat(r.toFixed(10)));
+    sciState.newN = true;
+    sciDisp();
+  } catch(e) {
+    sciState.display = 'Error';
+    sciDisp();
+  }
+}
+</script>

@@ -1,0 +1,111 @@
+---
+layout: calculadora.njk
+title: Calculadora de finiquito — España 2026
+description: Calcula el importe de tu finiquito según el tipo de despido, salario y antigüedad en la empresa.
+keywords: calculadora finiquito, indemnizacion despido, finiquito españa, cuanto me corresponde finiquito
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de finiquito
+icono: 📋
+tituloCorto: el finiquito
+descripcion: Calcula la indemnización y el finiquito que te corresponde según tu tipo de despido.
+explicacion: El finiquito es la liquidación de las cantidades pendientes entre empresa y trabajador al terminar la relación laboral — vacaciones no disfrutadas, parte proporcional de pagas extras y salario de los días trabajados. La indemnización por despido es un concepto distinto y adicional, que depende del tipo de despido y la antigüedad.
+faq:
+  - q: ¿Cuál es la diferencia entre finiquito e indemnización?
+    a: El finiquito recoge lo que la empresa te debe por trabajo realizado (vacaciones, pagas, salario pendiente). La indemnización es una compensación por la pérdida del trabajo y depende del tipo de despido.
+  - q: ¿Cuánto es la indemnización por despido improcedente?
+    a: Son 33 días de salario por año trabajado para contratos firmados desde febrero de 2012, con un máximo de 24 mensualidades.
+  - q: ¿Y por despido procedente u objetivo?
+    a: La indemnización por despido objetivo es de 20 días por año trabajado, con un máximo de 12 mensualidades.
+  - q: ¿Las vacaciones del finiquito tributan?
+    a: Sí, las vacaciones no disfrutadas y el salario pendiente tributan como renta del trabajo en el IRPF. La indemnización por despido improcedente está exenta hasta ciertos límites.
+relacionadas:
+  - slug: sueldo-neto
+    categoria: finanzas
+    titulo: Sueldo neto
+    icono: 💼
+  - slug: irpf
+    categoria: finanzas
+    titulo: Calculadora de IRPF
+    icono: 🧾
+---
+
+<label>Salario bruto anual (€)</label>
+<input type="number" id="fin-bruto" placeholder="28000" oninput="calcFiniquito()">
+
+<div class="row-2">
+  <div>
+    <label>Años trabajados</label>
+    <input type="number" id="fin-anos" placeholder="3" oninput="calcFiniquito()">
+  </div>
+  <div>
+    <label>Meses trabajados (resto)</label>
+    <input type="number" id="fin-meses" placeholder="6" oninput="calcFiniquito()">
+  </div>
+</div>
+
+<label>Vacaciones pendientes (días)</label>
+<input type="number" id="fin-vac" placeholder="10" oninput="calcFiniquito()">
+
+<label>Tipo de despido</label>
+<select id="fin-tipo" onchange="calcFiniquito()">
+  <option value="improcedente">Improcedente (33 días/año)</option>
+  <option value="objetivo">Objetivo o procedente (20 días/año)</option>
+  <option value="voluntaria">Baja voluntaria (sin indemnización)</option>
+</select>
+
+<label>Número de pagas extra al año</label>
+<select id="fin-pagas" onchange="calcFiniquito()">
+  <option value="2">2 pagas extra</option>
+  <option value="3">3 pagas extra</option>
+</select>
+
+<div class="result-box" id="fin-res">Introduce los datos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Componentes del finiquito</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Salario pendiente:</strong> Los días del mes en curso que has trabajado y aún no has cobrado.</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Vacaciones no disfrutadas:</strong> Los días de vacaciones que te quedan por disfrutar, pagados a precio de día trabajado.</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Parte proporcional de pagas:</strong> La parte de las pagas extras que has generado pero aún no has cobrado.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Indemnización:</strong> Compensación adicional por la pérdida del empleo, según el tipo de despido.</p>
+</div>
+
+<script>
+function calcFiniquito() {
+  const bruto = parseFloat(document.getElementById('fin-bruto').value);
+  const anos = parseFloat(document.getElementById('fin-anos').value) || 0;
+  const meses = parseFloat(document.getElementById('fin-meses').value) || 0;
+  const vac = parseFloat(document.getElementById('fin-vac').value) || 0;
+  const tipo = document.getElementById('fin-tipo').value;
+  const pagas = parseInt(document.getElementById('fin-pagas').value);
+  if (!bruto) return;
+
+  const diario = bruto / 365;
+  const mensual = bruto / 12;
+  const totalAnos = anos + meses / 12;
+
+  // Vacaciones no disfrutadas
+  const vacImporte = vac * diario;
+
+  // Parte proporcional pagas extra (simplificado: meses del año en curso / 12)
+  const mesesAnno = (meses % 12) || new Date().getMonth() + 1;
+  const pagaExtra = (bruto / (12 + pagas)) * pagas;
+  const propPagas = (pagaExtra / 12) * mesesAnno;
+
+  // Indemnización
+  let diasIndem = tipo === 'improcedente' ? 33 : tipo === 'objetivo' ? 20 : 0;
+  const maxMeses = tipo === 'improcedente' ? 24 : 12;
+  let indem = Math.min(diario * diasIndem * totalAnos, mensual * maxMeses);
+  if (tipo === 'voluntaria') indem = 0;
+
+  const total = vacImporte + propPagas + indem;
+
+  document.getElementById('fin-res').innerHTML =
+    `Total estimado: ${total.toFixed(2)} €
+    <small>
+    Vacaciones: ${vacImporte.toFixed(2)} € · 
+    Prop. pagas: ${propPagas.toFixed(2)} € · 
+    Indemnización: ${indem.toFixed(2)} €
+    </small>`;
+}
+</script>

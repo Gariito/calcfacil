@@ -1,0 +1,99 @@
+---
+layout: calculadora.njk
+title: Calculadora de sueldo neto desde bruto — España 2026
+description: Calcula tu sueldo neto mensual a partir del salario bruto anual. Incluye IRPF y cotizaciones a la Seguridad Social.
+keywords: calculadora sueldo neto, salario bruto neto, irpf nomina, cuanto cobro neto, salario neto españa
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de sueldo neto
+icono: 💼
+tituloCorto: el sueldo neto
+descripcion: Calcula tu salario neto mensual a partir del bruto anual, con IRPF y Seguridad Social.
+explicacion: En España el salario bruto y el neto son cantidades muy diferentes. Del salario bruto se descuentan dos tipos de retenciones — las cotizaciones a la Seguridad Social (aproximadamente un 6,35% del trabajador) y la retención del IRPF, que varía según el salario y la situación personal. Esta calculadora usa tablas aproximadas de IRPF para 2026.
+faq:
+  - q: ¿Qué diferencia hay entre salario bruto y neto?
+    a: El salario bruto es el total que cuesta el trabajador a la empresa antes de impuestos. El neto es lo que realmente ingresas en tu cuenta después de descontar IRPF y cotizaciones a la Seguridad Social.
+  - q: ¿Cuánto me retienen de IRPF con 30.000€ brutos?
+    a: Con 30.000€ brutos anuales, la retención de IRPF suele rondar el 15-17% dependiendo de tu situación personal (hijos, discapacidad, etc.). El resultado neto anual aproximado es de 23.000-24.500€.
+  - q: ¿Puedo cambiar mi retención de IRPF?
+    a: Sí, puedes solicitar a tu empresa que aplique un porcentaje mayor (para no pagar en la declaración) o menor (si cumples requisitos). Se hace con el modelo 145.
+  - q: ¿El cálculo es exacto?
+    a: Es una estimación. El IRPF exacto depende de tu situación personal, comunidad autónoma, deducciones y otros ingresos. Para el cálculo oficial usa el simulador de la Agencia Tributaria.
+relacionadas:
+  - slug: irpf
+    categoria: finanzas
+    titulo: Calculadora de IRPF
+    icono: 🧾
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+---
+
+<label>Salario bruto anual (€)</label>
+<input type="number" id="sn-bruto" placeholder="28000" oninput="calcSueldoNeto()">
+
+<label>Situación personal</label>
+<select id="sn-situacion" onchange="calcSueldoNeto()">
+  <option value="0">Soltero/a sin hijos</option>
+  <option value="1">Casado/a sin hijos</option>
+  <option value="2">Con 1 hijo</option>
+  <option value="3">Con 2 hijos</option>
+  <option value="4">Con 3 o más hijos</option>
+</select>
+
+<div class="result-box" id="sn-res">Introduce tu salario bruto anual</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">¿Qué significa cada concepto?</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Cotización Seguridad Social:</strong> El trabajador cotiza un 6,35% de su base de cotización (contingencias comunes 4,70%, desempleo 1,55%, formación 0,10%).</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Retención IRPF:</strong> Impuesto progresivo que va del 19% al 47% según el tramo de renta. La retención en nómina es un anticipo de lo que pagarás en la declaración anual.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Salario neto:</strong> Lo que realmente recibes en tu cuenta bancaria cada mes tras todas las deducciones.</p>
+</div>
+
+<script>
+function calcSueldoNeto() {
+  const bruto = parseFloat(document.getElementById('sn-bruto').value);
+  const sit = parseInt(document.getElementById('sn-situacion').value);
+  if (!bruto) return;
+
+  const ss = bruto * 0.0635;
+  const baseIRPF = bruto - ss;
+
+  // Mínimo personal y familiar aproximado
+  const minPersonal = 5550;
+  const minFamiliar = [0, 0, 2400, 4800, 8000][sit] || 0;
+  const minConyuge = sit === 1 ? 2550 : 0;
+  const baseL = Math.max(0, baseIRPF - minPersonal - minFamiliar - minConyuge);
+
+  // Tramos IRPF estatales + autonómicos aproximados (media nacional)
+  let irpf = 0;
+  const tramos = [
+    { hasta: 12450, tipo: 0.19 },
+    { hasta: 20200, tipo: 0.24 },
+    { hasta: 35200, tipo: 0.30 },
+    { hasta: 60000, tipo: 0.37 },
+    { hasta: 300000, tipo: 0.45 },
+    { hasta: Infinity, tipo: 0.47 }
+  ];
+  let resto = baseL, anterior = 0;
+  for (const t of tramos) {
+    if (resto <= 0) break;
+    const tramo = Math.min(resto, t.hasta - anterior);
+    irpf += tramo * t.tipo;
+    resto -= tramo;
+    anterior = t.hasta;
+  }
+
+  const neto = bruto - ss - irpf;
+  const pctIRPF = (irpf / bruto * 100).toFixed(1);
+
+  document.getElementById('sn-res').innerHTML =
+    `Neto anual: ${neto.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €
+    <small>
+    Neto mensual: ${(neto/12).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} € · 
+    IRPF: ${irpf.toFixed(0)} € (${pctIRPF}%) · 
+    S.S.: ${ss.toFixed(0)} €
+    </small>`;
+}
+</script>

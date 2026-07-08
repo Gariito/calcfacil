@@ -1,0 +1,107 @@
+---
+layout: calculadora.njk
+title: Calculadora de IRPF 2026 — tramos y cuota a pagar
+description: Calcula el IRPF que pagarás en tu declaración de la renta según tus ingresos y situación personal.
+keywords: calculadora irpf, declaracion renta, tramos irpf 2026, cuota integra irpf, cuanto pago de irpf
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de IRPF 2026
+icono: 🧾
+tituloCorto: el IRPF
+descripcion: Calcula los tramos del IRPF y la cuota a pagar en tu declaración de la renta.
+explicacion: El IRPF (Impuesto sobre la Renta de las Personas Físicas) es un impuesto progresivo — cuanto más ganas, mayor es el porcentaje que pagas. En España se aplica en tramos, lo que significa que solo el dinero que supera cada umbral tributa al tipo más alto, no todos tus ingresos. Esta calculadora aplica los tramos estatales de 2026 más los autonómicos medios.
+faq:
+  - q: ¿Qué son los tramos del IRPF?
+    a: Son rangos de renta a los que se aplica un tipo impositivo distinto. En 2026 van del 19% (hasta 12.450€) al 47% (por encima de 300.000€). Solo el dinero que cae en cada tramo tributa a ese tipo.
+  - q: ¿Tengo obligación de hacer la declaración?
+    a: Generalmente sí si ganas más de 22.000€ anuales de un solo pagador, o más de 15.000€ si tienes dos o más pagadores y el segundo supera los 1.500€.
+  - q: ¿Qué es el mínimo personal y familiar?
+    a: Es una cantidad que queda exenta de tributar. En 2026 el mínimo personal general es de 5.550€. Por cada hijo se añaden cantidades adicionales.
+  - q: ¿La cuota es lo mismo que la retención?
+    a: No exactamente. La retención es lo que te han ido quitando en la nómina a lo largo del año. Si la retención fue mayor que la cuota real, Hacienda te devuelve dinero. Si fue menor, tendrás que pagar la diferencia.
+relacionadas:
+  - slug: sueldo-neto
+    categoria: finanzas
+    titulo: Sueldo neto
+    icono: 💼
+  - slug: finiquito
+    categoria: finanzas
+    titulo: Calculadora de finiquito
+    icono: 📋
+---
+
+<label>Rendimientos del trabajo brutos anuales (€)</label>
+<input type="number" id="irpf-bruto" placeholder="35000" oninput="calcIRPF()">
+
+<label>Otros ingresos (alquiler, inversiones, etc.) (€)</label>
+<input type="number" id="irpf-otros" placeholder="0" oninput="calcIRPF()">
+
+<label>Situación familiar</label>
+<select id="irpf-sit" onchange="calcIRPF()">
+  <option value="0">Soltero/a sin hijos</option>
+  <option value="1">Con 1 hijo menor de 25 años</option>
+  <option value="2">Con 2 hijos</option>
+  <option value="3">Con 3 o más hijos</option>
+  <option value="4">Casado/a, cónyuge sin ingresos</option>
+</select>
+
+<div class="result-box" id="irpf-res">Introduce tus ingresos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Tramos IRPF 2026 (estatal + autonómico medio)</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Tramo</th>
+      <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Tipo</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">Hasta 12.450 €</td><td style="padding:0.4rem 0.5rem;text-align:right">19%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">12.450 € – 20.200 €</td><td style="padding:0.4rem 0.5rem;text-align:right">24%</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">20.200 € – 35.200 €</td><td style="padding:0.4rem 0.5rem;text-align:right">30%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">35.200 € – 60.000 €</td><td style="padding:0.4rem 0.5rem;text-align:right">37%</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">60.000 € – 300.000 €</td><td style="padding:0.4rem 0.5rem;text-align:right">45%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Más de 300.000 €</td><td style="padding:0.4rem 0.5rem;text-align:right">47%</td></tr>
+  </table>
+</div>
+
+<script>
+function calcIRPF() {
+  const bruto = parseFloat(document.getElementById('irpf-bruto').value) || 0;
+  const otros = parseFloat(document.getElementById('irpf-otros').value) || 0;
+  const sit = parseInt(document.getElementById('irpf-sit').value);
+  if (!bruto && !otros) return;
+
+  const ss = bruto * 0.0635;
+  const reduccionTrabajo = bruto <= 14047.5 ? 5565 : bruto <= 19747.5 ? 5565 - 1.5 * (bruto - 14047.5) : 0;
+  const minPersonal = 5550;
+  const minHijos = [0, 2400, 4800, 8000, 0][sit] || 0;
+  const minConyuge = sit === 4 ? 2550 : 0;
+
+  const baseL = Math.max(0, bruto - ss - reduccionTrabajo + otros - minPersonal - minHijos - minConyuge);
+
+  const tramos = [
+    { hasta: 12450, tipo: 0.19 },
+    { hasta: 20200, tipo: 0.24 },
+    { hasta: 35200, tipo: 0.30 },
+    { hasta: 60000, tipo: 0.37 },
+    { hasta: 300000, tipo: 0.45 },
+    { hasta: Infinity, tipo: 0.47 }
+  ];
+
+  let cuota = 0, resto = baseL, anterior = 0;
+  const desglose = [];
+  for (const t of tramos) {
+    if (resto <= 0) break;
+    const tramo = Math.min(resto, t.hasta - anterior);
+    const cuotaTramo = tramo * t.tipo;
+    if (tramo > 0) desglose.push(`${(t.tipo*100).toFixed(0)}%: ${cuotaTramo.toFixed(0)}€`);
+    cuota += cuotaTramo;
+    resto -= tramo;
+    anterior = t.hasta;
+  }
+
+  const tipoEfectivo = (cuota / (bruto + otros) * 100).toFixed(1);
+  document.getElementById('irpf-res').innerHTML =
+    `Cuota IRPF: ${cuota.toFixed(2)} €
+    <small>Tipo efectivo: ${tipoEfectivo}% · Base liquidable: ${baseL.toFixed(0)} € · ${desglose.slice(0,3).join(' · ')}</small>`;
+}
+</script>

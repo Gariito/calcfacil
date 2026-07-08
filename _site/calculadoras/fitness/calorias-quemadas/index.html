@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de calorías quemadas haciendo ejercicio — CalcFácil</title>
+  <meta name="description" content="Calcula las calorías que quemas según el tipo de ejercicio, tu peso y el tiempo de actividad.">
+  <meta name="keywords" content="calorias quemadas ejercicio, calculadora calorias deporte, quemar calorias">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/fitness/calorias-quemadas/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de calorías quemadas haciendo ejercicio — CalcFácil">
+  <meta property="og:description" content="Calcula las calorías que quemas según el tipo de ejercicio, tu peso y el tiempo de actividad.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/fitness/calorias-quemadas/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías quemadas haciendo ejercicio",
+    "description": "Calcula las calorías que quemas según el tipo de ejercicio, tu peso y el tiempo de actividad.",
+    "url": "https://www.calcfacil.com/calculadoras/fitness/calorias-quemadas/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/fitness/">Fitness</a>
+      <span>›</span>
+      <span>Calorías quemadas por ejercicio</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔥 Calorías quemadas por ejercicio</h1>
+        <p class="calc-intro">Calcula las calorías que quemas según el ejercicio, tu peso y la duración.</p>
+        <div class="card">
+          
+<label>Tu peso (kg)</label>
+<input type="number" id="cq-peso" placeholder="70" oninput="calcCalQuemadas()">
+
+<label>Tipo de ejercicio</label>
+<select id="cq-ejercicio" onchange="calcCalQuemadas()">
+  <option value="8">Correr (ritmo moderado ~10 km/h)</option>
+  <option value="11">Correr (ritmo rápido ~14 km/h)</option>
+  <option value="4">Caminar (5 km/h)</option>
+  <option value="7">Ciclismo (moderado)</option>
+  <option value="10">Ciclismo (intenso)</option>
+  <option value="6">Natación (moderada)</option>
+  <option value="9">Natación (intensa)</option>
+  <option value="5">Pesas / musculación</option>
+  <option value="7">HIIT / crossfit</option>
+  <option value="5">Yoga / pilates</option>
+  <option value="6">Fútbol</option>
+  <option value="7">Baloncesto</option>
+  <option value="4">Bailar</option>
+  <option value="3">Estiramientos</option>
+</select>
+
+<label>Duración (minutos)</label>
+<input type="number" id="cq-min" placeholder="30" oninput="calcCalQuemadas()">
+
+<div class="result-box" id="cq-res">Introduce tus datos</div>
+
+<script>
+function calcCalQuemadas() {
+  const peso = parseFloat(document.getElementById('cq-peso').value);
+  const met = parseFloat(document.getElementById('cq-ejercicio').value);
+  const min = parseFloat(document.getElementById('cq-min').value);
+  if (!peso || !min) return;
+  const kcal = met * peso * (min / 60);
+  document.getElementById('cq-res').innerHTML =
+    `${Math.round(kcal)} kcal<small>En ${min} min de ejercicio · MET: ${met}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las calorías quemadas?</h2>
+          <p>El gasto calórico durante el ejercicio depende del tipo de actividad, la intensidad, tu peso corporal y la duración. Esta calculadora usa los valores MET (equivalente metabólico) de cada actividad para estimar las calorías quemadas de forma precisa.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/fitness/ritmo-carrera/">🏃 Ritmo de carrera</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué ejercicio quema más calorías?</summary>
+              <p>La carrera, el ciclismo intenso y la natación son los que más calorías queman por hora. Correr a ritmo moderado puede quemar entre 500 y 700 kcal/hora según el peso.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es fiable este cálculo?</summary>
+              <p>Es una estimación basada en valores MET estándar. El gasto real puede variar según la intensidad exacta, tu condición física y tu metabolismo individual.</p>
+            </details>
+            
+            <details>
+              <summary>¿Debo comer las calorías que quemo con el ejercicio?</summary>
+              <p>Depende de tu objetivo. Si quieres perder peso, no necesariamente. Si quieres mantener el peso o eres deportista de rendimiento, sí es recomendable reponerlas.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

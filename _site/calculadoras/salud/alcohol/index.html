@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de tasa de alcohol en sangre (BAC) — CalcFácil</title>
+  <meta name="description" content="Calcula tu tasa de alcohol en sangre estimada según lo que has bebido, tu peso y el tiempo transcurrido.">
+  <meta name="keywords" content="calculadora alcohol sangre, tasa alcoholemia, bac calculadora, cuanto tardo en eliminar alcohol">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/alcohol/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de tasa de alcohol en sangre (BAC) — CalcFácil">
+  <meta property="og:description" content="Calcula tu tasa de alcohol en sangre estimada según lo que has bebido, tu peso y el tiempo transcurrido.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/alcohol/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de tasa de alcohol en sangre (BAC)",
+    "description": "Calcula tu tasa de alcohol en sangre estimada según lo que has bebido, tu peso y el tiempo transcurrido.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/alcohol/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de tasa de alcohol (BAC)</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍷 Calculadora de tasa de alcohol (BAC)</h1>
+        <p class="calc-intro">Estima tu tasa de alcoholemia según las bebidas consumidas, tu peso y el tiempo transcurrido.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Peso (kg)</label>
+    <input type="number" id="alc-peso" placeholder="70" oninput="calcAlcohol()">
+  </div>
+  <div>
+    <label>Sexo</label>
+    <select id="alc-sexo" onchange="calcAlcohol()">
+      <option value="0.68">Hombre</option>
+      <option value="0.55">Mujer</option>
+    </select>
+  </div>
+</div>
+
+<label>Horas desde la primera bebida</label>
+<input type="number" id="alc-horas" placeholder="2" oninput="calcAlcohol()">
+
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem">
+  <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem">Bebidas consumidas</p>
+  <div class="row-2">
+    <div><label>Cervezas (330ml, 5%)</label><input type="number" id="alc-cerv" placeholder="0" value="0" oninput="calcAlcohol()"></div>
+    <div><label>Vinos (150ml, 12%)</label><input type="number" id="alc-vino" placeholder="0" value="0" oninput="calcAlcohol()"></div>
+  </div>
+  <div class="row-2">
+    <div><label>Copas licor (50ml, 40%)</label><input type="number" id="alc-copa" placeholder="0" value="0" oninput="calcAlcohol()"></div>
+    <div><label>Chupitos (25ml, 40%)</label><input type="number" id="alc-chup" placeholder="0" value="0" oninput="calcAlcohol()"></div>
+  </div>
+</div>
+
+<div class="result-box" id="alc-res">Introduce tus datos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Límites legales en España</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem">🚗 <strong>Conductores generales:</strong> 0,5 g/L en sangre</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem">🚌 <strong>Conductores noveles y profesionales:</strong> 0,3 g/L en sangre</p>
+  <p style="font-size:0.875rem;color:var(--muted)">⚠️ Esta calculadora es orientativa. No conduzcas si has bebido.</p>
+</div>
+
+<script>
+function calcAlcohol() {
+  const peso = parseFloat(document.getElementById('alc-peso').value);
+  const r = parseFloat(document.getElementById('alc-sexo').value);
+  const horas = parseFloat(document.getElementById('alc-horas').value) || 0;
+  const cerv = (parseFloat(document.getElementById('alc-cerv').value) || 0) * 330 * 0.05 * 0.789;
+  const vino = (parseFloat(document.getElementById('alc-vino').value) || 0) * 150 * 0.12 * 0.789;
+  const copa = (parseFloat(document.getElementById('alc-copa').value) || 0) * 50 * 0.40 * 0.789;
+  const chup = (parseFloat(document.getElementById('alc-chup').value) || 0) * 25 * 0.40 * 0.789;
+  if (!peso) return;
+
+  const grAlcohol = (cerv + vino + copa + chup) / 1000;
+  const bacBruto = (grAlcohol / (peso * r)) * 100;
+  const eliminado = 0.15 * horas;
+  const bac = Math.max(0, bacBruto - eliminado);
+
+  let estado, color;
+  if (bac === 0) { estado = 'Sin alcohol detectable ✓'; color = '#22C55E'; }
+  else if (bac < 0.3) { estado = 'Muy bajo — por debajo del límite'; color = '#22C55E'; }
+  else if (bac < 0.5) { estado = 'Bajo — cercano al límite general'; color = '#EAB308'; }
+  else if (bac < 0.8) { estado = 'Moderado — supera el límite legal'; color = '#EF4444'; }
+  else if (bac < 1.5) { estado = 'Alto — deterioro notable'; color = '#DC2626'; }
+  else { estado = 'Muy alto — peligroso'; color = '#7C3AED'; }
+
+  const horasElim = bac > 0 ? (bac / 0.15).toFixed(1) : 0;
+
+  document.getElementById('alc-res').innerHTML =
+    `<span style="color:${color}">BAC: ${bac.toFixed(2)} g/L — ${estado}</span>
+    <small>${bac > 0 ? `Tiempo para eliminar: ~${horasElim} horas más` : 'Puedes conducir con seguridad'}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la tasa de alcohol en sangre?</h2>
+          <p>La tasa de alcohol en sangre (BAC, Blood Alcohol Concentration) depende de varios factores — la cantidad de alcohol ingerida, el peso corporal, el sexo y el tiempo transcurrido. El cuerpo elimina el alcohol a un ritmo aproximado de 0,15 g/L por hora. Esta calculadora usa la fórmula de Widmark, la más utilizada en medicina legal.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/agua/">💧 Agua diaria</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuándo puedo conducir después de beber?</summary>
+              <p>En España el límite general es 0,5 g/L en sangre (0,25 mg/L en aire). Para conductores noveles y profesionales el límite es 0,3 g/L. No es seguro conducir hasta que el BAC sea 0.</p>
+            </details>
+            
+            <details>
+              <summary>¿El café o el agua eliminan el alcohol más rápido?</summary>
+              <p>No. El único factor que elimina el alcohol es el tiempo. El café puede hacerte sentir más despierto pero no reduce tu BAC.</p>
+            </details>
+            
+            <details>
+              <summary>¿Por qué las mujeres se afectan más por el alcohol?</summary>
+              <p>Las mujeres tienen en general mayor proporción de grasa corporal y menor cantidad de agua en el cuerpo, lo que hace que el alcohol se concentre más en sangre con la misma cantidad consumida.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es exacto este cálculo?</summary>
+              <p>Es una estimación orientativa basada en la fórmula de Widmark. El BAC real puede variar según el metabolismo, si has comido, medicamentos y otros factores individuales.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

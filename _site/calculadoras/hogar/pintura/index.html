@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de pintura — litros necesarios para pintar una habitación — CalcFácil</title>
+  <meta name="description" content="Calcula los litros de pintura que necesitas para pintar paredes y techo según las medidas de la habitación.">
+  <meta name="keywords" content="calculadora pintura, litros pintura pared, cuanta pintura necesito, pintar habitacion">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/pintura/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de pintura — litros necesarios para pintar una habitación — CalcFácil">
+  <meta property="og:description" content="Calcula los litros de pintura que necesitas para pintar paredes y techo según las medidas de la habitación.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/pintura/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de pintura — litros necesarios para pintar una habitación",
+    "description": "Calcula los litros de pintura que necesitas para pintar paredes y techo según las medidas de la habitación.",
+    "url": "https://www.calcfacil.com/calculadoras/hogar/pintura/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/hogar/">Hogar</a>
+      <span>›</span>
+      <span>Calculadora de pintura</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🎨 Calculadora de pintura</h1>
+        <p class="calc-intro">Calcula los litros de pintura que necesitas según las medidas de tu habitación.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Ancho de la habitación (m)</label>
+    <input type="number" id="pin-ancho" placeholder="4" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Largo de la habitación (m)</label>
+    <input type="number" id="pin-largo" placeholder="5" oninput="calcPintura()">
+  </div>
+</div>
+
+<label>Altura de las paredes (m)</label>
+<input type="number" id="pin-alto" placeholder="2.5" oninput="calcPintura()">
+
+<div class="row-2">
+  <div>
+    <label>Número de puertas</label>
+    <input type="number" id="pin-puertas" placeholder="1" value="1" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Número de ventanas</label>
+    <input type="number" id="pin-ventanas" placeholder="1" value="1" oninput="calcPintura()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Número de manos</label>
+    <input type="number" id="pin-manos" placeholder="2" value="2" oninput="calcPintura()">
+  </div>
+  <div>
+    <label>Rendimiento (m²/litro)</label>
+    <input type="number" id="pin-rend" placeholder="10" value="10" oninput="calcPintura()">
+  </div>
+</div>
+
+<div class="result-box" id="pin-res">Introduce las medidas</div>
+
+<script>
+function calcPintura() {
+  const a = parseFloat(document.getElementById('pin-ancho').value);
+  const l = parseFloat(document.getElementById('pin-largo').value);
+  const h = parseFloat(document.getElementById('pin-alto').value);
+  const puertas = (parseFloat(document.getElementById('pin-puertas').value) || 0) * 1.85;
+  const ventanas = (parseFloat(document.getElementById('pin-ventanas').value) || 0) * 1.2;
+  const manos = parseFloat(document.getElementById('pin-manos').value) || 2;
+  const rend = parseFloat(document.getElementById('pin-rend').value) || 10;
+  if (!a || !l || !h) return;
+  const superfParedes = 2 * (a + l) * h;
+  const superfNeta = superfParedes - puertas - ventanas;
+  const litros = (superfNeta * manos) / rend;
+  const litrosExtra = litros * 1.1;
+  document.getElementById('pin-res').innerHTML =
+    `${litros.toFixed(1)} litros<small>Superficie: ${superfNeta.toFixed(1)} m² · Con 10% extra: ${litrosExtra.toFixed(1)} L</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la pintura necesaria?</h2>
+          <p>La cantidad de pintura necesaria depende de la superficie a pintar, el número de manos y el rendimiento de la pintura (m² por litro). La mayoría de pinturas de interior rinden entre 10 y 12 m² por litro y mano. Esta calculadora descuenta automáticamente puertas y ventanas.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/hogar/azulejos/">🔲 Calculadora de azulejos</a></li>
+            
+            <li><a href="/calculadoras/hogar/consumo-electrico/">⚡ Consumo eléctrico</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas manos de pintura se necesitan normalmente?</summary>
+              <p>Para colores claros sobre blanco, suelen bastar 2 manos. Si cambias a un color oscuro o cubres una mancha, puede que necesites 3.</p>
+            </details>
+            
+            <details>
+              <summary>¿El rendimiento de la pintura es siempre 10 m²/L?</summary>
+              <p>Depende de la marca y la superficie. Las pinturas lisas rinden más (10-12 m²/L). Las rugosas o texturizadas pueden rendir menos (6-8 m²/L). Consulta siempre el envase.</p>
+            </details>
+            
+            <details>
+              <summary>¿Debo comprar algo de más?</summary>
+              <p>Sí, siempre se recomienda comprar un 10-15% extra para retoques y posibles mermas.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

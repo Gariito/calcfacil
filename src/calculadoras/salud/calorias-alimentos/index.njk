@@ -1,0 +1,103 @@
+---
+layout: calculadora.njk
+title: Calculadora de calorías de alimentos comunes
+description: Consulta las calorías de los alimentos más habituales en la dieta española y calcula el total de tu comida.
+keywords: calorias alimentos, tabla calorias, cuantas calorias tiene, calorias comida española
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de calorías de alimentos
+icono: 🥗
+tituloCorto: las calorías de los alimentos
+descripcion: Consulta las calorías por cada 100g de los alimentos más habituales y calcula el total de tu plato.
+explicacion: Conocer las calorías de los alimentos que comes es el primer paso para controlar tu dieta. Esta calculadora incluye los alimentos más habituales en la dieta española con sus calorías por cada 100 gramos, permitiéndote calcular el total de cualquier ración.
+faq:
+  - q: ¿Cómo se cuentan las calorías de una receta?
+    a: Suma las calorías de cada ingrediente por separado según su peso. Si un plato lleva 150g de pollo (165 kcal/100g) y 200g de arroz (130 kcal/100g), el total es 247 + 260 = 507 kcal.
+  - q: ¿Las calorías del envase son por 100g o por ración?
+    a: Siempre mira bien la etiqueta. Los productos envasados suelen mostrar las calorías por 100g y también por ración, que puede ser una cantidad diferente.
+  - q: ¿El método de cocción cambia las calorías?
+    a: Sí. Cocinar con aceite añade calorías. Hervir o cocinar al vapor no añade calorías pero puede cambiar el peso del alimento. Los alimentos crudos y cocinados pueden tener diferente peso por el agua.
+relacionadas:
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias (TMB)
+    icono: 🔥
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<label>Alimento</label>
+<select id="cal-alim" onchange="calcCalAlim()">
+  <optgroup label="Carnes y pescados">
+    <option value="165">Pollo (pechuga, cocida)</option>
+    <option value="242">Ternera (solomillo)</option>
+    <option value="290">Cerdo (lomo)</option>
+    <option value="208">Salmón</option>
+    <option value="82">Merluza</option>
+    <option value="105">Atún al natural</option>
+    <option value="144">Sardinas</option>
+    <option value="85">Gambas</option>
+  </optgroup>
+  <optgroup label="Huevos y lácteos">
+    <option value="155">Huevo entero</option>
+    <option value="61">Leche entera</option>
+    <option value="36">Leche desnatada</option>
+    <option value="98">Yogur natural</option>
+    <option value="402">Queso manchego</option>
+    <option value="98">Queso fresco</option>
+    <option value="717">Mantequilla</option>
+  </optgroup>
+  <optgroup label="Cereales y legumbres">
+    <option value="130">Arroz cocido</option>
+    <option value="158">Pasta cocida</option>
+    <option value="265">Pan blanco</option>
+    <option value="247">Pan integral</option>
+    <option value="354">Avena</option>
+    <option value="116">Lentejas cocidas</option>
+    <option value="127">Garbanzos cocidos</option>
+  </optgroup>
+  <optgroup label="Frutas">
+    <option value="52">Manzana</option>
+    <option value="89">Plátano</option>
+    <option value="50">Naranja</option>
+    <option value="32">Fresa</option>
+    <option value="60">Uva</option>
+    <option value="45">Sandía</option>
+    <option value="134">Aguacate</option>
+  </optgroup>
+  <optgroup label="Verduras">
+    <option value="25">Tomate</option>
+    <option value="41">Zanahoria</option>
+    <option value="20">Lechuga</option>
+    <option value="34">Pimiento</option>
+    <option value="86">Patata cocida</option>
+    <option value="25">Espinacas</option>
+    <option value="34">Brócoli</option>
+  </optgroup>
+  <optgroup label="Grasas y aceites">
+    <option value="884">Aceite de oliva</option>
+    <option value="567">Almendras</option>
+    <option value="654">Nueces</option>
+    <option value="593">Cacahuetes</option>
+  </optgroup>
+</select>
+
+<label>Cantidad (gramos)</label>
+<input type="number" id="cal-alim-g" placeholder="100" oninput="calcCalAlim()">
+
+<div class="result-box" id="cal-alim-res">Selecciona un alimento e introduce la cantidad</div>
+
+<script>
+function calcCalAlim() {
+  const kcalPor100 = parseFloat(document.getElementById('cal-alim').value);
+  const g = parseFloat(document.getElementById('cal-alim-g').value);
+  const nombre = document.getElementById('cal-alim').options[document.getElementById('cal-alim').selectedIndex].text;
+  if (!g) { document.getElementById('cal-alim-res').innerHTML = `${nombre}: ${kcalPor100} kcal/100g`; return; }
+  const total = (kcalPor100 * g / 100);
+  document.getElementById('cal-alim-res').innerHTML =
+    `${total.toFixed(0)} kcal
+    <small>${g}g de ${nombre} · ${kcalPor100} kcal por 100g</small>`;
+}
+</script>

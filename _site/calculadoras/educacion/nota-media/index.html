@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de nota media ponderada — CalcFácil</title>
+  <meta name="description" content="Calcula tu nota media ponderada introduciendo tus asignaturas, notas y créditos o pesos.">
+  <meta name="keywords" content="calculadora nota media, media ponderada, nota expediente, calcular media notas">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/educacion/nota-media/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de nota media ponderada — CalcFácil">
+  <meta property="og:description" content="Calcula tu nota media ponderada introduciendo tus asignaturas, notas y créditos o pesos.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/educacion/nota-media/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de nota media ponderada",
+    "description": "Calcula tu nota media ponderada introduciendo tus asignaturas, notas y créditos o pesos.",
+    "url": "https://www.calcfacil.com/calculadoras/educacion/nota-media/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/educacion/">Educación</a>
+      <span>›</span>
+      <span>Calculadora de nota media</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📝 Calculadora de nota media</h1>
+        <p class="calc-intro">Calcula tu nota media simple o ponderada a partir de tus calificaciones y créditos.</p>
+        <div class="card">
+          
+<div id="nm-asignaturas">
+  <div class="row-2 nm-fila">
+    <div><label>Nota (0-10)</label><input type="number" class="nm-nota" placeholder="7.5" oninput="calcMedia()"></div>
+    <div><label>Créditos / Peso</label><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+  </div>
+  <div class="row-2 nm-fila">
+    <div><input type="number" class="nm-nota" placeholder="8.0" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+  </div>
+  <div class="row-2 nm-fila">
+    <div><input type="number" class="nm-nota" placeholder="6.5" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+  </div>
+</div>
+
+<button onclick="addFila()" style="background:none;border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;cursor:pointer;margin-bottom:1rem;font-size:0.875rem;color:var(--accent)">+ Añadir asignatura</button>
+
+<div class="result-box" id="nm-res">Introduce tus notas</div>
+
+<script>
+function addFila() {
+  const div = document.createElement('div');
+  div.className = 'row-2 nm-fila';
+  div.innerHTML = '<div><input type="number" class="nm-nota" placeholder="7.0" oninput="calcMedia()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"></div><div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"></div>';
+  document.getElementById('nm-asignaturas').appendChild(div);
+}
+function calcMedia() {
+  const notas = [...document.querySelectorAll('.nm-nota')].map(i => parseFloat(i.value));
+  const creds = [...document.querySelectorAll('.nm-cred')].map(i => parseFloat(i.value));
+  let sumProd = 0, sumCred = 0, count = 0;
+  notas.forEach((n, i) => {
+    if (!isNaN(n) && !isNaN(creds[i])) { sumProd += n * creds[i]; sumCred += creds[i]; count++; }
+    else if (!isNaN(n)) { sumProd += n; sumCred += 1; count++; }
+  });
+  if (count === 0) return;
+  const media = sumProd / sumCred;
+  document.getElementById('nm-res').innerHTML =
+    `Media ponderada: ${media.toFixed(4)}<small>${count} asignaturas · ${sumCred} créditos totales</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la nota media?</h2>
+          <p>La nota media ponderada tiene en cuenta el peso de cada asignatura (créditos ECTS, horas o porcentaje). Es la que se usa en expedientes universitarios y para solicitar becas o acceder a másteres. Si todas las asignaturas tienen el mismo peso, coincide con la media aritmética simple.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/educacion/nota-selectividad/">🎓 Nota selectividad</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué nota media se necesita para una beca del Ministerio?</summary>
+              <p>Para becas de carácter general del Ministerio de Educación se requiere generalmente un mínimo de 5,0 en grado, aunque los umbrales varían según la rama de conocimiento y el tipo de beca.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se calcula la nota del expediente universitario?</summary>
+              <p>Se multiplica la nota de cada asignatura por sus créditos ECTS, se suman todos esos productos y se divide entre el total de créditos superados.</p>
+            </details>
+            
+            <details>
+              <summary>¿Se redondea la nota media?</summary>
+              <p>Depende de la institución. Muchas universidades truncan a dos decimales sin redondear. Para becas y acceso a másteres conviene consultar la normativa específica.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

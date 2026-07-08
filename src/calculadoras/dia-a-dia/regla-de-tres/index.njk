@@ -1,0 +1,66 @@
+---
+layout: calculadora.njk
+title: Regla de tres online — directa e inversa
+description: Resuelve reglas de tres directas e inversas al instante. La calculadora de proporciones más sencilla.
+keywords: regla de tres, proporcion directa, proporcion inversa, calculadora regla de tres online
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Regla de tres
+icono: ⚖️
+tituloCorto: la regla de tres
+descripcion: Resuelve cualquier proporción directa o inversa al instante con tres datos.
+explicacion: La regla de tres es una de las operaciones matemáticas más útiles en el día a día. Se usa para calcular precios por cantidad, recetas de cocina, escalas en mapas, repartos proporcionales y mucho más. Solo necesitas conocer tres de los cuatro valores de la proporción.
+faq:
+  - q: ¿Cuándo es directa y cuándo inversa?
+    a: Es directa cuando al aumentar un valor el otro también aumenta (más kilómetros, más gasolina). Es inversa cuando al aumentar uno el otro disminuye (más trabajadores, menos días).
+  - q: ¿Para qué se usa en la vida real?
+    a: Para calcular el precio de una cantidad diferente, adaptar recetas, convertir unidades, calcular tiempos de trabajo o repartir algo proporcionalmente.
+  - q: ¿Puedo resolver "si 3 kg cuestan 7€, cuánto cuestan 5 kg"?
+    a: Sí. A = 3, B = 7, C = 5. Resultado X = 11,67€.
+relacionadas:
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<label>Tipo de proporción</label>
+<select id="rt-tipo" onchange="calcRT()">
+  <option value="directa">Directa — si A sube, B sube</option>
+  <option value="inversa">Inversa — si A sube, B baja</option>
+</select>
+
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-a" placeholder="3" oninput="calcRT()"></div>
+    <div><label>entonces B =</label><input type="number" id="rt-b" placeholder="7" oninput="calcRT()"></div>
+  </div>
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-c" placeholder="5" oninput="calcRT()"></div>
+    <div>
+      <label>entonces B =</label>
+      <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="rt-res">Introduce los tres valores conocidos</div>
+
+<script>
+function calcRT() {
+  const a = parseFloat(document.getElementById('rt-a').value);
+  const b = parseFloat(document.getElementById('rt-b').value);
+  const c = parseFloat(document.getElementById('rt-c').value);
+  const tipo = document.getElementById('rt-tipo').value;
+  if (!a || !b || !c) return;
+  const x = tipo === 'directa' ? (b * c) / a : (a * b) / c;
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
+  document.getElementById('rt-x').textContent = xFmt;
+  document.getElementById('rt-res').innerHTML =
+    `X = ${xFmt}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${xFmt}</small>`;
+}
+</script>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de presupuesto de viaje — CalcFácil</title>
+  <meta name="description" content="Estima el coste total de tu viaje por días, número de personas y categorías de gasto.">
+  <meta name="keywords" content="presupuesto viaje, calculadora viaje, cuanto cuesta viajar, gastos viaje">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/viajes/presupuesto/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de presupuesto de viaje — CalcFácil">
+  <meta property="og:description" content="Estima el coste total de tu viaje por días, número de personas y categorías de gasto.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/viajes/presupuesto/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de presupuesto de viaje",
+    "description": "Estima el coste total de tu viaje por días, número de personas y categorías de gasto.",
+    "url": "https://www.calcfacil.com/calculadoras/viajes/presupuesto/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/viajes/">Viajes</a>
+      <span>›</span>
+      <span>Calculadora de presupuesto de viaje</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💰 Calculadora de presupuesto de viaje</h1>
+        <p class="calc-intro">Calcula el coste total estimado de tu viaje por persona y en total.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Número de días</label>
+    <input type="number" id="pres-dias" placeholder="7" oninput="calcPres()">
+  </div>
+  <div>
+    <label>Número de personas</label>
+    <input type="number" id="pres-pers" placeholder="2" oninput="calcPres()">
+  </div>
+</div>
+
+<label>Alojamiento por noche (€ total)</label>
+<input type="number" id="pres-aloj" placeholder="80" oninput="calcPres()">
+
+<label>Comida por persona y día (€)</label>
+<input type="number" id="pres-comida" placeholder="30" oninput="calcPres()">
+
+<label>Transporte local por persona y día (€)</label>
+<input type="number" id="pres-trans" placeholder="10" oninput="calcPres()">
+
+<label>Ocio y actividades por persona y día (€)</label>
+<input type="number" id="pres-ocio" placeholder="20" oninput="calcPres()">
+
+<label>Vuelos y transporte de ida y vuelta (€ total)</label>
+<input type="number" id="pres-vuelos" placeholder="300" oninput="calcPres()">
+
+<div class="result-box" id="pres-res">Introduce los datos del viaje</div>
+
+<script>
+function calcPres() {
+  const dias = parseFloat(document.getElementById('pres-dias').value) || 0;
+  const pers = parseFloat(document.getElementById('pres-pers').value) || 1;
+  const aloj = parseFloat(document.getElementById('pres-aloj').value) || 0;
+  const comida = parseFloat(document.getElementById('pres-comida').value) || 0;
+  const trans = parseFloat(document.getElementById('pres-trans').value) || 0;
+  const ocio = parseFloat(document.getElementById('pres-ocio').value) || 0;
+  const vuelos = parseFloat(document.getElementById('pres-vuelos').value) || 0;
+  if (!dias) return;
+  const totalAloj = aloj * dias;
+  const totalComida = comida * pers * dias;
+  const totalTrans = trans * pers * dias;
+  const totalOcio = ocio * pers * dias;
+  const total = totalAloj + totalComida + totalTrans + totalOcio + vuelos;
+  const porPersona = total / pers;
+  document.getElementById('pres-res').innerHTML =
+    `Total: ${total.toFixed(0)} €<small>
+    Por persona: ${porPersona.toFixed(0)} € · 
+    Aloj: ${totalAloj.toFixed(0)} € · 
+    Comida: ${totalComida.toFixed(0)} € · 
+    Trans: ${(totalTrans+vuelos).toFixed(0)} € · 
+    Ocio: ${totalOcio.toFixed(0)} €</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el presupuesto de viaje?</h2>
+          <p>Planificar el presupuesto de un viaje ayuda a evitar sorpresas y a ahorrar con antelación. Esta calculadora te permite estimar el gasto total por categorías — alojamiento, comida, transporte y ocio — tanto por persona como en total para todo el grupo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/viajes/combustible/">⛽ Combustible</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/divisas/">💱 Conversor de divisas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto dinero necesito por día viajando en Europa?</summary>
+              <p>Depende mucho del destino. En ciudades como Ámsterdam o París, un presupuesto medio ronda los 100-150 €/día. En Europa del Este puede bastar con 40-60 €/día.</p>
+            </details>
+            
+            <details>
+              <summary>¿Debo llevar efectivo o pagar con tarjeta?</summary>
+              <p>En la mayoría de países europeos la tarjeta funciona en casi todos los sitios. Para mercados locales o propinas conviene tener algo de efectivo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo puedo reducir el presupuesto de viaje?</summary>
+              <p>Reservando con antelación vuelos y alojamiento, viajando en temporada baja, usando transporte público y cocinando ocasionalmente en alojamientos con cocina.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de temperatura de horno — Celsius, Fahrenheit y gas — CalcFácil</title>
+  <meta name="description" content="Convierte temperaturas de horno entre grados Celsius, Fahrenheit y termostato de gas al instante.">
+  <meta name="keywords" content="temperatura horno celsius fahrenheit, termostato gas horno, conversion temperatura horno">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/cocina/temperatura-horno/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de temperatura de horno — Celsius, Fahrenheit y gas — CalcFácil">
+  <meta property="og:description" content="Convierte temperaturas de horno entre grados Celsius, Fahrenheit y termostato de gas al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/cocina/temperatura-horno/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de temperatura de horno — Celsius, Fahrenheit y gas",
+    "description": "Convierte temperaturas de horno entre grados Celsius, Fahrenheit y termostato de gas al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/cocina/temperatura-horno/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/cocina/">Cocina</a>
+      <span>›</span>
+      <span>Conversor de temperatura de horno</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🌡️ Conversor de temperatura de horno</h1>
+        <p class="calc-intro">Convierte entre Celsius, Fahrenheit y termostato de gas para hornear con precisión.</p>
+        <div class="card">
+          
+<label>Temperatura y escala de origen</label>
+<div class="row-2">
+  <div>
+    <label>Valor</label>
+    <input type="number" id="hor-val" placeholder="180" oninput="calcHorno()">
+  </div>
+  <div>
+    <label>De</label>
+    <select id="hor-from" onchange="calcHorno()">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+      <option value="G">Termostato gas</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="hor-res">Introduce una temperatura</div>
+
+<script>
+function calcHorno() {
+  const v = parseFloat(document.getElementById('hor-val').value);
+  const f = document.getElementById('hor-from').value;
+  if (isNaN(v)) return;
+  let c;
+  if (f === 'C') c = v;
+  else if (f === 'F') c = (v - 32) * 5 / 9;
+  else c = v * 25 + 121;
+  const fahr = c * 9 / 5 + 32;
+  const gas = Math.round((c - 121) / 25);
+  document.getElementById('hor-res').innerHTML =
+    `${c.toFixed(0)}°C · ${fahr.toFixed(0)}°F · Gas ${Math.max(1,Math.min(9,gas))}<small>Horno ${c < 150 ? 'muy suave' : c < 170 ? 'suave' : c < 190 ? 'medio' : c < 220 ? 'fuerte' : 'muy fuerte'}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la temperatura de horno?</h2>
+          <p>Las recetas anglosajonas suelen indicar temperaturas en Fahrenheit, mientras que en España usamos Celsius. Además, los hornos de gas usan una escala de termostato del 1 al 9. Esta calculadora convierte entre los tres sistemas al instante.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/cocina/raciones/">🍽️ Calculadora de raciones</a></li>
+            
+            <li><a href="/calculadoras/unidades/temperatura/">🌡️ Conversor de temperatura</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos grados Celsius son 350°F?</summary>
+              <p>350°F equivalen a 175°C, que corresponde al termostato de gas 4. Es la temperatura más usada para bizcochos y galletas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué diferencia hay entre horno de ventilador y convencional?</summary>
+              <p>El horno de ventilador (turbo) distribuye el calor de forma más uniforme. Generalmente se recomienda reducir la temperatura unos 20°C respecto a las indicaciones para horno convencional.</p>
+            </details>
+            
+            <details>
+              <summary>¿A qué temperatura es &quot;horno medio&quot;?</summary>
+              <p>Horno medio equivale a unos 180°C (350°F), termostato gas 4.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

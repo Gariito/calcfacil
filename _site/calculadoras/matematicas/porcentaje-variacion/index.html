@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de variación porcentual — subida y bajada — CalcFácil</title>
+  <meta name="description" content="Calcula el porcentaje de aumento o disminución entre dos valores al instante.">
+  <meta name="keywords" content="variacion porcentual, porcentaje de aumento, porcentaje de bajada, calcular incremento porcentual">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/matematicas/porcentaje-variacion/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de variación porcentual — subida y bajada — CalcFácil">
+  <meta property="og:description" content="Calcula el porcentaje de aumento o disminución entre dos valores al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/matematicas/porcentaje-variacion/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de variación porcentual — subida y bajada",
+    "description": "Calcula el porcentaje de aumento o disminución entre dos valores al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/matematicas/porcentaje-variacion/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <span>›</span>
+      <span>Calculadora de variación porcentual</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📈 Calculadora de variación porcentual</h1>
+        <p class="calc-intro">Calcula el porcentaje de aumento o disminución entre un valor inicial y uno final.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Valor inicial</label>
+    <input type="number" id="vp-ini" placeholder="80" oninput="calcVP()">
+  </div>
+  <div>
+    <label>Valor final</label>
+    <input type="number" id="vp-fin" placeholder="100" oninput="calcVP()">
+  </div>
+</div>
+
+<div class="result-box" id="vp-res">Introduce los dos valores</div>
+
+<script>
+function calcVP() {
+  const ini = parseFloat(document.getElementById('vp-ini').value);
+  const fin = parseFloat(document.getElementById('vp-fin').value);
+  if (!ini || isNaN(fin)) return;
+  const variacion = (fin - ini) / Math.abs(ini) * 100;
+  const dif = fin - ini;
+  const signo = variacion >= 0 ? '▲' : '▼';
+  const color = variacion >= 0 ? '#22C55E' : '#EF4444';
+  document.getElementById('vp-res').innerHTML =
+    `<span style="color:${color}">${signo} ${Math.abs(variacion).toFixed(2)}%</span>
+    <small>Diferencia: ${dif >= 0 ? '+' : ''}${dif.toFixed(4)} · De ${ini} a ${fin}</small>`;
+}
+</script
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la variación porcentual?</h2>
+          <p>La variación porcentual mide cuánto ha cambiado un valor en términos relativos. Se usa constantemente en economía, estadística y vida cotidiana — para calcular subidas de precio, caídas en bolsa, incrementos salariales o variaciones en cualquier magnitud.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/descuento/">🏷️ Descuentos</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo se calcula el porcentaje de aumento?</summary>
+              <p>Se resta el valor inicial del final, se divide entre el valor inicial y se multiplica por 100. Por ejemplo, de 80 a 100 es (100-80)/80 × 100 = 25% de aumento.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es lo mismo variación porcentual que porcentaje de diferencia?</summary>
+              <p>No exactamente. La variación porcentual siempre toma el valor inicial como referencia. El porcentaje de diferencia usa la media de ambos valores como referencia.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular variaciones negativas?</summary>
+              <p>Sí. Si el valor final es menor que el inicial, el resultado será negativo, indicando una disminución.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de ingredientes — tazas y cucharadas a gramos — CalcFácil</title>
+  <meta name="description" content="Convierte tazas, cucharadas y onzas a gramos para harina, azúcar, mantequilla, arroz y más.">
+  <meta name="keywords" content="tazas a gramos, cucharadas a gramos, conversion ingredientes cocina, harina tazas gramos">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/cocina/conversion-ingredientes/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de ingredientes — tazas y cucharadas a gramos — CalcFácil">
+  <meta property="og:description" content="Convierte tazas, cucharadas y onzas a gramos para harina, azúcar, mantequilla, arroz y más.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/cocina/conversion-ingredientes/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de ingredientes — tazas y cucharadas a gramos",
+    "description": "Convierte tazas, cucharadas y onzas a gramos para harina, azúcar, mantequilla, arroz y más.",
+    "url": "https://www.calcfacil.com/calculadoras/cocina/conversion-ingredientes/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/cocina/">Cocina</a>
+      <span>›</span>
+      <span>Conversor de ingredientes</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⚖️ Conversor de ingredientes</h1>
+        <p class="calc-intro">Convierte tazas, cucharadas y cucharaditas a gramos para los ingredientes más habituales.</p>
+        <div class="card">
+          
+<label>Ingrediente</label>
+<select id="ing-tipo" onchange="calcIng()">
+  <option value="125">Harina de trigo (todo uso)</option>
+  <option value="200">Azúcar blanco</option>
+  <option value="220">Azúcar moreno (compacto)</option>
+  <option value="100">Azúcar glass</option>
+  <option value="230">Sal</option>
+  <option value="240">Agua / leche</option>
+  <option value="227">Mantequilla</option>
+  <option value="85">Cacao en polvo</option>
+  <option value="190">Arroz</option>
+  <option value="185">Avena</option>
+  <option value="150">Nueces picadas</option>
+  <option value="170">Miel</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Cantidad</label>
+    <input type="number" id="ing-cant" placeholder="1" oninput="calcIng()">
+  </div>
+  <div>
+    <label>Unidad</label>
+    <select id="ing-unidad" onchange="calcIng()">
+      <option value="1">Taza (240 ml)</option>
+      <option value="0.0625">Cucharada (15 ml)</option>
+      <option value="0.020833">Cucharadita (5 ml)</option>
+      <option value="0.5">Media taza</option>
+      <option value="0.25">¼ taza</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="ing-res">Introduce la cantidad</div>
+
+<script>
+function calcIng() {
+  const grPorTaza = parseFloat(document.getElementById('ing-tipo').value);
+  const cant = parseFloat(document.getElementById('ing-cant').value);
+  const factor = parseFloat(document.getElementById('ing-unidad').value);
+  if (!cant) return;
+  const gramos = grPorTaza * cant * factor;
+  document.getElementById('ing-res').innerHTML =
+    `${gramos.toFixed(1)} g<small>${cant} ${document.getElementById('ing-unidad').options[document.getElementById('ing-unidad').selectedIndex].text} = ${gramos.toFixed(1)} gramos</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la conversión de ingredientes?</h2>
+          <p>Las recetas americanas usan tazas y cucharadas como unidad de medida. Convertirlas a gramos puede ser confuso porque el peso varía según el ingrediente — una taza de harina pesa mucho menos que una taza de azúcar. Esta calculadora tiene en cuenta la densidad de cada ingrediente.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/cocina/raciones/">🍽️ Calculadora de raciones</a></li>
+            
+            <li><a href="/calculadoras/unidades/peso/">🏋️ Conversor de peso</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos gramos es una taza de harina?</summary>
+              <p>Una taza de harina equivale a aproximadamente 120-125 gramos, dependiendo de si está tamizada o no.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos gramos es una cucharada de mantequilla?</summary>
+              <p>Una cucharada de mantequilla equivale a aproximadamente 14 gramos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Una taza es siempre 250 ml?</summary>
+              <p>La taza estándar americana es de 240 ml. La taza métrica usada en algunos países es de 250 ml. Esta calculadora usa 240 ml como referencia.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

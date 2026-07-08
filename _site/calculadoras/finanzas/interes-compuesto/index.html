@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de interés compuesto gratis — CalcFácil</title>
+  <meta name="description" content="Calcula el crecimiento de tu inversión o ahorro con interés compuesto. Incluye aportaciones mensuales.">
+  <meta name="keywords" content="calculadora interes compuesto, ahorro largo plazo, calculadora inversion, rentabilidad ahorro">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/interes-compuesto/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de interés compuesto gratis — CalcFácil">
+  <meta property="og:description" content="Calcula el crecimiento de tu inversión o ahorro con interés compuesto. Incluye aportaciones mensuales.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/interes-compuesto/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de interés compuesto gratis",
+    "description": "Calcula el crecimiento de tu inversión o ahorro con interés compuesto. Incluye aportaciones mensuales.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/interes-compuesto/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de interés compuesto</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📈 Calculadora de interés compuesto</h1>
+        <p class="calc-intro">Calcula cuánto crecerá tu dinero con el tiempo gracias al interés compuesto.</p>
+        <div class="card">
+          
+<label>Capital inicial (€)</label>
+<input type="number" id="ic-capital" placeholder="1000" oninput="calcIC()">
+
+<div class="row-2">
+  <div>
+    <label>Tasa de interés anual (%)</label>
+    <input type="number" id="ic-tasa" placeholder="5" oninput="calcIC()">
+  </div>
+  <div>
+    <label>Número de años</label>
+    <input type="number" id="ic-anos" placeholder="10" oninput="calcIC()">
+  </div>
+</div>
+
+<label>Aportación mensual adicional (€)</label>
+<input type="number" id="ic-aport" placeholder="0" oninput="calcIC()">
+
+<div class="result-box" id="ic-res">Introduce los datos</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el interés compuesto?</h2>
+          <p>El interés compuesto es el fenómeno por el que los intereses generados se suman al capital y a su vez generan más intereses. Con el tiempo, este efecto produce un crecimiento exponencial. Einstein lo llamó la octava maravilla del mundo. Cuanto antes empieces a ahorrar o invertir, mayor será el efecto.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/hipoteca/">🏠 Calculadora de hipoteca</a></li>
+            
+            <li><a href="/calculadoras/finanzas/iva/">% Calculadora de IVA</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué diferencia hay entre interés simple y compuesto?</summary>
+              <p>Con interés simple solo ganas intereses sobre el capital inicial. Con interés compuesto, los intereses se reinvierten y también generan intereses, lo que produce un crecimiento mucho mayor a largo plazo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué rentabilidad anual es realista esperar?</summary>
+              <p>Históricamente, el mercado bursátil global ha dado una rentabilidad media de entre el 7% y el 10% anual antes de inflación. Depósitos y bonos suelen ofrecer menos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Con qué frecuencia se capitaliza esta calculadora?</summary>
+              <p>Esta calculadora capitaliza mensualmente, que es la frecuencia más habitual en fondos de inversión y cuentas de ahorro.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

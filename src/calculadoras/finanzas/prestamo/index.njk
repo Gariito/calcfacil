@@ -1,0 +1,61 @@
+---
+layout: calculadora.njk
+title: Calculadora de préstamo personal — cuota mensual
+description: Calcula la cuota mensual de un préstamo personal según el importe, plazo y tipo de interés.
+keywords: calculadora prestamo, cuota prestamo personal, simulador prestamo, prestamo banco
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de préstamo personal
+icono: 💳
+tituloCorto: el préstamo personal
+descripcion: Calcula la cuota mensual y el coste total de cualquier préstamo personal.
+explicacion: Un préstamo personal es un producto financiero en el que una entidad te presta una cantidad de dinero que devuelves en cuotas mensuales durante un plazo acordado, con un interés aplicado. Esta calculadora usa el sistema de amortización francés, el más habitual en España, donde las cuotas son constantes a lo largo del préstamo.
+faq:
+  - q: ¿Qué diferencia hay entre un préstamo y una hipoteca?
+    a: Una hipoteca está garantizada por un inmueble, lo que permite importes más altos y plazos más largos con intereses más bajos. Un préstamo personal no tiene garantía real, por eso los intereses suelen ser más altos.
+  - q: ¿Qué es la TAE?
+    a: La Tasa Anual Equivalente incluye el tipo de interés nominal más las comisiones y gastos del préstamo. Es la cifra real que debes comparar entre diferentes ofertas.
+  - q: ¿Puedo amortizar anticipadamente un préstamo?
+    a: Sí, en España tienes derecho a amortizar anticipadamente. Las entidades pueden cobrar una comisión máxima del 0,5% si quedan más de 12 meses, o del 0,25% si quedan menos.
+relacionadas:
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+---
+
+<label>Importe del préstamo (€)</label>
+<input type="number" id="prest-imp" placeholder="10000" oninput="calcPrestamo()">
+
+<div class="row-2">
+  <div>
+    <label>Tipo de interés anual (%)</label>
+    <input type="number" id="prest-tasa" placeholder="8.5" oninput="calcPrestamo()">
+  </div>
+  <div>
+    <label>Plazo (meses)</label>
+    <input type="number" id="prest-plazo" placeholder="36" oninput="calcPrestamo()">
+  </div>
+</div>
+
+<div class="result-box" id="prest-res">Introduce los datos del préstamo</div>
+
+<script>
+function calcPrestamo() {
+  const imp = parseFloat(document.getElementById('prest-imp').value);
+  const tasa = parseFloat(document.getElementById('prest-tasa').value);
+  const plazo = parseFloat(document.getElementById('prest-plazo').value);
+  if (!imp||!tasa||!plazo) return;
+  const r = tasa / 100 / 12;
+  const cuota = imp * r * Math.pow(1+r,plazo) / (Math.pow(1+r,plazo)-1);
+  const total = cuota * plazo;
+  const intereses = total - imp;
+  document.getElementById('prest-res').innerHTML =
+    `${cuota.toFixed(2)} €/mes
+    <small>Total a pagar: ${total.toFixed(2)} € · Intereses: ${intereses.toFixed(2)} €</small>`;
+}
+</script>

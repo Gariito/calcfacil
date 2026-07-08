@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de semanas de embarazo y fecha probable de parto — CalcFácil</title>
+  <meta name="description" content="Calcula las semanas de embarazo y la fecha probable de parto a partir de la fecha de tu última regla.">
+  <meta name="keywords" content="calculadora embarazo, semanas embarazo, fecha probable parto, calcular semanas gestacion">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/embarazo/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de semanas de embarazo y fecha probable de parto — CalcFácil">
+  <meta property="og:description" content="Calcula las semanas de embarazo y la fecha probable de parto a partir de la fecha de tu última regla.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/embarazo/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de semanas de embarazo y fecha probable de parto",
+    "description": "Calcula las semanas de embarazo y la fecha probable de parto a partir de la fecha de tu última regla.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/embarazo/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de semanas de embarazo</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🤰 Calculadora de semanas de embarazo</h1>
+        <p class="calc-intro">Calcula las semanas de gestación y la fecha probable de parto a partir de tu última regla.</p>
+        <div class="card">
+          
+<label>Fecha de tu última regla (FUR)</label>
+<input type="date" id="emb-fur" oninput="calcEmbarazo()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+
+<label>Duración de tu ciclo menstrual (días)</label>
+<input type="number" id="emb-ciclo" placeholder="28" value="28" oninput="calcEmbarazo()">
+
+<div class="result-box" id="emb-res">Introduce la fecha de tu última regla</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Trimestres del embarazo</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem"><strong>Primer trimestre (semanas 1-12):</strong> Formación de órganos principales. Período más delicado.</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem"><strong>Segundo trimestre (semanas 13-26):</strong> El bebé crece rápidamente. Suelen desaparecer las náuseas.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Tercer trimestre (semanas 27-40):</strong> Maduración final de órganos. El bebé gana peso.</p>
+</div>
+
+<script>
+function calcEmbarazo() {
+  const furVal = document.getElementById('emb-fur').value;
+  const ciclo = parseInt(document.getElementById('emb-ciclo').value) || 28;
+  if (!furVal) return;
+
+  const fur = new Date(furVal);
+  const hoy = new Date();
+  const ajuste = ciclo - 28;
+  const fpp = new Date(fur.getTime() + (280 + ajuste) * 86400000);
+
+  const diffMs = hoy - fur;
+  const diffDias = Math.floor(diffMs / 86400000);
+  const semanas = Math.floor(diffDias / 7);
+  const diasResto = diffDias % 7;
+
+  if (diffDias < 0) {
+    document.getElementById('emb-res').textContent = 'La fecha introducida es futura';
+    return;
+  }
+
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const fppStr = `${fpp.getDate()} de ${meses[fpp.getMonth()]} de ${fpp.getFullYear()}`;
+
+  let trimestre = semanas <= 12 ? 'Primer trimestre' : semanas <= 26 ? 'Segundo trimestre' : 'Tercer trimestre';
+
+  document.getElementById('emb-res').innerHTML =
+    `${semanas} semanas y ${diasResto} días
+    <small>Fecha probable de parto: ${fppStr} · ${trimestre}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las semanas de embarazo?</h2>
+          <p>El embarazo dura aproximadamente 40 semanas (280 días) contadas desde el primer día de la última menstruación (FUR). Esta calculadora estima la fecha probable de parto (FPP) usando la regla de Naegele, el método más utilizado en la práctica clínica. Ten en cuenta que solo el 5% de los bebés nace exactamente en la fecha prevista — lo normal es nacer entre las semanas 38 y 42.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+            <li><a href="/calculadoras/salud/agua/">💧 Agua diaria</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo se cuentan las semanas de embarazo?</summary>
+              <p>Se cuentan desde el primer día de la última regla (FUR), no desde la concepción. Por eso cuando se confirma el embarazo sueles tener ya 4-6 semanas de gestación.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es la regla de Naegele?</summary>
+              <p>Es el método estándar para calcular la fecha probable de parto. Se aplica sumando 280 días (40 semanas) al primer día de la última regla.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuándo se considera que el bebé está a término?</summary>
+              <p>Un embarazo a término completo es el que llega a las 39-40 semanas. Entre las 37 y 38 semanas se considera término temprano, y a partir de las 41 semanas, postérmino.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es fiable la fecha probable de parto?</summary>
+              <p>Es una estimación. La ecografía del primer trimestre (entre las semanas 11 y 13) suele ser más precisa para confirmar o ajustar la fecha de parto.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

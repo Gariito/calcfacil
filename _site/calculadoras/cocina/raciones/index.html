@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de raciones para recetas — CalcFácil</title>
+  <meta name="description" content="Adapta cualquier receta al número de personas que necesites. Multiplica o reduce los ingredientes automáticamente.">
+  <meta name="keywords" content="calculadora raciones, adaptar receta, multiplicar ingredientes, receta para más personas">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/cocina/raciones/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de raciones para recetas — CalcFácil">
+  <meta property="og:description" content="Adapta cualquier receta al número de personas que necesites. Multiplica o reduce los ingredientes automáticamente.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/cocina/raciones/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de raciones para recetas",
+    "description": "Adapta cualquier receta al número de personas que necesites. Multiplica o reduce los ingredientes automáticamente.",
+    "url": "https://www.calcfacil.com/calculadoras/cocina/raciones/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/cocina/">Cocina</a>
+      <span>›</span>
+      <span>Calculadora de raciones</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍽️ Calculadora de raciones</h1>
+        <p class="calc-intro">Ajusta cualquier receta al número de comensales que necesites al instante.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Raciones originales</label>
+    <input type="number" id="rac-orig" placeholder="4" oninput="calcRaciones()">
+  </div>
+  <div>
+    <label>Raciones que necesitas</label>
+    <input type="number" id="rac-nueva" placeholder="6" oninput="calcRaciones()">
+  </div>
+</div>
+
+<label>Cantidad de un ingrediente (opcional)</label>
+<input type="number" id="rac-cant" placeholder="200" oninput="calcRaciones()">
+<label>Unidad</label>
+<select id="rac-unidad" onchange="calcRaciones()">
+  <option>g</option><option>kg</option><option>ml</option>
+  <option>L</option><option>tazas</option><option>cucharadas</option>
+  <option>cucharaditas</option><option>unidades</option>
+</select>
+
+<div class="result-box" id="rac-res">Introduce las raciones</div>
+
+<script>
+function calcRaciones() {
+  const orig = parseFloat(document.getElementById('rac-orig').value);
+  const nueva = parseFloat(document.getElementById('rac-nueva').value);
+  const cant = parseFloat(document.getElementById('rac-cant').value);
+  const unidad = document.getElementById('rac-unidad').value;
+  if (!orig || !nueva) return;
+  const factor = nueva / orig;
+  let html = `Factor: ×${factor.toFixed(3)}<small>Multiplica cada ingrediente por ${factor.toFixed(3)}`;
+  if (cant) html += ` · ${cant} ${unidad} → ${(cant * factor).toFixed(1)} ${unidad}`;
+  html += '</small>';
+  document.getElementById('rac-res').innerHTML = html;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las raciones?</h2>
+          <p>Adaptar una receta a más o menos personas es sencillo con esta calculadora. Introduce las raciones originales de la receta y las que necesitas, y obtendrás el factor de multiplicación exacto para cada ingrediente.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/cocina/conversion-ingredientes/">⚖️ Conversión de ingredientes</a></li>
+            
+            <li><a href="/calculadoras/cocina/temperatura-horno/">🌡️ Temperatura de horno</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Debo cambiar también el tiempo de cocción al cambiar las raciones?</summary>
+              <p>No siempre. El tiempo de cocción depende más del tamaño de las piezas que de la cantidad total. Para hornear, aumentar el doble de masa no significa el doble de tiempo — revisa siempre con un palillo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Y la temperatura del horno?</summary>
+              <p>La temperatura generalmente no cambia al modificar las raciones. Lo que puede cambiar es el tiempo de cocción.</p>
+            </details>
+            
+            <details>
+              <summary>¿Hay ingredientes que no se escalan proporcionalmente?</summary>
+              <p>Sí. La sal, la levadura, las especias y el bicarbonato no siempre se doblan exactamente — es mejor añadirlos al gusto y ajustar.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

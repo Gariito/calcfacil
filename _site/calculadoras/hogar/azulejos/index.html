@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de azulejos — cuántos necesitas para tu superficie — CalcFácil</title>
+  <meta name="description" content="Calcula cuántos azulejos necesitas para cubrir una superficie, incluyendo merma por cortes.">
+  <meta name="keywords" content="calculadora azulejos, cuantos azulejos necesito, m2 azulejos, baldosas superficie">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/azulejos/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de azulejos — cuántos necesitas para tu superficie — CalcFácil">
+  <meta property="og:description" content="Calcula cuántos azulejos necesitas para cubrir una superficie, incluyendo merma por cortes.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/azulejos/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de azulejos — cuántos necesitas para tu superficie",
+    "description": "Calcula cuántos azulejos necesitas para cubrir una superficie, incluyendo merma por cortes.",
+    "url": "https://www.calcfacil.com/calculadoras/hogar/azulejos/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/hogar/">Hogar</a>
+      <span>›</span>
+      <span>Calculadora de azulejos</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔲 Calculadora de azulejos</h1>
+        <p class="calc-intro">Calcula el número de azulejos y los m² necesarios para cubrir cualquier superficie.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Ancho de la superficie (m)</label>
+    <input type="number" id="az-ancho" placeholder="3" oninput="calcAzulejos()">
+  </div>
+  <div>
+    <label>Alto de la superficie (m)</label>
+    <input type="number" id="az-alto" placeholder="2.4" oninput="calcAzulejos()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Ancho del azulejo (cm)</label>
+    <input type="number" id="az-w" placeholder="30" oninput="calcAzulejos()">
+  </div>
+  <div>
+    <label>Alto del azulejo (cm)</label>
+    <input type="number" id="az-h" placeholder="60" oninput="calcAzulejos()">
+  </div>
+</div>
+
+<label>Merma por cortes (%)</label>
+<select id="az-merma" onchange="calcAzulejos()">
+  <option value="10">10% — Colocación recta sencilla</option>
+  <option value="15">15% — Colocación en offset o juntas</option>
+  <option value="20">20% — Colocación en diagonal o espiga</option>
+</select>
+
+<div class="result-box" id="az-res">Introduce las medidas</div>
+
+<script>
+function calcAzulejos() {
+  const sw = parseFloat(document.getElementById('az-ancho').value);
+  const sh = parseFloat(document.getElementById('az-alto').value);
+  const tw = parseFloat(document.getElementById('az-w').value) / 100;
+  const th = parseFloat(document.getElementById('az-h').value) / 100;
+  const merma = parseFloat(document.getElementById('az-merma').value) / 100;
+  if (!sw || !sh || !tw || !th) return;
+  const superfTotal = sw * sh;
+  const areaAzulejo = tw * th;
+  const cantidad = Math.ceil((superfTotal / areaAzulejo) * (1 + merma));
+  document.getElementById('az-res').innerHTML =
+    `${cantidad} azulejos<small>Superficie: ${superfTotal.toFixed(2)} m² · Por azulejo: ${(areaAzulejo*10000).toFixed(0)} cm²</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los azulejos necesarios?</h2>
+          <p>Para calcular los azulejos necesarios hay que dividir la superficie total entre el área de cada azulejo. A esto se añade un porcentaje de merma por cortes y posibles roturas, que varía entre el 10% para superficies sencillas y el 15-20% para diagonales o patrones complejos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/hogar/pintura/">🎨 Calculadora de pintura</a></li>
+            
+            <li><a href="/calculadoras/unidades/longitud/">📏 Conversor de longitud</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto porcentaje de merma debo añadir?</summary>
+              <p>Para colocación recta, un 10% es suficiente. Para colocación en diagonal o en espiga, añade entre un 15% y un 20%.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo calculo los m² de una habitación irregular?</summary>
+              <p>Divide la habitación en rectángulos, calcula los m² de cada uno y súmalos. Luego resta las zonas que no se van a alicatar (bañeras empotradas, muebles fijos, etc.).</p>
+            </details>
+            
+            <details>
+              <summary>¿Debo comprar azulejos de más?</summary>
+              <p>Sí, siempre. Es recomendable guardar algunos de la misma partida por si hay roturas futuras, ya que puede ser difícil encontrar el mismo modelo.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

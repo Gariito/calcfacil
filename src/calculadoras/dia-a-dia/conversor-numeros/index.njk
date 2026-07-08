@@ -1,0 +1,65 @@
+---
+layout: calculadora.njk
+title: Conversor de números — decimal, binario, hexadecimal y octal
+description: Convierte números entre sistema decimal, binario, hexadecimal y octal al instante.
+keywords: conversor binario decimal, decimal a hexadecimal, binario a decimal, sistema numerico
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Conversor de sistemas numéricos
+icono: 🔣
+tituloCorto: el conversor de sistemas numéricos
+descripcion: Convierte entre decimal, binario, hexadecimal y octal al instante.
+explicacion: Los sistemas numéricos son formas diferentes de representar el mismo número. El decimal (base 10) es el que usamos en el día a día. El binario (base 2) es el que usan los ordenadores. El hexadecimal (base 16) se usa en programación y colores web. El octal (base 8) se usa en sistemas Unix.
+faq:
+  - q: ¿Qué es el sistema binario?
+    a: Es un sistema numérico de base 2 que solo usa los dígitos 0 y 1. Es el lenguaje base de todos los ordenadores y dispositivos digitales.
+  - q: ¿Para qué se usa el hexadecimal?
+    a: En programación para representar colores (por ejemplo #FF5733), direcciones de memoria y valores de bytes de forma compacta.
+  - q: ¿Cómo convierto 255 a binario?
+    a: 255 en binario es 11111111, en hexadecimal es FF y en octal es 377.
+relacionadas:
+  - slug: calculadora-cientifica
+    categoria: dia-a-dia
+    titulo: Calculadora científica
+    icono: 🔬
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<label>Introduce un número y su base</label>
+<div class="row-2">
+  <div>
+    <label>Número</label>
+    <input type="text" id="cn-num" placeholder="255" oninput="calcConvNum()">
+  </div>
+  <div>
+    <label>Base de origen</label>
+    <select id="cn-base" onchange="calcConvNum()">
+      <option value="10">Decimal (base 10)</option>
+      <option value="2">Binario (base 2)</option>
+      <option value="16">Hexadecimal (base 16)</option>
+      <option value="8">Octal (base 8)</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="cn-res">Introduce un número</div>
+
+<script>
+function calcConvNum() {
+  const num = document.getElementById('cn-num').value.trim().toUpperCase();
+  const base = parseInt(document.getElementById('cn-base').value);
+  if (!num) return;
+  const decimal = parseInt(num, base);
+  if (isNaN(decimal)) { document.getElementById('cn-res').textContent = 'Número no válido para esa base'; return; }
+  document.getElementById('cn-res').innerHTML =
+    `Decimal: ${decimal}
+    <small>
+    Binario: ${decimal.toString(2)} · 
+    Octal: ${decimal.toString(8)} · 
+    Hexadecimal: ${decimal.toString(16).toUpperCase()}
+    </small>`;
+}
+</script>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de consumo eléctrico de electrodomésticos — CalcFácil</title>
+  <meta name="description" content="Calcula el consumo en kWh y el coste eléctrico mensual y anual de tus electrodomésticos.">
+  <meta name="keywords" content="calculadora consumo electrico, kwh electrodomesticos, coste electricidad, factura luz">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/consumo-electrico/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de consumo eléctrico de electrodomésticos — CalcFácil">
+  <meta property="og:description" content="Calcula el consumo en kWh y el coste eléctrico mensual y anual de tus electrodomésticos.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/consumo-electrico/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de consumo eléctrico de electrodomésticos",
+    "description": "Calcula el consumo en kWh y el coste eléctrico mensual y anual de tus electrodomésticos.",
+    "url": "https://www.calcfacil.com/calculadoras/hogar/consumo-electrico/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/hogar/">Hogar</a>
+      <span>›</span>
+      <span>Calculadora de consumo eléctrico</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⚡ Calculadora de consumo eléctrico</h1>
+        <p class="calc-intro">Calcula el consumo en kWh y el coste mensual y anual de cualquier electrodoméstico.</p>
+        <div class="card">
+          
+<label>Potencia del aparato (vatios W)</label>
+<input type="number" id="ele-w" placeholder="1500" oninput="calcElec()">
+
+<div class="row-2">
+  <div>
+    <label>Horas de uso al día</label>
+    <input type="number" id="ele-h" placeholder="2" oninput="calcElec()">
+  </div>
+  <div>
+    <label>Precio del kWh (€)</label>
+    <input type="number" id="ele-precio" placeholder="0.20" value="0.20" oninput="calcElec()">
+  </div>
+</div>
+
+<div class="result-box" id="ele-res">Introduce la potencia y las horas de uso</div>
+
+<script>
+function calcElec() {
+  const w = parseFloat(document.getElementById('ele-w').value);
+  const h = parseFloat(document.getElementById('ele-h').value);
+  const precio = parseFloat(document.getElementById('ele-precio').value) || 0.20;
+  if (!w || !h) return;
+  const kwh_dia = (w * h) / 1000;
+  const kwh_mes = kwh_dia * 30;
+  const kwh_año = kwh_dia * 365;
+  document.getElementById('ele-res').innerHTML =
+    `${kwh_dia.toFixed(3)} kWh/día<small>
+    Mes: ${kwh_mes.toFixed(2)} kWh → ${(kwh_mes*precio).toFixed(2)} € · 
+    Año: ${kwh_año.toFixed(1)} kWh → ${(kwh_año*precio).toFixed(2)} €</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el consumo eléctrico?</h2>
+          <p>El consumo eléctrico se calcula multiplicando la potencia del aparato (en vatios) por las horas de uso. El resultado en kilovatios-hora (kWh) multiplicado por el precio del kWh da el coste económico. En España el precio medio del kWh ronda los 0,18-0,25 €.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/hogar/pintura/">🎨 Calculadora de pintura</a></li>
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Dónde encuentro la potencia de mi electrodoméstico?</summary>
+              <p>En la etiqueta energética, en el manual o en la placa de características que suele estar en la parte trasera o inferior del aparato.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto cuesta dejar algo en standby?</summary>
+              <p>Un aparato en standby consume entre 0,5 W y 5 W. Un televisor en standby 24h/365 días puede costar entre 1 y 5 € al año.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuál es el precio del kWh en España?</summary>
+              <p>Varía según la tarifa y la hora del día. En tarifa regulada PVPC ronda los 0,10-0,30 €/kWh según la franja horaria. La media habitual es de unos 0,20 €/kWh.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

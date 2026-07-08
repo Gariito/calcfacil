@@ -1,0 +1,78 @@
+---
+layout: calculadora.njk
+title: Calculadora de semanas de embarazo y fecha probable de parto
+description: Calcula las semanas de embarazo y la fecha probable de parto a partir de la fecha de tu última regla.
+keywords: calculadora embarazo, semanas embarazo, fecha probable parto, calcular semanas gestacion
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de semanas de embarazo
+icono: 🤰
+tituloCorto: las semanas de embarazo
+descripcion: Calcula las semanas de gestación y la fecha probable de parto a partir de tu última regla.
+explicacion: El embarazo dura aproximadamente 40 semanas (280 días) contadas desde el primer día de la última menstruación (FUR). Esta calculadora estima la fecha probable de parto (FPP) usando la regla de Naegele, el método más utilizado en la práctica clínica. Ten en cuenta que solo el 5% de los bebés nace exactamente en la fecha prevista — lo normal es nacer entre las semanas 38 y 42.
+faq:
+  - q: ¿Cómo se cuentan las semanas de embarazo?
+    a: Se cuentan desde el primer día de la última regla (FUR), no desde la concepción. Por eso cuando se confirma el embarazo sueles tener ya 4-6 semanas de gestación.
+  - q: ¿Qué es la regla de Naegele?
+    a: Es el método estándar para calcular la fecha probable de parto. Se aplica sumando 280 días (40 semanas) al primer día de la última regla.
+  - q: ¿Cuándo se considera que el bebé está a término?
+    a: Un embarazo a término completo es el que llega a las 39-40 semanas. Entre las 37 y 38 semanas se considera término temprano, y a partir de las 41 semanas, postérmino.
+  - q: ¿Es fiable la fecha probable de parto?
+    a: Es una estimación. La ecografía del primer trimestre (entre las semanas 11 y 13) suele ser más precisa para confirmar o ajustar la fecha de parto.
+relacionadas:
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+  - slug: agua
+    categoria: salud
+    titulo: Agua diaria
+    icono: 💧
+---
+
+<label>Fecha de tu última regla (FUR)</label>
+<input type="date" id="emb-fur" oninput="calcEmbarazo()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+
+<label>Duración de tu ciclo menstrual (días)</label>
+<input type="number" id="emb-ciclo" placeholder="28" value="28" oninput="calcEmbarazo()">
+
+<div class="result-box" id="emb-res">Introduce la fecha de tu última regla</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Trimestres del embarazo</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem"><strong>Primer trimestre (semanas 1-12):</strong> Formación de órganos principales. Período más delicado.</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem"><strong>Segundo trimestre (semanas 13-26):</strong> El bebé crece rápidamente. Suelen desaparecer las náuseas.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Tercer trimestre (semanas 27-40):</strong> Maduración final de órganos. El bebé gana peso.</p>
+</div>
+
+<script>
+function calcEmbarazo() {
+  const furVal = document.getElementById('emb-fur').value;
+  const ciclo = parseInt(document.getElementById('emb-ciclo').value) || 28;
+  if (!furVal) return;
+
+  const fur = new Date(furVal);
+  const hoy = new Date();
+  const ajuste = ciclo - 28;
+  const fpp = new Date(fur.getTime() + (280 + ajuste) * 86400000);
+
+  const diffMs = hoy - fur;
+  const diffDias = Math.floor(diffMs / 86400000);
+  const semanas = Math.floor(diffDias / 7);
+  const diasResto = diffDias % 7;
+
+  if (diffDias < 0) {
+    document.getElementById('emb-res').textContent = 'La fecha introducida es futura';
+    return;
+  }
+
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const fppStr = `${fpp.getDate()} de ${meses[fpp.getMonth()]} de ${fpp.getFullYear()}`;
+
+  let trimestre = semanas <= 12 ? 'Primer trimestre' : semanas <= 26 ? 'Segundo trimestre' : 'Tercer trimestre';
+
+  document.getElementById('emb-res').innerHTML =
+    `${semanas} semanas y ${diasResto} días
+    <small>Fecha probable de parto: ${fppStr} · ${trimestre}</small>`;
+}
+</script>

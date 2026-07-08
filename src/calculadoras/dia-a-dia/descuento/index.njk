@@ -1,0 +1,89 @@
+---
+layout: calculadora.njk
+title: Calculadora de descuento — precio final con oferta
+description: Calcula el precio final de un producto aplicando un descuento en porcentaje o en euros al instante.
+keywords: calculadora descuento, precio con descuento, calcular oferta, precio rebajado, cuanto ahorro
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora de descuentos
+icono: 🏷️
+tituloCorto: el descuento
+descripcion: Calcula el precio final con descuento y el ahorro en euros al instante.
+explicacion: Calcular el precio final de una oferta o descuento es una de las operaciones más frecuentes en el día a día, especialmente en rebajas o compras online. Esta calculadora te da el precio final y el ahorro exacto en euros, tanto si el descuento es en porcentaje como en cantidad fija.
+faq:
+  - q: ¿Cómo calculo el precio con un 30% de descuento?
+    a: Multiplica el precio original por 0,70 (es decir, 1 - 0,30). Un artículo de 50€ con 30% de descuento cuesta 50 × 0,70 = 35€.
+  - q: ¿Puedo calcular el descuento inverso? (precio final → precio original)
+    a: Sí. Si sabes el precio final y el porcentaje de descuento, el precio original es precio_final / (1 - descuento/100).
+  - q: ¿El descuento se aplica antes o después del IVA?
+    a: Depende del comercio. En España los descuentos en tiendas físicas se suelen aplicar sobre el precio con IVA incluido.
+relacionadas:
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentajes
+    icono: "%"
+  - slug: iva
+    categoria: finanzas
+    titulo: Calculadora de IVA
+    icono: "%"
+---
+
+<label>Precio original (€)</label>
+<input type="number" id="desc-precio" placeholder="89.99" oninput="calcDesc()">
+
+<label>Tipo de descuento</label>
+<select id="desc-tipo" onchange="calcDesc()">
+  <option value="pct">Porcentaje (%)</option>
+  <option value="eur">Cantidad fija (€)</option>
+</select>
+
+<label id="desc-val-label">Descuento (%)</label>
+<input type="number" id="desc-val" placeholder="20" oninput="calcDesc()">
+
+<div class="result-box" id="desc-res">Introduce el precio y el descuento</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <p style="font-size:0.875rem;font-weight:600;margin-bottom:0.75rem">Descuentos habituales</p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+    <button onclick="setDesc(5)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">5%</button>
+    <button onclick="setDesc(10)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">10%</button>
+    <button onclick="setDesc(15)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">15%</button>
+    <button onclick="setDesc(20)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">20%</button>
+    <button onclick="setDesc(25)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">25%</button>
+    <button onclick="setDesc(30)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">30%</button>
+    <button onclick="setDesc(50)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">50%</button>
+    <button onclick="setDesc(70)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">70%</button>
+  </div>
+</div>
+
+<script>
+document.getElementById('desc-tipo').addEventListener('change', function() {
+  document.getElementById('desc-val-label').textContent = this.value==='pct' ? 'Descuento (%)' : 'Descuento (€)';
+  calcDesc();
+});
+function setDesc(v) {
+  document.getElementById('desc-tipo').value = 'pct';
+  document.getElementById('desc-val-label').textContent = 'Descuento (%)';
+  document.getElementById('desc-val').value = v;
+  calcDesc();
+}
+function calcDesc() {
+  const precio = parseFloat(document.getElementById('desc-precio').value);
+  const tipo = document.getElementById('desc-tipo').value;
+  const val = parseFloat(document.getElementById('desc-val').value);
+  if (!precio || !val) return;
+  let ahorro, final, pct;
+  if (tipo === 'pct') {
+    ahorro = precio * val / 100;
+    final = precio - ahorro;
+    pct = val;
+  } else {
+    ahorro = val;
+    final = precio - val;
+    pct = (val / precio * 100).toFixed(1);
+  }
+  document.getElementById('desc-res').innerHTML =
+    `Precio final: ${final.toFixed(2)} €
+    <small>Ahorras: ${ahorro.toFixed(2)} € (${pct}%) · Precio original: ${precio.toFixed(2)} €</small>`;
+}
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de ritmo de carrera — pace y velocidad — CalcFácil</title>
+  <meta name="description" content="Calcula tu pace (min/km), velocidad media y tiempo estimado para cualquier distancia.">
+  <meta name="keywords" content="calculadora ritmo carrera, pace running, min por km, tiempo maraton">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/fitness/ritmo-carrera/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de ritmo de carrera — pace y velocidad — CalcFácil">
+  <meta property="og:description" content="Calcula tu pace (min/km), velocidad media y tiempo estimado para cualquier distancia.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/fitness/ritmo-carrera/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de ritmo de carrera — pace y velocidad",
+    "description": "Calcula tu pace (min/km), velocidad media y tiempo estimado para cualquier distancia.",
+    "url": "https://www.calcfacil.com/calculadoras/fitness/ritmo-carrera/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/fitness/">Fitness</a>
+      <span>›</span>
+      <span>Calculadora de ritmo de carrera</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🏃 Calculadora de ritmo de carrera</h1>
+        <p class="calc-intro">Calcula tu pace, velocidad y tiempo estimado para cualquier distancia.</p>
+        <div class="card">
+          
+<label>Distancia</label>
+<select id="rc-dist" onchange="calcRitmo()">
+  <option value="1">1 km</option>
+  <option value="5">5 km</option>
+  <option value="10">10 km</option>
+  <option value="21.097">Media maratón (21,097 km)</option>
+  <option value="42.195">Maratón (42,195 km)</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Horas</label>
+    <input type="number" id="rc-h" placeholder="0" oninput="calcRitmo()">
+  </div>
+  <div>
+    <label>Minutos</label>
+    <input type="number" id="rc-m" placeholder="25" oninput="calcRitmo()">
+  </div>
+</div>
+
+<label>Segundos</label>
+<input type="number" id="rc-s" placeholder="0" oninput="calcRitmo()">
+
+<div class="result-box" id="rc-res">Introduce la distancia y el tiempo</div>
+
+<script>
+function calcRitmo() {
+  const dist = parseFloat(document.getElementById('rc-dist').value);
+  const h = parseFloat(document.getElementById('rc-h').value) || 0;
+  const m = parseFloat(document.getElementById('rc-m').value) || 0;
+  const s = parseFloat(document.getElementById('rc-s').value) || 0;
+  const totalSeg = h * 3600 + m * 60 + s;
+  if (!totalSeg || !dist) return;
+  const paceSeg = totalSeg / dist;
+  const paceMin = Math.floor(paceSeg / 60);
+  const paceSec = Math.round(paceSeg % 60).toString().padStart(2, '0');
+  const vel = (dist / (totalSeg / 3600)).toFixed(2);
+  document.getElementById('rc-res').innerHTML =
+    `Pace: ${paceMin}:${paceSec} min/km<small>Velocidad media: ${vel} km/h</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el ritmo de carrera?</h2>
+          <p>El pace o ritmo de carrera es el tiempo que tardas en recorrer un kilómetro. Es la métrica más usada por los corredores para planificar entrenamientos y competiciones. Con esta calculadora puedes convertir entre pace, velocidad y tiempo total para cualquier distancia.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/fitness/calorias-quemadas/">🔥 Calorías quemadas</a></li>
+            
+            <li><a href="/calculadoras/salud/frecuencia-cardiaca/">❤️ Frecuencia cardíaca</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué pace necesito para hacer una maratón en menos de 4 horas?</summary>
+              <p>Para terminar una maratón (42,195 km) en menos de 4 horas necesitas mantener un pace inferior a 5:41 min/km.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuál es un buen pace para un principiante?</summary>
+              <p>Para alguien que empieza a correr, un pace entre 7:00 y 8:00 min/km es perfectamente normal y saludable.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo mejoro mi ritmo de carrera?</summary>
+              <p>Combinando rodajes suaves (80% del entrenamiento) con series de velocidad y carreras de tempo. La consistencia es más importante que la intensidad.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

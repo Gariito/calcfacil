@@ -1,0 +1,99 @@
+---
+layout: calculadora.njk
+title: Calculadora de ahorro — cuánto tiempo para llegar a tu objetivo
+description: Calcula cuánto tiempo necesitas para ahorrar una cantidad determinada según tu ahorro mensual.
+keywords: calculadora ahorro, tiempo para ahorrar, objetivo ahorro, cuanto ahorrar al mes
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de objetivo de ahorro
+icono: 🏦
+tituloCorto: el objetivo de ahorro
+descripcion: Calcula cuánto tiempo necesitas para alcanzar tu objetivo de ahorro o cuánto debes ahorrar al mes.
+explicacion: Ahorrar con un objetivo claro es mucho más efectivo que ahorrar sin rumbo. Esta calculadora te ayuda a planificar cuánto tiempo tardarás en alcanzar tu meta de ahorro según lo que puedes guardar cada mes, o bien cuánto necesitas ahorrar mensualmente para llegar a tu objetivo en un plazo concreto.
+faq:
+  - q: ¿Cuánto debería ahorrar cada mes?
+    a: La regla 50/30/20 sugiere destinar el 20% de tus ingresos netos al ahorro. Si ganas 1.500€ netos, serían 300€ al mes. Adapta el porcentaje a tu situación.
+  - q: ¿Merece la pena tener el ahorro en una cuenta remunerada?
+    a: Sí. Con los tipos de interés actuales, muchas cuentas de ahorro ofrecen entre el 2% y el 3% TAE. Para cantidades grandes y plazos largos, los intereses son significativos.
+  - q: ¿Qué es el fondo de emergencia?
+    a: Es un ahorro de entre 3 y 6 meses de gastos, guardado en un lugar accesible (cuenta corriente o cuenta de ahorro). Es el primer objetivo de ahorro recomendado antes de invertir.
+relacionadas:
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+---
+
+<label>Modo de cálculo</label>
+<select id="aho-modo" onchange="toggleAhorro()">
+  <option value="tiempo">¿Cuánto tiempo necesito?</option>
+  <option value="mensual">¿Cuánto debo ahorrar al mes?</option>
+</select>
+
+<label>Objetivo de ahorro (€)</label>
+<input type="number" id="aho-obj" placeholder="10000" oninput="calcAhorro()">
+
+<div id="aho-mensual-wrap">
+  <label>Ahorro mensual (€)</label>
+  <input type="number" id="aho-mes" placeholder="300" oninput="calcAhorro()">
+</div>
+
+<div id="aho-plazo-wrap" style="display:none">
+  <label>Plazo deseado (meses)</label>
+  <input type="number" id="aho-plazo" placeholder="24" oninput="calcAhorro()">
+</div>
+
+<label>Rentabilidad anual estimada (%)</label>
+<input type="number" id="aho-rent" placeholder="2" value="0" oninput="calcAhorro()">
+
+<label>Ahorro inicial (€)</label>
+<input type="number" id="aho-inicial" placeholder="0" value="0" oninput="calcAhorro()">
+
+<div class="result-box" id="aho-res">Introduce los datos</div>
+
+<script>
+function toggleAhorro() {
+  const modo = document.getElementById('aho-modo').value;
+  document.getElementById('aho-mensual-wrap').style.display = modo === 'tiempo' ? 'block' : 'none';
+  document.getElementById('aho-plazo-wrap').style.display = modo === 'mensual' ? 'block' : 'none';
+  calcAhorro();
+}
+function calcAhorro() {
+  const modo = document.getElementById('aho-modo').value;
+  const obj = parseFloat(document.getElementById('aho-obj').value);
+  const rent = (parseFloat(document.getElementById('aho-rent').value) || 0) / 100 / 12;
+  const inicial = parseFloat(document.getElementById('aho-inicial').value) || 0;
+  if (!obj) return;
+
+  if (modo === 'tiempo') {
+    const mes = parseFloat(document.getElementById('aho-mes').value);
+    if (!mes) return;
+    let acum = inicial, meses = 0;
+    while (acum < obj && meses < 1200) {
+      acum = acum * (1 + rent) + mes;
+      meses++;
+    }
+    const anos = Math.floor(meses / 12);
+    const restoMeses = meses % 12;
+    document.getElementById('aho-res').innerHTML =
+      `${anos > 0 ? anos + ' años y ' : ''}${restoMeses} meses
+      <small>Total ahorrado: ${acum.toFixed(0)} € · Intereses ganados: ${(acum - inicial - mes*meses).toFixed(0)} €</small>`;
+  } else {
+    const plazo = parseFloat(document.getElementById('aho-plazo').value);
+    if (!plazo) return;
+    let mes;
+    if (rent === 0) {
+      mes = (obj - inicial) / plazo;
+    } else {
+      mes = (obj - inicial * Math.pow(1+rent, plazo)) * rent / (Math.pow(1+rent, plazo) - 1);
+    }
+    document.getElementById('aho-res').innerHTML =
+      `${mes.toFixed(2)} €/mes
+      <small>Durante ${plazo} meses para llegar a ${obj.toLocaleString('es-ES')} €</small>`;
+  }
+}
+</script>

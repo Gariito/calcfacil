@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de sueldo neto desde bruto — España 2026 — CalcFácil</title>
+  <meta name="description" content="Calcula tu sueldo neto mensual a partir del salario bruto anual. Incluye IRPF y cotizaciones a la Seguridad Social.">
+  <meta name="keywords" content="calculadora sueldo neto, salario bruto neto, irpf nomina, cuanto cobro neto, salario neto españa">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/sueldo-neto/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de sueldo neto desde bruto — España 2026 — CalcFácil">
+  <meta property="og:description" content="Calcula tu sueldo neto mensual a partir del salario bruto anual. Incluye IRPF y cotizaciones a la Seguridad Social.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/sueldo-neto/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de sueldo neto desde bruto — España 2026",
+    "description": "Calcula tu sueldo neto mensual a partir del salario bruto anual. Incluye IRPF y cotizaciones a la Seguridad Social.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/sueldo-neto/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de sueldo neto</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💼 Calculadora de sueldo neto</h1>
+        <p class="calc-intro">Calcula tu salario neto mensual a partir del bruto anual, con IRPF y Seguridad Social.</p>
+        <div class="card">
+          
+<label>Salario bruto anual (€)</label>
+<input type="number" id="sn-bruto" placeholder="28000" oninput="calcSueldoNeto()">
+
+<label>Situación personal</label>
+<select id="sn-situacion" onchange="calcSueldoNeto()">
+  <option value="0">Soltero/a sin hijos</option>
+  <option value="1">Casado/a sin hijos</option>
+  <option value="2">Con 1 hijo</option>
+  <option value="3">Con 2 hijos</option>
+  <option value="4">Con 3 o más hijos</option>
+</select>
+
+<div class="result-box" id="sn-res">Introduce tu salario bruto anual</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">¿Qué significa cada concepto?</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Cotización Seguridad Social:</strong> El trabajador cotiza un 6,35% de su base de cotización (contingencias comunes 4,70%, desempleo 1,55%, formación 0,10%).</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Retención IRPF:</strong> Impuesto progresivo que va del 19% al 47% según el tramo de renta. La retención en nómina es un anticipo de lo que pagarás en la declaración anual.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Salario neto:</strong> Lo que realmente recibes en tu cuenta bancaria cada mes tras todas las deducciones.</p>
+</div>
+
+<script>
+function calcSueldoNeto() {
+  const bruto = parseFloat(document.getElementById('sn-bruto').value);
+  const sit = parseInt(document.getElementById('sn-situacion').value);
+  if (!bruto) return;
+
+  const ss = bruto * 0.0635;
+  const baseIRPF = bruto - ss;
+
+  // Mínimo personal y familiar aproximado
+  const minPersonal = 5550;
+  const minFamiliar = [0, 0, 2400, 4800, 8000][sit] || 0;
+  const minConyuge = sit === 1 ? 2550 : 0;
+  const baseL = Math.max(0, baseIRPF - minPersonal - minFamiliar - minConyuge);
+
+  // Tramos IRPF estatales + autonómicos aproximados (media nacional)
+  let irpf = 0;
+  const tramos = [
+    { hasta: 12450, tipo: 0.19 },
+    { hasta: 20200, tipo: 0.24 },
+    { hasta: 35200, tipo: 0.30 },
+    { hasta: 60000, tipo: 0.37 },
+    { hasta: 300000, tipo: 0.45 },
+    { hasta: Infinity, tipo: 0.47 }
+  ];
+  let resto = baseL, anterior = 0;
+  for (const t of tramos) {
+    if (resto <= 0) break;
+    const tramo = Math.min(resto, t.hasta - anterior);
+    irpf += tramo * t.tipo;
+    resto -= tramo;
+    anterior = t.hasta;
+  }
+
+  const neto = bruto - ss - irpf;
+  const pctIRPF = (irpf / bruto * 100).toFixed(1);
+
+  document.getElementById('sn-res').innerHTML =
+    `Neto anual: ${neto.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €
+    <small>
+    Neto mensual: ${(neto/12).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} € · 
+    IRPF: ${irpf.toFixed(0)} € (${pctIRPF}%) · 
+    S.S.: ${ss.toFixed(0)} €
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el sueldo neto?</h2>
+          <p>En España el salario bruto y el neto son cantidades muy diferentes. Del salario bruto se descuentan dos tipos de retenciones — las cotizaciones a la Seguridad Social (aproximadamente un 6,35% del trabajador) y la retención del IRPF, que varía según el salario y la situación personal. Esta calculadora usa tablas aproximadas de IRPF para 2026.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/irpf/">🧾 Calculadora de IRPF</a></li>
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué diferencia hay entre salario bruto y neto?</summary>
+              <p>El salario bruto es el total que cuesta el trabajador a la empresa antes de impuestos. El neto es lo que realmente ingresas en tu cuenta después de descontar IRPF y cotizaciones a la Seguridad Social.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto me retienen de IRPF con 30.000€ brutos?</summary>
+              <p>Con 30.000€ brutos anuales, la retención de IRPF suele rondar el 15-17% dependiendo de tu situación personal (hijos, discapacidad, etc.). El resultado neto anual aproximado es de 23.000-24.500€.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo cambiar mi retención de IRPF?</summary>
+              <p>Sí, puedes solicitar a tu empresa que aplique un porcentaje mayor (para no pagar en la declaración) o menor (si cumples requisitos). Se hace con el modelo 145.</p>
+            </details>
+            
+            <details>
+              <summary>¿El cálculo es exacto?</summary>
+              <p>Es una estimación. El IRPF exacto depende de tu situación personal, comunidad autónoma, deducciones y otros ingresos. Para el cálculo oficial usa el simulador de la Agencia Tributaria.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

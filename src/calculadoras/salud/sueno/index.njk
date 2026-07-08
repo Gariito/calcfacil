@@ -1,0 +1,81 @@
+---
+layout: calculadora.njk
+title: Calculadora de sueño — a qué hora despertarse o acostarse
+description: Calcula la hora ideal para despertarte o acostarte según los ciclos de sueño REM para despertar descansado.
+keywords: calculadora sueño, ciclos sueño, hora despertar, cuantas horas dormir, sueño rem
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de ciclos de sueño
+icono: 😴
+tituloCorto: los ciclos de sueño
+descripcion: Calcula la hora ideal para acostarte o despertarte según tus ciclos de sueño.
+explicacion: El sueño se organiza en ciclos de aproximadamente 90 minutos, cada uno con fases de sueño ligero, profundo y REM. Despertarse al final de un ciclo completo —en lugar de en medio— hace que te sientas mucho más descansado. Esta calculadora te indica las horas óptimas para levantarte o acostarte.
+faq:
+  - q: ¿Cuántos ciclos de sueño necesito?
+    a: Lo ideal para la mayoría de adultos es completar 5 o 6 ciclos por noche (7,5 a 9 horas). Con 4 ciclos (6 horas) puedes funcionar, pero no es lo recomendable a largo plazo.
+  - q: ¿Qué es el sueño REM?
+    a: El sueño REM (Rapid Eye Movement) es la fase en que ocurren la mayoría de los sueños. Es crucial para la memoria, el aprendizaje y la regulación emocional. Ocupa unos 20-25% del tiempo total de sueño.
+  - q: ¿Por qué a veces me despierto cansado aunque haya dormido 8 horas?
+    a: Probablemente porque tu alarma te interrumpió en medio de un ciclo de sueño profundo. Despertarse en sueño ligero (al final del ciclo) es mucho más fácil y reparador.
+  - q: ¿Cuánto tarda una persona en dormirse?
+    a: La media es de unos 14 minutos. Esta calculadora añade 15 minutos al tiempo de inicio para tenerlo en cuenta.
+relacionadas:
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardíaca
+    icono: ❤️
+---
+
+<label>¿Qué quieres calcular?</label>
+<select id="sue-modo" onchange="toggleSueno()">
+  <option value="despertar">Me acuesto ahora → ¿a qué hora despertarme?</option>
+  <option value="acostar">Quiero levantarme a → ¿a qué hora acostarme?</option>
+</select>
+
+<div id="sue-hora-wrap">
+  <label id="sue-hora-label">Hora a la que te vas a acostar</label>
+  <input type="time" id="sue-hora" oninput="calcSueno()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+</div>
+
+<div class="result-box" id="sue-res">Introduce la hora</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Recomendaciones de sueño por edad</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">👶 <strong>Bebés (0-12 meses):</strong> 12-16 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧒 <strong>Niños (6-12 años):</strong> 9-12 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧑 <strong>Adolescentes (13-18 años):</strong> 8-10 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧑‍💼 <strong>Adultos (18-64 años):</strong> 7-9 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted)">👴 <strong>Mayores de 65 años:</strong> 7-8 horas</p>
+</div>
+
+<script>
+function toggleSueno() {
+  const modo = document.getElementById('sue-modo').value;
+  document.getElementById('sue-hora-label').textContent =
+    modo === 'despertar' ? 'Hora a la que te vas a acostar' : 'Hora a la que quieres levantarte';
+  calcSueno();
+}
+function calcSueno() {
+  const modo = document.getElementById('sue-modo').value;
+  const horaVal = document.getElementById('sue-hora').value;
+  if (!horaVal) return;
+  const [h, m] = horaVal.split(':').map(Number);
+  const base = h * 60 + m + 15; // 15 min para dormirse
+  const ciclo = 90;
+  const horas = [];
+  for (let i = 4; i <= 6; i++) {
+    const total = modo === 'despertar' ? base + i * ciclo : base - i * ciclo;
+    const min = ((total % 1440) + 1440) % 1440;
+    const hh = String(Math.floor(min / 60)).padStart(2, '0');
+    const mm = String(min % 60).padStart(2, '0');
+    horas.push(`${hh}:${mm} (${i} ciclos, ${i * 1.5}h)`);
+  }
+  const label = modo === 'despertar' ? 'Horas ideales para despertarte' : 'Horas ideales para acostarte';
+  document.getElementById('sue-res').innerHTML =
+    `${label}:<small>${horas.join(' · ')}</small>`;
+}
+</script>

@@ -1,0 +1,70 @@
+---
+layout: calculadora.njk
+title: Calculadora de peso ideal según altura
+description: Calcula tu peso ideal según tu altura y sexo usando las fórmulas de Lorentz, Devine y Hamwi.
+keywords: calculadora peso ideal, peso ideal altura, cuanto deberia pesar, peso saludable
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de peso ideal
+icono: ⚖️
+tituloCorto: el peso ideal
+descripcion: Calcula tu peso ideal según tu altura y sexo con las fórmulas más usadas en medicina.
+explicacion: El peso ideal es el rango de peso asociado a una mejor salud para una altura y complexión determinadas. No existe una fórmula única — esta calculadora muestra los resultados de las tres fórmulas más usadas en medicina (Lorentz, Devine y Hamwi) para darte un rango orientativo. Recuerda que el peso ideal es solo una referencia y que la composición corporal importa más que el número en la báscula.
+faq:
+  - q: ¿Cuál es la fórmula más fiable para el peso ideal?
+    a: No hay una sola fórmula perfecta. La de Lorentz es la más usada en Europa. La de Devine es habitual en farmacología. Lo más importante es mantener un IMC entre 18,5 y 24,9.
+  - q: ¿El peso ideal es el mismo para todo el mundo con la misma altura?
+    a: No. Influye la complexión ósea, la masa muscular y otros factores individuales. Las fórmulas dan rangos orientativos, no valores exactos.
+  - q: ¿Debo preocuparme si estoy fuera del peso ideal?
+    a: El peso ideal es solo una referencia. Lo más importante es el estado general de salud, la composición corporal y los hábitos de vida. Consulta con tu médico si tienes dudas.
+relacionadas:
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+---
+
+<div class="row-2">
+  <div>
+    <label>Altura (cm)</label>
+    <input type="number" id="pi-altura" placeholder="170" oninput="calcPesoIdeal()">
+  </div>
+  <div>
+    <label>Sexo</label>
+    <select id="pi-sexo" onchange="calcPesoIdeal()">
+      <option value="h">Hombre</option>
+      <option value="m">Mujer</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="pi-res">Introduce tu altura</div>
+
+<script>
+function calcPesoIdeal() {
+  const h = parseFloat(document.getElementById('pi-altura').value);
+  const sexo = document.getElementById('pi-sexo').value;
+  if (!h) return;
+  const hm = h / 100;
+  const hpulgadas = (h - 152.4) / 2.54;
+
+  const lorentz = sexo==='h' ? h - 100 - (h-150)/4 : h - 100 - (h-150)/2;
+  const devine = sexo==='h' ? 50 + 2.3 * hpulgadas : 45.5 + 2.3 * hpulgadas;
+  const hamwi = sexo==='h' ? 48 + 2.7 * hpulgadas : 45.4 + 2.2 * hpulgadas;
+
+  const imcMin = 18.5 * hm * hm;
+  const imcMax = 24.9 * hm * hm;
+
+  document.getElementById('pi-res').innerHTML =
+    `Rango saludable: ${imcMin.toFixed(1)} – ${imcMax.toFixed(1)} kg
+    <small>
+    Lorentz: ${lorentz.toFixed(1)} kg · 
+    Devine: ${devine.toFixed(1)} kg · 
+    Hamwi: ${hamwi.toFixed(1)} kg
+    </small>`;
+}
+</script>

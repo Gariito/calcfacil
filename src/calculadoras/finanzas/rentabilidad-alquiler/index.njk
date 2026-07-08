@@ -1,0 +1,66 @@
+---
+layout: calculadora.njk
+title: Calculadora de rentabilidad de alquiler
+description: Calcula la rentabilidad bruta y neta de un piso en alquiler según el precio de compra y el alquiler mensual.
+keywords: rentabilidad alquiler, calcular rentabilidad piso, inversion inmobiliaria, yield alquiler
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de rentabilidad de alquiler
+icono: 🏘️
+tituloCorto: la rentabilidad del alquiler
+descripcion: Calcula la rentabilidad bruta y neta de una inversión inmobiliaria en alquiler.
+explicacion: La rentabilidad del alquiler mide el retorno anual de una inversión inmobiliaria en relación a su coste. La rentabilidad bruta solo considera los ingresos por alquiler. La neta descuenta los gastos (IBI, comunidad, seguro, mantenimiento, vacíos) y los impuestos, dando una visión más realista de la inversión.
+faq:
+  - q: ¿Qué rentabilidad de alquiler es buena en España?
+    a: En España se considera buena una rentabilidad bruta superior al 5-6%. En ciudades como Madrid o Barcelona suele estar entre el 3% y el 5% por los altos precios de compra. En ciudades medianas puede superar el 7-8%.
+  - q: ¿Qué gastos debo tener en cuenta?
+    a: IBI (impuesto de bienes inmuebles), comunidad de propietarios, seguro del hogar, mantenimiento y reparaciones, períodos sin inquilino (vacíos) y la gestión si usas una agencia.
+  - q: ¿Cómo tributa el alquiler en el IRPF?
+    a: Los ingresos por alquiler de vivienda habitual tienen una reducción del 60% en el IRPF. Es decir, solo tributas por el 40% de los ingresos netos.
+relacionadas:
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+---
+
+<label>Precio de compra del inmueble (€)</label>
+<input type="number" id="alq-precio" placeholder="180000" oninput="calcAlquiler()">
+
+<label>Gastos de compra — notaría, impuestos, reforma (€)</label>
+<input type="number" id="alq-gastos" placeholder="18000" oninput="calcAlquiler()">
+
+<label>Alquiler mensual (€)</label>
+<input type="number" id="alq-mes" placeholder="800" oninput="calcAlquiler()">
+
+<label>Gastos anuales — IBI, comunidad, seguro (€)</label>
+<input type="number" id="alq-gast-an" placeholder="1500" oninput="calcAlquiler()">
+
+<label>Meses al año sin inquilino (vacíos)</label>
+<input type="number" id="alq-vacios" placeholder="1" value="1" oninput="calcAlquiler()">
+
+<div class="result-box" id="alq-res">Introduce los datos del inmueble</div>
+
+<script>
+function calcAlquiler() {
+  const precio = parseFloat(document.getElementById('alq-precio').value);
+  const gastos = parseFloat(document.getElementById('alq-gastos').value) || 0;
+  const mes = parseFloat(document.getElementById('alq-mes').value);
+  const gastosAn = parseFloat(document.getElementById('alq-gast-an').value) || 0;
+  const vacios = parseFloat(document.getElementById('alq-vacios').value) || 0;
+  if (!precio || !mes) return;
+
+  const inversion = precio + gastos;
+  const ingresosAn = mes * (12 - vacios);
+  const rentBruta = (mes * 12 / precio) * 100;
+  const rentNeta = ((ingresosAn - gastosAn) / inversion) * 100;
+
+  document.getElementById('alq-res').innerHTML =
+    `Rentabilidad bruta: ${rentBruta.toFixed(2)}%
+    <small>Rentabilidad neta: ${rentNeta.toFixed(2)}% · Ingresos anuales: ${ingresosAn.toFixed(0)} € · Inversión total: ${inversion.toLocaleString('es-ES')} €</small>`;
+}
+</script>

@@ -1,0 +1,102 @@
+---
+layout: calculadora.njk
+title: Calculadora online gratis — básica y sencilla
+description: Calculadora online gratuita para operaciones básicas. Suma, resta, multiplicación y división al instante desde el navegador.
+keywords: calculadora online, calculadora gratis, calculadora basica, calculadora web, calculadora sin descargar
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora básica online
+icono: 🔢
+tituloCorto: la calculadora básica
+descripcion: Calculadora online gratuita para sumas, restas, multiplicaciones y divisiones al instante.
+explicacion: Una calculadora online siempre disponible desde el navegador, sin descargas ni instalaciones. Perfecta para operaciones cotidianas rápidas desde el móvil o el ordenador. Puedes usarla tanto con el ratón como con el teclado numérico.
+faq:
+  - q: ¿Puedo usar el teclado con esta calculadora?
+    a: Sí. Puedes escribir números y operaciones directamente con el teclado numérico. Pulsa Enter para obtener el resultado.
+  - q: ¿Guarda el historial de operaciones?
+    a: Muestra la operación actual en la pantalla. Para operaciones largas, te recomendamos anotar los resultados intermedios.
+  - q: ¿Funciona en el móvil?
+    a: Sí, está completamente adaptada para pantallas táctiles.
+relacionadas:
+  - slug: calculadora-cientifica
+    categoria: dia-a-dia
+    titulo: Calculadora científica
+    icono: 🔬
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<div class="calc-display">
+  <div class="expr" id="cb-expr"></div>
+  <div class="val" id="cb-val">0</div>
+</div>
+
+<div class="kbd-grid">
+  <button class="clr" onclick="cbAc()">AC</button>
+  <button class="op" onclick="cbOp('+/-')">+/-</button>
+  <button class="op" onclick="cbOp('%')">%</button>
+  <button class="op" onclick="cbOp('÷')">÷</button>
+
+  <button onclick="cbNum('7')">7</button>
+  <button onclick="cbNum('8')">8</button>
+  <button onclick="cbNum('9')">9</button>
+  <button class="op" onclick="cbOp('×')">×</button>
+
+  <button onclick="cbNum('4')">4</button>
+  <button onclick="cbNum('5')">5</button>
+  <button onclick="cbNum('6')">6</button>
+  <button class="op" onclick="cbOp('−')">−</button>
+
+  <button onclick="cbNum('1')">1</button>
+  <button onclick="cbNum('2')">2</button>
+  <button onclick="cbNum('3')">3</button>
+  <button class="op" onclick="cbOp('+')">+</button>
+
+  <button style="grid-column:span 2" onclick="cbNum('0')">0</button>
+  <button onclick="cbDot()">.</button>
+  <button class="eq" onclick="cbEq()">=</button>
+</div>
+
+<script>
+let cb = { v:'0', expr:'', op:null, newN:true };
+function cbDisp() {
+  document.getElementById('cb-val').textContent = cb.v;
+  document.getElementById('cb-expr').textContent = cb.expr;
+}
+function cbNum(d) {
+  if (cb.newN) { cb.v = d; cb.newN = false; }
+  else cb.v = cb.v === '0' ? d : cb.v + d;
+  cbDisp();
+}
+function cbDot() {
+  if (!cb.v.includes('.')) { cb.v += '.'; cb.newN = false; }
+  cbDisp();
+}
+function cbAc() { cb = {v:'0',expr:'',op:null,newN:true}; cbDisp(); }
+function cbOp(o) {
+  if (o==='+/-') { cb.v = String(-(parseFloat(cb.v)||0)); cbDisp(); return; }
+  if (o==='%') { cb.v = String(parseFloat(cb.v)/100); cbDisp(); return; }
+  cbEq();
+  cb.op = o; cb.expr = cb.v+' '+o; cb.newN = true; cbDisp();
+}
+function cbEq() {
+  if (!cb.op) return;
+  const a = parseFloat(cb.expr), b = parseFloat(cb.v);
+  const r = cb.op==='+'?a+b:cb.op==='−'?a-b:cb.op==='×'?a*b:b!==0?a/b:'Error';
+  cb = {v:typeof r==='number'?String(parseFloat(r.toFixed(10))):r,expr:'',op:null,newN:true};
+  cbDisp();
+}
+document.addEventListener('keydown', e => {
+  if ('0123456789'.includes(e.key)) cbNum(e.key);
+  else if (e.key==='.') cbDot();
+  else if (e.key==='Enter'||e.key==='=') cbEq();
+  else if (e.key==='+') cbOp('+');
+  else if (e.key==='-') cbOp('−');
+  else if (e.key==='*') cbOp('×');
+  else if (e.key==='/') { e.preventDefault(); cbOp('÷'); }
+  else if (e.key==='Escape') cbAc();
+  else if (e.key==='Backspace') { cb.v=cb.v.length>1?cb.v.slice(0,-1):'0'; cbDisp(); }
+});
+</script>

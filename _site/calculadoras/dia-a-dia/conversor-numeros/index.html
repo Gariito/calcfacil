@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de números — decimal, binario, hexadecimal y octal — CalcFácil</title>
+  <meta name="description" content="Convierte números entre sistema decimal, binario, hexadecimal y octal al instante.">
+  <meta name="keywords" content="conversor binario decimal, decimal a hexadecimal, binario a decimal, sistema numerico">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/conversor-numeros/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de números — decimal, binario, hexadecimal y octal — CalcFácil">
+  <meta property="og:description" content="Convierte números entre sistema decimal, binario, hexadecimal y octal al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/conversor-numeros/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de números — decimal, binario, hexadecimal y octal",
+    "description": "Convierte números entre sistema decimal, binario, hexadecimal y octal al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/conversor-numeros/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Conversor de sistemas numéricos</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔣 Conversor de sistemas numéricos</h1>
+        <p class="calc-intro">Convierte entre decimal, binario, hexadecimal y octal al instante.</p>
+        <div class="card">
+          
+<label>Introduce un número y su base</label>
+<div class="row-2">
+  <div>
+    <label>Número</label>
+    <input type="text" id="cn-num" placeholder="255" oninput="calcConvNum()">
+  </div>
+  <div>
+    <label>Base de origen</label>
+    <select id="cn-base" onchange="calcConvNum()">
+      <option value="10">Decimal (base 10)</option>
+      <option value="2">Binario (base 2)</option>
+      <option value="16">Hexadecimal (base 16)</option>
+      <option value="8">Octal (base 8)</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="cn-res">Introduce un número</div>
+
+<script>
+function calcConvNum() {
+  const num = document.getElementById('cn-num').value.trim().toUpperCase();
+  const base = parseInt(document.getElementById('cn-base').value);
+  if (!num) return;
+  const decimal = parseInt(num, base);
+  if (isNaN(decimal)) { document.getElementById('cn-res').textContent = 'Número no válido para esa base'; return; }
+  document.getElementById('cn-res').innerHTML =
+    `Decimal: ${decimal}
+    <small>
+    Binario: ${decimal.toString(2)} · 
+    Octal: ${decimal.toString(8)} · 
+    Hexadecimal: ${decimal.toString(16).toUpperCase()}
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el conversor de sistemas numéricos?</h2>
+          <p>Los sistemas numéricos son formas diferentes de representar el mismo número. El decimal (base 10) es el que usamos en el día a día. El binario (base 2) es el que usan los ordenadores. El hexadecimal (base 16) se usa en programación y colores web. El octal (base 8) se usa en sistemas Unix.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-cientifica/">🔬 Calculadora científica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué es el sistema binario?</summary>
+              <p>Es un sistema numérico de base 2 que solo usa los dígitos 0 y 1. Es el lenguaje base de todos los ordenadores y dispositivos digitales.</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué se usa el hexadecimal?</summary>
+              <p>En programación para representar colores (por ejemplo</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo convierto 255 a binario?</summary>
+              <p>255 en binario es 11111111, en hexadecimal es FF y en octal es 377.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

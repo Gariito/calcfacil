@@ -1,0 +1,104 @@
+---
+layout: calculadora.njk
+title: Calculadora de metros cuadrados de una habitación
+description: Calcula los metros cuadrados de una habitación, pared o superficie rectangular o circular al instante.
+keywords: calcular metros cuadrados, m2 habitacion, metros cuadrados pared, superficie rectangular
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora de metros cuadrados
+icono: 📐
+tituloCorto: los metros cuadrados
+descripcion: Calcula los metros cuadrados de habitaciones, paredes y superficies de diferentes formas.
+explicacion: Calcular los metros cuadrados de una superficie es imprescindible para presupuestar reformas, comprar materiales o comparar pisos. Esta calculadora permite calcular el área de superficies rectangulares, triangulares y circulares de forma rápida y sencilla.
+faq:
+  - q: ¿Cómo calculo los m² de una habitación rectangular?
+    a: Multiplica el ancho por el largo en metros. Por ejemplo, una habitación de 3,5m x 4m tiene 14 m².
+  - q: ¿Cómo calculo los m² de una pared?
+    a: Multiplica el ancho de la pared por su altura. Si la pared mide 4m de ancho y 2,5m de alto, tiene 10 m².
+  - q: ¿Puedo calcular superficies irregulares?
+    a: Para superficies irregulares, divídelas en rectángulos o triángulos, calcula el área de cada parte y súmalas.
+relacionadas:
+  - slug: pintura
+    categoria: hogar
+    titulo: Calculadora de pintura
+    icono: 🎨
+  - slug: azulejos
+    categoria: hogar
+    titulo: Calculadora de azulejos
+    icono: 🔲
+---
+
+<label>Forma de la superficie</label>
+<select id="mc-forma" onchange="toggleForma()">
+  <option value="rect">Rectangular / cuadrada</option>
+  <option value="tri">Triangular</option>
+  <option value="circ">Circular</option>
+  <option value="trap">Trapezoidal</option>
+</select>
+
+<div id="mc-rect">
+  <div class="row-2">
+    <div><label>Ancho (m)</label><input type="number" id="mc-a" placeholder="4" oninput="calcMC()"></div>
+    <div><label>Largo (m)</label><input type="number" id="mc-l" placeholder="5" oninput="calcMC()"></div>
+  </div>
+</div>
+
+<div id="mc-tri" style="display:none">
+  <div class="row-2">
+    <div><label>Base (m)</label><input type="number" id="mc-tb" placeholder="4" oninput="calcMC()"></div>
+    <div><label>Altura (m)</label><input type="number" id="mc-th" placeholder="3" oninput="calcMC()"></div>
+  </div>
+</div>
+
+<div id="mc-circ" style="display:none">
+  <label>Radio (m)</label>
+  <input type="number" id="mc-r" placeholder="2.5" oninput="calcMC()">
+</div>
+
+<div id="mc-trap" style="display:none">
+  <div class="row-2">
+    <div><label>Base mayor (m)</label><input type="number" id="mc-b1" placeholder="6" oninput="calcMC()"></div>
+    <div><label>Base menor (m)</label><input type="number" id="mc-b2" placeholder="4" oninput="calcMC()"></div>
+  </div>
+  <label>Altura (m)</label>
+  <input type="number" id="mc-h" placeholder="3" oninput="calcMC()">
+</div>
+
+<div class="result-box" id="mc-res">Introduce las medidas</div>
+
+<script>
+function toggleForma() {
+  const f = document.getElementById('mc-forma').value;
+  ['rect','tri','circ','trap'].forEach(id => {
+    document.getElementById('mc-'+id).style.display = id===f ? 'block' : 'none';
+  });
+  calcMC();
+}
+function calcMC() {
+  const f = document.getElementById('mc-forma').value;
+  let area;
+  if (f==='rect') {
+    const a = parseFloat(document.getElementById('mc-a').value);
+    const l = parseFloat(document.getElementById('mc-l').value);
+    if (!a||!l) return;
+    area = a * l;
+  } else if (f==='tri') {
+    const b = parseFloat(document.getElementById('mc-tb').value);
+    const h = parseFloat(document.getElementById('mc-th').value);
+    if (!b||!h) return;
+    area = b * h / 2;
+  } else if (f==='circ') {
+    const r = parseFloat(document.getElementById('mc-r').value);
+    if (!r) return;
+    area = Math.PI * r * r;
+  } else {
+    const b1 = parseFloat(document.getElementById('mc-b1').value);
+    const b2 = parseFloat(document.getElementById('mc-b2').value);
+    const h = parseFloat(document.getElementById('mc-h').value);
+    if (!b1||!b2||!h) return;
+    area = (b1+b2)/2 * h;
+  }
+  document.getElementById('mc-res').innerHTML =
+    `${area.toFixed(4)} m²<small>${area.toFixed(2)} m² · ${(area*10000).toFixed(0)} cm²</small>`;
+}
+</script>

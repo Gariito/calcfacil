@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calculadorasgratis.net/sitemap.xml

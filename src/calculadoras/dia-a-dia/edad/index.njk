@@ -1,0 +1,61 @@
+---
+layout: calculadora.njk
+title: Calculadora de edad — cuántos años tienes exactamente
+description: Calcula tu edad exacta en años, meses y días a partir de tu fecha de nacimiento.
+keywords: calculadora edad, cuantos años tengo, calcular edad exacta, años meses dias
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Calculadora de edad
+icono: 🎂
+tituloCorto: la edad exacta
+descripcion: Calcula tu edad exacta en años, meses y días a partir de tu fecha de nacimiento.
+explicacion: Esta calculadora calcula tu edad exacta al día de hoy en años, meses y días. También te dice cuántos días faltan para tu próximo cumpleaños. Solo necesitas introducir tu fecha de nacimiento.
+faq:
+  - q: ¿Cómo se calcula la edad exacta?
+    a: Se calcula restando la fecha de nacimiento a la fecha actual, teniendo en cuenta los meses y días exactos, no solo los años completos.
+  - q: ¿Puedo calcular la edad de otra persona?
+    a: Sí, simplemente introduce su fecha de nacimiento en lugar de la tuya.
+  - q: ¿Tiene en cuenta los años bisiestos?
+    a: Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente.
+relacionadas:
+  - slug: dias-entre-fechas
+    categoria: dia-a-dia
+    titulo: Días entre fechas
+    icono: 📅
+  - slug: sueno
+    categoria: salud
+    titulo: Calculadora de sueño
+    icono: 😴
+---
+
+<label>Fecha de nacimiento</label>
+<input type="date" id="edad-fecha" oninput="calcEdad()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+
+<div class="result-box" id="edad-res">Introduce tu fecha de nacimiento</div>
+
+<script>
+function calcEdad() {
+  const val = document.getElementById('edad-fecha').value;
+  if (!val) return;
+  const hoy = new Date();
+  const nac = new Date(val);
+  if (nac > hoy) { document.getElementById('edad-res').textContent = 'La fecha es futura'; return; }
+
+  let anos = hoy.getFullYear() - nac.getFullYear();
+  let meses = hoy.getMonth() - nac.getMonth();
+  let dias = hoy.getDate() - nac.getDate();
+
+  if (dias < 0) { meses--; dias += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate(); }
+  if (meses < 0) { anos--; meses += 12; }
+
+  const cumple = new Date(hoy.getFullYear(), nac.getMonth(), nac.getDate());
+  if (cumple < hoy) cumple.setFullYear(hoy.getFullYear() + 1);
+  const diasCumple = Math.round((cumple - hoy) / 86400000);
+
+  const totalDias = Math.round((hoy - nac) / 86400000);
+
+  document.getElementById('edad-res').innerHTML =
+    `${anos} años, ${meses} meses y ${dias} días
+    <small>${totalDias.toLocaleString('es-ES')} días vividos · Próximo cumpleaños en ${diasCumple} días</small>`;
+}
+</script>

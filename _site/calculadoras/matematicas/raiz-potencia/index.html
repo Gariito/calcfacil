@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de raíz cuadrada y potencias — CalcFácil</title>
+  <meta name="description" content="Calcula raíces cuadradas, cúbicas y potencias de cualquier número al instante.">
+  <meta name="keywords" content="raiz cuadrada, potencias, calculadora raiz, elevar al cuadrado">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/matematicas/raiz-potencia/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de raíz cuadrada y potencias — CalcFácil">
+  <meta property="og:description" content="Calcula raíces cuadradas, cúbicas y potencias de cualquier número al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/matematicas/raiz-potencia/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de raíz cuadrada y potencias",
+    "description": "Calcula raíces cuadradas, cúbicas y potencias de cualquier número al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/matematicas/raiz-potencia/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <span>›</span>
+      <span>Calculadora de raíz y potencias</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>√ Calculadora de raíz y potencias</h1>
+        <p class="calc-intro">Calcula raíces cuadradas, cúbicas y potencias de cualquier número.</p>
+        <div class="card">
+          
+<label>Número</label>
+<input type="number" id="rp-num" placeholder="25" oninput="calcRP()">
+
+<label>Operación</label>
+<select id="rp-op" onchange="calcRP()">
+  <option value="sqrt">Raíz cuadrada (√x)</option>
+  <option value="cbrt">Raíz cúbica (∛x)</option>
+  <option value="sq">Al cuadrado (x²)</option>
+  <option value="cb">Al cubo (x³)</option>
+  <option value="pow">Potencia personalizada (xⁿ)</option>
+</select>
+
+<div id="rp-exp-wrap" style="display:none">
+  <label>Exponente (n)</label>
+  <input type="number" id="rp-exp" placeholder="4" oninput="calcRP()">
+</div>
+
+<div class="result-box" id="rp-res">Introduce un número</div>
+
+<script>
+function calcRP() {
+  const n = parseFloat(document.getElementById('rp-num').value);
+  const op = document.getElementById('rp-op').value;
+  document.getElementById('rp-exp-wrap').style.display = op === 'pow' ? 'block' : 'none';
+  if (isNaN(n)) return;
+  let r, label;
+  if (op === 'sqrt') { r = Math.sqrt(n); label = `√${n}`; }
+  else if (op === 'cbrt') { r = Math.cbrt(n); label = `∛${n}`; }
+  else if (op === 'sq') { r = n * n; label = `${n}²`; }
+  else if (op === 'cb') { r = n * n * n; label = `${n}³`; }
+  else {
+    const exp = parseFloat(document.getElementById('rp-exp').value);
+    if (isNaN(exp)) return;
+    r = Math.pow(n, exp); label = `${n}^${exp}`;
+  }
+  document.getElementById('rp-res').innerHTML =
+    `${label} = ${parseFloat(r.toFixed(10)).toLocaleString('es-ES', {maximumFractionDigits:8})}`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es raíces y potencias?</h2>
+          <p>Las raíces y potencias son operaciones matemáticas fundamentales. La raíz cuadrada de un número es el valor que multiplicado por sí mismo da ese número. Las potencias expresan la multiplicación repetida de un número por sí mismo. Ambas operaciones son inversas entre sí.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">📏 Regla de tres</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuál es la raíz cuadrada de 2?</summary>
+              <p>La raíz cuadrada de 2 es aproximadamente 1,41421356. Es un número irracional, lo que significa que sus decimales no terminan ni se repiten.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es un número al cuadrado?</summary>
+              <p>Un número al cuadrado es ese número multiplicado por sí mismo. Por ejemplo, 5² = 5 × 5 = 25.</p>
+            </details>
+            
+            <details>
+              <summary>¿Se puede calcular la raíz cuadrada de un número negativo?</summary>
+              <p>En los números reales no. La raíz cuadrada de un número negativo pertenece al conjunto de los números complejos (números imaginarios).</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

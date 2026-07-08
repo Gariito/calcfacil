@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de sueño — a qué hora despertarse o acostarse — CalcFácil</title>
+  <meta name="description" content="Calcula la hora ideal para despertarte o acostarte según los ciclos de sueño REM para despertar descansado.">
+  <meta name="keywords" content="calculadora sueño, ciclos sueño, hora despertar, cuantas horas dormir, sueño rem">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/sueno/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de sueño — a qué hora despertarse o acostarse — CalcFácil">
+  <meta property="og:description" content="Calcula la hora ideal para despertarte o acostarte según los ciclos de sueño REM para despertar descansado.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/sueno/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de sueño — a qué hora despertarse o acostarse",
+    "description": "Calcula la hora ideal para despertarte o acostarte según los ciclos de sueño REM para despertar descansado.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/sueno/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de ciclos de sueño</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>😴 Calculadora de ciclos de sueño</h1>
+        <p class="calc-intro">Calcula la hora ideal para acostarte o despertarte según tus ciclos de sueño.</p>
+        <div class="card">
+          
+<label>¿Qué quieres calcular?</label>
+<select id="sue-modo" onchange="toggleSueno()">
+  <option value="despertar">Me acuesto ahora → ¿a qué hora despertarme?</option>
+  <option value="acostar">Quiero levantarme a → ¿a qué hora acostarme?</option>
+</select>
+
+<div id="sue-hora-wrap">
+  <label id="sue-hora-label">Hora a la que te vas a acostar</label>
+  <input type="time" id="sue-hora" oninput="calcSueno()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+</div>
+
+<div class="result-box" id="sue-res">Introduce la hora</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Recomendaciones de sueño por edad</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">👶 <strong>Bebés (0-12 meses):</strong> 12-16 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧒 <strong>Niños (6-12 años):</strong> 9-12 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧑 <strong>Adolescentes (13-18 años):</strong> 8-10 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.4rem">🧑‍💼 <strong>Adultos (18-64 años):</strong> 7-9 horas</p>
+  <p style="font-size:0.875rem;color:var(--muted)">👴 <strong>Mayores de 65 años:</strong> 7-8 horas</p>
+</div>
+
+<script>
+function toggleSueno() {
+  const modo = document.getElementById('sue-modo').value;
+  document.getElementById('sue-hora-label').textContent =
+    modo === 'despertar' ? 'Hora a la que te vas a acostar' : 'Hora a la que quieres levantarte';
+  calcSueno();
+}
+function calcSueno() {
+  const modo = document.getElementById('sue-modo').value;
+  const horaVal = document.getElementById('sue-hora').value;
+  if (!horaVal) return;
+  const [h, m] = horaVal.split(':').map(Number);
+  const base = h * 60 + m + 15; // 15 min para dormirse
+  const ciclo = 90;
+  const horas = [];
+  for (let i = 4; i <= 6; i++) {
+    const total = modo === 'despertar' ? base + i * ciclo : base - i * ciclo;
+    const min = ((total % 1440) + 1440) % 1440;
+    const hh = String(Math.floor(min / 60)).padStart(2, '0');
+    const mm = String(min % 60).padStart(2, '0');
+    horas.push(`${hh}:${mm} (${i} ciclos, ${i * 1.5}h)`);
+  }
+  const label = modo === 'despertar' ? 'Horas ideales para despertarte' : 'Horas ideales para acostarte';
+  document.getElementById('sue-res').innerHTML =
+    `${label}:<small>${horas.join(' · ')}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los ciclos de sueño?</h2>
+          <p>El sueño se organiza en ciclos de aproximadamente 90 minutos, cada uno con fases de sueño ligero, profundo y REM. Despertarse al final de un ciclo completo —en lugar de en medio— hace que te sientas mucho más descansado. Esta calculadora te indica las horas óptimas para levantarte o acostarte.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+            <li><a href="/calculadoras/salud/frecuencia-cardiaca/">❤️ Frecuencia cardíaca</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos ciclos de sueño necesito?</summary>
+              <p>Lo ideal para la mayoría de adultos es completar 5 o 6 ciclos por noche (7,5 a 9 horas). Con 4 ciclos (6 horas) puedes funcionar, pero no es lo recomendable a largo plazo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es el sueño REM?</summary>
+              <p>El sueño REM (Rapid Eye Movement) es la fase en que ocurren la mayoría de los sueños. Es crucial para la memoria, el aprendizaje y la regulación emocional. Ocupa unos 20-25% del tiempo total de sueño.</p>
+            </details>
+            
+            <details>
+              <summary>¿Por qué a veces me despierto cansado aunque haya dormido 8 horas?</summary>
+              <p>Probablemente porque tu alarma te interrumpió en medio de un ciclo de sueño profundo. Despertarse en sueño ligero (al final del ciclo) es mucho más fácil y reparador.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto tarda una persona en dormirse?</summary>
+              <p>La media es de unos 14 minutos. Esta calculadora añade 15 minutos al tiempo de inicio para tenerlo en cuenta.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>
