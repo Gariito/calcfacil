@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de números primos — comprobar y listar — CalcFácil</title>
+  <meta name="description" content="Comprueba si un número es primo y obtén la lista de números primos hasta cualquier valor.">
+  <meta name="keywords" content="numeros primos, es primo calculadora, lista numeros primos, comprobar primo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/matematicas/numeros-primos/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de números primos — comprobar y listar — CalcFácil">
+  <meta property="og:description" content="Comprueba si un número es primo y obtén la lista de números primos hasta cualquier valor.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/matematicas/numeros-primos/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de números primos — comprobar y listar",
+    "description": "Comprueba si un número es primo y obtén la lista de números primos hasta cualquier valor.",
+    "url": "https://www.calcfacil.com/calculadoras/matematicas/numeros-primos/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <span>›</span>
+      <span>Calculadora de números primos</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔢 Calculadora de números primos</h1>
+        <p class="calc-intro">Comprueba si un número es primo y factorízalo en sus factores primos.</p>
+        <div class="card">
+          
+<label>Número a comprobar</label>
+<input type="number" id="pr-num" placeholder="97" oninput="calcPrimo()">
+
+<div class="result-box" id="pr-res">Introduce un número</div>
+
+<script>
+function esPrimo(n) {
+  if (n < 2) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+function factorizar(n) {
+  const factores = [];
+  let d = 2;
+  while (d * d <= n) {
+    while (n % d === 0) { factores.push(d); n = Math.floor(n / d); }
+    d++;
+  }
+  if (n > 1) factores.push(n);
+  return factores;
+}
+
+function calcPrimo() {
+  const n = parseInt(document.getElementById('pr-num').value);
+  if (isNaN(n) || n < 1) return;
+
+  const primo = esPrimo(n);
+  const factores = factorizar(n);
+
+  // Siguiente y anterior primo
+  let sig = n + 1;
+  while (!esPrimo(sig)) sig++;
+  let ant = n - 1;
+  while (ant > 1 && !esPrimo(ant)) ant--;
+
+  if (primo) {
+    document.getElementById('pr-res').innerHTML =
+      `${n} ES un número primo ✓
+      <small>Anterior primo: ${ant > 1 ? ant : '—'} · Siguiente primo: ${sig}</small>`;
+  } else {
+    document.getElementById('pr-res').innerHTML =
+      `${n} NO es primo
+      <small>Factores primos: ${factores.join(' × ')} · Anterior primo: ${ant > 1 ? ant : '—'} · Siguiente primo: ${sig}</small>`;
+  }
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los números primos?</h2>
+          <p>Un número primo es aquel que solo es divisible por 1 y por sí mismo. Los números primos son los bloques de construcción de todos los números enteros — cualquier número puede expresarse como producto de números primos (factorización prima). Los primeros números primos son 2, 3, 5, 7, 11, 13, 17, 19, 23...</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/matematicas/mcd-mcm/">🔢 MCD y MCM</a></li>
+            
+            <li><a href="/calculadoras/matematicas/raiz-potencia/">√ Raíz y potencias</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Es el 1 un número primo?</summary>
+              <p>No. El 1 no se considera primo por definición, ya que los primos deben tener exactamente dos divisores distintos (1 y él mismo), y el 1 solo tiene un divisor.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos números primos existen?</summary>
+              <p>Infinitos. Euclides demostró hace más de 2.000 años que siempre existe un primo mayor que cualquier primo conocido.</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué se usan los números primos en la actualidad?</summary>
+              <p>Son fundamentales en criptografía — la seguridad de Internet (HTTPS, SSL) se basa en la dificultad de factorizar números muy grandes en sus factores primos.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de velocidad media, distancia y tiempo — CalcFácil</title>
+  <meta name="description" content="Calcula la velocidad media, la distancia recorrida o el tiempo empleado en un trayecto al instante.">
+  <meta name="keywords" content="calculadora velocidad media, distancia tiempo velocidad, calcular velocidad viaje">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/viajes/velocidad-media/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de velocidad media, distancia y tiempo — CalcFácil">
+  <meta property="og:description" content="Calcula la velocidad media, la distancia recorrida o el tiempo empleado en un trayecto al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/viajes/velocidad-media/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de velocidad media, distancia y tiempo",
+    "description": "Calcula la velocidad media, la distancia recorrida o el tiempo empleado en un trayecto al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/viajes/velocidad-media/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/viajes/">Viajes</a>
+      <span>›</span>
+      <span>Calculadora de velocidad media</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🚗 Calculadora de velocidad media</h1>
+        <p class="calc-intro">Calcula la velocidad media, la distancia o el tiempo de cualquier trayecto.</p>
+        <div class="card">
+          
+<label>¿Qué quieres calcular?</label>
+<select id="vm-calc" onchange="toggleVM()">
+  <option value="velocidad">Velocidad media (km/h)</option>
+  <option value="distancia">Distancia (km)</option>
+  <option value="tiempo">Tiempo (horas y minutos)</option>
+</select>
+
+<div id="vm-campos"></div>
+<div class="result-box" id="vm-res">Introduce los datos</div>
+
+<script>
+const vmCampos = {
+  velocidad: `
+    <label>Distancia (km)</label>
+    <input type="number" id="vm-d" placeholder="300" oninput="calcVM()">
+    <div class="row-2">
+      <div><label>Horas</label><input type="number" id="vm-h" placeholder="3" oninput="calcVM()"></div>
+      <div><label>Minutos</label><input type="number" id="vm-m" placeholder="0" oninput="calcVM()"></div>
+    </div>`,
+  distancia: `
+    <label>Velocidad media (km/h)</label>
+    <input type="number" id="vm-v" placeholder="100" oninput="calcVM()">
+    <div class="row-2">
+      <div><label>Horas</label><input type="number" id="vm-h" placeholder="3" oninput="calcVM()"></div>
+      <div><label>Minutos</label><input type="number" id="vm-m" placeholder="0" oninput="calcVM()"></div>
+    </div>`,
+  tiempo: `
+    <label>Distancia (km)</label>
+    <input type="number" id="vm-d" placeholder="300" oninput="calcVM()">
+    <label>Velocidad media (km/h)</label>
+    <input type="number" id="vm-v" placeholder="100" oninput="calcVM()">`
+};
+
+function toggleVM() {
+  document.getElementById('vm-campos').innerHTML = vmCampos[document.getElementById('vm-calc').value];
+  document.getElementById('vm-res').textContent = 'Introduce los datos';
+}
+
+function calcVM() {
+  const tipo = document.getElementById('vm-calc').value;
+  const d = parseFloat(document.getElementById('vm-d')?.value);
+  const v = parseFloat(document.getElementById('vm-v')?.value);
+  const h = parseFloat(document.getElementById('vm-h')?.value) || 0;
+  const m = parseFloat(document.getElementById('vm-m')?.value) || 0;
+  const t = h + m / 60;
+
+  if (tipo === 'velocidad' && d && t) {
+    const vel = d / t;
+    document.getElementById('vm-res').innerHTML =
+      `${vel.toFixed(1)} km/h
+      <small>${d} km en ${h}h ${m}min</small>`;
+  } else if (tipo === 'distancia' && v && t) {
+    const dist = v * t;
+    document.getElementById('vm-res').innerHTML =
+      `${dist.toFixed(1)} km
+      <small>A ${v} km/h durante ${h}h ${m}min</small>`;
+  } else if (tipo === 'tiempo' && d && v) {
+    const tHoras = d / v;
+    const tH = Math.floor(tHoras);
+    const tM = Math.round((tHoras - tH) * 60);
+    document.getElementById('vm-res').innerHTML =
+      `${tH}h ${tM}min
+      <small>${d} km a ${v} km/h</small>`;
+  }
+}
+
+toggleVM();
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la velocidad media?</h2>
+          <p>La relación entre velocidad, distancia y tiempo es una de las fórmulas más usadas en el día a día — especialmente en viajes por carretera. Conociendo dos de los tres valores puedes calcular el tercero al instante. Esta calculadora lo hace de forma automática según lo que quieras calcular.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/viajes/combustible/">⛽ Combustible</a></li>
+            
+            <li><a href="/calculadoras/unidades/velocidad/">🚗 Conversor de velocidad</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo calculo el tiempo que tarda un viaje?</summary>
+              <p>Divide la distancia en km entre la velocidad media en km/h. Por ejemplo, 300 km a 100 km/h son 3 horas exactas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo calculo la velocidad media de un viaje?</summary>
+              <p>Divide la distancia total entre el tiempo total (en horas). Si has recorrido 450 km en 4,5 horas, tu velocidad media fue 100 km/h.</p>
+            </details>
+            
+            <details>
+              <summary>¿La velocidad media tiene en cuenta las paradas?</summary>
+              <p>Si divides la distancia total entre el tiempo total incluyendo paradas, obtienes la velocidad media real. Si divides entre el tiempo solo circulando, obtienes la velocidad media de marcha.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

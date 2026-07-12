@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de palabras y caracteres online gratis — CalcFácil</title>
+  <meta name="description" content="Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante. Gratis y sin registro.">
+  <meta name="keywords" content="contador palabras, contar palabras online, contador caracteres, word count online">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/contador-palabras/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contador de palabras y caracteres online gratis — CalcFácil">
+  <meta property="og:description" content="Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante. Gratis y sin registro.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/contador-palabras/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Contador de palabras y caracteres online gratis",
+    "description": "Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante. Gratis y sin registro.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/contador-palabras/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Contador de palabras y caracteres</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📝 Contador de palabras y caracteres</h1>
+        <p class="calc-intro">Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante.</p>
+        <div class="card">
+          
+<label>Pega o escribe tu texto aquí</label>
+<textarea id="cp-texto" placeholder="Escribe o pega tu texto aquí..." oninput="calcPalabras()"
+  style="width:100%;min-height:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;background:var(--bg);resize:vertical;margin-bottom:1rem;line-height:1.6"></textarea>
+
+<div class="result-box" id="cp-res">Empieza a escribir para ver el recuento</div>
+
+<div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="cp-stats"></div>
+
+<script>
+function calcPalabras() {
+  const txt = document.getElementById('cp-texto').value;
+  if (!txt.trim()) {
+    document.getElementById('cp-res').textContent = 'Empieza a escribir para ver el recuento';
+    document.getElementById('cp-stats').innerHTML = '';
+    return;
+  }
+
+  const palabras = txt.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const chars = txt.length;
+  const charsSinEsp = txt.replace(/\s/g,'').length;
+  const frases = txt.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  const parrafos = txt.split(/\n+/).filter(p => p.trim().length > 0).length;
+  const tiempoLectura = Math.ceil(palabras / 200);
+
+  document.getElementById('cp-res').innerHTML =
+    `${palabras.toLocaleString('es-ES')} palabras · ${chars.toLocaleString('es-ES')} caracteres
+    <small>Tiempo de lectura estimado: ~${tiempoLectura} min</small>`;
+
+  document.getElementById('cp-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${palabras.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Palabras</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${chars.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (con espacios)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${charsSinEsp.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (sin espacios)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${frases}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Frases</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${parrafos}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Párrafos</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${tiempoLectura} min</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Lectura</div>
+    </div>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el contador de palabras?</h2>
+          <p>Esta herramienta cuenta palabras, caracteres (con y sin espacios), frases y párrafos de cualquier texto al instante. Es útil para escritores, estudiantes, periodistas y cualquier persona que necesite ajustar un texto a un límite concreto — un trabajo académico, una publicación en redes sociales o un artículo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas palabras tiene una página?</summary>
+              <p>Una página estándar en formato A4 con fuente Times New Roman 12pt tiene aproximadamente 250-300 palabras a doble espacio, o 500-600 palabras a espacio simple.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos caracteres permite Twitter/X?</summary>
+              <p>Twitter/X permite 280 caracteres por tuit. Esta calculadora te muestra los caracteres en tiempo real para que puedas ajustar el texto.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas palabras debe tener un trabajo universitario?</summary>
+              <p>Depende del tipo de trabajo. Un TFG suele pedir entre 10.000 y 15.000 palabras, un TFM entre 15.000 y 30.000, y un artículo académico entre 4.000 y 8.000.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

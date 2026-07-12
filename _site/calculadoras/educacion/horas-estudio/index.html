@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de horas de estudio para un examen — CalcFácil</title>
+  <meta name="description" content="Calcula cuántas horas debes estudiar al día para preparar un examen según el tiempo disponible y el temario.">
+  <meta name="keywords" content="horas estudio examen, planificador estudio, cuanto estudiar, calculadora estudio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/educacion/horas-estudio/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de horas de estudio para un examen — CalcFácil">
+  <meta property="og:description" content="Calcula cuántas horas debes estudiar al día para preparar un examen según el tiempo disponible y el temario.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/educacion/horas-estudio/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de horas de estudio para un examen",
+    "description": "Calcula cuántas horas debes estudiar al día para preparar un examen según el tiempo disponible y el temario.",
+    "url": "https://www.calcfacil.com/calculadoras/educacion/horas-estudio/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/educacion/">Educación</a>
+      <span>›</span>
+      <span>Calculadora de horas de estudio</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📖 Calculadora de horas de estudio</h1>
+        <p class="calc-intro">Calcula cuántas horas al día necesitas estudiar para preparar tu examen a tiempo.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Fecha del examen</label>
+    <input type="date" id="est-fecha" oninput="calcEstudio()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+  </div>
+  <div>
+    <label>Número de temas</label>
+    <input type="number" id="est-temas" placeholder="10" oninput="calcEstudio()">
+  </div>
+</div>
+
+<label>Horas estimadas por tema</label>
+<input type="number" id="est-hpt" placeholder="3" oninput="calcEstudio()">
+
+<label>Horas ya estudiadas</label>
+<input type="number" id="est-ya" placeholder="0" value="0" oninput="calcEstudio()">
+
+<label>Días de descanso a la semana</label>
+<select id="est-desc" onchange="calcEstudio()">
+  <option value="0">Ninguno (estudio todos los días)</option>
+  <option value="1">1 día de descanso</option>
+  <option value="2" selected>2 días de descanso (fin de semana)</option>
+</select>
+
+<div class="result-box" id="est-res">Introduce los datos del examen</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date();
+  hoy.setDate(hoy.getDate() + 14);
+  document.getElementById('est-fecha').value = hoy.toISOString().split('T')[0];
+  calcEstudio();
+});
+
+function calcEstudio() {
+  const fecha = document.getElementById('est-fecha').value;
+  const temas = parseFloat(document.getElementById('est-temas').value);
+  const hpt = parseFloat(document.getElementById('est-hpt').value);
+  const ya = parseFloat(document.getElementById('est-ya').value) || 0;
+  const desc = parseInt(document.getElementById('est-desc').value);
+  if (!fecha || !temas || !hpt) return;
+
+  const hoy = new Date();
+  const examen = new Date(fecha);
+  const diasTotal = Math.max(0, Math.round((examen - hoy) / 86400000));
+  const diasEstudio = Math.max(1, Math.round(diasTotal * (7 - desc) / 7));
+
+  const horasTotal = temas * hpt;
+  const horasRestantes = Math.max(0, horasTotal - ya);
+  const horasDia = horasRestantes / diasEstudio;
+  const pomodoros = Math.ceil(horasDia * 60 / 25);
+
+  document.getElementById('est-res').innerHTML =
+    `${horasDia.toFixed(1)} horas al día
+    <small>
+    ${diasEstudio} días de estudio · 
+    ${horasRestantes.toFixed(0)}h restantes · 
+    ~${pomodoros} pomodoros/día
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las horas de estudio?</h2>
+          <p>Planificar el tiempo de estudio es clave para preparar bien un examen sin agobios de última hora. Esta calculadora te ayuda a distribuir las horas de estudio necesarias entre los días disponibles, teniendo en cuenta el número de temas, la dificultad y el tiempo que llevas ya estudiando.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/educacion/nota-media/">📝 Nota media</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas horas al día se puede estudiar de forma efectiva?</summary>
+              <p>La mayoría de personas rinden mejor estudiando entre 4 y 6 horas al día en sesiones de 25-50 minutos con descansos. Más de 8 horas diarias suele ser contraproducente por la fatiga mental.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué es la técnica Pomodoro?</summary>
+              <p>Consiste en estudiar 25 minutos en concentración total y descansar 5 minutos. Tras 4 pomodoros, se hace un descanso largo de 15-30 minutos. Es muy eficaz para mantener la concentración.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuándo debo empezar a estudiar para un examen?</summary>
+              <p>Lo ideal es empezar al menos 2-3 semanas antes para exámenes parciales, y 4-6 semanas para finales o exámenes importantes. Estudiar en pequeñas dosis diarias es más efectivo que intensificar los últimos días.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

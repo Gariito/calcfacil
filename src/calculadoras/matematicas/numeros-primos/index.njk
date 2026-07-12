@@ -1,0 +1,81 @@
+---
+layout: calculadora.njk
+title: Calculadora de números primos — comprobar y listar
+description: Comprueba si un número es primo y obtén la lista de números primos hasta cualquier valor.
+keywords: numeros primos, es primo calculadora, lista numeros primos, comprobar primo
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de números primos
+icono: 🔢
+tituloCorto: los números primos
+descripcion: Comprueba si un número es primo y factorízalo en sus factores primos.
+explicacion: Un número primo es aquel que solo es divisible por 1 y por sí mismo. Los números primos son los bloques de construcción de todos los números enteros — cualquier número puede expresarse como producto de números primos (factorización prima). Los primeros números primos son 2, 3, 5, 7, 11, 13, 17, 19, 23...
+faq:
+  - q: ¿Es el 1 un número primo?
+    a: No. El 1 no se considera primo por definición, ya que los primos deben tener exactamente dos divisores distintos (1 y él mismo), y el 1 solo tiene un divisor.
+  - q: ¿Cuántos números primos existen?
+    a: Infinitos. Euclides demostró hace más de 2.000 años que siempre existe un primo mayor que cualquier primo conocido.
+  - q: ¿Para qué se usan los números primos en la actualidad?
+    a: Son fundamentales en criptografía — la seguridad de Internet (HTTPS, SSL) se basa en la dificultad de factorizar números muy grandes en sus factores primos.
+relacionadas:
+  - slug: mcd-mcm
+    categoria: matematicas
+    titulo: MCD y MCM
+    icono: 🔢
+  - slug: raiz-potencia
+    categoria: matematicas
+    titulo: Raíz y potencias
+    icono: √
+---
+
+<label>Número a comprobar</label>
+<input type="number" id="pr-num" placeholder="97" oninput="calcPrimo()">
+
+<div class="result-box" id="pr-res">Introduce un número</div>
+
+<script>
+function esPrimo(n) {
+  if (n < 2) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+function factorizar(n) {
+  const factores = [];
+  let d = 2;
+  while (d * d <= n) {
+    while (n % d === 0) { factores.push(d); n = Math.floor(n / d); }
+    d++;
+  }
+  if (n > 1) factores.push(n);
+  return factores;
+}
+
+function calcPrimo() {
+  const n = parseInt(document.getElementById('pr-num').value);
+  if (isNaN(n) || n < 1) return;
+
+  const primo = esPrimo(n);
+  const factores = factorizar(n);
+
+  // Siguiente y anterior primo
+  let sig = n + 1;
+  while (!esPrimo(sig)) sig++;
+  let ant = n - 1;
+  while (ant > 1 && !esPrimo(ant)) ant--;
+
+  if (primo) {
+    document.getElementById('pr-res').innerHTML =
+      `${n} ES un número primo ✓
+      <small>Anterior primo: ${ant > 1 ? ant : '—'} · Siguiente primo: ${sig}</small>`;
+  } else {
+    document.getElementById('pr-res').innerHTML =
+      `${n} NO es primo
+      <small>Factores primos: ${factores.join(' × ')} · Anterior primo: ${ant > 1 ? ant : '—'} · Siguiente primo: ${sig}</small>`;
+  }
+}
+</script>

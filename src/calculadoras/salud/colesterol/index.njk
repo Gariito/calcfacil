@@ -1,0 +1,89 @@
+---
+layout: calculadora.njk
+title: Calculadora de colesterol — ¿son normales tus valores?
+description: Comprueba si tus niveles de colesterol total, LDL, HDL y triglicéridos son normales según los criterios médicos.
+keywords: colesterol normal, calculadora colesterol, ldl hdl valores, trigliceridos normales
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de colesterol
+icono: 🫀
+tituloCorto: los niveles de colesterol
+descripcion: Comprueba si tus valores de colesterol total, LDL, HDL y triglicéridos son normales.
+explicacion: El colesterol es una grasa presente en la sangre necesaria para el organismo, pero en exceso aumenta el riesgo cardiovascular. El colesterol LDL (malo) se deposita en las arterias, mientras que el HDL (bueno) ayuda a eliminarlo. Los triglicéridos son otro tipo de grasa sanguínea que también conviene controlar. Esta calculadora evalúa todos estos valores según las guías médicas actuales.
+faq:
+  - q: ¿Cuál es el nivel de colesterol total deseable?
+    a: El colesterol total deseable es inferior a 200 mg/dL. Entre 200 y 239 mg/dL es límite alto, y por encima de 240 mg/dL se considera alto.
+  - q: ¿Qué diferencia hay entre colesterol bueno y malo?
+    a: El LDL (malo) transporta el colesterol hacia las arterias y puede acumularse en sus paredes. El HDL (bueno) recoge el colesterol de las arterias y lo lleva al hígado para eliminarlo.
+  - q: ¿Cómo puedo bajar el colesterol de forma natural?
+    a: Con dieta mediterránea (menos grasas saturadas y trans, más fibra), ejercicio aeróbico regular, no fumar y mantener un peso saludable. Si no es suficiente, el médico puede recomendar medicación.
+relacionadas:
+  - slug: tension-arterial
+    categoria: salud
+    titulo: Tensión arterial
+    icono: 🩺
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<div class="row-2">
+  <div>
+    <label>Colesterol total (mg/dL)</label>
+    <input type="number" id="col-total" placeholder="190" oninput="calcCol()">
+  </div>
+  <div>
+    <label>Colesterol LDL — malo (mg/dL)</label>
+    <input type="number" id="col-ldl" placeholder="110" oninput="calcCol()">
+  </div>
+</div>
+<div class="row-2">
+  <div>
+    <label>Colesterol HDL — bueno (mg/dL)</label>
+    <input type="number" id="col-hdl" placeholder="55" oninput="calcCol()">
+  </div>
+  <div>
+    <label>Triglicéridos (mg/dL)</label>
+    <input type="number" id="col-trig" placeholder="120" oninput="calcCol()">
+  </div>
+</div>
+
+<div class="result-box" id="col-res">Introduce tus valores de colesterol</div>
+
+<script>
+function evalCol(val, limites) {
+  for (const [max, label, color] of limites) {
+    if (val < max) return { label, color };
+  }
+  return limites[limites.length - 1];
+}
+function calcCol() {
+  const total = parseFloat(document.getElementById('col-total').value);
+  const ldl = parseFloat(document.getElementById('col-ldl').value);
+  const hdl = parseFloat(document.getElementById('col-hdl').value);
+  const trig = parseFloat(document.getElementById('col-trig').value);
+
+  let lines = [];
+
+  if (!isNaN(total)) {
+    const r = total < 200 ? ['Deseable ✓','#22C55E'] : total < 240 ? ['Límite alto','#EAB308'] : ['Alto','#EF4444'];
+    lines.push(`Total: <span style="color:${r[1]}">${total} mg/dL — ${r[0]}</span>`);
+  }
+  if (!isNaN(ldl)) {
+    const r = ldl < 100 ? ['Óptimo ✓','#22C55E'] : ldl < 130 ? ['Deseable','#22C55E'] : ldl < 160 ? ['Límite alto','#EAB308'] : ['Alto','#EF4444'];
+    lines.push(`LDL: <span style="color:${r[1]}">${ldl} mg/dL — ${r[0]}</span>`);
+  }
+  if (!isNaN(hdl)) {
+    const r = hdl < 40 ? ['Bajo — riesgo','#EF4444'] : hdl < 60 ? ['Normal','#22C55E'] : ['Alto — protector ✓','#22C55E'];
+    lines.push(`HDL: <span style="color:${r[1]}">${hdl} mg/dL — ${r[0]}</span>`);
+  }
+  if (!isNaN(trig)) {
+    const r = trig < 150 ? ['Normal ✓','#22C55E'] : trig < 200 ? ['Límite alto','#EAB308'] : trig < 500 ? ['Alto','#EF4444'] : ['Muy alto','#7C3AED'];
+    lines.push(`Triglicéridos: <span style="color:${r[1]}">${trig} mg/dL — ${r[0]}</span>`);
+  }
+
+  if (lines.length === 0) return;
+  document.getElementById('col-res').innerHTML = lines.join('<br>');
+}
+</script>

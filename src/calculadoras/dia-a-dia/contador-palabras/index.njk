@@ -1,0 +1,85 @@
+---
+layout: calculadora.njk
+title: Contador de palabras y caracteres online gratis
+description: Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante. Gratis y sin registro.
+keywords: contador palabras, contar palabras online, contador caracteres, word count online
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Contador de palabras y caracteres
+icono: 📝
+tituloCorto: el contador de palabras
+descripcion: Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante.
+explicacion: Esta herramienta cuenta palabras, caracteres (con y sin espacios), frases y párrafos de cualquier texto al instante. Es útil para escritores, estudiantes, periodistas y cualquier persona que necesite ajustar un texto a un límite concreto — un trabajo académico, una publicación en redes sociales o un artículo.
+faq:
+  - q: ¿Cuántas palabras tiene una página?
+    a: Una página estándar en formato A4 con fuente Times New Roman 12pt tiene aproximadamente 250-300 palabras a doble espacio, o 500-600 palabras a espacio simple.
+  - q: ¿Cuántos caracteres permite Twitter/X?
+    a: Twitter/X permite 280 caracteres por tuit. Esta calculadora te muestra los caracteres en tiempo real para que puedas ajustar el texto.
+  - q: ¿Cuántas palabras debe tener un trabajo universitario?
+    a: Depende del tipo de trabajo. Un TFG suele pedir entre 10.000 y 15.000 palabras, un TFM entre 15.000 y 30.000, y un artículo académico entre 4.000 y 8.000.
+relacionadas:
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+  - slug: dias-entre-fechas
+    categoria: dia-a-dia
+    titulo: Días entre fechas
+    icono: 📅
+---
+
+<label>Pega o escribe tu texto aquí</label>
+<textarea id="cp-texto" placeholder="Escribe o pega tu texto aquí..." oninput="calcPalabras()"
+  style="width:100%;min-height:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;background:var(--bg);resize:vertical;margin-bottom:1rem;line-height:1.6"></textarea>
+
+<div class="result-box" id="cp-res">Empieza a escribir para ver el recuento</div>
+
+<div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="cp-stats"></div>
+
+<script>
+function calcPalabras() {
+  const txt = document.getElementById('cp-texto').value;
+  if (!txt.trim()) {
+    document.getElementById('cp-res').textContent = 'Empieza a escribir para ver el recuento';
+    document.getElementById('cp-stats').innerHTML = '';
+    return;
+  }
+
+  const palabras = txt.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const chars = txt.length;
+  const charsSinEsp = txt.replace(/\s/g,'').length;
+  const frases = txt.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  const parrafos = txt.split(/\n+/).filter(p => p.trim().length > 0).length;
+  const tiempoLectura = Math.ceil(palabras / 200);
+
+  document.getElementById('cp-res').innerHTML =
+    `${palabras.toLocaleString('es-ES')} palabras · ${chars.toLocaleString('es-ES')} caracteres
+    <small>Tiempo de lectura estimado: ~${tiempoLectura} min</small>`;
+
+  document.getElementById('cp-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${palabras.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Palabras</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${chars.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (con espacios)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${charsSinEsp.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (sin espacios)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${frases}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Frases</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${parrafos}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Párrafos</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${tiempoLectura} min</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Lectura</div>
+    </div>`;
+}
+</script>

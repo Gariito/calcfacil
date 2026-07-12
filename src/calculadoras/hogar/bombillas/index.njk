@@ -1,0 +1,88 @@
+---
+layout: calculadora.njk
+title: Calculadora de ahorro cambiando bombillas a LED
+description: Calcula el ahorro en electricidad y dinero al cambiar bombillas tradicionales o halógenas por LED.
+keywords: ahorro bombillas led, cambiar bombillas led, consumo bombilla led, calcular ahorro led
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora de ahorro con bombillas LED
+icono: 💡
+tituloCorto: el ahorro con LED
+descripcion: Calcula el ahorro en luz y dinero al cambiar tus bombillas actuales por LED.
+explicacion: Las bombillas LED consumen entre un 75% y un 90% menos de energía que las bombillas incandescentes tradicionales, y entre un 50% y un 70% menos que los halógenos. Aunque tienen un coste inicial mayor, se amortizan rápidamente gracias al ahorro en electricidad y a su mayor durabilidad (hasta 25.000 horas frente a las 1.000 de una bombilla tradicional).
+faq:
+  - q: ¿Cuánto ahorra realmente una bombilla LED?
+    a: Una bombilla LED de 9W equivale a una incandescente de 60W. Si usas la bombilla 4 horas al día con electricidad a 0,20€/kWh, el ahorro anual es de unos 3,7€ por bombilla. Con 20 bombillas en casa serían 74€ al año.
+  - q: ¿Cuánto dura una bombilla LED?
+    a: Las LED de buena calidad duran entre 15.000 y 25.000 horas, equivalente a más de 15 años usándolas 4 horas al día. Las incandescentes duran unas 1.000 horas y los halógenos unas 2.000.
+  - q: ¿Las LED dan la misma luz que las tradicionales?
+    a: Sí, la temperatura de color y los lúmenes son equivalentes. Una LED de 9W da la misma cantidad de luz (800 lúmenes) que una incandescente de 60W.
+relacionadas:
+  - slug: consumo-electrico
+    categoria: hogar
+    titulo: Consumo eléctrico
+    icono: ⚡
+  - slug: metros-cuadrados
+    categoria: hogar
+    titulo: Metros cuadrados
+    icono: 📐
+---
+
+<div class="row-2">
+  <div>
+    <label>Potencia actual (W)</label>
+    <input type="number" id="led-actual" placeholder="60" oninput="calcLED()">
+  </div>
+  <div>
+    <label>Tipo de bombilla actual</label>
+    <select id="led-tipo" onchange="calcLED()">
+      <option value="incandescente">Incandescente</option>
+      <option value="halogeno">Halógeno</option>
+      <option value="fluorescente">Fluorescente (bajo consumo)</option>
+    </select>
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Número de bombillas</label>
+    <input type="number" id="led-num" placeholder="10" oninput="calcLED()">
+  </div>
+  <div>
+    <label>Horas de uso al día</label>
+    <input type="number" id="led-horas" placeholder="4" oninput="calcLED()">
+  </div>
+</div>
+
+<label>Precio del kWh (€)</label>
+<input type="number" id="led-precio" placeholder="0.20" value="0.20" oninput="calcLED()">
+
+<div class="result-box" id="led-res">Introduce los datos de tus bombillas</div>
+
+<script>
+function calcLED() {
+  const actual = parseFloat(document.getElementById('led-actual').value);
+  const tipo = document.getElementById('led-tipo').value;
+  const num = parseFloat(document.getElementById('led-num').value) || 1;
+  const horas = parseFloat(document.getElementById('led-horas').value) || 4;
+  const precio = parseFloat(document.getElementById('led-precio').value) || 0.20;
+  if (!actual) return;
+
+  const factorLED = tipo === 'incandescente' ? 0.15 : tipo === 'halogeno' ? 0.25 : 0.5;
+  const wattsLED = actual * factorLED;
+
+  const consumoActual = actual * num * horas / 1000;
+  const consumoLED = wattsLED * num * horas / 1000;
+  const ahorroKwh = consumoActual - consumoLED;
+  const ahorroAnual = ahorroKwh * 365 * precio;
+  const pctAhorro = ((ahorroKwh / consumoActual) * 100).toFixed(0);
+
+  document.getElementById('led-res').innerHTML =
+    `Ahorro anual: ${ahorroAnual.toFixed(2)} €
+    <small>
+    Equivalente LED: ${wattsLED.toFixed(0)}W · 
+    Ahorro energético: ${pctAhorro}% · 
+    ${(ahorroKwh * 365).toFixed(0)} kWh/año menos
+    </small>`;
+}
+</script>

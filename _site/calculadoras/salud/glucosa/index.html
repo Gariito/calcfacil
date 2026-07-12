@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de niveles de glucosa en sangre — CalcFácil</title>
+  <meta name="description" content="Comprueba si tus niveles de glucosa en sangre son normales, altos o bajos según los criterios médicos actuales.">
+  <meta name="keywords" content="niveles glucosa sangre, azucar en sangre normal, calculadora glucosa, diabetes valores">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/glucosa/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de niveles de glucosa en sangre — CalcFácil">
+  <meta property="og:description" content="Comprueba si tus niveles de glucosa en sangre son normales, altos o bajos según los criterios médicos actuales.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/glucosa/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de niveles de glucosa en sangre",
+    "description": "Comprueba si tus niveles de glucosa en sangre son normales, altos o bajos según los criterios médicos actuales.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/glucosa/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de niveles de glucosa</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🩸 Calculadora de niveles de glucosa</h1>
+        <p class="calc-intro">Comprueba si tus niveles de glucosa en sangre son normales según los criterios médicos actuales.</p>
+        <div class="card">
+          
+<label>Momento de la medición</label>
+<select id="glu-momento" onchange="calcGlucosa()">
+  <option value="ayunas">En ayunas (más de 8 horas sin comer)</option>
+  <option value="postprandial">2 horas después de comer</option>
+  <option value="aleatoria">Medición aleatoria</option>
+</select>
+
+<label>Nivel de glucosa (mg/dL)</label>
+<input type="number" id="glu-val" placeholder="95" oninput="calcGlucosa()">
+
+<div class="result-box" id="glu-res">Introduce tu nivel de glucosa</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Valores de referencia (mg/dL)</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Categoría</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">En ayunas</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">2h después</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">Normal</td><td style="text-align:center">&lt; 100</td><td style="text-align:center">&lt; 140</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Prediabetes</td><td style="text-align:center">100–125</td><td style="text-align:center">140–199</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">Diabetes</td><td style="text-align:center">≥ 126</td><td style="text-align:center">≥ 200</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Hipoglucemia</td><td style="text-align:center">&lt; 70</td><td style="text-align:center">&lt; 70</td></tr>
+  </table>
+</div>
+
+<script>
+function calcGlucosa() {
+  const val = parseFloat(document.getElementById('glu-val').value);
+  const momento = document.getElementById('glu-momento').value;
+  if (!val) return;
+
+  let cat, color, consejo;
+
+  if (val < 70) {
+    cat = 'Hipoglucemia — nivel bajo'; color = '#3B82F6';
+    consejo = 'Nivel bajo de azúcar. Si tienes síntomas (mareos, temblores), toma azúcar de absorción rápida y consulta a tu médico.';
+  } else if (momento === 'ayunas') {
+    if (val < 100) { cat = 'Normal ✓'; color = '#22C55E'; consejo = 'Tu nivel de glucosa en ayunas es normal.'; }
+    else if (val < 126) { cat = 'Prediabetes'; color = '#EAB308'; consejo = 'Nivel elevado. Consulta con tu médico y revisa tu dieta y ejercicio.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico para confirmar con una segunda medición.'; }
+  } else if (momento === 'postprandial') {
+    if (val < 140) { cat = 'Normal ✓'; color = '#22C55E'; consejo = 'Tu nivel de glucosa 2 horas después de comer es normal.'; }
+    else if (val < 200) { cat = 'Prediabetes'; color = '#EAB308'; consejo = 'Nivel elevado tras la comida. Consulta con tu médico.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico.'; }
+  } else {
+    if (val < 140) { cat = 'Probablemente normal ✓'; color = '#22C55E'; consejo = 'Nivel dentro del rango normal para una medición aleatoria.'; }
+    else if (val < 200) { cat = 'Vigilar'; color = '#EAB308'; consejo = 'Nivel algo elevado. Confirma con una medición en ayunas.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico.'; }
+  }
+
+  document.getElementById('glu-res').innerHTML =
+    `<span style="color:${color}">${val} mg/dL — ${cat}</span>
+    <small>${consejo}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los niveles de glucosa?</h2>
+          <p>La glucosa en sangre es el nivel de azúcar presente en el torrente sanguíneo. Mantenerla en niveles normales es fundamental para la salud. Valores persistentemente elevados pueden indicar prediabetes o diabetes, mientras que valores muy bajos (hipoglucemia) también requieren atención médica. Los valores de referencia varían según si la medición es en ayunas o después de comer.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/tension-arterial/">🩺 Tensión arterial</a></li>
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuál es el nivel normal de glucosa en ayunas?</summary>
+              <p>El nivel normal de glucosa en ayunas es inferior a 100 mg/dL. Entre 100 y 125 mg/dL se considera prediabetes, y por encima de 126 mg/dL en dos mediciones se diagnostica diabetes.</p>
+            </details>
+            
+            <details>
+              <summary>¿Y después de comer?</summary>
+              <p>Dos horas después de comer, el nivel normal es inferior a 140 mg/dL. Entre 140 y 199 mg/dL es prediabetes, y por encima de 200 mg/dL puede indicar diabetes.</p>
+            </details>
+            
+            <details>
+              <summary>¿Con qué frecuencia debo medir mi glucosa?</summary>
+              <p>Si no tienes diabetes, una analítica anual es suficiente. Si tienes prediabetes o factores de riesgo, tu médico te indicará la frecuencia adecuada.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es lo mismo glucosa que azúcar en sangre?</summary>
+              <p>Sí, son términos equivalentes. La glucemia o glucosa en sangre mide la cantidad de glucosa (azúcar) presente en el torrente sanguíneo.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

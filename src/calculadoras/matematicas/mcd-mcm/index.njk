@@ -1,0 +1,57 @@
+---
+layout: calculadora.njk
+title: Calculadora de MCD y MCM — máximo común divisor y mínimo común múltiplo
+description: Calcula el máximo común divisor (MCD) y el mínimo común múltiplo (MCM) de dos o más números al instante.
+keywords: maximo comun divisor, minimo comun multiplo, mcd mcm calculadora, calcular mcd mcm
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de MCD y MCM
+icono: 🔢
+tituloCorto: el MCD y el MCM
+descripcion: Calcula el máximo común divisor y el mínimo común múltiplo de dos o más números al instante.
+explicacion: El máximo común divisor (MCD) es el mayor número que divide exactamente a todos los números dados. El mínimo común múltiplo (MCM) es el menor número que es múltiplo de todos los números dados. Ambos conceptos son fundamentales en matemáticas y muy usados en fracciones, problemas de reparto y sincronización.
+faq:
+  - q: ¿Para qué se usa el MCD?
+    a: Para simplificar fracciones, resolver problemas de reparto equitativo y encontrar el mayor grupo posible al dividir cantidades. Por ejemplo, si tienes 12 manzanas y 8 naranjas, el MCD (4) te dice que puedes hacer 4 grupos iguales con 3 manzanas y 2 naranjas cada uno.
+  - q: ¿Para qué se usa el MCM?
+    a: Para sumar y restar fracciones con distinto denominador, y para encontrar cuándo se sincronizan eventos periódicos. Por ejemplo, si un semáforo cambia cada 3 minutos y otro cada 4, el MCM (12) te dice que coincidirán cada 12 minutos.
+  - q: ¿Qué método usa esta calculadora?
+    a: Usa el algoritmo de Euclides para el MCD, que es el más eficiente. El MCM se calcula a partir del MCD con la fórmula MCM(a,b) = a×b / MCD(a,b).
+relacionadas:
+  - slug: raiz-potencia
+    categoria: matematicas
+    titulo: Raíz y potencias
+    icono: √
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: 📏
+---
+
+<label>Números (separados por comas)</label>
+<input type="text" id="mcd-nums" placeholder="12, 18, 24" oninput="calcMCD()">
+
+<div class="result-box" id="mcd-res">Introduce dos o más números</div>
+
+<script>
+function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+function lcm(a, b) { return (a * b) / gcd(a, b); }
+
+function calcMCD() {
+  const raw = document.getElementById('mcd-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => Number.isInteger(n) && n > 0);
+  if (nums.length < 2) return;
+
+  const mcdVal = nums.reduce(gcd);
+  const mcmVal = nums.reduce(lcm);
+
+  const divisoresMCD = [];
+  for (let i = 1; i <= mcdVal; i++) {
+    if (mcdVal % i === 0) divisoresMCD.push(i);
+  }
+
+  document.getElementById('mcd-res').innerHTML =
+    `MCD: ${mcdVal} · MCM: ${mcmVal.toLocaleString('es-ES')}
+    <small>Divisores del MCD: ${divisoresMCD.join(', ')}</small>`;
+}
+</script>

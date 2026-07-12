@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de ahorro cambiando bombillas a LED — CalcFácil</title>
+  <meta name="description" content="Calcula el ahorro en electricidad y dinero al cambiar bombillas tradicionales o halógenas por LED.">
+  <meta name="keywords" content="ahorro bombillas led, cambiar bombillas led, consumo bombilla led, calcular ahorro led">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/bombillas/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de ahorro cambiando bombillas a LED — CalcFácil">
+  <meta property="og:description" content="Calcula el ahorro en electricidad y dinero al cambiar bombillas tradicionales o halógenas por LED.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/bombillas/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de ahorro cambiando bombillas a LED",
+    "description": "Calcula el ahorro en electricidad y dinero al cambiar bombillas tradicionales o halógenas por LED.",
+    "url": "https://www.calcfacil.com/calculadoras/hogar/bombillas/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/hogar/">Hogar</a>
+      <span>›</span>
+      <span>Calculadora de ahorro con bombillas LED</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>💡 Calculadora de ahorro con bombillas LED</h1>
+        <p class="calc-intro">Calcula el ahorro en luz y dinero al cambiar tus bombillas actuales por LED.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Potencia actual (W)</label>
+    <input type="number" id="led-actual" placeholder="60" oninput="calcLED()">
+  </div>
+  <div>
+    <label>Tipo de bombilla actual</label>
+    <select id="led-tipo" onchange="calcLED()">
+      <option value="incandescente">Incandescente</option>
+      <option value="halogeno">Halógeno</option>
+      <option value="fluorescente">Fluorescente (bajo consumo)</option>
+    </select>
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Número de bombillas</label>
+    <input type="number" id="led-num" placeholder="10" oninput="calcLED()">
+  </div>
+  <div>
+    <label>Horas de uso al día</label>
+    <input type="number" id="led-horas" placeholder="4" oninput="calcLED()">
+  </div>
+</div>
+
+<label>Precio del kWh (€)</label>
+<input type="number" id="led-precio" placeholder="0.20" value="0.20" oninput="calcLED()">
+
+<div class="result-box" id="led-res">Introduce los datos de tus bombillas</div>
+
+<script>
+function calcLED() {
+  const actual = parseFloat(document.getElementById('led-actual').value);
+  const tipo = document.getElementById('led-tipo').value;
+  const num = parseFloat(document.getElementById('led-num').value) || 1;
+  const horas = parseFloat(document.getElementById('led-horas').value) || 4;
+  const precio = parseFloat(document.getElementById('led-precio').value) || 0.20;
+  if (!actual) return;
+
+  const factorLED = tipo === 'incandescente' ? 0.15 : tipo === 'halogeno' ? 0.25 : 0.5;
+  const wattsLED = actual * factorLED;
+
+  const consumoActual = actual * num * horas / 1000;
+  const consumoLED = wattsLED * num * horas / 1000;
+  const ahorroKwh = consumoActual - consumoLED;
+  const ahorroAnual = ahorroKwh * 365 * precio;
+  const pctAhorro = ((ahorroKwh / consumoActual) * 100).toFixed(0);
+
+  document.getElementById('led-res').innerHTML =
+    `Ahorro anual: ${ahorroAnual.toFixed(2)} €
+    <small>
+    Equivalente LED: ${wattsLED.toFixed(0)}W · 
+    Ahorro energético: ${pctAhorro}% · 
+    ${(ahorroKwh * 365).toFixed(0)} kWh/año menos
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el ahorro con LED?</h2>
+          <p>Las bombillas LED consumen entre un 75% y un 90% menos de energía que las bombillas incandescentes tradicionales, y entre un 50% y un 70% menos que los halógenos. Aunque tienen un coste inicial mayor, se amortizan rápidamente gracias al ahorro en electricidad y a su mayor durabilidad (hasta 25.000 horas frente a las 1.000 de una bombilla tradicional).</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/hogar/consumo-electrico/">⚡ Consumo eléctrico</a></li>
+            
+            <li><a href="/calculadoras/hogar/metros-cuadrados/">📐 Metros cuadrados</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto ahorra realmente una bombilla LED?</summary>
+              <p>Una bombilla LED de 9W equivale a una incandescente de 60W. Si usas la bombilla 4 horas al día con electricidad a 0,20€/kWh, el ahorro anual es de unos 3,7€ por bombilla. Con 20 bombillas en casa serían 74€ al año.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto dura una bombilla LED?</summary>
+              <p>Las LED de buena calidad duran entre 15.000 y 25.000 horas, equivalente a más de 15 años usándolas 4 horas al día. Las incandescentes duran unas 1.000 horas y los halógenos unas 2.000.</p>
+            </details>
+            
+            <details>
+              <summary>¿Las LED dan la misma luz que las tradicionales?</summary>
+              <p>Sí, la temperatura de color y los lúmenes son equivalentes. Una LED de 9W da la misma cantidad de luz (800 lúmenes) que una incandescente de 60W.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

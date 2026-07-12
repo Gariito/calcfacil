@@ -1,0 +1,76 @@
+---
+layout: calculadora.njk
+title: Calculadora de inflación — poder adquisitivo y valor del dinero
+description: Calcula cómo la inflación afecta al valor de tu dinero y al poder adquisitivo a lo largo del tiempo.
+keywords: calculadora inflacion, poder adquisitivo, valor dinero inflacion, ipc calculadora
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Calculadora de inflación
+icono: 📉
+tituloCorto: la inflación
+descripcion: Calcula cómo la inflación reduce el valor de tu dinero y tu poder adquisitivo con el tiempo.
+explicacion: La inflación es el aumento generalizado y sostenido de los precios. Con el tiempo, el mismo dinero compra menos cosas. Por eso ahorrar bajo el colchón pierde valor real cada año. Esta calculadora muestra cómo una cantidad de dinero se ve afectada por la inflación y cuánto necesitarías en el futuro para mantener el mismo poder adquisitivo.
+faq:
+  - q: ¿Qué es el IPC?
+    a: El Índice de Precios al Consumo (IPC) mide la evolución del coste de una cesta de bienes y servicios representativa. Su variación porcentual anual es la tasa de inflación oficial.
+  - q: ¿Cuál es la inflación objetivo del Banco Central Europeo?
+    a: El BCE tiene como objetivo mantener la inflación cerca pero por debajo del 2% anual a medio plazo. Este nivel se considera compatible con la estabilidad de precios.
+  - q: ¿Cómo protejo mis ahorros de la inflación?
+    a: Invirtiendo en activos que históricamente superan la inflación — acciones, fondos indexados, inmuebles o bonos ligados a la inflación. El dinero en cuenta corriente pierde valor real cada año.
+relacionadas:
+  - slug: interes-compuesto
+    categoria: finanzas
+    titulo: Interés compuesto
+    icono: 📈
+  - slug: ahorro
+    categoria: finanzas
+    titulo: Calculadora de ahorro
+    icono: 🏦
+---
+
+<label>Cantidad de dinero (€)</label>
+<input type="number" id="inf-cant" placeholder="10000" oninput="calcInflacion()">
+
+<div class="row-2">
+  <div>
+    <label>Tasa de inflación anual (%)</label>
+    <input type="number" id="inf-tasa" placeholder="3" oninput="calcInflacion()">
+  </div>
+  <div>
+    <label>Número de años</label>
+    <input type="number" id="inf-anos" placeholder="10" oninput="calcInflacion()">
+  </div>
+</div>
+
+<div class="result-box" id="inf-res">Introduce los datos</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem">Tasas de inflación de referencia</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.825rem">
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">🎯 Objetivo BCE: 2%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">📊 Media histórica España: ~3%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">📈 Pico 2022 España: ~10%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">💰 Rentabilidad bolsa: ~7%</div>
+  </div>
+</div>
+
+<script>
+function calcInflacion() {
+  const cant = parseFloat(document.getElementById('inf-cant').value);
+  const tasa = parseFloat(document.getElementById('inf-tasa').value);
+  const anos = parseFloat(document.getElementById('inf-anos').value);
+  if (!cant || !tasa || !anos) return;
+
+  const valorFuturo = cant / Math.pow(1 + tasa/100, anos);
+  const necesitarias = cant * Math.pow(1 + tasa/100, anos);
+  const perdida = cant - valorFuturo;
+  const pctPerdida = (perdida / cant * 100).toFixed(1);
+
+  document.getElementById('inf-res').innerHTML =
+    `Valor real en ${anos} años: ${valorFuturo.toFixed(2)} €
+    <small>
+    Pierdes ${perdida.toFixed(2)} € de poder adquisitivo (${pctPerdida}%) · 
+    Para mantener el poder adquisitivo necesitarías ${necesitarias.toFixed(2)} €
+    </small>`;
+}
+</script>

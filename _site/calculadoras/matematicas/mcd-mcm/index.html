@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de MCD y MCM — máximo común divisor y mínimo común múltiplo — CalcFácil</title>
+  <meta name="description" content="Calcula el máximo común divisor (MCD) y el mínimo común múltiplo (MCM) de dos o más números al instante.">
+  <meta name="keywords" content="maximo comun divisor, minimo comun multiplo, mcd mcm calculadora, calcular mcd mcm">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/matematicas/mcd-mcm/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de MCD y MCM — máximo común divisor y mínimo común múltiplo — CalcFácil">
+  <meta property="og:description" content="Calcula el máximo común divisor (MCD) y el mínimo común múltiplo (MCM) de dos o más números al instante.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/matematicas/mcd-mcm/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de MCD y MCM — máximo común divisor y mínimo común múltiplo",
+    "description": "Calcula el máximo común divisor (MCD) y el mínimo común múltiplo (MCM) de dos o más números al instante.",
+    "url": "https://www.calcfacil.com/calculadoras/matematicas/mcd-mcm/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <span>›</span>
+      <span>Calculadora de MCD y MCM</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🔢 Calculadora de MCD y MCM</h1>
+        <p class="calc-intro">Calcula el máximo común divisor y el mínimo común múltiplo de dos o más números al instante.</p>
+        <div class="card">
+          
+<label>Números (separados por comas)</label>
+<input type="text" id="mcd-nums" placeholder="12, 18, 24" oninput="calcMCD()">
+
+<div class="result-box" id="mcd-res">Introduce dos o más números</div>
+
+<script>
+function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+function lcm(a, b) { return (a * b) / gcd(a, b); }
+
+function calcMCD() {
+  const raw = document.getElementById('mcd-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => Number.isInteger(n) && n > 0);
+  if (nums.length < 2) return;
+
+  const mcdVal = nums.reduce(gcd);
+  const mcmVal = nums.reduce(lcm);
+
+  const divisoresMCD = [];
+  for (let i = 1; i <= mcdVal; i++) {
+    if (mcdVal % i === 0) divisoresMCD.push(i);
+  }
+
+  document.getElementById('mcd-res').innerHTML =
+    `MCD: ${mcdVal} · MCM: ${mcmVal.toLocaleString('es-ES')}
+    <small>Divisores del MCD: ${divisoresMCD.join(', ')}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el MCD y el MCM?</h2>
+          <p>El máximo común divisor (MCD) es el mayor número que divide exactamente a todos los números dados. El mínimo común múltiplo (MCM) es el menor número que es múltiplo de todos los números dados. Ambos conceptos son fundamentales en matemáticas y muy usados en fracciones, problemas de reparto y sincronización.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/matematicas/raiz-potencia/">√ Raíz y potencias</a></li>
+            
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">📏 Regla de tres</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Para qué se usa el MCD?</summary>
+              <p>Para simplificar fracciones, resolver problemas de reparto equitativo y encontrar el mayor grupo posible al dividir cantidades. Por ejemplo, si tienes 12 manzanas y 8 naranjas, el MCD (4) te dice que puedes hacer 4 grupos iguales con 3 manzanas y 2 naranjas cada uno.</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué se usa el MCM?</summary>
+              <p>Para sumar y restar fracciones con distinto denominador, y para encontrar cuándo se sincronizan eventos periódicos. Por ejemplo, si un semáforo cambia cada 3 minutos y otro cada 4, el MCM (12) te dice que coincidirán cada 12 minutos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué método usa esta calculadora?</summary>
+              <p>Usa el algoritmo de Euclides para el MCD, que es el más eficiente. El MCM se calcula a partir del MCD con la fórmula MCM(a,b) = a×b / MCD(a,b).</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

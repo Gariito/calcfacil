@@ -1,0 +1,72 @@
+---
+layout: calculadora.njk
+title: Conversor de euros a pesetas y pesetas a euros
+description: Convierte euros a pesetas y pesetas a euros al instante con el tipo de cambio oficial de 166,386 pesetas por euro.
+keywords: conversor euros pesetas, euros a pesetas, pesetas a euros, cambio euro peseta
+categoria: finanzas
+categoriaLabel: Finanzas
+titulo: Conversor euros ↔ pesetas
+icono: 💶
+tituloCorto: el conversor euros pesetas
+descripcion: Convierte entre euros y pesetas al instante con el tipo de cambio oficial irrevocable.
+explicacion: El 1 de enero de 2002 España adoptó el euro como moneda oficial. El tipo de cambio irrevocable fijado fue de 166,386 pesetas por euro. Aunque las pesetas ya no circulan, muchas personas siguen usando esta conversión para comparar precios actuales con los de antes del euro, o simplemente por curiosidad.
+faq:
+  - q: ¿Cuántas pesetas es 1 euro?
+    a: El tipo de cambio oficial e irrevocable es de 166,386 pesetas por euro. Este valor nunca cambia porque fue fijado definitivamente en 1999.
+  - q: ¿Puedo todavía cambiar pesetas por euros?
+    a: Sí, el Banco de España sigue aceptando pesetas para cambiarlas a euros de forma indefinida y gratuita. Puedes llevar tus billetes y monedas antiguas a cualquier sucursal del Banco de España.
+  - q: ¿Por qué los precios parecen más caros en euros que en pesetas?
+    a: Es el efecto psicológico de los números más pequeños. 1.000 pesetas suena a más que 6 euros, aunque sean exactamente lo mismo. En realidad el poder adquisitivo depende de la inflación, no de la moneda.
+relacionadas:
+  - slug: divisas
+    categoria: dia-a-dia
+    titulo: Conversor de divisas
+    icono: 💱
+  - slug: iva
+    categoria: finanzas
+    titulo: Calculadora de IVA
+    icono: "%"
+---
+
+<label>Cantidad a convertir</label>
+<input type="number" id="ep-val" placeholder="100" oninput="calcEP()">
+
+<label>Dirección de conversión</label>
+<select id="ep-dir" onchange="calcEP()">
+  <option value="ep">Euros → Pesetas</option>
+  <option value="pe">Pesetas → Euros</option>
+</select>
+
+<div class="result-box" id="ep-res">Introduce una cantidad</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem">Conversiones rápidas</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem">
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">1 € = 166,386 pts</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">1.000 pts = 6,01 €</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">10 € = 1.663,86 pts</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">5.000 pts = 30,05 €</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">100 € = 16.638,6 pts</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">10.000 pts = 60,10 €</div>
+  </div>
+</div>
+
+<script>
+const CAMBIO = 166.386;
+function calcEP() {
+  const val = parseFloat(document.getElementById('ep-val').value);
+  const dir = document.getElementById('ep-dir').value;
+  if (isNaN(val)) return;
+  if (dir === 'ep') {
+    const pts = val * CAMBIO;
+    document.getElementById('ep-res').innerHTML =
+      `${pts.toLocaleString('es-ES', {maximumFractionDigits:2})} pesetas
+      <small>${val} € × 166,386 = ${pts.toLocaleString('es-ES', {maximumFractionDigits:2})} pts</small>`;
+  } else {
+    const eur = val / CAMBIO;
+    document.getElementById('ep-res').innerHTML =
+      `${eur.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:4})} euros
+      <small>${val.toLocaleString('es-ES')} pts ÷ 166,386 = ${eur.toFixed(4)} €</small>`;
+  }
+}
+</script>

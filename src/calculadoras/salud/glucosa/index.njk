@@ -1,0 +1,89 @@
+---
+layout: calculadora.njk
+title: Calculadora de niveles de glucosa en sangre
+description: Comprueba si tus niveles de glucosa en sangre son normales, altos o bajos según los criterios médicos actuales.
+keywords: niveles glucosa sangre, azucar en sangre normal, calculadora glucosa, diabetes valores
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de niveles de glucosa
+icono: 🩸
+tituloCorto: los niveles de glucosa
+descripcion: Comprueba si tus niveles de glucosa en sangre son normales según los criterios médicos actuales.
+explicacion: La glucosa en sangre es el nivel de azúcar presente en el torrente sanguíneo. Mantenerla en niveles normales es fundamental para la salud. Valores persistentemente elevados pueden indicar prediabetes o diabetes, mientras que valores muy bajos (hipoglucemia) también requieren atención médica. Los valores de referencia varían según si la medición es en ayunas o después de comer.
+faq:
+  - q: ¿Cuál es el nivel normal de glucosa en ayunas?
+    a: El nivel normal de glucosa en ayunas es inferior a 100 mg/dL. Entre 100 y 125 mg/dL se considera prediabetes, y por encima de 126 mg/dL en dos mediciones se diagnostica diabetes.
+  - q: ¿Y después de comer?
+    a: Dos horas después de comer, el nivel normal es inferior a 140 mg/dL. Entre 140 y 199 mg/dL es prediabetes, y por encima de 200 mg/dL puede indicar diabetes.
+  - q: ¿Con qué frecuencia debo medir mi glucosa?
+    a: Si no tienes diabetes, una analítica anual es suficiente. Si tienes prediabetes o factores de riesgo, tu médico te indicará la frecuencia adecuada.
+  - q: ¿Es lo mismo glucosa que azúcar en sangre?
+    a: Sí, son términos equivalentes. La glucemia o glucosa en sangre mide la cantidad de glucosa (azúcar) presente en el torrente sanguíneo.
+relacionadas:
+  - slug: tension-arterial
+    categoria: salud
+    titulo: Tensión arterial
+    icono: 🩺
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+---
+
+<label>Momento de la medición</label>
+<select id="glu-momento" onchange="calcGlucosa()">
+  <option value="ayunas">En ayunas (más de 8 horas sin comer)</option>
+  <option value="postprandial">2 horas después de comer</option>
+  <option value="aleatoria">Medición aleatoria</option>
+</select>
+
+<label>Nivel de glucosa (mg/dL)</label>
+<input type="number" id="glu-val" placeholder="95" oninput="calcGlucosa()">
+
+<div class="result-box" id="glu-res">Introduce tu nivel de glucosa</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Valores de referencia (mg/dL)</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Categoría</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">En ayunas</th>
+      <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">2h después</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">Normal</td><td style="text-align:center">&lt; 100</td><td style="text-align:center">&lt; 140</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Prediabetes</td><td style="text-align:center">100–125</td><td style="text-align:center">140–199</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">Diabetes</td><td style="text-align:center">≥ 126</td><td style="text-align:center">≥ 200</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Hipoglucemia</td><td style="text-align:center">&lt; 70</td><td style="text-align:center">&lt; 70</td></tr>
+  </table>
+</div>
+
+<script>
+function calcGlucosa() {
+  const val = parseFloat(document.getElementById('glu-val').value);
+  const momento = document.getElementById('glu-momento').value;
+  if (!val) return;
+
+  let cat, color, consejo;
+
+  if (val < 70) {
+    cat = 'Hipoglucemia — nivel bajo'; color = '#3B82F6';
+    consejo = 'Nivel bajo de azúcar. Si tienes síntomas (mareos, temblores), toma azúcar de absorción rápida y consulta a tu médico.';
+  } else if (momento === 'ayunas') {
+    if (val < 100) { cat = 'Normal ✓'; color = '#22C55E'; consejo = 'Tu nivel de glucosa en ayunas es normal.'; }
+    else if (val < 126) { cat = 'Prediabetes'; color = '#EAB308'; consejo = 'Nivel elevado. Consulta con tu médico y revisa tu dieta y ejercicio.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico para confirmar con una segunda medición.'; }
+  } else if (momento === 'postprandial') {
+    if (val < 140) { cat = 'Normal ✓'; color = '#22C55E'; consejo = 'Tu nivel de glucosa 2 horas después de comer es normal.'; }
+    else if (val < 200) { cat = 'Prediabetes'; color = '#EAB308'; consejo = 'Nivel elevado tras la comida. Consulta con tu médico.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico.'; }
+  } else {
+    if (val < 140) { cat = 'Probablemente normal ✓'; color = '#22C55E'; consejo = 'Nivel dentro del rango normal para una medición aleatoria.'; }
+    else if (val < 200) { cat = 'Vigilar'; color = '#EAB308'; consejo = 'Nivel algo elevado. Confirma con una medición en ayunas.'; }
+    else { cat = 'Posible diabetes'; color = '#EF4444'; consejo = 'Nivel muy elevado. Consulta con tu médico.'; }
+  }
+
+  document.getElementById('glu-res').innerHTML =
+    `<span style="color:${color}">${val} mg/dL — ${cat}</span>
+    <small>${consejo}</small>`;
+}
+</script>

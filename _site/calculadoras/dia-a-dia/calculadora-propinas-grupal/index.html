@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de división de cuenta en restaurante — CalcFácil</title>
+  <meta name="description" content="Divide la cuenta del restaurante entre varias personas, con propina y artículos individuales.">
+  <meta name="keywords" content="dividir cuenta restaurante, calculadora propina grupo, split bill, pagar cuenta entre amigos">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-propinas-grupal/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de división de cuenta en restaurante — CalcFácil">
+  <meta property="og:description" content="Divide la cuenta del restaurante entre varias personas, con propina y artículos individuales.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-propinas-grupal/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de división de cuenta en restaurante",
+    "description": "Divide la cuenta del restaurante entre varias personas, con propina y artículos individuales.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/calculadora-propinas-grupal/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Divisor de cuenta de restaurante</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍽️ Divisor de cuenta de restaurante</h1>
+        <p class="calc-intro">Divide la cuenta del restaurante equitativamente entre varias personas incluyendo la propina.</p>
+        <div class="card">
+          
+<label>Total de la cuenta (€)</label>
+<input type="number" id="div-total" placeholder="120.50" oninput="calcDiv()">
+
+<label>Número de personas</label>
+<input type="number" id="div-pers" placeholder="4" oninput="calcDiv()">
+
+<label>Propina (%)</label>
+<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+  <input type="range" min="0" max="25" value="10" id="div-pct"
+    oninput="document.getElementById('div-pct-val').textContent=this.value+'%'; calcDiv()"
+    style="flex:1;margin-bottom:0">
+  <span id="div-pct-val" style="font-weight:600;min-width:40px">10%</span>
+</div>
+
+<div class="result-box" id="div-res">Introduce el total y el número de personas</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)" id="div-desglose"></div>
+
+<script>
+function calcDiv() {
+  const total = parseFloat(document.getElementById('div-total').value);
+  const pers = parseInt(document.getElementById('div-pers').value);
+  const pct = parseInt(document.getElementById('div-pct').value);
+  if (!total || !pers) return;
+
+  const propina = total * pct / 100;
+  const totalConProp = total + propina;
+  const porPersona = totalConProp / pers;
+  const propinaPersona = propina / pers;
+
+  document.getElementById('div-res').innerHTML =
+    `${porPersona.toFixed(2)} € por persona
+    <small>Total con propina: ${totalConProp.toFixed(2)} € · Propina: ${propina.toFixed(2)} € · ${pers} personas</small>`;
+
+  let rows = '';
+  for (let i = 1; i <= Math.min(pers, 10); i++) {
+    rows += `<div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.875rem">
+      <span>Persona ${i}</span>
+      <span style="font-weight:600">${porPersona.toFixed(2)} €</span>
+    </div>`;
+  }
+  if (pers > 10) rows += `<div style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem">... y ${pers-10} personas más × ${porPersona.toFixed(2)} €</div>`;
+
+  document.getElementById('div-desglose').innerHTML =
+    `<p style="font-size:0.875rem;font-weight:600;margin-bottom:0.5rem">Desglose por persona</p>${rows}`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la división de cuenta?</h2>
+          <p>Dividir la cuenta en un restaurante entre varias personas puede ser complicado, especialmente cuando hay propina de por medio. Esta calculadora lo hace automáticamente — solo introduce el total, el número de personas y el porcentaje de propina para saber exactamente cuánto pone cada uno.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/propina/">🍽️ Calculadora de propina</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo se divide la propina entre varias personas?</summary>
+              <p>La forma más justa es calcular la propina sobre el total y luego dividir todo (cuenta + propina) entre el número de personas. Esta calculadora lo hace automáticamente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es obligatorio dejar propina en España?</summary>
+              <p>No, en España la propina es completamente voluntaria. Sin embargo es una muestra de agradecimiento habitual, especialmente en restaurantes donde el servicio ha sido bueno.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué hago si alguien no ha comido lo mismo?</summary>
+              <p>En ese caso lo más justo es que cada uno pague lo que ha consumido. Usa la sección de artículos individuales o divide solo la parte común equitativamente.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

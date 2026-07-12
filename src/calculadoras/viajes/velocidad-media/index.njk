@@ -1,0 +1,98 @@
+---
+layout: calculadora.njk
+title: Calculadora de velocidad media, distancia y tiempo
+description: Calcula la velocidad media, la distancia recorrida o el tiempo empleado en un trayecto al instante.
+keywords: calculadora velocidad media, distancia tiempo velocidad, calcular velocidad viaje
+categoria: viajes
+categoriaLabel: Viajes
+titulo: Calculadora de velocidad media
+icono: 🚗
+tituloCorto: la velocidad media
+descripcion: Calcula la velocidad media, la distancia o el tiempo de cualquier trayecto.
+explicacion: La relación entre velocidad, distancia y tiempo es una de las fórmulas más usadas en el día a día — especialmente en viajes por carretera. Conociendo dos de los tres valores puedes calcular el tercero al instante. Esta calculadora lo hace de forma automática según lo que quieras calcular.
+faq:
+  - q: ¿Cómo calculo el tiempo que tarda un viaje?
+    a: Divide la distancia en km entre la velocidad media en km/h. Por ejemplo, 300 km a 100 km/h son 3 horas exactas.
+  - q: ¿Cómo calculo la velocidad media de un viaje?
+    a: Divide la distancia total entre el tiempo total (en horas). Si has recorrido 450 km en 4,5 horas, tu velocidad media fue 100 km/h.
+  - q: ¿La velocidad media tiene en cuenta las paradas?
+    a: Si divides la distancia total entre el tiempo total incluyendo paradas, obtienes la velocidad media real. Si divides entre el tiempo solo circulando, obtienes la velocidad media de marcha.
+relacionadas:
+  - slug: combustible
+    categoria: viajes
+    titulo: Combustible
+    icono: ⛽
+  - slug: velocidad
+    categoria: unidades
+    titulo: Conversor de velocidad
+    icono: 🚗
+---
+
+<label>¿Qué quieres calcular?</label>
+<select id="vm-calc" onchange="toggleVM()">
+  <option value="velocidad">Velocidad media (km/h)</option>
+  <option value="distancia">Distancia (km)</option>
+  <option value="tiempo">Tiempo (horas y minutos)</option>
+</select>
+
+<div id="vm-campos"></div>
+<div class="result-box" id="vm-res">Introduce los datos</div>
+
+<script>
+const vmCampos = {
+  velocidad: `
+    <label>Distancia (km)</label>
+    <input type="number" id="vm-d" placeholder="300" oninput="calcVM()">
+    <div class="row-2">
+      <div><label>Horas</label><input type="number" id="vm-h" placeholder="3" oninput="calcVM()"></div>
+      <div><label>Minutos</label><input type="number" id="vm-m" placeholder="0" oninput="calcVM()"></div>
+    </div>`,
+  distancia: `
+    <label>Velocidad media (km/h)</label>
+    <input type="number" id="vm-v" placeholder="100" oninput="calcVM()">
+    <div class="row-2">
+      <div><label>Horas</label><input type="number" id="vm-h" placeholder="3" oninput="calcVM()"></div>
+      <div><label>Minutos</label><input type="number" id="vm-m" placeholder="0" oninput="calcVM()"></div>
+    </div>`,
+  tiempo: `
+    <label>Distancia (km)</label>
+    <input type="number" id="vm-d" placeholder="300" oninput="calcVM()">
+    <label>Velocidad media (km/h)</label>
+    <input type="number" id="vm-v" placeholder="100" oninput="calcVM()">`
+};
+
+function toggleVM() {
+  document.getElementById('vm-campos').innerHTML = vmCampos[document.getElementById('vm-calc').value];
+  document.getElementById('vm-res').textContent = 'Introduce los datos';
+}
+
+function calcVM() {
+  const tipo = document.getElementById('vm-calc').value;
+  const d = parseFloat(document.getElementById('vm-d')?.value);
+  const v = parseFloat(document.getElementById('vm-v')?.value);
+  const h = parseFloat(document.getElementById('vm-h')?.value) || 0;
+  const m = parseFloat(document.getElementById('vm-m')?.value) || 0;
+  const t = h + m / 60;
+
+  if (tipo === 'velocidad' && d && t) {
+    const vel = d / t;
+    document.getElementById('vm-res').innerHTML =
+      `${vel.toFixed(1)} km/h
+      <small>${d} km en ${h}h ${m}min</small>`;
+  } else if (tipo === 'distancia' && v && t) {
+    const dist = v * t;
+    document.getElementById('vm-res').innerHTML =
+      `${dist.toFixed(1)} km
+      <small>A ${v} km/h durante ${h}h ${m}min</small>`;
+  } else if (tipo === 'tiempo' && d && v) {
+    const tHoras = d / v;
+    const tH = Math.floor(tHoras);
+    const tM = Math.round((tHoras - tH) * 60);
+    document.getElementById('vm-res').innerHTML =
+      `${tH}h ${tM}min
+      <small>${d} km a ${v} km/h</small>`;
+  }
+}
+
+toggleVM();
+</script>

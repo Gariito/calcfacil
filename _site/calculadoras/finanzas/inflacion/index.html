@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de inflación — poder adquisitivo y valor del dinero — CalcFácil</title>
+  <meta name="description" content="Calcula cómo la inflación afecta al valor de tu dinero y al poder adquisitivo a lo largo del tiempo.">
+  <meta name="keywords" content="calculadora inflacion, poder adquisitivo, valor dinero inflacion, ipc calculadora">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/inflacion/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de inflación — poder adquisitivo y valor del dinero — CalcFácil">
+  <meta property="og:description" content="Calcula cómo la inflación afecta al valor de tu dinero y al poder adquisitivo a lo largo del tiempo.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/inflacion/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de inflación — poder adquisitivo y valor del dinero",
+    "description": "Calcula cómo la inflación afecta al valor de tu dinero y al poder adquisitivo a lo largo del tiempo.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/inflacion/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de inflación</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>📉 Calculadora de inflación</h1>
+        <p class="calc-intro">Calcula cómo la inflación reduce el valor de tu dinero y tu poder adquisitivo con el tiempo.</p>
+        <div class="card">
+          
+<label>Cantidad de dinero (€)</label>
+<input type="number" id="inf-cant" placeholder="10000" oninput="calcInflacion()">
+
+<div class="row-2">
+  <div>
+    <label>Tasa de inflación anual (%)</label>
+    <input type="number" id="inf-tasa" placeholder="3" oninput="calcInflacion()">
+  </div>
+  <div>
+    <label>Número de años</label>
+    <input type="number" id="inf-anos" placeholder="10" oninput="calcInflacion()">
+  </div>
+</div>
+
+<div class="result-box" id="inf-res">Introduce los datos</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem">Tasas de inflación de referencia</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.825rem">
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">🎯 Objetivo BCE: 2%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">📊 Media histórica España: ~3%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">📈 Pico 2022 España: ~10%</div>
+    <div style="background:var(--bg);padding:0.5rem 0.75rem;border-radius:8px">💰 Rentabilidad bolsa: ~7%</div>
+  </div>
+</div>
+
+<script>
+function calcInflacion() {
+  const cant = parseFloat(document.getElementById('inf-cant').value);
+  const tasa = parseFloat(document.getElementById('inf-tasa').value);
+  const anos = parseFloat(document.getElementById('inf-anos').value);
+  if (!cant || !tasa || !anos) return;
+
+  const valorFuturo = cant / Math.pow(1 + tasa/100, anos);
+  const necesitarias = cant * Math.pow(1 + tasa/100, anos);
+  const perdida = cant - valorFuturo;
+  const pctPerdida = (perdida / cant * 100).toFixed(1);
+
+  document.getElementById('inf-res').innerHTML =
+    `Valor real en ${anos} años: ${valorFuturo.toFixed(2)} €
+    <small>
+    Pierdes ${perdida.toFixed(2)} € de poder adquisitivo (${pctPerdida}%) · 
+    Para mantener el poder adquisitivo necesitarías ${necesitarias.toFixed(2)} €
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la inflación?</h2>
+          <p>La inflación es el aumento generalizado y sostenido de los precios. Con el tiempo, el mismo dinero compra menos cosas. Por eso ahorrar bajo el colchón pierde valor real cada año. Esta calculadora muestra cómo una cantidad de dinero se ve afectada por la inflación y cuánto necesitarías en el futuro para mantener el mismo poder adquisitivo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+            <li><a href="/calculadoras/finanzas/ahorro/">🏦 Calculadora de ahorro</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué es el IPC?</summary>
+              <p>El Índice de Precios al Consumo (IPC) mide la evolución del coste de una cesta de bienes y servicios representativa. Su variación porcentual anual es la tasa de inflación oficial.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuál es la inflación objetivo del Banco Central Europeo?</summary>
+              <p>El BCE tiene como objetivo mantener la inflación cerca pero por debajo del 2% anual a medio plazo. Este nivel se considera compatible con la estabilidad de precios.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo protejo mis ahorros de la inflación?</summary>
+              <p>Invirtiendo en activos que históricamente superan la inflación — acciones, fondos indexados, inmuebles o bonos ligados a la inflación. El dinero en cuenta corriente pierde valor real cada año.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

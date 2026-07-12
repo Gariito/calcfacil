@@ -1,0 +1,77 @@
+---
+layout: calculadora.njk
+title: Calculadora de división de cuenta en restaurante
+description: Divide la cuenta del restaurante entre varias personas, con propina y artículos individuales.
+keywords: dividir cuenta restaurante, calculadora propina grupo, split bill, pagar cuenta entre amigos
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Divisor de cuenta de restaurante
+icono: 🍽️
+tituloCorto: la división de cuenta
+descripcion: Divide la cuenta del restaurante equitativamente entre varias personas incluyendo la propina.
+explicacion: Dividir la cuenta en un restaurante entre varias personas puede ser complicado, especialmente cuando hay propina de por medio. Esta calculadora lo hace automáticamente — solo introduce el total, el número de personas y el porcentaje de propina para saber exactamente cuánto pone cada uno.
+faq:
+  - q: ¿Cómo se divide la propina entre varias personas?
+    a: La forma más justa es calcular la propina sobre el total y luego dividir todo (cuenta + propina) entre el número de personas. Esta calculadora lo hace automáticamente.
+  - q: ¿Es obligatorio dejar propina en España?
+    a: No, en España la propina es completamente voluntaria. Sin embargo es una muestra de agradecimiento habitual, especialmente en restaurantes donde el servicio ha sido bueno.
+  - q: ¿Qué hago si alguien no ha comido lo mismo?
+    a: En ese caso lo más justo es que cada uno pague lo que ha consumido. Usa la sección de artículos individuales o divide solo la parte común equitativamente.
+relacionadas:
+  - slug: propina
+    categoria: dia-a-dia
+    titulo: Calculadora de propina
+    icono: 🍽️
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+---
+
+<label>Total de la cuenta (€)</label>
+<input type="number" id="div-total" placeholder="120.50" oninput="calcDiv()">
+
+<label>Número de personas</label>
+<input type="number" id="div-pers" placeholder="4" oninput="calcDiv()">
+
+<label>Propina (%)</label>
+<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+  <input type="range" min="0" max="25" value="10" id="div-pct"
+    oninput="document.getElementById('div-pct-val').textContent=this.value+'%'; calcDiv()"
+    style="flex:1;margin-bottom:0">
+  <span id="div-pct-val" style="font-weight:600;min-width:40px">10%</span>
+</div>
+
+<div class="result-box" id="div-res">Introduce el total y el número de personas</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)" id="div-desglose"></div>
+
+<script>
+function calcDiv() {
+  const total = parseFloat(document.getElementById('div-total').value);
+  const pers = parseInt(document.getElementById('div-pers').value);
+  const pct = parseInt(document.getElementById('div-pct').value);
+  if (!total || !pers) return;
+
+  const propina = total * pct / 100;
+  const totalConProp = total + propina;
+  const porPersona = totalConProp / pers;
+  const propinaPersona = propina / pers;
+
+  document.getElementById('div-res').innerHTML =
+    `${porPersona.toFixed(2)} € por persona
+    <small>Total con propina: ${totalConProp.toFixed(2)} € · Propina: ${propina.toFixed(2)} € · ${pers} personas</small>`;
+
+  let rows = '';
+  for (let i = 1; i <= Math.min(pers, 10); i++) {
+    rows += `<div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.875rem">
+      <span>Persona ${i}</span>
+      <span style="font-weight:600">${porPersona.toFixed(2)} €</span>
+    </div>`;
+  }
+  if (pers > 10) rows += `<div style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem">... y ${pers-10} personas más × ${porPersona.toFixed(2)} €</div>`;
+
+  document.getElementById('div-desglose').innerHTML =
+    `<p style="font-size:0.875rem;font-weight:600;margin-bottom:0.5rem">Desglose por persona</p>${rows}`;
+}
+</script>
