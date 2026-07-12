@@ -4,14 +4,14 @@
   <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras de educación gratuitas — CalcFácil</title>
-  <meta name="description" content="Calculadoras educativas gratuitas. Nota media ponderada y nota de selectividad EBAU.">
-  <meta name="keywords" content="calculadora nota media, selectividad ebau, nota acceso universidad, media ponderada">
+  <meta name="description" content="Calculadoras educativas gratuitas. Nota media ponderada, nota de selectividad EBAU y horas de estudio.">
+  <meta name="keywords" content="calculadora nota media, selectividad ebau, horas estudio examen, planificador estudio">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/educacion/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadoras de educación gratuitas — CalcFácil">
-  <meta property="og:description" content="Calculadoras educativas gratuitas. Nota media ponderada y nota de selectividad EBAU.">
+  <meta property="og:description" content="Calculadoras educativas gratuitas. Nota media ponderada, nota de selectividad EBAU y horas de estudio.">
   <meta property="og:url" content="https://www.calcfacil.com/calculadoras/educacion/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadoras de educación gratuitas",
-    "description": "Calculadoras educativas gratuitas. Nota media ponderada y nota de selectividad EBAU.",
+    "description": "Calculadoras educativas gratuitas. Nota media ponderada, nota de selectividad EBAU y horas de estudio.",
     "url": "https://www.calcfacil.com/calculadoras/educacion/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -33,6 +33,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
 </head>
 <body>
 
@@ -43,7 +54,7 @@
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
-      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/cocina/">🍳 Cocina</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
@@ -61,9 +72,23 @@
   <div class="container">
     <div class="cat-header">
       <h1>📚 Calculadoras de educación</h1>
-      <p>Calcula notas, medias y requisitos académicos al instante.</p>
+      <p>Calcula notas, medias y planifica tu estudio al instante.</p>
     </div>
-    <div class="calc-cards">
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="cat-search"
+        placeholder="Buscar... nota media, selectividad, estudio..."
+        oninput="searchCat(this.value)" autocomplete="off">
+      <div class="search-count" id="cat-count"></div>
+    </div>
+
+    <div class="search-empty" id="cat-empty">
+      <div class="empty-icon">🔍</div>
+      <p>No se encontraron calculadoras para "<span id="cat-empty-term"></span>"</p>
+    </div>
+
+    <div class="calc-cards" id="cat-grid">
       <a class="calc-card-link" href="/calculadoras/educacion/nota-media/">
         <span class="icon">📝</span>
         <div><h2>Calculadora de nota media</h2><p>Calcula tu nota media ponderada a partir de tus calificaciones y créditos.</p></div>
@@ -72,9 +97,33 @@
         <span class="icon">🎓</span>
         <div><h2>Nota de selectividad (EBAU)</h2><p>Calcula tu nota de acceso a la universidad con la fórmula oficial.</p></div>
       </a>
+      <a class="calc-card-link" href="/calculadoras/educacion/horas-estudio/">
+        <span class="icon">📖</span>
+        <div><h2>Calculadora de horas de estudio</h2><p>Calcula cuántas horas al día necesitas estudiar para tu examen.</p></div>
+      </a>
     </div>
   </div>
 </div>
+
+<script>
+function searchCat(q) {
+  const term = q.toLowerCase().trim();
+  const cards = document.querySelectorAll('#cat-grid .calc-card-link');
+  const empty = document.getElementById('cat-empty');
+  const count = document.getElementById('cat-count');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (!term || text.includes(term)) { card.classList.remove('hidden'); visible++; }
+    else card.classList.add('hidden');
+  });
+  if (term) {
+    count.textContent = visible + ' calculadora' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
+    document.getElementById('cat-empty-term').textContent = q;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  } else { count.textContent = ''; empty.style.display = 'none'; }
+}
+</script>
 </main>
 
 <footer class="site-footer">

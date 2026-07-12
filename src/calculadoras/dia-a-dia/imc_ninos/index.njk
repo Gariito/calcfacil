@@ -1,0 +1,110 @@
+---
+layout: calculadora.njk
+title: Calculadora de IMC para niños y adolescentes
+description: Calcula el IMC de niños y adolescentes entre 2 y 18 años e interpreta el resultado según percentiles de la OMS.
+keywords: imc niños, calculadora imc infantil, imc adolescentes, peso saludable niños
+categoria: salud
+categoriaLabel: Salud
+titulo: IMC para niños y adolescentes
+icono: 👶
+tituloCorto: el IMC infantil
+descripcion: Calcula el IMC de niños y adolescentes entre 2 y 18 años según los criterios de la OMS.
+explicacion: El IMC en niños y adolescentes se interpreta de forma diferente al de los adultos. En lugar de usar rangos fijos, se compara el IMC del niño con el de otros niños de la misma edad y sexo usando percentiles. Un percentil de 50 significa que el niño tiene el IMC exactamente en la mediana para su edad y sexo. Esta calculadora usa las tablas de referencia de la Organización Mundial de la Salud (OMS).
+faq:
+  - q: ¿Por qué el IMC infantil usa percentiles y no rangos fijos?
+    a: Porque el IMC normal varía mucho con la edad en niños. Un IMC de 17 puede ser normal en un niño de 5 años pero bajo en uno de 15. Los percentiles permiten comparar al niño consigo mismo a lo largo del tiempo.
+  - q: ¿Qué percentil se considera normal?
+    a: Entre el percentil 3 y el 85 se considera peso normal. Por encima del percentil 85 es sobrepeso, y por encima del 97 es obesidad. Por debajo del percentil 3 es bajo peso.
+  - q: ¿A partir de qué edad se puede calcular el IMC?
+    a: Las tablas de la OMS van desde los 2 años. En menores de 2 años se usan otras métricas como el peso para la longitud.
+relacionadas:
+  - slug: imc
+    categoria: salud
+    titulo: IMC para adultos
+    icono: ⚖️
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Peso ideal
+    icono: ⚖️
+---
+
+<div class="row-2">
+  <div>
+    <label>Peso (kg)</label>
+    <input type="number" id="imcn-peso" placeholder="35" oninput="calcIMCN()">
+  </div>
+  <div>
+    <label>Altura (cm)</label>
+    <input type="number" id="imcn-altura" placeholder="140" oninput="calcIMCN()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Edad (años)</label>
+    <input type="number" id="imcn-edad" placeholder="10" min="2" max="18" oninput="calcIMCN()">
+  </div>
+  <div>
+    <label>Sexo</label>
+    <select id="imcn-sexo" onchange="calcIMCN()">
+      <option value="h">Niño</option>
+      <option value="m">Niña</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="imcn-res">Introduce los datos del niño o adolescente</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Interpretación de percentiles (OMS)</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Percentil</th>
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Categoría</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">&lt; Percentil 3</td><td>Bajo peso</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Percentil 3–85</td><td>Peso normal ✓</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">Percentil 85–97</td><td>Sobrepeso</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">&gt; Percentil 97</td><td>Obesidad</td></tr>
+  </table>
+</div>
+
+<script>
+// Valores de referencia simplificados IMC p50 y p85 por edad y sexo (OMS)
+const imcRef = {
+  h: { 2:[15.7,17.4], 3:[15.3,17.0], 4:[15.1,16.8], 5:[15.0,16.8], 6:[15.1,17.0],
+       7:[15.2,17.4], 8:[15.5,18.0], 9:[15.8,18.6], 10:[16.2,19.4], 11:[16.7,20.2],
+       12:[17.2,21.1], 13:[17.8,21.9], 14:[18.4,22.7], 15:[19.0,23.4], 16:[19.6,24.0],
+       17:[20.1,24.5], 18:[20.5,25.0] },
+  m: { 2:[15.3,17.1], 3:[14.9,16.8], 4:[14.7,16.7], 5:[14.7,16.8], 6:[14.8,17.1],
+       7:[15.1,17.7], 8:[15.4,18.3], 9:[15.8,19.1], 10:[16.3,20.0], 11:[16.9,20.9],
+       12:[17.5,21.7], 13:[18.1,22.5], 14:[18.7,23.1], 15:[19.1,23.6], 16:[19.4,24.0],
+       17:[19.7,24.3], 18:[20.0,24.5] }
+};
+
+function calcIMCN() {
+  const peso = parseFloat(document.getElementById('imcn-peso').value);
+  const altura = parseFloat(document.getElementById('imcn-altura').value);
+  const edad = parseInt(document.getElementById('imcn-edad').value);
+  const sexo = document.getElementById('imcn-sexo').value;
+  if (!peso || !altura || !edad) return;
+  if (edad < 2 || edad > 18) { document.getElementById('imcn-res').textContent = 'Esta calculadora es para edades entre 2 y 18 años'; return; }
+
+  const imc = peso / Math.pow(altura / 100, 2);
+  const ref = imcRef[sexo][edad];
+  if (!ref) return;
+
+  const [p50, p85] = ref;
+  const p3 = p50 * 0.88, p97 = p85 * 1.12;
+
+  let cat, color;
+  if (imc < p3) { cat = 'Bajo peso (< percentil 3)'; color = '#3B82F6'; }
+  else if (imc < p85) { cat = 'Peso normal ✓ (percentil 3–85)'; color = '#22C55E'; }
+  else if (imc < p97) { cat = 'Sobrepeso (percentil 85–97)'; color = '#EAB308'; }
+  else { cat = 'Obesidad (> percentil 97)'; color = '#EF4444'; }
+
+  document.getElementById('imcn-res').innerHTML =
+    `<span style="color:${color}">IMC: ${imc.toFixed(1)} — ${cat}</span>
+    <small>Peso: ${peso} kg · Altura: ${altura} cm · Edad: ${edad} años</small>`;
+}
+</script>

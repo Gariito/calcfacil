@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de calorías para adelgazar, mantener o ganar músculo — CalcFácil</title>
+  <meta name="description" content="Calcula exactamente las calorías que necesitas según tu objetivo — pérdida de peso, mantenimiento o volumen muscular.">
+  <meta name="keywords" content="calorias para adelgazar, deficit calorico, calorias para ganar musculo, calculadora calorias objetivo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/fitness/calorias-objetivo/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de calorías para adelgazar, mantener o ganar músculo — CalcFácil">
+  <meta property="og:description" content="Calcula exactamente las calorías que necesitas según tu objetivo — pérdida de peso, mantenimiento o volumen muscular.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/fitness/calorias-objetivo/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías para adelgazar, mantener o ganar músculo",
+    "description": "Calcula exactamente las calorías que necesitas según tu objetivo — pérdida de peso, mantenimiento o volumen muscular.",
+    "url": "https://www.calcfacil.com/calculadoras/fitness/calorias-objetivo/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/fitness/">Fitness</a>
+      <span>›</span>
+      <span>Calorías según tu objetivo</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🎯 Calorías según tu objetivo</h1>
+        <p class="calc-intro">Calcula las calorías exactas que necesitas según si quieres adelgazar, mantener o ganar músculo.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Peso (kg)</label>
+    <input type="number" id="co-peso" placeholder="75" oninput="calcCO()">
+  </div>
+  <div>
+    <label>Altura (cm)</label>
+    <input type="number" id="co-altura" placeholder="175" oninput="calcCO()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Edad (años)</label>
+    <input type="number" id="co-edad" placeholder="30" oninput="calcCO()">
+  </div>
+  <div>
+    <label>Sexo</label>
+    <select id="co-sexo" onchange="calcCO()">
+      <option value="h">Hombre</option>
+      <option value="m">Mujer</option>
+    </select>
+  </div>
+</div>
+
+<label>Nivel de actividad</label>
+<select id="co-act" onchange="calcCO()">
+  <option value="1.2">Sedentario (sin ejercicio)</option>
+  <option value="1.375">Ligero (1-3 días/semana)</option>
+  <option value="1.55">Moderado (3-5 días/semana)</option>
+  <option value="1.725">Activo (6-7 días/semana)</option>
+  <option value="1.9">Muy activo (doble entrenamiento)</option>
+</select>
+
+<label>Tu objetivo</label>
+<select id="co-obj" onchange="calcCO()">
+  <option value="-500">Pérdida de peso rápida (−500 kcal)</option>
+  <option value="-300">Pérdida de peso gradual (−300 kcal)</option>
+  <option value="0">Mantenimiento (0 kcal)</option>
+  <option value="200">Ganancia muscular ligera (+200 kcal)</option>
+  <option value="400">Ganancia muscular (volumen) (+400 kcal)</option>
+</select>
+
+<div class="result-box" id="co-res">Introduce tus datos</div>
+
+<script>
+function calcCO() {
+  const peso = parseFloat(document.getElementById('co-peso').value);
+  const altura = parseFloat(document.getElementById('co-altura').value);
+  const edad = parseFloat(document.getElementById('co-edad').value);
+  const sexo = document.getElementById('co-sexo').value;
+  const act = parseFloat(document.getElementById('co-act').value);
+  const obj = parseInt(document.getElementById('co-obj').value);
+  if (!peso||!altura||!edad) return;
+
+  const tmb = sexo==='h'
+    ? 10*peso + 6.25*altura - 5*edad + 5
+    : 10*peso + 6.25*altura - 5*edad - 161;
+
+  const mantenimiento = Math.round(tmb * act);
+  const objetivo = mantenimiento + obj;
+  const proteinas = Math.round(peso * (obj < 0 ? 2.2 : obj > 0 ? 2.0 : 1.8));
+  const grasas = Math.round(objetivo * 0.25 / 9);
+  const carbos = Math.round((objetivo - proteinas*4 - grasas*9) / 4);
+
+  document.getElementById('co-res').innerHTML =
+    `${objetivo.toLocaleString('es-ES')} kcal/día
+    <small>
+    Mantenimiento: ${mantenimiento.toLocaleString('es-ES')} kcal · 
+    Proteínas: ${proteinas}g · 
+    Grasas: ${grasas}g · 
+    Carbos: ${carbos}g
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las calorías según tu objetivo?</h2>
+          <p>No todas las personas necesitan las mismas calorías aunque tengan el mismo peso. Tu objetivo — perder grasa, mantener el peso o ganar músculo — determina si debes estar en déficit, mantenimiento o superávit calórico. Esta calculadora combina la fórmula de Mifflin-St Jeor con tu nivel de actividad y objetivo para darte un objetivo calórico diario preciso.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias (TMB)</a></li>
+            
+            <li><a href="/calculadoras/salud/harris-benedict/">🧬 Harris-Benedict</a></li>
+            
+            <li><a href="/calculadoras/fitness/calorias-quemadas/">🔥 Calorías quemadas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto déficit calórico necesito para adelgazar?</summary>
+              <p>Un déficit de 300-500 kcal diarias produce una pérdida gradual de 0,3-0,5 kg por semana, que es el ritmo más sostenible. Déficits mayores pueden provocar pérdida muscular y efecto rebote.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías necesito para ganar músculo?</summary>
+              <p>Un superávit moderado de 200-400 kcal sobre el mantenimiento favorece la ganancia muscular minimizando el acúmulo de grasa. Más no es mejor — el músculo crece despacio.</p>
+            </details>
+            
+            <details>
+              <summary>¿Debo contar calorías siempre?</summary>
+              <p>No necesariamente. Contar calorías al principio ayuda a calibrar las porciones. Con el tiempo muchas personas aprenden a comer intuitivamente según sus necesidades. Es una herramienta, no una obligación.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de pensión de jubilación — estimación España — CalcFácil</title>
+  <meta name="description" content="Estima tu pensión de jubilación en España según tus años cotizados y tu base reguladora.">
+  <meta name="keywords" content="calculadora pension jubilacion, cuanto cobro de pension, pension españa, jubilacion calculo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/finanzas/pension/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de pensión de jubilación — estimación España — CalcFácil">
+  <meta property="og:description" content="Estima tu pensión de jubilación en España según tus años cotizados y tu base reguladora.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/finanzas/pension/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de pensión de jubilación — estimación España",
+    "description": "Estima tu pensión de jubilación en España según tus años cotizados y tu base reguladora.",
+    "url": "https://www.calcfacil.com/calculadoras/finanzas/pension/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de pensión de jubilación</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>👴 Calculadora de pensión de jubilación</h1>
+        <p class="calc-intro">Estima tu pensión de jubilación en España según tus años cotizados y salario.</p>
+        <div class="card">
+          
+<label>Base reguladora mensual estimada (€)</label>
+<input type="number" id="pen-base" placeholder="1800" oninput="calcPension()">
+<p style="font-size:0.8rem;color:var(--muted);margin-top:-0.5rem;margin-bottom:1rem">Media de tus últimas cotizaciones mensuales</p>
+
+<label>Años cotizados a la Seguridad Social</label>
+<input type="number" id="pen-anos" placeholder="30" oninput="calcPension()">
+
+<label>Edad de jubilación</label>
+<select id="pen-edad" onchange="calcPension()">
+  <option value="1">65 años (ordinaria con 37,5 años cotizados)</option>
+  <option value="1">66 años y 6 meses (ordinaria con menos años)</option>
+  <option value="0.93">63 años (anticipada voluntaria)</option>
+  <option value="0.96">64 años (anticipada voluntaria)</option>
+</select>
+
+<div class="result-box" id="pen-res">Introduce tus datos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Porcentaje según años cotizados</h3>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--bg)">
+      <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Años cotizados</th>
+      <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">% de la base</th>
+    </tr>
+    <tr><td style="padding:0.4rem 0.5rem">15 años</td><td style="text-align:right">50%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">20 años</td><td style="text-align:right">65%</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">25 años</td><td style="text-align:right">78,5%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">30 años</td><td style="text-align:right">88,5%</td></tr>
+    <tr><td style="padding:0.4rem 0.5rem">35 años</td><td style="text-align:right">97%</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">37+ años</td><td style="text-align:right">100%</td></tr>
+  </table>
+</div>
+
+<script>
+function calcPension() {
+  const base = parseFloat(document.getElementById('pen-base').value);
+  const anos = parseFloat(document.getElementById('pen-anos').value);
+  const coefEdad = parseFloat(document.getElementById('pen-edad').value);
+  if (!base || !anos) return;
+
+  let pct;
+  if (anos < 15) { document.getElementById('pen-res').textContent = 'Se necesitan mínimo 15 años cotizados'; return; }
+  else if (anos < 25) pct = 0.50 + (anos - 15) * 0.019;
+  else if (anos < 37) pct = 0.69 + (anos - 25) * 0.023;
+  else pct = 1.0;
+
+  pct = Math.min(pct, 1.0);
+  const pension = base * pct * coefEdad;
+  const anual = pension * 14;
+
+  document.getElementById('pen-res').innerHTML =
+    `Pensión estimada: ${pension.toFixed(2)} €/mes
+    <small>
+    ${(pct * 100).toFixed(1)}% de la base reguladora · 
+    14 pagas: ${anual.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €/año
+    </small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la pensión de jubilación?</h2>
+          <p>La pensión de jubilación en España se calcula a partir de la base reguladora (media de las últimas cotizaciones) y un porcentaje que depende de los años cotizados. Con 15 años cotizados se cobra el 50% de la base reguladora, y con 37 años o más el 100%. Esta calculadora aplica la normativa vigente de forma simplificada para obtener una estimación orientativa.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/finanzas/sueldo-neto/">💼 Sueldo neto</a></li>
+            
+            <li><a href="/calculadoras/finanzas/interes-compuesto/">📈 Interés compuesto</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos años hay que cotizar para cobrar el 100% de la pensión?</summary>
+              <p>Con la reforma de 2023, para cobrar el 100% de la base reguladora se necesitan 37 años cotizados en 2027. Este umbral aumenta gradualmente hasta 2027.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuál es la pensión mínima en España?</summary>
+              <p>En 2024 la pensión mínima de jubilación con cónyuge a cargo ronda los 900€ al mes, y sin cónyuge unos 735€. Existen complementos para mínimos si la pensión calculada es inferior.</p>
+            </details>
+            
+            <details>
+              <summary>¿A qué edad me puedo jubilar?</summary>
+              <p>La edad ordinaria de jubilación en 2024 es de 65 años con 37,5 años cotizados, o 66 años y 6 meses con menos años cotizados. La jubilación anticipada es posible desde los 63 años con penalizaciones.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es fiable esta calculadora?</summary>
+              <p>Es una estimación orientativa. El cálculo real de la Seguridad Social es más complejo e incluye coeficientes reductores, complementos y actualización del IPC. Para un cálculo oficial usa el simulador de la Seguridad Social.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

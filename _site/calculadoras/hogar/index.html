@@ -4,14 +4,14 @@
   <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras para el hogar gratuitas — CalcFácil</title>
-  <meta name="description" content="Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos y consumo eléctrico.">
-  <meta name="keywords" content="calculadora hogar, metros cuadrados, litros pintura, azulejos m2, consumo electrico">
+  <meta name="description" content="Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos, consumo eléctrico, LED e hipoteca vs alquiler.">
+  <meta name="keywords" content="calculadora hogar, metros cuadrados, pintura, azulejos, consumo electrico, led, hipoteca alquiler">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/hogar/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadoras para el hogar gratuitas — CalcFácil">
-  <meta property="og:description" content="Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos y consumo eléctrico.">
+  <meta property="og:description" content="Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos, consumo eléctrico, LED e hipoteca vs alquiler.">
   <meta property="og:url" content="https://www.calcfacil.com/calculadoras/hogar/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadoras para el hogar gratuitas",
-    "description": "Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos y consumo eléctrico.",
+    "description": "Calculadoras para el hogar gratuitas. Metros cuadrados, pintura, azulejos, consumo eléctrico, LED e hipoteca vs alquiler.",
     "url": "https://www.calcfacil.com/calculadoras/hogar/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -33,6 +33,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
 </head>
 <body>
 
@@ -43,7 +54,7 @@
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
-      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/cocina/">🍳 Cocina</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
@@ -63,7 +74,21 @@
       <h1>🏠 Calculadoras para el hogar</h1>
       <p>Planifica reformas y calcula materiales sin complicaciones.</p>
     </div>
-    <div class="calc-cards">
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="cat-search"
+        placeholder="Buscar... pintura, azulejos, metros, LED..."
+        oninput="searchCat(this.value)" autocomplete="off">
+      <div class="search-count" id="cat-count"></div>
+    </div>
+
+    <div class="search-empty" id="cat-empty">
+      <div class="empty-icon">🔍</div>
+      <p>No se encontraron calculadoras para "<span id="cat-empty-term"></span>"</p>
+    </div>
+
+    <div class="calc-cards" id="cat-grid">
       <a class="calc-card-link" href="/calculadoras/hogar/metros-cuadrados/">
         <span class="icon">📐</span>
         <div><h2>Calculadora de metros cuadrados</h2><p>Calcula los m² de habitaciones, paredes y superficies de diferentes formas.</p></div>
@@ -80,9 +105,37 @@
         <span class="icon">⚡</span>
         <div><h2>Consumo eléctrico</h2><p>Calcula el consumo y coste eléctrico de tus electrodomésticos.</p></div>
       </a>
+      <a class="calc-card-link" href="/calculadoras/hogar/bombillas/">
+        <span class="icon">💡</span>
+        <div><h2>Ahorro con bombillas LED</h2><p>Calcula el ahorro al cambiar tus bombillas actuales por LED.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/hogar/hipoteca-vs-alquiler/">
+        <span class="icon">🏠</span>
+        <div><h2>Hipoteca vs alquiler</h2><p>Compara el coste real de comprar con hipoteca frente a alquilar.</p></div>
+      </a>
     </div>
   </div>
 </div>
+
+<script>
+function searchCat(q) {
+  const term = q.toLowerCase().trim();
+  const cards = document.querySelectorAll('#cat-grid .calc-card-link');
+  const empty = document.getElementById('cat-empty');
+  const count = document.getElementById('cat-count');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (!term || text.includes(term)) { card.classList.remove('hidden'); visible++; }
+    else card.classList.add('hidden');
+  });
+  if (term) {
+    count.textContent = visible + ' calculadora' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
+    document.getElementById('cat-empty-term').textContent = q;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  } else { count.textContent = ''; empty.style.display = 'none'; }
+}
+</script>
 </main>
 
 <footer class="site-footer">

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras de cocina gratuitas — CalcFácil</title>
   <meta name="description" content="Calculadoras de cocina gratuitas. Raciones, temperatura de horno y conversión de ingredientes.">
-  <meta name="keywords" content="calculadora cocina, raciones receta, temperatura horno, tazas a gramos, conversion ingredientes">
+  <meta name="keywords" content="calculadora cocina, raciones receta, temperatura horno, tazas a gramos">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/cocina/">
 
@@ -33,6 +33,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
 </head>
 <body>
 
@@ -43,7 +54,7 @@
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
-      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/cocina/">🍳 Cocina</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
@@ -63,7 +74,21 @@
       <h1>🍳 Calculadoras de cocina</h1>
       <p>Herramientas para cocinar con precisión y sin complicaciones.</p>
     </div>
-    <div class="calc-cards">
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="cat-search"
+        placeholder="Buscar... raciones, horno, gramos, tazas..."
+        oninput="searchCat(this.value)" autocomplete="off">
+      <div class="search-count" id="cat-count"></div>
+    </div>
+
+    <div class="search-empty" id="cat-empty">
+      <div class="empty-icon">🔍</div>
+      <p>No se encontraron calculadoras para "<span id="cat-empty-term"></span>"</p>
+    </div>
+
+    <div class="calc-cards" id="cat-grid">
       <a class="calc-card-link" href="/calculadoras/cocina/raciones/">
         <span class="icon">🍽️</span>
         <div><h2>Ajuste de raciones</h2><p>Adapta cualquier receta al número de comensales que necesites.</p></div>
@@ -79,6 +104,26 @@
     </div>
   </div>
 </div>
+
+<script>
+function searchCat(q) {
+  const term = q.toLowerCase().trim();
+  const cards = document.querySelectorAll('#cat-grid .calc-card-link');
+  const empty = document.getElementById('cat-empty');
+  const count = document.getElementById('cat-count');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (!term || text.includes(term)) { card.classList.remove('hidden'); visible++; }
+    else card.classList.add('hidden');
+  });
+  if (term) {
+    count.textContent = visible + ' calculadora' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
+    document.getElementById('cat-empty-term').textContent = q;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  } else { count.textContent = ''; empty.style.display = 'none'; }
+}
+</script>
 </main>
 
 <footer class="site-footer">

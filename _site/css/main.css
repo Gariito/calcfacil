@@ -279,7 +279,6 @@ input[type="range"] {
 /* ── Calculator page ── */
 .calc-page { padding: 2rem 0 4rem; }
 
-/* ← Limita ancho y centra páginas individuales */
 .calc-container {
   max-width: 900px !important;
   padding-left: 2.5rem !important;
@@ -417,6 +416,63 @@ details p { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; padding
   transform: translateX(-50%);
   transition: left 0.4s;
 }
+
+/* ── Barra de búsqueda ── */
+.search-wrap {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  margin-bottom: 0;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.search-count {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.search-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  display: none;
+}
+
+.search-empty .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.search-empty p { font-size: 0.95rem; }
+
+/* ── Hidden (búsqueda) ── */
+.category-card.hidden { display: none !important; }
+.calc-card-link.hidden { display: none !important; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {

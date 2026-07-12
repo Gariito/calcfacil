@@ -1,0 +1,96 @@
+---
+layout: calculadora.njk
+title: Calculadora de porcentaje de grasa corporal
+description: Calcula tu porcentaje de grasa corporal con la fórmula de la Marina de EE.UU. usando medidas corporales.
+keywords: porcentaje grasa corporal, calculadora grasa corporal, body fat calculator, grasa corporal hombre mujer
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de grasa corporal
+icono: 📏
+tituloCorto: el porcentaje de grasa corporal
+descripcion: Calcula tu porcentaje de grasa corporal usando medidas corporales sin necesidad de báscula especial.
+explicacion: El porcentaje de grasa corporal es un indicador de composición corporal más preciso que el IMC, ya que distingue entre masa grasa y masa magra (músculo, huesos, agua). Esta calculadora usa la fórmula del Departamento de Marina de los EE.UU., que estima la grasa corporal a partir de medidas de circunferencia corporal sin necesidad de equipo especial.
+faq:
+  - q: ¿Cuál es un porcentaje de grasa saludable?
+    a: Para hombres, entre el 10% y el 20% se considera saludable. Para mujeres, entre el 18% y el 28%. Los deportistas suelen tener valores más bajos — entre el 6-13% en hombres y 14-20% en mujeres.
+  - q: ¿Cómo mido correctamente el perímetro de cintura y cuello?
+    a: La cintura se mide en el punto más estrecho del abdomen, generalmente a la altura del ombligo. El cuello se mide justo por debajo de la nuez. Mide sin apretar la cinta y mantén una postura recta.
+  - q: ¿Es más útil el porcentaje de grasa que el IMC?
+    a: Sí, en general. Una persona puede tener un IMC normal pero un porcentaje de grasa alto (obesidad sarcopénica) o un IMC alto pero ser muy musculosa con poca grasa.
+relacionadas:
+  - slug: imc
+    categoria: salud
+    titulo: Calculadora de IMC
+    icono: ⚖️
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Peso ideal
+    icono: ⚖️
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Harris-Benedict
+    icono: 🧬
+---
+
+<label>Sexo</label>
+<select id="gc-sexo" onchange="toggleGC()">
+  <option value="h">Hombre</option>
+  <option value="m">Mujer</option>
+</select>
+
+<label>Altura (cm)</label>
+<input type="number" id="gc-altura" placeholder="175" oninput="calcGC()">
+
+<label>Perímetro de cintura (cm)</label>
+<input type="number" id="gc-cintura" placeholder="85" oninput="calcGC()">
+
+<label>Perímetro de cuello (cm)</label>
+<input type="number" id="gc-cuello" placeholder="38" oninput="calcGC()">
+
+<div id="gc-cadera-wrap">
+  <label>Perímetro de cadera (cm) <span style="color:var(--muted);font-size:0.8rem">— solo mujeres</span></label>
+  <input type="number" id="gc-cadera" placeholder="95" oninput="calcGC()">
+</div>
+
+<div class="result-box" id="gc-res">Introduce tus medidas</div>
+
+<script>
+function toggleGC() {
+  const sexo = document.getElementById('gc-sexo').value;
+  document.getElementById('gc-cadera-wrap').style.display = sexo === 'm' ? 'block' : 'none';
+  calcGC();
+}
+toggleGC();
+
+function calcGC() {
+  const sexo = document.getElementById('gc-sexo').value;
+  const altura = parseFloat(document.getElementById('gc-altura').value);
+  const cintura = parseFloat(document.getElementById('gc-cintura').value);
+  const cuello = parseFloat(document.getElementById('gc-cuello').value);
+  const cadera = parseFloat(document.getElementById('gc-cadera')?.value);
+  if (!altura || !cintura || !cuello) return;
+  if (sexo === 'm' && !cadera) return;
+
+  let grasa;
+  if (sexo === 'h') {
+    grasa = 495 / (1.0324 - 0.19077 * Math.log10(cintura - cuello) + 0.15456 * Math.log10(altura)) - 450;
+  } else {
+    grasa = 495 / (1.29579 - 0.35004 * Math.log10(cintura + cadera - cuello) + 0.22100 * Math.log10(altura)) - 450;
+  }
+
+  if (isNaN(grasa) || grasa < 0) { document.getElementById('gc-res').textContent = 'Revisa las medidas introducidas'; return; }
+
+  let cat, color;
+  if (sexo === 'h') {
+    cat = grasa < 6 ? 'Esencial' : grasa < 14 ? 'Deportista' : grasa < 21 ? 'En forma' : grasa < 25 ? 'Aceptable' : 'Obesidad';
+    color = grasa < 21 ? '#22C55E' : grasa < 25 ? '#EAB308' : '#EF4444';
+  } else {
+    cat = grasa < 14 ? 'Esencial' : grasa < 21 ? 'Deportista' : grasa < 25 ? 'En forma' : grasa < 32 ? 'Aceptable' : 'Obesidad';
+    color = grasa < 25 ? '#22C55E' : grasa < 32 ? '#EAB308' : '#EF4444';
+  }
+
+  document.getElementById('gc-res').innerHTML =
+    `<span style="color:${color}">${grasa.toFixed(1)}% grasa — ${cat}</span>
+    <small>Masa grasa estimada · Fórmula Marina EE.UU.</small>`;
+}
+</script>

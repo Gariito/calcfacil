@@ -4,14 +4,14 @@
   <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras de salud gratuitas — CalcFácil</title>
-  <meta name="description" content="Calculadoras de salud gratuitas. IMC, calorías, agua, embarazo, tensión arterial, sueño y más.">
-  <meta name="keywords" content="calculadoras salud, imc online, calorias diarias, tension arterial, embarazo semanas">
+  <meta name="description" content="Calculadoras de salud gratuitas. IMC, calorías, Harris-Benedict, grasa corporal, glucosa, colesterol y más.">
+  <meta name="keywords" content="calculadoras salud, imc, harris benedict, grasa corporal, glucosa, colesterol, embarazo">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadoras de salud gratuitas — CalcFácil">
-  <meta property="og:description" content="Calculadoras de salud gratuitas. IMC, calorías, agua, embarazo, tensión arterial, sueño y más.">
+  <meta property="og:description" content="Calculadoras de salud gratuitas. IMC, calorías, Harris-Benedict, grasa corporal, glucosa, colesterol y más.">
   <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadoras de salud gratuitas",
-    "description": "Calculadoras de salud gratuitas. IMC, calorías, agua, embarazo, tensión arterial, sueño y más.",
+    "description": "Calculadoras de salud gratuitas. IMC, calorías, Harris-Benedict, grasa corporal, glucosa, colesterol y más.",
     "url": "https://www.calcfacil.com/calculadoras/salud/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -33,6 +33,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
 </head>
 <body>
 
@@ -43,7 +54,7 @@
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
-      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/cocina/">🍳 Cocina</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
@@ -63,14 +74,44 @@
       <h1>🏥 Calculadoras de salud</h1>
       <p>Herramientas gratuitas para controlar tu bienestar físico.</p>
     </div>
-    <div class="calc-cards">
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="cat-search"
+        placeholder="Buscar... IMC, calorías, glucosa, embarazo..."
+        oninput="searchCat(this.value)" autocomplete="off">
+      <div class="search-count" id="cat-count"></div>
+    </div>
+
+    <div class="search-empty" id="cat-empty">
+      <div class="empty-icon">🔍</div>
+      <p>No se encontraron calculadoras para "<span id="cat-empty-term"></span>"</p>
+    </div>
+
+    <div class="calc-cards" id="cat-grid">
       <a class="calc-card-link" href="/calculadoras/salud/imc/">
         <span class="icon">⚖️</span>
         <div><h2>Calculadora de IMC</h2><p>Calcula tu índice de masa corporal y descubre si estás en tu peso ideal.</p></div>
       </a>
+      <a class="calc-card-link" href="/calculadoras/salud/harris-benedict/">
+        <span class="icon">🧬</span>
+        <div><h2>Fórmula de Harris-Benedict</h2><p>Calcula tu metabolismo basal y calorías diarias con la fórmula clásica.</p></div>
+      </a>
       <a class="calc-card-link" href="/calculadoras/salud/calorias/">
         <span class="icon">🔥</span>
         <div><h2>Calorías diarias (TMB)</h2><p>Calcula las calorías que necesitas al día según tu metabolismo y actividad.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/grasa-corporal/">
+        <span class="icon">📏</span>
+        <div><h2>Porcentaje de grasa corporal</h2><p>Calcula tu grasa corporal usando medidas sin básculas especiales.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/peso-ideal/">
+        <span class="icon">⚖️</span>
+        <div><h2>Peso ideal</h2><p>Calcula tu peso ideal según tu altura y sexo con fórmulas médicas.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/imc-ninos/">
+        <span class="icon">👶</span>
+        <div><h2>IMC para niños y adolescentes</h2><p>Calcula el IMC infantil según percentiles de la OMS (2-18 años).</p></div>
       </a>
       <a class="calc-card-link" href="/calculadoras/salud/agua/">
         <span class="icon">💧</span>
@@ -78,35 +119,59 @@
       </a>
       <a class="calc-card-link" href="/calculadoras/salud/frecuencia-cardiaca/">
         <span class="icon">❤️</span>
-        <div><h2>Frecuencia cardíaca</h2><p>Calcula tu zona aeróbica y frecuencia cardíaca máxima para entrenar mejor.</p></div>
+        <div><h2>Frecuencia cardíaca</h2><p>Calcula tu zona aeróbica y frecuencia cardíaca máxima.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/tension-arterial/">
+        <span class="icon">🩺</span>
+        <div><h2>Tensión arterial</h2><p>Comprueba si tu tensión arterial es normal, alta o baja.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/glucosa/">
+        <span class="icon">🩸</span>
+        <div><h2>Niveles de glucosa</h2><p>Comprueba si tus niveles de azúcar en sangre son normales.</p></div>
+      </a>
+      <a class="calc-card-link" href="/calculadoras/salud/colesterol/">
+        <span class="icon">🫀</span>
+        <div><h2>Calculadora de colesterol</h2><p>Comprueba si tus valores de colesterol y triglicéridos son normales.</p></div>
       </a>
       <a class="calc-card-link" href="/calculadoras/salud/embarazo/">
         <span class="icon">🤰</span>
         <div><h2>Semanas de embarazo</h2><p>Calcula las semanas de gestación y la fecha probable de parto.</p></div>
       </a>
+      <a class="calc-card-link" href="/calculadoras/salud/sueno/">
+        <span class="icon">😴</span>
+        <div><h2>Calculadora de sueño</h2><p>Calcula la hora ideal para acostarte o despertarte según tus ciclos.</p></div>
+      </a>
       <a class="calc-card-link" href="/calculadoras/salud/alcohol/">
         <span class="icon">🍷</span>
         <div><h2>Tasa de alcohol en sangre</h2><p>Estima tu nivel de alcoholemia según lo que has bebido.</p></div>
-      </a>
-      <a class="calc-card-link" href="/calculadoras/salud/sueno/">
-        <span class="icon">😴</span>
-        <div><h2>Calculadora de sueño</h2><p>Calcula la hora ideal para acostarte o despertarte según tus ciclos de sueño.</p></div>
       </a>
       <a class="calc-card-link" href="/calculadoras/salud/calorias-alimentos/">
         <span class="icon">🥗</span>
         <div><h2>Calorías de alimentos</h2><p>Consulta las calorías de los alimentos más habituales en la dieta española.</p></div>
       </a>
-      <a class="calc-card-link" href="/calculadoras/salud/peso-ideal/">
-        <span class="icon">⚖️</span>
-        <div><h2>Peso ideal</h2><p>Calcula tu peso ideal según tu altura y sexo con las fórmulas médicas más usadas.</p></div>
-      </a>
-      <a class="calc-card-link" href="/calculadoras/salud/tension-arterial/">
-        <span class="icon">🩺</span>
-        <div><h2>Tensión arterial</h2><p>Comprueba si tu tensión arterial es normal, alta o baja según criterios médicos.</p></div>
-      </a>
     </div>
   </div>
 </div>
+
+<script>
+function searchCat(q) {
+  const term = q.toLowerCase().trim();
+  const cards = document.querySelectorAll('#cat-grid .calc-card-link');
+  const empty = document.getElementById('cat-empty');
+  const count = document.getElementById('cat-count');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (!term || text.includes(term)) { card.classList.remove('hidden'); visible++; }
+    else card.classList.add('hidden');
+  });
+  if (term) {
+    count.textContent = visible + ' calculadora' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
+    document.getElementById('cat-empty-term').textContent = q;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  } else { count.textContent = ''; empty.style.display = 'none'; }
+}
+</script>
 </main>
 
 <footer class="site-footer">

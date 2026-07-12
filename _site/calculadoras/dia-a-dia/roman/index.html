@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de números romanos — decimal a romano y romano a decimal — CalcFácil</title>
+  <meta name="description" content="Convierte números decimales a romanos y romanos a decimales al instante. Gratis y sin registro.">
+  <meta name="keywords" content="numeros romanos, conversor numeros romanos, decimal a romano, romano a decimal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/roman/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Conversor de números romanos — decimal a romano y romano a decimal — CalcFácil">
+  <meta property="og:description" content="Convierte números decimales a romanos y romanos a decimales al instante. Gratis y sin registro.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/roman/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor de números romanos — decimal a romano y romano a decimal",
+    "description": "Convierte números decimales a romanos y romanos a decimales al instante. Gratis y sin registro.",
+    "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/roman/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Conversor de números romanos</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🏛️ Conversor de números romanos</h1>
+        <p class="calc-intro">Convierte entre números decimales y romanos al instante en ambas direcciones.</p>
+        <div class="card">
+          
+<label>Modo de conversión</label>
+<select id="rom-modo" onchange="toggleRom()">
+  <option value="dr">Decimal → Romano</option>
+  <option value="rd">Romano → Decimal</option>
+</select>
+
+<div id="rom-dec">
+  <label>Número decimal (1 – 3999)</label>
+  <input type="number" id="rom-num" placeholder="2024" min="1" max="3999" oninput="calcRom()">
+</div>
+
+<div id="rom-rom" style="display:none">
+  <label>Número romano</label>
+  <input type="text" id="rom-txt" placeholder="MMXXIV" oninput="calcRom()" style="text-transform:uppercase">
+</div>
+
+<div class="result-box" id="rom-res">Introduce un número</div>
+
+<script>
+const romVals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],
+  [50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+
+function toRoman(n) {
+  let r = '';
+  for (const [v, s] of romVals) { while (n >= v) { r += s; n -= v; } }
+  return r;
+}
+
+function fromRoman(s) {
+  const map = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+  let r = 0;
+  for (let i = 0; i < s.length; i++) {
+    const cur = map[s[i]], nxt = map[s[i+1]];
+    if (!cur) return NaN;
+    r += nxt > cur ? -cur : cur;
+  }
+  return r;
+}
+
+function toggleRom() {
+  const m = document.getElementById('rom-modo').value;
+  document.getElementById('rom-dec').style.display = m === 'dr' ? 'block' : 'none';
+  document.getElementById('rom-rom').style.display = m === 'rd' ? 'block' : 'none';
+  document.getElementById('rom-res').textContent = 'Introduce un número';
+}
+
+function calcRom() {
+  const m = document.getElementById('rom-modo').value;
+  if (m === 'dr') {
+    const n = parseInt(document.getElementById('rom-num').value);
+    if (!n || n < 1 || n > 3999) { document.getElementById('rom-res').textContent = 'Introduce un número entre 1 y 3999'; return; }
+    document.getElementById('rom-res').innerHTML = `${toRoman(n)}<small>${n} en números romanos</small>`;
+  } else {
+    const s = document.getElementById('rom-txt').value.toUpperCase().trim();
+    if (!s) return;
+    const n = fromRoman(s);
+    if (isNaN(n) || n <= 0) { document.getElementById('rom-res').textContent = 'Número romano no válido'; return; }
+    document.getElementById('rom-res').innerHTML = `${n}<small>${s} en decimal</small>`;
+  }
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los números romanos?</h2>
+          <p>Los números romanos son un sistema de numeración que usaba el Imperio Romano, basado en letras del alfabeto latino. Aunque ya no se usan en matemáticas, siguen apareciendo en relojes, siglos, capítulos de libros, películas y eventos deportivos. Las letras básicas son I (1), V (5), X (10), L (50), C (100), D (500) y M (1000).</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/conversor-numeros/">🔣 Conversor de sistemas numéricos</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo funciona la resta en números romanos?</summary>
+              <p>Cuando una letra de menor valor precede a una de mayor, se resta. Por ejemplo IV = 4 (5-1), IX = 9 (10-1), XL = 40, XC = 90, CD = 400, CM = 900.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuál es el número romano más grande?</summary>
+              <p>El sistema clásico llega hasta 3.999 (MMMCMXCIX). Para números mayores se usaban barras sobre las letras que multiplicaban por 1.000.</p>
+            </details>
+            
+            <details>
+              <summary>¿Por qué el año 2024 en romano es MMXXIV?</summary>
+              <p>MM = 2000, XX = 20, IV = 4. Se van sumando los valores de izquierda a derecha, aplicando las reglas de resta cuando corresponde.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

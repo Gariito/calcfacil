@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Harris-Benedict — TMB y calorías diarias — CalcFácil</title>
+  <meta name="description" content="Calcula tu Tasa Metabólica Basal con la fórmula de Harris-Benedict revisada y tus calorías totales según tu actividad.">
+  <meta name="keywords" content="formula harris benedict, harris benedict calculadora, tmb harris benedict, metabolismo basal harris benedict">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/calculadoras/salud/harris-benedict/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de Harris-Benedict — TMB y calorías diarias — CalcFácil">
+  <meta property="og:description" content="Calcula tu Tasa Metabólica Basal con la fórmula de Harris-Benedict revisada y tus calorías totales según tu actividad.">
+  <meta property="og:url" content="https://www.calcfacil.com/calculadoras/salud/harris-benedict/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de Harris-Benedict — TMB y calorías diarias",
+    "description": "Calcula tu Tasa Metabólica Basal con la fórmula de Harris-Benedict revisada y tus calorías totales según tu actividad.",
+    "url": "https://www.calcfacil.com/calculadoras/salud/harris-benedict/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Fórmula de Harris-Benedict</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🧬 Fórmula de Harris-Benedict</h1>
+        <p class="calc-intro">Calcula tu Tasa Metabólica Basal (TMB) con la fórmula de Harris-Benedict y tus calorías diarias totales.</p>
+        <div class="card">
+          
+<div class="row-2">
+  <div>
+    <label>Peso (kg)</label>
+    <input type="number" id="hb-peso" placeholder="70" oninput="calcHB()">
+  </div>
+  <div>
+    <label>Altura (cm)</label>
+    <input type="number" id="hb-altura" placeholder="170" oninput="calcHB()">
+  </div>
+</div>
+
+<div class="row-2">
+  <div>
+    <label>Edad (años)</label>
+    <input type="number" id="hb-edad" placeholder="30" oninput="calcHB()">
+  </div>
+  <div>
+    <label>Sexo</label>
+    <select id="hb-sexo" onchange="calcHB()">
+      <option value="h">Hombre</option>
+      <option value="m">Mujer</option>
+    </select>
+  </div>
+</div>
+
+<label>Nivel de actividad física</label>
+<select id="hb-act" onchange="calcHB()">
+  <option value="1.2">Sedentario — trabajo de oficina, sin ejercicio</option>
+  <option value="1.375">Ligero — ejercicio 1-3 días por semana</option>
+  <option value="1.55">Moderado — ejercicio 3-5 días por semana</option>
+  <option value="1.725">Activo — ejercicio intenso 6-7 días por semana</option>
+  <option value="1.9">Muy activo — trabajo físico intenso o doble entrenamiento</option>
+</select>
+
+<div class="result-box" id="hb-res">Introduce tus datos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Fórmula de Harris-Benedict revisada (Roza y Shizgal, 1984)</h3>
+  <div style="background:var(--bg);border-radius:8px;padding:1rem;font-size:0.85rem;color:var(--muted)">
+    <p style="margin-bottom:0.5rem"><strong>Hombres:</strong> TMB = 88,362 + (13,397 × peso kg) + (4,799 × altura cm) − (5,677 × edad)</p>
+    <p><strong>Mujeres:</strong> TMB = 447,593 + (9,247 × peso kg) + (3,098 × altura cm) − (4,330 × edad)</p>
+  </div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Calorías según objetivo</h3>
+  <div id="hb-objetivos" style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem"></div>
+</div>
+
+<script>
+function calcHB() {
+  const peso = parseFloat(document.getElementById('hb-peso').value);
+  const altura = parseFloat(document.getElementById('hb-altura').value);
+  const edad = parseFloat(document.getElementById('hb-edad').value);
+  const sexo = document.getElementById('hb-sexo').value;
+  const act = parseFloat(document.getElementById('hb-act').value);
+  if (!peso || !altura || !edad) return;
+
+  const tmb = sexo === 'h'
+    ? 88.362 + 13.397 * peso + 4.799 * altura - 5.677 * edad
+    : 447.593 + 9.247 * peso + 3.098 * altura - 4.330 * edad;
+
+  const total = Math.round(tmb * act);
+
+  document.getElementById('hb-res').innerHTML =
+    `TMB: ${Math.round(tmb).toLocaleString('es-ES')} kcal/día
+    <small>Calorías totales con actividad: ${total.toLocaleString('es-ES')} kcal/día</small>`;
+
+  document.getElementById('hb-objetivos').innerHTML = `
+    <div style="background:#FEF2F2;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#DC2626;margin-bottom:0.25rem">Pérdida de peso</div>
+      <div>${(total - 500).toLocaleString('es-ES')} kcal/día</div>
+      <div style="color:var(--muted);font-size:0.75rem">Déficit de 500 kcal</div>
+    </div>
+    <div style="background:#F0FDF4;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#16A34A;margin-bottom:0.25rem">Mantenimiento</div>
+      <div>${total.toLocaleString('es-ES')} kcal/día</div>
+      <div style="color:var(--muted);font-size:0.75rem">Sin cambio de peso</div>
+    </div>
+    <div style="background:#EFF6FF;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#2563EB;margin-bottom:0.25rem">Ganancia muscular</div>
+      <div>${(total + 300).toLocaleString('es-ES')} kcal/día</div>
+      <div style="color:var(--muted);font-size:0.75rem">Superávit de 300 kcal</div>
+    </div>
+    <div style="background:#FFFBEB;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#D97706;margin-bottom:0.25rem">TMB (reposo total)</div>
+      <div>${Math.round(tmb).toLocaleString('es-ES')} kcal/día</div>
+      <div style="color:var(--muted);font-size:0.75rem">Mínimo vital</div>
+    </div>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la fórmula de Harris-Benedict?</h2>
+          <p>La fórmula de Harris-Benedict es una de las ecuaciones más usadas para estimar el metabolismo basal — la energía mínima que tu cuerpo necesita en reposo absoluto. Fue publicada en 1919 y revisada en 1984 por Roza y Shizgal para mayor precisión. Multiplicando el resultado por el factor de actividad se obtienen las calorías totales necesarias al día. Es la base de muchos planes nutricionales y de pérdida de peso.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias (Mifflin)</a></li>
+            
+            <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+            <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Peso ideal</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué diferencia hay entre Harris-Benedict y Mifflin-St Jeor?</summary>
+              <p>Ambas estiman el metabolismo basal, pero la fórmula de Mifflin-St Jeor (2005) se considera más precisa para la población actual. Harris-Benedict tiende a sobreestimar ligeramente el gasto calórico. Muchos nutricionistas prefieren Mifflin-St Jeor hoy en día.</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué sirve conocer mi TMB?</summary>
+              <p>La TMB es el punto de partida para calcular tus necesidades calóricas diarias. Si comes menos que tu TMB durante mucho tiempo, tu metabolismo puede ralentizarse. Si comes por encima de tus calorías totales, ganarás peso.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es exacta esta fórmula?</summary>
+              <p>Es una estimación basada en datos estadísticos. El metabolismo real puede variar hasta un 15% según factores genéticos, composición corporal, temperatura corporal y estado de salud.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías debo comer para adelgazar?</summary>
+              <p>Un déficit de 300-500 kcal sobre tus calorías totales produce una pérdida gradual y sostenible de 0,3-0,5 kg por semana. Nunca bajes de tu TMB sin supervisión médica.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+---
+layout: calculadora.njk
+title: Conversor de números romanos — decimal a romano y romano a decimal
+description: Convierte números decimales a romanos y romanos a decimales al instante. Gratis y sin registro.
+keywords: numeros romanos, conversor numeros romanos, decimal a romano, romano a decimal
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Conversor de números romanos
+icono: 🏛️
+tituloCorto: los números romanos
+descripcion: Convierte entre números decimales y romanos al instante en ambas direcciones.
+explicacion: Los números romanos son un sistema de numeración que usaba el Imperio Romano, basado en letras del alfabeto latino. Aunque ya no se usan en matemáticas, siguen apareciendo en relojes, siglos, capítulos de libros, películas y eventos deportivos. Las letras básicas son I (1), V (5), X (10), L (50), C (100), D (500) y M (1000).
+faq:
+  - q: ¿Cómo funciona la resta en números romanos?
+    a: Cuando una letra de menor valor precede a una de mayor, se resta. Por ejemplo IV = 4 (5-1), IX = 9 (10-1), XL = 40, XC = 90, CD = 400, CM = 900.
+  - q: ¿Cuál es el número romano más grande?
+    a: El sistema clásico llega hasta 3.999 (MMMCMXCIX). Para números mayores se usaban barras sobre las letras que multiplicaban por 1.000.
+  - q: ¿Por qué el año 2024 en romano es MMXXIV?
+    a: MM = 2000, XX = 20, IV = 4. Se van sumando los valores de izquierda a derecha, aplicando las reglas de resta cuando corresponde.
+relacionadas:
+  - slug: conversor-numeros
+    categoria: dia-a-dia
+    titulo: Conversor de sistemas numéricos
+    icono: 🔣
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<label>Modo de conversión</label>
+<select id="rom-modo" onchange="toggleRom()">
+  <option value="dr">Decimal → Romano</option>
+  <option value="rd">Romano → Decimal</option>
+</select>
+
+<div id="rom-dec">
+  <label>Número decimal (1 – 3999)</label>
+  <input type="number" id="rom-num" placeholder="2024" min="1" max="3999" oninput="calcRom()">
+</div>
+
+<div id="rom-rom" style="display:none">
+  <label>Número romano</label>
+  <input type="text" id="rom-txt" placeholder="MMXXIV" oninput="calcRom()" style="text-transform:uppercase">
+</div>
+
+<div class="result-box" id="rom-res">Introduce un número</div>
+
+<script>
+const romVals = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],
+  [50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+
+function toRoman(n) {
+  let r = '';
+  for (const [v, s] of romVals) { while (n >= v) { r += s; n -= v; } }
+  return r;
+}
+
+function fromRoman(s) {
+  const map = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+  let r = 0;
+  for (let i = 0; i < s.length; i++) {
+    const cur = map[s[i]], nxt = map[s[i+1]];
+    if (!cur) return NaN;
+    r += nxt > cur ? -cur : cur;
+  }
+  return r;
+}
+
+function toggleRom() {
+  const m = document.getElementById('rom-modo').value;
+  document.getElementById('rom-dec').style.display = m === 'dr' ? 'block' : 'none';
+  document.getElementById('rom-rom').style.display = m === 'rd' ? 'block' : 'none';
+  document.getElementById('rom-res').textContent = 'Introduce un número';
+}
+
+function calcRom() {
+  const m = document.getElementById('rom-modo').value;
+  if (m === 'dr') {
+    const n = parseInt(document.getElementById('rom-num').value);
+    if (!n || n < 1 || n > 3999) { document.getElementById('rom-res').textContent = 'Introduce un número entre 1 y 3999'; return; }
+    document.getElementById('rom-res').innerHTML = `${toRoman(n)}<small>${n} en números romanos</small>`;
+  } else {
+    const s = document.getElementById('rom-txt').value.toUpperCase().trim();
+    if (!s) return;
+    const n = fromRoman(s);
+    if (isNaN(n) || n <= 0) { document.getElementById('rom-res').textContent = 'Número romano no válido'; return; }
+    document.getElementById('rom-res').innerHTML = `${n}<small>${s} en decimal</small>`;
+  }
+}
+</script>

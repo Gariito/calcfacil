@@ -4,14 +4,14 @@
   <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadoras gratuitas online — CalcFácil</title>
-  <meta name="description" content="Más de 50 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.">
+  <meta name="description" content="Más de 80 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.">
   
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadoras gratuitas online — CalcFácil">
-  <meta property="og:description" content="Más de 50 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.">
+  <meta property="og:description" content="Más de 80 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.">
   <meta property="og:url" content="https://www.calcfacil.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadoras gratuitas online",
-    "description": "Más de 50 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.",
+    "description": "Más de 80 calculadoras gratuitas organizadas por categorías. Salud, finanzas, unidades, fitness, cocina y más. Sin registro, sin anuncios.",
     "url": "https://www.calcfacil.com/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -33,6 +33,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
 </head>
 <body>
 
@@ -43,7 +54,7 @@
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
       <a href="/calculadoras/unidades/">📐 Unidades</a>
-      <a href="/calculadoras/dia-a-dia/">🌤 Día a día</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/cocina/">🍳 Cocina</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
@@ -61,73 +72,91 @@
   <div class="container">
     <h1>Calculadoras<br>para todo</h1>
     <p>Rápidas, gratuitas y sin anuncios. Encuentra la que necesitas.</p>
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        id="main-search"
+        placeholder="Buscar calculadora... IMC, hipoteca, euros..."
+        oninput="searchMain(this.value)"
+        autocomplete="off">
+      <div class="search-count" id="main-count"></div>
+    </div>
   </div>
 </section>
 
 <div class="container">
-  <div class="category-grid">
+  <div class="search-empty" id="main-empty">
+    <div class="empty-icon">🔍</div>
+    <p>No se encontraron calculadoras para "<span id="main-empty-term"></span>"</p>
+    <p style="margin-top:0.5rem;font-size:0.85rem">Prueba con otras palabras clave</p>
+  </div>
 
-    <a href="/calculadoras/salud/" class="category-card">
+  <div class="category-grid" id="main-grid">
+
+    <a href="/calculadoras/salud/" class="category-card" data-search="salud imc peso altura calorias agua frecuencia cardiaca embarazo alcohol sueno glucosa colesterol tension arterial harris benedict grasa corporal">
       <span class="cat-icon">🏥</span>
       <h2>Salud</h2>
       <p>Controla tu salud con cálculos precisos</p>
       <ul class="calc-list">
         <li>→ Calculadora de IMC</li>
         <li>→ Calorías diarias (TMB)</li>
-        <li>→ Agua diaria recomendada</li>
-        <li>→ Frecuencia cardíaca</li>
+        <li>→ Harris-Benedict</li>
+        <li>→ Tensión arterial · Glucosa</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/fitness/" class="category-card">
+    <a href="/calculadoras/fitness/" class="category-card" data-search="fitness ejercicio calorias quemadas ritmo carrera vo2 repeticion maxima 1rm objetivo adelgazar musculo">
       <span class="cat-icon">💪</span>
       <h2>Fitness</h2>
       <p>Optimiza tu entrenamiento y rendimiento</p>
       <ul class="calc-list">
         <li>→ Calorías quemadas</li>
-        <li>→ Ritmo de carrera</li>
-        <li>→ VO2 máximo</li>
+        <li>→ Calorías según objetivo</li>
+        <li>→ Ritmo de carrera · VO2 máx</li>
         <li>→ Repetición máxima (1RM)</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/unidades/" class="category-card">
+    <a href="/calculadoras/unidades/" class="category-card" data-search="unidades longitud metros kilometros pies millas peso kilos libras volumen litros temperatura celsius fahrenheit velocidad almacenamiento area">
       <span class="cat-icon">📐</span>
       <h2>Unidades</h2>
       <p>Convierte entre cualquier unidad al instante</p>
       <ul class="calc-list">
         <li>→ Longitud (m, km, ft, mi…)</li>
         <li>→ Peso (kg, lb, oz…)</li>
-        <li>→ Temperatura (°C, °F, K)</li>
-        <li>→ Volumen, velocidad y más</li>
+        <li>→ Temperatura · Volumen · Área</li>
+        <li>→ Velocidad · Almacenamiento</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/dia-a-dia/" class="category-card">
+    <a href="/calculadoras/dia-a-dia/" class="category-card" data-search="dia a dia calculadora basica cientifica descuento porcentaje propina divisas euros dolares fechas tiempo edad media contrasena palabras romanos binario">
       <span class="cat-icon">🌤</span>
       <h2>Día a día</h2>
       <p>Las herramientas que usas a diario</p>
       <ul class="calc-list">
-        <li>→ Calculadora básica</li>
-        <li>→ Propina y división de cuenta</li>
-        <li>→ Porcentajes y descuentos</li>
-        <li>→ Conversor de divisas</li>
+        <li>→ Calculadora básica y científica</li>
+        <li>→ Descuentos · Porcentajes</li>
+        <li>→ Días entre fechas · Edad</li>
+        <li>→ Divisas · Contraseñas</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/finanzas/" class="category-card">
+    <a href="/calculadoras/finanzas/" class="category-card" data-search="finanzas hipoteca sueldo neto bruto irpf finiquito despido interes compuesto ahorro iva prestamo pension jubilacion euros pesetas inflacion alquiler rentabilidad">
       <span class="cat-icon">💶</span>
       <h2>Finanzas</h2>
       <p>Planifica tu dinero con claridad</p>
       <ul class="calc-list">
-        <li>→ Interés compuesto</li>
-        <li>→ Cuota hipotecaria</li>
-        <li>→ Calculadora de IVA</li>
-        <li>→ Conversor de divisas</li>
+        <li>→ Sueldo neto · IRPF · Finiquito</li>
+        <li>→ Hipoteca · Préstamo</li>
+        <li>→ Pensión de jubilación</li>
+        <li>→ Euros a pesetas · Inflación</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/cocina/" class="category-card">
+    <a href="/calculadoras/cocina/" class="category-card" data-search="cocina raciones receta horno temperatura ingredientes tazas gramos cucharadas">
       <span class="cat-icon">🍳</span>
       <h2>Cocina</h2>
       <p>Cocina con precisión y sin complicaciones</p>
@@ -138,51 +167,93 @@
       </ul>
     </a>
 
-    <a href="/calculadoras/matematicas/" class="category-card">
+    <a href="/calculadoras/matematicas/" class="category-card" data-search="matematicas raiz cuadrada potencias regla de tres media mediana moda estadistica porcentaje variacion mcd mcm primos fracciones">
       <span class="cat-icon">🔢</span>
       <h2>Matemáticas</h2>
       <p>Operaciones frecuentes resueltas al instante</p>
       <ul class="calc-list">
-        <li>→ Raíz cuadrada y potencias</li>
-        <li>→ Regla de tres</li>
-        <li>→ Media, mediana y moda</li>
+        <li>→ Raíz cuadrada · Potencias</li>
+        <li>→ Fracciones · MCD · MCM</li>
+        <li>→ Números primos</li>
+        <li>→ Media · Mediana · Moda</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/hogar/" class="category-card">
+    <a href="/calculadoras/hogar/" class="category-card" data-search="hogar metros cuadrados pintura azulejos consumo electrico led bombillas hipoteca alquiler reforma">
       <span class="cat-icon">🏠</span>
       <h2>Hogar</h2>
       <p>Planifica reformas y calcula materiales</p>
       <ul class="calc-list">
-        <li>→ Litros de pintura</li>
-        <li>→ Número de azulejos</li>
-        <li>→ Consumo eléctrico</li>
+        <li>→ Metros cuadrados</li>
+        <li>→ Pintura · Azulejos</li>
+        <li>→ Consumo eléctrico · LED</li>
+        <li>→ Hipoteca vs alquiler</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/viajes/" class="category-card">
+    <a href="/calculadoras/viajes/" class="category-card" data-search="viajes combustible gasolina diesel velocidad media distancia tiempo presupuesto viaje">
       <span class="cat-icon">✈️</span>
       <h2>Viajes</h2>
       <p>Planifica tu próximo viaje sin sorpresas</p>
       <ul class="calc-list">
         <li>→ Coste de combustible</li>
+        <li>→ Velocidad media</li>
         <li>→ Presupuesto de viaje</li>
-        <li>→ Zonas horarias</li>
       </ul>
     </a>
 
-    <a href="/calculadoras/educacion/" class="category-card">
+    <a href="/calculadoras/educacion/" class="category-card" data-search="educacion nota media selectividad ebau universidad horas estudio examen">
       <span class="cat-icon">📚</span>
       <h2>Educación</h2>
-      <p>Calcula notas y requisitos académicos</p>
+      <p>Calcula notas y planifica tu estudio</p>
       <ul class="calc-list">
         <li>→ Nota media ponderada</li>
         <li>→ Nota de selectividad (EBAU)</li>
+        <li>→ Horas de estudio</li>
       </ul>
     </a>
 
   </div>
 </div>
+
+<script>
+function searchMain(q) {
+  const term = q.toLowerCase().trim();
+  const cards = document.querySelectorAll('#main-grid .category-card');
+  const empty = document.getElementById('main-empty');
+  const count = document.getElementById('main-count');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const searchData = (card.dataset.search || '').toLowerCase();
+    const title = (card.querySelector('h2')?.textContent || '').toLowerCase();
+    const searchText = searchData + ' ' + title;
+
+    if (!term || searchText.includes(term)) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  if (term) {
+    count.textContent = visible + ' categoría' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
+    document.getElementById('main-empty-term').textContent = q;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  } else {
+    count.textContent = '';
+    empty.style.display = 'none';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('main-search').focus();
+  }
+});
+</script>
 </main>
 
 <footer class="site-footer">

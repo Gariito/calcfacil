@@ -1,0 +1,95 @@
+---
+layout: calculadora.njk
+title: Calculadora hipoteca vs alquiler — ¿qué me sale más a cuenta?
+description: Compara el coste total de comprar una vivienda con hipoteca frente a alquilar durante el mismo periodo.
+keywords: hipoteca vs alquiler, comprar o alquilar, calculadora hipoteca alquiler, que sale mas barato
+categoria: hogar
+categoriaLabel: Hogar
+titulo: Calculadora hipoteca vs alquiler
+icono: 🏠
+tituloCorto: hipoteca vs alquiler
+descripcion: Compara el coste real de comprar con hipoteca frente a alquilar durante el mismo número de años.
+explicacion: La decisión de comprar o alquilar es una de las más importantes de la vida financiera. Comprar tiene costes iniciales altos (entrada, notaría, impuestos) pero acumulas patrimonio. Alquilar tiene más flexibilidad pero el dinero no genera activo propio. Esta calculadora compara ambas opciones en términos de coste total real durante el mismo periodo de tiempo.
+faq:
+  - q: ¿Qué es mejor, comprar o alquilar?
+    a: Depende de tu situación personal, el mercado inmobiliario de tu zona y tus planes de vida. En general, comprar suele ser mejor a largo plazo (más de 10 años) si tienes estabilidad. Alquilar da más flexibilidad y liquidez a corto plazo.
+  - q: ¿Qué gastos adicionales tiene comprar una vivienda?
+    a: Además del precio, hay que sumar el ITP (6-10% en segunda mano) o IVA (10% en obra nueva), gastos de notaría y registro (~1-2%), tasación y comisión de apertura. En total entre un 10% y un 15% del precio de compra.
+  - q: ¿Cuándo sale a cuenta comprar frente a alquilar?
+    a: Como regla general, si el precio de compra dividido entre el alquiler anual supera los 25-30 años (PER inmobiliario), alquilar puede ser más eficiente. Por debajo de 20 años, comprar suele ser más interesante.
+relacionadas:
+  - slug: hipoteca
+    categoria: finanzas
+    titulo: Calculadora de hipoteca
+    icono: 🏠
+  - slug: rentabilidad-alquiler
+    categoria: finanzas
+    titulo: Rentabilidad de alquiler
+    icono: 🏘️
+---
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+  <div>
+    <p style="font-weight:600;margin-bottom:1rem;color:var(--accent)">🏠 Comprar</p>
+    <label>Precio de compra (€)</label>
+    <input type="number" id="hva-precio" placeholder="200000" oninput="calcHvA()">
+    <label>Entrada + gastos (€)</label>
+    <input type="number" id="hva-entrada" placeholder="40000" oninput="calcHvA()">
+    <label>Tipo de interés hipoteca (%)</label>
+    <input type="number" id="hva-interes" placeholder="3.5" oninput="calcHvA()">
+    <label>Gastos anuales propietario (IBI, comunidad…) (€)</label>
+    <input type="number" id="hva-gastos" placeholder="1500" oninput="calcHvA()">
+  </div>
+  <div>
+    <p style="font-weight:600;margin-bottom:1rem;color:#16A34A">🔑 Alquilar</p>
+    <label>Alquiler mensual (€)</label>
+    <input type="number" id="hva-alquiler" placeholder="900" oninput="calcHvA()">
+    <label>Subida anual del alquiler (%)</label>
+    <input type="number" id="hva-subida" placeholder="3" oninput="calcHvA()">
+    <label>Rendimiento inversión entrada (%)</label>
+    <input type="number" id="hva-rent" placeholder="4" oninput="calcHvA()">
+  </div>
+</div>
+
+<label style="margin-top:1rem">Años de comparación</label>
+<input type="number" id="hva-anos" placeholder="20" oninput="calcHvA()">
+
+<div class="result-box" id="hva-res">Introduce los datos de ambas opciones</div>
+
+<script>
+function calcHvA() {
+  const precio = parseFloat(document.getElementById('hva-precio').value);
+  const entrada = parseFloat(document.getElementById('hva-entrada').value);
+  const interes = parseFloat(document.getElementById('hva-interes').value) / 100 / 12;
+  const gastos = parseFloat(document.getElementById('hva-gastos').value) || 0;
+  const alquiler = parseFloat(document.getElementById('hva-alquiler').value);
+  const subida = parseFloat(document.getElementById('hva-subida').value) / 100;
+  const rent = parseFloat(document.getElementById('hva-rent').value) / 100;
+  const anos = parseFloat(document.getElementById('hva-anos').value);
+  if (!precio||!entrada||!alquiler||!anos) return;
+
+  const prestamo = precio - entrada;
+  const n = anos * 12;
+  const cuota = prestamo * interes * Math.pow(1+interes,n) / (Math.pow(1+interes,n)-1);
+  const totalHipoteca = cuota * n + gastos * anos + entrada;
+  const valorFinal = precio * Math.pow(1.03, anos);
+  const costeNetoCompra = totalHipoteca - valorFinal;
+
+  let totalAlquiler = 0, alqMes = alquiler;
+  for (let i = 0; i < anos; i++) { totalAlquiler += alqMes * 12; alqMes *= (1 + subida); }
+  const gananciainversion = entrada * (Math.pow(1 + rent, anos) - 1);
+  const costeNetoAlquiler = totalAlquiler - gananciainversion;
+
+  const mejor = costeNetoCompra < costeNetoAlquiler ? 'COMPRAR' : 'ALQUILAR';
+  const dif = Math.abs(costeNetoCompra - costeNetoAlquiler);
+  const color = mejor === 'COMPRAR' ? '#2563EB' : '#16A34A';
+
+  document.getElementById('hva-res').innerHTML =
+    `<span style="color:${color}">En ${anos} años, sale mejor ${mejor}</span>
+    <small>
+    Coste neto compra: ${costeNetoCompra.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,'.')} € · 
+    Coste neto alquiler: ${costeNetoAlquiler.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,'.')} € · 
+    Diferencia: ${dif.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,'.')} €
+    </small>`;
+}
+</script>
