@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"> <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de tiempo — sumar y restar horas y minutos — CalcFácil</title>
-  <meta name="description" content="Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.">
-  <meta name="keywords" content="sumar horas minutos, calculadora tiempo, restar horas, calcular duracion, horas trabajadas">
+  <title>Calculadora de horas y minutos — suma y resta de tiempo — CalcFácil</title>
+  <meta name="description" content="Suma o resta horas y minutos fácilmente. Calcula la diferencia entre dos horas o el total de horas trabajadas. Gratis.">
+  <meta name="keywords" content="calculadora horas y minutos, sumar horas y minutos, restar horas, suma de horas, calculadora de tiempo, horas trabajadas, sumador de minutos, resta de horas, calculadora horas de trabajo">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de tiempo — sumar y restar horas y minutos — CalcFácil">
-  <meta property="og:description" content="Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.">
+  <meta property="og:title" content="Calculadora de horas y minutos — suma y resta de tiempo — CalcFácil">
+  <meta property="og:description" content="Suma o resta horas y minutos fácilmente. Calcula la diferencia entre dos horas o el total de horas trabajadas. Gratis.">
   <meta property="og:url" content="https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -21,8 +21,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de tiempo — sumar y restar horas y minutos",
-    "description": "Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.",
+    "name": "Calculadora de horas y minutos — suma y resta de tiempo",
+    "description": "Suma o resta horas y minutos fácilmente. Calcula la diferencia entre dos horas o el total de horas trabajadas. Gratis.",
     "url": "https://www.calcfacil.com/calculadoras/dia-a-dia/tiempo/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -84,7 +84,7 @@
       <!-- Calculadora principal -->
       <div class="calc-main">
         <h1>⏱️ Calculadora de tiempo</h1>
-        <p class="calc-intro">Suma y resta horas y minutos, calcula duraciones y convierte entre unidades de tiempo.</p>
+        <p class="calc-intro">Suma y resta horas y minutos, calcula horas trabajadas y diferencias entre horas.</p>
         <div class="card">
           
 <label>Modo</label>
@@ -162,7 +162,7 @@ function calcTiempo() {
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>¿Qué es la calculadora de tiempo?</h2>
-          <p>Sumar y restar horas y minutos puede ser confuso porque el sistema sexagesimal (base 60) no funciona igual que el decimal. Esta calculadora lo hace automáticamente, gestionando los cambios entre minutos y horas de forma correcta.</p>
+          <p>Sumar y restar horas y minutos es más complicado que sumar números normales porque el sistema sexagesimal funciona en base 60 — 90 minutos son 1 hora y 30 minutos, no 1 hora y 90 minutos. Esta calculadora gestiona automáticamente estas conversiones. Puedes usarla para calcular cuántas horas has trabajado en un día, sumar el tiempo total de varias tareas, calcular la diferencia entre dos horas del día o saber a qué hora terminas si empiezas a una hora determinada y trabajas un número concreto de horas.</p>
         </div>
 
         
@@ -172,7 +172,7 @@ function calcTiempo() {
             
             <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
             
-            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            <li><a href="/calculadoras/dia-a-dia/edad/">🎂 Calculadora de edad</a></li>
             
           </ul>
         </div>
@@ -183,18 +183,23 @@ function calcTiempo() {
           
             
             <details>
-              <summary>¿Cómo sumo 1h 45min con 2h 30min?</summary>
-              <p>Introduce 1h 45min como primera duración y 2h 30min como segunda. El resultado es 4h 15min, porque 45+30=75 minutos = 1 hora y 15 minutos.</p>
+              <summary>¿Cómo sumo horas y minutos?</summary>
+              <p>Introduce las horas y minutos de cada duración por separado. La calculadora gestiona automáticamente la conversión cuando los minutos superan 60.</p>
             </details>
             
             <details>
-              <summary>¿Puedo calcular las horas trabajadas en un día?</summary>
-              <p>Sí. Introduce la hora de entrada como inicio y la de salida como fin para obtener las horas trabajadas.</p>
+              <summary>¿Cómo calculo las horas trabajadas en un día?</summary>
+              <p>Selecciona el modo &quot;Diferencia entre horas&quot;, introduce la hora de entrada y la hora de salida, y obtendrás automáticamente las horas y minutos trabajados.</p>
             </details>
             
             <details>
-              <summary>¿Funciona con segundos?</summary>
-              <p>Esta versión trabaja con horas y minutos. Para precisión de segundos usa un cronómetro.</p>
+              <summary>¿Puedo sumar más de dos duraciones?</summary>
+              <p>Esta calculadora suma dos duraciones. Para sumar más, suma las dos primeras, copia el resultado e introdúcelo como primera duración con la siguiente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Funciona con jornadas nocturnas que pasan de medianoche?</summary>
+              <p>Sí, si la hora de fin es anterior a la de inicio, la calculadora asume que has pasado la medianoche y calcula correctamente.</p>
             </details>
             
           

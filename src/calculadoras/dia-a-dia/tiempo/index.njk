@@ -1,31 +1,33 @@
 ---
 layout: calculadora.njk
-title: Calculadora de tiempo — sumar y restar horas y minutos
-description: Suma o resta horas y minutos fácilmente. Calcula duraciones, tiempos de trabajo y diferencias horarias.
-keywords: sumar horas minutos, calculadora tiempo, restar horas, calcular duracion, horas trabajadas
+title: Calculadora de horas y minutos — suma y resta de tiempo
+description: Suma o resta horas y minutos fácilmente. Calcula la diferencia entre dos horas o el total de horas trabajadas. Gratis.
+keywords: calculadora horas y minutos, sumar horas y minutos, restar horas, suma de horas, calculadora de tiempo, horas trabajadas, sumador de minutos, resta de horas, calculadora horas de trabajo
 categoria: dia-a-dia
 categoriaLabel: Día a día
 titulo: Calculadora de tiempo
 icono: ⏱️
 tituloCorto: la calculadora de tiempo
-descripcion: Suma y resta horas y minutos, calcula duraciones y convierte entre unidades de tiempo.
-explicacion: Sumar y restar horas y minutos puede ser confuso porque el sistema sexagesimal (base 60) no funciona igual que el decimal. Esta calculadora lo hace automáticamente, gestionando los cambios entre minutos y horas de forma correcta.
+descripcion: Suma y resta horas y minutos, calcula horas trabajadas y diferencias entre horas.
+explicacion: Sumar y restar horas y minutos es más complicado que sumar números normales porque el sistema sexagesimal funciona en base 60 — 90 minutos son 1 hora y 30 minutos, no 1 hora y 90 minutos. Esta calculadora gestiona automáticamente estas conversiones. Puedes usarla para calcular cuántas horas has trabajado en un día, sumar el tiempo total de varias tareas, calcular la diferencia entre dos horas del día o saber a qué hora terminas si empiezas a una hora determinada y trabajas un número concreto de horas.
 faq:
-  - q: ¿Cómo sumo 1h 45min con 2h 30min?
-    a: Introduce 1h 45min como primera duración y 2h 30min como segunda. El resultado es 4h 15min, porque 45+30=75 minutos = 1 hora y 15 minutos.
-  - q: ¿Puedo calcular las horas trabajadas en un día?
-    a: Sí. Introduce la hora de entrada como inicio y la de salida como fin para obtener las horas trabajadas.
-  - q: ¿Funciona con segundos?
-    a: Esta versión trabaja con horas y minutos. Para precisión de segundos usa un cronómetro.
+  - q: ¿Cómo sumo horas y minutos?
+    a: Introduce las horas y minutos de cada duración por separado. La calculadora gestiona automáticamente la conversión cuando los minutos superan 60.
+  - q: ¿Cómo calculo las horas trabajadas en un día?
+    a: Selecciona el modo "Diferencia entre horas", introduce la hora de entrada y la hora de salida, y obtendrás automáticamente las horas y minutos trabajados.
+  - q: ¿Puedo sumar más de dos duraciones?
+    a: Esta calculadora suma dos duraciones. Para sumar más, suma las dos primeras, copia el resultado e introdúcelo como primera duración con la siguiente.
+  - q: ¿Funciona con jornadas nocturnas que pasan de medianoche?
+    a: Sí, si la hora de fin es anterior a la de inicio, la calculadora asume que has pasado la medianoche y calcula correctamente.
 relacionadas:
   - slug: dias-entre-fechas
     categoria: dia-a-dia
     titulo: Días entre fechas
     icono: 📅
-  - slug: calculadora-basica
+  - slug: edad
     categoria: dia-a-dia
-    titulo: Calculadora básica
-    icono: 🔢
+    titulo: Calculadora de edad
+    icono: 🎂
 ---
 
 <label>Modo</label>
