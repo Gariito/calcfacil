@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator — Free Online — CalcFácil</title>
+  <meta name="description" content="Calculate the growth of your investment with compound interest. Includes monthly contributions. Free compound interest calculator.">
+  <meta name="keywords" content="compound interest calculator, compound interest, investment calculator, savings calculator, interest calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/en/calculators/finance/compound-interest/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Compound Interest Calculator — Free Online — CalcFácil">
+  <meta property="og:description" content="Calculate the growth of your investment with compound interest. Includes monthly contributions. Free compound interest calculator.">
+  <meta property="og:url" content="https://www.calcfacil.com/en/calculators/finance/compound-interest/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compound Interest Calculator — Free Online",
+    "description": "Calculate the growth of your investment with compound interest. Includes monthly contributions. Free compound interest calculator.",
+    "url": "https://www.calcfacil.com/en/calculators/finance/compound-interest/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/finance/">Finance</a>
+      <span>›</span>
+      <span>Compound Interest Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📈 Compound Interest Calculator</h1>
+        <p class="calc-intro">Calculate how your savings or investment grows over time with the power of compound interest.</p>
+
+        <div class="card">
+          <label>Initial amount (€)</label>
+          <input type="number" id="ic-capital" placeholder="1000" oninput="calcIC()">
+          <div class="row-2">
+            <div><label>Annual interest rate (%)</label><input type="number" id="ic-tasa" placeholder="7" oninput="calcIC()"></div>
+            <div><label>Number of years</label><input type="number" id="ic-anos" placeholder="10" oninput="calcIC()"></div>
+          </div>
+          <label>Monthly contribution (€)</label>
+          <input type="number" id="ic-aport" placeholder="0" oninput="calcIC()">
+          <div class="result-box" id="ic-res">Enter your investment details</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is compound interest?</h2>
+          <p>Compound interest is when the interest you earn is added to your principal, so that interest also earns interest. Over time, this creates exponential growth. Albert Einstein reportedly called it the eighth wonder of the world.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is a realistic annual return?</summary>
+            <p>Historically, global stock markets have returned an average of 7–10% annually before inflation. Savings accounts and bonds typically offer lower returns.</p>
+          </details>
+          <details>
+            <summary>How often does this calculator compound?</summary>
+            <p>This calculator compounds monthly, which is the most common frequency for investment funds and savings accounts.</p>
+          </details>
+          <details>
+            <summary>What is the difference between simple and compound interest?</summary>
+            <p>With simple interest you only earn interest on your principal. With compound interest, your interest also earns interest, creating much greater growth over time.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% math Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcIC() {
+  const c = parseFloat(document.getElementById('ic-capital').value);
+  const tasa = parseFloat(document.getElementById('ic-tasa').value);
+  const anos = parseFloat(document.getElementById('ic-anos').value);
+  const aport = parseFloat(document.getElementById('ic-aport').value) || 0;
+  if (!c||!tasa||!anos) return;
+  const r = tasa/100/12, n = anos*12;
+  const futuro = c*Math.pow(1+r,n) + aport*(Math.pow(1+r,n)-1)/r;
+  const inv = c + aport*n;
+  document.getElementById('ic-res').innerHTML =
+    `${futuro.toFixed(2)} €<small>Invested: ${inv.toFixed(2)} € · Earnings: ${(futuro-inv).toFixed(2)} €</small>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+---
+layout: base.njk
+title: Percentage Calculator — Free Online
+description: Calculate percentages instantly. Find what percentage one number is of another, or calculate a percentage of any number. Free.
+keywords: percentage calculator, percent calculator, calculate percentage, what is x percent of y, percentage of a number
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Percentage Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>% Percentage Calculator</h1>
+        <p class="calc-intro">Calculate any percentage instantly — find X% of a number or what percentage X is of Y.</p>
+
+        <div class="card">
+          <p style="font-weight:600;margin-bottom:1rem">What is X% of Y?</p>
+          <div class="row-2">
+            <div><label>Percentage (%)</label><input type="number" id="pct-pct" placeholder="15" oninput="calcPct()"></div>
+            <div><label>Of number</label><input type="number" id="pct-val" placeholder="200" oninput="calcPct()"></div>
+          </div>
+          <div class="result-box" id="pct-res">Enter the values</div>
+
+          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <p style="font-weight:600;margin-bottom:1rem">X is what % of Y?</p>
+            <div class="row-2">
+              <div><label>X (part)</label><input type="number" id="pct2-x" placeholder="30" oninput="calcPct2()"></div>
+              <div><label>Y (total)</label><input type="number" id="pct2-y" placeholder="200" oninput="calcPct2()"></div>
+            </div>
+            <div class="result-box" id="pct2-res">Enter the values</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a percentage?</h2>
+          <p>A percentage is a number or ratio expressed as a fraction of 100. It is used everywhere in daily life — from discounts and tax rates to statistics and grades. The symbol % means "per hundred".</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I calculate 20% of 150?</summary>
+            <p>Multiply 150 by 0.20 (or 20/100). The result is 30. You can also use the calculator above.</p>
+          </details>
+          <details>
+            <summary>How do I calculate a percentage increase?</summary>
+            <p>Subtract the original value from the new value, divide by the original value and multiply by 100. For example, from 80 to 100 is (100-80)/80 × 100 = 25% increase.</p>
+          </details>
+          <details>
+            <summary>How do I calculate a discount?</summary>
+            <p>Enter the discount percentage and the original price. The result is the discount amount. Subtract it from the original price to get the final price.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/finance/compound-interest/">📈 Compound Interest</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcPct() {
+  const p = parseFloat(document.getElementById('pct-pct').value);
+  const v = parseFloat(document.getElementById('pct-val').value);
+  if (isNaN(p)||isNaN(v)) return;
+  const r = v*p/100;
+  document.getElementById('pct-res').innerHTML =
+    `${parseFloat(r.toFixed(6)).toLocaleString()}<small>${p}% of ${v} = ${r.toFixed(4)}</small>`;
+}
+function calcPct2() {
+  const x = parseFloat(document.getElementById('pct2-x').value);
+  const y = parseFloat(document.getElementById('pct2-y').value);
+  if (isNaN(x)||isNaN(y)||y===0) return;
+  document.getElementById('pct2-res').innerHTML =
+    `${(x/y*100).toFixed(4)}%<small>${x} is ${(x/y*100).toFixed(2)}% of ${y}</small>`;
+}
+</script>

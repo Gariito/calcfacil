@@ -1,0 +1,79 @@
+---
+layout: base.njk
+title: Mortgage Calculator — Monthly Payment Free Online
+description: Calculate your monthly mortgage payment, total interest and total cost of your loan. Free mortgage calculator online.
+keywords: mortgage calculator, monthly mortgage payment, mortgage calculator free, home loan calculator, mortgage payment calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/finance/">Finance</a>
+      <span>›</span>
+      <span>Mortgage Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🏠 Mortgage Calculator</h1>
+        <p class="calc-intro">Calculate your monthly mortgage payment and total interest instantly.</p>
+
+        <div class="card">
+          <label>Loan amount (€)</label>
+          <input type="number" id="hip-monto" placeholder="200000" oninput="calcHipo()">
+          <div class="row-2">
+            <div><label>Annual interest rate (%)</label><input type="number" id="hip-tasa" placeholder="3.5" oninput="calcHipo()"></div>
+            <div><label>Loan term (years)</label><input type="number" id="hip-anos" placeholder="25" oninput="calcHipo()"></div>
+          </div>
+          <div class="result-box" id="hip-res">Enter your loan details</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a mortgage calculator?</h2>
+          <p>A mortgage calculator helps you estimate your monthly mortgage payment based on the loan amount, interest rate and repayment term. It uses the French amortisation method, the most common system used by banks worldwide, where monthly payments remain constant throughout the loan.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is a good mortgage interest rate?</summary>
+            <p>Interest rates vary by country and market conditions. In Europe, fixed rates in 2024 typically range between 3% and 4.5% annually. Variable rates depend on the Euribor plus a bank margin.</p>
+          </details>
+          <details>
+            <summary>How is a monthly mortgage payment calculated?</summary>
+            <p>The formula is M = P × r(1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate and n is the number of monthly payments.</p>
+          </details>
+          <details>
+            <summary>Does this include insurance and fees?</summary>
+            <p>No, this calculator only shows the principal and interest payment. Home insurance, life insurance and bank fees are additional costs.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/finance/compound-interest/">📈 Compound Interest</a></li>
+            <li><a href="/en/calculators/math/percentage/">% math Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcHipo() {
+  const m = parseFloat(document.getElementById('hip-monto').value);
+  const t = parseFloat(document.getElementById('hip-tasa').value);
+  const a = parseFloat(document.getElementById('hip-anos').value);
+  if (!m||!t||!a) return;
+  const r = t/100/12, n = a*12;
+  const cuota = m*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const total = cuota*n;
+  document.getElementById('hip-res').innerHTML =
+    `${cuota.toFixed(2)} €/month<small>Total paid: ${total.toFixed(2)} € · Interest: ${(total-m).toFixed(2)} €</small>`;
+}
+</script>

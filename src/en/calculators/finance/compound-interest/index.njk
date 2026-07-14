@@ -1,0 +1,82 @@
+---
+layout: base.njk
+title: Compound Interest Calculator — Free Online
+description: Calculate the growth of your investment with compound interest. Includes monthly contributions. Free compound interest calculator.
+keywords: compound interest calculator, compound interest, investment calculator, savings calculator, interest calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/finance/">Finance</a>
+      <span>›</span>
+      <span>Compound Interest Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📈 Compound Interest Calculator</h1>
+        <p class="calc-intro">Calculate how your savings or investment grows over time with the power of compound interest.</p>
+
+        <div class="card">
+          <label>Initial amount (€)</label>
+          <input type="number" id="ic-capital" placeholder="1000" oninput="calcIC()">
+          <div class="row-2">
+            <div><label>Annual interest rate (%)</label><input type="number" id="ic-tasa" placeholder="7" oninput="calcIC()"></div>
+            <div><label>Number of years</label><input type="number" id="ic-anos" placeholder="10" oninput="calcIC()"></div>
+          </div>
+          <label>Monthly contribution (€)</label>
+          <input type="number" id="ic-aport" placeholder="0" oninput="calcIC()">
+          <div class="result-box" id="ic-res">Enter your investment details</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is compound interest?</h2>
+          <p>Compound interest is when the interest you earn is added to your principal, so that interest also earns interest. Over time, this creates exponential growth. Albert Einstein reportedly called it the eighth wonder of the world.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is a realistic annual return?</summary>
+            <p>Historically, global stock markets have returned an average of 7–10% annually before inflation. Savings accounts and bonds typically offer lower returns.</p>
+          </details>
+          <details>
+            <summary>How often does this calculator compound?</summary>
+            <p>This calculator compounds monthly, which is the most common frequency for investment funds and savings accounts.</p>
+          </details>
+          <details>
+            <summary>What is the difference between simple and compound interest?</summary>
+            <p>With simple interest you only earn interest on your principal. With compound interest, your interest also earns interest, creating much greater growth over time.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% math Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcIC() {
+  const c = parseFloat(document.getElementById('ic-capital').value);
+  const tasa = parseFloat(document.getElementById('ic-tasa').value);
+  const anos = parseFloat(document.getElementById('ic-anos').value);
+  const aport = parseFloat(document.getElementById('ic-aport').value) || 0;
+  if (!c||!tasa||!anos) return;
+  const r = tasa/100/12, n = anos*12;
+  const futuro = c*Math.pow(1+r,n) + aport*(Math.pow(1+r,n)-1)/r;
+  const inv = c + aport*n;
+  document.getElementById('ic-res').innerHTML =
+    `${futuro.toFixed(2)} €<small>Invested: ${inv.toFixed(2)} € · Earnings: ${(futuro-inv).toFixed(2)} €</small>`;
+}
+</script>

@@ -1,0 +1,93 @@
+---
+layout: base.njk
+title: Salary Calculator — Net Salary from Gross Free
+description: Calculate your net salary from gross income. Includes tax and social security deductions. Free salary calculator online.
+keywords: salary calculator, net salary calculator, gross to net salary, take home pay calculator, income tax calculator, net pay calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/finance/">Finance</a>
+      <span>›</span>
+      <span>Salary Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>💼 Net Salary Calculator</h1>
+        <p class="calc-intro">Calculate your take-home pay from your gross annual salary instantly.</p>
+
+        <div class="card">
+          <label>Gross annual salary (€)</label>
+          <input type="number" id="sn-bruto" placeholder="30000" oninput="calcSN()">
+          <label>Personal situation</label>
+          <select id="sn-sit" onchange="calcSN()">
+            <option value="0">Single, no children</option>
+            <option value="1">Married, no children</option>
+            <option value="2">1 child</option>
+            <option value="3">2 children</option>
+            <option value="4">3 or more children</option>
+          </select>
+          <div class="result-box" id="sn-res">Enter your gross annual salary</div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.75rem">⚠️ This calculator uses Spanish tax rates (IRPF + Social Security). Results are estimates.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is net salary?</h2>
+          <p>Net salary (take-home pay) is the amount you actually receive in your bank account after all deductions — income tax (IRPF in Spain) and social security contributions. The difference between gross and net can be significant, typically between 20% and 35% of gross salary.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What deductions are taken from gross salary?</summary>
+            <p>In Spain, two main deductions apply — Social Security contributions (approximately 6.35% paid by the employee) and income tax withholding (IRPF), which ranges from 19% to 47% depending on your income bracket.</p>
+          </details>
+          <details>
+            <summary>How much net salary with €30,000 gross?</summary>
+            <p>With €30,000 gross annually, the approximate monthly net salary is €1,850–€1,950, depending on your personal situation.</p>
+          </details>
+          <details>
+            <summary>Is this calculator accurate?</summary>
+            <p>It is an approximation based on Spanish 2024 tax rates. For an exact calculation use the official Spanish Tax Agency simulator.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+            <li><a href="/en/calculators/finance/compound-interest/">📈 Compound Interest</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcSN() {
+  const bruto = parseFloat(document.getElementById('sn-bruto').value);
+  const sit = parseInt(document.getElementById('sn-sit').value);
+  if (!bruto) return;
+  const ss = bruto * 0.0635;
+  const minPersonal = 5550;
+  const minFamiliar = [0,0,2400,4800,8000][sit]||0;
+  const minConyuge = sit===1?2550:0;
+  const baseL = Math.max(0, bruto-ss-minPersonal-minFamiliar-minConyuge);
+  const tramos = [[12450,0.19],[20200,0.24],[35200,0.30],[60000,0.37],[300000,0.45],[Infinity,0.47]];
+  let irpf=0, resto=baseL, anterior=0;
+  for (const [hasta,tipo] of tramos) {
+    if (resto<=0) break;
+    const tramo=Math.min(resto,hasta-anterior);
+    irpf+=tramo*tipo; resto-=tramo; anterior=hasta;
+  }
+  const neto=bruto-ss-irpf;
+  document.getElementById('sn-res').innerHTML =
+    `Net annual: ${neto.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,'.')} €<small>Monthly: ${(neto/12).toFixed(0)} € · Tax: ${irpf.toFixed(0)} € · SS: ${ss.toFixed(0)} €</small>`;
+}
+</script>

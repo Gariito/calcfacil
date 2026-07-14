@@ -1,0 +1,103 @@
+---
+layout: base.njk
+title: Days Between Dates Calculator — Free Online
+description: Calculate the number of days between two dates instantly. Count days, weeks and months between any two dates. Free.
+keywords: days between dates, date calculator, days between two dates, how many days between dates, date difference calculator, count days
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Days Between Dates</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📅 Days Between Dates Calculator</h1>
+        <p class="calc-intro">Calculate the exact number of days, weeks and months between any two dates instantly.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Start date</label>
+              <input type="date" id="df-inicio" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+            <div>
+              <label>End date</label>
+              <input type="date" id="df-fin" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+          </div>
+          <label>Count only working days?</label>
+          <select id="df-laborables" onchange="calcDias()">
+            <option value="no">No, count all days</option>
+            <option value="si">Yes, working days only (Mon–Fri)</option>
+          </select>
+          <div class="result-box" id="df-res">Enter the two dates</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is this calculator for?</h2>
+          <p>This date calculator computes the exact difference between two dates in days, weeks and months. It is useful for counting down to an event, calculating how long a project has been running, or finding the number of working days between two dates.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Does it account for leap years?</summary>
+            <p>Yes, the calculation is exact and automatically accounts for leap years.</p>
+          </details>
+          <details>
+            <summary>Can I calculate days in the past?</summary>
+            <p>Yes, you can calculate how many days have passed since any past date by entering that date as the start date and today as the end date.</p>
+          </details>
+          <details>
+            <summary>What are working days?</summary>
+            <p>Working days are Monday through Friday, excluding weekends. This calculator does not account for public holidays.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date().toISOString().split('T')[0];
+  document.getElementById('df-inicio').value = hoy;
+});
+function calcDias() {
+  const ini = document.getElementById('df-inicio').value;
+  const fin = document.getElementById('df-fin').value;
+  const lab = document.getElementById('df-laborables').value;
+  if (!ini||!fin) return;
+  const d1 = new Date(ini), d2 = new Date(fin);
+  const diff = Math.round((d2-d1)/86400000);
+  if (diff < 0) { document.getElementById('df-res').textContent = 'End date is before start date'; return; }
+  let laborables = 0;
+  if (lab==='si') {
+    let cur = new Date(d1);
+    while (cur < d2) {
+      const dow = cur.getDay();
+      if (dow!==0&&dow!==6) laborables++;
+      cur.setDate(cur.getDate()+1);
+    }
+  }
+  const semanas = Math.floor(diff/7), diasResto = diff%7;
+  const meses = Math.floor(diff/30.44);
+  document.getElementById('df-res').innerHTML =
+    `${diff} days<small>${semanas} weeks and ${diasResto} days · ~${meses} months${lab==='si'?' · '+laborables+' working days':''}</small>`;
+}
+</script>

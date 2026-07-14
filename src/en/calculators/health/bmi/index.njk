@@ -1,0 +1,109 @@
+---
+layout: base.njk
+title: BMI Calculator — Body Mass Index Online Free
+description: Calculate your Body Mass Index (BMI) online for free. Find out if you are at a healthy weight based on your height and weight.
+keywords: bmi calculator, body mass index calculator, calculate bmi, bmi calculator free, bmi online, healthy weight calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>BMI Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⚖️ BMI Calculator</h1>
+        <p class="calc-intro">Calculate your Body Mass Index instantly. Enter your weight and height to find out if you are at a healthy weight.</p>
+
+        <div class="card">
+          <label>Weight (kg)</label>
+          <input type="number" id="imc-peso" placeholder="70" oninput="calcIMC()">
+          <label>Height (cm)</label>
+          <input type="number" id="imc-altura" placeholder="170" oninput="calcIMC()">
+          <div class="bmi-bar">
+            <div class="bmi-marker" id="imc-marker" style="left:0%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:1rem">
+            <span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span>
+          </div>
+          <div class="result-box" id="imc-res">Enter your weight and height</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is BMI?</h2>
+          <p>Body Mass Index (BMI) is a measure that uses your height and weight to estimate whether your weight is healthy. It is calculated by dividing your weight in kg by your height in metres squared. A BMI between 18.5 and 24.9 is considered normal.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>BMI Categories</h3>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">BMI</th>
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Category</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">Below 18.5</td><td>Underweight</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">18.5 – 24.9</td><td>Normal weight ✓</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">25 – 29.9</td><td>Overweight</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">30 or above</td><td>Obese</td></tr>
+          </table>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Is BMI accurate?</summary>
+            <p>BMI is a useful screening tool but does not measure body fat directly. Very muscular people may have a high BMI without excess fat. For a complete assessment consult a doctor.</p>
+          </details>
+          <details>
+            <summary>What is a healthy BMI?</summary>
+            <p>A BMI between 18.5 and 24.9 is considered healthy for most adults. Below 18.5 is underweight and above 25 is overweight.</p>
+          </details>
+          <details>
+            <summary>How is BMI calculated?</summary>
+            <p>BMI = weight (kg) ÷ height² (m). For example, a person weighing 70 kg and 1.75 m tall has a BMI of 70 ÷ (1.75 × 1.75) = 22.9.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/calories/">🔥 Daily Calorie Calculator</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+      <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">About the BMI Calculator</h2>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:1rem">The Body Mass Index (BMI) calculator is one of the most widely used tools in medicine and nutrition to quickly assess whether a person's weight is appropriate for their height. It was developed by Belgian mathematician Adolphe Quetelet in the 19th century and has been the standard screening tool used by healthcare professionals worldwide ever since.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:1rem">Our free BMI calculator gives you an instant result with no registration required. Simply enter your weight in kilograms and your height in centimetres to get your BMI value and find out which category you fall into according to the World Health Organization (WHO) guidelines.</p>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.8">While BMI is a useful tool, it does have limitations. It does not account for muscle mass, bone density, age or ethnic differences. Athletes and very muscular people may have a high BMI without excess body fat. Always consult a healthcare professional for a complete health assessment.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function calcIMC() {
+  const peso = parseFloat(document.getElementById('imc-peso').value);
+  const altura = parseFloat(document.getElementById('imc-altura').value);
+  if (!peso || !altura) return;
+  const h = altura / 100;
+  const imc = peso / (h * h);
+  let cat, color;
+  if (imc < 18.5) { cat = 'Underweight'; color = '#3B82F6'; }
+  else if (imc < 25) { cat = 'Normal weight ✓'; color = '#22C55E'; }
+  else if (imc < 30) { cat = 'Overweight'; color = '#EAB308'; }
+  else { cat = 'Obese'; color = '#EF4444'; }
+  document.getElementById('imc-res').innerHTML =
+    `<span style="color:${color}">BMI: ${imc.toFixed(1)} — ${cat}</span>`;
+  const pct = Math.min(Math.max((imc - 10) / 40 * 100, 0), 100);
+  document.getElementById('imc-marker').style.left = pct + '%';
+}
+</script>

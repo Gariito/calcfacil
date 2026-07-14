@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator — Daily Calorie Needs Free — CalcFácil</title>
+  <meta name="description" content="Calculate how many calories you need per day based on your weight, height, age and activity level. Free calorie calculator online.">
+  <meta name="keywords" content="calorie calculator, daily calorie calculator, how many calories do i need, tdee calculator, bmr calculator, calories per day">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/en/calculators/finance/compund-interest/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calorie Calculator — Daily Calorie Needs Free — CalcFácil">
+  <meta property="og:description" content="Calculate how many calories you need per day based on your weight, height, age and activity level. Free calorie calculator online.">
+  <meta property="og:url" content="https://www.calcfacil.com/en/calculators/finance/compund-interest/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calorie Calculator — Daily Calorie Needs Free",
+    "description": "Calculate how many calories you need per day based on your weight, height, age and activity level. Free calorie calculator online.",
+    "url": "https://www.calcfacil.com/en/calculators/finance/compund-interest/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/cocina/">🍳 Cocina</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+      <a href="/calculadoras/hogar/">🏠 Hogar</a>
+      <a href="/calculadoras/viajes/">✈️ Viajes</a>
+      <a href="/calculadoras/educacion/">📚 Educación</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Calorie Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔥 Daily Calorie Calculator</h1>
+        <p class="calc-intro">Find out exactly how many calories you need per day based on your body and activity level.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div><label>Weight (kg)</label><input type="number" id="cal-peso" placeholder="70" oninput="calcCal()"></div>
+            <div><label>Height (cm)</label><input type="number" id="cal-altura" placeholder="170" oninput="calcCal()"></div>
+          </div>
+          <div class="row-2">
+            <div><label>Age (years)</label><input type="number" id="cal-edad" placeholder="30" oninput="calcCal()"></div>
+            <div>
+              <label>Sex</label>
+              <select id="cal-sexo" onchange="calcCal()">
+                <option value="h">Male</option>
+                <option value="m">Female</option>
+              </select>
+            </div>
+          </div>
+          <label>Activity level</label>
+          <select id="cal-act" onchange="calcCal()">
+            <option value="1.2">Sedentary (little or no exercise)</option>
+            <option value="1.375">Lightly active (1–3 days/week)</option>
+            <option value="1.55">Moderately active (3–5 days/week)</option>
+            <option value="1.725">Very active (6–7 days/week)</option>
+            <option value="1.9">Extra active (twice a day)</option>
+          </select>
+          <div class="result-box" id="cal-res">Enter your details</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a calorie calculator?</h2>
+          <p>This calculator estimates your Total Daily Energy Expenditure (TDEE) — the total number of calories you burn per day. It uses the Mifflin-St Jeor formula, the most accurate method available, to calculate your Basal Metabolic Rate (BMR) and then multiplies it by your activity factor.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many calories should I eat to lose weight?</summary>
+            <p>To lose weight gradually and sustainably, aim for a deficit of 300–500 calories below your TDEE. This produces a weight loss of approximately 0.3–0.5 kg per week.</p>
+          </details>
+          <details>
+            <summary>What is BMR?</summary>
+            <p>Basal Metabolic Rate (BMR) is the number of calories your body needs at complete rest to maintain vital functions like breathing and circulation.</p>
+          </details>
+          <details>
+            <summary>Is this calculator accurate?</summary>
+            <p>It uses the Mifflin-St Jeor formula (2005), considered the most accurate. Results are estimates and individual metabolism may vary by up to 15%.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcCal() {
+  const p = parseFloat(document.getElementById('cal-peso').value);
+  const a = parseFloat(document.getElementById('cal-altura').value);
+  const e = parseFloat(document.getElementById('cal-edad').value);
+  const sexo = document.getElementById('cal-sexo').value;
+  const act = parseFloat(document.getElementById('cal-act').value);
+  if (!p||!a||!e) return;
+  const tmb = sexo==='h' ? 10*p+6.25*a-5*e+5 : 10*p+6.25*a-5*e-161;
+  const total = Math.round(tmb*act);
+  document.getElementById('cal-res').innerHTML =
+    `${total.toLocaleString()} calories/day<small>BMR: ${Math.round(tmb).toLocaleString()} kcal</small>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+</body>
+</html>
