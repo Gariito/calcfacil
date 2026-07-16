@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator — How Old Am I Today? — CalcFácil</title>
+  <meta name="description" content="Calculate your exact age in years, months and days from your date of birth. Find out how many days until your next birthday. Free age calculator.">
+  <meta name="keywords" content="age calculator, how old am i, calculate age, age in days, birthday calculator, how many days until my birthday, exact age calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/en/calculators/everyday/age/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Age Calculator — How Old Am I Today? — CalcFácil">
+  <meta property="og:description" content="Calculate your exact age in years, months and days from your date of birth. Find out how many days until your next birthday. Free age calculator.">
+  <meta property="og:url" content="https://www.calcfacil.com/en/calculators/everyday/age/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator — How Old Am I Today?",
+    "description": "Calculate your exact age in years, months and days from your date of birth. Find out how many days until your next birthday. Free age calculator.",
+    "url": "https://www.calcfacil.com/en/calculators/everyday/age/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Age Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🎂 Age Calculator</h1>
+        <p class="calc-intro">Find out your exact age in years, months and days — and how many days until your next birthday.</p>
+
+        <div class="card">
+          <label>Date of birth</label>
+          <input type="date" id="age-fecha" oninput="calcAge()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+          <div class="result-box" id="age-res">Enter your date of birth</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How is exact age calculated?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Exact age is calculated by finding the difference between your date of birth and today's date in years, months and days. This accounts for the varying lengths of months and leap years automatically. The number of days lived is simply the total number of days between the two dates.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is an age calculator?</h2>
+          <p>An age calculator computes your exact age from your date of birth to today. Unlike simply subtracting years, it gives you the precise result in years, months and days, and can also tell you how many days you have lived and how many days remain until your next birthday.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I calculate someone's age from their date of birth?</summary>
+            <p>Subtract the birth year from the current year, then adjust by checking whether the birthday has occurred yet this year. This calculator does it all automatically.</p>
+          </details>
+          <details>
+            <summary>Does it account for leap years?</summary>
+            <p>Yes, the calculation is exact and automatically accounts for leap years in both the birth year and all years in between.</p>
+          </details>
+          <details>
+            <summary>Can I calculate someone else's age?</summary>
+            <p>Yes, simply enter their date of birth instead of yours.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/days-between-dates/">📅 Days Between Dates</a></li>
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcAge() {
+  const val = document.getElementById('age-fecha').value;
+  if (!val) return;
+  const hoy = new Date();
+  const nac = new Date(val);
+  if (nac > hoy) { document.getElementById('age-res').textContent = 'Date is in the future'; return; }
+
+  let anos = hoy.getFullYear() - nac.getFullYear();
+  let meses = hoy.getMonth() - nac.getMonth();
+  let dias = hoy.getDate() - nac.getDate();
+
+  if (dias < 0) { meses--; dias += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate(); }
+  if (meses < 0) { anos--; meses += 12; }
+
+  const cumple = new Date(hoy.getFullYear(), nac.getMonth(), nac.getDate());
+  if (cumple < hoy) cumple.setFullYear(hoy.getFullYear() + 1);
+  const diasCumple = Math.round((cumple - hoy) / 86400000);
+  const totalDias = Math.round((hoy - nac) / 86400000);
+
+  document.getElementById('age-res').innerHTML =
+    `${anos} years, ${meses} months and ${dias} days
+    <small>${totalDias.toLocaleString('en-GB')} days lived · Next birthday in ${diasCumple} days</small>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

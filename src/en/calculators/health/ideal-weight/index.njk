@@ -1,0 +1,96 @@
+---
+layout: base.njk
+title: Ideal Weight Calculator — Free Online
+description: Calculate your ideal weight based on your height and sex using the most trusted medical formulas. Free ideal weight calculator.
+keywords: ideal weight calculator, healthy weight calculator, what should i weigh, ideal body weight, how much should i weigh for my height
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Ideal Weight Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⚖️ Ideal Weight Calculator</h1>
+        <p class="calc-intro">Calculate your ideal weight range based on your height and sex using the most trusted medical formulas.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Height (cm)</label>
+              <input type="number" id="pi-altura" placeholder="170" oninput="calcIdealWeight()">
+            </div>
+            <div>
+              <label>Sex</label>
+              <select id="pi-sexo" onchange="calcIdealWeight()">
+                <option value="h">Male</option>
+                <option value="m">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="result-box" id="pi-res">Enter your height</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">About ideal weight</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">There is no single perfect formula for ideal weight. Different medical formulas give slightly different results based on different assumptions about body composition. This calculator shows results from three of the most widely used formulas — Lorentz, Devine and Hamwi — to give you a range rather than a single number.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">The healthy BMI range (18.5–24.9) is also shown as a reference. Remember that ideal weight is just a guideline — muscle mass, bone structure and other individual factors all play a role in what is truly healthy for you.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is ideal weight?</h2>
+          <p>Ideal weight is the weight range associated with good health for a given height and body frame. It is a reference point, not an absolute target. Body composition (muscle vs fat) matters more than the number on the scale.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Which formula is most accurate?</summary>
+            <p>No single formula is perfect for everyone. The Lorentz formula is most widely used in Europe. The BMI range (18.5–24.9) is the most commonly accepted medical reference worldwide.</p>
+          </details>
+          <details>
+            <summary>Can I be healthy outside the ideal weight range?</summary>
+            <p>Yes. Very muscular people may weigh more than the ideal range without excess body fat. These formulas are guidelines, not absolute rules.</p>
+          </details>
+          <details>
+            <summary>Should I aim for the exact ideal weight?</summary>
+            <p>Not necessarily. Aim for a healthy lifestyle — balanced diet, regular exercise, good sleep — rather than a specific number on the scale.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+            <li><a href="/en/calculators/health/calories/">🔥 Calorie Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcIdealWeight() {
+  const h = parseFloat(document.getElementById('pi-altura').value);
+  const sexo = document.getElementById('pi-sexo').value;
+  if (!h) return;
+  const hm = h / 100;
+  const hIn = (h - 152.4) / 2.54;
+  const lorentz = sexo==='h' ? h-100-(h-150)/4 : h-100-(h-150)/2;
+  const devine = sexo==='h' ? 50+2.3*hIn : 45.5+2.3*hIn;
+  const hamwi = sexo==='h' ? 48+2.7*hIn : 45.4+2.2*hIn;
+  const bmiMin = (18.5*hm*hm).toFixed(1);
+  const bmiMax = (24.9*hm*hm).toFixed(1);
+  document.getElementById('pi-res').innerHTML =
+    `Healthy range: ${bmiMin} – ${bmiMax} kg
+    <small>Lorentz: ${lorentz.toFixed(1)} kg · Devine: ${devine.toFixed(1)} kg · Hamwi: ${hamwi.toFixed(1)} kg</small>`;
+}
+</script>

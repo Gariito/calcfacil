@@ -1,0 +1,92 @@
+---
+layout: base.njk
+title: Age Calculator — How Old Am I Today?
+description: Calculate your exact age in years, months and days from your date of birth. Find out how many days until your next birthday. Free age calculator.
+keywords: age calculator, how old am i, calculate age, age in days, birthday calculator, how many days until my birthday, exact age calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Age Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🎂 Age Calculator</h1>
+        <p class="calc-intro">Find out your exact age in years, months and days — and how many days until your next birthday.</p>
+
+        <div class="card">
+          <label>Date of birth</label>
+          <input type="date" id="age-fecha" oninput="calcAge()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+          <div class="result-box" id="age-res">Enter your date of birth</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How is exact age calculated?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Exact age is calculated by finding the difference between your date of birth and today's date in years, months and days. This accounts for the varying lengths of months and leap years automatically. The number of days lived is simply the total number of days between the two dates.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is an age calculator?</h2>
+          <p>An age calculator computes your exact age from your date of birth to today. Unlike simply subtracting years, it gives you the precise result in years, months and days, and can also tell you how many days you have lived and how many days remain until your next birthday.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I calculate someone's age from their date of birth?</summary>
+            <p>Subtract the birth year from the current year, then adjust by checking whether the birthday has occurred yet this year. This calculator does it all automatically.</p>
+          </details>
+          <details>
+            <summary>Does it account for leap years?</summary>
+            <p>Yes, the calculation is exact and automatically accounts for leap years in both the birth year and all years in between.</p>
+          </details>
+          <details>
+            <summary>Can I calculate someone else's age?</summary>
+            <p>Yes, simply enter their date of birth instead of yours.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/days-between-dates/">📅 Days Between Dates</a></li>
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcAge() {
+  const val = document.getElementById('age-fecha').value;
+  if (!val) return;
+  const hoy = new Date();
+  const nac = new Date(val);
+  if (nac > hoy) { document.getElementById('age-res').textContent = 'Date is in the future'; return; }
+
+  let anos = hoy.getFullYear() - nac.getFullYear();
+  let meses = hoy.getMonth() - nac.getMonth();
+  let dias = hoy.getDate() - nac.getDate();
+
+  if (dias < 0) { meses--; dias += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate(); }
+  if (meses < 0) { anos--; meses += 12; }
+
+  const cumple = new Date(hoy.getFullYear(), nac.getMonth(), nac.getDate());
+  if (cumple < hoy) cumple.setFullYear(hoy.getFullYear() + 1);
+  const diasCumple = Math.round((cumple - hoy) / 86400000);
+  const totalDias = Math.round((hoy - nac) / 86400000);
+
+  document.getElementById('age-res').innerHTML =
+    `${anos} years, ${meses} months and ${dias} days
+    <small>${totalDias.toLocaleString('en-GB')} days lived · Next birthday in ${diasCumple} days</small>`;
+}
+</script>

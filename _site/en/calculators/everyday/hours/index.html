@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hours Calculator — Add and Subtract Hours and Minutes — CalcFácil</title>
+  <meta name="description" content="Add or subtract hours and minutes easily. Calculate time worked, time differences and total durations. Free hours calculator online.">
+  <meta name="keywords" content="hours calculator, add hours and minutes, time calculator, hours worked calculator, subtract hours, time difference calculator, how many hours between two times">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/en/calculators/everyday/hours/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hours Calculator — Add and Subtract Hours and Minutes — CalcFácil">
+  <meta property="og:description" content="Add or subtract hours and minutes easily. Calculate time worked, time differences and total durations. Free hours calculator online.">
+  <meta property="og:url" content="https://www.calcfacil.com/en/calculators/everyday/hours/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hours Calculator — Add and Subtract Hours and Minutes",
+    "description": "Add or subtract hours and minutes easily. Calculate time worked, time differences and total durations. Free hours calculator online.",
+    "url": "https://www.calcfacil.com/en/calculators/everyday/hours/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Hours Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⏱️ Hours Calculator</h1>
+        <p class="calc-intro">Add or subtract hours and minutes, calculate hours worked and find the time difference between two times.</p>
+
+        <div class="card">
+          <label>Mode</label>
+          <select id="hrs-modo" onchange="toggleHours()">
+            <option value="sumar">Add durations</option>
+            <option value="restar">Subtract durations</option>
+            <option value="diferencia">Time difference (start → end)</option>
+          </select>
+
+          <div id="hrs-duraciones">
+            <div class="row-2">
+              <div><label>Hours (1)</label><input type="number" id="hrs-h1" placeholder="3" oninput="calcHours()"></div>
+              <div><label>Minutes (1)</label><input type="number" id="hrs-m1" placeholder="45" oninput="calcHours()"></div>
+            </div>
+            <div class="row-2">
+              <div><label>Hours (2)</label><input type="number" id="hrs-h2" placeholder="1" oninput="calcHours()"></div>
+              <div><label>Minutes (2)</label><input type="number" id="hrs-m2" placeholder="30" oninput="calcHours()"></div>
+            </div>
+          </div>
+
+          <div id="hrs-horas" style="display:none">
+            <div class="row-2">
+              <div>
+                <label>Start time</label>
+                <input type="time" id="hrs-ini" oninput="calcHours()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+              </div>
+              <div>
+                <label>End time</label>
+                <input type="time" id="hrs-fin" oninput="calcHours()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box" id="hrs-res">Enter the times</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to add hours and minutes</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Adding hours and minutes is trickier than adding regular numbers because the system is base-60 — 90 minutes equals 1 hour 30 minutes, not 1 hour 90 minutes. This calculator handles the conversion automatically. For example, 3h 45min + 1h 30min = 5h 15min (because 45 + 30 = 75 minutes = 1 hour 15 minutes).</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is this calculator for?</h2>
+          <p>This time calculator lets you add or subtract hours and minutes, calculate how many hours you worked in a day, find the difference between two times, or total up multiple time durations.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I calculate hours worked?</summary>
+            <p>Select "Time difference", enter your start time (e.g. 09:00) and end time (e.g. 17:30). The calculator will show you worked 8 hours 30 minutes.</p>
+          </details>
+          <details>
+            <summary>Does it work for night shifts that cross midnight?</summary>
+            <p>Yes. If the end time is earlier than the start time, the calculator assumes the shift crossed midnight and calculates correctly.</p>
+          </details>
+          <details>
+            <summary>Can I add more than two durations?</summary>
+            <p>Add the first two, then use the result as the first duration with the next one.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/days-between-dates/">📅 Days Between Dates</a></li>
+            <li><a href="/en/calculators/everyday/age/">🎂 Age Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('hrs-modo').addEventListener('change', toggleHours);
+
+function toggleHours() {
+  const m = document.getElementById('hrs-modo').value;
+  document.getElementById('hrs-duraciones').style.display = m === 'diferencia' ? 'none' : 'block';
+  document.getElementById('hrs-horas').style.display = m === 'diferencia' ? 'block' : 'none';
+  document.getElementById('hrs-res').textContent = 'Enter the times';
+}
+
+function calcHours() {
+  const modo = document.getElementById('hrs-modo').value;
+  if (modo === 'diferencia') {
+    const ini = document.getElementById('hrs-ini').value;
+    const fin = document.getElementById('hrs-fin').value;
+    if (!ini || !fin) return;
+    const [h1,m1] = ini.split(':').map(Number);
+    const [h2,m2] = fin.split(':').map(Number);
+    let diff = (h2*60+m2) - (h1*60+m1);
+    if (diff < 0) diff += 1440;
+    const h = Math.floor(diff/60), m = diff%60;
+    document.getElementById('hrs-res').innerHTML =
+      `${h}h ${m}min<small>${diff} minutes total</small>`;
+  } else {
+    const h1 = parseInt(document.getElementById('hrs-h1').value)||0;
+    const m1 = parseInt(document.getElementById('hrs-m1').value)||0;
+    const h2 = parseInt(document.getElementById('hrs-h2').value)||0;
+    const m2 = parseInt(document.getElementById('hrs-m2').value)||0;
+    let total = modo==='sumar' ? (h1*60+m1)+(h2*60+m2) : (h1*60+m1)-(h2*60+m2);
+    const neg = total < 0;
+    total = Math.abs(total);
+    const h = Math.floor(total/60), m = total%60;
+    document.getElementById('hrs-res').innerHTML =
+      `${neg?'−':''}${h}h ${m}min<small>${neg?'−':''}${total} minutes total</small>`;
+  }
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

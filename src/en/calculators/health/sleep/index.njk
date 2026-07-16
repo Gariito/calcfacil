@@ -1,0 +1,104 @@
+---
+layout: base.njk
+title: Sleep Calculator — Best Time to Wake Up or Go to Sleep
+description: Calculate the best time to wake up or go to sleep based on sleep cycles. Wake up refreshed every morning. Free sleep calculator.
+keywords: sleep calculator, what time should i wake up, best time to sleep, sleep cycle calculator, when to go to bed, wake up time calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Sleep Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>😴 Sleep Calculator</h1>
+        <p class="calc-intro">Find the best time to wake up or go to sleep based on your natural sleep cycles.</p>
+
+        <div class="card">
+          <label>What do you want to calculate?</label>
+          <select id="sue-modo" onchange="toggleSleep()">
+            <option value="despertar">I'm going to sleep now → what time should I wake up?</option>
+            <option value="acostar">I want to wake up at → what time should I go to sleep?</option>
+          </select>
+
+          <div id="sue-hora-wrap">
+            <label id="sue-hora-label">Time you are going to sleep</label>
+            <input type="time" id="sue-hora" oninput="calcSleep()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+          </div>
+
+          <div class="result-box" id="sue-res">Enter the time</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How does this sleep calculator work?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Sleep is organised in cycles of approximately 90 minutes each. Each cycle includes light sleep, deep sleep and REM sleep stages. Waking up at the end of a complete cycle — during light sleep — makes you feel much more refreshed than waking up in the middle of deep sleep, even if you slept fewer hours total.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">This calculator adds 15 minutes to account for the average time it takes to fall asleep. Most adults need 5 to 6 complete cycles (7.5 to 9 hours) per night for optimal rest.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a sleep cycle?</h2>
+          <p>A sleep cycle lasts approximately 90 minutes and includes four stages — light sleep, deeper sleep, deep sleep (slow wave) and REM sleep. REM sleep is when most dreaming occurs and is crucial for memory consolidation and emotional regulation.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many hours of sleep do I need?</summary>
+            <p>Most adults need 7–9 hours per night (5–6 sleep cycles). Teenagers need 8–10 hours. Children need more. Quality matters as much as quantity.</p>
+          </details>
+          <details>
+            <summary>What time should I go to sleep to wake up at 7am?</summary>
+            <p>To wake up at 7:00 AM feeling refreshed, the ideal bedtimes are 9:45 PM (6 cycles), 11:15 PM (5 cycles), 12:45 AM (4 cycles) or 2:15 AM (3 cycles).</p>
+          </details>
+          <details>
+            <summary>Why do I feel groggy even after 8 hours of sleep?</summary>
+            <p>Probably because your alarm woke you up in the middle of a deep sleep cycle. Try adjusting your wake-up time by 15–30 minutes to land at the end of a cycle.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+            <li><a href="/en/calculators/health/calories/">🔥 Calorie Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSleep() {
+  const m = document.getElementById('sue-modo').value;
+  document.getElementById('sue-hora-label').textContent =
+    m === 'despertar' ? 'Time you are going to sleep' : 'Time you want to wake up';
+  calcSleep();
+}
+function calcSleep() {
+  const modo = document.getElementById('sue-modo').value;
+  const horaVal = document.getElementById('sue-hora').value;
+  if (!horaVal) return;
+  const [h, m] = horaVal.split(':').map(Number);
+  const base = h * 60 + m + 15;
+  const ciclo = 90;
+  const horas = [];
+  for (let i = 4; i <= 6; i++) {
+    const total = modo === 'despertar' ? base + i * ciclo : base - i * ciclo;
+    const min = ((total % 1440) + 1440) % 1440;
+    const hh = String(Math.floor(min / 60)).padStart(2, '0');
+    const mm = String(min % 60).padStart(2, '0');
+    horas.push(`${hh}:${mm} (${i} cycles · ${i * 1.5}h)`);
+  }
+  const label = modo === 'despertar' ? 'Best times to wake up' : 'Best times to go to sleep';
+  document.getElementById('sue-res').innerHTML =
+    `${label}:<small>${horas.join(' · ')}</small>`;
+}
+</script>

@@ -1,0 +1,95 @@
+---
+layout: base.njk
+title: Calories Burned Calculator — Exercise Calorie Counter Free
+description: Calculate how many calories you burn during exercise based on activity type, your weight and duration. Free calorie burn calculator.
+keywords: calories burned calculator, exercise calorie calculator, how many calories burned, calorie burn calculator, workout calories burned
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/fitness/">Fitness</a>
+      <span>›</span>
+      <span>Calories Burned Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔥 Calories Burned Calculator</h1>
+        <p class="calc-intro">Find out how many calories you burn during any exercise based on your weight and duration.</p>
+
+        <div class="card">
+          <label>Your weight (kg)</label>
+          <input type="number" id="cb-peso" placeholder="70" oninput="calcBurned()">
+
+          <label>Type of exercise</label>
+          <select id="cb-ejercicio" onchange="calcBurned()">
+            <option value="8">Running (moderate pace ~10 km/h)</option>
+            <option value="11">Running (fast pace ~14 km/h)</option>
+            <option value="4">Walking (5 km/h)</option>
+            <option value="7">Cycling (moderate)</option>
+            <option value="10">Cycling (intense)</option>
+            <option value="6">Swimming (moderate)</option>
+            <option value="9">Swimming (intense)</option>
+            <option value="5">Weight training</option>
+            <option value="7">HIIT / CrossFit</option>
+            <option value="5">Yoga / Pilates</option>
+            <option value="6">Football / Soccer</option>
+            <option value="7">Basketball</option>
+            <option value="4">Dancing</option>
+            <option value="3">Stretching</option>
+          </select>
+
+          <label>Duration (minutes)</label>
+          <input type="number" id="cb-min" placeholder="30" oninput="calcBurned()">
+
+          <div class="result-box" id="cb-res">Enter your details</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>How are calories burned calculated?</h2>
+          <p>This calculator uses MET values (Metabolic Equivalent of Task) for each activity. The formula is: Calories = MET × weight (kg) × duration (hours). MET values represent how many times more energy an activity uses compared to sitting at rest.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Which exercise burns the most calories?</summary>
+            <p>Running, intense cycling and swimming burn the most calories per hour. Running at a moderate pace burns approximately 500–700 kcal/hour depending on body weight.</p>
+          </details>
+          <details>
+            <summary>Is this calculation accurate?</summary>
+            <p>It is an estimate based on standard MET values. Actual calorie burn varies based on fitness level, exact intensity, terrain and individual metabolism.</p>
+          </details>
+          <details>
+            <summary>Should I eat back the calories I burn exercising?</summary>
+            <p>It depends on your goal. If you want to lose weight, you generally should not eat all of them back. If you want to maintain weight or are an athlete, replenishing calories is important.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/calories/">🔥 Daily Calorie Calculator</a></li>
+            <li><a href="/en/calculators/health/bmi/">⚖️ BMI Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcBurned() {
+  const peso = parseFloat(document.getElementById('cb-peso').value);
+  const met = parseFloat(document.getElementById('cb-ejercicio').value);
+  const min = parseFloat(document.getElementById('cb-min').value);
+  if (!peso||!min) return;
+  const kcal = met * peso * (min/60);
+  document.getElementById('cb-res').innerHTML =
+    `${Math.round(kcal)} kcal burned<small>In ${min} min · MET value: ${met}</small>`;
+}
+</script>

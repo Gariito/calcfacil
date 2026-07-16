@@ -1,0 +1,100 @@
+---
+layout: base.njk
+title: Rule of Three Calculator — Direct and Inverse Proportion
+description: Solve any direct or inverse proportion with the rule of three instantly. Free online proportion calculator.
+keywords: rule of three calculator, proportion calculator, direct proportion, inverse proportion, cross multiplication calculator, rule of three online
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Rule of Three Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📏 Rule of Three Calculator</h1>
+        <p class="calc-intro">Solve direct and inverse proportions instantly by entering just three known values.</p>
+
+        <div class="card">
+          <label>Type of proportion</label>
+          <select id="rt-tipo" onchange="calcRT()">
+            <option value="directa">Direct — when A increases, B also increases</option>
+            <option value="inversa">Inverse — when A increases, B decreases</option>
+          </select>
+
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+            <div class="row-2">
+              <div><label>If A =</label><input type="number" id="rt-a" placeholder="3" oninput="calcRT()"></div>
+              <div><label>then B =</label><input type="number" id="rt-b" placeholder="7" oninput="calcRT()"></div>
+            </div>
+            <div class="row-2">
+              <div><label>If A =</label><input type="number" id="rt-c" placeholder="5" oninput="calcRT()"></div>
+              <div>
+                <label>then B =</label>
+                <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box" id="rt-res">Enter the three known values</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to use the rule of three</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">The rule of three is a method to solve proportions when three of the four values are known. It is one of the most practical mathematical tools in everyday life, used for calculating prices by quantity, scaling recipes, converting units, calculating work times, reading map scales and much more.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Direct proportion example:</strong> If 3 kg of apples cost £7, how much do 5 kg cost? Answer: (7 × 5) ÷ 3 = £11.67<br><strong>Inverse proportion example:</strong> If 4 workers finish a job in 6 days, how long would 1 worker take? Answer: (4 × 6) ÷ 1 = 24 days</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is the rule of three?</h2>
+          <p>The rule of three is a mathematical method to find an unknown value when three related values are known. It comes in two forms — direct proportion (both values increase or decrease together) and inverse proportion (one increases as the other decreases).</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>When is proportion direct vs inverse?</summary>
+            <p>Direct: more kilometres → more fuel. Inverse: more workers → fewer days to finish. If the two quantities move in the same direction it is direct; opposite directions means inverse.</p>
+          </details>
+          <details>
+            <summary>What is cross multiplication?</summary>
+            <p>Cross multiplication is the technique used to solve proportions — multiply the diagonal values and divide. For direct proportion: X = (B × C) ÷ A.</p>
+          </details>
+          <details>
+            <summary>Can I solve "if 3 kg cost £7, how much do 5 kg cost"?</summary>
+            <p>Yes. Enter A=3, B=7, C=5 with direct proportion. The result X = (7×5)÷3 = £11.67.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/math/days-between-dates/">📅 Days Between Dates</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcRT() {
+  const a = parseFloat(document.getElementById('rt-a').value);
+  const b = parseFloat(document.getElementById('rt-b').value);
+  const c = parseFloat(document.getElementById('rt-c').value);
+  const tipo = document.getElementById('rt-tipo').value;
+  if (!a||!b||!c) return;
+  const x = tipo === 'directa' ? (b*c)/a : (a*b)/c;
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('en-GB', {maximumFractionDigits:4});
+  document.getElementById('rt-x').textContent = xFmt;
+  document.getElementById('rt-res').innerHTML =
+    `X = ${xFmt}<small>${tipo === 'directa' ? 'Direct' : 'Inverse'} proportion · ${a} → ${b} · ${c} → ${xFmt}</small>`;
+}
+</script>

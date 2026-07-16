@@ -1,0 +1,91 @@
+---
+layout: base.njk
+title: Paint Calculator — How Much Paint Do I Need?
+description: Calculate how many litres of paint you need to paint a room. Free paint calculator online.
+keywords: paint calculator, how much paint do i need, paint calculator room, litres of paint calculator, wall paint calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/home/">Home</a>
+      <span>›</span>
+      <span>Paint Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🎨 Paint Calculator</h1>
+        <p class="calc-intro">Calculate exactly how many litres of paint you need for your room.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div><label>Room width (m)</label><input type="number" id="pin-ancho" placeholder="4" oninput="calcPaint()"></div>
+            <div><label>Room length (m)</label><input type="number" id="pin-largo" placeholder="5" oninput="calcPaint()"></div>
+          </div>
+          <label>Wall height (m)</label>
+          <input type="number" id="pin-alto" placeholder="2.5" oninput="calcPaint()">
+          <div class="row-2">
+            <div><label>Number of doors</label><input type="number" id="pin-puertas" placeholder="1" value="1" oninput="calcPaint()"></div>
+            <div><label>Number of windows</label><input type="number" id="pin-ventanas" placeholder="1" value="1" oninput="calcPaint()"></div>
+          </div>
+          <div class="row-2">
+            <div><label>Number of coats</label><input type="number" id="pin-manos" placeholder="2" value="2" oninput="calcPaint()"></div>
+            <div><label>Coverage (m²/litre)</label><input type="number" id="pin-rend" placeholder="10" value="10" oninput="calcPaint()"></div>
+          </div>
+          <div class="result-box" id="pin-res">Enter the room dimensions</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>How to calculate paint needed</h2>
+          <p>Calculate the total wall area, subtract the area of doors and windows, then divide by the paint coverage (m² per litre) and multiply by the number of coats. Always add 10% extra for wastage and touch-ups.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many coats of paint do I need?</summary>
+            <p>For light colours over white, 2 coats are usually enough. For dark colours or covering stains, you may need 3 coats.</p>
+          </details>
+          <details>
+            <summary>What is the coverage of standard paint?</summary>
+            <p>Most standard interior paints cover 10–12 m² per litre per coat. Textured or masonry paints typically cover less — check the tin for exact coverage.</p>
+          </details>
+          <details>
+            <summary>Should I buy extra paint?</summary>
+            <p>Yes, always buy 10–15% more than calculated. Keep some spare for future touch-ups — matching paint from a different batch can be difficult.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/home/tiles/">🔲 Tile Calculator</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcPaint() {
+  const a = parseFloat(document.getElementById('pin-ancho').value);
+  const l = parseFloat(document.getElementById('pin-largo').value);
+  const h = parseFloat(document.getElementById('pin-alto').value);
+  const puertas = (parseFloat(document.getElementById('pin-puertas').value)||0)*1.85;
+  const ventanas = (parseFloat(document.getElementById('pin-ventanas').value)||0)*1.2;
+  const manos = parseFloat(document.getElementById('pin-manos').value)||2;
+  const rend = parseFloat(document.getElementById('pin-rend').value)||10;
+  if (!a||!l||!h) return;
+  const superfParedes = 2*(a+l)*h;
+  const superfNeta = superfParedes-puertas-ventanas;
+  const litros = (superfNeta*manos)/rend;
+  document.getElementById('pin-res').innerHTML =
+    `${litros.toFixed(1)} litres<small>Wall area: ${superfNeta.toFixed(1)} m² · With 10% extra: ${(litros*1.1).toFixed(1)} L</small>`;
+}
+</script>

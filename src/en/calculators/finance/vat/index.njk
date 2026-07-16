@@ -1,0 +1,118 @@
+---
+layout: base.njk
+title: VAT Calculator — Add or Remove VAT Free Online
+description: Calculate price with VAT or remove VAT to find the net price. Free VAT calculator for any VAT rate. Works with UK, EU and global VAT rates.
+keywords: vat calculator, vat calculator uk, add vat, remove vat, vat calculator online, price with vat, price without vat, value added tax calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/finance/">Finance</a>
+      <span>›</span>
+      <span>VAT Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>% VAT Calculator</h1>
+        <p class="calc-intro">Add VAT to a price or remove VAT to find the net amount. Works with any VAT rate.</p>
+
+        <div class="card">
+          <label>Amount (€/£/$)</label>
+          <input type="number" id="vat-val" placeholder="100" oninput="calcVAT()">
+
+          <label>VAT rate (%)</label>
+          <select id="vat-rate" onchange="calcVAT()">
+            <option value="20">20% — UK standard rate</option>
+            <option value="21">21% — Spain / Netherlands standard</option>
+            <option value="23">23% — Ireland standard</option>
+            <option value="19">19% — Germany standard</option>
+            <option value="25">25% — Denmark / Sweden standard</option>
+            <option value="10">10% — Spain reduced rate</option>
+            <option value="5">5% — UK reduced rate</option>
+            <option value="0">0% — Zero rated</option>
+          </select>
+
+          <label>The amount entered is…</label>
+          <select id="vat-tipo" onchange="calcVAT()">
+            <option value="sin">Excluding VAT → calculate price with VAT</option>
+            <option value="con">Including VAT → calculate price without VAT</option>
+          </select>
+
+          <div class="result-box" id="vat-res">Enter an amount</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">VAT rates by country</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Country</th>
+              <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Standard</th>
+              <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Reduced</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇬🇧 United Kingdom</td><td style="text-align:center">20%</td><td style="text-align:center">5%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇩🇪 Germany</td><td style="text-align:center">19%</td><td style="text-align:center">7%</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇫🇷 France</td><td style="text-align:center">20%</td><td style="text-align:center">5.5%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇪🇸 Spain</td><td style="text-align:center">21%</td><td style="text-align:center">10%</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇮🇪 Ireland</td><td style="text-align:center">23%</td><td style="text-align:center">13.5%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇮🇹 Italy</td><td style="text-align:center">22%</td><td style="text-align:center">10%</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇳🇱 Netherlands</td><td style="text-align:center">21%</td><td style="text-align:center">9%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇸🇪 Sweden</td><td style="text-align:center">25%</td><td style="text-align:center">12%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is VAT?</h2>
+          <p>Value Added Tax (VAT) is a consumption tax applied to goods and services. It is collected at each stage of the supply chain but ultimately paid by the end consumer. Businesses registered for VAT can reclaim the VAT they pay on business purchases.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I add VAT to a price?</summary>
+            <p>Multiply the net price by (1 + VAT rate/100). For example, £100 + 20% VAT = £100 × 1.20 = £120.</p>
+          </details>
+          <details>
+            <summary>How do I remove VAT from a price?</summary>
+            <p>Divide the gross price by (1 + VAT rate/100). For example, £120 ÷ 1.20 = £100 net price.</p>
+          </details>
+          <details>
+            <summary>What is the difference between VAT and sales tax?</summary>
+            <p>VAT is collected at every stage of production and distribution. Sales tax (used in the USA) is only collected at the final point of sale to the consumer.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/finance/mortgage/">🏠 Mortgage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcVAT() {
+  const v = parseFloat(document.getElementById('vat-val').value);
+  const rate = parseFloat(document.getElementById('vat-rate').value);
+  const tipo = document.getElementById('vat-tipo').value;
+  if (isNaN(v)) return;
+  if (tipo === 'sin') {
+    const vat = v * rate / 100;
+    document.getElementById('vat-res').innerHTML =
+      `Price with VAT: ${(v + vat).toFixed(2)}<small>Net: ${v.toFixed(2)} · VAT (${rate}%): ${vat.toFixed(2)}</small>`;
+  } else {
+    const net = v / (1 + rate / 100);
+    const vat = v - net;
+    document.getElementById('vat-res').innerHTML =
+      `Net price: ${net.toFixed(2)}<small>VAT (${rate}%): ${vat.toFixed(2)} · Gross: ${v.toFixed(2)}</small>`;
+  }
+}
+</script>

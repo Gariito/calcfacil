@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter — Count Words and Characters Online Free — CalcFácil</title>
+  <meta name="description" content="Count words, characters, sentences and paragraphs in any text instantly. Free online word counter.">
+  <meta name="keywords" content="word counter, word count, character counter, count words online, word count tool, character count, words and characters counter">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.calcfacil.com/en/calculators/everyday/word-count/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Word Counter — Count Words and Characters Online Free — CalcFácil">
+  <meta property="og:description" content="Count words, characters, sentences and paragraphs in any text instantly. Free online word counter.">
+  <meta property="og:url" content="https://www.calcfacil.com/en/calculators/everyday/word-count/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word Counter — Count Words and Characters Online Free",
+    "description": "Count words, characters, sentences and paragraphs in any text instantly. Free online word counter.",
+    "url": "https://www.calcfacil.com/en/calculators/everyday/word-count/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Word Counter</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📝 Word Counter</h1>
+        <p class="calc-intro">Count words, characters, sentences and paragraphs in any text instantly.</p>
+
+        <div class="card">
+          <label>Paste or type your text here</label>
+          <textarea id="wc-texto" placeholder="Start typing or paste your text here..."
+            oninput="calcWords()"
+            style="width:100%;min-height:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;background:var(--bg);resize:vertical;margin-bottom:1rem;line-height:1.6"></textarea>
+
+          <div class="result-box" id="wc-res">Start typing to see the word count</div>
+          <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="wc-stats"></div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Common word count references</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Document type</th>
+              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Typical word count</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">Tweet / X post</td><td style="text-align:right">up to 280 characters</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Blog post (short)</td><td style="text-align:right">300–600 words</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">Blog post (standard)</td><td style="text-align:right">1,000–1,500 words</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">University essay</td><td style="text-align:right">1,500–3,000 words</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">Short story</td><td style="text-align:right">1,000–7,500 words</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Novel</td><td style="text-align:right">70,000–100,000 words</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a word counter?</h2>
+          <p>A word counter is a tool that counts the number of words, characters, sentences and paragraphs in a piece of text. It is useful for writers, students, journalists and anyone who needs to meet a specific word count limit or target.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many words are on a standard page?</summary>
+            <p>A standard A4 page with 12pt Times New Roman font contains approximately 250–300 words double-spaced, or 500–600 words single-spaced.</p>
+          </details>
+          <details>
+            <summary>How long does it take to read X words?</summary>
+            <p>The average adult reads approximately 200–250 words per minute. This calculator shows an estimated reading time based on 200 words per minute.</p>
+          </details>
+          <details>
+            <summary>Does it count hyphenated words as one or two?</summary>
+            <p>Hyphenated words (e.g. well-being) are counted as one word, which is the standard convention in most style guides.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/age/">🎂 Age Calculator</a></li>
+            <li><a href="/en/calculators/math/days-between-dates/">📅 Days Between Dates</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcWords() {
+  const txt = document.getElementById('wc-texto').value;
+  if (!txt.trim()) {
+    document.getElementById('wc-res').textContent = 'Start typing to see the word count';
+    document.getElementById('wc-stats').innerHTML = '';
+    return;
+  }
+  const words = txt.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const chars = txt.length;
+  const charsNoSpaces = txt.replace(/\s/g,'').length;
+  const sentences = txt.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  const paragraphs = txt.split(/\n+/).filter(p => p.trim().length > 0).length;
+  const readTime = Math.ceil(words / 200);
+
+  document.getElementById('wc-res').innerHTML =
+    `${words.toLocaleString('en-GB')} words · ${chars.toLocaleString('en-GB')} characters
+    <small>Estimated reading time: ~${readTime} min</small>`;
+
+  document.getElementById('wc-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${words.toLocaleString('en-GB')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Words</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${chars.toLocaleString('en-GB')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Characters (with spaces)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${charsNoSpaces.toLocaleString('en-GB')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Characters (no spaces)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${sentences}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Sentences</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${paragraphs}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Paragraphs</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${readTime} min</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Reading time</div>
+    </div>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

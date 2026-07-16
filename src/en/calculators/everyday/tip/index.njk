@@ -1,0 +1,104 @@
+---
+layout: base.njk
+title: Tip Calculator — Split Bill and Calculate Tip Free
+description: Calculate tip amount and split the bill between multiple people instantly. Free tip calculator online.
+keywords: tip calculator, split bill calculator, how much to tip, tip calculator with split, restaurant bill calculator, gratuity calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Tip Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🍽️ Tip Calculator</h1>
+        <p class="calc-intro">Calculate the tip and split the bill between any number of people instantly.</p>
+
+        <div class="card">
+          <label>Total bill amount</label>
+          <input type="number" id="tip-total" placeholder="85.00" oninput="calcTip()">
+
+          <label>Tip percentage</label>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+            <input type="range" min="0" max="30" value="15" id="tip-pct"
+              oninput="document.getElementById('tip-pct-val').textContent=this.value+'%'; calcTip()"
+              style="flex:1;margin-bottom:0">
+            <span id="tip-pct-val" style="font-weight:600;min-width:40px;font-size:1.1rem">15%</span>
+          </div>
+
+          <label>Number of people</label>
+          <input type="number" id="tip-pers" placeholder="2" value="1" oninput="calcTip()">
+
+          <div class="result-box" id="tip-res">Enter the bill amount</div>
+        </div>
+
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <p style="font-size:0.875rem;font-weight:600;margin-bottom:0.75rem">Common tip amounts</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+            <button onclick="setTip(10)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">10%</button>
+            <button onclick="setTip(15)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">15%</button>
+            <button onclick="setTip(18)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">18%</button>
+            <button onclick="setTip(20)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">20%</button>
+            <button onclick="setTip(25)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">25%</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a tip calculator?</h2>
+          <p>A tip calculator helps you quickly calculate how much to tip at a restaurant or for a service, and how to split the total bill (including tip) fairly between multiple people.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How much should I tip at a restaurant?</summary>
+            <p>In the UK, 10–15% is standard. In the USA, 15–20% is expected. In most of Europe, tipping is optional — rounding up or leaving 5–10% is appreciated but not required.</p>
+          </details>
+          <details>
+            <summary>Should I tip on the pre-tax or post-tax amount?</summary>
+            <p>In the USA it is common to tip on the pre-tax subtotal. In the UK and Europe, tipping on the total (including tax) is more common.</p>
+          </details>
+          <details>
+            <summary>How do I split the bill equally?</summary>
+            <p>Enter the total bill, select your tip percentage and enter the number of people. The calculator shows exactly how much each person should pay.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/finance/vat/">% VAT Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function setTip(v) {
+  document.getElementById('tip-pct').value = v;
+  document.getElementById('tip-pct-val').textContent = v + '%';
+  calcTip();
+}
+function calcTip() {
+  const total = parseFloat(document.getElementById('tip-total').value);
+  const pct = parseFloat(document.getElementById('tip-pct').value);
+  const pers = parseInt(document.getElementById('tip-pers').value) || 1;
+  if (isNaN(total)) return;
+  const tip = total * pct / 100;
+  const grand = total + tip;
+  const perPerson = grand / pers;
+  document.getElementById('tip-res').innerHTML =
+    `Tip: ${tip.toFixed(2)} · Total: ${grand.toFixed(2)}
+    <small>${pers > 1 ? `Per person: ${perPerson.toFixed(2)}` : `${pct}% tip on ${total.toFixed(2)}`}</small>`;
+}
+</script>

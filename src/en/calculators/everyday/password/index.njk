@@ -1,0 +1,125 @@
+---
+layout: base.njk
+title: Password Generator — Strong Random Password Free Online
+description: Generate strong, random passwords instantly. Customise length and character types. Free secure password generator.
+keywords: password generator, strong password generator, random password generator, secure password generator, create strong password, password maker
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Password Generator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔐 Password Generator</h1>
+        <p class="calc-intro">Generate strong, random passwords instantly with the character types you choose.</p>
+
+        <div class="card">
+          <label>Password length</label>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+            <input type="range" min="6" max="32" value="16" id="pw-len"
+              oninput="document.getElementById('pw-len-val').textContent=this.value; genPW()"
+              style="flex:1;margin-bottom:0">
+            <span id="pw-len-val" style="font-weight:600;min-width:30px;font-size:1.1rem">16</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+              <input type="checkbox" id="pw-may" checked onchange="genPW()"> Uppercase (A–Z)
+            </label>
+            <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+              <input type="checkbox" id="pw-min" checked onchange="genPW()"> Lowercase (a–z)
+            </label>
+            <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+              <input type="checkbox" id="pw-num" checked onchange="genPW()"> Numbers (0–9)
+            </label>
+            <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;letter-spacing:0;font-size:0.9rem">
+              <input type="checkbox" id="pw-sim" checked onchange="genPW()"> Symbols (!@#$)
+            </label>
+          </div>
+
+          <div class="result-box" id="pw-res" style="font-family:monospace;font-size:1rem;letter-spacing:0.05em;word-break:break-all">
+            Click generate
+          </div>
+
+          <button onclick="genPW()" style="width:100%;margin-top:0.75rem;padding:0.75rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-family:var(--font-body);cursor:pointer;font-weight:500">
+            🔄 Generate password
+          </button>
+          <button onclick="copyPW()" style="width:100%;margin-top:0.5rem;padding:0.75rem;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:1rem;font-family:var(--font-body);cursor:pointer;font-weight:500">
+            📋 Copy to clipboard
+          </button>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">What makes a strong password?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">A strong password should be at least 12 characters long and combine uppercase letters, lowercase letters, numbers and symbols. It should be unique for each account and should not contain personal information like your name, birthday or common words.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">This generator uses the browser's built-in cryptographic random number generator (crypto.getRandomValues) — no data is sent to any server. Your passwords are generated entirely in your browser.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Is this generator secure?</h2>
+          <p>Yes. Passwords are generated entirely in your browser using the Web Crypto API. Nothing is sent to any server. We cannot see or store your generated passwords.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How long should a password be?</summary>
+            <p>At least 12 characters for regular accounts, 16+ for important accounts like email and banking. At 20+ characters a password is practically impossible to crack by brute force.</p>
+          </details>
+          <details>
+            <summary>Where should I store my passwords?</summary>
+            <p>Use a password manager like Bitwarden (free) or 1Password. Never save passwords in a browser for critical accounts or write them on paper.</p>
+          </details>
+          <details>
+            <summary>Should I use a different password for every account?</summary>
+            <p>Yes, always. If one site is hacked and you reuse passwords, attackers can access all your other accounts. A password manager makes this easy to manage.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/discount/">🏷️ Discount Calculator</a></li>
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function genPW() {
+  const len = parseInt(document.getElementById('pw-len').value);
+  let chars = '';
+  if (document.getElementById('pw-may').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (document.getElementById('pw-min').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+  if (document.getElementById('pw-num').checked) chars += '0123456789';
+  if (document.getElementById('pw-sim').checked) chars += '!@#$%^&*()-_=+[]{}|;:,.<>?';
+  if (!chars) { document.getElementById('pw-res').textContent = 'Select at least one character type'; return; }
+  const arr = new Uint32Array(len);
+  crypto.getRandomValues(arr);
+  const pw = Array.from(arr).map(v => chars[v % chars.length]).join('');
+  const strength = len < 8 ? 'Weak' : len < 12 ? 'Fair' : len < 16 ? 'Strong' : 'Very strong';
+  document.getElementById('pw-res').innerHTML =
+    `${pw}<small style="font-family:var(--font-body)">Strength: ${strength} · ${len} characters</small>`;
+}
+function copyPW() {
+  const txt = document.getElementById('pw-res').firstChild?.textContent?.trim();
+  if (!txt || txt === 'Click generate') return;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy to clipboard', 2000);
+  });
+}
+genPW();
+</script>
