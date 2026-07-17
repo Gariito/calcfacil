@@ -1,0 +1,140 @@
+---
+layout: base.njk
+title: Basic Calculator Online — Free
+description: Free basic calculator online. Add, subtract, multiply and divide instantly from your browser. No download required.
+keywords: basic calculator, calculator online, free calculator, online calculator, simple calculator, calculator add subtract multiply divide
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Basic Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔢 Basic Calculator</h1>
+        <p class="calc-intro">A fast, free online calculator for everyday arithmetic. Works with keyboard too.</p>
+
+        <div class="card">
+          <div class="calc-display">
+            <div class="expr" id="calc-expr"></div>
+            <div class="val" id="calc-val">0</div>
+          </div>
+          <div class="kbd-grid">
+            <button class="clr" onclick="cbAc()">AC</button>
+            <button class="op" onclick="cbOp('+/-')">+/-</button>
+            <button class="op" onclick="cbOp('%')">%</button>
+            <button class="op" onclick="cbOp('÷')">÷</button>
+            <button onclick="cbNum('7')">7</button>
+            <button onclick="cbNum('8')">8</button>
+            <button onclick="cbNum('9')">9</button>
+            <button class="op" onclick="cbOp('×')">×</button>
+            <button onclick="cbNum('4')">4</button>
+            <button onclick="cbNum('5')">5</button>
+            <button onclick="cbNum('6')">6</button>
+            <button class="op" onclick="cbOp('−')">−</button>
+            <button onclick="cbNum('1')">1</button>
+            <button onclick="cbNum('2')">2</button>
+            <button onclick="cbNum('3')">3</button>
+            <button class="op" onclick="cbOp('+')">+</button>
+            <button style="grid-column:span 2" onclick="cbNum('0')">0</button>
+            <button onclick="cbDot()">.</button>
+            <button class="eq" onclick="cbEq()">=</button>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Keyboard shortcuts</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Key</th>
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Action</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">0–9</td><td>Enter digits</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">+ − * /</td><td>Operations</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">Enter or =</td><td>Calculate result</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">Escape</td><td>Clear (AC)</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">Backspace</td><td>Delete last digit</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is this calculator?</h2>
+          <p>A free online basic calculator for everyday arithmetic — addition, subtraction, multiplication and division. Works directly in your browser with no download or registration required. Supports both mouse and keyboard input.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Can I use the keyboard with this calculator?</summary>
+            <p>Yes. Type numbers and operators directly from your keyboard. Press Enter or = for the result, Escape to clear and Backspace to delete the last digit.</p>
+          </details>
+          <details>
+            <summary>Does it work on mobile?</summary>
+            <p>Yes, it is fully adapted for touchscreens and works on any smartphone or tablet browser.</p>
+          </details>
+          <details>
+            <summary>Does it save my calculations?</summary>
+            <p>The current operation is shown on screen. For longer calculations, note down intermediate results manually.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/scientific-calculator/">🔬 Scientific Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+let cb = { v:'0', expr:'', op:null, newN:true };
+function cbDisp() {
+  document.getElementById('calc-val').textContent = cb.v;
+  document.getElementById('calc-expr').textContent = cb.expr;
+}
+function cbNum(d) {
+  if (cb.newN) { cb.v = d; cb.newN = false; }
+  else cb.v = cb.v === '0' ? d : cb.v + d;
+  cbDisp();
+}
+function cbDot() {
+  if (!cb.v.includes('.')) { cb.v += '.'; cb.newN = false; }
+  cbDisp();
+}
+function cbAc() { cb = {v:'0',expr:'',op:null,newN:true}; cbDisp(); }
+function cbOp(o) {
+  if (o==='+/-') { cb.v = String(-(parseFloat(cb.v)||0)); cbDisp(); return; }
+  if (o==='%') { cb.v = String(parseFloat(cb.v)/100); cbDisp(); return; }
+  cbEq();
+  cb.op = o; cb.expr = cb.v+' '+o; cb.newN = true; cbDisp();
+}
+function cbEq() {
+  if (!cb.op) return;
+  const a = parseFloat(cb.expr), b = parseFloat(cb.v);
+  const r = cb.op==='+'?a+b:cb.op==='−'?a-b:cb.op==='×'?a*b:b!==0?a/b:'Error';
+  cb = {v:typeof r==='number'?String(parseFloat(r.toFixed(10))):r,expr:'',op:null,newN:true};
+  cbDisp();
+}
+document.addEventListener('keydown', e => {
+  if ('0123456789'.includes(e.key)) cbNum(e.key);
+  else if (e.key==='.') cbDot();
+  else if (e.key==='Enter'||e.key==='=') cbEq();
+  else if (e.key==='+') cbOp('+');
+  else if (e.key==='-') cbOp('−');
+  else if (e.key==='*') cbOp('×');
+  else if (e.key==='/') { e.preventDefault(); cbOp('÷'); }
+  else if (e.key==='Escape') cbAc();
+  else if (e.key==='Backspace') { cb.v=cb.v.length>1?cb.v.slice(0,-1):'0'; cbDisp(); }
+});
+</script>

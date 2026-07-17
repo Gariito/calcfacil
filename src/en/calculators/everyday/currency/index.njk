@@ -1,0 +1,128 @@
+---
+layout: base.njk
+title: Currency Converter — Free Online Exchange Rate Calculator
+description: Convert between major world currencies instantly. Free currency converter with approximate exchange rates.
+keywords: currency converter, exchange rate calculator, convert currency, usd to eur, gbp to usd, currency exchange calculator, foreign exchange calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Currency Converter</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>💱 Currency Converter</h1>
+        <p class="calc-intro">Convert between the world's major currencies instantly with approximate reference rates.</p>
+
+        <div class="card">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--muted)">
+            ⚠️ Approximate reference rates based on EUR. For transactions use your bank's official rate.
+          </div>
+
+          <div class="row-2">
+            <div>
+              <label>Amount</label>
+              <input type="number" id="cur-val" placeholder="100" oninput="calcCurrency()">
+            </div>
+            <div>
+              <label>From</label>
+              <select id="cur-from" onchange="calcCurrency()">
+                <option value="EUR">EUR — Euro</option>
+                <option value="USD">USD — US Dollar</option>
+                <option value="GBP">GBP — British Pound</option>
+                <option value="JPY">JPY — Japanese Yen</option>
+                <option value="CHF">CHF — Swiss Franc</option>
+                <option value="CAD">CAD — Canadian Dollar</option>
+                <option value="AUD">AUD — Australian Dollar</option>
+                <option value="CNY">CNY — Chinese Yuan</option>
+                <option value="MXN">MXN — Mexican Peso</option>
+                <option value="BRL">BRL — Brazilian Real</option>
+              </select>
+            </div>
+          </div>
+
+          <label>To</label>
+          <select id="cur-to" onchange="calcCurrency()">
+            <option value="USD">USD — US Dollar</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="GBP">GBP — British Pound</option>
+            <option value="JPY">JPY — Japanese Yen</option>
+            <option value="CHF">CHF — Swiss Franc</option>
+            <option value="CAD">CAD — Canadian Dollar</option>
+            <option value="AUD">AUD — Australian Dollar</option>
+            <option value="CNY">CNY — Chinese Yuan</option>
+            <option value="MXN">MXN — Mexican Peso</option>
+            <option value="BRL">BRL — Brazilian Real</option>
+          </select>
+
+          <div class="result-box" id="cur-res">Enter an amount</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Reference exchange rates (base EUR)</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Currency</th>
+              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Rate per EUR</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇺🇸 USD — US Dollar</td><td style="text-align:right">1.08</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇬🇧 GBP — British Pound</td><td style="text-align:right">0.86</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇯🇵 JPY — Japanese Yen</td><td style="text-align:right">163</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇨🇭 CHF — Swiss Franc</td><td style="text-align:right">0.97</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">🇨🇦 CAD — Canadian Dollar</td><td style="text-align:right">1.47</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇦🇺 AUD — Australian Dollar</td><td style="text-align:right">1.63</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a currency converter?</h2>
+          <p>A currency converter calculates the equivalent value of an amount in one currency expressed in another currency, using an exchange rate. Exchange rates fluctuate constantly based on financial markets.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Are these exchange rates live?</summary>
+            <p>No, these are approximate reference rates. For live rates and transactions, always check your bank or a source like the European Central Bank (ECB).</p>
+          </details>
+          <details>
+            <summary>Why does my bank give me a worse rate?</summary>
+            <p>Banks and exchange services apply a margin or commission on top of the mid-market rate. This is how they make money on currency exchange.</p>
+          </details>
+          <details>
+            <summary>What is the mid-market rate?</summary>
+            <p>The mid-market rate (also called interbank rate) is the midpoint between buy and sell prices. It is the fairest rate but typically not available to retail customers.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+            <li><a href="/en/calculators/finance/vat/">% VAT Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const FX = { EUR:1, USD:1.08, GBP:0.86, JPY:163, CHF:0.97, CAD:1.47, AUD:1.63, CNY:7.8, MXN:18.5, BRL:5.4 };
+function calcCurrency() {
+  const v = parseFloat(document.getElementById('cur-val').value);
+  const f = document.getElementById('cur-from').value;
+  const t = document.getElementById('cur-to').value;
+  if (isNaN(v)) return;
+  const res = v / FX[f] * FX[t];
+  document.getElementById('cur-res').innerHTML =
+    `${res.toFixed(2)} ${t}<small>1 ${f} ≈ ${(FX[t]/FX[f]).toFixed(4)} ${t} (approx.)</small>`;
+}
+</script>

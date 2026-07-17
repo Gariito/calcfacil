@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Average Calculator — Mean, Median and Mode Free Online — CalcFácil</title>
+  <meta name="description" content="Calculate the mean, median, mode and range of any list of numbers instantly. Free average calculator online.">
+  <meta name="keywords" content="average calculator, mean calculator, median calculator, mode calculator, calculate average, arithmetic mean calculator, statistics calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/everyday/average/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Average Calculator — Mean, Median and Mode Free Online — CalcFácil">
+  <meta property="og:description" content="Calculate the mean, median, mode and range of any list of numbers instantly. Free average calculator online.">
+  <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/everyday/average/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Average Calculator — Mean, Median and Mode Free Online",
+    "description": "Calculate the mean, median, mode and range of any list of numbers instantly. Free average calculator online.",
+    "url": "https://calculadorasgratis.net/en/calculators/everyday/average/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Average Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📊 Average Calculator</h1>
+        <p class="calc-intro">Calculate the mean, median, mode and range of any list of numbers instantly.</p>
+
+        <div class="card">
+          <label>Enter numbers separated by commas or spaces</label>
+          <input type="text" id="avg-nums" placeholder="4, 7, 2, 9, 4, 1, 7, 4" oninput="calcAvg()">
+          <div class="result-box" id="avg-res">Enter a list of numbers</div>
+          <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="avg-stats"></div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Mean vs Median vs Mode</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem"><strong>Mean (average):</strong> Sum of all values divided by the count. Most commonly used but sensitive to outliers.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem"><strong>Median:</strong> The middle value when numbers are sorted. Better for skewed data (e.g. salaries where a few very high values distort the mean).</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Mode:</strong> The value that appears most frequently. Useful for categorical data and finding the most common value.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is an average?</h2>
+          <p>An average is a single value that represents a set of numbers. The most common type is the arithmetic mean — the sum of all values divided by the count. Other types include the median (middle value) and mode (most frequent value).</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is the difference between mean and average?</summary>
+            <p>In everyday language they mean the same thing. Technically, "average" can refer to mean, median or mode. The arithmetic mean is the most common type of average.</p>
+          </details>
+          <details>
+            <summary>When should I use median instead of mean?</summary>
+            <p>Use the median when your data has extreme values (outliers) that would distort the mean. For example, median household income is more representative than mean income because very high earners inflate the mean.</p>
+          </details>
+          <details>
+            <summary>Can there be more than one mode?</summary>
+            <p>Yes. If two or more values appear with equal maximum frequency, all of them are modes. This is called a bimodal or multimodal distribution.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcAvg() {
+  const raw = document.getElementById('avg-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => !isNaN(n) && raw.trim() !== '');
+  if (nums.length < 2) return;
+  const sorted = [...nums].sort((a,b) => a-b);
+  const n = nums.length;
+  const mean = nums.reduce((a,b)=>a+b,0)/n;
+  const median = n%2===0?(sorted[n/2-1]+sorted[n/2])/2:sorted[Math.floor(n/2)];
+  const freq={};
+  nums.forEach(v=>freq[v]=(freq[v]||0)+1);
+  const maxFreq=Math.max(...Object.values(freq));
+  const mode=Object.keys(freq).filter(k=>freq[k]===maxFreq).join(', ');
+  const range=sorted[n-1]-sorted[0];
+  const variance=nums.reduce((a,b)=>a+Math.pow(b-mean,2),0)/n;
+  const stdDev=Math.sqrt(variance);
+
+  document.getElementById('avg-res').innerHTML =
+    `Mean: ${mean.toFixed(4)}<small>Median: ${median} · Mode: ${mode} · Range: ${range} · Std Dev: ${stdDev.toFixed(4)}</small>`;
+
+  document.getElementById('avg-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${mean.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Mean</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${median}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Median</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${mode}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Mode</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${range}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Range</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${stdDev.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Std Deviation</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${n}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Count</div>
+    </div>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

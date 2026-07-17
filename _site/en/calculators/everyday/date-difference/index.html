@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Difference Calculator — Days Between Two Dates — CalcFácil</title>
+  <meta name="description" content="Calculate the exact number of days, weeks and months between two dates. Count working days too. Free online date calculator.">
+  <meta name="keywords" content="date difference calculator, days between dates, how many days between two dates, date calculator, days until calculator, working days calculator, countdown days">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/everyday/date-difference/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Date Difference Calculator — Days Between Two Dates — CalcFácil">
+  <meta property="og:description" content="Calculate the exact number of days, weeks and months between two dates. Count working days too. Free online date calculator.">
+  <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/everyday/date-difference/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Difference Calculator — Days Between Two Dates",
+    "description": "Calculate the exact number of days, weeks and months between two dates. Count working days too. Free online date calculator.",
+    "url": "https://calculadorasgratis.net/en/calculators/everyday/date-difference/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Date Difference Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📅 Date Difference Calculator</h1>
+        <p class="calc-intro">Calculate the exact number of days, weeks and months between any two dates.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Start date</label>
+              <input type="date" id="dd-start" oninput="calcDD()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+            <div>
+              <label>End date</label>
+              <input type="date" id="dd-end" oninput="calcDD()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+          </div>
+
+          <label>Count only working days?</label>
+          <select id="dd-work" onchange="calcDD()">
+            <option value="no">No — count all days</option>
+            <option value="yes">Yes — working days only (Mon–Fri)</option>
+          </select>
+
+          <div class="result-box" id="dd-res">Enter the two dates</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Common date calculations</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem">
+            <button onclick="setDatePreset(30)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 30 days</button>
+            <button onclick="setDatePreset(90)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 90 days</button>
+            <button onclick="setDatePreset(180)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 6 months</button>
+            <button onclick="setDatePreset(365)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 1 year</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is this calculator for?</h2>
+          <p>This date calculator computes the exact difference between two dates in days, weeks and months. Use it to count down to an event, calculate project durations, find how many working days are in a period or figure out how long ago something happened.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many days until Christmas?</summary>
+            <p>Set the start date to today and the end date to 25 December. The calculator will show the exact number of days remaining.</p>
+          </details>
+          <details>
+            <summary>Does it include leap years?</summary>
+            <p>Yes, the calculation is exact and automatically accounts for leap years.</p>
+          </details>
+          <details>
+            <summary>What counts as a working day?</summary>
+            <p>This calculator counts Monday to Friday as working days, excluding weekends. It does not account for public holidays, which vary by country.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/age/">🎂 Age Calculator</a></li>
+            <li><a href="/en/calculators/everyday/hours/">⏱️ Hours Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('dd-start').value = today;
+});
+
+function setDatePreset(days) {
+  const today = new Date();
+  const future = new Date(today.getTime() + days * 86400000);
+  document.getElementById('dd-start').value = today.toISOString().split('T')[0];
+  document.getElementById('dd-end').value = future.toISOString().split('T')[0];
+  calcDD();
+}
+
+function calcDD() {
+  const start = document.getElementById('dd-start').value;
+  const end = document.getElementById('dd-end').value;
+  const work = document.getElementById('dd-work').value;
+  if (!start || !end) return;
+  const d1 = new Date(start), d2 = new Date(end);
+  const diff = Math.round((d2 - d1) / 86400000);
+  if (diff < 0) { document.getElementById('dd-res').textContent = 'End date is before start date'; return; }
+  let workDays = 0;
+  if (work === 'yes') {
+    let cur = new Date(d1);
+    while (cur < d2) {
+      const dow = cur.getDay();
+      if (dow !== 0 && dow !== 6) workDays++;
+      cur.setDate(cur.getDate() + 1);
+    }
+  }
+  const weeks = Math.floor(diff / 7);
+  const rem = diff % 7;
+  const months = Math.floor(diff / 30.44);
+  document.getElementById('dd-res').innerHTML =
+    `${diff} days
+    <small>${weeks} week${weeks!==1?'s':''} and ${rem} day${rem!==1?'s':''} · ~${months} month${months!==1?'s':''}${work==='yes'?' · '+workDays+' working days':''}</small>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

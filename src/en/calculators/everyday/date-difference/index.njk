@@ -1,0 +1,126 @@
+---
+layout: base.njk
+title: Date Difference Calculator — Days Between Two Dates
+description: Calculate the exact number of days, weeks and months between two dates. Count working days too. Free online date calculator.
+keywords: date difference calculator, days between dates, how many days between two dates, date calculator, days until calculator, working days calculator, countdown days
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Date Difference Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📅 Date Difference Calculator</h1>
+        <p class="calc-intro">Calculate the exact number of days, weeks and months between any two dates.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Start date</label>
+              <input type="date" id="dd-start" oninput="calcDD()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+            <div>
+              <label>End date</label>
+              <input type="date" id="dd-end" oninput="calcDD()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+          </div>
+
+          <label>Count only working days?</label>
+          <select id="dd-work" onchange="calcDD()">
+            <option value="no">No — count all days</option>
+            <option value="yes">Yes — working days only (Mon–Fri)</option>
+          </select>
+
+          <div class="result-box" id="dd-res">Enter the two dates</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Common date calculations</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem">
+            <button onclick="setDatePreset(30)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 30 days</button>
+            <button onclick="setDatePreset(90)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 90 days</button>
+            <button onclick="setDatePreset(180)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 6 months</button>
+            <button onclick="setDatePreset(365)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;text-align:left">📅 Days in 1 year</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is this calculator for?</h2>
+          <p>This date calculator computes the exact difference between two dates in days, weeks and months. Use it to count down to an event, calculate project durations, find how many working days are in a period or figure out how long ago something happened.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many days until Christmas?</summary>
+            <p>Set the start date to today and the end date to 25 December. The calculator will show the exact number of days remaining.</p>
+          </details>
+          <details>
+            <summary>Does it include leap years?</summary>
+            <p>Yes, the calculation is exact and automatically accounts for leap years.</p>
+          </details>
+          <details>
+            <summary>What counts as a working day?</summary>
+            <p>This calculator counts Monday to Friday as working days, excluding weekends. It does not account for public holidays, which vary by country.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/age/">🎂 Age Calculator</a></li>
+            <li><a href="/en/calculators/everyday/hours/">⏱️ Hours Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('dd-start').value = today;
+});
+
+function setDatePreset(days) {
+  const today = new Date();
+  const future = new Date(today.getTime() + days * 86400000);
+  document.getElementById('dd-start').value = today.toISOString().split('T')[0];
+  document.getElementById('dd-end').value = future.toISOString().split('T')[0];
+  calcDD();
+}
+
+function calcDD() {
+  const start = document.getElementById('dd-start').value;
+  const end = document.getElementById('dd-end').value;
+  const work = document.getElementById('dd-work').value;
+  if (!start || !end) return;
+  const d1 = new Date(start), d2 = new Date(end);
+  const diff = Math.round((d2 - d1) / 86400000);
+  if (diff < 0) { document.getElementById('dd-res').textContent = 'End date is before start date'; return; }
+  let workDays = 0;
+  if (work === 'yes') {
+    let cur = new Date(d1);
+    while (cur < d2) {
+      const dow = cur.getDay();
+      if (dow !== 0 && dow !== 6) workDays++;
+      cur.setDate(cur.getDate() + 1);
+    }
+  }
+  const weeks = Math.floor(diff / 7);
+  const rem = diff % 7;
+  const months = Math.floor(diff / 30.44);
+  document.getElementById('dd-res').innerHTML =
+    `${diff} days
+    <small>${weeks} week${weeks!==1?'s':''} and ${rem} day${rem!==1?'s':''} · ~${months} month${months!==1?'s':''}${work==='yes'?' · '+workDays+' working days':''}</small>`;
+}
+</script>

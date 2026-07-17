@@ -1,0 +1,95 @@
+---
+layout: base.njk
+title: Proportion Calculator — Direct and Inverse Proportion
+description: Solve any direct or inverse proportion instantly. Enter three values and get the fourth. Free proportion calculator online.
+keywords: proportion calculator, direct proportion calculator, inverse proportion calculator, solve proportion, cross multiplication, proportionality calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Proportion Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⚖️ Proportion Calculator</h1>
+        <p class="calc-intro">Solve direct and inverse proportions instantly by entering three known values.</p>
+
+        <div class="card">
+          <label>Type of proportion</label>
+          <select id="prop-tipo" onchange="calcProp()">
+            <option value="direct">Direct — when A increases, B also increases</option>
+            <option value="inverse">Inverse — when A increases, B decreases</option>
+          </select>
+
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+            <div class="row-2">
+              <div><label>If A =</label><input type="number" id="prop-a" placeholder="3" oninput="calcProp()"></div>
+              <div><label>then B =</label><input type="number" id="prop-b" placeholder="9" oninput="calcProp()"></div>
+            </div>
+            <div class="row-2">
+              <div><label>If A =</label><input type="number" id="prop-c" placeholder="5" oninput="calcProp()"></div>
+              <div>
+                <label>then B =</label>
+                <div class="result-box" id="prop-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box" id="prop-res">Enter the three known values</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Real-world examples</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Direct proportion:</strong> If 3 litres of paint cover 30 m², how much paint do I need for 75 m²? → A=3, B=30, C=75, X=7.5 litres.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Direct proportion:</strong> A recipe for 4 people needs 200g of flour. How much for 6 people? → A=4, B=200, C=6, X=300g.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Inverse proportion:</strong> 6 workers finish a job in 8 days. How long for 4 workers? → A=6, B=8, C=4, X=12 days.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a proportion?</h2>
+          <p>A proportion is an equation stating that two ratios are equal. The rule of three (or cross-multiplication method) is a technique to find an unknown value in a proportion when three values are known.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is the difference between direct and inverse proportion?</summary>
+            <p>In direct proportion both quantities change in the same direction — if one doubles, the other doubles too. In inverse proportion they change in opposite directions — if one doubles, the other halves.</p>
+          </details>
+          <details>
+            <summary>How do I know if a proportion is direct or inverse?</summary>
+            <p>Ask: if A increases, does B increase or decrease? If increase → direct. If decrease → inverse. Example: more speed, less time → inverse.</p>
+          </details>
+          <details>
+            <summary>What is cross-multiplication?</summary>
+            <p>For direct proportion: X = (B × C) ÷ A. For inverse proportion: X = (A × B) ÷ C. This calculator applies the correct formula automatically.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcProp() {
+  const a = parseFloat(document.getElementById('prop-a').value);
+  const b = parseFloat(document.getElementById('prop-b').value);
+  const c = parseFloat(document.getElementById('prop-c').value);
+  const tipo = document.getElementById('prop-tipo').value;
+  if (!a || !b || !c) return;
+  const x = tipo === 'direct' ? (b * c) / a : (a
