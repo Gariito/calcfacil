@@ -1,0 +1,88 @@
+---
+layout: base.njk
+title: Prime Number Calculator — Check if a Number is Prime Free
+description: Check if any number is prime and find its prime factorization instantly. Free prime number checker online.
+keywords: prime number calculator, is this number prime, prime factorization calculator, check prime number, prime checker, prime numbers list
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Prime Number Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔢 Prime Number Calculator</h1>
+        <p class="calc-intro">Check if any number is prime and find its complete prime factorization instantly.</p>
+
+        <div class="card">
+          <label>Number to check</label>
+          <input type="number" id="pr-num" placeholder="97" oninput="calcPrime()">
+          <div class="result-box" id="pr-res">Enter a number</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">First 50 prime numbers</h2>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.8">2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a prime number?</h2>
+          <p>A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few primes are 2, 3, 5, 7, 11, 13... There are infinitely many primes — Euclid proved this over 2,000 years ago.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Is 1 a prime number?</summary>
+            <p>No. By definition, prime numbers must have exactly two distinct divisors — 1 and themselves. The number 1 only has one divisor, so it is neither prime nor composite.</p>
+          </details>
+          <details>
+            <summary>Is 2 the only even prime?</summary>
+            <p>Yes. Every even number greater than 2 is divisible by 2, so it cannot be prime. 2 is the only even prime number.</p>
+          </details>
+          <details>
+            <summary>What are prime numbers used for?</summary>
+            <p>Prime numbers are fundamental to modern cryptography. The security of HTTPS, SSL and most internet encryption relies on the mathematical difficulty of factoring very large numbers into their prime factors.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/gcd-lcm/">🔢 GCD & LCM</a></li>
+            <li><a href="/en/calculators/math/fractions/">½ Fractions</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function isPrime(n){if(n<2)return false;if(n===2)return true;if(n%2===0)return false;for(let i=3;i<=Math.sqrt(n);i+=2){if(n%i===0)return false;}return true;}
+function factorise(n){const f=[];let d=2;while(d*d<=n){while(n%d===0){f.push(d);n=Math.floor(n/d);}d++;}if(n>1)f.push(n);return f;}
+function calcPrime(){
+  const n=parseInt(document.getElementById('pr-num').value);
+  if(isNaN(n)||n<1)return;
+  const prime=isPrime(n);
+  const factors=factorise(n);
+  let next=n+1; while(!isPrime(next))next++;
+  let prev=n-1; while(prev>1&&!isPrime(prev))prev--;
+  if(prime){
+    document.getElementById('pr-res').innerHTML=
+      `${n} IS a prime number ✓
+      <small>Previous prime: ${prev>1?prev:'—'} · Next prime: ${next}</small>`;
+  } else {
+    document.getElementById('pr-res').innerHTML=
+      `${n} is NOT prime
+      <small>Prime factors: ${factors.join(' × ')} · Previous prime: ${prev>1?prev:'—'} · Next prime: ${next}</small>`;
+  }
+}
+</script>

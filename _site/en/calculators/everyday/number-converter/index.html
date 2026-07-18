@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number System Converter — Binary, Decimal, Hex, Octal Free — CalcFácil</title>
+  <meta name="description" content="Convert numbers between decimal, binary, hexadecimal and octal instantly. Free number base converter online.">
+  <meta name="keywords" content="binary to decimal, decimal to binary, hexadecimal converter, number system converter, binary converter, hex to decimal, octal converter, number base converter">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/everyday/number-converter/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Number System Converter — Binary, Decimal, Hex, Octal Free — CalcFácil">
+  <meta property="og:description" content="Convert numbers between decimal, binary, hexadecimal and octal instantly. Free number base converter online.">
+  <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/everyday/number-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Number System Converter — Binary, Decimal, Hex, Octal Free",
+    "description": "Convert numbers between decimal, binary, hexadecimal and octal instantly. Free number base converter online.",
+    "url": "https://calculadorasgratis.net/en/calculators/everyday/number-converter/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Number System Converter</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔣 Number System Converter</h1>
+        <p class="calc-intro">Convert numbers between decimal, binary, hexadecimal and octal instantly.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Number</label>
+              <input type="text" id="ns-num" placeholder="255" oninput="calcNS()">
+            </div>
+            <div>
+              <label>From base</label>
+              <select id="ns-base" onchange="calcNS()">
+                <option value="10">Decimal (base 10)</option>
+                <option value="2">Binary (base 2)</option>
+                <option value="16">Hexadecimal (base 16)</option>
+                <option value="8">Octal (base 8)</option>
+              </select>
+            </div>
+          </div>
+          <div class="result-box" id="ns-res">Enter a number</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Quick reference</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Decimal</th>
+              <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Binary</th>
+              <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Hex</th>
+              <th style="padding:0.5rem;text-align:center;border-bottom:1px solid var(--border)">Octal</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem">0</td><td style="text-align:center">0</td><td style="text-align:center">0</td><td style="text-align:center">0</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">10</td><td style="text-align:center">1010</td><td style="text-align:center">A</td><td style="text-align:center">12</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">16</td><td style="text-align:center">10000</td><td style="text-align:center">10</td><td style="text-align:center">20</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">255</td><td style="text-align:center">11111111</td><td style="text-align:center">FF</td><td style="text-align:center">377</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem">1024</td><td style="text-align:center">10000000000</td><td style="text-align:center">400</td><td style="text-align:center">2000</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What are number systems?</h2>
+          <p>Number systems are different ways to represent the same value using different bases. Decimal (base 10) is what we use every day. Binary (base 2) is the language of computers. Hexadecimal (base 16) is used in programming and web colours. Octal (base 8) is used in Unix file permissions.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is binary?</summary>
+            <p>Binary is a base-2 number system that uses only 0 and 1. It is the fundamental language of all digital computers and electronic devices.</p>
+          </details>
+          <details>
+            <summary>What is hexadecimal used for?</summary>
+            <p>Hexadecimal (hex) is used in programming to represent memory addresses, colours in web design (e.g. #FF5733) and byte values in a compact form. Each hex digit represents exactly 4 binary digits.</p>
+          </details>
+          <details>
+            <summary>What is 255 in binary?</summary>
+            <p>255 in binary is 11111111 — eight 1s. In hexadecimal it is FF. This is why the maximum value of a single byte is 255.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
+            <li><a href="/en/calculators/everyday/scientific-calculator/">🔬 Scientific Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcNS() {
+  const num = document.getElementById('ns-num').value.trim().toUpperCase();
+  const base = parseInt(document.getElementById('ns-base').value);
+  if (!num) return;
+  const decimal = parseInt(num, base);
+  if (isNaN(decimal)) {
+    document.getElementById('ns-res').textContent = 'Invalid number for the selected base';
+    return;
+  }
+  document.getElementById('ns-res').innerHTML =
+    `Decimal: ${decimal}
+    <small>
+    Binary: ${decimal.toString(2)} · 
+    Octal: ${decimal.toString(8)} · 
+    Hexadecimal: ${decimal.toString(16).toUpperCase()}
+    </small>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

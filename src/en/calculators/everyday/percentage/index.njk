@@ -1,0 +1,111 @@
+---
+layout: base.njk
+title: Percentage Calculator — Calculate Any Percentage Free
+description: Calculate percentages instantly. Find X percent of Y, what percentage X is of Y, or percentage increase and decrease. Free online.
+keywords: percentage calculator, calculate percentage, what is x percent of y, percentage of a number, percent calculator, how to calculate percentage, percentage increase calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Percentage Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>% Percentage Calculator</h1>
+        <p class="calc-intro">Calculate any percentage instantly — three types of percentage problems solved in one place.</p>
+
+        <div class="card">
+          <p style="font-weight:600;margin-bottom:1rem">1. What is X% of Y?</p>
+          <div class="row-2">
+            <div><label>Percentage (%)</label><input type="number" id="p1-pct" placeholder="15" oninput="calcP1()"></div>
+            <div><label>Of number (Y)</label><input type="number" id="p1-val" placeholder="200" oninput="calcP1()"></div>
+          </div>
+          <div class="result-box" id="p1-res">Enter the values</div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <p style="font-weight:600;margin-bottom:1rem">2. X is what % of Y?</p>
+          <div class="row-2">
+            <div><label>X (part)</label><input type="number" id="p2-x" placeholder="30" oninput="calcP2()"></div>
+            <div><label>Y (total)</label><input type="number" id="p2-y" placeholder="200" oninput="calcP2()"></div>
+          </div>
+          <div class="result-box" id="p2-res">Enter the values</div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <p style="font-weight:600;margin-bottom:1rem">3. Percentage change from X to Y</p>
+          <div class="row-2">
+            <div><label>Original value (X)</label><input type="number" id="p3-x" placeholder="80" oninput="calcP3()"></div>
+            <div><label>New value (Y)</label><input type="number" id="p3-y" placeholder="100" oninput="calcP3()"></div>
+          </div>
+          <div class="result-box" id="p3-res">Enter the values</div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a percentage?</h2>
+          <p>A percentage is a number expressed as a fraction of 100. The symbol % means "per hundred". Percentages are used everywhere — from shop discounts and tax rates to statistics, grades and financial returns.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do I calculate 20% of 150?</summary>
+            <p>Multiply 150 by 20 and divide by 100. Result: 30. Or multiply by 0.20 directly.</p>
+          </details>
+          <details>
+            <summary>How do I calculate a percentage increase?</summary>
+            <p>Use section 3 above. Subtract original from new value, divide by original, multiply by 100. From 80 to 100 is (100−80)÷80×100 = 25% increase.</p>
+          </details>
+          <details>
+            <summary>How do I work out what percentage one number is of another?</summary>
+            <p>Use section 2 above. Divide the part by the total and multiply by 100. For example, 30 is what % of 200? 30÷200×100 = 15%.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/discount/">🏷️ Discount Calculator</a></li>
+            <li><a href="/en/calculators/finance/vat/">% VAT Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcP1() {
+  const p = parseFloat(document.getElementById('p1-pct').value);
+  const v = parseFloat(document.getElementById('p1-val').value);
+  if (isNaN(p)||isNaN(v)) return;
+  const r = v*p/100;
+  document.getElementById('p1-res').innerHTML =
+    `${p}% of ${v} = ${parseFloat(r.toFixed(6)).toLocaleString('en-GB',{maximumFractionDigits:4})}`;
+}
+function calcP2() {
+  const x = parseFloat(document.getElementById('p2-x').value);
+  const y = parseFloat(document.getElementById('p2-y').value);
+  if (isNaN(x)||isNaN(y)||y===0) return;
+  document.getElementById('p2-res').innerHTML =
+    `${x} is ${(x/y*100).toFixed(4)}% of ${y}`;
+}
+function calcP3() {
+  const x = parseFloat(document.getElementById('p3-x').value);
+  const y = parseFloat(document.getElementById('p3-y').value);
+  if (isNaN(x)||isNaN(y)||x===0) return;
+  const change = (y-x)/Math.abs(x)*100;
+  const dir = change >= 0 ? '▲ increase' : '▼ decrease';
+  const color = change >= 0 ? '#22C55E' : '#EF4444';
+  document.getElementById('p3-res').innerHTML =
+    `<span style="color:${color}">${Math.abs(change).toFixed(4)}% ${dir}</span>
+    <small>From ${x} to ${y} · Difference: ${(y-x) >= 0?'+':''}${(y-x).toFixed(4)}</small>`;
+}
+</script>

@@ -1,0 +1,122 @@
+---
+layout: base.njk
+title: Fraction Calculator — Add, Subtract, Multiply and Divide Fractions
+description: Add, subtract, multiply and divide fractions instantly with automatic simplification. Free fraction calculator online.
+keywords: fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, fraction simplifier, simplify fractions calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Fraction Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>½ Fraction Calculator</h1>
+        <p class="calc-intro">Add, subtract, multiply and divide fractions with automatic simplification of the result.</p>
+
+        <div class="card">
+          <label>Operation</label>
+          <select id="frac-op" onchange="updateSymbol()">
+            <option value="add">Addition (a/b + c/d)</option>
+            <option value="sub">Subtraction (a/b − c/d)</option>
+            <option value="mul">Multiplication (a/b × c/d)</option>
+            <option value="div">Division (a/b ÷ c/d)</option>
+          </select>
+
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1rem">
+            <div>
+              <label>Numerator 1</label>
+              <input type="number" id="frac-a" placeholder="1" oninput="calcFrac()">
+              <div style="border-top:2px solid var(--text);margin:0.25rem 0"></div>
+              <label>Denominator 1</label>
+              <input type="number" id="frac-b" placeholder="3" oninput="calcFrac()">
+            </div>
+            <div style="font-size:1.5rem;font-weight:700;text-align:center;padding-top:1rem" id="frac-sym">+</div>
+            <div>
+              <label>Numerator 2</label>
+              <input type="number" id="frac-c" placeholder="1" oninput="calcFrac()">
+              <div style="border-top:2px solid var(--text);margin:0.25rem 0"></div>
+              <label>Denominator 2</label>
+              <input type="number" id="frac-d" placeholder="4" oninput="calcFrac()">
+            </div>
+          </div>
+
+          <div class="result-box" id="frac-res">Enter the fraction values</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to work with fractions</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Adding/subtracting:</strong> Find a common denominator, convert both fractions, then add or subtract the numerators. Example: 1/3 + 1/4 = 4/12 + 3/12 = 7/12.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Multiplying:</strong> Multiply numerators together and denominators together. Example: 2/3 × 3/4 = 6/12 = 1/2.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Dividing:</strong> Multiply the first fraction by the reciprocal of the second. Example: 2/3 ÷ 4/5 = 2/3 × 5/4 = 10/12 = 5/6.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a fraction?</h2>
+          <p>A fraction represents a part of a whole. It has a numerator (top number) and a denominator (bottom number). For example, 3/4 means 3 parts out of 4. Fractions can be proper (numerator less than denominator), improper (numerator greater) or mixed numbers.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do you add fractions with different denominators?</summary>
+            <p>Find the lowest common multiple (LCM) of the denominators, convert both fractions to that denominator, then add the numerators. This calculator does it automatically.</p>
+          </details>
+          <details>
+            <summary>What does simplifying a fraction mean?</summary>
+            <p>Reducing it to its simplest form by dividing both numerator and denominator by their greatest common divisor (GCD). For example, 6/9 simplified is 2/3 (dividing both by 3).</p>
+          </details>
+          <details>
+            <summary>How do you divide one fraction by another?</summary>
+            <p>Multiply the first fraction by the reciprocal (flip) of the second. For example, (2/3) ÷ (4/5) = (2/3) × (5/4) = 10/12 = 5/6.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/gcd-lcm/">🔢 GCD & LCM Calculator</a></li>
+            <li><a href="/en/calculators/math/square-root/">√ Square Root</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function gcdF(a,b){return b===0?Math.abs(a):gcdF(b,a%b);}
+function updateSymbol(){
+  const syms={add:'+',sub:'−',mul:'×',div:'÷'};
+  document.getElementById('frac-sym').textContent=syms[document.getElementById('frac-op').value];
+  calcFrac();
+}
+function calcFrac(){
+  const a=parseInt(document.getElementById('frac-a').value);
+  const b=parseInt(document.getElementById('frac-b').value);
+  const c=parseInt(document.getElementById('frac-c').value);
+  const d=parseInt(document.getElementById('frac-d').value);
+  const op=document.getElementById('frac-op').value;
+  if(isNaN(a)||isNaN(b)||isNaN(c)||isNaN(d)||b===0||d===0)return;
+  let rn,rd;
+  if(op==='add'){rn=a*d+c*b;rd=b*d;}
+  else if(op==='sub'){rn=a*d-c*b;rd=b*d;}
+  else if(op==='mul'){rn=a*c;rd=b*d;}
+  else{rn=a*d;rd=b*c;}
+  if(rd===0){document.getElementById('frac-res').textContent='Division by zero';return;}
+  if(rd<0){rn=-rn;rd=-rd;}
+  const g=gcdF(Math.abs(rn),Math.abs(rd));
+  const sn=rn/g,sd=rd/g;
+  const decimal=(rn/rd);
+  document.getElementById('frac-res').innerHTML=sd===1
+    ?`${sn}<small>Result simplified · Decimal: ${decimal.toFixed(6).replace(/\.?0+$/,'')}</small>`
+    :`${sn}/${sd}<small>Simplified fraction · Decimal: ${decimal.toFixed(6).replace(/\.?0+$/,'')}</small>`;
+}
+</script>

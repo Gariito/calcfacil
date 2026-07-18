@@ -1,0 +1,93 @@
+---
+layout: base.njk
+title: GCD and LCM Calculator — Greatest Common Divisor Free Online
+description: Calculate the Greatest Common Divisor (GCD) and Least Common Multiple (LCM) of two or more numbers instantly.
+keywords: gcd calculator, lcm calculator, greatest common divisor, least common multiple, hcf calculator, highest common factor, gcf calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>GCD & LCM Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔢 GCD & LCM Calculator</h1>
+        <p class="calc-intro">Calculate the Greatest Common Divisor and Least Common Multiple of two or more numbers instantly.</p>
+
+        <div class="card">
+          <label>Numbers (separated by commas)</label>
+          <input type="text" id="gl-nums" placeholder="12, 18, 24" oninput="calcGL()">
+          <div class="result-box" id="gl-res">Enter two or more numbers</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Real-life applications</h2>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.875rem;color:var(--muted)">
+            <div style="background:var(--bg);border-radius:8px;padding:0.75rem">
+              <strong style="color:var(--text)">🍕 GCD example:</strong> You have 12 apples and 18 oranges. What is the largest equal group you can make? GCD(12,18) = <strong style="color:var(--accent)">6</strong> groups of 2 apples and 3 oranges each.
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.75rem">
+              <strong style="color:var(--text)">🚦 LCM example:</strong> Traffic light A changes every 3 minutes, B every 4 minutes. When do they change together? LCM(3,4) = <strong style="color:var(--accent)">12</strong> minutes.
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.75rem">
+              <strong style="color:var(--text)">½ Fractions:</strong> To add 1/4 + 1/6, find LCM(4,6) = <strong style="color:var(--accent)">12</strong> → 3/12 + 2/12 = 5/12.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>GCD vs LCM</h2>
+          <p><strong>GCD (Greatest Common Divisor)</strong> — also called HCF or GCF — is the largest number that divides all the given numbers exactly. Used to simplify fractions and solve sharing problems.<br><br><strong>LCM (Least Common Multiple)</strong> is the smallest number that is a multiple of all the given numbers. Used to add fractions with different denominators.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is the GCD of 12 and 18?</summary>
+            <p>The GCD of 12 and 18 is 6, because 6 is the largest number that divides both 12 and 18 exactly (12÷6=2, 18÷6=3).</p>
+          </details>
+          <details>
+            <summary>What method does this calculator use?</summary>
+            <p>It uses the Euclidean algorithm for GCD, which is the most efficient method. The LCM is then calculated from the GCD using the formula LCM(a,b) = a×b ÷ GCD(a,b).</p>
+          </details>
+          <details>
+            <summary>Can I calculate GCD and LCM of more than two numbers?</summary>
+            <p>Yes. Enter any number of values separated by commas. The calculator applies the algorithm iteratively across all values.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/fractions/">½ Fractions Calculator</a></li>
+            <li><a href="/en/calculators/math/prime-numbers/">🔢 Prime Numbers</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function lcm(a,b){return(a*b)/gcd(a,b);}
+function calcGL(){
+  const raw=document.getElementById('gl-nums').value;
+  const nums=raw.split(/[\s,;]+/).map(Number).filter(n=>Number.isInteger(n)&&n>0);
+  if(nums.length<2)return;
+  const gcdVal=nums.reduce(gcd);
+  const lcmVal=nums.reduce(lcm);
+  const divisors=[];
+  for(let i=1;i<=gcdVal;i++){if(gcdVal%i===0)divisors.push(i);}
+  document.getElementById('gl-res').innerHTML=
+    `GCD: ${gcdVal} · LCM: ${lcmVal.toLocaleString('en-GB')}
+    <small>Divisors of GCD: ${divisors.join(', ')}</small>`;
+}
+</script>

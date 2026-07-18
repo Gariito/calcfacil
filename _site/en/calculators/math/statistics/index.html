@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Calculator — Mean, Median, Mode and Standard Deviation — CalcFácil</title>
+  <meta name="description" content="Calculate mean, median, mode, range and standard deviation of any dataset instantly. Free statistics calculator online.">
+  <meta name="keywords" content="statistics calculator, mean calculator, median calculator, mode calculator, standard deviation calculator, average calculator, descriptive statistics">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/math/statistics/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Statistics Calculator — Mean, Median, Mode and Standard Deviation — CalcFácil">
+  <meta property="og:description" content="Calculate mean, median, mode, range and standard deviation of any dataset instantly. Free statistics calculator online.">
+  <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/math/statistics/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Statistics Calculator — Mean, Median, Mode and Standard Deviation",
+    "description": "Calculate mean, median, mode, range and standard deviation of any dataset instantly. Free statistics calculator online.",
+    "url": "https://calculadorasgratis.net/en/calculators/math/statistics/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9RPZFQTQCL');
+</script>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+<!-- Selector de idioma -->
+  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
+    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
+    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
+  </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Statistics Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📊 Statistics Calculator</h1>
+        <p class="calc-intro">Calculate mean, median, mode, range and standard deviation of any dataset instantly.</p>
+
+        <div class="card">
+          <label>Enter numbers separated by commas or spaces</label>
+          <input type="text" id="stat-nums" placeholder="4, 7, 2, 9, 4, 1, 7, 4" oninput="calcStat()">
+          <div class="result-box" id="stat-res">Enter a dataset</div>
+          <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="stat-grid"></div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">When to use each measure</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Mean:</strong> Best when data is roughly symmetrical with no extreme outliers. Good for test scores, temperatures.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Median:</strong> Best when data has outliers or is skewed. Better for house prices, incomes where a few very high values distort the mean.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Mode:</strong> Best for categorical data or when you need the most common value. Used in fashion sizes, most popular products.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Standard deviation:</strong> Measures how spread out the data is. Low = data clustered near the mean. High = data widely spread.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is descriptive statistics?</h2>
+          <p>Descriptive statistics summarise and describe the main features of a dataset. The key measures are central tendency (mean, median, mode — what is typical) and dispersion (range, standard deviation — how spread out the data is).</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is standard deviation?</summary>
+            <p>Standard deviation measures how much the values in a dataset vary from the mean. A low standard deviation means values are close to the mean; a high one means they are spread out widely.</p>
+          </details>
+          <details>
+            <summary>Can there be more than one mode?</summary>
+            <p>Yes. If two values appear with equal maximum frequency, both are modes (bimodal). If all values are unique, there is no mode.</p>
+          </details>
+          <details>
+            <summary>What is the difference between population and sample standard deviation?</summary>
+            <p>This calculator uses population standard deviation (divides by n). Sample standard deviation divides by n−1 and is used when your dataset is a sample of a larger population.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/everyday/average/">📊 Average Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcStat(){
+  const raw=document.getElementById('stat-nums').value;
+  const nums=raw.split(/[\s,;]+/).map(Number).filter(n=>!isNaN(n)&&raw.trim()!=='');
+  if(nums.length<2)return;
+  const sorted=[...nums].sort((a,b)=>a-b);
+  const n=nums.length;
+  const mean=nums.reduce((a,b)=>a+b,0)/n;
+  const median=n%2===0?(sorted[n/2-1]+sorted[n/2])/2:sorted[Math.floor(n/2)];
+  const freq={};
+  nums.forEach(v=>freq[v]=(freq[v]||0)+1);
+  const maxFreq=Math.max(...Object.values(freq));
+  const mode=Object.keys(freq).filter(k=>freq[k]===maxFreq).join(', ');
+  const range=sorted[n-1]-sorted[0];
+  const variance=nums.reduce((a,b)=>a+Math.pow(b-mean,2),0)/n;
+  const stdDev=Math.sqrt(variance);
+  const sum=nums.reduce((a,b)=>a+b,0);
+
+  document.getElementById('stat-res').innerHTML=
+    `Mean: ${mean.toFixed(4)}<small>Median: ${median} · Mode: ${mode} · n: ${n}</small>`;
+
+  document.getElementById('stat-grid').innerHTML=`
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${mean.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Mean</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${median}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Median</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${mode}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Mode</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${range}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Range</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${stdDev.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Std Deviation</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${sum.toLocaleString('en-GB')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Sum</div>
+    </div>`;
+}
+</script>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+// Aplicar tema guardado al cargar
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+---
+layout: base.njk
+title: Square Root Calculator — Powers and Roots Free Online
+description: Calculate square roots, cube roots and powers of any number instantly. Free square root and exponent calculator online.
+keywords: square root calculator, square root, cube root calculator, power calculator, exponent calculator, calculate square root, sqrt calculator
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/math/">Math</a>
+      <span>›</span>
+      <span>Square Root & Powers</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>√ Square Root & Powers Calculator</h1>
+        <p class="calc-intro">Calculate square roots, cube roots, squares, cubes and any power instantly.</p>
+
+        <div class="card">
+          <label>Number</label>
+          <input type="number" id="sr-num" placeholder="25" oninput="calcSR()">
+
+          <label>Operation</label>
+          <select id="sr-op" onchange="toggleSR()">
+            <option value="sqrt">Square root (√x)</option>
+            <option value="cbrt">Cube root (∛x)</option>
+            <option value="sq">Square (x²)</option>
+            <option value="cb">Cube (x³)</option>
+            <option value="pow">Custom power (xⁿ)</option>
+          </select>
+
+          <div id="sr-exp-wrap" style="display:none">
+            <label>Exponent (n)</label>
+            <input type="number" id="sr-exp" placeholder="4" oninput="calcSR()">
+          </div>
+
+          <div class="result-box" id="sr-res">Enter a number</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Common square roots</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--bg)">
+              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Number</th>
+              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Square root</th>
+              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Squared</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.5rem;text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem;text-align:right">2</td><td style="text-align:right">1.4142</td><td style="text-align:right">4</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem;text-align:right">3</td><td style="text-align:right">1.7321</td><td style="text-align:right">9</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem;text-align:right">4</td><td style="text-align:right">2</td><td style="text-align:right">16</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem;text-align:right">9</td><td style="text-align:right">3</td><td style="text-align:right">81</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem;text-align:right">16</td><td style="text-align:right">4</td><td style="text-align:right">256</td></tr>
+            <tr><td style="padding:0.4rem 0.5rem;text-align:right">25</td><td style="text-align:right">5</td><td style="text-align:right">625</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem;text-align:right">100</td><td style="text-align:right">10</td><td style="text-align:right">10,000</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>What is a square root?</h2>
+          <p>The square root of a number is the value that, when multiplied by itself, gives that number. For example, √25 = 5 because 5 × 5 = 25. Square roots and powers are inverse operations — squaring a number and taking its square root cancel each other out.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>What is the square root of 2?</summary>
+            <p>The square root of 2 is approximately 1.41421356. It is an irrational number — its decimal digits go on forever without repeating. It is the length of the diagonal of a unit square.</p>
+          </details>
+          <details>
+            <summary>Can you take the square root of a negative number?</summary>
+            <p>Not in the real number system. The square root of a negative number is an imaginary number (using the imaginary unit i, where i² = −1). This is part of complex number mathematics.</p>
+          </details>
+          <details>
+            <summary>What is the difference between x² and √x?</summary>
+            <p>x² (x squared) multiplies x by itself. √x (square root of x) finds the number that when squared gives x. They are inverse operations: √(x²) = x and (√x)² = x for positive x.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/math/fractions/">½ Fractions Calculator</a></li>
+            <li><a href="/en/calculators/math/prime-numbers/">🔢 Prime Numbers</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSR() {
+  document.getElementById('sr-exp-wrap').style.display =
+    document.getElementById('sr-op').value === 'pow' ? 'block' : 'none';
+  calcSR();
+}
+function calcSR() {
+  const n = parseFloat(document.getElementById('sr-num').value);
+  const op = document.getElementById('sr-op').value;
+  if (isNaN(n)) return;
+  let r, label;
+  if (op==='sqrt') { r=Math.sqrt(n); label=`√${n}`; }
+  else if (op==='cbrt') { r=Math.cbrt(n); label=`∛${n}`; }
+  else if (op==='sq') { r=n*n; label=`${n}²`; }
+  else if (op==='cb') { r=n*n*n; label=`${n}³`; }
+  else {
+    const exp = parseFloat(document.getElementById('sr-exp').value);
+    if (isNaN(exp)) return;
+    r=Math.pow(n,exp); label=`${n}^${exp}`;
+  }
+  document.getElementById('sr-res').innerHTML =
+    isNaN(r) ? 'Cannot calculate for this input' :
+    `${label} = ${parseFloat(r.toFixed(10)).toLocaleString('en-GB',{maximumFractionDigits:8})}`;
+}
+</script>
