@@ -15,6 +15,11 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("nl2br", function(str) {
+    if (!str) return '';
+    return str.replace(/\n\n/g, '</p><p style="margin-top:1rem">').replace(/\n/g, '<br>');
+  });
+
   return {
     dir: {
       input: "src",
