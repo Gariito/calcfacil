@@ -2,7 +2,7 @@
 layout: calculadora.njk
 title: Calculadora de días entre fechas — contar días gratis
 description: Calcula los días entre dos fechas al instante. Cuenta días, semanas y meses entre cualquier fecha. Gratis y sin registro.
-keywords: dias entre fechas, contar dias entre fechas, calculadora dias, diferencia entre fechas, contador de dias, cuantos dias faltan, dias entre dos fechas, calcular dias entre fechas
+keywords: dias entre fechas, contar dias entre fechas, calculadora dias, diferencia entre fechas, contador de dias, cuantos dias faltan, dias entre dos fechas, calcular dias entre fechas, calcular dias entre dos fechas, calculadora de dias entre fechas, calcular días entre fechas, contar días entre fechas, calculadora de dias, cuantos dias hay entre dos fechas, contar dias entre dos fechas
 categoria: dia-a-dia
 categoriaLabel: Día a día
 titulo: Calculadora de días entre fechas
@@ -21,6 +21,8 @@ faq:
     a: Sí, activa la opción de días laborables y la calculadora excluirá automáticamente los sábados y domingos del recuento.
   - q: ¿Funciona con fechas pasadas?
     a: Sí, puedes calcular cuántos días han pasado desde cualquier fecha pasada hasta hoy o hasta otra fecha.
+  - q: ¿Cuantos días tiene un año?
+    a: Un año común tiene 365 días, mientras que un año bisiesto tiene 366 días.
 relacionadas:
   - slug: tiempo
     categoria: dia-a-dia
@@ -30,6 +32,18 @@ relacionadas:
     categoria: dia-a-dia
     titulo: Calculadora de edad
     icono: 🎂
+  - slug: regla-de-tres
+    categoria: dia-a-dia
+    titulo: Calcula la regla de 3
+    icono: ⚖️
+  - slug: contador-palabras
+    categoria: dia-a-dia
+    titulo: Contador de palabras
+    icono: 📝
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora Basica
+    icono: 🔢
 ---
 
 <div class="row-2">
@@ -50,6 +64,16 @@ relacionadas:
 </select>
 
 <div class="result-box" id="df-res">Introduce las dos fechas</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Situaciones para calcular dias entre dos fechas</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ambito laboral:</strong>Este cálculo es el motor que mueve los calendarios de trabajo. Permite a los gestores calcular el "lead time" (el tiempo total desde que se inicia un proceso hasta que se completa) y vigilar de cerca las fechas límite o deadlines. Además, es fundamental en el departamento de Recursos Humanos para contabilizar de forma exacta los días de vacaciones disfrutados, calcular la antigüedad de un empleado o medir la duración de las bajas médicas.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Sector legal y administrativo:</strong> Los plazos para presentar recursos, pagar impuestos o responder a notificaciones oficiales se rigen por días hábiles o naturales. Un error de un solo día puede invalidar un trámite, por lo que calcular la distancia exacta entre fechas es una garantía de seguridad jurídica.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Plano personal</strong> Nos ayuda a dar respuesta a la curiosidad y a la planificación. Es la herramienta perfecta para diseñar una cuenta atrás emocional (los días que faltan para una boda, el nacimiento de un hijo o un viaje soñado). También resulta muy útil en el control de las finanzas personales, por ejemplo, para saber cuántos días exactos quedan para el próximo cobro o para calcular los intereses diarios de un préstamo.</p>
+
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
