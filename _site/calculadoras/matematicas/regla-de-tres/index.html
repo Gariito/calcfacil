@@ -9,15 +9,15 @@
 <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de regla de tres directa e inversa — CalcFácil</title>
-  <meta name="description" content="Resuelve proporciones directas e inversas con la regla de tres al instante.">
-  <meta name="keywords" content="regla de tres, proporcion directa, proporcion inversa, calculadora regla tres">
+  <title>Regla de tres online — calculadora regla de 3 directa e inversa gratis — CalcFácil</title>
+  <meta name="description" content="Calcula la regla de tres directa e inversa al instante. La calculadora de regla de tres más rápida y sencilla. Gratis y sin registro.">
+  <meta name="keywords" content="regla de tres, regla de 3, regla de tres online, calculadora regla de tres, regla de tres directa, regla de tres inversa, calculo regla de tres, reglas de tres online, regla de tres calculadora, regla de 3 online, calculador de regla de tres">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/matematicas/regla-de-tres/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de regla de tres directa e inversa — CalcFácil">
-  <meta property="og:description" content="Resuelve proporciones directas e inversas con la regla de tres al instante.">
+  <meta property="og:title" content="Regla de tres online — calculadora regla de 3 directa e inversa gratis — CalcFácil">
+  <meta property="og:description" content="Calcula la regla de tres directa e inversa al instante. La calculadora de regla de tres más rápida y sencilla. Gratis y sin registro.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/matematicas/regla-de-tres/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -27,8 +27,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de regla de tres directa e inversa",
-    "description": "Resuelve proporciones directas e inversas con la regla de tres al instante.",
+    "name": "Regla de tres online — calculadora regla de 3 directa e inversa gratis",
+    "description": "Calcula la regla de tres directa e inversa al instante. La calculadora de regla de tres más rápida y sencilla. Gratis y sin registro.",
     "url": "https://calculadorasgratis.net/calculadoras/matematicas/regla-de-tres/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -81,45 +81,71 @@
     <nav class="breadcrumb" aria-label="Ruta">
       <a href="/">Inicio</a>
       <span>›</span>
-      <a href="/calculadoras/matematicas/">Matemáticas</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
       <span>›</span>
-      <span>Calculadora de regla de tres</span>
+      <span>Regla de 3 online — Calculo regla de tres simple</span>
     </nav>
 
     <div class="calc-layout">
 
       <!-- Calculadora principal -->
       <div class="calc-main">
-        <h1>📏 Calculadora de regla de tres</h1>
-        <p class="calc-intro">Resuelve reglas de tres directas e inversas al instante introduciendo tres valores.</p>
+        <h1>⚖️ Regla de 3 online — Calculo regla de tres simple</h1>
+        <p class="calc-intro">Resuelve cualquier regla de tres directa o inversa al instante introduciendo solo tres valores.</p>
         <div class="card">
           
 <label>Tipo de proporción</label>
-<select id="r3-tipo" onchange="calcR3()">
-  <option value="directa">Directa (si A sube, B sube)</option>
-  <option value="inversa">Inversa (si A sube, B baja)</option>
+<select id="rt-tipo" onchange="calcRT()">
+  <option value="directa">Directa — si A sube, B sube</option>
+  <option value="inversa">Inversa — si A sube, B baja</option>
 </select>
 
-<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;font-size:0.85rem;color:var(--muted)">
-  Si <b id="r3-a-label">A</b> = <input type="number" id="r3-a" placeholder="10" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem">
-  entonces <b id="r3-b-label">B</b> = <input type="number" id="r3-b" placeholder="25" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem"><br><br>
-  Si <b>A</b> = <input type="number" id="r3-c" placeholder="6" oninput="calcR3()" style="width:80px;display:inline;margin:0 0.25rem">
-  entonces <b>B</b> = <b id="r3-x" style="color:var(--accent)">?</b>
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-a" placeholder="3" oninput="calcRT()"></div>
+    <div><label>entonces B =</label><input type="number" id="rt-b" placeholder="7" oninput="calcRT()"></div>
+  </div>
+  <div class="row-2">
+    <div><label>Si A =</label><input type="number" id="rt-c" placeholder="5" oninput="calcRT()"></div>
+    <div>
+      <label>entonces B =</label>
+      <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+    </div>
+  </div>
 </div>
 
-<div class="result-box" id="r3-res">Introduce los tres valores conocidos</div>
+<div class="result-box" id="rt-res">Introduce los tres valores conocidos</div>
+
+
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de la regla de tres online</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Consumo de Combustible:</strong> Si un coche consume 6 litros de gasolina para recorrer 100 km, ¿cuántos litros necesitará para recorrer 250 km? → A=6, B=100, C=250, X=15 litros.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Compras/Precios:</strong> Si 5 kilogramos de manzanas cuestan 12 €, ¿cuánto costarán 8 kilogramos de las mismas manzanas? → A=5, B=12, C=8, X=19.2 €.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Ejemplo de Tipos de Cambio:</strong> Si 10 dólares equivalen a 9 euros, ¿cuántos euros obtendré si cambio 45 dólares? → A=10, B=9, C=45, X=40.5 euros.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Ejemplo de Impresión:</strong> Si una impresora tarda 2 minutos en imprimir 30 páginas, ¿cuántas páginas podrá imprimir en 7 minutos? → A=2, B=30, C=7, X=105 páginas.</p>
+          <br>
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de la regla de tres online inversa</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Velocidad y Tiempo:</strong> Si un tren viaja a 90 km/h y tarda 4 horas en llegar a su destino, ¿cuánto tardará si aumenta su velocidad a 120 km/h? → A=90, B=4, C=120, X=3 horas.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Grifos y Depósitos:</strong> Si 3 grifos iguales tardan 10 horas en llenar un depósito de agua, ¿cuánto tardarán 5 grifos iguales en llenar el mismo depósito? → A=3, B=10, C=5, X=6 horas.</p>
+
+</div>
+
 
 <script>
-function calcR3() {
-  const a = parseFloat(document.getElementById('r3-a').value);
-  const b = parseFloat(document.getElementById('r3-b').value);
-  const c = parseFloat(document.getElementById('r3-c').value);
-  const tipo = document.getElementById('r3-tipo').value;
-  if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) return;
+function calcRT() {
+  const a = parseFloat(document.getElementById('rt-a').value);
+  const b = parseFloat(document.getElementById('rt-b').value);
+  const c = parseFloat(document.getElementById('rt-c').value);
+  const tipo = document.getElementById('rt-tipo').value;
+  if (!a || !b || !c) return;
   const x = tipo === 'directa' ? (b * c) / a : (a * b) / c;
-  document.getElementById('r3-x').textContent = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
-  document.getElementById('r3-res').innerHTML =
-    `X = ${parseFloat(x.toFixed(8)).toLocaleString('es-ES', {maximumFractionDigits:6})}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${x.toFixed(4)}</small>`;
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
+  document.getElementById('rt-x').textContent = xFmt;
+  document.getElementById('rt-res').innerHTML =
+    `X = ${xFmt}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${xFmt}</small>`;
 }
 </script>
         </div>
@@ -129,7 +155,7 @@ function calcR3() {
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>¿Qué es la regla de tres?</h2>
-          <p>La regla de tres es una forma de resolver proporciones. En la proporción directa, cuando una cantidad aumenta la otra también aumenta. En la inversa, cuando una cantidad aumenta la otra disminuye. Es una de las herramientas matemáticas más usadas en la vida cotidiana.</p>
+          <p>La regla de tres es una de las operaciones matemáticas más usadas en el día a día. Permite calcular un valor desconocido a partir de tres valores conocidos que guardan una proporción entre sí. Se usa constantemente para calcular precios por cantidad, adaptar recetas de cocina, convertir unidades, calcular tiempos de trabajo, escalas en mapas y repartos proporcionales. Existen dos tipos — la regla de tres directa, donde al aumentar una cantidad la otra también aumenta (más kilómetros, más gasolina), y la regla de tres inversa, donde al aumentar una cantidad la otra disminuye (más trabajadores, menos días para terminar la obra). Esta calculadora de regla de tres resuelve ambos casos al instante con solo introducir los tres valores conocidos.</p>
         </div>
 
         
@@ -139,7 +165,15 @@ function calcR3() {
             
             <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
             
-            <li><a href="/calculadoras/matematicas/media-estadistica/">📊 Media y estadística</a></li>
+            <li><a href="/calculadoras/dia-a-dia/conversor-numeros/">🔣 Conversor de numeros</a></li>
+            
+            <li><a href="/calculadoras/finanzas/euros-pesetas/">💶 Euros a pesetas</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+            <li><a href="/calculadoras/salud/harris-benedict/">🧬 Harris Benedict</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
             
           </ul>
         </div>
@@ -150,18 +184,28 @@ function calcR3() {
           
             
             <details>
-              <summary>¿Cuándo se usa la regla de tres inversa?</summary>
-              <p>Cuando las dos magnitudes son inversamente proporcionales. Por ejemplo, si más trabajadores hacen el trabajo en menos tiempo, o si un coche más rápido tarda menos en llegar.</p>
+              <summary>¿Cómo se hace una regla de tres?</summary>
+              <p>Se plantean cuatro valores en proporción — A es a B como C es a X. Para la regla de tres directa, X = (B × C) / A. Por ejemplo, si 3 kg cuestan 7€, ¿cuánto cuestan 5 kg? X = (7 × 5) / 3 = 11,67€.</p>
             </details>
             
             <details>
-              <summary>¿Cuál es la diferencia entre proporción directa e inversa?</summary>
-              <p>En la directa, A/B = C/X. En la inversa, A×B = C×X. El resultado final (X) se calcula de forma diferente.</p>
+              <summary>¿Qué diferencia hay entre regla de tres directa e inversa?</summary>
+              <p>En la directa, cuando una magnitud aumenta la otra también aumenta proporcionalmente. En la inversa, cuando una magnitud aumenta la otra disminuye. Por ejemplo, velocidad y tiempo son inversamente proporcionales — a más velocidad, menos tiempo.</p>
             </details>
             
             <details>
-              <summary>¿Para qué se usa en la vida real?</summary>
-              <p>Para calcular precios por cantidad, tiempos de trabajo, escalas en mapas, recetas de cocina, combustible por kilómetro y muchísimas situaciones cotidianas.</p>
+              <summary>¿Para qué sirve la regla de tres en la vida real?</summary>
+              <p>Para calcular precios por cantidad, adaptar recetas, convertir unidades, calcular tiempos de trabajo, escalas en planos y mapas, repartos proporcionales, porcentajes y muchísimas situaciones cotidianas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo resolver &quot;si 3 kg cuestan 7€, cuánto cuestan 5 kg&quot;?</summary>
+              <p>Sí. Introduce A=3, B=7, C=5 y selecciona proporción directa. El resultado X es 11,67€.</p>
+            </details>
+            
+            <details>
+              <summary>¿Y si quiero saber cuántos días tarda 1 trabajador si 4 tardan 6 días?</summary>
+              <p>Es una regla de tres inversa. A=4 trabajadores, B=6 días, C=1 trabajador. X = (4×6)/1 = 24 días.</p>
             </details>
             
           
