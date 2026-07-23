@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de edad — cuántos años tienes exactamente
+title: Calculadora de edad — cuántos años tengo exactamente
 description: Calcula tu edad exacta en años, meses y días a partir de tu fecha de nacimiento.
-keywords: calculadora edad, cuantos años tengo, calcular edad exacta, años meses dias
+keywords: calculadora edad, cuantos años tengo, calcular edad exacta, años meses dias, cuantos años tiene, cuantos años tienes, como saber mi edad, edad actual, cual es mi edad, que edad tiene, calcular edad con fecha de nacimiento, calcular edad exacta
 categoria: dia-a-dia
 categoriaLabel: Día a día
 titulo: Calculadora de edad
@@ -17,6 +17,14 @@ faq:
     a: Sí, simplemente introduce su fecha de nacimiento en lugar de la tuya.
   - q: ¿Tiene en cuenta los años bisiestos?
     a: Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente.
+  - q: ¿Cuándo cumplen años las personas nacidas un 29 de febrero?
+    a: Legalmente, en años no bisiestos, las personas nacidas el 29 de febrero pasan a tener un año más el 1 de marzo en países como España o Alemania (ya que el 28 de febrero aún no se han cumplido las 24 horas completas del ciclo de 365 días).
+  - q: ¿Como calculo las horas y minutos que he vivido?
+    a: Para obtener una estimación rápida, puedes multiplicar la cifra total de días vividos que te muestra la calculadora por 24 para obtener las horas, o por 1.440 para saber cuántos minutos has vivido.
+  - q: ¿A qué edad se considera alcanzada la mitad de la vida esperada?
+    a: En países con una esperanza de vida media que ronda los 82-84 años, el punto medio de la vida adulta se sitúa en torno a los 41 o 42 años
+
+
 relacionadas:
   - slug: dias-entre-fechas
     categoria: dia-a-dia
@@ -26,6 +34,20 @@ relacionadas:
     categoria: salud
     titulo: Calculadora de sueño
     icono: 😴
+  - slug: tiempo
+    categoria: dia-a-dia
+    titulo: Calculadora de tiempo
+    icono: ⏱️
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Harris Benedict
+    icono: 🧬
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora basica
+    icono: 🔢
+
+
 ---
 
 <label>Fecha de nacimiento</label>
@@ -59,3 +81,20 @@ function calcEdad() {
     <small>${totalDias.toLocaleString('es-ES')} días vividos · Próximo cumpleaños en ${diasCumple} días</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+<h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía y curiosidades sobre el cálculo cronológico de la edad</h2>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Saber cuántos años tenemos parece una respuesta obvia, pero calcular el desglose exacto en años, meses, semanas y días vividos resulta un proceso matemático más complejo debido a la irregularidad del calendario gregoriano (meses de 28, 30 o 31 días y años bisiestos de 366 días).</p>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra calculadora de edad exacta realiza el cómputo automático al instante para que no tengas que sumar o restar manualmente. A continuación, exploramos cómo influye la cronología en la vida diaria y algunos métodos alternativos de cómputo de edad.</p>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Suma de horas:</strong>2 + 1 + 1 (hora sobrante) = 4 horas</p>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Resultado definitivo:</strong>4 horas y 20 minutos</p>
+
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+<h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Usos prácticos de conocer tu edad exacta al día</h2>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>• Trámites legales y administrativos:</strong>En la firma de contratos, oposiciones o licencias administrativas, a menudo se exige haber cumplido los 18 o 65 años en una fecha límite concreta antes del cierre de la convocatoria.</p>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>• Pediatría y desarrollo infantil:</strong>Durante los dos primeros años de vida de un bebé, el desarrollo médico no se mide en años sino en meses y semanas de vida exactas para seguir la pauta de vacunación e hitos de crecimiento.</p>
+<p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>• Planificación de eventos y aniversarios:</strong>Conocer cuántos días faltan exactamente para el próximo cumpleaños permite organizar fiestas, reservas o viajes con margen de tiempo suficiente.</p>
+
+</div>

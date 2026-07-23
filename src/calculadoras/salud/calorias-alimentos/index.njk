@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
 title: Calculadora de calorías de alimentos comunes
-description: Consulta las calorías de los alimentos más habituales en la dieta española y calcula el total de tu comida.
-keywords: calorias alimentos, tabla calorias, cuantas calorias tiene, calorias comida española
+description: Consulta las calorías de los alimentos más habituales y calcula el total de tu comida.
+keywords: calorias alimentos, tabla calorias, cuantas calorias tiene, calorias comida española, calorias de un huevo, calorias de un platano, calorias de una manzana, calorias de una banana, cuantas calorias tiene, cuantas calorias tiene un huevo
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de calorías de alimentos
@@ -17,6 +17,11 @@ faq:
     a: Siempre mira bien la etiqueta. Los productos envasados suelen mostrar las calorías por 100g y también por ración, que puede ser una cantidad diferente.
   - q: ¿El método de cocción cambia las calorías?
     a: Sí. Cocinar con aceite añade calorías. Hervir o cocinar al vapor no añade calorías pero puede cambiar el peso del alimento. Los alimentos crudos y cocinados pueden tener diferente peso por el agua.
+  - q: ¿Cuantas calorias tiene un huevo?
+    a: Un huevo suele tener entre 53g y 70g. Un huevo de 60g tiene aproximadamente 93 calorias
+  - q: ¿Cuantas calorias tiene una manzana?
+    a: Una manzana de tamaño promedio suele pesar entre 150g y 200g. Teniendo en cuenta estos gramos, una manzana promedio pesa cerca de 91 calorias.
+
 relacionadas:
   - slug: calorias
     categoria: salud
@@ -26,6 +31,19 @@ relacionadas:
     categoria: salud
     titulo: Calculadora de IMC
     icono: ⚖️
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Harris benedict
+    icono: 🧬
+  - slug: calorias-objetivo
+    categoria: fitness
+    titulo: Objetivo de calorias
+    icono: 🎯
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: ⚖️
+
 ---
 
 <label>Alimento</label>
@@ -101,3 +119,17 @@ function calcCalAlim() {
     <small>${g}g de ${nombre} · ${kcalPor100} kcal por 100g</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para el recuento de calorías y densidad nutricional en la dieta</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Llevar un registro preciso de las calorías que ingieres es una de las estrategias más efectivas para optimizar tu composición corporal, ya sea para reducir el porcentaje de grasa o para aumentar masa muscular. Sin embargo, no todas las calorías interactúan de la misma forma en nuestro organismo ni aportan el mismo nivel de saciedad.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Entender el valor energético de las raciones diarias te ayuda a tomar decisiones más conscientes sin necesidad de recurrir a dietas estrictas o restrictivas. A continuación, repasamos conceptos clave sobre el pesaje y la densidad calórica de los alimentos.</p>
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Es mejor pesar los alimentos en crudo o cocinados?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">La regla general en nutrición es pesarlo todo siempre en crudo. La razón principal es que los alimentos sufren variaciones significativas en su peso durante el proceso de cocinado debido a la pérdida o absorción de agua, mientras que su aporte calórico real se mantiene casi idéntico.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Cereales y legumbres (arroz, pasta, lentejas): Absorben agua durante la cocción y triplican su peso final. Por ejemplo, 100 g de pasta cruda (aprox. 350 kcal) se convierten en casi 250 g de pasta cocida manteniendo las mismas 350 kcal.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Carnes y pescados: Ocurre el efecto contrario. Al cocinarse pierden agua y reducen su volumen, haciendo que 150 g de pechuga de pollo en crudo pasen a pesar unos 120 g una vez cocinados. del consumo energético en el mismo tiempo.</p>
+
+
+</div>
