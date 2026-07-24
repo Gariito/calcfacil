@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de calorías diarias gratis
+title: Como calcular calorías diarias - Calcula cuantas calorias que debo consumir
 description: Calcula las calorías que necesitas al día según tu peso, altura, edad y nivel de actividad física. Basado en la fórmula Mifflin-St Jeor.
-keywords: calculadora calorias, tmb, tasa metabolica basal, calorias diarias, cuantas calorias necesito
+keywords: calculadora calorias, tmb, tasa metabolica basal, calorias diarias, cuantas calorias necesito, calcular calorias diarias, calorias que debo consumir, cuantas calorias necesito, calcular macros y calorias
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de calorías diarias
@@ -17,15 +17,34 @@ faq:
     a: La Tasa Metabólica Basal es la energía mínima que consume tu cuerpo en reposo para mantener funciones como respirar, la circulación y la temperatura corporal.
   - q: ¿Es fiable esta calculadora?
     a: Usa la fórmula Mifflin-St Jeor (2005), considerada la más precisa. Aun así, los resultados son una estimación; cada cuerpo es diferente.
+  - q: ¿Como calcular calorias diarias?
+    a: Primero se calcula tu Tasa Metabólica Basal (TMB) mediante la fórmula Mifflin-St Jeor utilizando tu peso, altura, edad y sexo. Después, ese resultado se multiplica por el factor de actividad física (entre 1,2 para vida sedentaria y 1,9 para entrenamiento muy intenso).
+  - q: ¿Como calcular calorias diarias para deficit calorico?
+    a: Calcula primero tu gasto calórico diario total (TMB × Factor de actividad). A ese resultado réstale entre un 15% y un 20% (o unas 300 a 500 kcal diarias). Este margen permite perder grasa progresivamente preservando la masa muscular y los niveles de energía.
+  - q: ¿Cuantas calorias hay que ingerir al dia?
+    a: Depende del metabolismo y estilo de vida de cada persona. De media, un hombre adulto necesita entre 2.000 y 2.500 kcal diarias para mantener su peso, mientras que una mujer adulta suele requerir entre 1.600 y 2.100 kcal.
+
 relacionadas:
   - slug: imc
     categoria: salud
     titulo: Calculadora de IMC
     icono: ⚖️
+  - slug: calorias-alimentos
+    categoria: salud
+    titulo: Calcula calorias de alimentos
+    icono: 🥗
   - slug: agua
     categoria: salud
     titulo: Agua diaria
     icono: 💧
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Peso ideal
+    icono: ⚖️
+  - slug: calorias-quemadas
+    categoria: fitness
+    titulo: Calorias quemadas por ejercicio
+    icono: 🔥
 ---
 
 <div class="row-2">
@@ -63,3 +82,18 @@ relacionadas:
 </select>
 
 <div class="result-box" id="cal-res">Introduce tus datos</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía completa sobre la Tasa Metabólica Basal (TMB) y el gasto calórico diario</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Conocer cuánta energía consume tu organismo al día es el punto de partida fundamental para cualquier objetivo de composición corporal, ya sea **perder grasa, mantener tu peso actual o ganar masa muscular**. Las calorías son la medida energética que el cuerpo utiliza para realizar sus funciones biológicas y costear el movimiento.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra <strong>calculadora de calorías diarias</strong> determina con precisión tu Gasto Energético Total Diario (GETD) mediante la ecuación revisada de Mifflin-St Jeor, ajustada por tu nivel real de actividad física semanal.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Los componentes de tu gasto energético diario</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El número de calorías que quemas en 24 horas no proviene únicamente del ejercicio. Se divide en tres bloques principales:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Tasa Metabólica Basal (TMB):</strong> Representa entre el 60% y el 75% del consumo energético total. Es el combustible consumido en reposo absoluto para que funcionen el corazón, cerebro, pulmones y demás órganos vitales.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Efecto Térmico de los Alimentos (ETA):</strong> Supone aproximadamente un 10% del gasto diario. Es la energía que el organismo invierte en digerir, absorber y metabolizar los nutrientes ingeridos (siendo las proteínas las que mayor gasto térmico requieren).</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Actividad Física y NEAT:</strong> Engloba tanto el ejercicio estructurado en el gimnasio o deporte como el NEAT (actividad no asociada al ejercicio), que incluye caminar, limpiar, subir escaleras o mantenerse de pie.</p>
+
+</div>
