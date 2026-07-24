@@ -1,6 +1,6 @@
 ---
 layout: calculadora.njk
-title: Calculadora y Simulador de Nota Selectividad (EBAU / EVAU / PAU)
+title: Como calcular la nota de la PAU - Calculadora gratis
 description: Calcula tu nota de selectividad EBAU al instante con la fórmula oficial. Incluye fase específica y nota de acceso a la universidad.
 keywords: calculadora selectividad, simulador notas selectividad, nota selectividad, calculadora ebau, nota ebau, nota evau, nota de acceso universidad, simulador selectividad, calculadora nota pau, como se calcula la nota de la evau, nota maxima selectividad, calculadora de selectividad, calculadora nota selectividad, nota maxima, simulador nota selectividad, calcular media selectividad, calcula la nota de selectividad
 categoria: educacion
@@ -33,6 +33,18 @@ relacionadas:
     categoria: educacion
     titulo: Horas de estudio
     icono: 📖
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentaje
+    icono: "%"
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora Basica
+    icono: 🔢
+  - slug: media
+    categoria: dia-a-dia
+    titulo: Calculadora de Media
+    icono: 📊
 ---
 
 <label>Nota media de Bachillerato (0-10)</label>
@@ -91,3 +103,13 @@ function calcSel() {
     `Nota de acceso: ${base.toFixed(3)}<small>Con fase específica: ${total.toFixed(3)} puntos · Máximo posible: 14,000</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Diferencia entre Nota de Acceso y Nota de Admisión</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Es muy habitual confundir ambos términos a la hora de revisar las notas de corte de las universidades:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Nota de Acceso (hasta 10 puntos):</strong> Es la nota fija e indisoluble que se obtiene de combinar el 60% de la nota media de Bachillerato y el 40% de la Calificación de la Evaluación de Bachillerato (fase obligatoria). Una vez aprobada, esta nota no caduca nunca.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Nota de Admisión (hasta 14 puntos):</strong> Es el resultado de sumar a la nota de acceso la puntuación de las asignaturas examinadas en la fase específica (multiplicadas por 0,1 o 0,2). Esta nota es dinámica, ya que puede variar según el grado universitario y la facultad a la que solicites plaza.</p>
+
+</div>

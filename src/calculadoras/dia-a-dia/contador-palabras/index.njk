@@ -1,11 +1,11 @@
 ---
 layout: calculadora.njk
-title: Contador de palabras y caracteres online gratis
-description: Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante. Gratis y sin registro.
-keywords: contador palabras, contar palabras online, contador caracteres, word count online
+title: Contar cuantas palabras hay en un texto - contador online gratis
+description: Cuenta palabras, letras, frases y párrafos de cualquier texto al instante. Gratis y sin registro.
+keywords: contador palabras, contar palabras online, contador caracteres, word count online, contar palabras, contar palabras de un texto, contar cuantas palabras hay en un texto
 categoria: dia-a-dia
 categoriaLabel: Día a día
-titulo: Contador de palabras y caracteres
+titulo: Contador de palabras y letras
 icono: 📝
 tituloCorto: el contador de palabras
 descripcion: Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante.
@@ -17,6 +17,13 @@ faq:
     a: Twitter/X permite 280 caracteres por tuit. Esta calculadora te muestra los caracteres en tiempo real para que puedas ajustar el texto.
   - q: ¿Cuántas palabras debe tener un trabajo universitario?
     a: Depende del tipo de trabajo. Un TFG suele pedir entre 10.000 y 15.000 palabras, un TFM entre 15.000 y 30.000, y un artículo académico entre 4.000 y 8.000.
+  - q: ¿Como contar palabras en un texto online?
+    a: Solo tienes que pegar o escribir tu texto en la casilla superior. La herramienta analizará el contenido al instante y te mostrará el número exacto de palabras, caracteres (con y sin espacios), frases, párrafos y el tiempo estimado de lectura en tiempo real.
+  - q: ¿Se guardan o almacenan los textos que pego en la herramienta?
+    a: No. El procesamiento del texto se realiza de manera 100% local en tu navegador mediante JavaScript. Ningún contenido redactado o pegado se envía a servidores externos ni queda registrado en ninguna base de datos, garantizando total confidencialidad.
+  - q: ¿Los números y símbolos cuentan como palabras?
+    a: En esta calculadora, cualquier secuencia de caracteres delimitada por espacios se contabiliza como una palabra. Por ejemplo, una cifra como "2026" o un símbolo aislado precedido y seguido de espacio contará como un elemento del total.
+
 relacionadas:
   - slug: calculadora-basica
     categoria: dia-a-dia
@@ -26,6 +33,18 @@ relacionadas:
     categoria: dia-a-dia
     titulo: Días entre fechas
     icono: 📅
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: ⚖️
+  - slug: media
+    categoria: dia-a-dia
+    titulo: Calculadora de media
+    icono: 📊
+  - slug: edad
+    categoria: dia-a-dia
+    titulo: Calculadora de edad
+    icono: 🎂
 ---
 
 <label>Pega o escribe tu texto aquí</label>
@@ -83,3 +102,17 @@ function calcPalabras() {
     </div>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía y ventajas de usar un contador de palabras y caracteres</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Controlar la longitud de un escrito es un requisito habitual en la redacción digital, el ámbito académico y el marketing de contenidos. Un contador de palabras online permite verificar en tiempo real que el volumen del texto cumple con las métricas exigidas sin necesidad de instalar extensiones o software adicional.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><Nuestra herramienta analiza de forma automática la estructura gramatical del contenido, ofreciéndote métricas detalladas sobre el número de palabras, los caracteres (tanto con espacios como sin ellos), las oraciones, los párrafos e incluso una estimación del tiempo necesario para leerlo.</p>
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Límites de caracteres habituales en redes sociales y plataformas</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Cada canal digital establece restricciones específicas sobre la extensión máxima de sus publicaciones. Ajustarse a estos márgenes evita que tu mensaje quede cortado o pierda impacto visual:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Meta (Instagram y Facebook):</strong> El límite para un pie de foto en Instagram es de <code>2.200 caracteres</code> (aunque lo ideal son entre 125 y 150 caracteres para no ocultar la llamada a la acción tras el botón "más")</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>LinkedIn:</strong> Las publicaciones o posts en el feed permiten hasta <code>3.000 caracteres</code>, mientras que el titular del perfil admite un máximo de 220 caracteres.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>SEO y Google (Meta descripciones y Títulos):</strong> Para evitar que Google trunque los resultados en las búsquedas, los títulos SEO deben tener entre 50 y 60 caracteres (unas 10 palabras) y las meta descripciones entre 150 y 160 caracteres</p>
+
+</div>

@@ -2,7 +2,7 @@
 layout: calculadora.njk
 title: Calculadora de media aritmética online
 description: Calcula la media aritmética de una lista de números al instante. Simple, rápida y gratuita.
-keywords: calculadora media, media aritmetica, calcular promedio, media de numeros
+keywords: calculadora media, media aritmetica, calcular promedio, media de numeros, como sacar la media, como sacar la media aritmetica, media aritmetica, como se calcula la media
 categoria: dia-a-dia
 categoriaLabel: Día a día
 titulo: Calculadora de media aritmética
@@ -17,6 +17,13 @@ faq:
     a: Todos los que quieras, separados por comas o espacios.
   - q: ¿Funciona con decimales?
     a: Sí, puedes introducir números con decimales usando punto o coma.
+  - q: ¿Como se calcula le media?
+    a: Introduce los números en la casilla separados por comas, espacios o puntos y comas (por ejemplo, 10, 20, 30). La herramienta sumará automáticamente todos los datos y dividirá el total entre la cantidad de números ingresados, mostrándote la media al instante junto al valor máximo, mínimo y la suma.
+  - q: ¿Qué es la media ponderada y en qué se diferencia?
+    a: En la media aritmética simple, todos los números tienen el mismo peso (100%). En la media ponderada, cada dato tiene asignado un porcentaje o valor relativo distinto (muy común en asignaturas donde el examen vale un 70% y los trabajos un 30%).
+  - q: ¿Cómo afecta un número "0" al cálculo de la media?
+    a: El cero se contabiliza como un número más. No altera el total de la suma, pero sí incrementa la cantidad total de elementos ($n$), lo que provoca que el valor del promedio final descienda.
+
 relacionadas:
   - slug: porcentaje
     categoria: dia-a-dia
@@ -26,6 +33,18 @@ relacionadas:
     categoria: dia-a-dia
     titulo: Calculadora básica
     icono: 🔢
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: ⚖️
+  - slug: media-estadistica
+    categoria: matematicas
+    titulo: Media, mediana y moda
+    icono: 📊
+  - slug: raiz-potencia
+    categoria: matematicas
+    titulo: Raiz y potencias
+    icono: √
 ---
 
 <label>Introduce los números separados por comas o espacios</label>
@@ -47,3 +66,25 @@ function calcMedia() {
     <small>Suma: ${suma} · Cantidad: ${nums.length} · Máx: ${max} · Mín: ${min}</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía y aplicaciones prácticas de la media aritmética</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra calculadora de media online procesa listas numéricas en tiempo real. Además de devolverte el valor promedio exacto, desglosa automáticamente datos secundarios fundamentales como la suma acumulada, el valor máximo, el mínimo y el número total de elementos analizados.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo práctico:</strong> Para calcular la media de las notas 6, 8, 7, 9 y 10:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">1. Suma de los datos: 6 + 8 + 7 + 9 + 10 = 40.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">2. Cantidad de elementos: 5 números.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">3. Operación final: 40 ÷ 5 = 8. La nota media es 8.</p>
+
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Aplicaciones más habituales en la vida real</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ámbito académico:</strong> Obtención de la nota media del curso o de exámenes parciales para saber si se alcanza el aprobado o la nota de corte requerida.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Finanzas personales y del hogar:</strong> Estimación del gasto medio mensual en suministros (luz, agua, gas) o cesta de la compra para elaborar un presupuesto anual equilibrado.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Rendimiento deportivo:</strong> Cálculo de marcas medias por kilómetro, tiempos por vuelta o consumo medio de calorías diarias en rutinas de entrenamiento.</p>
+
+</div>
