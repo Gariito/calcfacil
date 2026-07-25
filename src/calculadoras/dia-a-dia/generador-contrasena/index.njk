@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Generador de contraseñas seguras online
+title: Generador de contraseñas seguras online gratis 
 description: Genera contraseñas seguras y aleatorias al instante. Personaliza la longitud y los tipos de caracteres.
-keywords: generador contraseñas, contraseña segura, password generator, crear contraseña aleatoria
+keywords: generador contraseñas, contraseña segura, password generator, crear contraseña aleatoria, generador de contraseñas aleatorias, generador de contraseñas faciles de recordar, crear contraseñas seguras 
 categoria: dia-a-dia
 categoriaLabel: Día a día
 titulo: Generador de contraseñas seguras
@@ -17,6 +17,14 @@ faq:
     a: Mínimo 12 caracteres para cuentas normales. Para cuentas importantes (banco, email) se recomienda 16 o más. A partir de 20 caracteres es prácticamente imposible de descifrar por fuerza bruta.
   - q: ¿Dónde guardo mis contraseñas?
     a: Lo más seguro es usar un gestor de contraseñas como Bitwarden (gratuito) o 1Password. Nunca guardes contraseñas en el navegador para cuentas críticas.
+  - q: ¿Como crear contraseñas seguras y facil de recordar?
+    a: Utiliza el método de las "passphrases" o frases de paso; junta de 4 a 5 palabras aleatorias sin relación entre sí (por ejemplo, Gato-Café-Nube-Reloj-Verde). Son muy fáciles de memorizar para un humano, pero extremadamente difíciles de romper para un ataque informático por su gran longitud.
+  - q: ¿Por que es importante crear contraseñas seguras?
+    a: Porque una clave robusta previene el acceso no autorizado a tu identidad digital, datos bancarios, correos y redes sociales. Evita ataques automáticos como el "credential stuffing" o la fuerza bruta, bloqueando a los ciberdelincuentes ante filtraciones masivas de datos.
+  - q: ¿Cada cuánto tiempo hay que cambiar las contraseñas?
+    a: Las guías modernas de ciberseguridad (como el NIST) ya no recomiendan cambiar las contraseñas periódicamente si son seguras. Solo debes cambiar una contraseña inmediatamente si se sospecha o se confirma que la cuenta ha sido comprometida en una filtración.
+  - q: ¿Como hacer contraseñas seguras?
+    a: Hazlas largas (de más de 12-16 caracteres), únicas para cada plataforma (nunca las reutilices) e incluye una mezcla impredecible de letras mayúsculas, minúsculas, números y símbolos. Lo ideal es generarlas mediante algoritmos aleatorios como los de esta herramienta.
 relacionadas:
   - slug: calculadora-basica
     categoria: dia-a-dia
@@ -26,6 +34,18 @@ relacionadas:
     categoria: dia-a-dia
     titulo: Días entre fechas
     icono: 📅
+  - slug: almacenamiento
+    categoria: unidades
+    titulo: Conversor de almacenamiento digital
+    icono: 💾
+  - slug: contador-palabras
+    categoria: dia-a-dia
+    titulo: Contador de palabras
+    icono: 📝
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentajes
+    icono: "%"
 ---
 
 <label>Longitud de la contraseña</label>
@@ -89,3 +109,19 @@ function copyPW() {
 }
 genPW();
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía esencial de ciberseguridad: Gestión y generación de contraseñas</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Las contraseñas son la primera línea de defensa de tu presencia digital. En un entorno donde los ciberataques automáticos prueban millones de combinaciones por segundo, depender de claves simples o repetidas expone directamente tu información personal, financiera y laboral.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestro generador de contraseñas seguras online utiliza la API criptográfica nativa de tu navegador (window.crypto), lo que garantiza la creación de cadenas verdaderamente aleatorias mediante entropía de alto nivel sin que tus datos salgan en ningún momento de tu dispositivo.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cómo descifran las contraseñas los atacantes?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para comprender la importancia de una contraseña compleja, es útil conocer las técnicas más comunes utilizadas por los ciberdelincuentes:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ataques de Fuerza Bruta:</strong> Programas informáticos prueban todas las combinaciones posibles de caracteres a gran velocidad. Una clave de 8 caracteres alfanuméricos se puede romper en minutos, mientras que una de 16 caracteres requiere millones de años de procesamiento.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ataques de Diccionario:</strong> El software prueba palabras reales, nombres, fechas o sustituciones comunes (como cambiar 'e' por '3' o 'a' por '@'). Las palabras del diccionario son vulnerables independientemente de su longitud.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Relleno de credenciales (Credential Stuffing):</strong> Los atacantes usan listas de contraseñas filtradas en una web para intentar acceder masivamente a otras plataformas (como correo o banca online). Por eso es crítico no reutilizar claves.</p>
+
+
+</div>

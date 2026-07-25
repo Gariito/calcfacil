@@ -1,22 +1,29 @@
 ---
 layout: calculadora.njk
-title: Calculadora de peso ideal según altura
-description: Calcula tu peso ideal según tu altura y sexo usando las fórmulas de Lorentz, Devine y Hamwi.
-keywords: calculadora peso ideal, peso ideal altura, cuanto deberia pesar, peso saludable
+title: Calcular peso ideal segun estatura y edad - Calculadora gratis
+description: Calcula tu peso ideal según tu altura, edad y sexo usando las fórmulas de Lorentz, Devine y Hamwi. Gratis y sin registro.
+keywords: calculadora peso ideal, peso ideal altura, cuanto deberia pesar, peso saludable, peso ideal por edad, peso ideal hombre mujer, calcular peso ideal, edad y estura, que es el peso ideal, como saber mi peso ideal 
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de peso ideal
 icono: ⚖️
 tituloCorto: el peso ideal
-descripcion: Calcula tu peso ideal según tu altura y sexo con las fórmulas más usadas en medicina.
-explicacion: El peso ideal es el rango de peso asociado a una mejor salud para una altura y complexión determinadas. No existe una fórmula única — esta calculadora muestra los resultados de las tres fórmulas más usadas en medicina (Lorentz, Devine y Hamwi) para darte un rango orientativo. Recuerda que el peso ideal es solo una referencia y que la composición corporal importa más que el número en la báscula.
+descripcion: Calcula tu peso ideal según tu altura, edad y sexo con las fórmulas más usadas en medicina.
+explicacion: El peso ideal es el rango de peso asociado a una mejor salud para una altura, edad y complexión determinadas. No existe una fórmula única — esta calculadora muestra los resultados de las tres fórmulas más usadas en medicina (Lorentz, Devine y Hamwi) y los ajusta por edad, ya que a partir de los 25 años el peso saludable aumenta ligeramente con cada década. Recuerda que el peso ideal es solo una referencia orientativa y que la composición corporal importa más que el número en la báscula.
 faq:
   - q: ¿Cuál es la fórmula más fiable para el peso ideal?
     a: No hay una sola fórmula perfecta. La de Lorentz es la más usada en Europa. La de Devine es habitual en farmacología. Lo más importante es mantener un IMC entre 18,5 y 24,9.
+  - q: ¿Por qué cambia el peso ideal con la edad?
+    a: A partir de los 25-30 años la densidad ósea y la composición corporal cambian. Las guías médicas permiten un ligero aumento de peso con la edad — aproximadamente 0,5 kg por cada año a partir de los 25, hasta un máximo razonable.
   - q: ¿El peso ideal es el mismo para todo el mundo con la misma altura?
-    a: No. Influye la complexión ósea, la masa muscular y otros factores individuales. Las fórmulas dan rangos orientativos, no valores exactos.
-  - q: ¿Debo preocuparme si estoy fuera del peso ideal?
-    a: El peso ideal es solo una referencia. Lo más importante es el estado general de salud, la composición corporal y los hábitos de vida. Consulta con tu médico si tienes dudas.
+    a: No. Influye la complexión ósea, la masa muscular, la edad y otros factores individuales. Las fórmulas dan rangos orientativos, no valores exactos.
+  - q: ¿Cual es peso ideal segun la estatura y edad?
+    a: El peso ideal no es una cifra fija, sino un rango determinado por la altura y ajustado por la edad. Se calcula habitualmente utilizando el rango de IMC saludable (18,5 a 24,9) aplicado a tu estatura en metros al cuadrado, sumando un pequeño margen de ajuste de unos 0,5 kg por cada año a partir de los 25 años para contemplar los cambios metabólicos naturales.
+  - q: ¿Cual es el peso ideal para una mujer de 1.60?
+    a: Para una estatura de 1,60 m, el rango de peso saludable por IMC se sitúa entre 47,4 kg y 63,7 kg. Según fórmulas antropométricas médicas (como Lorentz o Devine), el peso medio ideal de referencia suele rondar entre los 52 kg y los 56 kg según la edad y la constitución ósea.
+  - q: ¿Cual es el peso ideal para un hombre de 1.70?
+    a: Para un hombre de 1,70 m de altura, el rango de peso saludable por IMC se ubica entre 53,5 kg y 72 kg. Aplicando las fórmulas clínicas clásicas (Lorentz, Devine, Hamwi), la cifra óptima de referencia se sitúa habitualmente entre los 63 kg y los 67 kg, en función de su masa muscular y edad.
+
 relacionadas:
   - slug: imc
     categoria: salud
@@ -25,6 +32,18 @@ relacionadas:
   - slug: calorias
     categoria: salud
     titulo: Calorías diarias
+    icono: 🔥
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Harris-Benedict
+    icono: 🧬
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Calcular grasa corporal
+    icono: 📏
+  - slug: calorias-quemadas
+    categoria: fitness
+    titulo: Calorias quemadas por ejercicio
     icono: 🔥
 ---
 
@@ -42,29 +61,78 @@ relacionadas:
   </div>
 </div>
 
-<div class="result-box" id="pi-res">Introduce tu altura</div>
+<label>Edad (años)</label>
+<input type="number" id="pi-edad" placeholder="30" oninput="calcPesoIdeal()">
+
+<div class="result-box" id="pi-res">Introduce tu altura y edad</div>
+
 
 <script>
 function calcPesoIdeal() {
   const h = parseFloat(document.getElementById('pi-altura').value);
+  const edad = parseFloat(document.getElementById('pi-edad').value);
   const sexo = document.getElementById('pi-sexo').value;
-  if (!h) return;
+  if (!h || !edad) return;
+
   const hm = h / 100;
   const hpulgadas = (h - 152.4) / 2.54;
 
-  const lorentz = sexo==='h' ? h - 100 - (h-150)/4 : h - 100 - (h-150)/2;
-  const devine = sexo==='h' ? 50 + 2.3 * hpulgadas : 45.5 + 2.3 * hpulgadas;
-  const hamwi = sexo==='h' ? 48 + 2.7 * hpulgadas : 45.4 + 2.2 * hpulgadas;
+  // Fórmulas base
+  let lorentz = sexo==='h' ? h - 100 - (h-150)/4 : h - 100 - (h-150)/2;
+  let devine   = sexo==='h' ? 50 + 2.3 * hpulgadas : 45.5 + 2.3 * hpulgadas;
+  let hamwi    = sexo==='h' ? 48 + 2.7 * hpulgadas : 45.4 + 2.2 * hpulgadas;
 
-  const imcMin = 18.5 * hm * hm;
-  const imcMax = 24.9 * hm * hm;
+  // Ajuste por edad — a partir de 25 años se permite +0.5kg por año hasta máximo +10kg
+  const ajusteEdad = edad > 25 ? Math.min((edad - 25) * 0.5, 10) : 0;
+  lorentz += ajusteEdad;
+  devine  += ajusteEdad;
+  hamwi   += ajusteEdad;
+
+  // Rango IMC saludable
+  const imcMin = (18.5 * hm * hm).toFixed(1);
+  const imcMax = (24.9 * hm * hm).toFixed(1);
+
+  // Media de las tres fórmulas
+  const media = ((lorentz + devine + hamwi) / 3).toFixed(1);
 
   document.getElementById('pi-res').innerHTML =
-    `Rango saludable: ${imcMin.toFixed(1)} – ${imcMax.toFixed(1)} kg
+    `Peso ideal estimado: ${media} kg
     <small>
-    Lorentz: ${lorentz.toFixed(1)} kg · 
-    Devine: ${devine.toFixed(1)} kg · 
-    Hamwi: ${hamwi.toFixed(1)} kg
+    Rango saludable por IMC: ${imcMin} – ${imcMax} kg · 
+    Ajuste por edad: +${ajusteEdad.toFixed(1)} kg
     </small>`;
+
+  document.getElementById('pi-tabla').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:700;color:var(--accent)">${lorentz.toFixed(1)} kg</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.25rem">Lorentz</div>
+      <div style="font-size:0.72rem;color:var(--muted)">Más usada en Europa</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:700;color:var(--accent)">${devine.toFixed(1)} kg</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.25rem">Devine</div>
+      <div style="font-size:0.72rem;color:var(--muted)">Usada en farmacología</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:700;color:var(--accent)">${hamwi.toFixed(1)} kg</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.25rem">Hamwi</div>
+      <div style="font-size:0.72rem;color:var(--muted)">Usada en dietética</div>
+    </div>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía médica sobre el cálculo del peso ideal y la constitución física</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Determinar el peso ideal es una inquietud habitual para quienes buscan mejorar su salud, ajustar sus pautas de nutrición o fijarse metas realistas en sus entrenamientos. A diferencia de las tablas genéricas de peso estáticas, las fórmulas de evaluación clínica consideran la relación antropométrica entre estatura, sexo biológico y la evolución natural del cuerpo con la edad.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra calculadora de peso ideal online realiza una estimación tripartita comparando tres de las ecuaciones médicas y dietéticas más reconocidas a nivel mundial (Lorentz, Devine y Hamwi), complementándolas con el rango saludable determinado por la Organización Mundial de la Salud (OMS).</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Comparativa de fórmulas clínicas de peso ideal</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">En el ámbito de la medicina y la nutrición se emplean diferentes algoritmos en función del propósito asistencial:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Fórmula de Lorentz:</strong> Desarrollada en Europa, es la más extendida en la práctica clínica general. Introduce un factor de ajuste diferenciado para hombres y mujeres sobre la diferencia entre la estatura real e ideal de 150 cm.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Fórmula de Devine:</strong> Creada en 1974 por el Dr. Ben Devine, es el estándar utilizado internacionalmente en el área de farmacología para calcular la dosificación exacta de medicamentos de estrecho margen terapéutico según el peso corporal magro esperado.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Fórmula de Hamwi:</strong> Publicada en 1964 por el Dr. George Hamwi, es una de las reglas de cálculo rápido más utilizadas por endocrinólogos y nutricionistas en el ámbito hospitalario para definir metas iniciales de peso razonable.</p>
+
+
+</div>
