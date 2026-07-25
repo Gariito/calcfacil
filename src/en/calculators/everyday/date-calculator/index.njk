@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Date Calculator — Days Between Dates Free Online
+title: Days Between Dates Calculator — Count days between two dates online
 description: Calculate the number of days, weeks and months between two dates. Count working days too. Free date calculator online.
-keywords: date calculator, days between dates, how many days between two dates, days until calculator, date difference, working days calculator, countdown days
+keywords: date calculator, days between dates, how many days between two dates, days until calculator, date difference, working days calculator, countdown days, days between two dates, count days between dates, count days calculator, count days between dates online
 ---
 
 <div class="calc-page">
@@ -52,6 +52,8 @@ keywords: date calculator, days between dates, how many days between two dates, 
           </div>
         </div>
       </div>
+      
+      
 
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
@@ -72,18 +74,35 @@ keywords: date calculator, days between dates, how many days between two dates, 
             <summary>Can I calculate dates in the past?</summary>
             <p>Yes. Enter the earlier date as the start date to calculate how many days have passed since then.</p>
           </details>
+          <details>
+            <summary>How many days until christmas?</summary>
+            <p>To find out, set the start date to today and the end date to December 25th of the current year. If Christmas has already passed this year, select December 25th of next year to see the remaining days.</p>
+          </details>
+          <details>
+            <summary>How to count days between two dates</summary>
+            <p>Enter your initial date in the "Start date" field and your target date in the "End date" field. Toggle the working days option if you need to exclude weekends, and the total count will update automatically.</p>
+          </details>
+          <details>
+            <summary>Can I calculate time spans across different centuries?</summary>
+            <p>Yes. As long as you select valid standard Gregorian calendar dates, the calculator accurate computes spans across multi-year and multi-century periods.</p>
+          </details>
         </div>
         <div class="card sidebar-card">
           <h3>Related calculators</h3>
           <ul class="related-list">
             <li><a href="/en/calculators/everyday/age/">🎂 Age Calculator</a></li>
-            <li><a href="/en/calculators/everyday/hours/">⏱️ Hours Calculator</a></li>
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
+            <li><a href="/en/calculators/everyday/word-count/">📝 Word counter</a></li>
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip calculator</a></li>
+            <li><a href="/en/calculators/everyday/percentage/">% Percentage Calculator</a></li>
           </ul>
         </div>
       </aside>
     </div>
   </div>
 </div>
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -134,3 +153,4 @@ function calcDate() {
     <small>${weeks} weeks and ${rem} days · ~${months} months${work==='yes'?' · '+workDays+' working days':''}</small>`;
 }
 </script>
+
