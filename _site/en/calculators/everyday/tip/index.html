@@ -121,6 +121,8 @@
         </div>
       </div>
 
+
+
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>What is a tip calculator?</h2>
@@ -140,7 +142,24 @@
             <summary>How do I split the bill equally?</summary>
             <p>Enter the total bill, select your tip percentage and enter the number of people. The calculator shows exactly how much each person should pay.</p>
           </details>
+          <details>
+            <summary>What is an automatic service charge?</summary>
+            <p>Some restaurants automatically add a service charge (often 12.5% in the UK) to the final bill, especially for large groups. Check your bill before calculating an additional tip so you don't pay twice.</p>
+          </details>
+          <details>
+            <summary>How much should I tip for delivery or takeaway?</summary>
+            <p>For food delivery, a tip of 10–15% (or a minimum flat rate of £2–£5 / $3–$5) is customary to cover driver time and fuel. For self-pickup takeaway orders, tipping is optional, though 5–10% is appreciated for large or complex orders.</p>
+          </details>
+          <details>
+            <summary>Should I tip in cash or on a card?</summary>
+            <p>Cash is generally preferred by service staff because they receive it immediately without transaction fee deductions or processing delays by management, though card tips are widely accepted.</p>
+          </details>
+          <details>
+            <summary>Is tipping required if service was poor?</summary>
+            <p>Tipping is intended to reward quality service. If service is sub-par, reducing the tip percentage or skipping it entirely is reasonable. Speaking directly to a manager is often better than simply withholding a tip silently.</p>
+          </details>
         </div>
+
         <div class="card sidebar-card">
           <h3>Related calculators</h3>
           <ul class="related-list">
@@ -172,6 +191,8 @@ function calcTip() {
     <small>${pers > 1 ? `Per person: ${perPerson.toFixed(2)}` : `${pct}% tip on ${total.toFixed(2)}`}</small>`;
 }
 </script>
+
+
 </main>
 
 <footer class="site-footer">
