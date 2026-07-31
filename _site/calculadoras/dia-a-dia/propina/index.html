@@ -2,21 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de propina gratis — divide la cuenta fácil — CalcFácil</title>
+  <title>Como calcular la propina en un restaurante - Calculadora gratis — CalcFácil</title>
   <meta name="description" content="Calcula la propina al instante y divide la cuenta entre el número de personas.">
-  <meta name="keywords" content="calculadora propina, dividir cuenta restaurante, propina porcentaje, cuanto dejar de propina">
+  <meta name="keywords" content="calculadora propina, dividir cuenta restaurante, propina porcentaje, cuanto dejar de propina, propina estados unidos, tip calculator, tip, propina en un restaurante, que propina se deja en españa, como sacar la propina de una cuenta">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/dia-a-dia/propina/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de propina gratis — divide la cuenta fácil — CalcFácil">
+  <meta property="og:title" content="Como calcular la propina en un restaurante - Calculadora gratis — CalcFácil">
   <meta property="og:description" content="Calcula la propina al instante y divide la cuenta entre el número de personas.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/dia-a-dia/propina/">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de propina gratis — divide la cuenta fácil",
+    "name": "Como calcular la propina en un restaurante - Calculadora gratis",
     "description": "Calcula la propina al instante y divide la cuenta entre el número de personas.",
     "url": "https://calculadorasgratis.net/calculadoras/dia-a-dia/propina/",
     "applicationCategory": "UtilitiesApplication",
@@ -41,26 +41,31 @@
   <link rel="stylesheet" href="/css/main.css">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9RPZFQTQCL');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
 
 </head>
 <body>
 
+
+
 <header class="site-header">
   <div class="container header-inner">
+
     <a href="/" class="logo">Calc<span>Fácil</span></a>
-<!-- Selector de idioma -->
-  <div style="display:flex;gap:0.25rem;margin-left:0.5rem">
-    <a href="/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇪🇸 ES</a>
-    <a href="/en/" style="font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;color:var(--muted)">🇬🇧 EN</a>
-  </div>
+
+    <!-- Selector de idioma -->
+    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
+      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
+      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
+    </div>
+
+    
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="/calculadoras/salud/">🏥 Salud</a>
       <a href="/calculadoras/fitness/">💪 Fitness</a>
@@ -69,8 +74,12 @@
       <a href="/calculadoras/finanzas/">💶 Finanzas</a>
       <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
     </nav>
-<button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
-<button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>  </div>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
 </header>
 
 <main>
@@ -94,6 +103,8 @@
         <p class="calc-intro">Calcula la propina y divide el total entre las personas de la mesa al instante.</p>
         <div class="card">
           
+
+
 <label>Total de la cuenta (€)</label>
 <input type="number" id="prop-total" placeholder="45.00" oninput="calcPropina()">
 
@@ -109,6 +120,22 @@
 <input type="number" id="prop-personas" placeholder="2" value="1" oninput="calcPropina()">
 
 <div class="result-box" id="prop-res">Introduce el importe</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Protocolo, cultura internacional y cálculo rápido de propinas</h1>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La <strong>propina</strong> es una recompensa económica voluntaria (o culturalmente estandarizada) que se otorga al personal de hostelería en reconocimiento por la calidad del servicio recibido durante una comida o cena.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra <strong>calculadora de propinas online</strong> te permite determinar en segundos el importe exacto de la gratificación según el porcentaje que decidas aplicar, ofreciendo además la cifra final desglosada por comensal para agilizar el pago en mesa.</p>
+
+          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía de propinas por continentes y países</h1>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Las costumbres cambian radicalmente según el destino geográfico al que viajes:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Unión Europea (España, Francia, Italia, Alemania):</strong> La propina es totalmente optativa. Se premia la excelencia del servicio dejando entre un 5% y un 10% del total o redondeando el importe de la cuenta al euro más cercano.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Norteamérica (Estados Unidos y Canadá):</strong> Prácticamente obligatoria. Los márgenes habituales se sitúan entre el 15% (servicio correcto), 18% (buen servicio) y 20%+ (servicio sobresaliente).</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>América Latina (México, Colombia, Argentina):</strong> Se acostumbra a sugerir entre un 10% y un 15%. En muchos locales de México se denomina popularmente "la propina sugerida".</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Asia Oriental (Japón, Corea del Sur, China):</strong> No se debe dejar propina. El servicio se considera parte inherente del trabajo y dejar dinero extra puede causar confusión o malestar al camarero.</p>
+
+</div>
         </div>
       </div>
 
@@ -126,7 +153,13 @@
             
             <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Calculadora de porcentajes</a></li>
             
+            <li><a href="/calculadoras/dia-a-dia/calculadora-propinas-grupal/">🍽️ Divide la cuenta</a></li>
+            
             <li><a href="/calculadoras/dia-a-dia/divisas/">💱 Conversor de divisas</a></li>
+            
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">⚖️ Regla de tres</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/media/">📊 Calculadora de media</a></li>
             
           </ul>
         </div>
@@ -142,13 +175,38 @@
             </details>
             
             <details>
-              <summary>¿Y en EE.UU.?</summary>
+              <summary>¿Cuánto de deja de propina en Estados Unidos?</summary>
               <p>En Estados Unidos la propina es casi obligatoria culturalmente. Lo estándar es entre el 15% y el 20% del total antes de impuestos.</p>
             </details>
             
             <details>
               <summary>¿Se calcula la propina sobre el total con IVA o sin IVA?</summary>
               <p>En España habitualmente sobre el total con IVA. En EE.UU. sobre el subtotal antes de impuestos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como calcular la propina en un restaurante?</summary>
+              <p>Multiplica el importe total de la cuenta por el porcentaje de propina que deseas dejar y divídelo entre 100. Por ejemplo, para una cuenta de 50 € con un 10% de propina; 50 × 10 / 100 = 5 € de propina, dando un total de 55 €.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cual es el porcentaje de propina en un restaurante?</summary>
+              <p>Depende del país y la calidad del servicio. En España y la mayor parte de Europa varía libremente entre el 5% y el 10%. En Estados Unidos, México o Canadá el estándar aceptado ronda entre el 15% y el 20%.</p>
+            </details>
+            
+            <details>
+              <summary>¿Que pasa si no dejas propina en Estados Unidos??</summary>
+              <p>Aunque técnicamente no es ilegal, se considera una grave falta de educación o un mensaje directo de que el servicio fue pésimo. En EE.UU. el salario base de los camareros suele ser muy bajo y depende principalmente de las propinas para alcanzar el salario mínimo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es mejor dejar la propina en efectivo o con tarjeta de crédito?</summary>
+              <p>Siempre que sea posible, es preferible dejarla en efectivo. Así te aseguras de que la gratificación llegue de forma directa e inmediata al personal de sala o cocina sin comisiones bancarias ni retenciones.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es obligatorio dejar propina si viene el concepto &quot;servicio incluido&quot; en la factura?</summary>
+              <p>Si en la factura aparece un recargo formal por servicio (habitual en algunos países europeos o en mesas grandes en EE.UU.), no es necesario dejar propina adicional, ya que el cargo por atención ya está integrado en el total.</p>
             </details>
             
           
@@ -159,6 +217,7 @@
   </div>
 </div>
 </main>
+
 
 <footer class="site-footer">
   <div class="container footer-inner">
@@ -172,6 +231,7 @@
   </div>
 </footer>
 
+
 <script src="/js/calculadoras.js"></script>
 
 <script>
@@ -183,7 +243,6 @@ function toggleDark() {
   document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
 }
 
-// Aplicar tema guardado al cargar
 (function() {
   const saved = localStorage.getItem('calcfacil-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
