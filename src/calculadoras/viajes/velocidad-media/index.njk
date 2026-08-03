@@ -1,12 +1,12 @@
 ---
 layout: calculadora.njk
-title: Calculadora de velocidad media, distancia y tiempo
+title: Calculadora de velocidad media con tiempo y distancia
 description: Calcula la velocidad media, la distancia recorrida o el tiempo empleado en un trayecto al instante.
-keywords: calculadora velocidad media, distancia tiempo velocidad, calcular velocidad viaje
+keywords: calculadora velocidad media, distancia tiempo velocidad, calcular velocidad viaje, calcular velocidad media, cálculo de velocidad, velocidad distancia tiempo, calcular velocidad media con tiempo y distancia, calcular velocidad media km/h, cómo se calcula la velocidad media de
 categoria: viajes
 categoriaLabel: Viajes
 titulo: Calculadora de velocidad media
-icono: 🚗
+icono: ⌚
 tituloCorto: la velocidad media
 descripcion: Calcula la velocidad media, la distancia o el tiempo de cualquier trayecto.
 explicacion: La relación entre velocidad, distancia y tiempo es una de las fórmulas más usadas en el día a día — especialmente en viajes por carretera. Conociendo dos de los tres valores puedes calcular el tercero al instante. Esta calculadora lo hace de forma automática según lo que quieras calcular.
@@ -17,6 +17,10 @@ faq:
     a: Divide la distancia total entre el tiempo total (en horas). Si has recorrido 450 km en 4,5 horas, tu velocidad media fue 100 km/h.
   - q: ¿La velocidad media tiene en cuenta las paradas?
     a: Si divides la distancia total entre el tiempo total incluyendo paradas, obtienes la velocidad media real. Si divides entre el tiempo solo circulando, obtienes la velocidad media de marcha.
+  - q: ¿Cómo calcular la velocidad media de un recorrido?
+    a: La velocidad media es el cociente entre el desplazamiento o distancia total recorrida por un cuerpo y el tiempo empleando en recorrerla. Expresa el ritmo constante teórico al que tendría que haberse movido dicho cuerpo para realizar el mismo trayecto en el mismo tiempo.
+  - q: ¿Cuanto es la velocidad media de una persona?
+    a: Una persona caminando a ritmo normal se desplaza a una velocidad media de entre 4 y 5 km/h. Al trotar o hacer running de aficionado, la media suele rondar entre 8 y 12 km/h, mientras que los atletas profesionales alcanzan medias superiores a los 20 km/h en carreras de velocidad.
 relacionadas:
   - slug: combustible
     categoria: viajes
@@ -26,6 +30,20 @@ relacionadas:
     categoria: unidades
     titulo: Conversor de velocidad
     icono: 🚗
+  - slug: regla-de-tres
+    categoria: matematicas
+    titulo: Regla de tres
+    icono: ⚖️
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Calculadora de porcentaje
+    icono: "%"
+  - slug: presupuesto
+    categoria: viajes
+    titulo: Presupuesto del viaje
+    icono: 💰
+  
+
 ---
 
 <label>¿Qué quieres calcular?</label>
@@ -96,3 +114,20 @@ function calcVM() {
 
 toggleVM();
 </script>
+
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Conceptos clave sobre velocidad, distancia y tiempo en la física y los viajes</h1>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El concepto de <strong>velocidad media</strong> resulta fundamental tanto en cinemática (física clásica) como en la logística y planificación de itinerarios cotidianos. Permite estimar la duración exacta de trayectos por carretera, trazar rutas de transporte o monitorizar el rendimiento deportivo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra <strong>calculadora de velocidad media online</strong> permite resolver la ecuación fundamental de la velocidad ($v = \frac{d}{t}$) despejando cualquiera de las tres variables implicadas (velocidad, distancia o tiempo) según las necesidades de tu cálculo.</p>
+
+          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Diferencias fundamentales entre tipos de velocidad</h1>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Es común confundir varios términos relacionados con la velocidad durante la conducción o el ejercicio físico:</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Velocidad Instantánea:</strong> Es la velocidad exacta a la que se desplaza un objeto en un instante o segundo concreto. Es la lectura en tiempo real que ofrece el velocímetro del vehículo o el radar de tráfico.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Velocidad Media Global:</strong> Mide el ritmo medio considerando todo el tiempo transcurrido desde el inicio hasta el destino, incluyendo paradas en semáforos, pausas para descansar, retenciones o estaciones de servicio.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Velocidad de Marcha (o en movimiento):</strong> Calcula únicamente el promedio de velocidad obtenido mientras el vehículo estuvo efectivamente rodando por la vía, descontando el tiempo en el que la velocidad fue 0 km/h.</p>
+
+
+</div>

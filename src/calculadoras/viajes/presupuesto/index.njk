@@ -40,56 +40,307 @@ relacionadas:
     icono: 🚗
 ---
 
-<div class="row-2">
-  <div>
-    <label>Número de días</label>
-    <input type="number" id="pres-dias" placeholder="7" oninput="calcPres()">
-  </div>
-  <div>
-    <label>Número de personas</label>
-    <input type="number" id="pres-pers" placeholder="2" oninput="calcPres()">
-  </div>
+<style>
+.gv-form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+.gv-form input {
+  margin-bottom: 0;
+}
+.gv-btn-add {
+  padding: 0.65rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.gv-btn-add:hover { background: var(--accent-dark); }
+
+.gv-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+.gv-tabla th {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid var(--accent);
+}
+.gv-tabla th:last-child { text-align: right; }
+.gv-tabla td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.gv-tabla td:last-child { text-align: right; }
+.gv-tabla tr:last-child td { border-bottom: none; }
+.gv-tabla tr:nth-child(even) { background: var(--bg); }
+.gv-tabla tr:hover { background: var(--accent-light); }
+
+.gv-btn-del {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #EF4444;
+  font-size: 1rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.gv-btn-del:hover { background: #FEF2F2; }
+
+.gv-total-row td {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+  background: var(--accent-light) !important;
+  border-top: 2px solid var(--accent);
+  border-bottom: none !important;
+  padding: 0.75rem;
+}
+
+.gv-categoria {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-left: 0.4rem;
+}
+
+.gv-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
+</style>
+
+<!-- Formulario de entrada -->
+<div style="margin-bottom:0.5rem">
+  <label>Categoría</label>
+  <select id="gv-cat" style="margin-bottom:0.75rem">
+    <option value="✈️ Vuelo/Transporte">✈️ Vuelo / Transporte</option>
+    <option value="🏨 Alojamiento">🏨 Alojamiento</option>
+    <option value="🍽️ Comida">🍽️ Comida</option>
+    <option value="🎭 Actividades">🎭 Actividades</option>
+    <option value="🛍️ Compras">🛍️ Compras</option>
+    <option value="⛽ Combustible">⛽ Combustible</option>
+    <option value="💊 Salud/Seguro">💊 Salud / Seguro</option>
+    <option value="📦 Otros">📦 Otros</option>
+  </select>
 </div>
 
-<label>Alojamiento por noche (€ total)</label>
-<input type="number" id="pres-aloj" placeholder="80" oninput="calcPres()">
+<div class="gv-form">
+  <div>
+    <label>Nombre del gasto</label>
+    <input type="text" id="gv-nombre" placeholder="Ej: Vuelo Madrid-Roma" onkeydown="if(event.key==='Enter')gvAnadir()">
+  </div>
+  <div>
+    <label>Precio (€)</label>
+    <input type="number" id="gv-precio" placeholder="150" min="0" step="0.01" onkeydown="if(event.key==='Enter')gvAnadir()" style="width:110px">
+  </div>
+  <button class="gv-btn-add" onclick="gvAnadir()">+ Añadir</button>
+</div>
 
-<label>Comida por persona y día (€)</label>
-<input type="number" id="pres-comida" placeholder="30" oninput="calcPres()">
+<!-- Número de viajeros -->
+<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap">
+  <label style="margin:0;text-transform:none;letter-spacing:0;font-size:0.9rem;font-weight:500;color:var(--muted)">
+    Dividir entre
+  </label>
+  <input type="number" id="gv-viajeros" value="1" min="1" max="50" oninput="gvActualizar()"
+    style="width:70px;margin-bottom:0;padding:0.4rem 0.6rem;font-size:0.9rem">
+  <label style="margin:0;text-transform:none;letter-spacing:0;font-size:0.9rem;font-weight:500;color:var(--muted)">
+    viajero(s)
+  </label>
+</div>
 
-<label>Transporte local por persona y día (€)</label>
-<input type="number" id="pres-trans" placeholder="10" oninput="calcPres()">
+<!-- Tabla de gastos -->
+<div id="gv-tabla-wrap">
+  <div class="gv-empty" id="gv-empty">
+    <div style="font-size:2rem;margin-bottom:0.5rem">✈️</div>
+    <p>Añade tu primer gasto para empezar</p>
+  </div>
 
-<label>Ocio y actividades por persona y día (€)</label>
-<input type="number" id="pres-ocio" placeholder="20" oninput="calcPres()">
+  <table class="gv-tabla" id="gv-tabla" style="display:none">
+    <thead>
+      <tr>
+        <th style="width:40px">#</th>
+        <th>Concepto</th>
+        <th>Categoría</th>
+        <th style="text-align:right">Precio</th>
+        <th style="text-align:right;width:40px"></th>
+      </tr>
+    </thead>
+    <tbody id="gv-tbody"></tbody>
+    <tfoot>
+      <tr class="gv-total-row" id="gv-fila-total">
+        <td colspan="3">💰 Total del viaje</td>
+        <td id="gv-total-precio">0,00 €</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
 
-<label>Vuelos y transporte de ida y vuelta (€ total)</label>
-<input type="number" id="pres-vuelos" placeholder="300" oninput="calcPres()">
+  <!-- Resumen por persona -->
+  <div id="gv-resumen" style="display:none;margin-top:0.75rem;display:none">
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+      <span style="font-size:0.875rem;color:var(--muted)">Por persona</span>
+      <span style="font-size:1.2rem;font-weight:700;color:var(--accent)" id="gv-por-persona">0,00 €</span>
+    </div>
+  </div>
 
-<div class="result-box" id="pres-res">Introduce los datos del viaje</div>
+</div>
+
+<!-- Botones de acción -->
+<div id="gv-acciones" style="display:none;margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+  <button onclick="gvLimpiar()"
+    style="padding:0.5rem 1rem;border:1px solid #EF4444;border-radius:8px;background:none;color:#EF4444;cursor:pointer;font-size:0.85rem;font-family:var(--font-body)">
+    🗑️ Limpiar todo
+  </button>
+  <button onclick="gvExportar()"
+    style="padding:0.5rem 1rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);cursor:pointer;font-size:0.85rem;font-family:var(--font-body)">
+    📋 Copiar resumen
+  </button>
+</div>
 
 <script>
-function calcPres() {
-  const dias = parseFloat(document.getElementById('pres-dias').value) || 0;
-  const pers = parseFloat(document.getElementById('pres-pers').value) || 1;
-  const aloj = parseFloat(document.getElementById('pres-aloj').value) || 0;
-  const comida = parseFloat(document.getElementById('pres-comida').value) || 0;
-  const trans = parseFloat(document.getElementById('pres-trans').value) || 0;
-  const ocio = parseFloat(document.getElementById('pres-ocio').value) || 0;
-  const vuelos = parseFloat(document.getElementById('pres-vuelos').value) || 0;
-  if (!dias) return;
-  const totalAloj = aloj * dias;
-  const totalComida = comida * pers * dias;
-  const totalTrans = trans * pers * dias;
-  const totalOcio = ocio * pers * dias;
-  const total = totalAloj + totalComida + totalTrans + totalOcio + vuelos;
-  const porPersona = total / pers;
-  document.getElementById('pres-res').innerHTML =
-    `Total: ${total.toFixed(0)} €<small>
-    Por persona: ${porPersona.toFixed(0)} € · 
-    Aloj: ${totalAloj.toFixed(0)} € · 
-    Comida: ${totalComida.toFixed(0)} € · 
-    Trans: ${(totalTrans+vuelos).toFixed(0)} € · 
-    Ocio: ${totalOcio.toFixed(0)} €</small>`;
+let gvGastos = [];
+let gvIdCounter = 1;
+
+const CAT_COLORES = {
+  '✈️ Vuelo/Transporte': { bg:'#EFF6FF', color:'#2563EB' },
+  '🏨 Alojamiento':       { bg:'#F0FDF4', color:'#16A34A' },
+  '🍽️ Comida':            { bg:'#FFF7ED', color:'#EA580C' },
+  '🎭 Actividades':       { bg:'#FDF4FF', color:'#9333EA' },
+  '🛍️ Compras':           { bg:'#FFF1F2', color:'#E11D48' },
+  '⛽ Combustible':        { bg:'#FEFCE8', color:'#CA8A04' },
+  '💊 Salud/Seguro':      { bg:'#F0FDFA', color:'#0D9488' },
+  '📦 Otros':             { bg:'#F8FAFC', color:'#64748B' }
+};
+
+function gvAnadir() {
+  const nombre = document.getElementById('gv-nombre').value.trim();
+  const precio = parseFloat(document.getElementById('gv-precio').value);
+  const cat = document.getElementById('gv-cat').value;
+
+  if (!nombre) {
+    document.getElementById('gv-nombre').focus();
+    document.getElementById('gv-nombre').style.borderColor = '#EF4444';
+    setTimeout(() => document.getElementById('gv-nombre').style.borderColor = '', 1500);
+    return;
+  }
+  if (isNaN(precio) || precio < 0) {
+    document.getElementById('gv-precio').focus();
+    document.getElementById('gv-precio').style.borderColor = '#EF4444';
+    setTimeout(() => document.getElementById('gv-precio').style.borderColor = '', 1500);
+    return;
+  }
+
+  gvGastos.push({ id: gvIdCounter++, nombre, precio, cat });
+  document.getElementById('gv-nombre').value = '';
+  document.getElementById('gv-precio').value = '';
+  document.getElementById('gv-nombre').focus();
+  gvActualizar();
+}
+
+function gvEliminar(id) {
+  gvGastos = gvGastos.filter(g => g.id !== id);
+  gvActualizar();
+}
+
+function gvActualizar() {
+  const tbody = document.getElementById('gv-tbody');
+  const tabla = document.getElementById('gv-tabla');
+  const empty = document.getElementById('gv-empty');
+  const acciones = document.getElementById('gv-acciones');
+  const resumen = document.getElementById('gv-resumen');
+  const viajeros = parseInt(document.getElementById('gv-viajeros').value) || 1;
+
+  if (gvGastos.length === 0) {
+    tabla.style.display = 'none';
+    empty.style.display = 'block';
+    acciones.style.display = 'none';
+    resumen.style.display = 'none';
+    return;
+  }
+
+  tabla.style.display = 'table';
+  empty.style.display = 'none';
+  acciones.style.display = 'flex';
+
+  const total = gvGastos.reduce((s, g) => s + g.precio, 0);
+  const porPersona = total / viajeros;
+
+  tbody.innerHTML = gvGastos.map((g, i) => {
+    const c = CAT_COLORES[g.cat] || CAT_COLORES['📦 Otros'];
+    return `<tr>
+      <td style="color:var(--muted);font-size:0.8rem">${i+1}</td>
+      <td style="font-weight:500">${g.nombre}</td>
+      <td>
+        <span class="gv-categoria" style="background:${c.bg};color:${c.color}">
+          ${g.cat}
+        </span>
+      </td>
+      <td style="text-align:right;font-weight:600">${gvFmt(g.precio)}</td>
+      <td style="text-align:right">
+        <button class="gv-btn-del" onclick="gvEliminar(${g.id})" title="Eliminar">✕</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('gv-total-precio').textContent = gvFmt(total);
+  document.getElementById('gv-por-persona').textContent = gvFmt(porPersona);
+  resumen.style.display = viajeros > 1 ? 'block' : 'none';
+}
+
+function gvFmt(n) {
+  return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+}
+
+function gvLimpiar() {
+  if (gvGastos.length === 0) return;
+  if (confirm('¿Seguro que quieres eliminar todos los gastos?')) {
+    gvGastos = [];
+    gvActualizar();
+  }
+}
+
+function gvExportar() {
+  if (gvGastos.length === 0) return;
+  const viajeros = parseInt(document.getElementById('gv-viajeros').value) || 1;
+  const total = gvGastos.reduce((s, g) => s + g.precio, 0);
+  let texto = '📋 RESUMEN DE GASTOS DE VIAJE\n';
+  texto += '─'.repeat(40) + '\n';
+  gvGastos.forEach((g, i) => {
+    texto += `${i+1}. ${g.nombre} (${g.cat}): ${gvFmt(g.precio)}\n`;
+  });
+  texto += '─'.repeat(40) + '\n';
+  texto += `TOTAL: ${gvFmt(total)}\n`;
+  if (viajeros > 1) texto += `Por persona (${viajeros}): ${gvFmt(total/viajeros)}\n`;
+  texto += '\nGenerado en calculadorasgratis.net';
+  navigator.clipboard.writeText(texto).then(() => {
+    const btn = document.querySelector('[onclick="gvExportar()"]');
+    const orig = btn.textContent;
+    btn.textContent = '✅ ¡Copiado!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
 }
 </script>
