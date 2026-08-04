@@ -71,7 +71,7 @@ body {
 .main-nav {
   display: flex;
   gap: 0.25rem;
-  margin-left: 00px;
+  margin-left: 0px;
   flex-wrap: wrap;
 }
 .main-nav a {
@@ -429,7 +429,6 @@ details p { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; padding
 }
 
 /* ── Barra de búsqueda ── */
-/* ── Barra de búsqueda ── */
 .search-wrap {
   max-width: 600px;
   margin: 0 auto 2rem;
@@ -509,6 +508,111 @@ details p { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; padding
 [data-theme="dark"] .kbd-grid button.eq { background: var(--accent); color: #fff; }
 [data-theme="dark"] .kbd-grid button.clr { background: #3A1A1A; color: #FC8181; }
 [data-theme="dark"] .sci-display { background: #0A0A09; }
+
+/* ── Popular Tags & Extra Sections (SEO / Home Adaptativo) ── */
+.popular-container {
+  margin-bottom: 1.5rem;
+}
+
+.popular-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.popular-title {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.tag-btn {
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.tag-btn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.extra-sections {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.info-block, 
+.contact-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-block h2, 
+.contact-block h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.info-block p, 
+.contact-block p {
+  font-size: 0.925rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.contact-block {
+  text-align: center;
+}
+
+.contact-email {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.contact-email a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.contact-email a:hover {
+  color: var(--accent-dark);
+}
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
