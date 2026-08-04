@@ -214,6 +214,88 @@ function calcMedia() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de media aritmética",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre media y mediana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La media es el promedio de todos los valores. La mediana es el valor central cuando los números están ordenados. La mediana es más representativa cuando hay valores extremos muy altos o bajos."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántos números puedo introducir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Todos los que quieras, separados por comas o espacios."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Funciona con decimales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, puedes introducir números con decimales usando punto o coma."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como se calcula le media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Introduce los números en la casilla separados por comas, espacios o puntos y comas (por ejemplo, 10, 20, 30). La herramienta sumará automáticamente todos los datos y dividirá el total entre la cantidad de números ingresados, mostrándote la media al instante junto al valor máximo, mínimo y la suma."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué es la media ponderada y en qué se diferencia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En la media aritmética simple, todos los números tienen el mismo peso (100%). En la media ponderada, cada dato tiene asignado un porcentaje o valor relativo distinto (muy común en asignaturas donde el examen vale un 70% y los trabajos un 30%)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo afecta un número \"0\" al cálculo de la media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El cero se contabiliza como un número más. No altera el total de la suma, pero sí incrementa la cantidad total de elementos ($n$), lo que provoca que el valor del promedio final descienda."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

@@ -251,6 +251,70 @@ function calcTiempo() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de tiempo",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo sumo horas y minutos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Introduce las horas y minutos de cada duración por separado. La calculadora gestiona automáticamente la conversión cuando los minutos superan 60."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calculo las horas trabajadas en un día?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selecciona el modo \"Diferencia entre horas\", introduce la hora de entrada y la hora de salida, y obtendrás automáticamente las horas y minutos trabajados."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo sumar más de dos duraciones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Esta calculadora suma dos duraciones. Para sumar más, suma las dos primeras, copia el resultado e introdúcelo como primera duración con la siguiente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Funciona con jornadas nocturnas que pasan de medianoche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, si la hora de fin es anterior a la de inicio, la calculadora asume que has pasado la medianoche y calcula correctamente."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

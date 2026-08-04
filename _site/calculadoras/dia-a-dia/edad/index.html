@@ -221,6 +221,88 @@ function calcEdad() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de edad",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se calcula la edad exacta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se calcula restando la fecha de nacimiento a la fecha actual, teniendo en cuenta los meses y días exactos, no solo los años completos."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular la edad de otra persona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, simplemente introduce su fecha de nacimiento en lugar de la tuya."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Tiene en cuenta los años bisiestos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuándo cumplen años las personas nacidas un 29 de febrero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Legalmente, en años no bisiestos, las personas nacidas el 29 de febrero pasan a tener un año más el 1 de marzo en países como España o Alemania (ya que el 28 de febrero aún no se han cumplido las 24 horas completas del ciclo de 365 días)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como calculo las horas y minutos que he vivido?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para obtener una estimación rápida, puedes multiplicar la cifra total de días vividos que te muestra la calculadora por 24 para obtener las horas, o por 1.440 para saber cuántos minutos has vivido."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿A qué edad se considera alcanzada la mitad de la vida esperada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En países con una esperanza de vida media que ronda los 82-84 años, el punto medio de la vida adulta se sitúa en torno a los 41 o 42 años"
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

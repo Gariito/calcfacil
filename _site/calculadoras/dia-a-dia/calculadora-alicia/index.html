@@ -369,6 +369,79 @@ document.addEventListener('keydown', e => {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de Alicia",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué es la calculadora de Alicia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La calculadora de Alicia es una calculadora online muy buscada en España que permite realizar operaciones matemáticas básicas directamente desde el navegador. Es conocida por su interfaz sencilla e intuitiva."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se usa la calculadora de Alicia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Introduce los números y operaciones usando los botones de la pantalla o el teclado de tu dispositivo. Pulsa el botón igual (=) o la tecla Enter para obtener el resultado."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La calculadora de Alicia funciona en el móvil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, esta calculadora online funciona perfectamente en cualquier dispositivo móvil, tablet u ordenador con navegador web, sin necesidad de descargar ninguna aplicación."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo usar el teclado con la calculadora de Alicia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Escribe los números y operaciones directamente desde el teclado. Pulsa Enter o = para calcular, Escape para borrar todo y Retroceso para eliminar el último dígito."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La calculadora de Alicia tiene memoria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Esta versión muestra la operación actual en pantalla. Para cálculos encadenados puedes ir acumulando operaciones antes de pulsar el igual."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

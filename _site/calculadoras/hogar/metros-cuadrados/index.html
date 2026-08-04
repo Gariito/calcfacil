@@ -226,6 +226,61 @@ function calcMC() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de metros cuadrados",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calculo los m² de una habitación rectangular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplica el ancho por el largo en metros. Por ejemplo, una habitación de 3,5m x 4m tiene 14 m²."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calculo los m² de una pared?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplica el ancho de la pared por su altura. Si la pared mide 4m de ancho y 2,5m de alto, tiene 10 m²."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular superficies irregulares?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para superficies irregulares, divídelas en rectángulos o triángulos, calcula el área de cada parte y súmalas."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

@@ -182,6 +182,61 @@ function calcEst() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de media, mediana y moda",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuándo es mejor usar la mediana que la media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuando hay valores extremos (outliers) que distorsionan el promedio. Por ejemplo, en salarios, la mediana refleja mejor el salario \"típico\" porque la media se dispara por los salarios muy altos."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puede haber más de una moda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Si dos o más valores aparecen con la misma frecuencia máxima, todos son modas. Se llama distribución bimodal o multimodal."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué es la desviación típica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mide cuánto se alejan los datos de la media. Una desviación típica baja significa que los datos están muy agrupados cerca de la media; alta significa que están muy dispersos."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

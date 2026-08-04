@@ -241,6 +241,79 @@ function calcDesc() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de descuentos",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calculo el precio con un 30% de descuento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplica el precio original por 0,70 (es decir, 1 - 0,30). Un artículo de 50€ con 30% de descuento cuesta 50 × 0,70 = 35€."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular el descuento inverso? (precio final → precio original)",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Si sabes el precio final y el porcentaje de descuento, el precio original es precio_final / (1 - descuento/100)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿El descuento se aplica antes o después del IVA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del comercio. En España los descuentos en tiendas físicas se suelen aplicar sobre el precio con IVA incluido."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar el descuento de un precio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para saber la cantidad que ahorras en euros, multiplica el precio original por el porcentaje de descuento y divídelo entre 100. Por ejemplo, en un producto de 80€ con un 20% de descuento (80 × 20) ÷ 100 = 16€ de ahorro. El precio final será 64€ (80 - 16)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar el porcentaje de un descuento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si conoces la cantidad rebajada en euros pero no el porcentaje, resta el precio final al precio original para saber el ahorro en euros, divídelo entre el precio original y multiplica por 100. La fórmula es; (Ahorro en € ÷ Precio original) × 100. Por ejemplo, si un producto baja de 50€ a 40€, ahorras 10€; la operación es (10 ÷ 50) × 100 = 20% de descuento."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

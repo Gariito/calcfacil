@@ -103,85 +103,6 @@
         <p class="calc-intro">Calcula tu nota media simple o ponderada a partir de tus calificaciones y créditos.</p>
         <div class="card">
           
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Calculadora de nota media ponderada",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        
-        {
-          "@type": "Question",
-          "name": "¿Cómo se calcula la nota media ponderada del expediente universitario?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Se multiplica la calificación obtenida en cada asignatura por su número de créditos ECTS. Luego se suman todos estos resultados y el total se divide entre la suma global de créditos superados."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Qué diferencia hay entre nota media simple y nota media ponderada?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "La media simple suma todas las notas y las divide entre el número total de asignaturas (trata a todas por igual). La media ponderada otorga más importancia a las asignaturas con más créditos ECTS o mayor porcentaje de carga lectiva."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Qué nota media se necesita para solicitar la beca del Ministerio (MEC)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Para becas de carácter general del Ministerio de Educación en estudios universitarios de Grado suele exigirse un mínimo de 5,00 para la cuantía básica. Sin embargo, para acceder a determinados complementos o másteres habilitantes los umbrales pueden subir a 6,00, 6,50 o más según la rama de conocimiento (Ingeniería, Ciencias, Salud, Ciencias Sociales o Arte)."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Se redondea o se trunca la nota del expediente universitario?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Según la normativa general de ordenación académica en España (Real Decreto 1125/2003), las medias del expediente se expresan con dos decimales. La mayoría de universidades truncan la nota a partir del segundo decimal o aplican el redondeo oficial en la plataforma del Ministerio."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Cómo influyen las asignaturas suspensas o convalidadas en la media?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Las asignaturas convalidadas o reconocidas no suelen computar para el cálculo numérico de la nota media del expediente. En cambio, las asignaturas suspensas pueden ponderar negativamente dependiendo del reglamento interno de la universidad hasta que sean aprobadas."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Cómo calcular la nota media de Bachillerato para la Selectividad (EBAU)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "La nota media de Bachillerato es la media aritmética simple de todas las asignaturas de 1º y 2º de Bachillerato (se suman todas las calificaciones y se dividen entre el número de materias). Esta nota representa el 60% de la nota de acceso a la universidad (Calificación de Acceso a la Universidad - CAU)."
-          }
-        }
-        
-      ]
-    }
-  ]
-}
-</script>
-
 <div id="nm-asignaturas">
   <div class="row-2 nm-fila">
     <div><label>Nota (0-10)</label><input type="number" class="nm-nota" value="7.5" placeholder="7.5" oninput="calcMedia()"></div>
@@ -270,6 +191,12 @@ function calcMedia() {
             
             <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
             
+            <li><a href="/calculadoras/dia-a-dia/dias-entre-fechas/">📅 Días entre fechas</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/tiempo/">⏱️ Calculadora de tiempo</a></li>
+            
           </ul>
         </div>
         
@@ -315,6 +242,88 @@ function calcMedia() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de nota media",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se calcula la nota media ponderada del expediente universitario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se multiplica la calificación obtenida en cada asignatura por su número de créditos ECTS. Luego se suman todos estos resultados y el total se divide entre la suma global de créditos superados."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué diferencia hay entre nota media simple y nota media ponderada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La media simple suma todas las notas y las divide entre el número total de asignaturas (trata a todas por igual). La media ponderada otorga más importancia a las asignaturas con más créditos ECTS o mayor porcentaje de carga lectiva."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué nota media se necesita para solicitar la beca del Ministerio (MEC)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para becas de carácter general del Ministerio de Educación en estudios universitarios de Grado suele exigirse un mínimo de 5,00 para la cuantía básica. Sin embargo, para acceder a determinados complementos o másteres habilitantes los umbrales pueden subir a 6,00, 6,50 o más según la rama de conocimiento (Ingeniería, Ciencias, Salud, Ciencias Sociales o Arte)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Se redondea o se trunca la nota del expediente universitario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Según la normativa general de ordenación académica en España (Real Decreto 1125/2003), las medias del expediente se expresan con dos decimales. La mayoría de universidades truncan la nota a partir del segundo decimal o aplican el redondeo oficial en la plataforma del Ministerio."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo influyen las asignaturas suspensas o convalidadas en la media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las asignaturas convalidadas o reconocidas no suelen computar para el cálculo numérico de la nota media del expediente. En cambio, las asignaturas suspensas pueden ponderar negativamente dependiendo del reglamento interno de la universidad hasta que sean aprobadas."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calcular la nota media de Bachillerato para la Selectividad (EBAU)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La nota media de Bachillerato es la media aritmética simple de todas las asignaturas de 1º y 2º de Bachillerato (se suman todas las calificaciones y se dividen entre el número de materias). Esta nota representa el 60% de la nota de acceso a la universidad (Calificación de Acceso a la Universidad - CAU)."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

@@ -232,6 +232,61 @@ function calcIMCN() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "IMC para niños y adolescentes",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Por qué el IMC infantil usa percentiles y no rangos fijos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque el IMC normal varía mucho con la edad en niños. Un IMC de 17 puede ser normal en un niño de 5 años pero bajo en uno de 15. Los percentiles permiten comparar al niño consigo mismo a lo largo del tiempo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué percentil se considera normal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre el percentil 3 y el 85 se considera peso normal. Por encima del percentil 85 es sobrepeso, y por encima del 97 es obesidad. Por debajo del percentil 3 es bajo peso."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿A partir de qué edad se puede calcular el IMC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las tablas de la OMS van desde los 2 años. En menores de 2 años se usan otras métricas como el peso para la longitud."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

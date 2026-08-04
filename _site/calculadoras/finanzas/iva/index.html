@@ -170,6 +170,61 @@
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de IVA",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué productos tienen IVA al 10%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alimentos preparados, transporte de viajeros, hostelería, flores y plantas, servicios de limpieza, viviendas de nueva construcción y entradas a espectáculos, entre otros."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué productos tienen IVA al 4%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pan, leche, huevos, frutas, verduras, cereales, quesos, libros, periódicos, medicamentos y sillas de ruedas, entre otros productos de primera necesidad."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo saco el precio sin IVA de un precio final?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide el precio final entre 1,21 (para IVA del 21%). Por ejemplo, 121 € entre 1,21 da 100 € de base imponible."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

@@ -215,6 +215,61 @@ function calcFrac() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de fracciones",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se suman fracciones con distinto denominador?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se busca el mínimo común múltiplo de los denominadores, se convierten ambas fracciones a ese denominador y se suman los numeradores. Por ejemplo, 1/3 + 1/4 = 4/12 + 3/12 = 7/12."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se divide una fracción entre otra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se multiplica la primera fracción por la inversa de la segunda. Por ejemplo, (2/3) ÷ (4/5) = (2/3) × (5/4) = 10/12 = 5/6."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué significa simplificar una fracción?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reducirla a su forma más simple dividiendo numerador y denominador por su máximo común divisor. Por ejemplo, 6/9 simplificada es 2/3 (dividiendo ambos por 3)."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

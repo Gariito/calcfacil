@@ -179,6 +179,61 @@ function calcVP() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de variación porcentual",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se calcula el porcentaje de aumento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se resta el valor inicial del final, se divide entre el valor inicial y se multiplica por 100. Por ejemplo, de 80 a 100 es (100-80)/80 × 100 = 25% de aumento."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Es lo mismo variación porcentual que porcentaje de diferencia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No exactamente. La variación porcentual siempre toma el valor inicial como referencia. El porcentaje de diferencia usa la media de ambos valores como referencia."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular variaciones negativas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Si el valor final es menor que el inicial, el resultado será negativo, indicando una disminución."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

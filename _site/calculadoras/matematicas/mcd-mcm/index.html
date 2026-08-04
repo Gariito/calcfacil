@@ -179,6 +179,61 @@ function calcMCD() {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de MCD y MCM",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Para qué se usa el MCD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para simplificar fracciones, resolver problemas de reparto equitativo y encontrar el mayor grupo posible al dividir cantidades. Por ejemplo, si tienes 12 manzanas y 8 naranjas, el MCD (4) te dice que puedes hacer 4 grupos iguales con 3 manzanas y 2 naranjas cada uno."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Para qué se usa el MCM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para sumar y restar fracciones con distinto denominador, y para encontrar cuándo se sincronizan eventos periódicos. Por ejemplo, si un semáforo cambia cada 3 minutos y otro cada 4, el MCM (12) te dice que coincidirán cada 12 minutos."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué método usa esta calculadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usa el algoritmo de Euclides para el MCD, que es el más eficiente. El MCM se calcula a partir del MCD con la fórmula MCM(a,b) = a×b / MCD(a,b)."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 

@@ -261,6 +261,88 @@ document.addEventListener('keydown', e => {
     </div>
   </div>
 </div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora básica online",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo usar el teclado con esta calculadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes escribir números y operaciones directamente con el teclado numérico. Pulsa Enter para obtener el resultado."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Guarda el historial de operaciones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Muestra la operación actual en la pantalla. Para operaciones largas, te recomendamos anotar los resultados intermedios."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Funciona en el móvil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, está completamente adaptada para pantallas táctiles."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar porcentaje en calculadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para obtener el porcentaje de una cifra, escribe la cantidad total, pulsa el botón de multiplicar (×), introduce el porcentaje deseado y presiona el botón %. Por ejemplo, para calcular el 15% de 200, escribe 200 × 15 % y la calculadora mostrará 30."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar el iva en calculadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para añadir el IVA (21% en España) a un precio base, escribe el importe, pulsa sumar (+), escribe 21 y presiona el botón %. El resultado sumará el impuesto automáticamente. Para calcular solo la cuota de IVA de un importe, multiplica el número por 0,21."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar el 20 por ciento en calculadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para calcular el 20% de cualquier número, escribe la cifra inicial, presiona multiplicar (×), teclea 20 y pulsa la tecla %. Si tu calculadora no tiene botón de porcentaje, simplemente multiplica la cifra inicial por 0,2."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
 </main>
 
 
