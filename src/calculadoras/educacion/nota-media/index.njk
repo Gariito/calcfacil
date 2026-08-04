@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de nota media ponderada
-description: Calcula tu nota media ponderada introduciendo tus asignaturas, notas y créditos o pesos.
-keywords: calculadora nota media, media ponderada, nota expediente, calcular media notas
+title: Calculadora de nota media ponderada y expediente — gratis 2026
+description: Calcula tu nota media ponderada con créditos ECTS o porcentajes para la universidad, becas MEC o Bachillerato. Rápido, preciso y gratis.
+keywords: calculadora nota media, media ponderada, nota expediente, calcular media notas, calcular nota media universidad, nota media beca mec, calcular creditos ects
 categoria: educacion
 categoriaLabel: Educación
 titulo: Calculadora de nota media
@@ -11,12 +11,19 @@ tituloCorto: la nota media
 descripcion: Calcula tu nota media simple o ponderada a partir de tus calificaciones y créditos.
 explicacion: La nota media ponderada tiene en cuenta el peso de cada asignatura (créditos ECTS, horas o porcentaje). Es la que se usa en expedientes universitarios y para solicitar becas o acceder a másteres. Si todas las asignaturas tienen el mismo peso, coincide con la media aritmética simple.
 faq:
-  - q: ¿Qué nota media se necesita para una beca del Ministerio?
-    a: Para becas de carácter general del Ministerio de Educación se requiere generalmente un mínimo de 5,0 en grado, aunque los umbrales varían según la rama de conocimiento y el tipo de beca.
-  - q: ¿Cómo se calcula la nota del expediente universitario?
-    a: Se multiplica la nota de cada asignatura por sus créditos ECTS, se suman todos esos productos y se divide entre el total de créditos superados.
-  - q: ¿Se redondea la nota media?
-    a: Depende de la institución. Muchas universidades truncan a dos decimales sin redondear. Para becas y acceso a másteres conviene consultar la normativa específica.
+  - q: ¿Cómo se calcula la nota media ponderada del expediente universitario?
+    a: Se multiplica la calificación obtenida en cada asignatura por su número de créditos ECTS. Luego se suman todos estos resultados y el total se divide entre la suma global de créditos superados.
+  - q: ¿Qué diferencia hay entre nota media simple y nota media ponderada?
+    a: La media simple suma todas las notas y las divide entre el número total de asignaturas (trata a todas por igual). La media ponderada otorga más importancia a las asignaturas con más créditos ECTS o mayor porcentaje de carga lectiva.
+  - q: ¿Qué nota media se necesita para solicitar la beca del Ministerio (MEC)?
+    a: Para becas de carácter general del Ministerio de Educación en estudios universitarios de Grado suele exigirse un mínimo de 5,00 para la cuantía básica. Sin embargo, para acceder a determinados complementos o másteres habilitantes los umbrales pueden subir a 6,00, 6,50 o más según la rama de conocimiento (Ingeniería, Ciencias, Salud, Ciencias Sociales o Arte).
+  - q: ¿Se redondea o se trunca la nota del expediente universitario?
+    a: Según la normativa general de ordenación académica en España (Real Decreto 1125/2003), las medias del expediente se expresan con dos decimales. La mayoría de universidades truncan la nota a partir del segundo decimal o aplican el redondeo oficial en la plataforma del Ministerio.
+  - q: ¿Cómo influyen las asignaturas suspensas o convalidadas en la media?
+    a: Las asignaturas convalidadas o reconocidas no suelen computar para el cálculo numérico de la nota media del expediente. En cambio, las asignaturas suspensas pueden ponderar negativamente dependiendo del reglamento interno de la universidad hasta que sean aprobadas.
+  - q: ¿Cómo calcular la nota media de Bachillerato para la Selectividad (EBAU)?
+    a: La nota media de Bachillerato es la media aritmética simple de todas las asignaturas de 1º y 2º de Bachillerato (se suman todas las calificaciones y se dividen entre el número de materias). Esta nota representa el 60% de la nota de acceso a la universidad (Calificación de Acceso a la Universidad - CAU).
+
 relacionadas:
   - slug: nota-selectividad
     categoria: educacion
@@ -28,18 +35,52 @@ relacionadas:
     icono: "%"
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de nota media ponderada",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.a | dump | safe }}
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
+
 <div id="nm-asignaturas">
   <div class="row-2 nm-fila">
-    <div><label>Nota (0-10)</label><input type="number" class="nm-nota" placeholder="7.5" oninput="calcMedia()"></div>
-    <div><label>Créditos / Peso</label><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+    <div><label>Nota (0-10)</label><input type="number" class="nm-nota" value="7.5" placeholder="7.5" oninput="calcMedia()"></div>
+    <div><label>Créditos / Peso</label><input type="number" class="nm-cred" value="6" placeholder="6" oninput="calcMedia()"></div>
   </div>
   <div class="row-2 nm-fila">
-    <div><input type="number" class="nm-nota" placeholder="8.0" oninput="calcMedia()"></div>
-    <div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-nota" value="8.0" placeholder="8.0" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-cred" value="6" placeholder="6" oninput="calcMedia()"></div>
   </div>
   <div class="row-2 nm-fila">
-    <div><input type="number" class="nm-nota" placeholder="6.5" oninput="calcMedia()"></div>
-    <div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-nota" value="6.5" placeholder="6.5" oninput="calcMedia()"></div>
+    <div><input type="number" class="nm-cred" value="6" placeholder="6" oninput="calcMedia()"></div>
   </div>
 </div>
 
@@ -48,23 +89,52 @@ relacionadas:
 <div class="result-box" id="nm-res">Introduce tus notas</div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  calcMedia();
+});
+
 function addFila() {
   const div = document.createElement('div');
   div.className = 'row-2 nm-fila';
   div.innerHTML = '<div><input type="number" class="nm-nota" placeholder="7.0" oninput="calcMedia()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"></div><div><input type="number" class="nm-cred" placeholder="6" oninput="calcMedia()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"></div>';
   document.getElementById('nm-asignaturas').appendChild(div);
+  calcMedia();
 }
+
 function calcMedia() {
   const notas = [...document.querySelectorAll('.nm-nota')].map(i => parseFloat(i.value));
   const creds = [...document.querySelectorAll('.nm-cred')].map(i => parseFloat(i.value));
   let sumProd = 0, sumCred = 0, count = 0;
   notas.forEach((n, i) => {
-    if (!isNaN(n) && !isNaN(creds[i])) { sumProd += n * creds[i]; sumCred += creds[i]; count++; }
-    else if (!isNaN(n)) { sumProd += n; sumCred += 1; count++; }
+    if (!isNaN(n) && !isNaN(creds[i])) { 
+      sumProd += n * creds[i]; 
+      sumCred += creds[i]; 
+      count++; 
+    }
+    else if (!isNaN(n)) { 
+      sumProd += n; 
+      sumCred += 1; 
+      count++; 
+    }
   });
-  if (count === 0) return;
+  
+  if (count === 0) {
+    document.getElementById('nm-res').innerHTML = "Introduce tus notas";
+    return;
+  }
+  
   const media = sumProd / sumCred;
   document.getElementById('nm-res').innerHTML =
-    `Media ponderada: ${media.toFixed(4)}<small>${count} asignaturas · ${sumCred} créditos totales</small>`;
+    `Media ponderada: ${media.toFixed(2)}
+    <small>${count} asignaturas · ${sumCred} créditos/pesos totales (Exacta: ${media.toFixed(4)})</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para calcular la nota media ponderada de tu expediente</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Saber calcular la nota media de tu expediente académico es indispensable a la hora de postular a becas del Ministerio de Educación (MEC), acceder a un máster universitario, solicitar estancias Erasmus o competir por una plaza pública. A diferencia de los años escolares donde todas las asignaturas valen lo mismo, en la formación superior el cálculo se ajusta según la carga de trabajo de cada materia.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">A continuación, detallamos las claves principales sobre cómo ponderar tus calificaciones y qué aspectos debes considerar para conocer tu nota final con precisión.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>El papel de los créditos ECTS:</strong> En el Espacio Europeo de Educación Superior (EEES), cada asignatura tiene asignado un número de créditos ECTS (habitualmente 6, 9 o 12 créditos). Una asignatura de 12 créditos influirá el doble en tu nota media que una de 6 créditos.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Cálculo con porcentajes o pesos:</strong> Si estás calculando la nota de una sola asignatura dividida en parciales, trabajos y exámenes, puedes usar esta misma herramienta introduciendo en la columna de créditos el porcentaje que representa cada evaluación (por ejemplo, Examen = 60%, Trabajos = 40%).</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Mantenimiento del expediente para becas:</strong> Para la concesión de becas y ayudas al estudio no solo importa aprobar, sino mantener una calificación promedio por encima de los límites fijados cada año. Revisar con antelación tu nota acumulada te permite saber si necesitas subir la nota en las convocatorias extraordinarias.</p>
+</div>
