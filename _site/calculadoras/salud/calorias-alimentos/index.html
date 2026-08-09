@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -180,10 +190,10 @@ function calcCalAlim() {
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
           
           
-          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para el recuento de calorías y densidad nutricional en la dieta</h2>
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para el recuento de calorías y densidad nutricional en la dieta</h2>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Llevar un registro preciso de las calorías que ingieres es una de las estrategias más efectivas para optimizar tu composición corporal, ya sea para reducir el porcentaje de grasa o para aumentar masa muscular. Sin embargo, no todas las calorías interactúan de la misma forma en nuestro organismo ni aportan el mismo nivel de saciedad.</p>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Entender el valor energético de las raciones diarias te ayuda a tomar decisiones más conscientes sin necesidad de recurrir a dietas estrictas o restrictivas. A continuación, repasamos conceptos clave sobre el pesaje y la densidad calórica de los alimentos.</p>
-          <h1 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Es mejor pesar los alimentos en crudo o cocinados?</h2>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Es mejor pesar los alimentos en crudo o cocinados?</h3>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">La regla general en nutrición es pesarlo todo siempre en crudo. La razón principal es que los alimentos sufren variaciones significativas en su peso durante el proceso de cocinado debido a la pérdida o absorción de agua, mientras que su aporte calórico real se mantiene casi idéntico.</p>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Cereales y legumbres (arroz, pasta, lentejas): Absorben agua durante la cocción y triplican su peso final. Por ejemplo, 100 g de pasta cruda (aprox. 350 kcal) se convierten en casi 250 g de pasta cocida manteniendo las mismas 350 kcal.</p>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Carnes y pescados: Ocurre el efecto contrario. Al cocinarse pierden agua y reducen su volumen, haciendo que 150 g de pechuga de pollo en crudo pasen a pesar unos 120 g una vez cocinados. del consumo energético en el mismo tiempo.</p>
@@ -365,6 +375,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

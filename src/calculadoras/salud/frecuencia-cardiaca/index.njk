@@ -17,6 +17,22 @@ faq:
     a: Para personas sanas es posible en intervalos cortos, pero no se recomienda mantenerlo. Para entrenamientos habituales quédate entre el 60% y el 85%.
   - q: ¿La fórmula 220 - edad es exacta?
     a: Es una estimación. La FCmáx real puede variar ±10-12 lpm entre personas de la misma edad. Para mayor precisión se recomienda una prueba de esfuerzo médica.
+  - q: ¿Como calcular frecuencia cardiaca maxima y minima?
+    a: La FCmáx se estima restando tu edad a 220 (o aplicando fórmulas avanzadas como Tanaka; $208 - (0.7 \times \text{edad})$). La frecuencia cardíaca mínima o de reposo se calcula contando las pulsaciones durante un minuto justo al despertar por la mañana, sin haber realizado esfuerzo previo ni tomado estimulantes.
+  - q: ¿Cual es la frecuencia cardiaca normal en un adulto?
+    a: En reposo, el rango normal para un adulto sano oscila entre 60 y 100 latidos por minuto (lpm). En personas con una excelente condición física o deportistas de resistencia, las pulsaciones en reposo pueden situarse entre 40 y 60 lpm debido a una mayor eficiencia del músculo cardíaco.
+  - q: ¿Que es la frecuencia cardiaca y como se mide?
+    a: Es el número de veces que el corazón se contrae o late por unidad de tiempo (un minuto). Se puede medir manualmente colocando los dedos índice y medio sobre la arteria radial (muñeca) o carótida (cuello) contando los latidos durante 60 segundos, o bien mediante pulsómetros de banda pectoral, relojes inteligentes y sensores ópticos.
+  - q: ¿Que significa bpm en frecuencia cardiaca?
+    a: Corresponde a las siglas en inglés de "Beats Per Minute" (latidos por minuto). En español también se utiliza de forma indistinta la abreviatura ppm (pulsaciones por minuto) o lpm (latidos por minuto).
+  - q: ¿Cual es la frecuencia cardiaca maxima en reposo?
+    a: Aunque conceptualmente el término se refiere a las pulsaciones en reposo, el límite superior normal en reposo es de 100 lpm. Superar de forma persistente los 100 lpm estando descansado se denomina taquicardia y requiere supervisión médica.
+  - q: ¿Qué es la fórmula de Karvonen y en qué se diferencia del cálculo tradicional?
+    a: La fórmula de Karvonen calcula las zonas de entrenamiento teniendo en cuenta la Frecuencia Cardíaca de Reserva (FCmáx - FCreposo). Es mucho más precisa que la fórmula tradicional porque personaliza las zonas según el nivel de condición física individual.
+  - q: ¿Por qué bajan las pulsaciones en reposo cuando mejora la condición física?
+    a: Con el entrenamiento aeróbico regular, el corazón se fortalece, aumenta el volumen de sangre que bombea en cada latido (volumen sistólico) y, por lo tanto, necesita latir menos veces por minuto para suministrar la misma cantidad de oxígeno al cuerpo.
+  - q: ¿Qué factores pueden alterar las pulsaciones de forma puntual?
+    a: El estrés, la falta de sueño, la deshidratación, el consumo de cafeína o alcohol, la temperatura ambiental elevada, la digestión de comidas copiosas y ciertos medicamentos pueden aumentar temporalmente la frecuencia cardíaca en reposo y durante el ejercicio.
 relacionadas:
   - slug: calorias
     categoria: salud
@@ -26,6 +42,18 @@ relacionadas:
     categoria: salud
     titulo: Calculadora de IMC
     icono: ⚖️
+  - slug: tension-arterial
+    categoria: salud
+    titulo: Calculadora de tension arterial
+    icono: 🩺
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Calculadora de peso ideal
+    icono: ⚖️
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Calculadora de grasa corporal
+    icono: 📏
 ---
 
 <label>Edad (años)</label>
@@ -35,3 +63,17 @@ relacionadas:
 <input type="number" id="fc-repo" placeholder="65" oninput="calcFC()">
 
 <div class="result-box" id="fc-res">Introduce tu edad</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Optimización del entrenamiento mediante las zonas de frecuencia cardíaca</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Controlar las <strong>pulsaciones por minuto</strong> durante la práctica deportiva es el método más fiable para cuantificar la intensidad del esfuerzo y adaptar las cargas de trabajo a los objetivos personales, ya sea la pérdida de grasa, la mejora de la capacidad cardiovascular o la preparación para competiciones de resistencia.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Las zonas de intensidad se dividen comúnmente en 5 rangos porcentuales basados en el máximo cardíaco. Trabajar en la zona correcta asegura que el estímulo fisiológico sea el adecuado sin caer en el sobreentrenamiento ni en lesiones por fatiga acumulada.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Explicación de las 5 zonas de entrenamiento</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Zona 1 (50% – 60% FCmáx) - Recuperación activa:</strong> Esfuerzo muy suave. Ideal para calentamientos, vuelta a la calma o días de regeneración. Favorece la circulación sanguínea y la eliminación de desechos metabólicos.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Zona 2 (60% – 70% FCmáx) - Resistencia fundamental / Quema de grasa:</strong> Ritmo cómodo en el que se puede mantener una conversación. El organismo utiliza predominantemente los lípidos como fuente de energía y se optimiza la capilarización muscular.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Zona 3 (70% – 80% FCmáx) - Zona Aeróbica:</strong> Ritmo moderado que exige mayor concentración respiratoria. Incrementa la eficiencia del sistema cardiorrespiratorio y la capacidad pulmonar a medio y largo plazo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Zona 4 (80% – 90% FCmáx) - Umbral Anaeróbico:</strong> Ritmo intenso donde comienza a acumularse lactato en los músculos. Mejora la capacidad de mantener esfuerzos elevados durante períodos sostenidos de tiempo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Zona 5 (90% – 100% FCmáx) - Esfuerzo Máximo / VO2 Máx:</strong> Esfuerzo extenuante utilizable únicamente en intervalos de muy corta duración (series o *sprints*). Estimula la velocidad y la potencia neuromuscular.</p>
+</div>

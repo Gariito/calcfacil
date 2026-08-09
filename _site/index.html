@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -106,12 +116,12 @@
 <!-- Acceso Rápido / Calculadoras Más Buscadas -->
 <div class="container popular-container">
   <div class="popular-tags">
-    <span class="popular-title">🔥Las calculadoras mas populares:</span>
-    <a href="/calculadoras/educacion/nota-media/" class="tag-btn">Nota Media</a>
-    <a href="/calculadoras/finanzas/sueldo-neto/" class="tag-btn">Sueldo Neto</a>
-    <a href="/calculadoras/salud/imc/" class="tag-btn">IMC</a>
-    <a href="/calculadoras/finanzas/hipoteca/" class="tag-btn">Hipoteca</a>
-    <a href="/calculadoras/dia-a-dia/porcentaje/" class="tag-btn">Porcentajes</a>
+    <span class="popular-title">🔥Los mas populares:</span>
+    <a href="/calculadoras/dia-a-dia/dias-entre-fechas/" class="tag-btn">📅 Días entre fechas</a>
+    <a href="/calculadoras/finanzas/sueldo-neto/" class="tag-btn">💼 Sueldo Neto</a>
+    <a href="/calculadoras/salud/calorias-alimentos/" class="tag-btn">🥗 Calorias de alimentos</a>
+    <a href="/calculadoras/finanzas/euros-pesetas/" class="tag-btn">💶 Euros a pesetas</a>
+    <a href="/calculadoras/matematicas/regla-de-tres/" class="tag-btn">⚖️ Regla de tres</a>
   </div>
 </div>
 
@@ -272,7 +282,7 @@
     <h2>✉️ Contacto y Sugerencias</h2>
     <p>¿Echas en falta alguna calculadora o quieres reportar un error?</p>
     <p class="contact-email">
-      Escríbenos a: <a href="mailto:calculadorasgratis@gmail.com">calculadorasgratis@gmail.com</a>
+      Escríbenos a: <a href="mailto:urangagames@gmail.com">urangagames@gmail.com</a>
     </p>
   </div>
 </div>
@@ -352,6 +362,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

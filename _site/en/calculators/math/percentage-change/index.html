@@ -59,11 +59,21 @@
 
     <a href="/en/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇬🇧 EN
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option ">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option lang-active">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Main navigation">
@@ -208,6 +218,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

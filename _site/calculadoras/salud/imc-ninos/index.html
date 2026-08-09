@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de IMC para niños y adolescentes — CalcFácil</title>
   <meta name="description" content="Calcula el IMC de niños y adolescentes entre 2 y 18 años e interpreta el resultado según percentiles de la OMS.">
-  <meta name="keywords" content="imc niños, calculadora imc infantil, imc adolescentes, peso saludable niños">
+  <meta name="keywords" content="imc niños, calculadora imc infantil, imc adolescentes, peso saludable niños, calculadora imc niños, imc pediatrico, imc calculadora adolescentes, calcular imc en niños, calculadora de imc para niños y adolescentes, imc niños tabla">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/imc-ninos/">
 
@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -183,6 +193,20 @@ function calcIMCN() {
     <small>Peso: ${peso} kg · Altura: ${altura} cm · Edad: ${edad} años</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Evaluación del crecimiento y desarrollo infantil mediante el IMC</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El <strong>Índice de Masa Corporal (IMC) infantil</strong> es una de las métricas más empleadas en medicina pediátrica para supervisar el desarrollo físico. A diferencia del patrón del adulto, la composición corporal en la infancia cambia mes a mes a medida que los huesos crecen, los órganos se desarrollan y varía la proporción de grasa y músculo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Por este motivo, la <strong>Organización Mundial de la Salud (OMS)</strong> y los Centros para el Control y la Prevención de Enfermedades (CDC) desarrollan patones de crecimiento diferenciados estrictamente por sexo y edad en meses.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Factores adicionales que evalúa el pediatra</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Genética y complexión familiar:</strong> La altura y la estructura ósea de los padres influyen de forma directa en el patrón de crecimiento del menor.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Nivel de actividad física diaria:</strong> Niños que practican deporte de alta intensidad pueden presentar un IMC elevado debido al desarrollo muscular y no a acumulación adiposa.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Perímetro abdominal:</strong> En algunos estudios pediátricos se combina el IMC con la medida de la cintura para evaluar la distribución de la grasa abdominal.</p>
+
+
+</div>
         </div>
       </div>
 
@@ -200,7 +224,13 @@ function calcIMCN() {
             
             <li><a href="/calculadoras/salud/imc/">⚖️ IMC para adultos</a></li>
             
+            <li><a href="/calculadoras/salud/agua/">💧 Agua diaria</a></li>
+            
             <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Peso ideal</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias-alimentos/">🥗 Calorias de alimentos</a></li>
+            
+            <li><a href="/calculadoras/salud/harris-benedict/">🧬 Formula Harris benedict</a></li>
             
           </ul>
         </div>
@@ -223,6 +253,36 @@ function calcIMCN() {
             <details>
               <summary>¿A partir de qué edad se puede calcular el IMC?</summary>
               <p>Las tablas de la OMS van desde los 2 años. En menores de 2 años se usan otras métricas como el peso para la longitud.</p>
+            </details>
+            
+            <details>
+              <summary>¿Que imc indica sobrepeso en un hombre?</summary>
+              <p>En hombres adultos (mayores de 18 años), un IMC igual o superior a 25.0 y hasta 29.9 indica sobrepeso. En niños y adolescentes varones, el sobrepeso no depende de un valor fijo, sino de estar situado entre el percentil 85 y el 97 para su edad exacta.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como sacar imc para niños de 5 a 11 años?</summary>
+              <p>Se calcula igual que en adultos dividiendo el peso en kilogramos entre la estatura en metros al cuadrado ($IMC = &#92;frac{&#92;text{peso}}{&#92;text{estatura}^2}$). La diferencia es que el número resultante debe cruzarse inmediatamente en la gráfica o tabla de crecimiento de la OMS correspondiente a los 5-11 años según su sexo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como calcular imc en niños ejemplos?</summary>
+              <p>Para un niño de 8 años que pesa 26 kg y mide 1,28 m; $IMC = &#92;frac{26}{1,28^2} = 15,86$. Al comparar $15.8$ en la tabla OMS para varones de 8 años, se sitúa cerca del percentil 50, lo que indica un peso completamente normal y saludable.</p>
+            </details>
+            
+            <details>
+              <summary>¿El IMC en niños diferencia entre masa muscular y grasa?</summary>
+              <p>No. Al igual que en adultos, el IMC no distingue entre masa muscular y grasa corporal. Niños o adolescentes muy activos o deportistas pueden tener un IMC elevado sin presentar exceso de grasa corporal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Con qué frecuencia se debe medir el IMC infantil?</summary>
+              <p>Lo recomendable es realizar la medición durante los controles pediátricos de rutina (generalmente una vez al año). Más que una cifra aislada, los pediatras evalúan la curva de tendencia del crecimiento a lo largo del tiempo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué hacer si el IMC de mi hijo sale fuera del rango normal?</summary>
+              <p>El resultado de la calculadora es una herramienta de cribado inicial, no un diagnóstico clínico. Si el valor indica bajo peso, sobrepeso u obesidad, se debe consultar con el pediatra para una evaluación integral de su estado de nutrición y desarrollo.</p>
             </details>
             
           
@@ -279,6 +339,60 @@ function calcIMCN() {
             "@type": "Answer",
             "text": "Las tablas de la OMS van desde los 2 años. En menores de 2 años se usan otras métricas como el peso para la longitud."
           }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Que imc indica sobrepeso en un hombre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En hombres adultos (mayores de 18 años), un IMC igual o superior a 25.0 y hasta 29.9 indica sobrepeso. En niños y adolescentes varones, el sobrepeso no depende de un valor fijo, sino de estar situado entre el percentil 85 y el 97 para su edad exacta."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como sacar imc para niños de 5 a 11 años?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se calcula igual que en adultos dividiendo el peso en kilogramos entre la estatura en metros al cuadrado ($IMC = \\frac{\\text{peso}}{\\text{estatura}^2}$). La diferencia es que el número resultante debe cruzarse inmediatamente en la gráfica o tabla de crecimiento de la OMS correspondiente a los 5-11 años según su sexo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como calcular imc en niños ejemplos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para un niño de 8 años que pesa 26 kg y mide 1,28 m; $IMC = \\frac{26}{1,28^2} = 15,86$. Al comparar $15.8$ en la tabla OMS para varones de 8 años, se sitúa cerca del percentil 50, lo que indica un peso completamente normal y saludable."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿El IMC en niños diferencia entre masa muscular y grasa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Al igual que en adultos, el IMC no distingue entre masa muscular y grasa corporal. Niños o adolescentes muy activos o deportistas pueden tener un IMC elevado sin presentar exceso de grasa corporal."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Con qué frecuencia se debe medir el IMC infantil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lo recomendable es realizar la medición durante los controles pediátricos de rutina (generalmente una vez al año). Más que una cifra aislada, los pediatras evalúan la curva de tendencia del crecimiento a lo largo del tiempo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué hacer si el IMC de mi hijo sale fuera del rango normal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El resultado de la calculadora es una herramienta de cribado inicial, no un diagnóstico clínico. Si el valor indica bajo peso, sobrepeso u obesidad, se debe consultar con el pediatra para una evaluación integral de su estado de nutrición y desarrollo."
+          }
         }
         
       ]
@@ -324,6 +438,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

@@ -9,15 +9,15 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de agua diaria recomendada — CalcFácil</title>
-  <meta name="description" content="Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.">
-  <meta name="keywords" content="cuanta agua beber, calculadora agua diaria, hidratacion, litros agua dia">
+  <title>Calculadora de Agua Diaria Gratis - Por Peso y Ejercicio — CalcFácil</title>
+  <meta name="description" content="Descubre cuántos litros de agua debes beber al día. Usa nuestra calculadora de agua online gratis basada en tu peso corporal y actividad física.">
+  <meta name="keywords" content="calculadora de agua gratis, cuanta agua beber al dia por peso, calcular hidratacion diaria, litros agua al dia calculadora, formula de agua por peso">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/agua/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de agua diaria recomendada — CalcFácil">
-  <meta property="og:description" content="Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.">
+  <meta property="og:title" content="Calculadora de Agua Diaria Gratis - Por Peso y Ejercicio — CalcFácil">
+  <meta property="og:description" content="Descubre cuántos litros de agua debes beber al día. Usa nuestra calculadora de agua online gratis basada en tu peso corporal y actividad física.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/agua/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -27,8 +27,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de agua diaria recomendada",
-    "description": "Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.",
+    "name": "Calculadora de Agua Diaria Gratis - Por Peso y Ejercicio",
+    "description": "Descubre cuántos litros de agua debes beber al día. Usa nuestra calculadora de agua online gratis basada en tu peso corporal y actividad física.",
     "url": "https://calculadorasgratis.net/calculadoras/salud/agua/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -92,15 +102,15 @@
       <span>›</span>
       <a href="/calculadoras/salud/">Salud</a>
       <span>›</span>
-      <span>Calculadora de agua diaria</span>
+      <span>Calculadora de agua diaria gratis</span>
     </nav>
 
     <div class="calc-layout">
 
       <!-- Calculadora principal -->
       <div class="calc-main">
-        <h1>💧 Calculadora de agua diaria</h1>
-        <p class="calc-intro">Calcula cuántos litros de agua debes beber al día según tu peso y actividad física.</p>
+        <h1>💧 Calculadora de agua diaria gratis</h1>
+        <p class="calc-intro">Calcula gratis cuántos litros de agua debes beber al día según tu peso y actividad física con nuestra herramienta online.</p>
         <div class="card">
           
 <label>Peso corporal (kg)</label>
@@ -110,6 +120,8 @@
 <input type="number" id="agua-ej" placeholder="30" oninput="calcAgua()">
 
 <div class="result-box" id="agua-res">Introduce tu peso</div>
+
+
         </div>
       </div>
 
@@ -117,7 +129,7 @@
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>¿Qué es el agua diaria recomendada?</h2>
-          <p>La cantidad de agua que necesita cada persona depende de su peso, actividad física, clima y dieta. La fórmula más usada es 35 ml por kilo de peso corporal como base, más una compensación por el agua perdida al sudar durante el ejercicio. Recuerda que también obtienes agua de los alimentos.</p>
+          <p>La cantidad de agua que necesita cada persona depende directamente de variables como el peso corporal, la intensidad de la actividad física, el clima y la dieta. Nuestra calculadora interactiva utiliza la fórmula científica de base (35 ml por kilo de peso) y le suma una compensación estimada por el líquido que pierdes al sudar durante el entrenamiento.</p>
         </div>
 
         
@@ -129,6 +141,12 @@
             
             <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
             
+            <li><a href="/calculadoras/salud/calorias-alimentos/">🥗 Calorias de los alimentos</a></li>
+            
+            <li><a href="/calculadoras/salud/harris-benedict/">🧬 Formula de Harris Benedict</a></li>
+            
+            <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Calcula tu peso ideal</a></li>
+            
           </ul>
         </div>
         
@@ -138,18 +156,28 @@
           
             
             <details>
-              <summary>¿Cuánta agua debo beber al día?</summary>
-              <p>La recomendación general es unos 2 litros al día, pero varía según el peso y el ejercicio. Una persona de 80 kg necesita alrededor de 2,8 L solo de base.</p>
+              <summary>¿Cuánta agua debo beber al día según mi peso?</summary>
+              <p>La regla general de salud establece que debes consumir aproximadamente 35 mililitros de agua por cada kilogramo de peso corporal. Por ejemplo, una persona de 70 kg requiere una base de unos 2.45 litros diarios, cantidad que aumenta si realiza actividad física.</p>
             </details>
             
             <details>
-              <summary>¿Cuenta el café o el té como agua?</summary>
-              <p>Sí, aunque el café tiene un leve efecto diurético. En general las infusiones y el té cuentan como hidratación.</p>
+              <summary>¿Cuenta el café, el té o los jugos como agua?</summary>
+              <p>Sí, todas las infusiones, caldos y frutas aportan a tu hidratación diaria. Aunque el café y el té negro tienen un ligero efecto diurético, siguen sumando líquidos al balance general del cuerpo.</p>
             </details>
             
             <details>
-              <summary>¿Puedo beber demasiada agua?</summary>
-              <p>En casos extremos sí (hiponatremia), pero es muy poco común. Para la mayoría de personas, beber más agua de la necesaria simplemente se elimina por la orina.</p>
+              <summary>¿Qué pasa si bebo demasiada agua al día?</summary>
+              <p>Beber agua en exceso de forma masiva en muy poco tiempo puede provocar hiponatremia (una peligrosa dilución de los niveles de sodio en sangre). Sin embargo, en personas sanas, el cuerpo suele eliminar el excedente de líquido de forma natural a través de la orina.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos vasos de agua equivalen a dos litros?</summary>
+              <p>Un vaso estándar tiene una capacidad aproximada de 250 ml. Por lo tanto, dos litros de agua equivalen exactamente a 8 vasos de agua al día.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo sé si estoy correctamente hidratado?</summary>
+              <p>El indicador más sencillo y confiable es el color de tu orina. Si es de un color amarillo claro o transparente, estás bien hidratado. Si tiene un tono amarillo oscuro o concentrado, necesitas beber más líquidos inmediatamente.</p>
             </details>
             
           
@@ -168,7 +196,7 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Calculadora de agua diaria",
+      "name": "Calculadora de agua diaria gratis",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
       "offers": {
@@ -183,28 +211,46 @@
         
         {
           "@type": "Question",
-          "name": "¿Cuánta agua debo beber al día?",
+          "name": "¿Cuánta agua debo beber al día según mi peso?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La recomendación general es unos 2 litros al día, pero varía según el peso y el ejercicio. Una persona de 80 kg necesita alrededor de 2,8 L solo de base."
+            "text": "La regla general de salud establece que debes consumir aproximadamente 35 mililitros de agua por cada kilogramo de peso corporal. Por ejemplo, una persona de 70 kg requiere una base de unos 2.45 litros diarios, cantidad que aumenta si realiza actividad física."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Cuenta el café o el té como agua?",
+          "name": "¿Cuenta el café, el té o los jugos como agua?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí, aunque el café tiene un leve efecto diurético. En general las infusiones y el té cuentan como hidratación."
+            "text": "Sí, todas las infusiones, caldos y frutas aportan a tu hidratación diaria. Aunque el café y el té negro tienen un ligero efecto diurético, siguen sumando líquidos al balance general del cuerpo."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Puedo beber demasiada agua?",
+          "name": "¿Qué pasa si bebo demasiada agua al día?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "En casos extremos sí (hiponatremia), pero es muy poco común. Para la mayoría de personas, beber más agua de la necesaria simplemente se elimina por la orina."
+            "text": "Beber agua en exceso de forma masiva en muy poco tiempo puede provocar hiponatremia (una peligrosa dilución de los niveles de sodio en sangre). Sin embargo, en personas sanas, el cuerpo suele eliminar el excedente de líquido de forma natural a través de la orina."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántos vasos de agua equivalen a dos litros?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un vaso estándar tiene una capacidad aproximada de 250 ml. Por lo tanto, dos litros de agua equivalen exactamente a 8 vasos de agua al día."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo sé si estoy correctamente hidratado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El indicador más sencillo y confiable es el color de tu orina. Si es de un color amarillo claro o transparente, estás bien hidratado. Si tiene un tono amarillo oscuro o concentrado, necesitas beber más líquidos inmediatamente."
           }
         }
         
@@ -251,6 +297,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

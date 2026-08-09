@@ -9,15 +9,15 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de tensión arterial — ¿es normal mi tensión? — CalcFácil</title>
-  <meta name="description" content="Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH.">
-  <meta name="keywords" content="tension arterial normal, calculadora tension, hipertension, presion arterial valores">
+  <title>Calculadora de tensión arterial y PAM — ¿es normal mi tensión? — CalcFácil</title>
+  <meta name="description" content="Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH. Calcula también tu presión arterial media (PAM).">
+  <meta name="keywords" content="tension arterial normal, calculadora tension, hipertension, presion arterial valores, presion arterial media, pam, que es la tension arterial, calculo de tension, calcular media de tension arterial, calcular tension arterial media formula, formula para calcular tension arterial, tensiometro, tension arterial en niños, puslo tension arterial, salud, toma de tension, tabla de tension arterial, en que brazo se toma la tension, cual es la tension arterial normal, calculadora de salud, tension arterial adulto, tension arterial hombre">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/tension-arterial/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de tensión arterial — ¿es normal mi tensión? — CalcFácil">
-  <meta property="og:description" content="Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH.">
+  <meta property="og:title" content="Calculadora de tensión arterial y PAM — ¿es normal mi tensión? — CalcFácil">
+  <meta property="og:description" content="Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH. Calcula también tu presión arterial media (PAM).">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/tension-arterial/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -27,8 +27,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de tensión arterial — ¿es normal mi tensión?",
-    "description": "Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH.",
+    "name": "Calculadora de tensión arterial y PAM — ¿es normal mi tensión?",
+    "description": "Comprueba si tu tensión arterial es normal, alta o baja según los valores de la OMS y la ESH. Calcula también tu presión arterial media (PAM).",
     "url": "https://calculadorasgratis.net/calculadoras/salud/tension-arterial/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -92,15 +102,15 @@
       <span>›</span>
       <a href="/calculadoras/salud/">Salud</a>
       <span>›</span>
-      <span>Calculadora de tensión arterial</span>
+      <span>Calculadora de tensión arterial y Presión Arterial Media (PAM)</span>
     </nav>
 
     <div class="calc-layout">
 
       <!-- Calculadora principal -->
       <div class="calc-main">
-        <h1>🩺 Calculadora de tensión arterial</h1>
-        <p class="calc-intro">Comprueba si tu tensión arterial es normal, alta o baja según los criterios médicos actuales.</p>
+        <h1>🩺 Calculadora de tensión arterial y Presión Arterial Media (PAM)</h1>
+        <p class="calc-intro">Comprueba si tu tensión arterial es normal, alta o baja y calcula tu Presión Arterial Media (PAM) según los criterios médicos actuales.</p>
         <div class="card">
           
 <div class="row-2">
@@ -115,6 +125,10 @@
 </div>
 
 <div class="result-box" id="ta-res">Introduce tus valores de tensión</div>
+
+<div class="result-box" id="pam-res" style="margin-top:0.75rem;background:var(--bg);font-size:0.95rem;color:var(--text-muted);">
+  Presión Arterial Media (PAM): --
+</div>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
   <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">Clasificación de la tensión arterial (ESH 2023)</h3>
@@ -137,8 +151,14 @@
 function calcTA() {
   const sis = parseFloat(document.getElementById('ta-sis').value);
   const dia = parseFloat(document.getElementById('ta-dia').value);
-  if (!sis || !dia) return;
+  
+  if (!sis || !dia) {
+    document.getElementById('ta-res').innerHTML = 'Introduce tus valores de tensión';
+    document.getElementById('pam-res').innerHTML = 'Presión Arterial Media (PAM): --';
+    return;
+  }
 
+  // 1. Clasificación Tensión Arterial
   let cat, color, consejo;
   if (sis < 90 || dia < 60) {
     cat = 'Tensión baja (hipotensión)'; color = '#3B82F6';
@@ -166,8 +186,39 @@ function calcTA() {
   document.getElementById('ta-res').innerHTML =
     `<span style="color:${color}">${sis}/${dia} mmHg — ${cat}</span>
     <small>${consejo}</small>`;
+
+  // 2. Cálculo de la Presión Arterial Media (PAM)
+  const pam = (dia + ((sis - dia) / 3)).toFixed(1);
+  let pamEstado, pamColor;
+
+  if (pam >= 70 && pam <= 105) {
+    pamEstado = 'Normal (70 - 105 mmHg)';
+    pamColor = '#22C55E';
+  } else if (pam < 70) {
+    pamEstado = 'Baja (< 70 mmHg)';
+    pamColor = '#3B82F6';
+  } else {
+    pamEstado = 'Elevada (> 105 mmHg)';
+    pamColor = '#EF4444';
+  }
+
+  document.getElementById('pam-res').innerHTML =
+    `Presión Arterial Media (PAM): <strong style="color:${pamColor}">${pam} mmHg</strong> <small style="display:inline;margin-left:0.5rem;">(${pamEstado})</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía clínica sobre el control de la presión arterial y hemodinámica</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La <strong>presión arterial</strong> representa la fuerza que ejerce la sangre contra las paredes internas de las arterias a medida que el corazón la bombea por todo el organismo. Mantener estos niveles dentro de límites saludables es fundamental para prevenir accidentes cerebrovasculares (ACV), infartos de miocardio y fallos renales.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra <strong>calculadora de tensión arterial y Presión Arterial Media (PAM)</strong> evalúa tus lecturas mediante la clasificación oficial actualizada de la Sociedad Europea de Hipertensión (ESH), permitiéndote categorizar tus mediciones en segundos.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Importancia de la Presión Arterial Media (PAM) en la evaluación de la salud</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">A diferencia de las cifras aisladas de sistólica o diastólica, la <strong>PAM</strong> determina la presión continua de perfusión a la que están sometidos los órganos vitales (como el cerebro, el corazón y los riñones):</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Mínimo funcional:</strong> Se requiere una PAM superior a 60-65 mmHg para garantizar que los tejidos corporales reciban suficiente riego de oxígeno y nutrientes.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Rango clínico óptimo:</strong> Valores entre 70 y 105 mmHg indican un equilibrio cardiovascular adecuado.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Riesgo por sobrecarga:</strong> Una PAM persistentemente superior a 105 mmHg incrementa la resistencia vascular sistémica y el sobreesfuerzo del ventrículo izquierdo.</p>
+</div>
         </div>
       </div>
 
@@ -175,7 +226,7 @@ function calcTA() {
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>¿Qué es la tensión arterial?</h2>
-          <p>La tensión arterial se expresa con dos números — la sistólica (el número mayor, cuando el corazón late) y la diastólica (el número menor, entre latidos). Los valores normales según la Sociedad Europea de Hipertensión (ESH) son inferiores a 130/85 mmHg. Esta calculadora clasifica tu tensión según las categorías médicas actuales.</p>
+          <p>La tensión arterial se expresa con dos números — la sistólica (el número mayor, cuando el corazón late) y la diastólica (el número menor, entre latidos). Los valores normales según la Sociedad Europea de Hipertensión (ESH) son inferiores a 130/85 mmHg. La Presión Arterial Media (PAM) representa la presión promedio de perfusión en las arterias durante un ciclo cardíaco completo (el rango normal oscila entre 70 y 105 mmHg).</p>
         </div>
 
         
@@ -186,6 +237,12 @@ function calcTA() {
             <li><a href="/calculadoras/salud/frecuencia-cardiaca/">❤️ Frecuencia cardíaca</a></li>
             
             <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias-alimentos/">🥗 Calorias de alimentos</a></li>
+            
+            <li><a href="/calculadoras/salud/grasa-corporal/">📏 Calcular la grasa corporal</a></li>
+            
+            <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Calculadora de peso ideal</a></li>
             
           </ul>
         </div>
@@ -201,6 +258,11 @@ function calcTA() {
             </details>
             
             <details>
+              <summary>¿Qué es la Presión Arterial Media (PAM)?</summary>
+              <p>La PAM es la presión promedio ejercida sobre las paredes arteriales en un ciclo cardíaco completo. Es un indicador clave utilizado por profesionales médicos para evaluar el riego sanguíneo a los órganos vitales (se consideran saludables valores entre 70 y 105 mmHg).</p>
+            </details>
+            
+            <details>
               <summary>¿Cuándo debo tomarme la tensión?</summary>
               <p>Lo ideal es tomarla en reposo, sentado, después de 5 minutos de descanso. Evita el café, el tabaco y el ejercicio en la hora previa.</p>
             </details>
@@ -208,6 +270,36 @@ function calcTA() {
             <details>
               <summary>¿Una sola medición alta es hipertensión?</summary>
               <p>No. Para diagnosticar hipertensión se necesitan al menos 3 mediciones elevadas en diferentes días. El estrés o el nerviosismo pueden elevar puntualmente la tensión.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como tomar tension arterial correctamente?</summary>
+              <p>Siéntate con la espalda apoyada, los pies planos en el suelo y reposa 5 minutos antes de medir. Coloca el manguito en el brazo desnudo a la altura del corazón, mantén el brazo apoyado sobre una mesa sin cruzar las piernas y no hables ni te muevas durante la lectura.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como bajar tension arterial?</summary>
+              <p>Para reducir la tensión a largo plazo, disminuye el consumo de sal, haz ejercicio aeróbico regular, mantén un peso saludable, limita el alcohol y gestiona el estrés. Si la tensión está peligrosamente alta (&gt;180/110 mmHg) con síntomas como dolor de cabeza o visión borrosa, acude inmediatamente a urgencias.</p>
+            </details>
+            
+            <details>
+              <summary>¿Como calcular la tensión arterial sin tensiometro?</summary>
+              <p>No es posible calcular los valores numéricos exactos de sistólica y diastólica sin un tensiómetro. Puedes medir el pulso arterial para conocer la frecuencia cardíaca, pero la presión de la sangre contra las paredes arteriales requiere obligatoriamente un dispositivo de medición (esfigmomanómetro).</p>
+            </details>
+            
+            <details>
+              <summary>¿Cual es la formula para calcular la tension arterial?</summary>
+              <p>La presión arterial media (PAM) se calcula con la fórmula; $&#92;text{PAM} = &#92;text{Diastólica} + &#92;frac{&#92;text{Sistólica} - &#92;text{Diastólica}}{3}$. Para medir la tensión general en sí no existe fórmula matemática; requiere el uso de un tensiómetro clínico o digital.</p>
+            </details>
+            
+            <details>
+              <summary>¿Que significa mmhg en tension arterial?</summary>
+              <p>Corresponde a milímetros de mercurio, la unidad de medida estándar de la presión hemodinámica. Proviene históricamente del uso de manómetros de columna de mercurio para medir la fuerza con la que bombea el corazón.</p>
+            </details>
+            
+            <details>
+              <summary>¿Que tension arterial se considera normal?</summary>
+              <p>Según las guías europeas (ESH), se considera tensión óptima cuando la sistólica es menor a 120 mmHg y la diastólica menor a 80 mmHg. La categoría &quot;normal&quot; abarca rangos de 120-129 mmHg de sistólica y/o 80-84 mmHg de diastólica.</p>
             </details>
             
           
@@ -226,7 +318,7 @@ function calcTA() {
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Calculadora de tensión arterial",
+      "name": "Calculadora de tensión arterial y Presión Arterial Media (PAM)",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
       "offers": {
@@ -250,6 +342,15 @@ function calcTA() {
         
         {
           "@type": "Question",
+          "name": "¿Qué es la Presión Arterial Media (PAM)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La PAM es la presión promedio ejercida sobre las paredes arteriales en un ciclo cardíaco completo. Es un indicador clave utilizado por profesionales médicos para evaluar el riego sanguíneo a los órganos vitales (se consideran saludables valores entre 70 y 105 mmHg)."
+          }
+        },
+        
+        {
+          "@type": "Question",
           "name": "¿Cuándo debo tomarme la tensión?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -263,6 +364,60 @@ function calcTA() {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Para diagnosticar hipertensión se necesitan al menos 3 mediciones elevadas en diferentes días. El estrés o el nerviosismo pueden elevar puntualmente la tensión."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como tomar tension arterial correctamente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Siéntate con la espalda apoyada, los pies planos en el suelo y reposa 5 minutos antes de medir. Coloca el manguito en el brazo desnudo a la altura del corazón, mantén el brazo apoyado sobre una mesa sin cruzar las piernas y no hables ni te muevas durante la lectura."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como bajar tension arterial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para reducir la tensión a largo plazo, disminuye el consumo de sal, haz ejercicio aeróbico regular, mantén un peso saludable, limita el alcohol y gestiona el estrés. Si la tensión está peligrosamente alta (>180/110 mmHg) con síntomas como dolor de cabeza o visión borrosa, acude inmediatamente a urgencias."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Como calcular la tensión arterial sin tensiometro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No es posible calcular los valores numéricos exactos de sistólica y diastólica sin un tensiómetro. Puedes medir el pulso arterial para conocer la frecuencia cardíaca, pero la presión de la sangre contra las paredes arteriales requiere obligatoriamente un dispositivo de medición (esfigmomanómetro)."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cual es la formula para calcular la tension arterial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La presión arterial media (PAM) se calcula con la fórmula; $\\text{PAM} = \\text{Diastólica} + \\frac{\\text{Sistólica} - \\text{Diastólica}}{3}$. Para medir la tensión general en sí no existe fórmula matemática; requiere el uso de un tensiómetro clínico o digital."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Que significa mmhg en tension arterial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Corresponde a milímetros de mercurio, la unidad de medida estándar de la presión hemodinámica. Proviene históricamente del uso de manómetros de columna de mercurio para medir la fuerza con la que bombea el corazón."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Que tension arterial se considera normal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Según las guías europeas (ESH), se considera tensión óptima cuando la sistólica es menor a 120 mmHg y la diastólica menor a 80 mmHg. La categoría \"normal\" abarca rangos de 120-129 mmHg de sistólica y/o 80-84 mmHg de diastólica."
           }
         }
         
@@ -309,6 +464,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

@@ -10,14 +10,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de combustible para viajes - Gasolina o diésel — CalcFácil</title>
-  <meta name="description" content="Calcula el coste de gasolina o diésel para cualquier trayecto según el consumo de tu coche.">
-  <meta name="keywords" content="calculadora combustible, coste gasolina viaje, consumo coche, precio gasolina trayecto, calculadora diesel gasolina, diesel o gasolina calculadora, consumo combustible, calculadora de consumo de gasolina, calculadora de consumo de gasolina por km, Como calcular gasolina por km">
+  <meta name="description" content="Calcula el precio de gasolina o diésel para tu viaje por km. Divide los gastos entre personas y calcula el consumo exacto. ¡Gratis e instantáneo!">
+  <meta name="keywords" content="calculadora gasolina, calculadora de consumo de gasolina, calcular gasolina viaje, coste gasolina por km, calculadora combustible viaje, calcular gasto gasolina compartir coche">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/viajes/combustible/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadora de combustible para viajes - Gasolina o diésel — CalcFácil">
-  <meta property="og:description" content="Calcula el coste de gasolina o diésel para cualquier trayecto según el consumo de tu coche.">
+  <meta property="og:description" content="Calcula el precio de gasolina o diésel para tu viaje por km. Divide los gastos entre personas y calcula el consumo exacto. ¡Gratis e instantáneo!">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/viajes/combustible/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -28,7 +28,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Calculadora de combustible para viajes - Gasolina o diésel",
-    "description": "Calcula el coste de gasolina o diésel para cualquier trayecto según el consumo de tu coche.",
+    "description": "Calcula el precio de gasolina o diésel para tu viaje por km. Divide los gastos entre personas y calcula el consumo exacto. ¡Gratis e instantáneo!",
     "url": "https://calculadorasgratis.net/calculadoras/viajes/combustible/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -59,11 +59,21 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma -->
-    <div style="display:flex;gap:0.25rem;margin-left:0.5rem;flex-shrink:0">
-      <a href="/" title="Español" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:1">🇪🇸</a>
-      <a href="/en/" title="English" style="font-size:1.1rem;padding:0.2rem 0.4rem;border-radius:6px;border:1px solid var(--border);text-decoration:none;line-height:1.4;opacity:0.4">🇬🇧</a>
-    </div>
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    🇪🇸 ES
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      🇪🇸 <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      🇬🇧 <span>English</span>
+    </a>
+  </div>
+</div>
 
     
     <nav class="main-nav" aria-label="Navegación principal">
@@ -90,62 +100,85 @@
     <nav class="breadcrumb" aria-label="Ruta">
       <a href="/">Inicio</a>
       <span>›</span>
-      <a href="/calculadoras/viajes/">Viajes</a>
+      <a href="/calculadoras/viajes/">Viaje</a>
       <span>›</span>
-      <span>Calculadora de combustible</span>
+      <span>Calculadora de gasolina y consumo</span>
     </nav>
 
     <div class="calc-layout">
 
       <!-- Calculadora principal -->
       <div class="calc-main">
-        <h1>⛽ Calculadora de combustible</h1>
-        <p class="calc-intro">Calcula cuánto gastarás en combustible para cualquier trayecto.</p>
+        <h1>⛽ Calculadora de gasolina y consumo</h1>
+        <p class="calc-intro">Calcula cuánto gastarás en gasolina o diésel para tu viaje y cómo dividir el coste entre pasajeros.</p>
         <div class="card">
           
-<label>Distancia del trayecto (km)</label>
-<input type="number" id="comb-km" placeholder="500" oninput="calcComb()">
+<div class="row-2">
+  <div>
+    <label>Distancia del trayecto (km)</label>
+    <input type="number" id="comb-km" value="300" placeholder="300" oninput="calcComb()">
+  </div>
+  <div>
+    <label>Consumo del coche (L/100km)</label>
+    <input type="number" id="comb-cons" value="6.5" placeholder="6.5" step="0.1" oninput="calcComb()">
+  </div>
+</div>
 
 <div class="row-2">
   <div>
-    <label>Consumo del coche (L/100km)</label>
-    <input type="number" id="comb-cons" placeholder="6.5" oninput="calcComb()">
+    <label>Precio del combustible (€/L)</label>
+    <input type="number" id="comb-precio" value="1.60" placeholder="1.60" step="0.01" oninput="calcComb()">
   </div>
   <div>
-    <label>Precio del combustible (€/L)</label>
-    <input type="number" id="comb-precio" placeholder="1.60" oninput="calcComb()">
+    <label>Número de personas (para dividir)</label>
+    <input type="number" id="comb-pax" value="1" placeholder="1" min="1" oninput="calcComb()">
   </div>
 </div>
 
 <div class="result-box" id="comb-res">Introduce los datos del trayecto</div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  calcComb();
+});
+
 function calcComb() {
-  const km = parseFloat(document.getElementById('comb-km').value);
-  const cons = parseFloat(document.getElementById('comb-cons').value);
-  const precio = parseFloat(document.getElementById('comb-precio').value);
-  if (!km || !cons || !precio) return;
+  const km = parseFloat(document.getElementById('comb-km').value) || 0;
+  const cons = parseFloat(document.getElementById('comb-cons').value) || 0;
+  const precio = parseFloat(document.getElementById('comb-precio').value) || 0;
+  const pax = parseInt(document.getElementById('comb-pax').value) || 1;
+
+  if (km <= 0 || cons <= 0 || precio <= 0) {
+    document.getElementById('comb-res').innerHTML = "Introduce los datos del trayecto";
+    return;
+  }
+
   const litros = (km * cons) / 100;
-  const coste = litros * precio;
+  const costeTotal = litros * precio;
+  const costePax = costeTotal / pax;
+  const costeKm = costeTotal / km;
+
+  let htmlPax = pax > 1 
+    ? `<br><strong style="color:var(--accent);font-size:1.1rem">${costePax.toFixed(2)} € / persona</strong> (${pax} pasajeros)` 
+    : '';
+
   document.getElementById('comb-res').innerHTML =
-    `${coste.toFixed(2)} €<small>Litros necesarios: ${litros.toFixed(1)} L · ${cons} L/100km durante ${km} km</small>`;
+    `${costeTotal.toFixed(2)} € total ${htmlPax}
+    <small>
+    Litros necesarios: ${litros.toFixed(1)} L · Coste por km: ${costeKm.toFixed(3)} €/km
+    </small>`;
 }
 </script>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          
-          
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía completa para calcular el gasto de combustible en trayectos y viajes</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Planificar el presupuesto de un viaje por carretera exige estimar con precisión el <strong>gasto de carburante</strong>. Factores como la distancia total, el tipo de combustible (gasolina 95/98, diésel, GLP) y las condiciones de la vía determinan el coste final que tendrás que asumir en la gasolinera.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra calculadora de consumo de gasolina online simplifica este cálculo al instante. Convierte de forma transparente la distancia y el rendimiento medio de tu vehículo en litros necesarios y coste en euros (€), facilitando el reparto de gastos en viajes compartidos o la planificación de presupuestos de vacaciones.</p>
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para calcular el gasto de gasolina en trayectos y viajes</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Planificar el presupuesto de un viaje por carretera exige estimar con precisión el <strong>gasto de carburante</strong>. Factores como la distancia total del recorrido, el tipo de combustible (gasolina 95/98, diésel, GLP) y el consumo medio del vehículo determinan el coste final que tendrás que asumir en la gasolinera.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestra <strong>calculadora de consumo de gasolina online</strong> simplifica este cálculo al instante. Convierte la distancia y el rendimiento del vehículo en litros necesarios y coste en euros (€), permitiéndote además <strong>dividir los gastos del viaje entre varios pasajeros</strong> para trayectos compartidos o vacaciones en grupo.</p>
 
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Variables clave que determinan el gasto de combustible</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El consumo real en carretera suele diferir de la cifra homologada de fábrica (ciclo WLTP). Para obtener una estimación precisa, debes considerar estos elementos:</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Estilo de conducción:</strong> La conducción agresiva con frenadas bruscas y aceleraciones fuertes incrementa el consumo hasta un 20%. Mantener una conducción eficiente a marchas largas ahorra carburante significativamente.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Aerodinámica y carga extra:</strong> Utilizar cofres de techo, portabicicletas o viajar con el vehículo al límite de su capacidad aumenta exponencialmente la resistencia contra el viento y la masa total a desplazar.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Perfil del trayecto:</strong> Los recorridos por carreteras de montaña o con acusados desniveles positivos exigen un esfuerzo mayor al motor que la conducción en llanura a velocidad constante.</p>
-
-
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Consejos para reducir el consumo de combustible en carretera</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Conducción eficiente:</strong> Mantener una velocidad constante y evitar aceleraciones bruscas puede reducir el gasto de gasolina hasta un 20% en trayectos largos.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Presión de los neumáticos:</strong> Circular con una presión inferior a la recomendada por el fabricante aumenta la resistencia a la rodadura y eleva el consumo de carburante entre un 3% y un 5%.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Control del peso y aerodinámica:</strong> Retirar bacas o portabicicletas sin usar y no sobrecargar el maletero ayuda a mantener una aerodinámica óptima en autopista.</p>
 </div>
         </div>
       </div>
@@ -153,8 +186,8 @@ function calcComb() {
       <!-- Sidebar -->
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
-          <h2>¿Qué es el combustible del viaje?</h2>
-          <p>El coste de combustible de un viaje depende de la distancia, el consumo medio del vehículo y el precio del combustible. Esta calculadora te da el coste total y el consumo en litros para que puedas planificar tu viaje con el presupuesto claro.</p>
+          <h2>¿Qué es el gasto de gasolina?</h2>
+          <p>El coste de combustible de un viaje depende de la distancia total, el consumo medio del vehículo (L/100km) y el precio del litro de gasolina o diésel. Esta calculadora te muestra el gasto total en euros, los litros necesarios y cuánto debe pagar cada pasajero.</p>
         </div>
 
         
@@ -181,38 +214,38 @@ function calcComb() {
           
             
             <details>
-              <summary>¿Cómo sé el consumo medio de mi coche?</summary>
-              <p>Está en la ficha técnica del vehículo o en el manual. También puedes calcularlo dividiendo los litros repostados entre los kilómetros recorridos y multiplicando por 100.</p>
+              <summary>¿Cómo se calcula cuánto cuesta la gasolina de un viaje?</summary>
+              <p>La fórmula es multiplicar la distancia recorrida (km) por el consumo medio del coche (L/100km) y dividir entre 100 para obtener los litros. Finalmente, multiplica esos litros por el precio del carburante por litro.</p>
             </details>
             
             <details>
-              <summary>¿Cuál es el precio actual de la gasolina en España?</summary>
-              <p>El precio varía cada día. Puedes consultarlo en la web de la CNMC o en apps como Gasolineras.es. Habitualmente ronda los 1,50-1,70 €/litro para gasolina 95.</p>
-            </details>
-            
-            <details>
-              <summary>¿Consume más en autopista o en ciudad?</summary>
-              <p>En ciudad se consume más por las paradas y arranques. En autopista a velocidad constante el consumo es más eficiente, aunque a más de 120 km/h aumenta por la resistencia del aire.</p>
-            </details>
-            
-            <details>
-              <summary>¿Cuanta gasolina se gasta pro kilometro?</summary>
-              <p>Depende del consumo de tu vehículo. En un coche medio que consume 6 litros a los 100 km, el gasto es de 0,06 litros por kilómetro. Si la gasolina cuesta 1,60 €/L, el coste asciende a unos 0,096 € (unos 10 céntimos) por cada kilómetro recorrido.</p>
-            </details>
-            
-            <details>
-              <summary>¿Como calcular cuanta gasolina necesito para un viaje?</summary>
-              <p>Multiplica la distancia total del viaje (en kilómetros) por el consumo medio de tu coche en L/100km y divide el resultado entre 100. La fórmula es; Litros = (Distancia × Consumo medio) / 100.</p>
-            </details>
-            
-            <details>
-              <summary>¿Como calcular gasolina por km?</summary>
+              <summary>¿Cómo calcular la gasolina por km?</summary>
               <p>Para obtener el consumo por kilómetro divide los litros consumidos a los 100 km entre 100 (por ejemplo, 6,5 L / 100 = 0,065 L/km). Para hallar el coste económico por kilómetro, multiplica esa cifra por el precio actual del litro de combustible.</p>
             </details>
             
             <details>
-              <summary>¿A qué velocidad es más eficiente un coche para gastar menos?</summary>
-              <p>En la mayoría de vehículos térmicos la velocidad más eficiente de crucero se sitúa entre los 80 km/h y 100 km/h en la marcha más larga posible, manteniendo bajas las revoluciones del motor.</p>
+              <summary>¿Cuánta gasolina se gasta por kilómetro?</summary>
+              <p>En un coche medio que consume 6 litros a los 100 km, el gasto es de 0,06 litros por kilómetro. Con la gasolina a 1,60 €/L, el coste asciende a unos 0,096 € (aprox. 10 céntimos) por cada kilómetro recorrido.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo calcular el gasto de gasolina para compartir coche?</summary>
+              <p>Divide el coste total del combustible entre el número total de ocupantes del vehículo. Nuestra calculadora incluye esta opción para saber exactamente cuánto debe abonar cada persona en viajes compartidos.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo sé el consumo medio de mi coche?</summary>
+              <p>Puedes consultarlo en el ordenador de a bordo del cuadro de instrumentos o en la ficha técnica del vehículo. También puedes calcularlo de forma manual dividiendo los litros repostados entre los kilómetros recorridos y multiplicando por 100.</p>
+            </details>
+            
+            <details>
+              <summary>¿A qué velocidad es más eficiente un coche para gastar menos gasolina?</summary>
+              <p>La velocidad de crucero más eficiente en la mayoría de vehículos se sitúa entre los 80 km/h y 100 km/h en la marcha más larga posible, manteniendo bajas las revoluciones del motor.</p>
+            </details>
+            
+            <details>
+              <summary>¿Consume más un coche en ciudad o en autopista?</summary>
+              <p>En ciudad el consumo aumenta considerablemente debido a los constantes frenados y arranques. En autopista, a velocidad constante, el consumo es mucho menor, aunque sobrepasar los 120 km/h incrementa el gasto por la resistencia del aire.</p>
             </details>
             
           
@@ -231,7 +264,7 @@ function calcComb() {
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Calculadora de combustible",
+      "name": "Calculadora de gasolina y consumo",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
       "offers": {
@@ -246,52 +279,16 @@ function calcComb() {
         
         {
           "@type": "Question",
-          "name": "¿Cómo sé el consumo medio de mi coche?",
+          "name": "¿Cómo se calcula cuánto cuesta la gasolina de un viaje?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Está en la ficha técnica del vehículo o en el manual. También puedes calcularlo dividiendo los litros repostados entre los kilómetros recorridos y multiplicando por 100."
+            "text": "La fórmula es multiplicar la distancia recorrida (km) por el consumo medio del coche (L/100km) y dividir entre 100 para obtener los litros. Finalmente, multiplica esos litros por el precio del carburante por litro."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Cuál es el precio actual de la gasolina en España?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El precio varía cada día. Puedes consultarlo en la web de la CNMC o en apps como Gasolineras.es. Habitualmente ronda los 1,50-1,70 €/litro para gasolina 95."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Consume más en autopista o en ciudad?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "En ciudad se consume más por las paradas y arranques. En autopista a velocidad constante el consumo es más eficiente, aunque a más de 120 km/h aumenta por la resistencia del aire."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Cuanta gasolina se gasta pro kilometro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Depende del consumo de tu vehículo. En un coche medio que consume 6 litros a los 100 km, el gasto es de 0,06 litros por kilómetro. Si la gasolina cuesta 1,60 €/L, el coste asciende a unos 0,096 € (unos 10 céntimos) por cada kilómetro recorrido."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Como calcular cuanta gasolina necesito para un viaje?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Multiplica la distancia total del viaje (en kilómetros) por el consumo medio de tu coche en L/100km y divide el resultado entre 100. La fórmula es; Litros = (Distancia × Consumo medio) / 100."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "¿Como calcular gasolina por km?",
+          "name": "¿Cómo calcular la gasolina por km?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Para obtener el consumo por kilómetro divide los litros consumidos a los 100 km entre 100 (por ejemplo, 6,5 L / 100 = 0,065 L/km). Para hallar el coste económico por kilómetro, multiplica esa cifra por el precio actual del litro de combustible."
@@ -300,10 +297,46 @@ function calcComb() {
         
         {
           "@type": "Question",
-          "name": "¿A qué velocidad es más eficiente un coche para gastar menos?",
+          "name": "¿Cuánta gasolina se gasta por kilómetro?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "En la mayoría de vehículos térmicos la velocidad más eficiente de crucero se sitúa entre los 80 km/h y 100 km/h en la marcha más larga posible, manteniendo bajas las revoluciones del motor."
+            "text": "En un coche medio que consume 6 litros a los 100 km, el gasto es de 0,06 litros por kilómetro. Con la gasolina a 1,60 €/L, el coste asciende a unos 0,096 € (aprox. 10 céntimos) por cada kilómetro recorrido."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calcular el gasto de gasolina para compartir coche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide el coste total del combustible entre el número total de ocupantes del vehículo. Nuestra calculadora incluye esta opción para saber exactamente cuánto debe abonar cada persona en viajes compartidos."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo sé el consumo medio de mi coche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puedes consultarlo en el ordenador de a bordo del cuadro de instrumentos o en la ficha técnica del vehículo. También puedes calcularlo de forma manual dividiendo los litros repostados entre los kilómetros recorridos y multiplicando por 100."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿A qué velocidad es más eficiente un coche para gastar menos gasolina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La velocidad de crucero más eficiente en la mayoría de vehículos se sitúa entre los 80 km/h y 100 km/h en la marcha más larga posible, manteniendo bajas las revoluciones del motor."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Consume más un coche en ciudad o en autopista?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En ciudad el consumo aumenta considerablemente debido a los constantes frenados y arranques. En autopista, a velocidad constante, el consumo es mucho menor, aunque sobrepasar los 120 km/h incrementa el gasto por la resistencia del aire."
           }
         }
         
@@ -350,6 +383,17 @@ function toggleDark() {
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   });
 })();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
 </script>
 
 </body>

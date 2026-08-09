@@ -1,22 +1,26 @@
 ---
 layout: calculadora.njk
-title: Calculadora de agua diaria recomendada
-description: Descubre cuántos litros de agua debes beber al día según tu peso y nivel de ejercicio.
-keywords: cuanta agua beber, calculadora agua diaria, hidratacion, litros agua dia
+title: Calculadora de Agua Diaria Gratis - Por Peso y Ejercicio
+description: Descubre cuántos litros de agua debes beber al día. Usa nuestra calculadora de agua online gratis basada en tu peso corporal y actividad física.
+keywords: calculadora de agua gratis, cuanta agua beber al dia por peso, calcular hidratacion diaria, litros agua al dia calculadora, formula de agua por peso
 categoria: salud
 categoriaLabel: Salud
-titulo: Calculadora de agua diaria
+titulo: Calculadora de agua diaria gratis
 icono: 💧
 tituloCorto: el agua diaria recomendada
-descripcion: Calcula cuántos litros de agua debes beber al día según tu peso y actividad física.
-explicacion: La cantidad de agua que necesita cada persona depende de su peso, actividad física, clima y dieta. La fórmula más usada es 35 ml por kilo de peso corporal como base, más una compensación por el agua perdida al sudar durante el ejercicio. Recuerda que también obtienes agua de los alimentos.
+descripcion: Calcula gratis cuántos litros de agua debes beber al día según tu peso y actividad física con nuestra herramienta online.
+explicacion: La cantidad de agua que necesita cada persona depende directamente de variables como el peso corporal, la intensidad de la actividad física, el clima y la dieta. Nuestra calculadora interactiva utiliza la fórmula científica de base (35 ml por kilo de peso) y le suma una compensación estimada por el líquido que pierdes al sudar durante el entrenamiento.
 faq:
-  - q: ¿Cuánta agua debo beber al día?
-    a: La recomendación general es unos 2 litros al día, pero varía según el peso y el ejercicio. Una persona de 80 kg necesita alrededor de 2,8 L solo de base.
-  - q: ¿Cuenta el café o el té como agua?
-    a: Sí, aunque el café tiene un leve efecto diurético. En general las infusiones y el té cuentan como hidratación.
-  - q: ¿Puedo beber demasiada agua?
-    a: En casos extremos sí (hiponatremia), pero es muy poco común. Para la mayoría de personas, beber más agua de la necesaria simplemente se elimina por la orina.
+  - q: ¿Cuánta agua debo beber al día según mi peso?
+    a: La regla general de salud establece que debes consumir aproximadamente 35 mililitros de agua por cada kilogramo de peso corporal. Por ejemplo, una persona de 70 kg requiere una base de unos 2.45 litros diarios, cantidad que aumenta si realiza actividad física.
+  - q: ¿Cuenta el café, el té o los jugos como agua?
+    a: Sí, todas las infusiones, caldos y frutas aportan a tu hidratación diaria. Aunque el café y el té negro tienen un ligero efecto diurético, siguen sumando líquidos al balance general del cuerpo.
+  - q: ¿Qué pasa si bebo demasiada agua al día?
+    a: Beber agua en exceso de forma masiva en muy poco tiempo puede provocar hiponatremia (una peligrosa dilución de los niveles de sodio en sangre). Sin embargo, en personas sanas, el cuerpo suele eliminar el excedente de líquido de forma natural a través de la orina.
+  - q: ¿Cuántos vasos de agua equivalen a dos litros?
+    a: Un vaso estándar tiene una capacidad aproximada de 250 ml. Por lo tanto, dos litros de agua equivalen exactamente a 8 vasos de agua al día.
+  - q: ¿Cómo sé si estoy correctamente hidratado?
+    a: El indicador más sencillo y confiable es el color de tu orina. Si es de un color amarillo claro o transparente, estás bien hidratado. Si tiene un tono amarillo oscuro o concentrado, necesitas beber más líquidos inmediatamente.
 relacionadas:
   - slug: calorias
     categoria: salud
@@ -25,6 +29,18 @@ relacionadas:
   - slug: imc
     categoria: salud
     titulo: Calculadora de IMC
+    icono: ⚖️
+  - slug: calorias-alimentos
+    categoria: salud
+    titulo: Calorias de los alimentos
+    icono: 🥗
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Formula de Harris Benedict
+    icono: 🧬
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Calcula tu peso ideal
     icono: ⚖️
 ---
 
@@ -35,3 +51,4 @@ relacionadas:
 <input type="number" id="agua-ej" placeholder="30" oninput="calcAgua()">
 
 <div class="result-box" id="agua-res">Introduce tu peso</div>
+
