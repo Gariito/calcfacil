@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Currency Converter — Free Online Exchange Rate Calculator
-description: Convert between major world currencies instantly. Free currency converter with approximate exchange rates.
-keywords: currency converter, exchange rate calculator, convert currency, usd to eur, gbp to usd, currency exchange calculator, foreign exchange calculator
+title: Discount Calculator — Calculate Sale Price and Savings Free Online
+description: Calculate the final price after any discount instantly. Find how much you save and what percentage off any item. Free discount calculator online.
+keywords: discount calculator, sale price calculator, percentage off calculator, how much is x percent off, calculate discount, savings calculator, price after discount, discount percentage calculator
 ---
 
 <div class="calc-page">
@@ -13,100 +13,140 @@ keywords: currency converter, exchange rate calculator, convert currency, usd to
       <span>›</span>
       <a href="/en/calculators/everyday/">Everyday</a>
       <span>›</span>
-      <span>Currency Converter</span>
+      <span>Discount Calculator</span>
     </nav>
 
     <div class="calc-layout">
       <div class="calc-main">
-        <h1>💱 Currency Converter</h1>
-        <p class="calc-intro">Convert between the world's major currencies instantly with approximate reference rates.</p>
+        <h1>🏷️ Discount Calculator</h1>
+        <p class="calc-intro">Calculate the final price after any discount and see exactly how much you save.</p>
 
         <div class="card">
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.82rem;color:var(--muted)">
-            ⚠️ Approximate reference rates based on EUR. For transactions use your bank's official rate.
-          </div>
+          <label>Original price</label>
+          <input type="number" id="desc-precio" placeholder="89.99" oninput="calcDesc()">
 
-          <div class="row-2">
-            <div>
-              <label>Amount</label>
-              <input type="number" id="cur-val" placeholder="100" oninput="calcCurrency()">
-            </div>
-            <div>
-              <label>From</label>
-              <select id="cur-from" onchange="calcCurrency()">
-                <option value="EUR">EUR — Euro</option>
-                <option value="USD">USD — US Dollar</option>
-                <option value="GBP">GBP — British Pound</option>
-                <option value="JPY">JPY — Japanese Yen</option>
-                <option value="CHF">CHF — Swiss Franc</option>
-                <option value="CAD">CAD — Canadian Dollar</option>
-                <option value="AUD">AUD — Australian Dollar</option>
-                <option value="CNY">CNY — Chinese Yuan</option>
-                <option value="MXN">MXN — Mexican Peso</option>
-                <option value="BRL">BRL — Brazilian Real</option>
-              </select>
-            </div>
-          </div>
-
-          <label>To</label>
-          <select id="cur-to" onchange="calcCurrency()">
-            <option value="USD">USD — US Dollar</option>
-            <option value="EUR">EUR — Euro</option>
-            <option value="GBP">GBP — British Pound</option>
-            <option value="JPY">JPY — Japanese Yen</option>
-            <option value="CHF">CHF — Swiss Franc</option>
-            <option value="CAD">CAD — Canadian Dollar</option>
-            <option value="AUD">AUD — Australian Dollar</option>
-            <option value="CNY">CNY — Chinese Yuan</option>
-            <option value="MXN">MXN — Mexican Peso</option>
-            <option value="BRL">BRL — Brazilian Real</option>
+          <label>Discount type</label>
+          <select id="desc-tipo" onchange="toggleDescType()">
+            <option value="pct">Percentage off (%)</option>
+            <option value="fixed">Fixed amount off</option>
           </select>
 
-          <div class="result-box" id="cur-res">Enter an amount</div>
+          <label id="desc-val-label">Discount (%)</label>
+          <input type="number" id="desc-val" placeholder="20" oninput="calcDesc()">
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+            <button onclick="setDesc(5)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">5%</button>
+            <button onclick="setDesc(10)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">10%</button>
+            <button onclick="setDesc(15)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">15%</button>
+            <button onclick="setDesc(20)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">20%</button>
+            <button onclick="setDesc(25)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">25%</button>
+            <button onclick="setDesc(30)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">30%</button>
+            <button onclick="setDesc(50)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">50%</button>
+            <button onclick="setDesc(70)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">70%</button>
+          </div>
+
+          <div class="result-box" id="desc-res">Enter the price and discount</div>
         </div>
 
-        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Reference exchange rates (base EUR)</h2>
-          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
-            <tr style="background:var(--bg)">
-              <th style="padding:0.5rem;text-align:left;border-bottom:1px solid var(--border)">Currency</th>
-              <th style="padding:0.5rem;text-align:right;border-bottom:1px solid var(--border)">Rate per EUR</th>
-            </tr>
-            <tr><td style="padding:0.4rem 0.5rem">🇺🇸 USD — US Dollar</td><td style="text-align:right">1.08</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇬🇧 GBP — British Pound</td><td style="text-align:right">0.86</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem">🇯🇵 JPY — Japanese Yen</td><td style="text-align:right">163</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇨🇭 CHF — Swiss Franc</td><td style="text-align:right">0.97</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem">🇨🇦 CAD — Canadian Dollar</td><td style="text-align:right">1.47</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.5rem">🇦🇺 AUD — Australian Dollar</td><td style="text-align:right">1.63</td></tr>
-          </table>
+        <!-- Desglose -->
+        <div id="desc-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Original price</div>
+              <div style="font-size:1.3rem;font-weight:700;color:var(--muted);text-decoration:line-through" id="desc-original-val">—</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">You save</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#22C55E" id="desc-ahorro-val">—</div>
+            </div>
+            <div style="background:var(--accent-light);border:1px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Final price</div>
+              <div style="font-size:1.3rem;font-weight:700;color:var(--accent)" id="desc-final-val">—</div>
+            </div>
+          </div>
         </div>
+
+        <!-- Texto SEO -->
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate a discount</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Calculating a percentage discount is straightforward once you know the formula. To find the sale price after a percentage discount, multiply the original price by (1 − discount/100). For example, to calculate 20% off £89.99:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:1rem">
+            <li>Savings = £89.99 × 0.20 = <strong>£18.00</strong></li>
+            <li>Final price = £89.99 − £18.00 = <strong>£71.99</strong></li>
+            <li>Or directly: £89.99 × 0.80 = <strong>£71.99</strong></li>
+          </ul>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Quick discount reference table</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Here are the most common discount percentages and their multipliers — useful for mental maths when shopping:</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse;margin-bottom:1rem">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Discount</th>
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Multiplier</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">£100 becomes</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">5% off</td><td style="text-align:center">× 0.95</td><td style="text-align:right">£95.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">10% off</td><td style="text-align:center">× 0.90</td><td style="text-align:right">£90.00</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">15% off</td><td style="text-align:center">× 0.85</td><td style="text-align:right">£85.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem"><strong>20% off</strong></td><td style="text-align:center"><strong>× 0.80</strong></td><td style="text-align:right"><strong>£80.00</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">25% off</td><td style="text-align:center">× 0.75</td><td style="text-align:right">£75.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">30% off</td><td style="text-align:center">× 0.70</td><td style="text-align:right">£70.00</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">40% off</td><td style="text-align:center">× 0.60</td><td style="text-align:right">£60.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem"><strong>50% off</strong></td><td style="text-align:center"><strong>× 0.50</strong></td><td style="text-align:right"><strong>£50.00</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">70% off</td><td style="text-align:center">× 0.30</td><td style="text-align:right">£30.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">75% off</td><td style="text-align:center">× 0.25</td><td style="text-align:right">£25.00</td></tr>
+          </table>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">How to find the original price before a discount</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">If you know the sale price and the discount percentage but need to find the original price, divide the sale price by (1 − discount/100). For example, if an item costs £80 after a 20% discount, the original price was £80 ÷ 0.80 = <strong>£100</strong>.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Tips for shopping sales and avoiding discount traps</h2>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>Check the original price:</strong> Some retailers inflate prices before a sale. Check price history tools to verify the original price was genuine.</li>
+            <li><strong>Compare per unit:</strong> A larger pack at a lower percentage discount may be cheaper per unit than a smaller pack with a bigger discount.</li>
+            <li><strong>Stack discounts carefully:</strong> If you apply a 20% discount code on top of a 30% sale, you don't get 50% off. You get 30% off, then 20% off the reduced price — which equals 44% total.</li>
+            <li><strong>VAT and tax:</strong> In the UK and EU, displayed prices include VAT. In the USA, sales tax is added at checkout — always check whether the discount applies before or after tax.</li>
+          </ul>
+        </div>
+
       </div>
 
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
-          <h2>What is a currency converter?</h2>
-          <p>A currency converter calculates the equivalent value of an amount in one currency expressed in another currency, using an exchange rate. Exchange rates fluctuate constantly based on financial markets.</p>
+          <h2>What is a discount calculator?</h2>
+          <p>A discount calculator instantly shows you the final sale price after a percentage or fixed amount discount, and calculates exactly how much you save. It works for any discount — from a small 5% loyalty reward to a large 70% clearance sale.</p>
         </div>
+
         <div class="card sidebar-card">
           <h3>Frequently asked questions</h3>
           <details>
-            <summary>Are these exchange rates live?</summary>
-            <p>No, these are approximate reference rates. For live rates and transactions, always check your bank or a source like the European Central Bank (ECB).</p>
+            <summary>How do I calculate 20% off a price?</summary>
+            <p>Multiply the price by 0.80 (1 − 0.20). For example, 20% off £50 = £50 × 0.80 = £40. You save £10. Or use the calculator above — enter £50 and select 20%.</p>
           </details>
           <details>
-            <summary>Why does my bank give me a worse rate?</summary>
-            <p>Banks and exchange services apply a margin or commission on top of the mid-market rate. This is how they make money on currency exchange.</p>
+            <summary>How do I calculate 30% off?</summary>
+            <p>Multiply the price by 0.70. For example, 30% off £120 = £120 × 0.70 = £84. You save £36.</p>
           </details>
           <details>
-            <summary>What is the mid-market rate?</summary>
-            <p>The mid-market rate (also called interbank rate) is the midpoint between buy and sell prices. It is the fairest rate but typically not available to retail customers.</p>
+            <summary>How do I find the original price from a sale price?</summary>
+            <p>Divide the sale price by (1 − discount/100). If an item is £72 after a 10% discount, the original price was £72 ÷ 0.90 = £80.</p>
+          </details>
+          <details>
+            <summary>What is the difference between percentage off and fixed discount?</summary>
+            <p>A percentage discount (e.g. 20% off) scales with the price — the higher the original price, the more you save. A fixed discount (e.g. £10 off) gives the same saving regardless of the original price. Use the toggle above to switch between both types.</p>
+          </details>
+          <details>
+            <summary>If I apply two discounts, do they stack?</summary>
+            <p>No, discounts applied sequentially do not simply add up. A 20% discount followed by a 10% discount gives 28% total off — not 30%. The second discount applies to the already-reduced price.</p>
           </details>
         </div>
+
         <div class="card sidebar-card">
           <h3>Related calculators</h3>
           <ul class="related-list">
-            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
             <li><a href="/en/calculators/finance/vat/">% VAT Calculator</a></li>
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+            <li><a href="/en/calculators/everyday/split-bill/">🍽️ Bill Splitter</a></li>
           </ul>
         </div>
       </aside>
@@ -115,14 +155,57 @@ keywords: currency converter, exchange rate calculator, convert currency, usd to
 </div>
 
 <script>
-const FX = { EUR:1, USD:1.08, GBP:0.86, JPY:163, CHF:0.97, CAD:1.47, AUD:1.63, CNY:7.8, MXN:18.5, BRL:5.4 };
-function calcCurrency() {
-  const v = parseFloat(document.getElementById('cur-val').value);
-  const f = document.getElementById('cur-from').value;
-  const t = document.getElementById('cur-to').value;
-  if (isNaN(v)) return;
-  const res = v / FX[f] * FX[t];
-  document.getElementById('cur-res').innerHTML =
-    `${res.toFixed(2)} ${t}<small>1 ${f} ≈ ${(FX[t]/FX[f]).toFixed(4)} ${t} (approx.)</small>`;
+function setDesc(v) {
+  document.getElementById('desc-tipo').value = 'pct';
+  document.getElementById('desc-val-label').textContent = 'Discount (%)';
+  document.getElementById('desc-val').value = v;
+  calcDesc();
+}
+
+function toggleDescType() {
+  const tipo = document.getElementById('desc-tipo').value;
+  document.getElementById('desc-val-label').textContent =
+    tipo === 'pct' ? 'Discount (%)' : 'Fixed discount amount';
+  calcDesc();
+}
+
+function calcDesc() {
+  const precio = parseFloat(document.getElementById('desc-precio').value);
+  const tipo   = document.getElementById('desc-tipo').value;
+  const val    = parseFloat(document.getElementById('desc-val').value);
+
+  if (isNaN(precio) || precio <= 0 || isNaN(val)) {
+    document.getElementById('desc-res').textContent = 'Enter the price and discount';
+    document.getElementById('desc-desglose').style.display = 'none';
+    return;
+  }
+
+  let ahorro, final, pct;
+  if (tipo === 'pct') {
+    ahorro = precio * val / 100;
+    final  = precio - ahorro;
+    pct    = val;
+  } else {
+    ahorro = val;
+    final  = precio - val;
+    pct    = (val / precio * 100).toFixed(1);
+  }
+
+  if (final < 0) {
+    document.getElementById('desc-res').textContent = 'Discount cannot exceed the original price';
+    document.getElementById('desc-desglose').style.display = 'none';
+    return;
+  }
+
+  const fmt = n => n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  document.getElementById('desc-res').innerHTML =
+    `Final price: ${fmt(final)}
+    <small>You save ${fmt(ahorro)} (${pct}% off) · Original: ${fmt(precio)}</small>`;
+
+  document.getElementById('desc-original-val').textContent = fmt(precio);
+  document.getElementById('desc-ahorro-val').textContent   = '−' + fmt(ahorro);
+  document.getElementById('desc-final-val').textContent    = fmt(final);
+  document.getElementById('desc-desglose').style.display   = 'grid';
 }
 </script>

@@ -9,14 +9,14 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de colesterol — ¿son normales tus valores? — CalcFácil</title>
+  <title>Calculadora de colesterol total online y gratis — CalcFácil</title>
   <meta name="description" content="Comprueba si tus niveles de colesterol total, LDL, HDL y triglicéridos son normales según los criterios médicos.">
-  <meta name="keywords" content="colesterol normal, calculadora colesterol, ldl hdl valores, trigliceridos normales">
+  <meta name="keywords" content="colesterol normal, calculadora colesterol, ldl hdl valores, trigliceridos normales, calculadora colesterol total, calculo colesterol total, me gusta estar bien">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/colesterol/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de colesterol — ¿son normales tus valores? — CalcFácil">
+  <meta property="og:title" content="Calculadora de colesterol total online y gratis — CalcFácil">
   <meta property="og:description" content="Comprueba si tus niveles de colesterol total, LDL, HDL y triglicéridos son normales según los criterios médicos.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/colesterol/">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de colesterol — ¿son normales tus valores?",
+    "name": "Calculadora de colesterol total online y gratis",
     "description": "Comprueba si tus niveles de colesterol total, LDL, HDL y triglicéridos son normales según los criterios médicos.",
     "url": "https://calculadorasgratis.net/calculadoras/salud/colesterol/",
     "applicationCategory": "UtilitiesApplication",
@@ -59,6 +59,7 @@
 
 
 
+
 <header class="site-header">
   <div class="container header-inner">
 
@@ -67,17 +68,22 @@
     <!-- Selector de idioma desplegable -->
 <div class="lang-selector" style="position:relative;flex-shrink:0">
   <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+  
     🇪🇸 ES
-    <span style="font-size:0.6rem;margin-left:2px">▼</span>
-  </button>
+  
+  <span style="font-size:0.6rem;margin-left:2px">▼</span>
+</button>
   <div class="lang-dropdown" id="lang-dropdown">
-    <a href="/" class="lang-option lang-active">
-      🇪🇸 <span>Español</span>
-    </a>
-    <a href="/en/" class="lang-option ">
-      🇬🇧 <span>English</span>
-    </a>
-  </div>
+  <a href="/" class="lang-option lang-active">
+    🇪🇸 <span>Español</span>
+  </a>
+  <a href="/en/" class="lang-option ">
+    🇬🇧 <span>English</span>
+  </a>
+  <a href="/eu/" class="lang-option ">
+    🇪🇭 <span>Euskera</span>
+  </a>
+</div>
 </div>
 
     
@@ -177,6 +183,18 @@ function calcCol() {
   document.getElementById('col-res').innerHTML = lines.join('<br>');
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Interpretación del perfil lipídico más allá de los números</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Tener el colesterol alto no genera dolor ni da avisos claros en el día a día. Por eso se le presta tanta atención en las revisiones rutinarias. El colesterol es una sustancia cérea que el hígado fabrica de forma natural y que resulta imprescindible para producir hormonas, vitamina D y recubrir las membranas celulares. Sin embargo, cuando circula en exceso por el torrente sanguíneo, el sobrante se acumula progresivamente en las paredes de los vasos.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">A la hora de interpretar una analítica, no basta con mirar una sola cifra aislada. Los médicos valoran el equilibrio global entre los distintos componentes del perfil lipídico.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Los tres marcadores clave y los índices de riesgo</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Colesterol LDL (lipoproteínas de baja densidad):</strong> Es el encargado de repartir el colesterol desde el hígado hacia el resto del cuerpo. Si hay demasiada cantidad, se oxida y se adhiere al endotelio arterial, dando lugar a la placa de ateroma.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Colesterol HDL (lipoproteínas de alta densidad):</strong> Realiza la función inversa. Recoge el exceso de grasa depositado en los tejidos y los vasos y lo transporta de vuelta al hígado para su descomposición. Por eso, tener un HDL elevado es un factor de protección.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Relación Colesterol Total / HDL (Índice de Castelli):</strong> Un indicador muy utilizado en clínica. Lo ideal es que este cociente sea inferior a 4,5. Cuanto más bajo sea el resultado, menor será la proporción de grasas circulantes con potencial patológico.</p>
+</div>
         </div>
       </div>
 
@@ -195,6 +213,12 @@ function calcCol() {
             <li><a href="/calculadoras/salud/tension-arterial/">🩺 Tensión arterial</a></li>
             
             <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
+            
+            <li><a href="/calculadoras/salud/glucosa/">🩸 Calculadora de nivel de glucosa</a></li>
+            
+            <li><a href="/calculadoras/salud/frecuencia-cardiaca/">❤️ Frecuencia cardiaca</a></li>
+            
+            <li><a href="/calculadoras/salud/grasa-corporal/">📏 Calculadora de grasa corporal</a></li>
             
           </ul>
         </div>
@@ -215,8 +239,23 @@ function calcCol() {
             </details>
             
             <details>
-              <summary>¿Cómo puedo bajar el colesterol de forma natural?</summary>
+              <summary>¿Cómo bajar el colesterol de forma natural y rapida?</summary>
               <p>Con dieta mediterránea (menos grasas saturadas y trans, más fibra), ejercicio aeróbico regular, no fumar y mantener un peso saludable. Si no es suficiente, el médico puede recomendar medicación.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se calcula el colesterol total?</summary>
+              <p>En una analítica convencional suele medirse de forma directa, pero también responde a la fórmula; Colesterol Total = HDL + LDL + (Triglicéridos / 5). Esta relación (fórmula de Friedewald) permite estimar el total o despejar el colesterol LDL cuando se conocen los demás datos, siempre que los triglicéridos no superen los 400 mg/dL.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se llama el colesterol alto?</summary>
+              <p>En términos médicos se le conoce como hipercolesterolemia. Si además se tienen elevados los triglicéridos o alterado el colesterol HDL, se utiliza el término general dislipidemia o hiperlipidemia.</p>
+            </details>
+            
+            <details>
+              <summary>¿Que comer para bajar el colesterol?</summary>
+              <p>Da prioridad a grasas saludables (aceite de oliva virgen extra, aguacate, frutos secos al natural) y fibra soluble (avena, legumbres, manzanas, semillas de chía). Es fundamental reducir al mínimo el consumo de embutidos, bollería industrial, precocinados y cortes de carne muy grasos.</p>
             </details>
             
           
@@ -268,10 +307,37 @@ function calcCol() {
         
         {
           "@type": "Question",
-          "name": "¿Cómo puedo bajar el colesterol de forma natural?",
+          "name": "¿Cómo bajar el colesterol de forma natural y rapida?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Con dieta mediterránea (menos grasas saturadas y trans, más fibra), ejercicio aeróbico regular, no fumar y mantener un peso saludable. Si no es suficiente, el médico puede recomendar medicación."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se calcula el colesterol total?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En una analítica convencional suele medirse de forma directa, pero también responde a la fórmula; Colesterol Total = HDL + LDL + (Triglicéridos / 5). Esta relación (fórmula de Friedewald) permite estimar el total o despejar el colesterol LDL cuando se conocen los demás datos, siempre que los triglicéridos no superen los 400 mg/dL."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se llama el colesterol alto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En términos médicos se le conoce como hipercolesterolemia. Si además se tienen elevados los triglicéridos o alterado el colesterol HDL, se utiliza el término general dislipidemia o hiperlipidemia."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Que comer para bajar el colesterol?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da prioridad a grasas saludables (aceite de oliva virgen extra, aguacate, frutos secos al natural) y fibra soluble (avena, legumbres, manzanas, semillas de chía). Es fundamental reducir al mínimo el consumo de embutidos, bollería industrial, precocinados y cortes de carne muy grasos."
           }
         }
         

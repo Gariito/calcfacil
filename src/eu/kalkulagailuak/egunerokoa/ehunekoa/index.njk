@@ -1,0 +1,121 @@
+---
+layout: base.njk
+title: Ehuneko kalkulagailua doako euskaraz
+description: Kalkulatu ehunekoak berehalakoan. X zenbakiaren Y% kalkulatu, eta bi balioen arteko aldaketa ehunekoa. Doako ehuneko kalkulagailua euskaraz.
+keywords: ehuneko kalkulagailua, ehunekoa kalkulatu, portzentaia kalkulagailua euskaraz, ehuneko kalkulagailua euskaraz, porcentaje calculadora euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <span>›</span>
+      <span>Ehuneko kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>% Ehuneko kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu edozein ehuneko berehalakoan — hiru mota ezberdinetan.</p>
+
+        <div class="card">
+          <p style="font-weight:600;margin-bottom:1rem">1. X zenbakiaren Y% zenbat da?</p>
+          <div class="row-2">
+            <div><label>Ehunekoa (%)</label><input type="number" id="eh1-pct" placeholder="15" oninput="calcEh1()"></div>
+            <div><label>Zenbakia (Y)</label><input type="number" id="eh1-val" placeholder="200" oninput="calcEh1()"></div>
+          </div>
+          <div class="result-box" id="eh1-res">Sartu balioak</div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <p style="font-weight:600;margin-bottom:1rem">2. X zenbakia Y-ren zenbateko ehunekoa da?</p>
+          <div class="row-2">
+            <div><label>X (zatia)</label><input type="number" id="eh2-x" placeholder="30" oninput="calcEh2()"></div>
+            <div><label>Y (osoa)</label><input type="number" id="eh2-y" placeholder="200" oninput="calcEh2()"></div>
+          </div>
+          <div class="result-box" id="eh2-res">Sartu balioak</div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <p style="font-weight:600;margin-bottom:1rem">3. X-tik Y-rako ehuneko aldaketa</p>
+          <div class="row-2">
+            <div><label>Jatorrizko balioa (X)</label><input type="number" id="eh3-x" placeholder="80" oninput="calcEh3()"></div>
+            <div><label>Balio berria (Y)</label><input type="number" id="eh3-y" placeholder="100" oninput="calcEh3()"></div>
+          </div>
+          <div class="result-box" id="eh3-res">Sartu balioak</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Nola kalkulatzen dira ehunekoak?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Ehuneko bat ehun zatitan adierazitako zenbaki edo proportzioa da. % sinboloak "ehuneko" esan nahi du. Eguneroko bizitzan nonahi agertzen dira ehunekoak — deskontuetan, zerga tasetan, estatistiketan eta kalifikazioetan.</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>X-ren Y%:</strong> X × Y ÷ 100. Adib: 200-ren %15 = 200 × 15 ÷ 100 = 30</li>
+            <li><strong>X zenbat ehuneko da Y-ren?:</strong> X ÷ Y × 100. Adib: 30 zenbat da 200-ren?: 30 ÷ 200 × 100 = %15</li>
+            <li><strong>Ehuneko aldaketa:</strong> (Y − X) ÷ X × 100. Adib: 80-tik 100-era: (100−80) ÷ 80 × 100 = %25 igoera</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da ehuneko bat?</h2>
+          <p>Ehuneko bat ehun zatitan adierazitako zenbaki edo proportzioa da. % sinboloak "ehuneko" esan nahi du. Deskontuetan, zerga tasetan, estatistiketan eta kalifikazioetan erabiltzen da.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Nola kalkulatzen da 200-ren %20?</summary>
+            <p>200 × 20 ÷ 100 = 40. Edo 200 × 0,20 = 40. Kalkulagailuak automatikoki egiten du.</p>
+          </details>
+          <details>
+            <summary>Nola kalkulatzen da ehuneko igoera bat?</summary>
+            <p>3. atala erabili. Kendu jatorrizko balioa balio berritik, zatitu jatorrizko balioaz eta biderkatu 100ez. Adib: 80-tik 100-era: (100−80)÷80×100 = %25 igoera.</p>
+          </details>
+          <details>
+            <summary>Zertarako erabiltzen dira ehunekoak eguneroko bizitzan?</summary>
+            <p>Deskontuak kalkulatzeko, BEZa gehitzeko, bankuko interesak kalkulatzeko, kalifikazioak interpretatzeko, eta edozein proportzio adierazteko.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/egunerokoa/deskontua/">🏷️ Deskontu kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/">🔢 Kalkulagailu orokorra</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcEh1() {
+  const p = parseFloat(document.getElementById('eh1-pct').value);
+  const v = parseFloat(document.getElementById('eh1-val').value);
+  if (isNaN(p)||isNaN(v)) return;
+  const r = v*p/100;
+  document.getElementById('eh1-res').innerHTML =
+    `${v}-ren %${p} = ${parseFloat(r.toFixed(6)).toLocaleString('es-ES',{maximumFractionDigits:4})}`;
+}
+function calcEh2() {
+  const x = parseFloat(document.getElementById('eh2-x').value);
+  const y = parseFloat(document.getElementById('eh2-y').value);
+  if (isNaN(x)||isNaN(y)||y===0) return;
+  document.getElementById('eh2-res').innerHTML =
+    `${x} zenbakia ${y}-ren <strong>%${(x/y*100).toFixed(4)}</strong> da`;
+}
+function calcEh3() {
+  const x = parseFloat(document.getElementById('eh3-x').value);
+  const y = parseFloat(document.getElementById('eh3-y').value);
+  if (isNaN(x)||isNaN(y)||x===0) return;
+  const ald = (y-x)/Math.abs(x)*100;
+  const dir = ald>=0?'▲ igoera':'▼ jaitsiera';
+  const color = ald>=0?'#22C55E':'#EF4444';
+  document.getElementById('eh3-res').innerHTML =
+    `<span style="color:${color}">%${Math.abs(ald).toFixed(4)} ${dir}</span>
+    <small>${x}-tik ${y}-era · Diferentzia: ${ald>=0?'+':''}${(y-x).toFixed(4)}</small>`;
+}
+</script>

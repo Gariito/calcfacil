@@ -58,6 +58,7 @@
 <body>
 
 {% set isEN = true if page.url and ("/en/" in page.url) else false %}
+{% set isEU = true if page.url and ("/eu/" in page.url) else false %}
 
 <header class="site-header">
   <div class="container header-inner">
@@ -67,17 +68,26 @@
     <!-- Selector de idioma desplegable -->
 <div class="lang-selector" style="position:relative;flex-shrink:0">
   <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
-    {{ '🇬🇧 EN' if isEN else '🇪🇸 ES' }}
-    <span style="font-size:0.6rem;margin-left:2px">▼</span>
-  </button>
+  {% if isEN %}
+    🇬🇧 EN
+  {% elif isEU %}
+    🇪🇭 EU
+  {% else %}
+    🇪🇸 ES
+  {% endif %}
+  <span style="font-size:0.6rem;margin-left:2px">▼</span>
+</button>
   <div class="lang-dropdown" id="lang-dropdown">
-    <a href="/" class="lang-option {{ 'lang-active' if not isEN }}">
-      🇪🇸 <span>Español</span>
-    </a>
-    <a href="/en/" class="lang-option {{ 'lang-active' if isEN }}">
-      🇬🇧 <span>English</span>
-    </a>
-  </div>
+  <a href="/" class="lang-option {{ 'lang-active' if not isEN and not isEU }}">
+    🇪🇸 <span>Español</span>
+  </a>
+  <a href="/en/" class="lang-option {{ 'lang-active' if isEN }}">
+    🇬🇧 <span>English</span>
+  </a>
+  <a href="/eu/" class="lang-option {{ 'lang-active' if isEU }}">
+    🇪🇭 <span>Euskera</span>
+  </a>
+</div>
 </div>
 
     {% if isEN %}
@@ -85,9 +95,16 @@
       <a href="/en/calculators/health/">🏥 Health</a>
       <a href="/en/calculators/fitness/">💪 Fitness</a>
       <a href="/en/calculators/math/">🔢 Math</a>
-      <a href="/en/calculators/everyday/">🌤 Everyday</a>
+      <a href="/en/calculators/everyday/">🧮 Everyday</a>
       <a href="/en/calculators/finance/">💶 Finance</a>
       <a href="/en/calculators/home/">🏠 Home</a>
+    </nav>
+    {% elif isEU %}
+    <nav class="main-nav" aria-label="Nabigazio nagusia">
+  <a href="/eu/kalkulagailuak/osasuna/">🏥 Osasuna</a>
+  <a href="/eu/kalkulagailuak/matematika/">🔢 Matematika</a>
+  <a href="/eu/kalkulagailuak/egunerokoa/">🧮 Egunerokoa</a>
+  <a href="/eu/kalkulagailuak/finantzak/">💶 Finantzak</a>
     </nav>
     {% else %}
     <nav class="main-nav" aria-label="Navegación principal">
@@ -119,6 +136,18 @@
       <a href="/en/calculators/finance/">Finance</a>
       <a href="/en/calculators/everyday/">Everyday</a>
       <a href="/en/calculators/math/">Math</a>
+    </nav>
+  </div>
+</footer>
+{% elif isEU %}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© {{ site.siteName }} 2026 · Doako kalkulagailuak · Iragarkiak gabe</p>
+    <nav aria-label="Oineko nabigazioa">
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
     </nav>
   </div>
 </footer>

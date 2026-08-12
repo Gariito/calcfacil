@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de sueño — a qué hora despertarse o acostarse
+title: calculadora de sueño — la hora ideal para dormir y despertar
 description: Calcula la hora ideal para despertarte o acostarte según los ciclos de sueño. Despierta descansado siempre. Gratis.
-keywords: calculadora sueño, a que hora despertarse, calculadora de sueño, ciclos de sueño, hora para dormir, cuantas horas dormir, calculadora horas de sueño, despertarse descansado
+keywords: calculadora sueño, a que hora despertarse, calculadora de sueño, ciclos de sueño, hora para dormir, cuantas horas dormir, calculadora horas de sueño, despertarse descansado, sleep hours calculator, sleep time calculator, ciclos de sueño calcular, fases del sueño y duración, fases del sueño y duracion, ciclos de sueño, cuanto dura un ciclo de sueño, fases de sueño, fases de sueños, ciclo de sueño calculadora, calculator sleep, cuánto dura un ciclo de sueño, fases del sueño, fases sueño, sleep calculator
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de ciclos de sueño
@@ -19,6 +19,15 @@ faq:
     a: El sueño REM (Rapid Eye Movement) es la fase en la que ocurren la mayoría de los sueños. Es crucial para la memoria, el aprendizaje y la regulación emocional. Ocupa aproximadamente el 20-25% del tiempo total de sueño.
   - q: ¿Por qué me despierto cansado aunque haya dormido 8 horas?
     a: Probablemente porque tu alarma te interrumpió en medio de un ciclo de sueño profundo. Despertarse en sueño ligero, al final de un ciclo completo, es mucho más fácil y reparador.
+  - q: ¿Cómo calcular los ciclos de sueño?
+    a: Suma bloques de 90 minutos a partir de la hora en la que planeas quedarte dormido (añadiendo unos 15 minutos que suele llevar conciliar el sueño). Para cuadrar un descanso de 5 ciclos completos (7,5 horas), si te duermes a las 23:15 deberías programar la alarma para las 06:45 AM.
+  - q: ¿Cuanto dura un ciclo de sueño?
+    a: En promedio, un ciclo completo dura unos 90 minutos, aunque puede oscilar entre 80 y 110 minutos según la persona y el momento de la noche. Los primeros ciclos de la noche suelen tener mayor proporción de sueño profundo, mientras que hacia la mañana el sueño REM gana peso.
+  - q: ¿Cuanto tiempo de sueño profundo es normal?
+    a: En un adulto sano, el sueño profundo abarca entre un 15% y un 25% del tiempo total de descanso. Si duermes 8 horas, esto equivale aproximadamente a entre 70 y 120 minutos por noche, concentrados sobre todo en la primera mitad de la madrugada.
+  - q: ¿Cuanto dormir de siesta para no levantarme cansado?
+    a: Lo ideal es hacer siestas de 20 a 30 minutos (micro-siestas) para mantenerte en fase de sueño ligero y despertar espabilado. Si necesitas un descanso más largo, busca completar un ciclo entero de 90 minutos; evitarás la inercia del sueño que ocurre al despertarte a mitad de una siesta de 45 o 60 minutos.
+
 relacionadas:
   - slug: frecuencia-cardiaca
     categoria: salud
@@ -28,6 +37,18 @@ relacionadas:
     categoria: salud
     titulo: Calorías diarias
     icono: 🔥
+  - slug: tension-arterial
+    categoria: salud
+    titulo: Tensión arterial
+    icono: 🩺
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Calculadora de grasa corporal
+    icono: 📏
+  - slug: peso-ideal
+    categoria: salud
+    titulo: Calculadora de peso ideal
+    icono: 📏
 ---
 
 <label>¿Qué quieres calcular?</label>
@@ -79,3 +100,16 @@ function calcSueno() {
     `${label}:<small>${horas.join(' · ')}</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Anatomía del descanso: las 4 fases de cada ciclo de sueño</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Dormir bien no es solo una cuestión de acumular horas en la cama, sino de permitir que el cerebro complete sus procesos de restauración sin interrupciones. A lo largo de la noche encadenamos varios ciclos encajados unos con otros, y cada uno de ellos atraviesa etapas con funciones biológicas muy definidas.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Conocer cómo se distribuyen estas fases ayuda a ajustar los horarios y a entender por qué a veces nos levantamos renovados con 6 horas de sueño y destrozados habiendo dormido 9.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Las etapas por las que pasa tu cerebro cada 90 minutos</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Fase N1 (Adormecimiento):</strong> Transición entre la vigilia y el sueño. Apenas dura unos minutos. La actividad muscular se ralentiza y es muy fácil despertarse con cualquier ruido leve.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Fase N2 (Sueño ligero):</strong> Ocupa en torno al 50% del ciclo. El ritmo cardíaco y la temperatura corporal bajan. Aquí el cuerpo desconecta del entorno, pero todavía no se ha entrado en la restauración física profunda.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Fase N3 (Sueño profundo o Delta):</strong> Es la etapa más reparadora a nivel físico. El cuerpo libera hormona del crecimiento, repara tejidos musculares y fortalece el sistema inmunitario. Si la alarma te despierta aquí, sufrirás una inercia de sueño severa.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Fase REM (Movimiento Ocular Rápido):</strong> Aumenta la actividad cerebral y es cuando soñamos. Resulta fundamental para consolidar lo aprendido durante el día, procesar emociones y limpiar residuos metabólicos en el cerebro.</p>
+</div>

@@ -1,0 +1,126 @@
+---
+layout: base.njk
+title: Doako kalkulagailuak online — CalcFácil euskaraz
+description: 80 kalkulagailu baino gehiago doako, kategoriaka antolatuta. Osasuna, finantzak, matematika eta gehiago. Erregistrorik gabe, iragarkiak gabe.
+keywords: kalkulagailuak euskaraz, kalkulagailua online, doako kalkulagailua, kalkulagailu euskera
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>Kalkulagailu<br>guztiak hemen</h1>
+    <p>Azkarrak, doakoak eta iragarkiak gabe. Behar duzuna aurkitu.</p>
+  </div>
+</section>
+
+<div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        id="main-search"
+        placeholder="Search for calculators... Tips, Net salary, BMI..."
+        oninput="searchMain(this.value)"
+        autocomplete="off">
+      <div class="search-count" id="main-count"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- Acceso Rápido / Calculadoras Más Buscadas -->
+<div class="container popular-container">
+  <div class="popular-tags">
+    <span class="popular-title">🔥Most populars:</span>
+    <a href="/en/calculators/everyday/tip/" class="tag-btn">🍽️ Tip calculator</a>
+    <a href="/en/calculators/everyday/date-calculator/" class="tag-btn">📅 Days Between Dates Calculator</a>
+    <a href="/en/calculators/health/calories/" class="tag-btn">🔥 Daily calories</a>
+    <a href="/en/calculators/everyday/percentage/" class="tag-btn">% Percentage Calculator</a>
+    <a href="/en/calculators/math/rule-of-three/" class="tag-btn">⚖️ Rule of Three Calculator</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="category-grid">
+
+    <a href="/eu/kalkulagailuak/osasuna/" class="category-card">
+      <span class="cat-icon">🏥</span>
+      <h2>Osasuna</h2>
+      <p>Zure osasuna neurri zehatzekin kontrolatu</p>
+      <ul class="calc-list">
+        <li>→ GMI kalkulagailua</li>
+        <li>→ Kaloria kalkulagailua</li>
+        <li>→ Lo kalkulagailua</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/matematika/" class="category-card">
+      <span class="cat-icon">🔢</span>
+      <h2>Matematika</h2>
+      <p>Eragiketa matematikoak berehalakoan</p>
+      <ul class="calc-list">
+        <li>→ Ehuneko kalkulagailua</li>
+        <li>→ Hiruko erregela</li>
+        <li>→ Batez bestekoa</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/egunerokoa/" class="category-card">
+      <span class="cat-icon">🧮</span>
+      <h2>Egunerokoa</h2>
+      <p>Egunero erabiltzen dituzun tresnak</p>
+      <ul class="calc-list">
+        <li>→ Kalkulagailu orokorra</li>
+        <li>→ Deskontua</li>
+        <li>→ Adinaren kalkulagailua</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/finantzak/" class="category-card">
+      <span class="cat-icon">💶</span>
+      <h2>Finantzak</h2>
+      <p>Zure dirua argitasunez planifikatu</p>
+      <ul class="calc-list">
+        <li>→ Soldata garbia</li>
+        <li>→ BEZ kalkulagailua</li>
+      </ul>
+    </a>
+
+  </div>
+
+    <div id="main-empty" style="display: none; text-align: center; padding: 20px;">
+    <p>No calculators found for: "<strong id="main-empty-term"></strong>"</p>
+  </div>
+</div>
+
+<!-- Secciones Inferiores (Adaptadas por CSS a Light/Dark Mode) -->
+<div class="container extra-sections">
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>🚀 100% doan eta azkar</h3>
+      <p>Berehalako emaitzak eskaintzeko diseinatutako kalkulagailuak, itxaron denborarik gabe eta erregistratu beharrik gabe.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🔒 Pribatutasuna bermatuta</h3>
+      <p>Zure datuak inoiz ez dira zure nabigatzailetik irteten. Kalkulu guztiak tokian bertan eta pribatuki egiten dira.</p>
+    </div>
+    <div class="feature-card">
+      <h3>📊 Formula zehatzak</h3>
+      <p>Finantzetan, osasun arloan eta hezkuntzan kalkulu zehatzak bermatzeko aldizka eguneratzen diren tresnak.</p>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h2>👋 CalculadorasGratis.net-i buruz</h2>
+    <p>
+      Plataforma hau eguneroko matematika-arazoak konpontzeko garbi, azkar eta iragarkirik gabeko alternatiba bat eskaintzeko helburuarekin sortu da. Azterketa baten batez besteko nota kalkulatu behar baduzu, hipoteka bat planifikatu edo errezeta bat egokitu nahi baduzu, hemen klik pare batekin tresna egokia aurkituko duzu.
+    </p>
+  </div>
+
+  <div class="contact-block">
+    <h2>✉️ Harremanetarako eta iradokizunak</h2>
+    <p>Kalkulagailurik falta zaizu, edo akats bat jakinarazi nahi duzu?</p>
+    <p class="contact-email">
+      Idatzi iezaguzu honako helbidera: <a href="mailto:urangagames@gmail.com">urangagames@gmail.com</a>
+    </p>
+  </div>
+</div>

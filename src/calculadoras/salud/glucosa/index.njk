@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de niveles de glucosa en sangre
+title: Calculadora de glucosa en sangre - tabla de niveles gratis
 description: Comprueba si tus niveles de glucosa en sangre son normales, altos o bajos según los criterios médicos actuales.
-keywords: niveles glucosa sangre, azucar en sangre normal, calculadora glucosa, diabetes valores
+keywords: niveles glucosa sangre, azucar en sangre normal, calculadora glucosa, diabetes valores, niveles normales de glucosa, medidor de glucosa, tabla de glucosa normal, que es la glucosa en sangre, como bajar la glucosa, como medir la glucosa, glucemia, glucemia basal, curva de glucosa, calculadora de glucosa promedio estimada, glucosa en ayunas valores normales
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de niveles de glucosa
@@ -11,7 +11,7 @@ tituloCorto: los niveles de glucosa
 descripcion: Comprueba si tus niveles de glucosa en sangre son normales según los criterios médicos actuales.
 explicacion: La glucosa en sangre es el nivel de azúcar presente en el torrente sanguíneo. Mantenerla en niveles normales es fundamental para la salud. Valores persistentemente elevados pueden indicar prediabetes o diabetes, mientras que valores muy bajos (hipoglucemia) también requieren atención médica. Los valores de referencia varían según si la medición es en ayunas o después de comer.
 faq:
-  - q: ¿Cuál es el nivel normal de glucosa en ayunas?
+  - q: ¿Que nivel de glucosa es normal en ayunas?
     a: El nivel normal de glucosa en ayunas es inferior a 100 mg/dL. Entre 100 y 125 mg/dL se considera prediabetes, y por encima de 126 mg/dL en dos mediciones se diagnostica diabetes.
   - q: ¿Y después de comer?
     a: Dos horas después de comer, el nivel normal es inferior a 140 mg/dL. Entre 140 y 199 mg/dL es prediabetes, y por encima de 200 mg/dL puede indicar diabetes.
@@ -19,6 +19,14 @@ faq:
     a: Si no tienes diabetes, una analítica anual es suficiente. Si tienes prediabetes o factores de riesgo, tu médico te indicará la frecuencia adecuada.
   - q: ¿Es lo mismo glucosa que azúcar en sangre?
     a: Sí, son términos equivalentes. La glucemia o glucosa en sangre mide la cantidad de glucosa (azúcar) presente en el torrente sanguíneo.
+  - q: ¿Como se mide la glucosa en sangre?
+    a: Se mide mediante un análisis de sangre en laboratorio (en ayunas) o de forma capilar usando un glucómetro; se punciona lateralmente la yema de un dedo con una lanceta, se coloca la gota de sangre en una tira reactiva insertada en el medidor y este muestra el resultado en pocos segundos.
+  - q: ¿Como se llama el aparato para medir la glucosa?
+    a: El dispositivo portátil más común es el glucómetro (o medidor de glucemia capilar). También existen los sensores de glucosa en continuo (SGC), que se adhieren a la piel mediante un filamento subcutáneo y miden la glucosa del líquido intersticial en tiempo real sin pinchazos constantes.
+  - q: ¿Como bajar la glucosa en sangre rapido?
+    a: La forma más rápida y efectiva en personas con diabetes diagnosticada es la administración de insulina según la pauta prescrita por el médico. De forma no farmacológica, beber agua abundante ayuda a los riñones a eliminar el exceso de glucosa a través de la orina, y realizar caminatas ligeras promueve la captación de glucosa por parte de los músculos.
+  - q: ¿Que es bueno para bajar la glucosa?
+    a: Para mantener niveles estables de glucosa a largo plazo se recomienda priorizar alimentos ricos en fibra (verduras, legumbres, cereales integrales), evitar azúcares refinados y bebidas azucaradas, realizar ejercicio físico de fuerza y aeróbico regularmente, mantener un peso corporal adecuado y gestionar adecuadamente el estrés y las horas de sueño.
 relacionadas:
   - slug: tension-arterial
     categoria: salud
@@ -28,6 +36,18 @@ relacionadas:
     categoria: salud
     titulo: Calculadora de IMC
     icono: ⚖️
+  - slug: colesterol
+    categoria: salud
+    titulo: Calculadora de colesterol
+    icono: 🫀
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardiaca
+    icono: ❤️
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Calculadora de grasa corporal
+    icono: 📏
 ---
 
 <label>Momento de la medición</label>
@@ -87,3 +107,15 @@ function calcGlucosa() {
     <small>${consejo}</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Fisiología del azúcar en sangre y mecanismos de la glucemia</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La <strong>glucosa</strong> es la fuente de energía primaria utilizada por las células de nuestro organismo, siendo esencial para el correcto funcionamiento del cerebro y del sistema nervioso. Los niveles de azúcar en el torrente sanguíneo están regulados de forma constante por dos hormonas producidas en el páncreas: la <strong>insulina</strong> (que reduce la glucosa al facilitar su entrada en las células) y el <strong>glucagón</strong> (que estimula al hígado a liberar glucosa cuando el nivel baja).</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Conocer tus valores de glucemia permite identificar precozmente desequilibrios metabólicos antes de que causen daños vasculares o neuropáticos.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Diferencias entre glucemia basal, postprandial e intermitente</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Glucemia en ayunas (basal):</strong> Se mide tras un periodo mínimo de 8 horas de ayuno nocturno. Es la prueba estándar para evaluar la respuesta del metabolismo en estado de reposo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Glucemia postprandial:</strong> Se toma exactamente 2 horas después de comenzar una comida principal. Mide la capacidad que tiene el páncreas de responder ante una sobrecarga de carbohidratos.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Glucemia aleatoria:</strong> Realizada en cualquier momento del día sin importar la última ingesta de alimentos. Un valor casual igual o superior a 200 mg/dL acompañado de síntomas manifiestos (mucha sed, ganas frecuentes de orinar, pérdida de peso inexplicable) obliga a descartar diabetes.</p>
+</div>

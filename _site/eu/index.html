@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doako kalkulagailuak online — CalcFácil euskaraz — CalcFácil</title>
+  <meta name="description" content="80 kalkulagailu baino gehiago doako, kategoriaka antolatuta. Osasuna, finantzak, matematika eta gehiago. Erregistrorik gabe, iragarkiak gabe.">
+  <meta name="keywords" content="kalkulagailuak euskaraz, kalkulagailua online, doako kalkulagailua, kalkulagailu euskera">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/eu/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Doako kalkulagailuak online — CalcFácil euskaraz — CalcFácil">
+  <meta property="og:description" content="80 kalkulagailu baino gehiago doako, kategoriaka antolatuta. Osasuna, finantzak, matematika eta gehiago. Erregistrorik gabe, iragarkiak gabe.">
+  <meta property="og:url" content="https://calculadorasgratis.net/eu/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Doako kalkulagailuak online — CalcFácil euskaraz",
+    "description": "80 kalkulagailu baino gehiago doako, kategoriaka antolatuta. Osasuna, finantzak, matematika eta gehiago. Erregistrorik gabe, iragarkiak gabe.",
+    "url": "https://calculadorasgratis.net/eu/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+    <!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+  
+    🇪🇭 EU
+  
+  <span style="font-size:0.6rem;margin-left:2px">▼</span>
+</button>
+  <div class="lang-dropdown" id="lang-dropdown">
+  <a href="/" class="lang-option ">
+    🇪🇸 <span>Español</span>
+  </a>
+  <a href="/en/" class="lang-option ">
+    🇬🇧 <span>English</span>
+  </a>
+  <a href="/eu/" class="lang-option lang-active">
+    🇪🇭 <span>Euskera</span>
+  </a>
+</div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Nabigazio nagusia">
+  <a href="/eu/kalkulagailuak/osasuna/">🏥 Osasuna</a>
+  <a href="/eu/kalkulagailuak/matematika/">🔢 Matematika</a>
+  <a href="/eu/kalkulagailuak/egunerokoa/">🧮 Egunerokoa</a>
+  <a href="/eu/kalkulagailuak/finantzak/">💶 Finantzak</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  
+<section class="hero">
+  <div class="container">
+    <h1>Kalkulagailu<br>guztiak hemen</h1>
+    <p>Azkarrak, doakoak eta iragarkiak gabe. Behar duzuna aurkitu.</p>
+  </div>
+</section>
+
+<div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        id="main-search"
+        placeholder="Search for calculators... Tips, Net salary, BMI..."
+        oninput="searchMain(this.value)"
+        autocomplete="off">
+      <div class="search-count" id="main-count"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- Acceso Rápido / Calculadoras Más Buscadas -->
+<div class="container popular-container">
+  <div class="popular-tags">
+    <span class="popular-title">🔥Most populars:</span>
+    <a href="/en/calculators/everyday/tip/" class="tag-btn">🍽️ Tip calculator</a>
+    <a href="/en/calculators/everyday/date-calculator/" class="tag-btn">📅 Days Between Dates Calculator</a>
+    <a href="/en/calculators/health/calories/" class="tag-btn">🔥 Daily calories</a>
+    <a href="/en/calculators/everyday/percentage/" class="tag-btn">% Percentage Calculator</a>
+    <a href="/en/calculators/math/rule-of-three/" class="tag-btn">⚖️ Rule of Three Calculator</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="category-grid">
+
+    <a href="/eu/kalkulagailuak/osasuna/" class="category-card">
+      <span class="cat-icon">🏥</span>
+      <h2>Osasuna</h2>
+      <p>Zure osasuna neurri zehatzekin kontrolatu</p>
+      <ul class="calc-list">
+        <li>→ GMI kalkulagailua</li>
+        <li>→ Kaloria kalkulagailua</li>
+        <li>→ Lo kalkulagailua</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/matematika/" class="category-card">
+      <span class="cat-icon">🔢</span>
+      <h2>Matematika</h2>
+      <p>Eragiketa matematikoak berehalakoan</p>
+      <ul class="calc-list">
+        <li>→ Ehuneko kalkulagailua</li>
+        <li>→ Hiruko erregela</li>
+        <li>→ Batez bestekoa</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/egunerokoa/" class="category-card">
+      <span class="cat-icon">🧮</span>
+      <h2>Egunerokoa</h2>
+      <p>Egunero erabiltzen dituzun tresnak</p>
+      <ul class="calc-list">
+        <li>→ Kalkulagailu orokorra</li>
+        <li>→ Deskontua</li>
+        <li>→ Adinaren kalkulagailua</li>
+      </ul>
+    </a>
+
+    <a href="/eu/kalkulagailuak/finantzak/" class="category-card">
+      <span class="cat-icon">💶</span>
+      <h2>Finantzak</h2>
+      <p>Zure dirua argitasunez planifikatu</p>
+      <ul class="calc-list">
+        <li>→ Soldata garbia</li>
+        <li>→ BEZ kalkulagailua</li>
+      </ul>
+    </a>
+
+  </div>
+
+    <div id="main-empty" style="display: none; text-align: center; padding: 20px;">
+    <p>No calculators found for: "<strong id="main-empty-term"></strong>"</p>
+  </div>
+</div>
+
+<!-- Secciones Inferiores (Adaptadas por CSS a Light/Dark Mode) -->
+<div class="container extra-sections">
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>🚀 100% doan eta azkar</h3>
+      <p>Berehalako emaitzak eskaintzeko diseinatutako kalkulagailuak, itxaron denborarik gabe eta erregistratu beharrik gabe.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🔒 Pribatutasuna bermatuta</h3>
+      <p>Zure datuak inoiz ez dira zure nabigatzailetik irteten. Kalkulu guztiak tokian bertan eta pribatuki egiten dira.</p>
+    </div>
+    <div class="feature-card">
+      <h3>📊 Formula zehatzak</h3>
+      <p>Finantzetan, osasun arloan eta hezkuntzan kalkulu zehatzak bermatzeko aldizka eguneratzen diren tresnak.</p>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h2>👋 CalculadorasGratis.net-i buruz</h2>
+    <p>
+      Plataforma hau eguneroko matematika-arazoak konpontzeko garbi, azkar eta iragarkirik gabeko alternatiba bat eskaintzeko helburuarekin sortu da. Azterketa baten batez besteko nota kalkulatu behar baduzu, hipoteka bat planifikatu edo errezeta bat egokitu nahi baduzu, hemen klik pare batekin tresna egokia aurkituko duzu.
+    </p>
+  </div>
+
+  <div class="contact-block">
+    <h2>✉️ Harremanetarako eta iradokizunak</h2>
+    <p>Kalkulagailurik falta zaizu, edo akats bat jakinarazi nahi duzu?</p>
+    <p class="contact-email">
+      Idatzi iezaguzu honako helbidera: <a href="mailto:urangagames@gmail.com">urangagames@gmail.com</a>
+    </p>
+  </div>
+</div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Doako kalkulagailuak · Iragarkiak gabe</p>
+    <nav aria-label="Oineko nabigazioa">
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,8 +1,8 @@
 ---
 layout: calculadora.njk
-title: Calculadora de colesterol — ¿son normales tus valores?
+title: Calculadora de colesterol total online y gratis
 description: Comprueba si tus niveles de colesterol total, LDL, HDL y triglicéridos son normales según los criterios médicos.
-keywords: colesterol normal, calculadora colesterol, ldl hdl valores, trigliceridos normales
+keywords: colesterol normal, calculadora colesterol, ldl hdl valores, trigliceridos normales, calculadora colesterol total, calculo colesterol total, me gusta estar bien
 categoria: salud
 categoriaLabel: Salud
 titulo: Calculadora de colesterol
@@ -15,8 +15,14 @@ faq:
     a: El colesterol total deseable es inferior a 200 mg/dL. Entre 200 y 239 mg/dL es límite alto, y por encima de 240 mg/dL se considera alto.
   - q: ¿Qué diferencia hay entre colesterol bueno y malo?
     a: El LDL (malo) transporta el colesterol hacia las arterias y puede acumularse en sus paredes. El HDL (bueno) recoge el colesterol de las arterias y lo lleva al hígado para eliminarlo.
-  - q: ¿Cómo puedo bajar el colesterol de forma natural?
+  - q: ¿Cómo bajar el colesterol de forma natural y rapida?
     a: Con dieta mediterránea (menos grasas saturadas y trans, más fibra), ejercicio aeróbico regular, no fumar y mantener un peso saludable. Si no es suficiente, el médico puede recomendar medicación.
+  - q: ¿Cómo se calcula el colesterol total?
+    a: En una analítica convencional suele medirse de forma directa, pero también responde a la fórmula; Colesterol Total = HDL + LDL + (Triglicéridos / 5). Esta relación (fórmula de Friedewald) permite estimar el total o despejar el colesterol LDL cuando se conocen los demás datos, siempre que los triglicéridos no superen los 400 mg/dL.
+  - q: ¿Cómo se llama el colesterol alto?
+    a: En términos médicos se le conoce como hipercolesterolemia. Si además se tienen elevados los triglicéridos o alterado el colesterol HDL, se utiliza el término general dislipidemia o hiperlipidemia.
+  - q: ¿Que comer para bajar el colesterol?
+    a: Da prioridad a grasas saludables (aceite de oliva virgen extra, aguacate, frutos secos al natural) y fibra soluble (avena, legumbres, manzanas, semillas de chía). Es fundamental reducir al mínimo el consumo de embutidos, bollería industrial, precocinados y cortes de carne muy grasos.
 relacionadas:
   - slug: tension-arterial
     categoria: salud
@@ -26,6 +32,18 @@ relacionadas:
     categoria: salud
     titulo: Calculadora de IMC
     icono: ⚖️
+  - slug: glucosa
+    categoria: salud
+    titulo: Calculadora de nivel de glucosa
+    icono: 🩸
+  - slug: frecuencia-cardiaca
+    categoria: salud
+    titulo: Frecuencia cardiaca
+    icono: ❤️
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Calculadora de grasa corporal
+    icono: 📏
 ---
 
 <div class="row-2">
@@ -87,3 +105,15 @@ function calcCol() {
   document.getElementById('col-res').innerHTML = lines.join('<br>');
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Interpretación del perfil lipídico más allá de los números</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Tener el colesterol alto no genera dolor ni da avisos claros en el día a día. Por eso se le presta tanta atención en las revisiones rutinarias. El colesterol es una sustancia cérea que el hígado fabrica de forma natural y que resulta imprescindible para producir hormonas, vitamina D y recubrir las membranas celulares. Sin embargo, cuando circula en exceso por el torrente sanguíneo, el sobrante se acumula progresivamente en las paredes de los vasos.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">A la hora de interpretar una analítica, no basta con mirar una sola cifra aislada. Los médicos valoran el equilibrio global entre los distintos componentes del perfil lipídico.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Los tres marcadores clave y los índices de riesgo</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Colesterol LDL (lipoproteínas de baja densidad):</strong> Es el encargado de repartir el colesterol desde el hígado hacia el resto del cuerpo. Si hay demasiada cantidad, se oxida y se adhiere al endotelio arterial, dando lugar a la placa de ateroma.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Colesterol HDL (lipoproteínas de alta densidad):</strong> Realiza la función inversa. Recoge el exceso de grasa depositado en los tejidos y los vasos y lo transporta de vuelta al hígado para su descomposición. Por eso, tener un HDL elevado es un factor de protección.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Relación Colesterol Total / HDL (Índice de Castelli):</strong> Un indicador muy utilizado en clínica. Lo ideal es que este cociente sea inferior a 4,5. Cuanto más bajo sea el resultado, menor será la proporción de grasas circulantes con potencial patológico.</p>
+</div>

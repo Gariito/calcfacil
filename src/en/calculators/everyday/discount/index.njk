@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Discount Calculator — Calculate Sale Price Free Online
-description: Calculate the final price after a discount instantly. Find how much you save and what percentage off any item. Free discount calculator.
-keywords: discount calculator, sale price calculator, percentage off calculator, how much is x percent off, calculate discount, savings calculator
+title: Discount Calculator — Calculate Sale Price & Savings Online
+description: Calculate the final sale price and total dollar savings instantly. Apply percentage or flat discounts with ease. Free online savings calculator.
+keywords: discount calculator, sale price calculator, calculate discount, percent off calculator, price after discount, how to calculate discount, calculate sale price, percentage discount, savings calculator, calculate discount online, discount formula
 ---
 
 <div class="calc-page">
@@ -19,67 +19,102 @@ keywords: discount calculator, sale price calculator, percentage off calculator,
     <div class="calc-layout">
       <div class="calc-main">
         <h1>🏷️ Discount Calculator</h1>
-        <p class="calc-intro">Calculate the final price after any discount and see exactly how much you save.</p>
+        <p class="calc-intro">Calculate the final price after a discount and find out your exact total savings instantly.</p>
 
         <div class="card">
-          <label>Original price</label>
-          <input type="number" id="disc-price" placeholder="89.99" oninput="calcDisc()">
-
-          <label>Discount type</label>
-          <select id="disc-tipo" onchange="toggleDiscType()">
-            <option value="pct">Percentage off (%)</option>
-            <option value="fixed">Fixed amount off</option>
-          </select>
-
-          <label id="disc-val-label">Discount (%)</label>
-          <input type="number" id="disc-val" placeholder="20" oninput="calcDisc()">
-
-          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
-            <button onclick="setDisc(5)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">5%</button>
-            <button onclick="setDisc(10)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">10%</button>
-            <button onclick="setDisc(15)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">15%</button>
-            <button onclick="setDisc(20)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">20%</button>
-            <button onclick="setDisc(25)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">25%</button>
-            <button onclick="setDisc(30)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">30%</button>
-            <button onclick="setDisc(50)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">50%</button>
-            <button onclick="setDisc(70)" style="padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem">70%</button>
+          <div class="row-2">
+            <div>
+              <label>Original Price ($)</label>
+              <input type="number" id="desc-precio" placeholder="89.99" oninput="calcDesc()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            </div>
+            <div>
+              <label>Discount Type</label>
+              <select id="desc-tipo" onchange="updateLabel(); calcDesc();" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+                <option value="pct">Percentage (%)</option>
+                <option value="flat">Fixed Amount ($)</option>
+              </select>
+            </div>
           </div>
 
-          <div class="result-box" id="disc-res">Enter the price and discount</div>
+          <label id="desc-val-label">Discount (%)</label>
+          <input type="number" id="desc-val" placeholder="20" oninput="calcDesc()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+
+          <div class="result-box" id="desc-res">Enter the price and discount</div>
         </div>
 
         <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate a discount</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">To calculate a percentage discount manually, multiply the original price by the discount percentage and divide by 100 to get the savings amount. Then subtract that from the original price to get the final price. For example, 20% off £89.99 — savings = £89.99 × 20 / 100 = £18.00 — final price = £89.99 − £18.00 = £71.99.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">A quicker method is to multiply by (1 − discount/100). For 20% off: £89.99 × 0.80 = £71.99.</p>
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Common discount presets</h2>
+          <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:0.5rem;font-size:0.85rem">
+            <button onclick="setDesc(10)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">10% OFF</button>
+            <button onclick="setDesc(15)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">15% OFF</button>
+            <button onclick="setDesc(20)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">20% OFF</button>
+            <button onclick="setDesc(25)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">25% OFF</button>
+            <button onclick="setDesc(30)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">30% OFF</button>
+            <button onclick="setDesc(40)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">40% OFF</button>
+            <button onclick="setDesc(50)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">50% OFF</button>
+            <button onclick="setDesc(70)" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer">70% OFF</button>
+          </div>
         </div>
+
+        <div class="card" style="margin-top:2rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">When do you need a discount calculator?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Calculating the final price of an item during a promotion or markdown is one of the most practical daily math tasks. Here are common situations where this calculator helps you make smarter purchases:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:1.5rem">
+            <li><strong>Major retail sales events</strong> — instantly figure out actual savings during Black Friday, Cyber Monday, seasonal clearances, or Prime Day</li>
+            <li><strong>Coupon and promo codes</strong> — determine your total bill when applying percentage-off discount codes during online checkout</li>
+            <li><strong>In-store shopping trips</strong> — compare discounted options quickly on your mobile phone while browsing physical stores</li>
+            <li><strong>Budgeting and expense planning</strong> — track exactly how much money you save on discounted essentials or big-ticket items</li>
+            <li><strong>Business purchasing</strong> — calculate wholesale volume discounts, trade markdowns, or supplier price reductions</li>
+          </ul>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:0.5rem">How to calculate a discount manually</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">To calculate a discount manually without a calculator, you can use these straightforward math steps:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:1.5rem">
+            <li><strong>Calculate total savings:</strong> Multiply the original price by the discount percentage, then divide by 100. Formula: <code>Savings = Original Price × (Discount % / 100)</code>.</li>
+            <li><strong>Calculate final sale price:</strong> Subtract the total savings from the original retail price. Formula: <code>Sale Price = Original Price - Savings</code>.</li>
+            <li><strong>Quick mental trick (e.g., 20% off):</strong> Find 10% of the price by moving the decimal point one place to the left, then double that amount to find 20%.</li>
+          </ul>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:0.5rem">Percentage discounts vs flat rate markdowns</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem"><strong>Percentage discounts (%)</strong> reduce the original price proportionally. The higher the base price, the larger the actual dollar amount saved.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem"><strong>Flat rate discounts ($)</strong> subtract a fixed dollar value regardless of the product's original price. These are common with instant cash-back offers or rewards vouchers.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:0.5rem">How stackable or double discounts work</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">When stores offer an additional discount (such as 20% off plus an extra 10% coupon), percentages do not simply add together to equal 30%. The second discount applies to the price that was already reduced by the first discount, resulting in a true combined discount of 28% rather than 30%.</p>
+        </div>
+
       </div>
 
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>What is a discount calculator?</h2>
-          <p>A discount calculator helps you instantly find the final sale price after a percentage or fixed amount discount. It also shows you the exact savings so you can compare deals quickly while shopping.</p>
+          <p>A discount calculator determines the reduced final price of a product or service after applying a percentage off or flat cash markdown, showing you exactly how much money you save.</p>
         </div>
         <div class="card sidebar-card">
           <h3>Frequently asked questions</h3>
           <details>
-            <summary>How do I calculate 20% off a price?</summary>
-            <p>Multiply the price by 0.80 (1 − 0.20). For example, 20% off £50 = £50 × 0.80 = £40. You save £10.</p>
+            <summary>How do I calculate 30% off?</summary>
+            <p>Multiply the original price by 0.70. For example, a $50 product with 30% off costs $50 × 0.70 = $35.</p>
           </details>
           <details>
-            <summary>How do I find the original price before discount?</summary>
-            <p>Divide the sale price by (1 − discount/100). For example, if £80 is after a 20% discount, the original price was £80 ÷ 0.80 = £100.</p>
+            <summary>Is discount applied before tax?</summary>
+            <p>Yes. In most retail systems, discounts are applied to the base item price before sales tax or VAT is added.</p>
           </details>
           <details>
-            <summary>Is VAT included in the discount calculation?</summary>
-            <p>This calculator works on whatever price you enter — with or without VAT. In most retail situations the displayed price already includes VAT.</p>
+            <summary>How to find original price from sale price?</summary>
+            <p>Divide the sale price by (1 - Discount Percentage / 100). For example, if a sale price is $80 after 20% off: $80 / 0.80 = $100 original price.</p>
+          </details>
+          <details>
+            <summary>Can I calculate flat cash markdowns?</summary>
+            <p>Yes. Select "Fixed Amount ($)" from the dropdown menu to calculate fixed dollar discounts like $15 off.</p>
           </details>
         </div>
         <div class="card sidebar-card">
           <h3>Related calculators</h3>
           <ul class="related-list">
-            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
-            <li><a href="/en/calculators/finance/vat/">% VAT Calculator</a></li>
+            <li><a href="/en/calculators/everyday/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/everyday/sales-tax/">💵 Sales Tax Calculator</a></li>
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
             <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
           </ul>
         </div>
@@ -89,33 +124,45 @@ keywords: discount calculator, sale price calculator, percentage off calculator,
 </div>
 
 <script>
-function toggleDiscType() {
-  const tipo = document.getElementById('disc-tipo').value;
-  document.getElementById('disc-val-label').textContent = tipo === 'pct' ? 'Discount (%)' : 'Discount amount';
-  calcDisc();
+function updateLabel() {
+  const tipo = document.getElementById('desc-tipo').value;
+  document.getElementById('desc-val-label').textContent = tipo === 'pct' ? 'Discount (%)' : 'Discount ($)';
 }
-function setDisc(v) {
-  document.getElementById('disc-tipo').value = 'pct';
-  document.getElementById('disc-val-label').textContent = 'Discount (%)';
-  document.getElementById('disc-val').value = v;
-  calcDisc();
+
+function setDesc(v) {
+  document.getElementById('desc-tipo').value = 'pct';
+  updateLabel();
+  document.getElementById('desc-val').value = v;
+  calcDesc();
 }
-function calcDisc() {
-  const price = parseFloat(document.getElementById('disc-price').value);
-  const tipo = document.getElementById('disc-tipo').value;
-  const val = parseFloat(document.getElementById('disc-val').value);
-  if (!price || !val) return;
-  let savings, final, pct;
+
+function calcDesc() {
+  const precio = parseFloat(document.getElementById('desc-precio').value);
+  const tipo = document.getElementById('desc-tipo').value;
+  const val = parseFloat(document.getElementById('desc-val').value);
+  const resEl = document.getElementById('desc-res');
+
+  if (!precio || isNaN(precio) || !val || isNaN(val)) {
+    resEl.textContent = 'Enter the price and discount';
+    return;
+  }
+
+  let ahorro = 0, final = 0, pct = 0;
   if (tipo === 'pct') {
-    savings = price * val / 100;
-    final = price - savings;
+    ahorro = (precio * val) / 100;
+    final = precio - ahorro;
     pct = val;
   } else {
-    savings = val;
-    final = price - val;
-    pct = (val / price * 100).toFixed(1);
+    ahorro = val;
+    final = precio - val;
+    pct = ((val / precio) * 100).toFixed(1);
   }
-  document.getElementById('disc-res').innerHTML =
-    `Sale price: ${final.toFixed(2)}<small>You save: ${savings.toFixed(2)} (${pct}% off) · Original: ${price.toFixed(2)}</small>`;
+
+  if (final < 0) final = 0;
+
+  resEl.innerHTML = `
+    <strong>Final Price: $${final.toFixed(2)}</strong><br>
+    <small style="font-size:0.85rem;color:var(--muted)">You Save: $${ahorro.toFixed(2)} (${pct}%) · Original Price: $${precio.toFixed(2)}</small>
+  `;
 }
 </script>

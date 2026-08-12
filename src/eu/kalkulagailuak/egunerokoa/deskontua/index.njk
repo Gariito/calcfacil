@@ -1,0 +1,159 @@
+---
+layout: base.njk
+title: Deskontu kalkulagailua online doako euskaraz
+description: Kalkulatu azken prezioa edozein deskontu aplikatuta. Zenbat aurrezten duzun ikusi berehalakoan. Doako deskontu kalkulagailua euskaraz.
+keywords: deskontu kalkulagailua, deskontua kalkulatu, azken prezioa kalkulatu, deskontu kalkulagailua euskaraz, precio con descuento euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <span>›</span>
+      <span>Deskontu kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🏷️ Deskontu kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu azken prezioa edozein deskontu aplikatuta eta ikusi zenbat aurrezten duzun.</p>
+
+        <div class="card">
+          <label>Jatorrizko prezioa (€)</label>
+          <input type="number" id="desk-prezio" placeholder="89.99" oninput="calcDesk()">
+
+          <label>Deskontu mota</label>
+          <select id="desk-mota" onchange="toggleDeskMota()">
+            <option value="pct">Ehunekoa (%)</option>
+            <option value="finko">Zenbateko finkoa (€)</option>
+          </select>
+
+          <label id="desk-val-label">Deskontua (%)</label>
+          <input type="number" id="desk-val" placeholder="20" oninput="calcDesk()">
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+            <button onclick="setDesk(5)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">5%</button>
+            <button onclick="setDesk(10)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">10%</button>
+            <button onclick="setDesk(20)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">20%</button>
+            <button onclick="setDesk(30)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">30%</button>
+            <button onclick="setDesk(50)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">50%</button>
+            <button onclick="setDesk(70)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">70%</button>
+          </div>
+
+          <div class="result-box" id="desk-res">Sartu prezioa eta deskontua</div>
+        </div>
+
+        <div id="desk-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Jatorrizko prezioa</div>
+              <div style="font-size:1.3rem;font-weight:700;color:var(--muted);text-decoration:line-through" id="desk-orig-val">—</div>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Aurreztea</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#22C55E" id="desk-aurrez-val">—</div>
+            </div>
+            <div style="background:var(--accent-light);border:1px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+              <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Azken prezioa</div>
+              <div style="font-size:1.3rem;font-weight:700;color:var(--accent)" id="desk-azken-val">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Nola kalkulatzen da deskontua?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Ehuneko deskontu bat kalkulatzeko, jatorrizko prezioa deskontu ehunekoarekin biderkatu eta 100z zatitu. Hori da aurreztutako kopurua. Azken prezioa lortzeko, aurreztutakoa jatorrizko preziotik kendu.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Adibidez, 89,99€-ko produktu bat %20 deskontuarekin:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:1rem">
+            <li>Aurreztea: 89,99 × 20 ÷ 100 = <strong>18,00 €</strong></li>
+            <li>Azken prezioa: 89,99 − 18,00 = <strong>71,99 €</strong></li>
+            <li>Edo zuzenean: 89,99 × 0,80 = <strong>71,99 €</strong></li>
+          </ul>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Deskontu ohikoen erreferentzia taula</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Deskontua</th>
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Biderkatzailea</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">100€ → </th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">%5 deskontua</td><td style="text-align:center">× 0,95</td><td style="text-align:right">95,00 €</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">%10 deskontua</td><td style="text-align:center">× 0,90</td><td style="text-align:right">90,00 €</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem"><strong>%20 deskontua</strong></td><td style="text-align:center"><strong>× 0,80</strong></td><td style="text-align:right"><strong>80,00 €</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">%30 deskontua</td><td style="text-align:center">× 0,70</td><td style="text-align:right">70,00 €</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem"><strong>%50 deskontua</strong></td><td style="text-align:center"><strong>× 0,50</strong></td><td style="text-align:right"><strong>50,00 €</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">%70 deskontua</td><td style="text-align:center">× 0,30</td><td style="text-align:right">30,00 €</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da deskontu kalkulagailu hau?</h2>
+          <p>Deskontu kalkulagailu honek berehalakoan erakusten du azken salmenta prezioa ehuneko edo zenbateko finko bateko deskontuaren ondoren, eta zenbat aurrezten duzun kalkulatzen du.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Nola kalkulatzen da %20 deskontua?</summary>
+            <p>Prezioa 0,80arekin biderkatu (1 − 0,20). Adibidez, 50€-ko %20 deskontua: 50 × 0,80 = 40€. 10€ aurrezten dituzu.</p>
+          </details>
+          <details>
+            <summary>Nola aurkitzen da jatorrizko prezioa deskontutik abiatuta?</summary>
+            <p>Salmenta prezioa (1 − deskontua/100)z zatitu. Adibidez, produktu bat 80€-tan bada %20 deskontuarekin, jatorrizko prezioa: 80 ÷ 0,80 = 100€.</p>
+          </details>
+          <details>
+            <summary>Bi deskontu aplikatzen badira, batu egiten al dira?</summary>
+            <p>Ez, deskontu jarraituak ez dira batu egiten. %20 deskontu baten ondoren %10 deskontu bat aplikatuz ez da %30 lortzen, baizik eta %28. Bigarren deskontua dagoeneko murriztutako prezioari aplikatzen zaio.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/egunerokoa/ehunekoa/">% Ehuneko kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/">🔢 Kalkulagailu orokorra</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDesk(v) {
+  document.getElementById('desk-mota').value = 'pct';
+  document.getElementById('desk-val-label').textContent = 'Deskontua (%)';
+  document.getElementById('desk-val').value = v;
+  calcDesk();
+}
+function toggleDeskMota() {
+  const mota = document.getElementById('desk-mota').value;
+  document.getElementById('desk-val-label').textContent =
+    mota === 'pct' ? 'Deskontua (%)' : 'Deskontu zenbatekoa (€)';
+  calcDesk();
+}
+function calcDesk() {
+  const prezio = parseFloat(document.getElementById('desk-prezio').value);
+  const mota   = document.getElementById('desk-mota').value;
+  const val    = parseFloat(document.getElementById('desk-val').value);
+  if (isNaN(prezio)||prezio<=0||isNaN(val)) {
+    document.getElementById('desk-res').textContent = 'Sartu prezioa eta deskontua';
+    document.getElementById('desk-desglose').style.display = 'none';
+    return;
+  }
+  let aurreztea, azken, pct;
+  if (mota === 'pct') { aurreztea=prezio*val/100; azken=prezio-aurreztea; pct=val; }
+  else { aurreztea=val; azken=prezio-val; pct=(val/prezio*100).toFixed(1); }
+  if (azken<0) { document.getElementById('desk-res').textContent='Deskontua ezin da prezioa baino handiagoa izan'; return; }
+  const fmt = n => n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  document.getElementById('desk-res').innerHTML =
+    `Azken prezioa: ${fmt(azken)}<small>${fmt(aurreztea)} aurreztu duzu (${pct}% deskontua) · Jatorrizkoa: ${fmt(prezio)}</small>`;
+  document.getElementById('desk-orig-val').textContent   = fmt(prezio);
+  document.getElementById('desk-aurrez-val').textContent = '−'+fmt(aurreztea);
+  document.getElementById('desk-azken-val').textContent  = fmt(azken);
+  document.getElementById('desk-desglose').style.display = 'grid';
+}
+</script>

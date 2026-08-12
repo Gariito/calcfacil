@@ -1,0 +1,122 @@
+---
+layout: base.njk
+title: Adinaren kalkulagailua online doako euskaraz
+description: Kalkulatu zure adina urte, hilabete eta egunetan zehaztasunez. Jakin zenbat egun bizi izan zaren. Doako adinaren kalkulagailua euskaraz.
+keywords: adinaren kalkulagailua, adina kalkulatu, zenbat urte ditut, adinaren kalkulagailua euskaraz, edad calculadora euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <span>›</span>
+      <span>Adinaren kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🎂 Adinaren kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu zure adina urte, hilabete eta egunetan zehaztasunez eta jakin zenbat egun bizi izan zaren.</p>
+
+        <div class="card">
+          <label>Jaiotze data</label>
+          <input type="date" id="adin-data" oninput="calcAdin()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+          <div class="result-box" id="adin-res">Sartu zure jaiotze data</div>
+        </div>
+
+        <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="adin-stats"></div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Nola kalkulatzen da adina zehaztasunez?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Adina zehaztasunez kalkulatzeko, gaur egungo dataren eta jaiotze dataren arteko diferentzia urte, hilabete eta egunetan kalkulatzen da. Kalkulagailu honek urte bisurtuak ere kontuan hartzen ditu emaitza zehatza emateko.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Bizi izandako egun kopurua jaiotze datatik gaur egunera arte dagoen egun kopurua da. Bizitako aste kopurua 7z zatituz lortzen da.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da kalkulagailu hau?</h2>
+          <p>Adinaren kalkulagailu honek zure adina urte, hilabete eta egunetan kalkulatzen du jaiotze datatik abiatuta. Gainera, bizi izandako egun eta aste kopurua erakusten du, eta hurrengo urtebetetzea zenbat egunera dagoen.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Urte bisurtuak kontuan hartzen al ditu?</summary>
+            <p>Bai, kalkulua zehatza da eta automatikoki hartzen ditu kontuan urte bisurtuak jaiotze datetan zein tarteko daten arabera.</p>
+          </details>
+          <details>
+            <summary>Beste norbaiten adina kalkulatu al dezaket?</summary>
+            <p>Bai, sartu bere jaiotze data zure haren ordez. Kalkulagailuak gaur egungo datarekin konparatuko du automatikoki.</p>
+          </details>
+          <details>
+            <summary>Iraganeko datak kalkulatu al daitezke?</summary>
+            <p>Bai, edozein iraganeko dataren adina kalkulatu daiteke gaur egunarekin alderatuz.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/egunerokoa/datak-arteko-egunak/">📅 Datak arteko egunak</a></li>
+            <li><a href="/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/">🔢 Kalkulagailu orokorra</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcAdin() {
+  const val = document.getElementById('adin-data').value;
+  if (!val) return;
+  const gaur = new Date();
+  const jaio = new Date(val);
+  if (jaio > gaur) { document.getElementById('adin-res').textContent = 'Data etorkizunekoa da'; return; }
+
+  let urteak = gaur.getFullYear() - jaio.getFullYear();
+  let hilabeteak = gaur.getMonth() - jaio.getMonth();
+  let egunak = gaur.getDate() - jaio.getDate();
+
+  if (egunak < 0) { hilabeteak--; egunak += new Date(gaur.getFullYear(), gaur.getMonth(), 0).getDate(); }
+  if (hilabeteak < 0) { urteak--; hilabeteak += 12; }
+
+  const hurrengoBetetzea = new Date(gaur.getFullYear(), jaio.getMonth(), jaio.getDate());
+  if (hurrengoBetetzea < gaur) hurrengoBetetzea.setFullYear(gaur.getFullYear() + 1);
+  const egunakBetetzea = Math.round((hurrengoBetetzea - gaur) / 86400000);
+  const bizitakoEgunak = Math.round((gaur - jaio) / 86400000);
+  const bizitakoAsteak = Math.floor(bizitakoEgunak / 7);
+
+  document.getElementById('adin-res').innerHTML =
+    `${urteak} urte, ${hilabeteak} hilabete eta ${egunak} egun
+    <small>${bizitakoEgunak.toLocaleString('es-ES')} egun bizita · Hurrengo urtebetetzea ${egunakBetetzea} egunera</small>`;
+
+  document.getElementById('adin-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${urteak}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Urteak</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${hilabeteak}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Hilabeteak (urtea osatu ondoren)</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${bizitakoEgunak.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Bizitako egunak</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${bizitakoAsteak.toLocaleString('es-ES')}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Bizitako asteak</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${egunakBetetzea}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Egun hurrengo urtebetetzeraino</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${jaio.getFullYear()}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Jaiotze urtea</div>
+    </div>`;
+}
+</script>
