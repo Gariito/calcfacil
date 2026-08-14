@@ -1,0 +1,120 @@
+---
+layout: base.njk
+title: Erro karratua kalkulagailua doako euskaraz — berreturak
+description: Kalkulatu erro karratuak, erro kubikoak eta edozein zenbakiren berreturak berehalakoan. Doako erro kalkulagailua euskaraz.
+keywords: erro karratua euskaraz, erro karratua kalkulatu, berretura kalkulagailua, erro kalkulagailua euskaraz, raíz cuadrada euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <span>›</span>
+      <span>Erro karratua eta berreturak</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>√ Erro karratua eta berreturak</h1>
+        <p class="calc-intro">Kalkulatu erro karratuak, erro kubikoak eta edozein zenbakiren berreturak berehalakoan.</p>
+
+        <div class="card">
+          <label>Zenbakia</label>
+          <input type="number" id="err-num" placeholder="25" oninput="calcErr()">
+
+          <label>Eragiketа</label>
+          <select id="err-op" onchange="toggleErr()">
+            <option value="erro2">Erro karratua (√x)</option>
+            <option value="erro3">Erro kubikoa (∛x)</option>
+            <option value="ber2">Karratua (x²)</option>
+            <option value="ber3">Kubikoa (x³)</option>
+            <option value="berN">Berretura pertsonalizatua (xⁿ)</option>
+          </select>
+
+          <div id="err-exp-wrap" style="display:none">
+            <label>Berretzailea (n)</label>
+            <input type="number" id="err-exp" placeholder="4" oninput="calcErr()">
+          </div>
+
+          <div class="result-box" id="err-res">Sartu zenbaki bat</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Erro karratuaren taula</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Zenbakia</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Erro karratua</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Karratua</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:right">2</td><td style="text-align:right">1,4142</td><td style="text-align:right">4</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:right">4</td><td style="text-align:right">2</td><td style="text-align:right">16</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:right">9</td><td style="text-align:right">3</td><td style="text-align:right">81</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:right">16</td><td style="text-align:right">4</td><td style="text-align:right">256</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:right">25</td><td style="text-align:right">5</td><td style="text-align:right">625</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:right">100</td><td style="text-align:right">10</td><td style="text-align:right">10.000</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da erro karratua?</h2>
+          <p>Zenbaki baten erro karratua bere buruarekin biderkatuta zenbaki hori ematen duen balioa da. Adibidez, √25 = 5, zeren 5 × 5 = 25. Erro karratuak eta berreturak eragiketa alderantzizkoakdira.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Zein da 2-ren erro karratua?</summary>
+            <p>2-ren erro karratua gutxi gorabehera 1,41421356 da. Zenbaki irrazionala da — bere dezimal digituak amaitu gabe jarraitzen dute errepikatu gabe.</p>
+          </details>
+          <details>
+            <summary>Zenbaki negatibo baten erro karratua kalkulatu al daiteke?</summary>
+            <p>Zenbaki erreal sisteman ez. Zenbaki negatibo baten erro karratua zenbaki irudikaria da (i unitatearekin, non i² = −1). Matematika konplexuaren parte da.</p>
+          </details>
+          <details>
+            <summary>Zein da x² eta √x-ren arteko aldea?</summary>
+            <p>x² (x karratua) x bere buruarekin biderkatzen du. √x (x-ren erro karratua) karratuak x ematen duen zenbakia aurkitzen du. Eragiketa alderantzizkoakdira.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/matematika/ehunekoa/">% Ehuneko kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/matematika/batez-bestekoa/">📊 Batez bestekoa</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleErr() {
+  document.getElementById('err-exp-wrap').style.display =
+    document.getElementById('err-op').value === 'berN' ? 'block' : 'none';
+  calcErr();
+}
+function calcErr() {
+  const n = parseFloat(document.getElementById('err-num').value);
+  const op = document.getElementById('err-op').value;
+  if (isNaN(n)) return;
+  let r, etiketa;
+  if (op==='erro2') { r=Math.sqrt(n); etiketa=`√${n}`; }
+  else if (op==='erro3') { r=Math.cbrt(n); etiketa=`∛${n}`; }
+  else if (op==='ber2') { r=n*n; etiketa=`${n}²`; }
+  else if (op==='ber3') { r=n*n*n; etiketa=`${n}³`; }
+  else {
+    const exp = parseFloat(document.getElementById('err-exp').value);
+    if (isNaN(exp)) return;
+    r=Math.pow(n,exp); etiketa=`${n}^${exp}`;
+  }
+  document.getElementById('err-res').innerHTML =
+    isNaN(r) ? 'Ezin da kalkulatu sarrera honekin' :
+    `${etiketa} = ${parseFloat(r.toFixed(10)).toLocaleString('es-ES',{maximumFractionDigits:8})}`;
+}
+</script>

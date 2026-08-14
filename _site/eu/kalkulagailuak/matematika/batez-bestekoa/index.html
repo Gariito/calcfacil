@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batez besteko kalkulagailua doako euskaraz — media, mediana eta moda — CalcFácil</title>
+  <meta name="description" content="Kalkulatu batez bestekoa, mediana, moda eta barrutia edozein datu multzorekin berehalakoan. Doako estatistika kalkulagailua euskaraz.">
+  <meta name="keywords" content="batez bestekoa kalkulatu, batez besteko kalkulagailua euskaraz, mediana kalkulatu, moda kalkulatu, media estadistica euskera">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/eu/kalkulagailuak/matematika/batez-bestekoa/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Batez besteko kalkulagailua doako euskaraz — media, mediana eta moda — CalcFácil">
+  <meta property="og:description" content="Kalkulatu batez bestekoa, mediana, moda eta barrutia edozein datu multzorekin berehalakoan. Doako estatistika kalkulagailua euskaraz.">
+  <meta property="og:url" content="https://calculadorasgratis.net/eu/kalkulagailuak/matematika/batez-bestekoa/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Batez besteko kalkulagailua doako euskaraz — media, mediana eta moda",
+    "description": "Kalkulatu batez bestekoa, mediana, moda eta barrutia edozein datu multzorekin berehalakoan. Doako estatistika kalkulagailua euskaraz.",
+    "url": "https://calculadorasgratis.net/eu/kalkulagailuak/matematika/batez-bestekoa/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">EU</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option ">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option lang-active">
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskera</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Nabigazio nagusia">
+  <a href="/eu/kalkulagailuak/osasuna/">🏥 Osasuna</a>
+  <a href="/eu/kalkulagailuak/matematika/">🔢 Matematika</a>
+  <a href="/eu/kalkulagailuak/egunerokoa/">🧮 Egunerokoa</a>
+  <a href="/eu/kalkulagailuak/finantzak/">💶 Finantzak</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <span>›</span>
+      <span>Batez bestekoa</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📊 Batez besteko kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu batez bestekoa, mediana, moda eta barrutia edozein zenbaki zerrendarekin berehalakoan.</p>
+
+        <div class="card">
+          <label>Zenbakiak sartu (komaz edo zuriuneez bereizita)</label>
+          <input type="text" id="bb-nums" placeholder="4, 7, 2, 9, 4, 1, 7, 4" oninput="calcBB()">
+          <div class="result-box" id="bb-res">Sartu zenbaki zerrenda bat</div>
+          <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="bb-stats"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Batez bestekoa, mediana eta modaren arteko aldea</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Batez bestekoa (media):</strong> Balio guztiak batuta kopuruaz zatituz lortzen da. Kanpo-balioen aurrean sentikorra da.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Mediana:</strong> Ordenatuta dagoen zerrendako erdiko balioa. Datuak asimetrikoak direnean batez bestekoa baino egokiagoa.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Moda:</strong> Maiztasun handienarekin agertzen den balioa. Datuen ohikoena aurkitzeko erabiltzen da.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da batez bestekoa?</h2>
+          <p>Batez bestekoa zenbaki multzo bat ordezkatzen duen balio bakarra da. Motatik ohikoena batez besteko aritmetikoa da — balio guztiak batuta kopuruaz zatitua.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Nola kalkulatzen da batez bestekoa?</summary>
+            <p>Balio guztiak batu eta kopuruaz zatitu. Adibidez, 4, 7, 2, 9-ren batez bestekoa: (4+7+2+9) ÷ 4 = 22 ÷ 4 = 5,5</p>
+          </details>
+          <details>
+            <summary>Moda bat baino gehiago egon al daiteke?</summary>
+            <p>Bai. Bi balio edo gehiago maiztasun berdinarekin agertzen badira, denak dira modak. Honi banaketa bimodala edo multimodala deitzen zaio.</p>
+          </details>
+          <details>
+            <summary>Noiz erabili mediana batez bestekoa beharrean?</summary>
+            <p>Datuek kanpo-balioak dituztenean, mediana egokiagoa da. Adibidez, soldaten batez bestekoa irudi desitxuratua ematen du soldata oso altu batzuk daudenean; mediana ordezkagarriagoa da.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/matematika/ehunekoa/">% Ehuneko kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/matematika/hiruko-erregela/">📏 Hiruko erregela</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcBB() {
+  const raw = document.getElementById('bb-nums').value;
+  const nums = raw.split(/[\s,;]+/).map(Number).filter(n => !isNaN(n) && raw.trim()!=='');
+  if (nums.length < 2) return;
+  const ordenatuta = [...nums].sort((a,b)=>a-b);
+  const n = nums.length;
+  const batezBesteko = nums.reduce((a,b)=>a+b,0)/n;
+  const mediana = n%2===0?(ordenatuta[n/2-1]+ordenatuta[n/2])/2:ordenatuta[Math.floor(n/2)];
+  const maiztasuna = {};
+  nums.forEach(v=>maiztasuna[v]=(maiztasuna[v]||0)+1);
+  const maxMaiz = Math.max(...Object.values(maiztasuna));
+  const moda = Object.keys(maiztasuna).filter(k=>maiztasuna[k]===maxMaiz).join(', ');
+  const barrutia = ordenatuta[n-1]-ordenatuta[0];
+  const varianza = nums.reduce((a,b)=>a+Math.pow(b-batezBesteko,2),0)/n;
+  const desbEstandar = Math.sqrt(varianza);
+
+  document.getElementById('bb-res').innerHTML =
+    `Batez bestekoa: ${batezBesteko.toFixed(4)}<small>Mediana: ${mediana} · Moda: ${moda} · Barrutia: ${barrutia}</small>`;
+
+  document.getElementById('bb-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${batezBesteko.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Batez bestekoa</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${mediana}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Mediana</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${moda}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Moda</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${barrutia}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Barrutia</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${desbEstandar.toFixed(4)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Desbiderapena</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${n}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Datu kopurua</div>
+    </div>`;
+}
+</script>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Doako kalkulagailuak · Iragarkiak gabe</p>
+    <nav aria-label="Oineko nabigazioa">
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <a href="/eu/kalkulagailuak/egunerokoa/">Egunerokoa</a>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

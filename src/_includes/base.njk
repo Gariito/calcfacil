@@ -65,29 +65,35 @@
 
     <a href="{{ '/en/' if isEN else '/' }}" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma desplegable -->
+<!-- Selector de idioma desplegable -->
 <div class="lang-selector" style="position:relative;flex-shrink:0">
   <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
-  {% if isEN %}
-    🇬🇧 EN
-  {% elif isEU %}
-    🇪🇭 EU
-  {% else %}
-    🇪🇸 ES
-  {% endif %}
-  <span style="font-size:0.6rem;margin-left:2px">▼</span>
-</button>
+    {% if isEN %}
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">EN</span>
+    {% elif isEU %}
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">EU</span>
+    {% else %}
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    {% endif %}
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
   <div class="lang-dropdown" id="lang-dropdown">
-  <a href="/" class="lang-option {{ 'lang-active' if not isEN and not isEU }}">
-    🇪🇸 <span>Español</span>
-  </a>
-  <a href="/en/" class="lang-option {{ 'lang-active' if isEN }}">
-    🇬🇧 <span>English</span>
-  </a>
-  <a href="/eu/" class="lang-option {{ 'lang-active' if isEU }}">
-    🇪🇭 <span>Euskera</span>
-  </a>
-</div>
+    <a href="/" class="lang-option {{ 'lang-active' if not isEN and not isEU }}">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option {{ 'lang-active' if isEN }}">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option {{ 'lang-active' if isEU }}">
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskera</span>
+    </a>
+  </div>
 </div>
 
     {% if isEN %}

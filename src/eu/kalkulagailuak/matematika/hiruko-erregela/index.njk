@@ -1,0 +1,104 @@
+---
+layout: base.njk
+title: Hiruko erregela kalkulagailua doako euskaraz
+description: Konpondu hiruko erregela zuzena eta alderantzizkoaberehalakoan. Doako hiruko erregela kalkulagailua euskaraz. Erregistrorik gabe.
+keywords: hiruko erregela euskaraz, hiruko erregela kalkulagailua, proportzio zuzena, proportzio alderantzizko, regla de tres euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/matematika/">Matematika</a>
+      <span>›</span>
+      <span>Hiruko erregela</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📏 Hiruko erregela kalkulagailua</h1>
+        <p class="calc-intro">Konpondu edozein hiruko erregela zuzena edo alderantzizkoahiru balio ezagun sartuta soilik.</p>
+
+        <div class="card">
+          <label>Proportzio mota</label>
+          <select id="hr-mota" onchange="calcHR()">
+            <option value="zuzen">Zuzena — A handitzen bada, B ere handitzen da</option>
+            <option value="alderanztziko">Alderantzizko — A handitzen bada, B txikitzen da</option>
+          </select>
+
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
+            <div class="row-2">
+              <div><label>A =</label><input type="number" id="hr-a" placeholder="3" oninput="calcHR()"></div>
+              <div><label>orduan B =</label><input type="number" id="hr-b" placeholder="7" oninput="calcHR()"></div>
+            </div>
+            <div class="row-2">
+              <div><label>A =</label><input type="number" id="hr-c" placeholder="5" oninput="calcHR()"></div>
+              <div>
+                <label>orduan B =</label>
+                <div class="result-box" id="hr-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box" id="hr-res">Sartu hiru balio ezagunak</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zer da hiruko erregela?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Hiruko erregela hiru balio ezagunetatik laugarren balio ezezagun bat kalkulatzeko metodo matematikoa da. Eguneroko bizitzan etengabe erabiltzen da: prezioak kantitatearen arabera kalkulatzeko, errezetak egokitzeko, unitateak bihurtzeko edo lan denborak kalkulatzeko.</p>
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Adibideak</h2>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>Proportzio zuzena:</strong> 3 kg naranjen prezioa 4€ bada, 7 kg-ren prezioa? X = (4×7)÷3 = 9,33€</li>
+            <li><strong>Proportzio alderantzizko:</strong> 4 langilek 6 egunetan obra bat bukatzen badute, 8 langilek zenbat egunetan? X = (4×6)÷8 = 3 egun</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Nola jakin proportzio zuzena edo alderantzizkoaden?</h2>
+          <p>Zuzena: bi magnitudeak norabide berean aldatzen dira (km gehiago → erregai gehiago). Alderantzizko: alderantzizkoa gertatzen da (langile gehiago → egun gutxiago).</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Nola kalkulatzen da hiruko erregela zuzena?</summary>
+            <p>X = (B × C) ÷ A. A B-rekin erlazionatzen bada eta C ematen bada, X aurkitu behar da. Adibidez: 3kg 4€ → 7kg X€ → X = (4×7)÷3 = 9,33€</p>
+          </details>
+          <details>
+            <summary>Nola kalkulatzen da hiruko erregela alderantzizko?</summary>
+            <p>X = (A × B) ÷ C. Muturren produktua erdikoen produktuaren berdina da. Adibidez: 4 langile 6 egun → 8 langile X egun → X = (4×6)÷8 = 3 egun</p>
+          </details>
+          <details>
+            <summary>Zertarako erabiltzen da eguneroko bizitzan?</summary>
+            <p>Prezio kalkuluetarako, errezeta egokitzeko, mapen eskala kalkulatzeko, abiadura eta denbora problemak ebazteko eta proportzio oro konpontzeko.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/matematika/ehunekoa/">% Ehuneko kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/matematika/batez-bestekoa/">📊 Batez bestekoa</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcHR() {
+  const a = parseFloat(document.getElementById('hr-a').value);
+  const b = parseFloat(document.getElementById('hr-b').value);
+  const c = parseFloat(document.getElementById('hr-c').value);
+  const mota = document.getElementById('hr-mota').value;
+  if (!a||!b||!c) return;
+  const x = mota==='zuzen' ? (b*c)/a : (a*b)/c;
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES',{maximumFractionDigits:4});
+  document.getElementById('hr-x').textContent = xFmt;
+  document.getElementById('hr-res').innerHTML =
+    `X = ${xFmt}<small>${mota==='zuzen'?'Proportzio zuzena':'Proportzio alderantzizko'} · ${a} → ${b} · ${c} → ${xFmt}</small>`;
+}
+</script>

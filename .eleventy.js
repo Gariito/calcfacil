@@ -8,6 +8,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/android-chrome-192x192.png");
   eleventyConfig.addPassthroughCopy("src/android-chrome-512x512.png");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
+  eleventyConfig.addPassthroughCopy("src/img");
 
   eleventyConfig.addFilter("fecha", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("es-ES", {

@@ -1,0 +1,132 @@
+---
+layout: base.njk
+title: Eguneroko kalorien kalkulagailua doako euskaraz
+description: Kalkulatu zenbat kaloria behar dituzun egunero zure gorputzaren eta jarduera mailaren arabera. Doako kaloria kalkulagailua euskaraz.
+keywords: kalorien kalkulagailua euskaraz, eguneroko kalorien kalkulagailua, kaloria kalkulatu, nola kalkulatu kalorien beharra euskaraz
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <span>›</span>
+      <span>Kalorien kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🔥 Eguneroko kalorien kalkulagailua</h1>
+        <p class="calc-intro">Jakin zenbat kaloria behar dituzun egunero zure gorputzaren eta jarduera mailaren arabera.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div><label>Pisua (kg)</label><input type="number" id="kal-pisu" placeholder="70" oninput="calcKal()"></div>
+            <div><label>Altuera (cm)</label><input type="number" id="kal-altu" placeholder="170" oninput="calcKal()"></div>
+          </div>
+          <div class="row-2">
+            <div><label>Adina (urte)</label><input type="number" id="kal-adin" placeholder="30" oninput="calcKal()"></div>
+            <div>
+              <label>Sexua</label>
+              <select id="kal-sexu" onchange="calcKal()">
+                <option value="g">Gizona</option>
+                <option value="e">Emakumea</option>
+              </select>
+            </div>
+          </div>
+          <label>Jarduera maila</label>
+          <select id="kal-jard" onchange="calcKal()">
+            <option value="1.2">Sedentarioa (ariketa gutxi edo bat ere ez)</option>
+            <option value="1.375">Jarduera arina (astean 1-3 egun)</option>
+            <option value="1.55">Jarduera ertaina (astean 3-5 egun)</option>
+            <option value="1.725">Jarduera intentsua (astean 6-7 egun)</option>
+            <option value="1.9">Oso aktiboa (entrenamendu bikoitza)</option>
+          </select>
+          <div class="result-box" id="kal-res">Sartu zure datuak</div>
+        </div>
+
+        <div id="kal-helburuak" style="display:none;margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem"></div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zer da kaloria bat?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Kaloria (edo kilokaloria, kcal) elikagaiek gorputzari ematen dioten energia neurtzeko unitatea da. Gorputzak energia hiru makronutrientetatik lortzen du — karbohidratoak (4 kcal/g), proteinak (4 kcal/g) eta koipeak (9 kcal/g).</p>
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Nola kalkulatzen da eguneroko kaloria beharra?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Kalkulagailu honek Mifflin-St Jeor formula erabiltzen du, gaur egun zehatzentzat jotzen dena. Lehenik Oinarrizko Metabolismo Tasa (OMT) kalkulatzen du eta ondoren jarduera faktorearekin biderkatzen du eguneroko kaloria osoa lortzeko.</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>Gizonak:</strong> OMT = 10 × pisua + 6,25 × altuera − 5 × adina + 5</li>
+            <li><strong>Emakumeak:</strong> OMT = 10 × pisua + 6,25 × altuera − 5 × adina − 161</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da OMT?</h2>
+          <p>Oinarrizko Metabolismo Tasa (OMT) gorputzak erabateko atsedenean funtzio bitalak mantentzeko behar duen energia kopurua da. Jarduera faktorearekin biderkatuz eguneroko kaloria osoa lortzen da.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Zenbat kaloria behar ditut pisua galtzeko?</summary>
+            <p>Pisua poliki eta modu jasangarrian galtzeko, eguneroko kaloria totalaren azpitik 300-500 kcal-eko defizita gomendatzen da. Horrek astean 0,3-0,5 kg-ko galera eragiten du.</p>
+          </details>
+          <details>
+            <summary>Kaloria guztiak berdinak al dira?</summary>
+            <p>Energiaren aldetik bai, baina nutrizio aldetik ez. 100 kcal barazkietatik ezberdinak dira 100 kcal azukretik, bai satiazio aldetik eta bai nutrizioaren aldetik.</p>
+          </details>
+          <details>
+            <summary>Zenbat kaloria behar ditu emakume batek?</summary>
+            <p>Batez beste, jarduera ertaina duen 35 urteko emakume batek egunero 1.800-2.100 kcal behar ditu. Hala ere, pisuaren, altueraren eta jarduera mailaren arabera aldatzen da.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/osasuna/gmi/">⚖️ GMI kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/loa/">😴 Lo kalkulagailua</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcKal() {
+  const p = parseFloat(document.getElementById('kal-pisu').value);
+  const a = parseFloat(document.getElementById('kal-altu').value);
+  const ad = parseFloat(document.getElementById('kal-adin').value);
+  const sexu = document.getElementById('kal-sexu').value;
+  const jard = parseFloat(document.getElementById('kal-jard').value);
+  if (!p||!a||!ad) return;
+  const omt = sexu==='g' ? 10*p+6.25*a-5*ad+5 : 10*p+6.25*a-5*ad-161;
+  const total = Math.round(omt*jard);
+  document.getElementById('kal-res').innerHTML =
+    `${total.toLocaleString('es-ES')} kcal/egun
+    <small>OMT: ${Math.round(omt).toLocaleString('es-ES')} kcal · Jarduera faktorea: ${jard}</small>`;
+  document.getElementById('kal-helburuak').style.display = 'grid';
+  document.getElementById('kal-helburuak').innerHTML = `
+    <div style="background:#FEF2F2;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#DC2626;margin-bottom:0.25rem">Pisua galtzeko</div>
+      <div>${(total-500).toLocaleString('es-ES')} kcal/egun</div>
+      <div style="color:var(--muted);font-size:0.75rem">−500 kcal defizita</div>
+    </div>
+    <div style="background:#F0FDF4;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#16A34A;margin-bottom:0.25rem">Pisua mantentzeko</div>
+      <div>${total.toLocaleString('es-ES')} kcal/egun</div>
+      <div style="color:var(--muted);font-size:0.75rem">Pisu aldaketarik gabe</div>
+    </div>
+    <div style="background:#EFF6FF;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#2563EB;margin-bottom:0.25rem">Muskulua irabazteko</div>
+      <div>${(total+300).toLocaleString('es-ES')} kcal/egun</div>
+      <div style="color:var(--muted);font-size:0.75rem">+300 kcal superabita</div>
+    </div>
+    <div style="background:#FFFBEB;border-radius:8px;padding:0.75rem;font-size:0.825rem">
+      <div style="font-weight:600;color:#D97706;margin-bottom:0.25rem">OMT (atsedenean)</div>
+      <div>${Math.round(omt).toLocaleString('es-ES')} kcal/egun</div>
+      <div style="color:var(--muted);font-size:0.75rem">Gutxieneko energia</div>
+    </div>`;
+}
+</script>

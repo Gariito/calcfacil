@@ -65,25 +65,29 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma desplegable -->
+<!-- Selector de idioma desplegable -->
 <div class="lang-selector" style="position:relative;flex-shrink:0">
   <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
-  
-    🇪🇭 EU
-  
-  <span style="font-size:0.6rem;margin-left:2px">▼</span>
-</button>
+    
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">EU</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
   <div class="lang-dropdown" id="lang-dropdown">
-  <a href="/" class="lang-option ">
-    🇪🇸 <span>Español</span>
-  </a>
-  <a href="/en/" class="lang-option ">
-    🇬🇧 <span>English</span>
-  </a>
-  <a href="/eu/" class="lang-option lang-active">
-    🇪🇭 <span>Euskera</span>
-  </a>
-</div>
+    <a href="/" class="lang-option ">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option lang-active">
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskera</span>
+    </a>
+  </div>
 </div>
 
     
@@ -128,12 +132,12 @@
   <!-- Acceso Rápido / Calculadoras Más Buscadas -->
 <div class="container popular-container">
   <div class="popular-tags">
-    <span class="popular-title">🔥Most populars:</span>
-    <a href="/en/calculators/everyday/tip/" class="tag-btn">🍽️ Tip calculator</a>
-    <a href="/en/calculators/everyday/date-calculator/" class="tag-btn">📅 Days Between Dates Calculator</a>
-    <a href="/en/calculators/health/calories/" class="tag-btn">🔥 Daily calories</a>
-    <a href="/en/calculators/everyday/percentage/" class="tag-btn">% Percentage Calculator</a>
-    <a href="/en/calculators/math/rule-of-three/" class="tag-btn">⚖️ Rule of Three Calculator</a>
+    <span class="popular-title">🔥Erabilienak:</span>
+    <a href="/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/" class="tag-btn">🔢 Kalkulagailu orokorra</a>
+    <a href="/eu/kalkulagailuak/egunerokoa/datak-arteko-egunak/" class="tag-btn">📅 Daten arteko egunak</a>
+    <a href="/eu/kalkulagailuak/osasuna/kalorian/" class="tag-btn">🔥 Eguneroko kaloriak</a>
+    <a href="/eu/kalkulagailuak/egunerokoa/ehunekoa/" class="tag-btn">% Ehuneko kalulagailua</a>
+    <a href="/eu/kalkulagailuak/matematika/hiruko-erregela/" class="tag-btn">⚖️ Hiruko erregela</a>
   </div>
 </div>
 

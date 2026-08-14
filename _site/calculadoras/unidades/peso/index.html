@@ -65,25 +65,29 @@
 
     <a href="/" class="logo">Calc<span>Fácil</span></a>
 
-    <!-- Selector de idioma desplegable -->
+<!-- Selector de idioma desplegable -->
 <div class="lang-selector" style="position:relative;flex-shrink:0">
   <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
-  
-    🇪🇸 ES
-  
-  <span style="font-size:0.6rem;margin-left:2px">▼</span>
-</button>
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
   <div class="lang-dropdown" id="lang-dropdown">
-  <a href="/" class="lang-option lang-active">
-    🇪🇸 <span>Español</span>
-  </a>
-  <a href="/en/" class="lang-option ">
-    🇬🇧 <span>English</span>
-  </a>
-  <a href="/eu/" class="lang-option ">
-    🇪🇭 <span>Euskera</span>
-  </a>
-</div>
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskera" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskera</span>
+    </a>
+  </div>
 </div>
 
     
@@ -172,9 +176,6 @@
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong> Libras a Kilogramos (lb → kg):</strong> Divide la cantidad en lb entre 2,20462 (o multiplica por 0,45359). Por ejemplo: 150 lb ÷ 2,20462 = 68,03 kg.</p>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong> Onzas a Gramos (oz → g):</strong> Multiplica la cantidad en onzas por 28,3495. Por ejemplo: 8 oz × 28,3495 = 226,8 g.</p>
           <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong> Toneladas a Kilogramos (t → kg): (lb → kg):</strong> Multiplica directamente por 1.000.</p>
-
-
-
 
 </div>
         </div>
