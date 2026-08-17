@@ -1,0 +1,222 @@
+---
+layout: calculadora.njk
+title: Calculadora de proteínas diarias — cuántas proteínas necesito al día
+description: Calcula cuántos gramos de proteína necesitas al día según tu peso, actividad física y objetivo. Gratis y sin registro.
+keywords: calculadora proteinas, cuantas proteinas necesito, proteinas diarias, gramos de proteina por dia, proteinas segun peso, calculadora proteinas diarias, proteinas para ganar musculo, proteinas para adelgazar
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de proteínas diarias
+icono: 🥩
+tituloCorto: las proteínas diarias
+descripcion: Calcula exactamente cuántos gramos de proteína necesitas al día según tu peso, nivel de actividad y objetivo nutricional.
+explicacion: Las proteínas son los ladrillos del músculo y uno de los macronutrientes más importantes. La cantidad que necesitas depende de tu peso, tu nivel de actividad física y tu objetivo — no es lo mismo querer perder grasa, mantener el peso o ganar músculo. Esta calculadora usa las recomendaciones de las principales organizaciones de nutrición deportiva para darte un rango personalizado.
+faq:
+  - q: ¿Cuántas proteínas necesito al día para ganar músculo?
+    a: Para ganar músculo se recomienda entre 1,6 y 2,2 gramos de proteína por kilogramo de peso corporal al día. Con 75 kg, eso son entre 120 y 165 g de proteína diaria.
+  - q: ¿Cuántas proteínas necesito para adelgazar?
+    a: Para perder grasa manteniendo la masa muscular se recomienda entre 1,8 y 2,4 g/kg. Un aporte proteico alto durante la pérdida de peso ayuda a preservar el músculo y aumenta la saciedad.
+  - q: ¿Cuánta proteína puede absorber el cuerpo en una comida?
+    a: El cuerpo puede absorber toda la proteína que consumes, pero la síntesis proteica muscular se optimiza con dosis de 20-40 g por comida. Distribuir la proteína en 3-5 comidas es más eficiente que concentrarla en una sola.
+  - q: ¿Son malas las proteínas para los riñones?
+    a: En personas sanas, un consumo alto de proteínas no daña los riñones. Las personas con enfermedad renal preexistente sí deben limitar el consumo proteico — consulta a tu médico.
+  - q: ¿Qué alimentos tienen más proteína?
+    a: "Los alimentos más ricos en proteína son: pollo (31g/100g), atún (29g/100g), claras de huevo (11g/100g), salmón (25g/100g), ternera (26g/100g), legumbres (20-25g/100g cocido seco), tofu (15g/100g) y queso cottage (12g/100g)."
+  - q: ¿Las proteínas vegetales son tan buenas como las animales?
+    a: Las proteínas animales son completas (contienen todos los aminoácidos esenciales). Las vegetales pueden ser incompletas pero combinándolas (legumbres + cereales) se obtiene un perfil completo. La proteína de soja es la proteína vegetal más completa.
+relacionadas:
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+  - slug: harris-benedict
+    categoria: salud
+    titulo: Harris-Benedict
+    icono: 🧬
+  - slug: imc
+    categoria: salud
+    titulo: IMC
+    icono: ⚖️
+  - slug: grasa-corporal
+    categoria: salud
+    titulo: Grasa corporal
+    icono: 📏
+---
+
+<div class="row-2">
+  <div><label>Peso corporal (kg)</label><input type="number" id="prot-peso" placeholder="75" oninput="calcProt()"></div>
+  <div>
+    <label>Sexo</label>
+    <select id="prot-sexo" onchange="calcProt()">
+      <option value="h">Hombre</option>
+      <option value="m">Mujer</option>
+    </select>
+  </div>
+</div>
+
+<div class="row-2">
+  <div><label>Edad (años)</label><input type="number" id="prot-edad" placeholder="30" oninput="calcProt()"></div>
+  <div><label>Altura (cm)</label><input type="number" id="prot-altura" placeholder="175" oninput="calcProt()"></div>
+</div>
+
+<label>Nivel de actividad física</label>
+<select id="prot-actividad" onchange="calcProt()">
+  <option value="sedentario">Sedentario — trabajo de escritorio, sin ejercicio</option>
+  <option value="ligero">Ligero — 1-2 días de ejercicio a la semana</option>
+  <option value="moderado" selected>Moderado — 3-4 días de ejercicio a la semana</option>
+  <option value="activo">Activo — 5-6 días de ejercicio intenso</option>
+  <option value="muy_activo">Muy activo — entrenamiento diario o trabajo físico</option>
+  <option value="atletico">Atlético — doble entrenamiento diario</option>
+</select>
+
+<label>Objetivo principal</label>
+<select id="prot-objetivo" onchange="calcProt()">
+  <option value="adelgazar">Perder grasa (déficit calórico)</option>
+  <option value="mantener">Mantener peso y composición</option>
+  <option value="musculo">Ganar músculo (superávit)</option>
+  <option value="recomposicion">Recomposición corporal (perder grasa y ganar músculo)</option>
+  <option value="rendimiento">Rendimiento deportivo (atletas)</option>
+</select>
+
+<label>Tipo de dieta</label>
+<select id="prot-dieta" onchange="calcProt()">
+  <option value="omnivora">Omnívora (todo tipo de alimentos)</option>
+  <option value="vegetariana">Vegetariana</option>
+  <option value="vegana">Vegana</option>
+</select>
+
+<div class="result-box" id="prot-res">Introduce tu peso para calcular</div>
+
+<div id="prot-desglose" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="prot-cards"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)" id="prot-fuentes-wrap" style="display:none">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cómo llegar a tu objetivo proteico?</h2>
+  <div id="prot-fuentes"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Tabla de proteínas por alimento</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Alimento</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Proteína/100g</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Ración típica</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍗 Pechuga de pollo (cocida)</td><td style="text-align:right">31 g</td><td style="text-align:right">150g = 47g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🐟 Atún al natural (escurrido)</td><td style="text-align:right">29 g</td><td style="text-align:right">80g = 23g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🐟 Salmón</td><td style="text-align:right">25 g</td><td style="text-align:right">150g = 38g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🥩 Ternera (solomillo)</td><td style="text-align:right">26 g</td><td style="text-align:right">200g = 52g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🥚 Huevo entero</td><td style="text-align:right">13 g</td><td style="text-align:right">2 huevos = 16g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🥛 Queso cottage</td><td style="text-align:right">12 g</td><td style="text-align:right">200g = 24g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🫘 Lentejas (cocidas)</td><td style="text-align:right">9 g</td><td style="text-align:right">200g = 18g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🫘 Garbanzos (cocidos)</td><td style="text-align:right">9 g</td><td style="text-align:right">200g = 18g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🧀 Queso manchego</td><td style="text-align:right">27 g</td><td style="text-align:right">40g = 11g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🥛 Yogur griego natural</td><td style="text-align:right">10 g</td><td style="text-align:right">200g = 20g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🌿 Tofu firme</td><td style="text-align:right">15 g</td><td style="text-align:right">150g = 23g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🌿 Tempeh</td><td style="text-align:right">19 g</td><td style="text-align:right">150g = 29g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🥜 Almendras</td><td style="text-align:right">21 g</td><td style="text-align:right">30g = 6g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">💪 Proteína de suero (whey)</td><td style="text-align:right">75-90 g</td><td style="text-align:right">30g = 22-27g</td></tr>
+  </table>
+</div>
+
+<script>
+const PROT_FACTORES = {
+  sedentario:  { min: 0.8,  max: 1.0 },
+  ligero:      { min: 1.0,  max: 1.3 },
+  moderado:    { min: 1.2,  max: 1.6 },
+  activo:      { min: 1.6,  max: 2.0 },
+  muy_activo:  { min: 1.8,  max: 2.2 },
+  atletico:    { min: 2.0,  max: 2.4 }
+};
+
+const PROT_OBJETIVO = {
+  adelgazar:      { ajuste: 0.3, label: 'Pérdida de grasa', color: '#EF4444', desc: 'Proteína alta para preservar músculo en déficit calórico.' },
+  mantener:       { ajuste: 0,   label: 'Mantenimiento',    color: '#22C55E', desc: 'Proteína moderada para mantener composición corporal.' },
+  musculo:        { ajuste: 0.2, label: 'Ganancia muscular', color: '#3B82F6', desc: 'Proteína alta junto a superávit calórico para maximizar la síntesis muscular.' },
+  recomposicion:  { ajuste: 0.3, label: 'Recomposición',    color: '#8B5CF6', desc: 'Proteína muy alta para perder grasa y ganar músculo simultáneamente.' },
+  rendimiento:    { ajuste: 0.4, label: 'Rendimiento',       color: '#F59E0B', desc: 'Proteína máxima para atletas de competición y deportes de resistencia.' }
+};
+
+const PROT_DIETA = {
+  omnivora:    { ajuste: 0,    label: 'Omnívora' },
+  vegetariana: { ajuste: 0.1,  label: 'Vegetariana (+10% por menor biodisponibilidad)' },
+  vegana:      { ajuste: 0.15, label: 'Vegana (+15% por menor biodisponibilidad)' }
+};
+
+function calcProt() {
+  const peso = parseFloat(document.getElementById('prot-peso').value);
+  const actividad = document.getElementById('prot-actividad').value;
+  const objetivo = document.getElementById('prot-objetivo').value;
+  const dieta = document.getElementById('prot-dieta').value;
+  const sexo = document.getElementById('prot-sexo').value;
+  const edad = parseFloat(document.getElementById('prot-edad').value)||30;
+  const altura = parseFloat(document.getElementById('prot-altura').value)||170;
+  if (!peso) return;
+
+  const factor = PROT_FACTORES[actividad];
+  const obj = PROT_OBJETIVO[objetivo];
+  const diet = PROT_DIETA[dieta];
+
+  let minProt = (factor.min + obj.ajuste + diet.ajuste) * peso;
+  let maxProt = (factor.max + obj.ajuste + diet.ajuste) * peso;
+  const medio = Math.round((minProt + maxProt) / 2);
+  minProt = Math.round(minProt);
+  maxProt = Math.round(maxProt);
+
+  // Calorías proteína
+  const kcalMin = minProt * 4;
+  const kcalMax = maxProt * 4;
+
+  // TMB para % calorías
+  const tmb = sexo==='h'
+    ? 10*peso + 6.25*altura - 5*edad + 5
+    : 10*peso + 6.25*altura - 5*edad - 161;
+  const factoresTDEE = {sedentario:1.2,ligero:1.375,moderado:1.55,activo:1.725,muy_activo:1.9,atletico:1.9};
+  const tdee = Math.round(tmb * factoresTDEE[actividad]);
+  const pctMin = Math.round(kcalMin/tdee*100);
+  const pctMax = Math.round(kcalMax/tdee*100);
+
+  document.getElementById('prot-res').innerHTML =
+    `${minProt}–${maxProt} g de proteína al día
+    <small>${obj.label} · ${diet.label} · ${kcalMin}–${kcalMax} kcal de proteína · ${pctMin}-${pctMax}% de tus calorías</small>`;
+
+  document.getElementById('prot-desglose').style.display = 'block';
+  document.getElementById('prot-cards').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Mínimo</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${minProt}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${(minProt/peso).toFixed(1)}g/kg</div>
+    </div>
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Objetivo ideal</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${medio}g</div>
+      <div style="font-size:0.78rem;color:var(--accent)">${(medio/peso).toFixed(1)}g/kg</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Máximo</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${maxProt}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${(maxProt/peso).toFixed(1)}g/kg</div>
+    </div>`;
+
+  // Distribución por comidas
+  document.getElementById('prot-fuentes-wrap').style.display = 'block';
+  const comidas = [
+    ['Desayuno', Math.round(medio*0.25)],
+    ['Media mañana', Math.round(medio*0.15)],
+    ['Comida', Math.round(medio*0.30)],
+    ['Merienda', Math.round(medio*0.10)],
+    ['Cena', Math.round(medio*0.20)]
+  ];
+  document.getElementById('prot-fuentes').innerHTML = `
+    <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">${obj.desc} Para alcanzar <strong>${medio}g diarios</strong>, distribuye la proteína en 4-5 comidas:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.5rem;margin-bottom:1rem">
+      ${comidas.map(([c,g])=>`
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.65rem;text-align:center">
+          <div style="font-size:0.75rem;color:var(--muted)">${c}</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">${g}g</div>
+        </div>`).join('')}
+    </div>
+    <p style="color:var(--muted);font-size:0.85rem">💡 <strong>Truco:</strong> ${medio}g de proteína equivalen aproximadamente a ${Math.round(medio/31*100)}g de pechuga de pollo, ${Math.round(medio/29)} latas de atún, o ${Math.round(medio/10)} yogures griegos.</p>`;
+}
+</script>

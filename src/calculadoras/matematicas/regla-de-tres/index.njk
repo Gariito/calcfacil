@@ -1,92 +1,142 @@
 ---
 layout: calculadora.njk
-title: Calculadora regla de tres simple - Calculadoras gratis online
-description: Calcula la regla de tres directa e inversa al instante. La calculadora de regla de tres más rápida y sencilla. Gratis y sin registro.
-keywords: regla de tres, regla de 3, regla de tres online, calculadora regla de tres, regla de tres directa, regla de tres inversa, calculo regla de tres, reglas de tres online, regla de tres calculadora, regla de 3 online, calculador de regla de tres
-categoria: dia-a-dia
-categoriaLabel: Día a día
-titulo: Regla de 3 online — Calculo regla de tres simple
+title: Calculadora de regla de tres online - Regla de tres simple
+description: Calcula una regla de tres directa o inversa online. Introduce tres valores y obtén el resultado de forma rápida, sencilla y gratuita.
+categoria: matematicas
+categoriaLabel: Matemáticas
+titulo: Calculadora de regla de tres online
 icono: ⚖️
 tituloCorto: la regla de tres
-descripcion: Resuelve cualquier regla de tres directa o inversa al instante introduciendo solo tres valores.
-explicacion: La regla de tres es una de las operaciones matemáticas más usadas en el día a día. Permite calcular un valor desconocido a partir de tres valores conocidos que guardan una proporción entre sí. Se usa constantemente para calcular precios por cantidad, adaptar recetas de cocina, convertir unidades, calcular tiempos de trabajo, escalas en mapas y repartos proporcionales. Existen dos tipos — la regla de tres directa, donde al aumentar una cantidad la otra también aumenta (más kilómetros, más gasolina), y la regla de tres inversa, donde al aumentar una cantidad la otra disminuye (más trabajadores, menos días para terminar la obra). Esta calculadora de regla de tres resuelve ambos casos al instante con solo introducir los tres valores conocidos.
+descripcion: Resuelve reglas de tres directas e inversas introduciendo tres valores conocidos.
+explicacion: La regla de tres permite calcular un valor desconocido cuando conocemos otros tres valores relacionados proporcionalmente. Es útil para calcular precios, cantidades, distancias, tiempos, recetas, conversiones y otras situaciones en las que existe una proporción. Esta calculadora permite resolver tanto reglas de tres directas como inversas de forma rápida.
 faq:
   - q: ¿Cómo se hace una regla de tres?
-    a: Se plantean cuatro valores en proporción — A es a B como C es a X. Para la regla de tres directa, X = (B × C) / A. Por ejemplo, si 3 kg cuestan 7€, ¿cuánto cuestan 5 kg? X = (7 × 5) / 3 = 11,67€.
-  - q: ¿Qué diferencia hay entre regla de tres directa e inversa?
-    a: En la directa, cuando una magnitud aumenta la otra también aumenta proporcionalmente. En la inversa, cuando una magnitud aumenta la otra disminuye. Por ejemplo, velocidad y tiempo son inversamente proporcionales — a más velocidad, menos tiempo.
-  - q: ¿Para qué sirve la regla de tres en la vida real?
-    a: Para calcular precios por cantidad, adaptar recetas, convertir unidades, calcular tiempos de trabajo, escalas en planos y mapas, repartos proporcionales, porcentajes y muchísimas situaciones cotidianas.
-  - q: ¿Puedo resolver "si 3 kg cuestan 7€, cuánto cuestan 5 kg"?
-    a: Sí. Introduce A=3, B=7, C=5 y selecciona proporción directa. El resultado X es 11,67€.
-  - q: ¿Y si quiero saber cuántos días tarda 1 trabajador si 4 tardan 6 días?
-    a: Es una regla de tres inversa. A=4 trabajadores, B=6 días, C=1 trabajador. X = (4×6)/1 = 24 días.
+    a: Se relacionan tres valores conocidos y una incógnita. Si A es a B como C es a X, en una regla de tres directa se calcula X multiplicando B por C y dividiendo el resultado entre A. Por ejemplo, si 3 kg cuestan 7 €, 5 kg cuestan (7 × 5) / 3 = 11,67 €.
+
+  - q: ¿Qué diferencia hay entre una regla de tres directa e inversa?
+    a: En una regla de tres directa, cuando una cantidad aumenta, la otra también aumenta proporcionalmente. En una regla de tres inversa ocurre lo contrario; cuando una cantidad aumenta, la otra disminuye. Por ejemplo, más productos cuestan más dinero, mientras que más trabajadores pueden necesitar menos tiempo para realizar el mismo trabajo.
+
+  - q: ¿Para qué sirve la regla de tres?
+    a: Se utiliza para resolver problemas de proporciones. Algunos ejemplos habituales son calcular precios según una cantidad, adaptar recetas, convertir unidades, calcular distancias o tiempos y resolver repartos proporcionales.
+
+  - q: ¿Cómo calcular una regla de tres directa?
+    a: Primero relaciona los tres valores conocidos. Si A corresponde a B y C corresponde a X, utiliza la fórmula X = (B × C) / A. Por ejemplo, si 100 km requieren 6 litros de combustible, 250 km requieren (6 × 250) / 100 = 15 litros.
+
+  - q: ¿Cómo calcular una regla de tres inversa?
+    a: En una proporción inversa, el producto de las dos cantidades se mantiene constante. Por ejemplo, si 4 trabajadores tardan 6 días en realizar un trabajo, un solo trabajador tardaría (4 × 6) / 1 = 24 días, suponiendo que todos trabajan al mismo ritmo.
 relacionadas:
   - slug: porcentaje
     categoria: dia-a-dia
-    titulo: Porcentajes
+    titulo: Calculadora de porcentajes
     icono: "%"
-  - slug: conversor-numeros
-    categoria: dia-a-dia
-    titulo: Conversor de numeros
-    icono: 🔣
-  - slug: euros-pesetas
-    categoria: finanzas
-    titulo: Euros a pesetas
-    icono: 💶
-  - slug: dias-entre-fechas
-    categoria: dia-a-dia
-    titulo: Días entre fechas
-    icono: 📅
-  - slug: harris-benedict
-    categoria: salud
-    titulo: Harris Benedict
-    icono: 🧬
+  - slug: fracciones
+    categoria: matematicas
+    titulo: Calculadora de fracciones
+    icono: "½"
   - slug: calculadora-basica
     categoria: dia-a-dia
     titulo: Calculadora básica
     icono: 🔢
+  - slug: raiz-potencia
+    categoria: matematicas
+    titulo: Calculadora de raíces y potencias
+    icono: "√"
+  - slug: calculadora-cientifica
+    categoria: dia-a-dia
+    titulo: Calculadora Cientifica
+    icono: 🔬
 ---
 
 <label>Tipo de proporción</label>
 <select id="rt-tipo" onchange="calcRT()">
-  <option value="directa">Directa — si A sube, B sube</option>
-  <option value="inversa">Inversa — si A sube, B baja</option>
+  <option value="directa">Directa — si A aumenta, B aumenta</option>
+  <option value="inversa">Inversa — si A aumenta, B disminuye</option>
 </select>
 
 <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem">
   <div class="row-2">
-    <div><label>Si A =</label><input type="number" id="rt-a" placeholder="3" oninput="calcRT()"></div>
-    <div><label>entonces B =</label><input type="number" id="rt-b" placeholder="7" oninput="calcRT()"></div>
-  </div>
-  <div class="row-2">
-    <div><label>Si A =</label><input type="number" id="rt-c" placeholder="5" oninput="calcRT()"></div>
+    <div>
+      <label>Si A =</label>
+      <input type="number" id="rt-a" placeholder="3" oninput="calcRT()">
+    </div>
+
     <div>
       <label>entonces B =</label>
-      <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">?</div>
+      <input type="number" id="rt-b" placeholder="7" oninput="calcRT()">
+    </div>
+  </div>
+
+  <div class="row-2">
+    <div>
+      <label>Si A =</label>
+      <input type="number" id="rt-c" placeholder="5" oninput="calcRT()">
+    </div>
+
+    <div>
+      <label>entonces B =</label>
+      <div class="result-box" id="rt-x" style="margin-top:0;font-size:1.3rem;min-height:44px">
+        ?
+      </div>
     </div>
   </div>
 </div>
 
-<div class="result-box" id="rt-res">Introduce los tres valores conocidos</div>
-
-
-
-<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          
-          
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de la regla de tres online</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Consumo de Combustible:</strong> Si un coche consume 6 litros de gasolina para recorrer 100 km, ¿cuántos litros necesitará para recorrer 250 km? → A=6, B=100, C=250, X=15 litros.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Compras/Precios:</strong> Si 5 kilogramos de manzanas cuestan 12 €, ¿cuánto costarán 8 kilogramos de las mismas manzanas? → A=5, B=12, C=8, X=19.2 €.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Ejemplo de Tipos de Cambio:</strong> Si 10 dólares equivalen a 9 euros, ¿cuántos euros obtendré si cambio 45 dólares? → A=10, B=9, C=45, X=40.5 euros.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Ejemplo de Impresión:</strong> Si una impresora tarda 2 minutos en imprimir 30 páginas, ¿cuántas páginas podrá imprimir en 7 minutos? → A=2, B=30, C=7, X=105 páginas.</p>
-          <br>
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de la regla de tres online inversa</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Velocidad y Tiempo:</strong> Si un tren viaja a 90 km/h y tarda 4 horas en llegar a su destino, ¿cuánto tardará si aumenta su velocidad a 120 km/h? → A=90, B=4, C=120, X=3 horas.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ejemplo de Grifos y Depósitos:</strong> Si 3 grifos iguales tardan 10 horas en llenar un depósito de agua, ¿cuánto tardarán 5 grifos iguales en llenar el mismo depósito? → A=3, B=10, C=5, X=6 horas.</p>
-
+<div class="result-box" id="rt-res">
+  Introduce los tres valores conocidos
 </div>
 
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    Ejemplos de regla de tres directa
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Combustible:</strong> Si un coche consume 6 litros para recorrer 100 km,
+    ¿cuántos litros necesita para recorrer 250 km?
+    → 100 km → 6 litros; 250 km → X.
+    <strong>X = (6 × 250) / 100 = 15 litros.</strong>
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Compras:</strong> Si 5 kg de manzanas cuestan 12 €, ¿cuánto cuestan 8 kg?
+    → 5 kg → 12 €; 8 kg → X.
+    <strong>X = (12 × 8) / 5 = 19,20 €.</strong>
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Conversión de moneda:</strong> Si 10 dólares equivalen a 9 euros,
+    ¿cuántos euros corresponden a 45 dólares?
+    → 10 $ → 9 €; 45 $ → X.
+    <strong>X = (9 × 45) / 10 = 40,50 €.</strong>
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Impresión:</strong> Si una impresora tarda 2 minutos en imprimir 30 páginas,
+    ¿cuántas páginas puede imprimir en 7 minutos?
+    → 2 min → 30 páginas; 7 min → X.
+    <strong>X = (30 × 7) / 2 = 105 páginas.</strong>
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Ejemplos de regla de tres inversa
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Velocidad y tiempo:</strong> Si un tren viaja a 90 km/h y tarda 4 horas
+    en llegar a su destino, ¿cuánto tardará si aumenta su velocidad a 120 km/h?
+    → 90 km/h → 4 horas; 120 km/h → X.
+    <strong>X = (90 × 4) / 120 = 3 horas.</strong>
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    <strong>Trabajadores:</strong> Si 3 trabajadores tardan 10 horas en realizar
+    un trabajo, ¿cuánto tardarán 5 trabajadores trabajando al mismo ritmo?
+    → 3 trabajadores → 10 horas; 5 trabajadores → X.
+    <strong>X = (3 × 10) / 5 = 6 horas.</strong>
+  </p>
+
+</div>
 
 <script>
 function calcRT() {
@@ -94,10 +144,19 @@ function calcRT() {
   const b = parseFloat(document.getElementById('rt-b').value);
   const c = parseFloat(document.getElementById('rt-c').value);
   const tipo = document.getElementById('rt-tipo').value;
+
   if (!a || !b || !c) return;
-  const x = tipo === 'directa' ? (b * c) / a : (a * b) / c;
-  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {maximumFractionDigits:4});
+
+  const x = tipo === 'directa'
+    ? (b * c) / a
+    : (a * b) / c;
+
+  const xFmt = parseFloat(x.toFixed(6)).toLocaleString('es-ES', {
+    maximumFractionDigits: 4
+  });
+
   document.getElementById('rt-x').textContent = xFmt;
+
   document.getElementById('rt-res').innerHTML =
     `X = ${xFmt}<small>Proporción ${tipo}: ${a} → ${b} · ${c} → ${xFmt}</small>`;
 }

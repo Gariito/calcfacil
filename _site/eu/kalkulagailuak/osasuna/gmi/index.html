@@ -10,14 +10,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GMI kalkulagailua euskaraz — Gorputz Masa Indizea doako — CalcFácil</title>
-  <meta name="description" content="Kalkulatu zure Gorputz Masa Indizea (GMI) doako. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.">
-  <meta name="keywords" content="gmi kalkulagailua, gorputz masa indizea, gmi kalkulatu, gmi euskaraz, bmi kalkulagailua euskaraz">
+  <meta name="description" content="Kalkulatu zure Gorputz Masa Indizea (GMI) doako euskaraz. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.">
+  <meta name="keywords" content="gmi kalkulagailua, gorputz masa indizea, gmi kalkulatu, gmi euskaraz, bmi kalkulagailua euskaraz, imc kalkulagailua euskaraz">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/eu/kalkulagailuak/osasuna/gmi/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="GMI kalkulagailua euskaraz — Gorputz Masa Indizea doako — CalcFácil">
-  <meta property="og:description" content="Kalkulatu zure Gorputz Masa Indizea (GMI) doako. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.">
+  <meta property="og:description" content="Kalkulatu zure Gorputz Masa Indizea (GMI) doako euskaraz. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.">
   <meta property="og:url" content="https://calculadorasgratis.net/eu/kalkulagailuak/osasuna/gmi/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -28,7 +28,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "GMI kalkulagailua euskaraz — Gorputz Masa Indizea doako",
-    "description": "Kalkulatu zure Gorputz Masa Indizea (GMI) doako. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.",
+    "description": "Kalkulatu zure Gorputz Masa Indizea (GMI) doako euskaraz. Jakin zure pisua osasuntsua den zure altuera eta pisuaren arabera. Erregistrorik gabe.",
     "url": "https://calculadorasgratis.net/eu/kalkulagailuak/osasuna/gmi/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -124,47 +124,62 @@
         <p class="calc-intro">Kalkulatu zure Gorputz Masa Indizea (GMI) eta jakin zure pisua osasuntsua den.</p>
 
         <div class="card">
-          <label>Pisua (kg)</label>
-          <input type="number" id="gmi-pisu" placeholder="70" oninput="calcGMI()">
+          <div class="row-2">
+            <div><label>Pisua (kg)</label><input type="number" id="gmi-pisu" placeholder="70" oninput="calcGMI()"></div>
+            <div><label>Altuera (cm)</label><input type="number" id="gmi-altuera" placeholder="170" oninput="calcGMI()"></div>
+          </div>
+          <label>Adina (urte)</label>
+          <input type="number" id="gmi-adin" placeholder="30" oninput="calcGMI()">
+          <label>Sexua</label>
+          <select id="gmi-sexu" onchange="calcGMI()">
+            <option value="g">Gizona</option>
+            <option value="e">Emakumea</option>
+          </select>
 
-          <label>Altuera (cm)</label>
-          <input type="number" id="gmi-altuera" placeholder="170" oninput="calcGMI()">
-
-          <div class="bmi-bar">
+          <div class="bmi-bar" style="margin-top:1rem">
             <div class="bmi-marker" id="gmi-marker" style="left:0%"></div>
           </div>
           <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:1rem">
             <span>Pisu txikia</span>
             <span>Normala</span>
-            <span>Gehiegizko pisua</span>
+            <span>Gehiegizkoa</span>
             <span>Obesitatea</span>
           </div>
 
           <div class="result-box" id="gmi-res">Sartu zure pisua eta altuera</div>
         </div>
 
+        <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="gmi-stats"></div>
+
         <div class="card" style="margin-top:1.5rem">
           <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zer da GMI edo Gorputz Masa Indizea?</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Gorputz Masa Indizea (GMI) pertsonaren altuera eta pisua erlazionatzen dituen neurri bat da, pisua osasuntsua den estimatzeko. Kilogramoko pisua metro karratuko altuerarekin zatituz kalkulatzen da. 18,5 eta 24,9 arteko GMI normala kontsideratzen da.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Gorputz Masa Indizea (GMI) pisua osasuntsua den estimatzeko medikuntzak erabiltzen duen tresna bat da. Kilogramoko pisua metro karratuko altuerarekin zatituz kalkulatzen da. GMI = pisu (kg) ÷ altuera² (m).</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Adibidez, 70 kg eta 1,75 m-ko pertsonak: GMI = 70 ÷ (1,75 × 1,75) = 22,9. Kategoria normala.</p>
 
           <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">GMI kategoriak</h2>
           <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
             <tr style="background:var(--accent-light)">
               <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">GMI</th>
               <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Kategoria</th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Osasun arriskua</th>
             </tr>
-            <tr><td style="padding:0.5rem 0.75rem">18,5 azpitik</td><td>Pisu txikia</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">18,5 – 24,9</td><td>Pisu normala ✓</td></tr>
-            <tr><td style="padding:0.5rem 0.75rem">25 – 29,9</td><td>Gehiegizko pisua</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">30 edo gehiago</td><td>Obesitatea</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">&lt; 18,5</td><td>Pisu txikia</td><td style="color:var(--muted)">Ertaina</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">18,5 – 24,9</td><td>Pisu normala ✓</td><td style="color:#22C55E">Baxua</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">25 – 29,9</td><td>Gehiegizko pisua</td><td style="color:var(--muted)">Ertaina</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">30 – 34,9</td><td>I. mailako obesitatea</td><td style="color:#EF4444">Altua</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">35 – 39,9</td><td>II. mailako obesitatea</td><td style="color:#EF4444">Oso altua</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">≥ 40</td><td>III. mailako obesitatea</td><td style="color:#7C3AED">Muturrekoa</td></tr>
           </table>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">GMIaren mugak</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">GMIak ez du gihar-masa eta koipe-masa bereizten. Kirolari oso muskulatsu batek GMI altua izan dezake baina koipe gutxi. Horregatik, GMIa orientazio tresna bat da soilik eta mediku ebaluazio osoak gorputzaren osaera ere kontuan hartu behar du.</p>
         </div>
       </div>
 
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>Zer da GMI?</h2>
-          <p>Gorputz Masa Indizea (GMI) pisua osasuntsua den jakiteko medikuntzan erabiltzen den tresna da. Pisua eta altuera erlazionatuz kalkulatzen da eta osasun egoera azkarrean ebaluatzeko balio du.</p>
+          <p>Gorputz Masa Indizea (GMI) pisua osasuntsua den jakiteko medikuntzak erabiltzen duen erreferentzia-tresna da. Pisua eta altuera erlazionatuz kalkulatzen da eta osasun egoera azkarrean ebaluatzeko balio du.</p>
         </div>
         <div class="card sidebar-card">
           <h3>Maiz egiten diren galderak</h3>
@@ -173,10 +188,73 @@
             <p>18,5 eta 24,9 arteko GMI normala kontsideratzen da. 18,5 azpitik pisu txikia da, 25 eta 29,9 artean gehiegizko pisua, eta 30 edo gehiago obesitatea.</p>
           </details>
           <details>
-            <summary>Nola kalkulatzen da GMI?</summary>
-            <p>GMI = pisua (kg) ÷ altuera² (m). Adibidez, 70 kg eta 1,75 m-ko pertsona batek: GMI = 70 ÷ (1,75 × 1,75) = 22,9.</p>
+            <summary>GMI desberdina al da gizonen eta emakumeen artean?</summary>
+            <p>Kategoria berdinak erabiltzen dira gizon eta emakumeentzat, baina gorputzaren osaera desberdina da. Emakumeek naturalki koipe gehiago dute pisua osasuntsua denean ere.</p>
           </details>
           <details>
+            <summary>GMIa umeen kasuan erabili al daiteke?</summary>
+            <p>Umeen kasuan GMI percentilak erabiltzen dira, ez kategoria finkoak, adin eta sexuaren arabera aldatzen direlako. 2-18 urte arteko umeentzat GMI bereziak daude.</p>
+          </details>
+          <details>
+            <summary>Zein da pisua galtzeko GMI egokia?</summary>
+            <p>25 edo gehiagoko GMIa bada, medikuarekin hitz egitea gomendatzen da. Pisua poliki eta osasuntsu galtzeko, astean 0,3-0,5 kg-ko galerа gomendatzen da, dietarik eta ariketa fisikoa konbinatuz.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/osasuna/kalorian/">🔥 Kalorien kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/loa/">😴 Lo kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/ur-beharra/">💧 Ur-beharra</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcGMI() {
+  const pisu = parseFloat(document.getElementById('gmi-pisu').value);
+  const altu = parseFloat(document.getElementById('gmi-altuera').value);
+  const adin = parseFloat(document.getElementById('gmi-adin').value)||30;
+  const sexu = document.getElementById('gmi-sexu').value;
+  if (!pisu||!altu) return;
+  const altM = altu/100;
+  const gmi = pisu/(altM*altM);
+  let kat, kol;
+  if (gmi<18.5){kat='Pisu txikia';kol='#3B82F6';}
+  else if (gmi<25){kat='Pisu normala ✓';kol='#22C55E';}
+  else if (gmi<30){kat='Gehiegizko pisua';kol='#EAB308';}
+  else if (gmi<35){kat='I. mailako obesitatea';kol='#EF4444';}
+  else if (gmi<40){kat='II. mailako obesitatea';kol='#DC2626';}
+  else{kat='III. mailako obesitatea';kol='#7C3AED';}
+  const posPct = Math.min(Math.max((gmi-15)/25*100,0),100);
+  document.getElementById('gmi-marker').style.left = posPct+'%';
+  const pisuMin = (18.5*altM*altM).toFixed(1);
+  const pisuMax = (24.9*altM*altM).toFixed(1);
+  document.getElementById('gmi-res').innerHTML =
+    `GMI: <span style="color:${kol}">${gmi.toFixed(1)} — ${kat}</span>
+    <small>Pisu osasuntsua zure altuerarako: ${pisuMin}–${pisuMax} kg</small>`;
+  document.getElementById('gmi-stats').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:${kol}">${gmi.toFixed(1)}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">GMI balioa</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.1rem;font-weight:700;color:${kol}">${kat}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Kategoria</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${pisuMin}–${pisuMax} kg</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Pisu osasuntsua</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
+      <div style="font-size:1.3rem;font-weight:700;color:var(--accent)">${altu} cm</div>
+      <div style="font-size:0.8rem;color:var(--muted)">Altuera</div>
+    </div>`;
+}
+</script>
 </main>
 
 

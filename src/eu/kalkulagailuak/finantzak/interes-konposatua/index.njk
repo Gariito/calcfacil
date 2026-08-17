@@ -1,0 +1,104 @@
+---
+layout: base.njk
+title: Interes konposatu kalkulagailua doako euskaraz
+description: Kalkulatu zure inbertsioaren edo aurrezpenaren hazkundea interes konposatua erabilita. Doako interes kalkulagailua euskaraz.
+keywords: interes konposatua euskaraz, interes konposatu kalkulagailua, inbertsio kalkulagailua euskaraz, aurrezpen kalkulagailua, interés compuesto euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
+      <span>›</span>
+      <span>Interes konposatua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📈 Interes konposatu kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu zure aurrezpen edo inbertsioaren hazkundea interes konposatua erabilita.</p>
+
+        <div class="card">
+          <label>Hasierako kapitala (€)</label>
+          <input type="number" id="ik-kapital" placeholder="1000" oninput="calcIK()">
+
+          <div class="row-2">
+            <div><label>Urteko interes tasa (%)</label><input type="number" id="ik-tasa" placeholder="7" oninput="calcIK()"></div>
+            <div><label>Urte kopurua</label><input type="number" id="ik-urte" placeholder="10" oninput="calcIK()"></div>
+          </div>
+
+          <label>Hileko ekarpen gehigarria (€)</label>
+          <input type="number" id="ik-ekarpen" placeholder="0" value="0" oninput="calcIK()">
+
+          <div class="result-box" id="ik-res">Sartu zure datuak</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zer da interes konposatua?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Interes konposatua irabazitako interesak kapitalari gehitzen zaizkionean gertatzen da, hurrengo aldian interes horiek ere interesak sortzen dituztelarik. Denboran zehar hazkunde esponentziala sortzen du — Albert Einsteinek "munduko zortzigarren mirarria" deitu ziona.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem"><strong>Adibidea:</strong> 1.000€ %7ko interes konposatuan 10 urtez:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li>5 urteren buruan: ~1.403€</li>
+            <li>10 urteren buruan: ~1.967€</li>
+            <li>20 urteren buruan: ~3.870€</li>
+            <li>30 urteren buruan: ~7.612€</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zergatik da interes konposatua hain indartsua?</h2>
+          <p>Interes konposatuan kapitalak ez ezik irabazitako interesek ere interesak sortzen dituzte. Zenbat eta denbora gehiago igaro, orduan eta azkarrago hazten da kapitala. Horregatik da hain garrantzitsua gazterik hasitako aurreztea.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Zer interes tasa da errealistoa?</summary>
+            <p>Historikoki, mundu mailako akzioen merkatuek batez beste %7-10 urtean eman dute inflazioa kendu gabe. Aurrezpen kontuek eta bonuek emaitza txikiagoak ematen dituzte normalean.</p>
+          </details>
+          <details>
+            <summary>Zer da 72-ren erregela?</summary>
+            <p>72 interes tasaz zatituz kapitala bikoiztu arte behar den urte kopurua kalkulatzen da. Adibidez, %6ko tasarekin: 72 ÷ 6 = 12 urte kapitala bikoiztu arte.</p>
+          </details>
+          <details>
+            <summary>Nola maximizatu interes konposatua?</summary>
+            <p>Hiru faktore nagusiak: hasierako kapital handiagoa, interes tasa altuagoa eta denbora gehiago. Hileko ekarpen erregularrak ere emaitza nabarmen hobetzen dute.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/finantzak/soldata-garbia/">💼 Soldata garbia</a></li>
+            <li><a href="/eu/kalkulagailuak/finantzak/mailegua/">💳 Mailegu kalkulagailua</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcIK() {
+  const kapital = parseFloat(document.getElementById('ik-kapital').value);
+  const tasa = parseFloat(document.getElementById('ik-tasa').value);
+  const urte = parseFloat(document.getElementById('ik-urte').value);
+  const ekarpen = parseFloat(document.getElementById('ik-ekarpen').value)||0;
+  if (!kapital||!tasa||!urte) return;
+  const r = tasa/100/12, n = urte*12;
+  const etorkizuna = kapital*Math.pow(1+r,n) + ekarpen*(Math.pow(1+r,n)-1)/r;
+  const inbertitua = kapital + ekarpen*n;
+  const irabaziak = etorkizuna - inbertitua;
+  const fmt = n => n.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' €';
+  document.getElementById('ik-res').innerHTML =
+    `Azken kapitala: ${fmt(etorkizuna)}
+    <small>
+    Inbertitua: ${fmt(inbertitua)} · 
+    Irabaziak: ${fmt(irabaziak)} · 
+    Hazkundea: %${((etorkizuna/inbertitua-1)*100).toFixed(1).replace('.',',')}
+    </small>`;
+}
+</script>

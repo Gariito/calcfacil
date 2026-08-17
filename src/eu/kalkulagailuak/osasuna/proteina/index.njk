@@ -1,0 +1,221 @@
+---
+layout: base.njk
+title: Eguneroko proteina kalkulagailua doako euskaraz
+description: Kalkulatu zenbat gramo proteina behar dituzun egunero zure pisuaren, jarduera mailaren eta helburuaren arabera. Doako proteina kalkulagailua euskaraz.
+keywords: proteina kalkulagailua euskaraz, eguneroko proteina beharra, proteina muskuluak, proteina pisua galtzeko, proteinas diarias euskera, zenbat proteina behar dut
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <span>›</span>
+      <span>Proteina kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🥩 Eguneroko proteina kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu zenbat gramo proteina behar dituzun egunero zure pisuaren, jarduera mailaren eta helburuaren arabera.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div><label>Gorputz pisua (kg)</label><input type="number" id="prot-pisu" placeholder="75" oninput="calcProt()"></div>
+            <div>
+              <label>Sexua</label>
+              <select id="prot-sexu" onchange="calcProt()">
+                <option value="g">Gizona</option>
+                <option value="e">Emakumea</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-2">
+            <div><label>Adina (urte)</label><input type="number" id="prot-adin" placeholder="30" oninput="calcProt()"></div>
+            <div><label>Altuera (cm)</label><input type="number" id="prot-altu" placeholder="175" oninput="calcProt()"></div>
+          </div>
+
+          <label>Jarduera maila</label>
+          <select id="prot-jard" onchange="calcProt()">
+            <option value="sedentario">Sedentarioa — eserita lan, ariketarik gabe</option>
+            <option value="arina">Arina — astean 1-2 egun ariketa</option>
+            <option value="ertaina" selected>Ertaina — astean 3-4 egun ariketa</option>
+            <option value="aktiboa">Aktiboa — astean 5-6 egun intentsua</option>
+            <option value="oso_aktiboa">Oso aktiboa — egunero entrenamendu edo lan fisikoa</option>
+            <option value="atletikoa">Atletikoa — eguneko bi entrenamendu</option>
+          </select>
+
+          <label>Helburu nagusia</label>
+          <select id="prot-helburu" onchange="calcProt()">
+            <option value="koipea_galdu">Koipea galdu (kaloria defizita)</option>
+            <option value="mantendu">Pisua eta osaera mantendu</option>
+            <option value="gihar_irabazi">Gihar irabazi (kaloria superabita)</option>
+            <option value="berreraketa">Gorputzaren berreraketa (koipea galdu + gihar irabazi)</option>
+            <option value="errendimendua">Kirolarien errendimendua</option>
+          </select>
+
+          <label>Dieta mota</label>
+          <select id="prot-dieta" onchange="calcProt()">
+            <option value="omnibora">Omnibora (elikagai guztiak)</option>
+            <option value="begetariano">Begetarianoa</option>
+            <option value="begano">Beganoa</option>
+          </select>
+
+          <div class="result-box" id="prot-res">Sartu zure pisua kalkulatzeko</div>
+        </div>
+
+        <div id="prot-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="prot-cards"></div>
+        </div>
+
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)" id="prot-otorduk-wrap" style="display:none">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Nola lortu zure proteina helburua?</h2>
+          <div id="prot-otorduk"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Proteina askoko elikagaien taula</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Elikagaia</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Proteina/100g</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Ración tipikoa</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">🍗 Oilasko bular (egosita)</td><td style="text-align:right">31g</td><td style="text-align:right">150g = 47g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🐟 Antxoa uretan (xukaturik)</td><td style="text-align:right">29g</td><td style="text-align:right">80g = 23g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🐟 Izokin</td><td style="text-align:right">25g</td><td style="text-align:right">150g = 38g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🥩 Txahal (solomo)</td><td style="text-align:right">26g</td><td style="text-align:right">200g = 52g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🥚 Arrautza osoa</td><td style="text-align:right">13g</td><td style="text-align:right">2 arrautza = 16g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🥛 Jogurt greziar naturalа</td><td style="text-align:right">10g</td><td style="text-align:right">200g = 20g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🫘 Dilista (egosita)</td><td style="text-align:right">9g</td><td style="text-align:right">200g = 18g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🌿 Tofu gogorra</td><td style="text-align:right">15g</td><td style="text-align:right">150g = 23g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🌿 Tempeh</td><td style="text-align:right">19g</td><td style="text-align:right">150g = 29g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">💪 Whey proteina hautsa</td><td style="text-align:right">75–90g</td><td style="text-align:right">30g = 22–27g</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zergatik da proteina garrantzitsua?</h2>
+          <p>Proteina giharraren, entzimen eta hormonen oinarrizko osagaia da. Makronutriente asegaragarriena da (gehiago asetzen zaitu), digestioan kaloria gehiago erretzen ditu eta ariketa fisikoa ondoren giharraren berreskurapenean ezinbestekoa da.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Zenbat proteina behar da gihar irabazteko?</summary>
+            <p>Ikerketak erakusten du eguneko gorputz pisuaren kg bakoitzeko 1,6–2,2g proteina optimoa dela gihar hazkundea maximizatzeko. Gorputz pisuaren kg bakoitzeko 3g-tara igotzeak ez du kalterik eragiten baina ez du gihar-irabazi gehigarririk ematen.</p>
+          </details>
+          <details>
+            <summary>Zenbat proteina xurgatu dezake gorputzak otordu bakoitzean?</summary>
+            <p>Gorputzak kontsumitzen duzun proteina guztia xurgatzen du, baina giharraren proteina sintesia optimizatzen da otorduko 20-40g-ko dosiekin. Proteina 4-5 otordutan banatzea efizienteagoa da dena batera hartzea baino.</p>
+          </details>
+          <details>
+            <summary>Proteina handiak giltzurrunei kalte egiten al die?</summary>
+            <p>Osasuntsu diren pertsonengan, proteina sarrera handiak ez die giltzurrunei kalte egiten. Giltzurrun gaixotasun aurretikoaren bat duten pertsonek mugatu egin behar dute — beti kontsultatu zure medikuarekin.</p>
+          </details>
+          <details>
+            <summary>Proteina osagarriak beharrezkoak al dira?</summary>
+            <p>Ez. Elikagai osoek edozein proteina helburua ase dezakete. Whey, kasein edo landare proteina osagarriak erosoak dira baina ez dira ezinbestekoak. Elikagaietatik helburua betetzeko zailtasunak badituzu erabilgarriak izan daitezke.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/osasuna/kalorian/">🔥 Kalorien kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/gmi/">⚖️ GMI kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/ur-beharra/">💧 Ur-beharra</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const FAKTOREAK = {
+  sedentario: {min:0.8, max:1.0},
+  arina:      {min:1.0, max:1.3},
+  ertaina:    {min:1.2, max:1.6},
+  aktiboa:    {min:1.6, max:2.0},
+  oso_aktiboa:{min:1.8, max:2.2},
+  atletikoa:  {min:2.0, max:2.4}
+};
+const HELBURUAK = {
+  koipea_galdu: {doi:0.3, izen:'Koipe galera',    kol:'#EF4444', aze:'Kaloria defizitan gihar gordetzeko proteina altua.'},
+  mantendu:     {doi:0,   izen:'Mantentzea',       kol:'#22C55E', aze:'Gorputz osaera mantentzeko proteina ertaina.'},
+  gihar_irabazi:{doi:0.2, izen:'Gihar irabazia',   kol:'#3B82F6', aze:'Kaloria superabitarekin gihar proteina sintesia maximizatzeko proteina altua.'},
+  berreraketa:  {doi:0.3, izen:'Gorputzaren berreraketa', kol:'#8B5CF6', aze:'Aldi berean koipea galdu eta gihar irabazteko proteina oso altua.'},
+  errendimendua:{doi:0.4, izen:'Kirolari errendimendua', kol:'#F59E0B', aze:'Kirolari lehiakideentzat eta erresistentzia kiroletan proteina maximoa.'}
+};
+const DIETAK = {
+  omnibora:    {doi:0,    izen:'Omnibora'},
+  begetariano: {doi:0.1,  izen:'Begetarianoa (+%10 biodisponibilitate txikiagatik)'},
+  begano:      {doi:0.15, izen:'Beganoa (+%15 biodisponibilitate txikiagatik)'}
+};
+
+function calcProt() {
+  const pisu = parseFloat(document.getElementById('prot-pisu').value);
+  const jard = document.getElementById('prot-jard').value;
+  const helb = document.getElementById('prot-helburu').value;
+  const diet = document.getElementById('prot-dieta').value;
+  const sexu = document.getElementById('prot-sexu').value;
+  const adin = parseFloat(document.getElementById('prot-adin').value)||30;
+  const altu = parseFloat(document.getElementById('prot-altu').value)||170;
+  if (!pisu) return;
+
+  const f=FAKTOREAK[jard], h=HELBURUAK[helb], d=DIETAK[diet];
+  const minP=Math.round((f.min+h.doi+d.doi)*pisu);
+  const maxP=Math.round((f.max+h.doi+d.doi)*pisu);
+  const erdian=Math.round((minP+maxP)/2);
+  const kcalMin=minP*4, kcalMax=maxP*4;
+  const omT = sexu==='g' ? 10*pisu+6.25*altu-5*adin+5 : 10*pisu+6.25*altu-5*adin-161;
+  const tdeeFak={sedentario:1.2,arina:1.375,ertaina:1.55,aktiboa:1.725,oso_aktiboa:1.9,atletikoa:1.9};
+  const tdee=Math.round(omT*tdeeFak[jard]);
+  const pctMin=Math.round(kcalMin/tdee*100);
+  const pctMax=Math.round(kcalMax/tdee*100);
+
+  document.getElementById('prot-res').innerHTML =
+    `${minP}–${maxP}g proteina egunean
+    <small>${h.izen} · ${d.izen} · ${kcalMin}–${kcalMax} kcal proteinarengandik · Zure kalorien ${pctMin}–${pctMax}%</small>`;
+
+  document.getElementById('prot-desglose').style.display = 'block';
+  document.getElementById('prot-cards').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Gutxienekoa</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${minP}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${(minP/pisu).toFixed(1)}g/kg</div>
+    </div>
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Helburu ideala</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${erdian}g</div>
+      <div style="font-size:0.78rem;color:var(--accent)">${(erdian/pisu).toFixed(1)}g/kg</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Gehienekoa</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${maxP}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${(maxP/pisu).toFixed(1)}g/kg</div>
+    </div>`;
+
+  document.getElementById('prot-otorduk-wrap').style.display = 'block';
+  const otorduk = [
+    ['Gosaria', Math.round(erdian*0.25)],
+    ['Goiz erdian', Math.round(erdian*0.15)],
+    ['Bazkaria', Math.round(erdian*0.30)],
+    ['Arratsaldea', Math.round(erdian*0.10)],
+    ['Afaria', Math.round(erdian*0.20)]
+  ];
+  document.getElementById('prot-otorduk').innerHTML = `
+    <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">${h.aze} <strong>${erdian}g eguneko</strong> lortzeko, banatu proteina 4-5 otordutan:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.5rem;margin-bottom:1rem">
+      ${otorduk.map(([o,g])=>`
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.65rem;text-align:center">
+          <div style="font-size:0.75rem;color:var(--muted)">${o}</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">${g}g</div>
+        </div>`).join('')}
+    </div>
+    <p style="color:var(--muted);font-size:0.85rem">💡 <strong>Erreferentzia azkar:</strong> ${erdian}g proteina ≈ ${Math.round(erdian/31*100)}g oilasko bular, ${Math.round(erdian/29)} antxoa lata, edo ${Math.round(erdian/10)} jogurt greziar.</p>`;
+}
+</script>

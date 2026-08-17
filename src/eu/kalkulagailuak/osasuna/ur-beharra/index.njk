@@ -1,0 +1,102 @@
+---
+layout: base.njk
+title: Eguneroko ur-beharra kalkulagailua doako euskaraz
+description: Kalkulatu zenbat ur edan behar duzun egunero zure pisuaren eta jarduera mailaren arabera. Doako ur-beharra kalkulagailua euskaraz.
+keywords: ur beharra kalkulagailua euskaraz, zenbat ur edan, eguneroko ur beharra, hidratazio kalkulagailua, agua diaria calculadora euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/osasuna/">Osasuna</a>
+      <span>›</span>
+      <span>Ur-beharra</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>💧 Eguneroko ur-beharra kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu zenbat ur edan behar duzun egunero zure pisuaren eta jarduera mailaren arabera.</p>
+
+        <div class="card">
+          <label>Gorputz pisua (kg)</label>
+          <input type="number" id="ur-pisu" placeholder="70" oninput="calcUr()">
+
+          <label>Eguneroko ariketa iraupena (minutu)</label>
+          <input type="number" id="ur-ariketa" placeholder="30" oninput="calcUr()">
+
+          <label>Klima</label>
+          <select id="ur-klima" onchange="calcUr()">
+            <option value="0">Epela (normala)</option>
+            <option value="0.3">Bero edo heze</option>
+            <option value="0.5">Oso bero (udan)</option>
+          </select>
+
+          <div class="result-box" id="ur-res">Sartu zure pisua</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zergatik da ur nahikoa edatea garrantzitsua?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Gorputza %60 inguru ura da. Uraren funtzio nagusiak hauek dira: tenperatura erregulazioa, mantenugaien garraioa, giltzurrunen funtzioa, digestioa eta artiku lazioen lubrikazioa. Deshidrazio arin batek ere (gorputz pisua %1-2) errendimendua nabarmen murrizten du.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Deshidrazioaren seinaleak</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem;color:var(--muted)">
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">😴 Nekea eta logura</div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">🤕 Buruko mina</div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">🧠 Kontzentrazio falta</div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">👄 Aho lehorra</div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">💛 Gero hori iluna</div>
+            <div style="background:var(--bg);border-radius:8px;padding:0.6rem">💓 Bihotz-taupada azeleratua</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Nola kalkulatzen da ur-beharra?</h2>
+          <p>Oinarrizko formula pisua × 35 ml da. Ariketak eta beroak ur gehigarria eskatzen du. Elikagaiek ere eguneroko ur-beharraren %20 inguru ematen dute.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Kafea edo tea ur bezala kontatzen al da?</summary>
+            <p>Bai, efektu diuretiko arina izan arren, kafeak eta teak hidratazioari laguntzen diote. Hala ere, ura, belar infusioak eta ur-aberatsak diren elikagaiak dira onenak.</p>
+          </details>
+          <details>
+            <summary>Gehiegi ur edan al daiteke?</summary>
+            <p>Kasu muturrekoetan bai (hiponatremia), baina osasuntsu diren pertsonengan oso arraroa da. Giltzurrunek soberakinа iraizten dute normalean.</p>
+          </details>
+          <details>
+            <summary>Eguneko 8 edalontzi nahikoa al da?</summary>
+            <p>"8 edalontzi egunean" gida erreferentzia da soilik. Beharra gorputz tamainaren, jarduera mailaren eta klimaren arabera nabarmen aldatzen da.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/osasuna/gmi/">⚖️ GMI kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/osasuna/kalorian/">🔥 Kalorien kalkulagailua</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcUr() {
+  const pisu = parseFloat(document.getElementById('ur-pisu').value);
+  const ariketa = parseFloat(document.getElementById('ur-ariketa').value)||0;
+  const klima = parseFloat(document.getElementById('ur-klima').value);
+  if (!pisu) return;
+  const oinarria = pisu*0.035;
+  const gehigarri = ariketa/60*0.5;
+  const guztira = oinarria+gehigarri+klima;
+  document.getElementById('ur-res').innerHTML =
+    `${guztira.toFixed(1)} litro egunean
+    <small>Oinarria: ${oinarria.toFixed(2)} L · Ariketa: +${gehigarri.toFixed(2)} L · Klima: +${klima.toFixed(1)} L</small>`;
+}
+</script>

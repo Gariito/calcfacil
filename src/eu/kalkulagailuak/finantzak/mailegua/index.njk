@@ -1,0 +1,98 @@
+---
+layout: base.njk
+title: Mailegu kalkulagailua doako euskaraz — hileko kuota
+description: Kalkulatu edozein mailegu pertsonalaren hileko kuota eta kostu osoa berehalakoan. Doako mailegu kalkulagailua euskaraz.
+keywords: mailegu kalkulagailua euskaraz, mailegu hileko kuota, mailegu kostu osoa, prestamo kalkulagailua euskera, calculadora préstamo euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
+      <span>›</span>
+      <span>Mailegu kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>💳 Mailegu kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu edozein mailegu pertsonalaren hileko kuota eta kostu osoa berehalakoan.</p>
+
+        <div class="card">
+          <label>Mailegu zenbatekoa (€)</label>
+          <input type="number" id="ml-zenbat" placeholder="10000" oninput="calcML()">
+
+          <div class="row-2">
+            <div><label>Urteko interes tasa (%)</label><input type="number" id="ml-tasa" placeholder="6.5" oninput="calcML()"></div>
+            <div><label>Epea (urtetan)</label><input type="number" id="ml-urte" placeholder="5" oninput="calcML()"></div>
+          </div>
+
+          <div class="result-box" id="ml-res">Sartu maileguaren datuak</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Nola kalkulatzen da maileguaren hileko kuota?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Mailegu gehienak amortizazio frantsesaren sistema erabiltzen dute — hileko kuota konstantea da epean zehar, baina hasieran interes gehiago ordaintzen da eta amaieran kapital gehiago. Formula hau erabiltzen da:</p>
+          <div style="background:var(--bg);border-radius:8px;padding:1rem;font-size:0.85rem;color:var(--muted);margin-bottom:1rem">
+            <strong style="color:var(--text)">Kuota = Kapitala × r(1+r)ⁿ / ((1+r)ⁿ−1)</strong><br>
+            non r = hileko interes tasa eta n = hilabete kopurua
+          </div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Epe luzeagoa aukeratuz kuota txikiagoa da baina interes gehiago ordaintzen da guztira. Epe laburragoak kuota handiagoa dakar baina kostu txikiagoa guztira.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Zer da mailegu bat?</h2>
+          <p>Mailegu bat finantza erakunde batek aldez aurretik finkatutako interes tasa eta epe batekin ematen duen diru kopurua da. Mailegu pertsonalak hipotekak baino interes altuagoak dituzte normalean baina bermea ez dute eskatzen.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Zein interes tasa da ona mailegu pertsonalerako?</summary>
+            <p>2026an, mailegu pertsonaletarako interes tasa onak %5 eta %8 artean daude TAE (Tasa Anual Ekibalentea) bezala. %15 baino gehiago aldeko garestia da.</p>
+          </details>
+          <details>
+            <summary>Maileguaren epea laburtu al daiteke?</summary>
+            <p>Bai, gehiegizko ordainketak eginez edo finantzaketa berriz negoziatu. Hala ere, kontratuak baldintza zehatzak ditu, beraz kontratuak arretaz irakurri.</p>
+          </details>
+          <details>
+            <summary>Zer da TAE?</summary>
+            <p>TAE (Tasa Anual Ekibalentea) maileguaren kostu errealean komisio eta gastuak barne hartzen dituen interes tasa da. TIN (interes tasa nominala) baino altuagoa da beti eta konparatzeko erabili behar da.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/finantzak/interes-konposatua/">📈 Interes konposatua</a></li>
+            <li><a href="/eu/kalkulagailuak/finantzak/soldata-garbia/">💼 Soldata garbia</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcML() {
+  const zenbat = parseFloat(document.getElementById('ml-zenbat').value);
+  const tasa = parseFloat(document.getElementById('ml-tasa').value);
+  const urte = parseFloat(document.getElementById('ml-urte').value);
+  if (!zenbat||!tasa||!urte) return;
+  const r = tasa/100/12, n = urte*12;
+  const kuota = zenbat*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const guztira = kuota*n;
+  const interesak = guztira-zenbat;
+  const fmt = n => n.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' €';
+  document.getElementById('ml-res').innerHTML =
+    `Hileko kuota: ${fmt(kuota)}
+    <small>
+    Guztirako ordainketa: ${fmt(guztira)} · 
+    Interesak: ${fmt(interesak)} · 
+    ${n} hilabete
+    </small>`;
+}
+</script>

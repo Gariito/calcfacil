@@ -1,0 +1,108 @@
+---
+layout: base.njk
+title: BEZ kalkulagailua doako euskaraz — prezioa BEZarekin edo gabe
+description: Kalkulatu prezioa BEZarekin edo gabe berehalakoan. %21, %10 eta %4. Doako BEZ kalkulagailua euskaraz.
+keywords: beza kalkulagailua euskaraz, bez kalkulatu, prezioa bezarekin, iva kalkulagailua euskaraz, calculadora iva euskera
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ibilbidea">
+      <a href="/eu/">Hasiera</a>
+      <span>›</span>
+      <a href="/eu/kalkulagailuak/finantzak/">Finantzak</a>
+      <span>›</span>
+      <span>BEZ kalkulagailua</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>% BEZ kalkulagailua</h1>
+        <p class="calc-intro">Kalkulatu prezioa BEZarekin edo gabe berehalakoan, edozein BEZ tasarekin.</p>
+
+        <div class="card">
+          <label>Zenbatekoa (€)</label>
+          <input type="number" id="bez-val" placeholder="100" oninput="calcBEZ()">
+
+          <label>BEZ tasa</label>
+          <select id="bez-tasa" onchange="calcBEZ()">
+            <option value="21">%21 — BEZ tasa orokorra</option>
+            <option value="10">%10 — BEZ tasa murriztua</option>
+            <option value="4">%4 — BEZ tasa super-murriztua</option>
+            <option value="0">%0 — BEZ salbuespena</option>
+          </select>
+
+          <label>Sartutako zenbatekoa...</label>
+          <select id="bez-mota" onchange="calcBEZ()">
+            <option value="gabe">BEZik gabe → BEZarekin kalkulatu</option>
+            <option value="barne">BEZarekin → BEZik gabeko prezioa kalkulatu</option>
+          </select>
+
+          <div class="result-box" id="bez-res">Sartu zenbatekoa</div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Zer da BEZa?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Balio Erantsiaren Zerga (BEZ) ondasunen eta zerbitzuen kontsumoan aplikatzen den zeharkako zerga bat da. Espainian hiru tasa daude:</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:1rem">
+            <li><strong>%21 — Tasa orokorra:</strong> Produktu eta zerbitzu gehienei aplikatzen zaie</li>
+            <li><strong>%10 — Tasa murriztua:</strong> Janaria, garraio publikoa, medikamentua</li>
+            <li><strong>%4 — Super-murriztua:</strong> Oinarrizko elikagaiak, liburuak, egunkaria</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Nola kalkulatzen da BEZa?</h2>
+          <p>BEZa prezioa BEZ tasarekin biderkatuz kalkulatzen da. Adibidez, 100€-ko produktu baten %21 BEZa: 100 × 0,21 = 21€ BEZ. Guztira: 121€.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Maiz egiten diren galderak</h3>
+          <details>
+            <summary>Nola kentzen da BEZa preziotik?</summary>
+            <p>BEZa barne duen prezioa (1 + BEZ tasa/100)z zatitu. Adibidez, 121€-tik %21 BEZa kentzeko: 121 ÷ 1,21 = 100€ BEZik gabe.</p>
+          </details>
+          <details>
+            <summary>Zein produktuk dute %4ko BEZa?</summary>
+            <p>Oinarrizko elikagaiak (ogia, esne, arrautza), liburuak, egunkariak eta aldizkariak, eta medikamentu batzuk.</p>
+          </details>
+          <details>
+            <summary>Zein produktuk dute %10eko BEZa?</summary>
+            <p>Janari gehiena (fruta, barazkiak, haragia, arraina), garraio publikoa, jatetxeak eta ostatuak, medikamentu batzuk.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Erlazionatutako kalkulagailuak</h3>
+          <ul class="related-list">
+            <li><a href="/eu/kalkulagailuak/egunerokoa/deskontua/">🏷️ Deskontu kalkulagailua</a></li>
+            <li><a href="/eu/kalkulagailuak/finantzak/soldata-garbia/">💼 Soldata garbia</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcBEZ() {
+  const val = parseFloat(document.getElementById('bez-val').value);
+  const tasa = parseFloat(document.getElementById('bez-tasa').value);
+  const mota = document.getElementById('bez-mota').value;
+  if (isNaN(val)) return;
+  const fmt = n => n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  if (mota==='gabe') {
+    const bez = val*tasa/100;
+    document.getElementById('bez-res').innerHTML =
+      `BEZarekin: ${fmt(val+bez)}
+      <small>BEZik gabe: ${fmt(val)} · BEZ (%${tasa}): ${fmt(bez)}</small>`;
+  } else {
+    const garbia = val/(1+tasa/100);
+    const bez = val-garbia;
+    document.getElementById('bez-res').innerHTML =
+      `BEZik gabeko prezioa: ${fmt(garbia)}
+      <small>BEZ (%${tasa}): ${fmt(bez)} · BEZarekin: ${fmt(val)}</small>`;
+  }
+}
+</script>

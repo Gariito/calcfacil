@@ -9,15 +9,15 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cómo calcular los días entre dos fechas — contador online gratis — CalcFácil</title>
-  <meta name="description" content="Calcula los días entre dos fechas al instante. Cuenta días, semanas y meses entre cualquier fecha. Gratis y sin registro.">
-  <meta name="keywords" content="dias entre fechas, contar dias entre fechas, calculadora dias, diferencia entre fechas, contador de dias, cuantos dias faltan, dias entre dos fechas, calcular dias entre fechas, calcular dias entre dos fechas, calculadora de dias entre fechas, calcular días entre fechas, contar días entre fechas, calculadora de dias, cuantos dias hay entre dos fechas, contar dias entre dos fechas, calculo entre dos fechas, calculadora de fechas">
+  <title>Calculadora de días entre dos fechas - Días y fechas — CalcFácil</title>
+  <meta name="description" content="Calcula cuántos días hay entre dos fechas. Obtén la diferencia en días, semanas y meses y calcula también los días laborables de lunes a viernes.">
+  
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/dia-a-dia/dias-entre-fechas/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Cómo calcular los días entre dos fechas — contador online gratis — CalcFácil">
-  <meta property="og:description" content="Calcula los días entre dos fechas al instante. Cuenta días, semanas y meses entre cualquier fecha. Gratis y sin registro.">
+  <meta property="og:title" content="Calculadora de días entre dos fechas - Días y fechas — CalcFácil">
+  <meta property="og:description" content="Calcula cuántos días hay entre dos fechas. Obtén la diferencia en días, semanas y meses y calcula también los días laborables de lunes a viernes.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/dia-a-dia/dias-entre-fechas/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -27,8 +27,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Cómo calcular los días entre dos fechas — contador online gratis",
-    "description": "Calcula los días entre dos fechas al instante. Cuenta días, semanas y meses entre cualquier fecha. Gratis y sin registro.",
+    "name": "Calculadora de días entre dos fechas - Días y fechas",
+    "description": "Calcula cuántos días hay entre dos fechas. Obtén la diferencia en días, semanas y meses y calcula también los días laborables de lunes a viernes.",
     "url": "https://calculadorasgratis.net/calculadoras/dia-a-dia/dias-entre-fechas/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -125,72 +125,158 @@
       <!-- Calculadora principal -->
       <div class="calc-main">
         <h1>📅 Calculadora de días entre fechas</h1>
-        <p class="calc-intro">Calcula los días exactos entre dos fechas al instante. También cuenta días laborables.</p>
+        <p class="calc-intro">Calcula la diferencia entre dos fechas en días, semanas y meses, y consulta los días laborables.</p>
         <div class="card">
           
 <div class="row-2">
   <div>
     <label>Fecha de inicio</label>
-    <input type="date" id="df-inicio" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+    <input
+      type="date"
+      id="df-inicio"
+      oninput="calcDias()"
+      style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"
+    >
   </div>
+
   <div>
     <label>Fecha de fin</label>
-    <input type="date" id="df-fin" oninput="calcDias()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+    <input
+      type="date"
+      id="df-fin"
+      oninput="calcDias()"
+      style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem"
+    >
   </div>
 </div>
 
-<label>¿Incluir solo días laborables?</label>
+<label>¿Quieres contar solo días laborables?</label>
 <select id="df-laborables" onchange="calcDias()">
-  <option value="no">No, todos los días</option>
-  <option value="si">Sí, solo días laborables (lun-vie)</option>
+  <option value="no">No, contar todos los días</option>
+  <option value="si">Sí, solo días laborables (lunes a viernes)</option>
 </select>
 
-<div class="result-box" id="df-res">Introduce las dos fechas</div>
+<div class="result-box" id="df-res">
+  Introduce las dos fechas
+</div>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          
-          
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Situaciones para calcular dias entre dos fechas</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Ambito laboral:</strong>Este cálculo es el motor que mueve los calendarios de trabajo. Permite a los gestores calcular el "lead time" (el tiempo total desde que se inicia un proceso hasta que se completa) y vigilar de cerca las fechas límite o deadlines. Además, es fundamental en el departamento de Recursos Humanos para contabilizar de forma exacta los días de vacaciones disfrutados, calcular la antigüedad de un empleado o medir la duración de las bajas médicas.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Sector legal y administrativo:</strong> Los plazos para presentar recursos, pagar impuestos o responder a notificaciones oficiales se rigen por días hábiles o naturales. Un error de un solo día puede invalidar un trámite, por lo que calcular la distancia exacta entre fechas es una garantía de seguridad jurídica.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8"><strong>Plano personal</strong> Nos ayuda a dar respuesta a la curiosidad y a la planificación. Es la herramienta perfecta para diseñar una cuenta atrás emocional (los días que faltan para una boda, el nacimiento de un hijo o un viaje soñado). También resulta muy útil en el control de las finanzas personales, por ejemplo, para saber cuántos días exactos quedan para el próximo cobro o para calcular los intereses diarios de un préstamo.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Para qué sirve calcular los días entre fechas?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Calcular la diferencia entre dos fechas puede ser útil para saber cuánto
+    tiempo ha pasado desde un acontecimiento, cuánto falta para una fecha
+    concreta o cuánto dura un determinado período.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Por ejemplo, puedes utilizarla para contar los días que faltan para un
+    viaje, una boda o unas vacaciones, calcular la duración de un proyecto
+    o conocer el tiempo transcurrido entre dos acontecimientos.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    La opción de días laborables permite excluir los sábados y domingos.
+    Puede resultar útil para estimar la duración de tareas o períodos de
+    trabajo en los que solo cuentan los días de lunes a viernes.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Ejemplo de cálculo
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Si quieres saber cuántos días hay entre el 1 de enero y el 1 de febrero,
+    introduce ambas fechas. La calculadora mostrará la diferencia exacta en
+    días y su equivalente aproximado en semanas y meses.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Para calcular únicamente los días laborables, selecciona
+    <strong>solo días laborables (lunes a viernes)</strong>. Los sábados y
+    domingos no se incluirán en el resultado.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Días naturales y días laborables
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Los días naturales incluyen todos los días del calendario, incluidos
+    sábados, domingos y festivos. En cambio, esta calculadora considera como
+    días laborables los días de lunes a viernes y excluye los fines de semana.
+    Los festivos no se descuentan automáticamente.
+  </p>
 
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const hoy = new Date().toISOString().split('T')[0];
-  document.getElementById('df-inicio').value = hoy;
+  const hoy = new Date();
+
+  const year = hoy.getFullYear();
+  const month = String(hoy.getMonth() + 1).padStart(2, '0');
+  const day = String(hoy.getDate()).padStart(2, '0');
+
+  document.getElementById('df-inicio').value =
+    `${year}-${month}-${day}`;
 });
 
 function calcDias() {
   const ini = document.getElementById('df-inicio').value;
   const fin = document.getElementById('df-fin').value;
   const lab = document.getElementById('df-laborables').value;
-  if (!ini || !fin) return;
 
-  const d1 = new Date(ini), d2 = new Date(fin);
+  if (!ini || !fin) {
+    document.getElementById('df-res').textContent =
+      'Introduce las dos fechas';
+    return;
+  }
+
+  const d1 = new Date(ini + 'T00:00:00');
+  const d2 = new Date(fin + 'T00:00:00');
+
   const diff = Math.round((d2 - d1) / 86400000);
-  const label = diff < 0 ? 'La fecha de fin es anterior a la de inicio' : null;
-  if (label) { document.getElementById('df-res').textContent = label; return; }
+
+  if (diff < 0) {
+    document.getElementById('df-res').textContent =
+      'La fecha de fin debe ser posterior a la fecha de inicio';
+    return;
+  }
 
   let laborables = 0;
+
   if (lab === 'si') {
-    let cur = new Date(d1);
+    const cur = new Date(d1);
+
     while (cur < d2) {
       const dow = cur.getDay();
-      if (dow !== 0 && dow !== 6) laborables++;
+
+      if (dow !== 0 && dow !== 6) {
+        laborables++;
+      }
+
       cur.setDate(cur.getDate() + 1);
     }
   }
 
   const semanas = Math.floor(diff / 7);
   const diasResto = diff % 7;
-  const meses = Math.floor(diff / 30.44);
+
+  const mesesAproximados = Math.floor(diff / 30.44);
+
+  let detalle =
+    `${semanas} semanas y ${diasResto} días · ~${mesesAproximados} meses`;
+
+  if (lab === 'si') {
+    detalle += ` · ${laborables} días laborables`;
+  }
 
   document.getElementById('df-res').innerHTML =
-    `${diff} días
-    <small>${semanas} semanas y ${diasResto} días · ~${meses} meses${lab==='si'?' · '+laborables+' días laborables':''}</small>`;
+    `${diff} días<small>${detalle}</small>`;
 }
 </script>
         </div>
@@ -200,7 +286,7 @@ function calcDias() {
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
           <h2>¿Qué es los días entre fechas?</h2>
-          <p>Esta calculadora calcula la diferencia exacta entre dos fechas en días, semanas y meses. Es útil para saber cuántos días faltan para un evento importante, calcular el tiempo que ha pasado entre dos fechas, saber cuántos días lleva abierto un plazo o cuánto tiempo queda para una fecha límite. También calcula los días laborables (de lunes a viernes) entre dos fechas, excluyendo los fines de semana, lo que es muy útil para plazos administrativos y laborales.</p>
+          <p>Introduce dos fechas para saber cuántos días han transcurrido entre ellas. La calculadora también muestra el equivalente en semanas y meses aproximados y permite contar únicamente los días laborables, de lunes a viernes.</p>
         </div>
 
         
@@ -212,11 +298,9 @@ function calcDias() {
             
             <li><a href="/calculadoras/dia-a-dia/edad/">🎂 Calculadora de edad</a></li>
             
-            <li><a href="/calculadoras/dia-a-dia/regla-de-tres/">⚖️ Calcula la regla de 3</a></li>
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
             
-            <li><a href="/calculadoras/dia-a-dia/contador-palabras/">📝 Contador de palabras</a></li>
-            
-            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora Basica</a></li>
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">⚖️ Calculadora de regla de tres</a></li>
             
           </ul>
         </div>
@@ -227,33 +311,33 @@ function calcDias() {
           
             
             <details>
-              <summary>¿Cómo cuento los días entre dos fechas?</summary>
-              <p>Introduce la fecha de inicio y la fecha de fin en la calculadora y obtendrás automáticamente el número exacto de días, semanas y meses entre ambas fechas.</p>
+              <summary>¿Cómo se calculan los días entre dos fechas?</summary>
+              <p>Introduce la fecha de inicio y la fecha de fin. La calculadora obtiene la diferencia entre ambas fechas y muestra el resultado en días, semanas y meses aproximados.</p>
             </details>
             
             <details>
-              <summary>¿Cuántos días faltan para Navidad?</summary>
-              <p>Introduce la fecha de hoy como inicio y el 25 de diciembre como fin. La calculadora te dirá exactamente cuántos días faltan.</p>
+              <summary>¿La calculadora tiene en cuenta los años bisiestos?</summary>
+              <p>Sí. El cálculo utiliza las fechas reales del calendario, por lo que los años bisiestos y sus días adicionales se tienen en cuenta automáticamente.</p>
             </details>
             
             <details>
-              <summary>¿Cuenta los años bisiestos?</summary>
-              <p>Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente.</p>
+              <summary>¿Puedo calcular los días laborables entre dos fechas?</summary>
+              <p>Sí. Selecciona la opción de días laborables para contar únicamente de lunes a viernes. Los sábados y domingos quedan excluidos del resultado.</p>
             </details>
             
             <details>
-              <summary>¿Puedo calcular solo días laborables?</summary>
-              <p>Sí, activa la opción de días laborables y la calculadora excluirá automáticamente los sábados y domingos del recuento.</p>
+              <summary>¿Puedo calcular días entre fechas pasadas?</summary>
+              <p>Sí. Puedes introducir cualquier fecha anterior o posterior a la fecha actual para conocer la diferencia entre ambas.</p>
             </details>
             
             <details>
-              <summary>¿Funciona con fechas pasadas?</summary>
-              <p>Sí, puedes calcular cuántos días han pasado desde cualquier fecha pasada hasta hoy o hasta otra fecha.</p>
+              <summary>¿Cuántos días hay entre dos fechas?</summary>
+              <p>Depende de las fechas que elijas. Introduce la fecha de inicio y la fecha de fin en la calculadora para obtener el número exacto de días entre ellas.</p>
             </details>
             
             <details>
-              <summary>¿Cuantos días tiene un año?</summary>
-              <p>Un año común tiene 365 días, mientras que un año bisiesto tiene 366 días.</p>
+              <summary>¿Cuántos días tiene un año?</summary>
+              <p>Un año normal tiene 365 días. Un año bisiesto tiene 366 días.</p>
             </details>
             
           
@@ -287,55 +371,55 @@ function calcDias() {
         
         {
           "@type": "Question",
-          "name": "¿Cómo cuento los días entre dos fechas?",
+          "name": "¿Cómo se calculan los días entre dos fechas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Introduce la fecha de inicio y la fecha de fin en la calculadora y obtendrás automáticamente el número exacto de días, semanas y meses entre ambas fechas."
+            "text": "Introduce la fecha de inicio y la fecha de fin. La calculadora obtiene la diferencia entre ambas fechas y muestra el resultado en días, semanas y meses aproximados."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Cuántos días faltan para Navidad?",
+          "name": "¿La calculadora tiene en cuenta los años bisiestos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Introduce la fecha de hoy como inicio y el 25 de diciembre como fin. La calculadora te dirá exactamente cuántos días faltan."
+            "text": "Sí. El cálculo utiliza las fechas reales del calendario, por lo que los años bisiestos y sus días adicionales se tienen en cuenta automáticamente."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Cuenta los años bisiestos?",
+          "name": "¿Puedo calcular los días laborables entre dos fechas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí, el cálculo es exacto y tiene en cuenta los años bisiestos automáticamente."
+            "text": "Sí. Selecciona la opción de días laborables para contar únicamente de lunes a viernes. Los sábados y domingos quedan excluidos del resultado."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Puedo calcular solo días laborables?",
+          "name": "¿Puedo calcular días entre fechas pasadas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí, activa la opción de días laborables y la calculadora excluirá automáticamente los sábados y domingos del recuento."
+            "text": "Sí. Puedes introducir cualquier fecha anterior o posterior a la fecha actual para conocer la diferencia entre ambas."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Funciona con fechas pasadas?",
+          "name": "¿Cuántos días hay entre dos fechas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí, puedes calcular cuántos días han pasado desde cualquier fecha pasada hasta hoy o hasta otra fecha."
+            "text": "Depende de las fechas que elijas. Introduce la fecha de inicio y la fecha de fin en la calculadora para obtener el número exacto de días entre ellas."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Cuantos días tiene un año?",
+          "name": "¿Cuántos días tiene un año?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Un año común tiene 365 días, mientras que un año bisiesto tiene 366 días."
+            "text": "Un año normal tiene 365 días. Un año bisiesto tiene 366 días."
           }
         }
         
