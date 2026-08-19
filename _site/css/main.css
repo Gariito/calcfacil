@@ -698,7 +698,7 @@ details p { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; padding
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .calc-layout { grid-template-columns: 1fr; }
-  .calc-sidebar { order: -1; }
+  .calc-sidebar { order: 1; }
   .main-nav { display: none; }
   .main-nav.open {
     display: flex;
