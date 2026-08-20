@@ -9,14 +9,14 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de calorías de alimentos comunes — CalcFácil</title>
+  <title>Calculadora de calorías de alimentos — CalcFácil</title>
   <meta name="description" content="Consulta las calorías de los alimentos más habituales y calcula el total de tu comida.">
   <meta name="keywords" content="calorias alimentos, tabla calorias, cuantas calorias tiene, calorias comida española, calorias de un huevo, calorias de un platano, calorias de una manzana, calorias de una banana, cuantas calorias tiene, cuantas calorias tiene un huevo, calcular calorias de una comida">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/calorias-alimentos/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Calculadora de calorías de alimentos comunes — CalcFácil">
+  <meta property="og:title" content="Calculadora de calorías de alimentos — CalcFácil">
   <meta property="og:description" content="Consulta las calorías de los alimentos más habituales y calcula el total de tu comida.">
   <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/calorias-alimentos/">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculadora de calorías de alimentos comunes",
+    "name": "Calculadora de calorías de alimentos",
     "description": "Consulta las calorías de los alimentos más habituales y calcula el total de tu comida.",
     "url": "https://calculadorasgratis.net/calculadoras/salud/calorias-alimentos/",
     "applicationCategory": "UtilitiesApplication",
@@ -131,90 +131,297 @@
         <p class="calc-intro">Consulta las calorías por cada 100g de los alimentos más habituales y calcula el total de tu plato.</p>
         <div class="card">
           
-<label>Alimento</label>
-<select id="cal-alim" onchange="calcCalAlim()">
-  <optgroup label="Carnes y pescados">
-    <option value="165">Pollo (pechuga, cocida)</option>
-    <option value="242">Ternera (solomillo)</option>
-    <option value="290">Cerdo (lomo)</option>
-    <option value="208">Salmón</option>
-    <option value="82">Merluza</option>
-    <option value="105">Atún al natural</option>
-    <option value="144">Sardinas</option>
-    <option value="85">Gambas</option>
-  </optgroup>
-  <optgroup label="Huevos y lácteos">
-    <option value="155">Huevo entero</option>
-    <option value="61">Leche entera</option>
-    <option value="36">Leche desnatada</option>
-    <option value="98">Yogur natural</option>
-    <option value="402">Queso manchego</option>
-    <option value="98">Queso fresco</option>
-    <option value="717">Mantequilla</option>
-  </optgroup>
-  <optgroup label="Cereales y legumbres">
-    <option value="130">Arroz cocido</option>
-    <option value="158">Pasta cocida</option>
-    <option value="265">Pan blanco</option>
-    <option value="247">Pan integral</option>
-    <option value="354">Avena</option>
-    <option value="116">Lentejas cocidas</option>
-    <option value="127">Garbanzos cocidos</option>
-  </optgroup>
-  <optgroup label="Frutas">
-    <option value="52">Manzana</option>
-    <option value="89">Plátano</option>
-    <option value="50">Naranja</option>
-    <option value="32">Fresa</option>
-    <option value="60">Uva</option>
-    <option value="45">Sandía</option>
-    <option value="134">Aguacate</option>
-  </optgroup>
-  <optgroup label="Verduras">
-    <option value="25">Tomate</option>
-    <option value="41">Zanahoria</option>
-    <option value="20">Lechuga</option>
-    <option value="34">Pimiento</option>
-    <option value="86">Patata cocida</option>
-    <option value="25">Espinacas</option>
-    <option value="34">Brócoli</option>
-  </optgroup>
-  <optgroup label="Grasas y aceites">
-    <option value="884">Aceite de oliva</option>
-    <option value="567">Almendras</option>
-    <option value="654">Nueces</option>
-    <option value="593">Cacahuetes</option>
-  </optgroup>
+<label>Categoría</label>
+<select id="cal-cat" onchange="filtrarCategoria()">
+  <option value="todos">🍽️ Todos los alimentos</option>
+  <option value="carnes">🥩 Carnes</option>
+  <option value="pescados">🐟 Pescados y mariscos</option>
+  <option value="huevos_lacteos">🥚 Huevos y lácteos</option>
+  <option value="cereales">🌾 Cereales y pan</option>
+  <option value="legumbres">🫘 Legumbres</option>
+  <option value="tuberculos">🥔 Tubérculos</option>
+  <option value="frutas">🍎 Frutas</option>
+  <option value="verduras">🥦 Verduras y hortalizas</option>
+  <option value="frutos_secos">🥜 Frutos secos</option>
+  <option value="aceites">🫒 Aceites y grasas</option>
+  <option value="lacteos_derivados">🧀 Quesos y derivados</option>
+  <option value="otros">🍫 Otros</option>
 </select>
+
+<label>Alimento</label>
+<select id="cal-alim" onchange="calcCalAlim()"></select>
 
 <label>Cantidad (gramos)</label>
 <input type="number" id="cal-alim-g" placeholder="100" oninput="calcCalAlim()">
 
-<div class="result-box" id="cal-alim-res">Selecciona un alimento e introduce la cantidad</div>
+<div class="result-box" id="cal-alim-res">Selecciona una categoría y un alimento</div>
 
 <script>
+const ALIMENTOS = {
+  carnes: [
+    { nombre: 'Pollo — pechuga cocida', kcal: 165 },
+    { nombre: 'Pollo — muslo cocido', kcal: 209 },
+    { nombre: 'Ternera — solomillo', kcal: 242 },
+    { nombre: 'Ternera — carne picada', kcal: 254 },
+    { nombre: 'Cerdo — lomo', kcal: 290 },
+    { nombre: 'Cerdo — costilla', kcal: 321 },
+    { nombre: 'Cordero — pierna', kcal: 282 },
+    { nombre: 'Pavo — pechuga', kcal: 135 },
+    { nombre: 'Jamón serrano', kcal: 241 },
+    { nombre: 'Jamón de York', kcal: 107 },
+    { nombre: 'Chorizo', kcal: 455 },
+    { nombre: 'Salchichón', kcal: 427 },
+    { nombre: 'Bacon / panceta', kcal: 541 },
+    { nombre: 'Mortadela', kcal: 311 },
+    { nombre: 'Hígado de ternera', kcal: 135 },
+  ],
+  pescados: [
+    { nombre: 'Salmón fresco', kcal: 208 },
+    { nombre: 'Merluza', kcal: 82 },
+    { nombre: 'Atún fresco', kcal: 144 },
+    { nombre: 'Atún en lata (al natural)', kcal: 105 },
+    { nombre: 'Sardinas frescas', kcal: 144 },
+    { nombre: 'Sardinas en aceite (escurridas)', kcal: 208 },
+    { nombre: 'Caballa', kcal: 205 },
+    { nombre: 'Bacalao fresco', kcal: 82 },
+    { nombre: 'Gambas / langostinos', kcal: 85 },
+    { nombre: 'Mejillones cocidos', kcal: 86 },
+    { nombre: 'Calamar', kcal: 92 },
+    { nombre: 'Pulpo cocido', kcal: 82 },
+    { nombre: 'Dorada', kcal: 100 },
+    { nombre: 'Trucha', kcal: 119 },
+    { nombre: 'Boquerones frescos', kcal: 131 },
+  ],
+  huevos_lacteos: [
+    { nombre: 'Huevo entero (crudo)', kcal: 155 },
+    { nombre: 'Clara de huevo', kcal: 52 },
+    { nombre: 'Yema de huevo', kcal: 339 },
+    { nombre: 'Leche entera', kcal: 61 },
+    { nombre: 'Leche semidesnatada', kcal: 46 },
+    { nombre: 'Leche desnatada', kcal: 36 },
+    { nombre: 'Leche de soja', kcal: 33 },
+    { nombre: 'Leche de avena', kcal: 47 },
+    { nombre: 'Yogur natural (sin azúcar)', kcal: 61 },
+    { nombre: 'Yogur griego (0% grasa)', kcal: 59 },
+    { nombre: 'Yogur griego (entero)', kcal: 97 },
+    { nombre: 'Kéfir', kcal: 52 },
+    { nombre: 'Nata para cocinar (18%)', kcal: 173 },
+    { nombre: 'Nata para montar (35%)', kcal: 337 },
+  ],
+  cereales: [
+    { nombre: 'Arroz blanco cocido', kcal: 130 },
+    { nombre: 'Arroz integral cocido', kcal: 123 },
+    { nombre: 'Pasta cocida (espaguetis)', kcal: 158 },
+    { nombre: 'Pasta integral cocida', kcal: 149 },
+    { nombre: 'Pan blanco', kcal: 265 },
+    { nombre: 'Pan integral', kcal: 247 },
+    { nombre: 'Pan de molde blanco', kcal: 272 },
+    { nombre: 'Pan de molde integral', kcal: 241 },
+    { nombre: 'Avena (copos)', kcal: 354 },
+    { nombre: 'Maíz dulce cocido', kcal: 96 },
+    { nombre: 'Quinoa cocida', kcal: 120 },
+    { nombre: 'Cuscús cocido', kcal: 112 },
+    { nombre: 'Tortita de arroz', kcal: 387 },
+    { nombre: 'Cereales de desayuno (tipo corn flakes)', kcal: 375 },
+    { nombre: 'Muesli sin azúcar', kcal: 358 },
+  ],
+  legumbres: [
+    { nombre: 'Lentejas cocidas', kcal: 116 },
+    { nombre: 'Garbanzos cocidos', kcal: 127 },
+    { nombre: 'Alubias blancas cocidas', kcal: 139 },
+    { nombre: 'Alubias negras cocidas', kcal: 132 },
+    { nombre: 'Soja cocida', kcal: 173 },
+    { nombre: 'Edamame cocido', kcal: 122 },
+    { nombre: 'Guisantes cocidos', kcal: 84 },
+    { nombre: 'Habas cocidas', kcal: 88 },
+    { nombre: 'Hummus', kcal: 166 },
+    { nombre: 'Tofu firme', kcal: 76 },
+    { nombre: 'Tempeh', kcal: 193 },
+  ],
+  tuberculos: [
+    { nombre: 'Patata cocida', kcal: 86 },
+    { nombre: 'Patata asada (con piel)', kcal: 93 },
+    { nombre: 'Patata frita (casera)', kcal: 312 },
+    { nombre: 'Patata frita (bolsa)', kcal: 536 },
+    { nombre: 'Puré de patata (casero)', kcal: 98 },
+    { nombre: 'Boniato cocido', kcal: 90 },
+    { nombre: 'Boniato asado', kcal: 103 },
+    { nombre: 'Yuca cocida', kcal: 130 },
+    { nombre: 'Zanahoria cocida', kcal: 35 },
+    { nombre: 'Remolacha cocida', kcal: 43 },
+    { nombre: 'Nabo cocido', kcal: 22 },
+    { nombre: 'Chirivía cocida', kcal: 71 },
+  ],
+  frutas: [
+    { nombre: 'Manzana', kcal: 52 },
+    { nombre: 'Plátano', kcal: 89 },
+    { nombre: 'Naranja', kcal: 47 },
+    { nombre: 'Mandarina', kcal: 53 },
+    { nombre: 'Limón', kcal: 29 },
+    { nombre: 'Fresa', kcal: 32 },
+    { nombre: 'Uva blanca', kcal: 67 },
+    { nombre: 'Uva negra', kcal: 69 },
+    { nombre: 'Sandía', kcal: 30 },
+    { nombre: 'Melón', kcal: 34 },
+    { nombre: 'Melocotón', kcal: 39 },
+    { nombre: 'Pera', kcal: 57 },
+    { nombre: 'Cereza', kcal: 63 },
+    { nombre: 'Kiwi', kcal: 61 },
+    { nombre: 'Mango', kcal: 60 },
+    { nombre: 'Piña', kcal: 50 },
+    { nombre: 'Papaya', kcal: 43 },
+    { nombre: 'Aguacate', kcal: 160 },
+    { nombre: 'Higo', kcal: 74 },
+    { nombre: 'Dátil (seco)', kcal: 277 },
+    { nombre: 'Ciruela', kcal: 46 },
+    { nombre: 'Albaricoque', kcal: 48 },
+    { nombre: 'Granada', kcal: 83 },
+    { nombre: 'Frambuesa', kcal: 52 },
+    { nombre: 'Arándano', kcal: 57 },
+  ],
+  verduras: [
+    { nombre: 'Tomate', kcal: 18 },
+    { nombre: 'Tomate cherry', kcal: 18 },
+    { nombre: 'Lechuga', kcal: 15 },
+    { nombre: 'Espinacas', kcal: 23 },
+    { nombre: 'Brócoli cocido', kcal: 35 },
+    { nombre: 'Coliflor cocida', kcal: 25 },
+    { nombre: 'Coles de Bruselas cocidas', kcal: 43 },
+    { nombre: 'Pimiento rojo', kcal: 31 },
+    { nombre: 'Pimiento verde', kcal: 20 },
+    { nombre: 'Pepino', kcal: 15 },
+    { nombre: 'Cebolla', kcal: 40 },
+    { nombre: 'Cebolleta', kcal: 32 },
+    { nombre: 'Ajo', kcal: 149 },
+    { nombre: 'Calabacín cocido', kcal: 17 },
+    { nombre: 'Berenjena cocida', kcal: 35 },
+    { nombre: 'Champiñones crudos', kcal: 22 },
+    { nombre: 'Setas variadas', kcal: 25 },
+    { nombre: 'Espárragos cocidos', kcal: 20 },
+    { nombre: 'Alcachofa cocida', kcal: 53 },
+    { nombre: 'Acelga cocida', kcal: 19 },
+    { nombre: 'Col blanca cruda', kcal: 25 },
+    { nombre: 'Apio', kcal: 14 },
+    { nombre: 'Rúcula', kcal: 25 },
+    { nombre: 'Maíz dulce crudo', kcal: 96 },
+    { nombre: 'Guisantes crudos', kcal: 81 },
+  ],
+  frutos_secos: [
+    { nombre: 'Almendras', kcal: 579 },
+    { nombre: 'Nueces', kcal: 654 },
+    { nombre: 'Anacardos', kcal: 553 },
+    { nombre: 'Cacahuetes', kcal: 567 },
+    { nombre: 'Pistachos', kcal: 562 },
+    { nombre: 'Avellanas', kcal: 628 },
+    { nombre: 'Piñones', kcal: 673 },
+    { nombre: 'Semillas de chía', kcal: 486 },
+    { nombre: 'Semillas de lino', kcal: 534 },
+    { nombre: 'Semillas de girasol', kcal: 584 },
+    { nombre: 'Semillas de calabaza', kcal: 559 },
+    { nombre: 'Coco rallado seco', kcal: 660 },
+    { nombre: 'Mantequilla de cacahuete', kcal: 588 },
+    { nombre: 'Mantequilla de almendras', kcal: 614 },
+  ],
+  aceites: [
+    { nombre: 'Aceite de oliva virgen extra', kcal: 884 },
+    { nombre: 'Aceite de girasol', kcal: 884 },
+    { nombre: 'Aceite de coco', kcal: 862 },
+    { nombre: 'Mantequilla', kcal: 717 },
+    { nombre: 'Margarina', kcal: 718 },
+    { nombre: 'Ghee', kcal: 900 },
+    { nombre: 'Mayonesa', kcal: 680 },
+    { nombre: 'Mayonesa light', kcal: 320 },
+  ],
+  lacteos_derivados: [
+    { nombre: 'Queso manchego curado', kcal: 402 },
+    { nombre: 'Queso manchego semicurado', kcal: 377 },
+    { nombre: 'Queso fresco (Burgos)', kcal: 174 },
+    { nombre: 'Queso mozzarella', kcal: 280 },
+    { nombre: 'Queso parmesano', kcal: 431 },
+    { nombre: 'Queso brie', kcal: 334 },
+    { nombre: 'Queso camembert', kcal: 300 },
+    { nombre: 'Queso cottage', kcal: 98 },
+    { nombre: 'Requesón', kcal: 105 },
+    { nombre: 'Queso en lonchas (tipo cheddar)', kcal: 364 },
+    { nombre: 'Queso de cabra', kcal: 364 },
+    { nombre: 'Queso gouda', kcal: 356 },
+  ],
+  otros: [
+    { nombre: 'Chocolate negro (70%+)', kcal: 598 },
+    { nombre: 'Chocolate con leche', kcal: 535 },
+    { nombre: 'Chocolate blanco', kcal: 539 },
+    { nombre: 'Miel', kcal: 304 },
+    { nombre: 'Azúcar blanco', kcal: 387 },
+    { nombre: 'Azúcar moreno', kcal: 377 },
+    { nombre: 'Mermelada (fresa)', kcal: 250 },
+    { nombre: 'Nutella', kcal: 539 },
+    { nombre: 'Kétchup', kcal: 112 },
+    { nombre: 'Salsa de tomate (casera)', kcal: 50 },
+    { nombre: 'Salsa de soja', kcal: 53 },
+    { nombre: 'Mostaza', kcal: 66 },
+    { nombre: 'Hummus', kcal: 166 },
+    { nombre: 'Galletas tipo María', kcal: 424 },
+    { nombre: 'Croissant', kcal: 406 },
+    { nombre: 'Patatas fritas (bolsa)', kcal: 536 },
+    { nombre: 'Palomitas (sin aceite)', kcal: 382 },
+    { nombre: 'Pizza margherita', kcal: 266 },
+  ]
+};
+
+function filtrarCategoria() {
+  const cat = document.getElementById('cal-cat').value;
+  const select = document.getElementById('cal-alim');
+  select.innerHTML = '';
+
+  const grupos = cat === 'todos'
+    ? Object.values(ALIMENTOS).flat()
+    : ALIMENTOS[cat] || [];
+
+  const lista = cat === 'todos'
+    ? grupos.sort((a,b) => a.nombre.localeCompare(b.nombre))
+    : grupos;
+
+  lista.forEach(a => {
+    const opt = document.createElement('option');
+    opt.value = a.kcal;
+    opt.textContent = `${a.nombre} — ${a.kcal} kcal/100g`;
+    select.appendChild(opt);
+  });
+
+  calcCalAlim();
+}
+
 function calcCalAlim() {
   const kcalPor100 = parseFloat(document.getElementById('cal-alim').value);
   const g = parseFloat(document.getElementById('cal-alim-g').value);
-  const nombre = document.getElementById('cal-alim').options[document.getElementById('cal-alim').selectedIndex].text;
-  if (!g) { document.getElementById('cal-alim-res').innerHTML = `${nombre}: ${kcalPor100} kcal/100g`; return; }
+  const nombreCompleto = document.getElementById('cal-alim').options[document.getElementById('cal-alim').selectedIndex]?.text || '';
+  const nombre = nombreCompleto.split(' — ')[0];
+  if (!kcalPor100) return;
+  if (!g) {
+    document.getElementById('cal-alim-res').innerHTML = `${nombre}: ${kcalPor100} kcal/100g`;
+    return;
+  }
   const total = (kcalPor100 * g / 100);
   document.getElementById('cal-alim-res').innerHTML =
     `${total.toFixed(0)} kcal
     <small>${g}g de ${nombre} · ${kcalPor100} kcal por 100g</small>`;
 }
+
+// Inicializar con todos los alimentos al cargar
+filtrarCategoria();
 </script>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          
-          
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía para el recuento de calorías y densidad nutricional en la dieta</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Llevar un registro preciso de las calorías que ingieres es una de las estrategias más efectivas para optimizar tu composición corporal, ya sea para reducir el porcentaje de grasa o para aumentar masa muscular. Sin embargo, no todas las calorías interactúan de la misma forma en nuestro organismo ni aportan el mismo nivel de saciedad.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Entender el valor energético de las raciones diarias te ayuda a tomar decisiones más conscientes sin necesidad de recurrir a dietas estrictas o restrictivas. A continuación, repasamos conceptos clave sobre el pesaje y la densidad calórica de los alimentos.</p>
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Es mejor pesar los alimentos en crudo o cocinados?</h3>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">La regla general en nutrición es pesarlo todo siempre en crudo. La razón principal es que los alimentos sufren variaciones significativas en su peso durante el proceso de cocinado debido a la pérdida o absorción de agua, mientras que su aporte calórico real se mantiene casi idéntico.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Cereales y legumbres (arroz, pasta, lentejas): Absorben agua durante la cocción y triplican su peso final. Por ejemplo, 100 g de pasta cruda (aprox. 350 kcal) se convierten en casi 250 g de pasta cocida manteniendo las mismas 350 kcal.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Carnes y pescados: Ocurre el efecto contrario. Al cocinarse pierden agua y reducen su volumen, haciendo que 150 g de pechuga de pollo en crudo pasen a pesar unos 120 g una vez cocinados. del consumo energético en el mismo tiempo.</p>
+  <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">Como usar la calculadora de calorías de alimentos</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para calcular las calorías, solamente tienes que elegir la categoría o el tipo de comida que corresponde a tu alimento.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Las comidas que se muestran en la lista, dependen del tipo de comida seleccionada. También existe una categoría llamada <strong>"Todos los alimentos"</strong> que contiene todos y cada uno de los alimentos de la calculadora.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Una vez seleccionado la categoría y el alimento, por defecto nos aparecerá la cantidad de calorías que contienen 100g de la comida. En el caso de querer saber las calorías exactas, modificaremos el campo <strong>"Cantidad (Gramos)"</strong>.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Por qué es importante saber las calorías de los alimentos</h3>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Las cantidad de calorías que ingerimos son la energía que aportamos al cuerpo para realizar las funciones vitales, como respirar, actividad física o incluso pensar.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Nuestro peso corporal depende totalmente de la cantidad de calorías ingeridas durante el día. </p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Una cantidad demasiado elevada a de calorías, significa un aumento de grasa. Por el contrario, ingerir menos calorías de las que debemos, significa una perdida de peso</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para saber cuantas calorías tienes que consumir durante un día, prueba nuestra calculadora de calorías diarias que se encuentra en la sección de <strong>Calculadoras relacionadas</strong></p>
 
 
 </div>
@@ -224,8 +431,8 @@ function calcCalAlim() {
       <!-- Sidebar -->
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
-          <h2>¿Qué es las calorías de los alimentos?</h2>
-          <p>Conocer las calorías de los alimentos que comes es el primer paso para controlar tu dieta. Esta calculadora incluye los alimentos más habituales en la dieta española con sus calorías por cada 100 gramos, permitiéndote calcular el total de cualquier ración.</p>
+          <h2>¿Qué es la calculadora de calorías de los alimentos?</h2>
+          <p>Esta calculadora incluye los alimentos más habituales con sus calorías por cada 100 gramos, permitiéndote calcular el total de cualquier ración. Los alimentos están separados en categorías y dependiendo de la que elijas, las opciones de la lista se cambiarán.</p>
         </div>
 
         
@@ -237,11 +444,11 @@ function calcCalAlim() {
             
             <li><a href="/calculadoras/salud/imc/">⚖️ Calculadora de IMC</a></li>
             
-            <li><a href="/calculadoras/salud/harris-benedict/">🧬 Harris benedict</a></li>
+            <li><a href="/calculadoras/salud/grasa-corporal/">📏 Calculadora de grasa corporal</a></li>
             
             <li><a href="/calculadoras/fitness/calorias-objetivo/">🎯 Objetivo de calorias</a></li>
             
-            <li><a href="/calculadoras/matematicas/regla-de-tres/">⚖️ Regla de tres</a></li>
+            <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Peso ideal</a></li>
             
           </ul>
         </div>
@@ -268,12 +475,22 @@ function calcCalAlim() {
             
             <details>
               <summary>¿Cuantas calorias tiene un huevo?</summary>
-              <p>Un huevo suele tener entre 53g y 70g. Un huevo de 60g tiene aproximadamente 93 calorias</p>
+              <p>Un huevo suele tener entre 53g y 70g. Un huevo de 60g tiene aproximadamente 93 calorias.</p>
             </details>
             
             <details>
               <summary>¿Cuantas calorias tiene una manzana?</summary>
-              <p>Una manzana de tamaño promedio suele pesar entre 150g y 200g. Teniendo en cuenta estos gramos, una manzana promedio pesa cerca de 91 calorias.</p>
+              <p>Una manzana de tamaño promedio suele pesar entre 150g y 200g. Una manzana promedio tiene cerca de 91 calorias.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene el arroz cocido?</summary>
+              <p>El arroz cocido tiene aproximadamente 130 kcal por 100g. Una ración de 200g aporta unas 260 kcal.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es mejor pesar los alimentos en crudo o cocinados?</summary>
+              <p>La regla general en nutrición es pesar siempre en crudo, ya que los alimentos cambian de peso al cocinarlos pero mantienen las mismas calorías. 100g de pasta cruda (350 kcal) se convierten en 250g de pasta cocida con las mismas 350 kcal.</p>
             </details>
             
           
@@ -337,7 +554,7 @@ function calcCalAlim() {
           "name": "¿Cuantas calorias tiene un huevo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Un huevo suele tener entre 53g y 70g. Un huevo de 60g tiene aproximadamente 93 calorias"
+            "text": "Un huevo suele tener entre 53g y 70g. Un huevo de 60g tiene aproximadamente 93 calorias."
           }
         },
         
@@ -346,7 +563,25 @@ function calcCalAlim() {
           "name": "¿Cuantas calorias tiene una manzana?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una manzana de tamaño promedio suele pesar entre 150g y 200g. Teniendo en cuenta estos gramos, una manzana promedio pesa cerca de 91 calorias."
+            "text": "Una manzana de tamaño promedio suele pesar entre 150g y 200g. Una manzana promedio tiene cerca de 91 calorias."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene el arroz cocido?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El arroz cocido tiene aproximadamente 130 kcal por 100g. Una ración de 200g aporta unas 260 kcal."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Es mejor pesar los alimentos en crudo o cocinados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La regla general en nutrición es pesar siempre en crudo, ya que los alimentos cambian de peso al cocinarlos pero mantienen las mismas calorías. 100g de pasta cruda (350 kcal) se convierten en 250g de pasta cocida con las mismas 350 kcal."
           }
         }
         
