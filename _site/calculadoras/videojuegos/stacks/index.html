@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de stacks de Minecraft - Conversor de bloques — CalcFácil</title>
+  <meta name="description" content="Calcula cuántos stacks necesitas en Minecraft. Convierte cualquier cantidad de bloques, objetos o materiales en stacks y unidades sobrantes.">
+  
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/videojuegos/stacks/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de stacks de Minecraft - Conversor de bloques — CalcFácil">
+  <meta property="og:description" content="Calcula cuántos stacks necesitas en Minecraft. Convierte cualquier cantidad de bloques, objetos o materiales en stacks y unidades sobrantes.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/videojuegos/stacks/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de stacks de Minecraft - Conversor de bloques",
+    "description": "Calcula cuántos stacks necesitas en Minecraft. Convierte cualquier cantidad de bloques, objetos o materiales en stacks y unidades sobrantes.",
+    "url": "https://calculadorasgratis.net/calculadoras/videojuegos/stacks/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/videojuegos/">Videojuegos</a>
+      <span>›</span>
+      <span>Calculadora de stacks de Minecraft</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🧱 Calculadora de stacks de Minecraft</h1>
+        <p class="calc-intro">Convierte cantidades de objetos y bloques en stacks de Minecraft.</p>
+        <div class="card">
+          
+<label>Cantidad de objetos</label>
+<input type="number" id="stack-cantidad" placeholder="1000" min="0" oninput="calcStacks()">
+
+<label>Tamaño del stack</label>
+<select id="stack-tamano" onchange="calcStacks()">
+  <option value="64">64 unidades</option>
+  <option value="16">16 unidades</option>
+  <option value="1">1 unidad</option>
+</select>
+
+<div class="result-box" id="stack-res">
+  Introduce una cantidad
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo calcular stacks en Minecraft?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Para saber cuántos stacks forman una determinada cantidad de objetos,
+    divide el número total de objetos entre el tamaño del stack.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Por ejemplo, 1.000 bloques divididos entre 64 equivalen a 15 stacks
+    completos y 40 bloques adicionales.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Ejemplos
+  </h2>
+
+  <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li><strong>64 bloques</strong> → 1 stack</li>
+    <li><strong>128 bloques</strong> → 2 stacks</li>
+    <li><strong>256 bloques</strong> → 4 stacks</li>
+    <li><strong>1.000 bloques</strong> → 15 stacks + 40 bloques</li>
+    <li><strong>1.728 bloques</strong> → 27 stacks</li>
+  </ul>
+
+</div>
+
+<script>
+function calcStacks() {
+  const cantidad = parseInt(document.getElementById('stack-cantidad').value);
+  const tamano = parseInt(document.getElementById('stack-tamano').value);
+
+  if (isNaN(cantidad) || cantidad < 0) {
+    document.getElementById('stack-res').textContent =
+      'Introduce una cantidad';
+    return;
+  }
+
+  const stacks = Math.floor(cantidad / tamano);
+  const sobrantes = cantidad % tamano;
+
+  document.getElementById('stack-res').innerHTML =
+    `${stacks.toLocaleString('es-ES')} ${stacks === 1 ? 'stack' : 'stacks'}
+    <small>${sobrantes > 0 ? `${sobrantes.toLocaleString('es-ES')} unidades sobrantes` : 'No sobran unidades'}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es los stacks de Minecraft?</h2>
+          <p>Introduce cualquier cantidad de objetos o bloques para saber cuántos stacks completos necesitas y cuántas unidades sobran. La calculadora utiliza el tamaño de stack que selecciones.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/videojuegos/coordenadas-nether/">🔥 Calculadora de coordenadas Nether</a></li>
+            
+            <li><a href="/calculadoras/videojuegos/xp-minecraft/">✨ Calculadora de XP de Minecraft</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántos objetos tiene un stack de Minecraft?</summary>
+              <p>El tamaño habitual de un stack es de 64 unidades, aunque algunos objetos se apilan en cantidades diferentes, como 16 o 1.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántos stacks son 1.000 bloques?</summary>
+              <p>1.000 bloques equivalen a 15 stacks completos y sobran 40 bloques cuando el tamaño del stack es 64.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular stacks de objetos que se apilan de 16 en 16?</summary>
+              <p>Sí. Selecciona un tamaño de stack de 16 y la calculadora realizará la conversión correspondiente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular objetos que no se pueden apilar?</summary>
+              <p>Sí. Selecciona un tamaño de stack de 1. El resultado indicará que cada objeto ocupa una unidad individual.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de stacks de Minecraft",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántos objetos tiene un stack de Minecraft?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tamaño habitual de un stack es de 64 unidades, aunque algunos objetos se apilan en cantidades diferentes, como 16 o 1."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántos stacks son 1.000 bloques?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1.000 bloques equivalen a 15 stacks completos y sobran 40 bloques cuando el tamaño del stack es 64."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular stacks de objetos que se apilan de 16 en 16?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Selecciona un tamaño de stack de 16 y la calculadora realizará la conversión correspondiente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular objetos que no se pueden apilar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Selecciona un tamaño de stack de 1. El resultado indicará que cada objeto ocupa una unidad individual."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

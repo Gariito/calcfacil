@@ -1,0 +1,141 @@
+---
+layout: calculadora.njk
+title: Calculadora de XP de Minecraft - Experiencia y niveles
+description: Calcula cuánta experiencia necesitas para subir de nivel en Minecraft. Compara niveles, XP necesaria y experiencia acumulada.
+categoria: videojuegos
+categoriaLabel: Videojuegos
+titulo: Calculadora de XP de Minecraft
+icono: ✨
+tituloCorto: la XP de Minecraft
+descripcion: Calcula la experiencia necesaria para alcanzar un nivel en Minecraft.
+explicacion: La experiencia de Minecraft utiliza una curva de niveles que aumenta progresivamente. Esta calculadora permite saber cuánta XP total corresponde a un nivel y cuánta experiencia necesitas para pasar de un nivel a otro.
+faq:
+  - q: ¿Cuánta XP necesito para subir de nivel en Minecraft?
+    a: Depende del nivel actual. La cantidad de experiencia necesaria aumenta a medida que sube el nivel.
+
+  - q: ¿Cuánta XP necesito para llegar al nivel 30?
+    a: Necesitas 1395 puntos de experiencia acumulada para alcanzar el nivel 30 desde el nivel 0.
+
+  - q: ¿La XP necesaria aumenta con el nivel?
+    a: Sí. Minecraft utiliza diferentes fórmulas según el rango de nivel, por lo que subir niveles altos requiere progresivamente más experiencia.
+
+  - q: ¿Esta calculadora muestra la XP entre dos niveles?
+    a: Sí. Introduce el nivel actual y el nivel objetivo para calcular la experiencia adicional necesaria.
+
+relacionadas:
+  - slug: portal-nether
+    categoria: videojuegos
+    titulo: Calculadora de coordenadas Nether
+    icono: 🟣
+  - slug: stacks
+    categoria: videojuegos
+    titulo: Calculadora de stacks de Minecraft
+    icono: 🧱
+---
+
+<div class="row-2">
+
+  <div>
+    <label>Nivel actual</label>
+    <input
+      type="number"
+      id="xp-actual"
+      value="0"
+      min="0"
+      oninput="calcXP()"
+    >
+  </div>
+
+  <div>
+    <label>Nivel objetivo</label>
+    <input
+      type="number"
+      id="xp-objetivo"
+      value="30"
+      min="0"
+      oninput="calcXP()"
+    >
+  </div>
+
+</div>
+
+<div class="result-box" id="xp-res">
+  Introduce los niveles
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo funciona la experiencia de Minecraft?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    La cantidad de experiencia necesaria para subir de nivel no es siempre
+    la misma. Minecraft utiliza diferentes fórmulas según el nivel en el que
+    se encuentre el jugador.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Por eso subir varios niveles cuando ya tienes un nivel elevado requiere
+    bastante más XP que subir esos mismos niveles al principio del juego.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Experiencia necesaria por nivel
+  </h2>
+
+  <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li><strong>Niveles 0-15:</strong> 2 × nivel + 7 XP para el siguiente nivel.</li>
+    <li><strong>Niveles 16-30:</strong> 5 × nivel − 38 XP.</li>
+    <li><strong>Nivel 31 o superior:</strong> 9 × nivel − 158 XP.</li>
+  </ul>
+
+</div>
+
+<script>
+function xpTotal(nivel) {
+  if (nivel <= 16) {
+    return nivel * nivel + 6 * nivel;
+  }
+
+  if (nivel <= 31) {
+    return 2.5 * nivel * nivel - 40.5 * nivel + 360;
+  }
+
+  return 4.5 * nivel * nivel - 162.5 * nivel + 2220;
+}
+
+function calcXP() {
+  const actual = parseInt(document.getElementById('xp-actual').value);
+  const objetivo = parseInt(document.getElementById('xp-objetivo').value);
+
+  if (
+    isNaN(actual) ||
+    isNaN(objetivo) ||
+    actual < 0 ||
+    objetivo < 0
+  ) {
+    document.getElementById('xp-res').textContent =
+      'Introduce niveles válidos';
+    return;
+  }
+
+  if (objetivo < actual) {
+    document.getElementById('xp-res').textContent =
+      'El nivel objetivo debe ser igual o superior al actual';
+    return;
+  }
+
+  const xpActual = xpTotal(actual);
+  const xpObjetivo = xpTotal(objetivo);
+  const necesaria = xpObjetivo - xpActual;
+
+  document.getElementById('xp-res').innerHTML =
+    `${necesaria.toLocaleString('es-ES')} XP
+    <small>
+      XP total en nivel ${objetivo}: ${xpObjetivo.toLocaleString('es-ES')}
+    </small>`;
+}
+
+calcXP();
+</script>

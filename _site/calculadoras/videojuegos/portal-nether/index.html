@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de coordenadas Nether - Minecraft — CalcFácil</title>
+  <meta name="description" content="Convierte coordenadas entre el Overworld y el Nether en Minecraft. Calcula rápidamente dónde construir tu portal para conectar dos ubicaciones.">
+  
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/videojuegos/portal-nether/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de coordenadas Nether - Minecraft — CalcFácil">
+  <meta property="og:description" content="Convierte coordenadas entre el Overworld y el Nether en Minecraft. Calcula rápidamente dónde construir tu portal para conectar dos ubicaciones.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/videojuegos/portal-nether/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de coordenadas Nether - Minecraft",
+    "description": "Convierte coordenadas entre el Overworld y el Nether en Minecraft. Calcula rápidamente dónde construir tu portal para conectar dos ubicaciones.",
+    "url": "https://calculadorasgratis.net/calculadoras/videojuegos/portal-nether/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/videojuegos/">Videojuegos</a>
+      <span>›</span>
+      <span>Calculadora de coordenadas del Nether</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🟣 Calculadora de coordenadas del Nether</h1>
+        <p class="calc-intro">Convierte coordenadas del Overworld al Nether y del Nether al Overworld.</p>
+        <div class="card">
+          
+<label>Dirección de conversión</label>
+<select id="nether-dir" onchange="calcNether()">
+  <option value="overworld-nether">Overworld → Nether</option>
+  <option value="nether-overworld">Nether → Overworld</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Coordenada X</label>
+    <input type="number" id="nether-x" placeholder="1250" oninput="calcNether()">
+  </div>
+
+  <div>
+    <label>Coordenada Z</label>
+    <input type="number" id="nether-z" placeholder="-800" oninput="calcNether()">
+  </div>
+</div>
+
+<label>Coordenada Y (opcional)</label>
+<input type="number" id="nether-y" placeholder="64" oninput="calcNether()">
+
+<div class="result-box" id="nether-res">
+  Introduce las coordenadas X y Z
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo funcionan las coordenadas del Nether?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Las coordenadas X y Z del Nether están relacionadas con las del Overworld
+    mediante una proporción de 8 a 1. Por eso, recorrer 1 bloque en el Nether
+    puede representar aproximadamente 8 bloques de distancia en el Overworld.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Para viajar del Overworld al Nether divide X y Z entre 8. Para hacer la
+    conversión contraria, multiplica ambas coordenadas por 8.
+  </p>
+
+</div>
+
+<script>
+function calcNether() {
+  const x = parseFloat(document.getElementById('nether-x').value);
+  const z = parseFloat(document.getElementById('nether-z').value);
+  const y = document.getElementById('nether-y').value;
+  const dir = document.getElementById('nether-dir').value;
+
+  if (isNaN(x) || isNaN(z)) {
+    document.getElementById('nether-res').textContent =
+      'Introduce las coordenadas X y Z';
+    return;
+  }
+
+  let resultX;
+  let resultZ;
+
+  if (dir === 'overworld-nether') {
+    resultX = x / 8;
+    resultZ = z / 8;
+  } else {
+    resultX = x * 8;
+    resultZ = z * 8;
+  }
+
+  const xFmt = Number.isInteger(resultX)
+    ? resultX.toLocaleString('es-ES')
+    : resultX.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+
+  const zFmt = Number.isInteger(resultZ)
+    ? resultZ.toLocaleString('es-ES')
+    : resultZ.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+
+  document.getElementById('nether-res').innerHTML =
+    `X = ${xFmt} · Z = ${zFmt}
+    <small>${y !== '' ? `Y = ${y} · ` : ''}${dir === 'overworld-nether' ? 'Coordenadas aproximadas del Nether' : 'Coordenadas aproximadas del Overworld'}</small>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las coordenadas del Nether?</h2>
+          <p>En Minecraft, las coordenadas X y Z mantienen una relación de 8 a 1 entre el Overworld y el Nether. Esta calculadora permite convertir rápidamente las coordenadas de una dimensión a la otra para ayudarte a colocar portales conectados.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/videojuegos/stacks/">🧱 Calculadora de stacks de Minecraft</a></li>
+            
+            <li><a href="/calculadoras/videojuegos/experiencia-minecraft/">✨ Calculadora de XP de Minecraft</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo se convierten las coordenadas del Overworld al Nether?</summary>
+              <p>Divide las coordenadas X y Z del Overworld entre 8. La coordenada Y no se modifica en la conversión.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se convierten las coordenadas del Nether al Overworld?</summary>
+              <p>Multiplica las coordenadas X y Z del Nether por 8. La coordenada Y no se modifica.</p>
+            </details>
+            
+            <details>
+              <summary>¿La coordenada Y también se divide entre 8?</summary>
+              <p>No. La conversión de 8 a 1 se aplica principalmente a las coordenadas X y Z. La altura Y se mantiene como referencia independiente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Para qué sirve calcular las coordenadas del Nether?</summary>
+              <p>Permite recorrer grandes distancias del Overworld utilizando el Nether y facilita la conexión de diferentes portales.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de coordenadas del Nether",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se convierten las coordenadas del Overworld al Nether?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide las coordenadas X y Z del Overworld entre 8. La coordenada Y no se modifica en la conversión."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se convierten las coordenadas del Nether al Overworld?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplica las coordenadas X y Z del Nether por 8. La coordenada Y no se modifica."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La coordenada Y también se divide entre 8?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. La conversión de 8 a 1 se aplica principalmente a las coordenadas X y Z. La altura Y se mantiene como referencia independiente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Para qué sirve calcular las coordenadas del Nether?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Permite recorrer grandes distancias del Overworld utilizando el Nether y facilita la conexión de diferentes portales."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

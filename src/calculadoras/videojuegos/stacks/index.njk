@@ -1,0 +1,102 @@
+---
+layout: calculadora.njk
+title: Calculadora de stacks de Minecraft - Conversor de bloques
+description: Calcula cuántos stacks necesitas en Minecraft. Convierte cualquier cantidad de bloques, objetos o materiales en stacks y unidades sobrantes.
+categoria: videojuegos
+categoriaLabel: Videojuegos
+titulo: Calculadora de stacks de Minecraft
+icono: 🧱
+tituloCorto: los stacks de Minecraft
+descripcion: Convierte cantidades de objetos y bloques en stacks de Minecraft.
+explicacion: Introduce cualquier cantidad de objetos o bloques para saber cuántos stacks completos necesitas y cuántas unidades sobran. La calculadora utiliza el tamaño de stack que selecciones.
+faq:
+  - q: ¿Cuántos objetos tiene un stack de Minecraft?
+    a: El tamaño habitual de un stack es de 64 unidades, aunque algunos objetos se apilan en cantidades diferentes, como 16 o 1.
+
+  - q: ¿Cuántos stacks son 1.000 bloques?
+    a: 1.000 bloques equivalen a 15 stacks completos y sobran 40 bloques cuando el tamaño del stack es 64.
+
+  - q: ¿Puedo calcular stacks de objetos que se apilan de 16 en 16?
+    a: Sí. Selecciona un tamaño de stack de 16 y la calculadora realizará la conversión correspondiente.
+
+  - q: ¿Puedo calcular objetos que no se pueden apilar?
+    a: Sí. Selecciona un tamaño de stack de 1. El resultado indicará que cada objeto ocupa una unidad individual.
+
+relacionadas:
+  - slug: coordenadas-nether
+    categoria: videojuegos
+    titulo: Calculadora de coordenadas Nether
+    icono: 🔥
+  - slug: xp-minecraft
+    categoria: videojuegos
+    titulo: Calculadora de XP de Minecraft
+    icono: ✨
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<label>Cantidad de objetos</label>
+<input type="number" id="stack-cantidad" placeholder="1000" min="0" oninput="calcStacks()">
+
+<label>Tamaño del stack</label>
+<select id="stack-tamano" onchange="calcStacks()">
+  <option value="64">64 unidades</option>
+  <option value="16">16 unidades</option>
+  <option value="1">1 unidad</option>
+</select>
+
+<div class="result-box" id="stack-res">
+  Introduce una cantidad
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo calcular stacks en Minecraft?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Para saber cuántos stacks forman una determinada cantidad de objetos,
+    divide el número total de objetos entre el tamaño del stack.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Por ejemplo, 1.000 bloques divididos entre 64 equivalen a 15 stacks
+    completos y 40 bloques adicionales.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Ejemplos
+  </h2>
+
+  <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li><strong>64 bloques</strong> → 1 stack</li>
+    <li><strong>128 bloques</strong> → 2 stacks</li>
+    <li><strong>256 bloques</strong> → 4 stacks</li>
+    <li><strong>1.000 bloques</strong> → 15 stacks + 40 bloques</li>
+    <li><strong>1.728 bloques</strong> → 27 stacks</li>
+  </ul>
+
+</div>
+
+<script>
+function calcStacks() {
+  const cantidad = parseInt(document.getElementById('stack-cantidad').value);
+  const tamano = parseInt(document.getElementById('stack-tamano').value);
+
+  if (isNaN(cantidad) || cantidad < 0) {
+    document.getElementById('stack-res').textContent =
+      'Introduce una cantidad';
+    return;
+  }
+
+  const stacks = Math.floor(cantidad / tamano);
+  const sobrantes = cantidad % tamano;
+
+  document.getElementById('stack-res').innerHTML =
+    `${stacks.toLocaleString('es-ES')} ${stacks === 1 ? 'stack' : 'stacks'}
+    <small>${sobrantes > 0 ? `${sobrantes.toLocaleString('es-ES')} unidades sobrantes` : 'No sobran unidades'}</small>`;
+}
+</script>

@@ -1,0 +1,116 @@
+---
+layout: calculadora.njk
+title: Calculadora de coordenadas Nether - Minecraft
+description: Convierte coordenadas entre el Overworld y el Nether en Minecraft. Calcula rápidamente dónde construir tu portal para conectar dos ubicaciones.
+categoria: videojuegos
+categoriaLabel: Videojuegos
+titulo: Calculadora de coordenadas del Nether
+icono: 🟣
+tituloCorto: las coordenadas del Nether
+descripcion: Convierte coordenadas del Overworld al Nether y del Nether al Overworld.
+explicacion: En Minecraft, las coordenadas X y Z mantienen una relación de 8 a 1 entre el Overworld y el Nether. Esta calculadora permite convertir rápidamente las coordenadas de una dimensión a la otra para ayudarte a colocar portales conectados.
+faq:
+  - q: ¿Cómo se convierten las coordenadas del Overworld al Nether?
+    a: Divide las coordenadas X y Z del Overworld entre 8. La coordenada Y no se modifica en la conversión.
+
+  - q: ¿Cómo se convierten las coordenadas del Nether al Overworld?
+    a: Multiplica las coordenadas X y Z del Nether por 8. La coordenada Y no se modifica.
+
+  - q: ¿La coordenada Y también se divide entre 8?
+    a: No. La conversión de 8 a 1 se aplica principalmente a las coordenadas X y Z. La altura Y se mantiene como referencia independiente.
+
+  - q: ¿Para qué sirve calcular las coordenadas del Nether?
+    a: Permite recorrer grandes distancias del Overworld utilizando el Nether y facilita la conexión de diferentes portales.
+
+relacionadas:
+  - slug: stacks
+    categoria: videojuegos
+    titulo: Calculadora de stacks de Minecraft
+    icono: 🧱
+  - slug: experiencia-minecraft
+    categoria: videojuegos
+    titulo: Calculadora de XP de Minecraft
+    icono: ✨
+---
+
+<label>Dirección de conversión</label>
+<select id="nether-dir" onchange="calcNether()">
+  <option value="overworld-nether">Overworld → Nether</option>
+  <option value="nether-overworld">Nether → Overworld</option>
+</select>
+
+<div class="row-2">
+  <div>
+    <label>Coordenada X</label>
+    <input type="number" id="nether-x" placeholder="1250" oninput="calcNether()">
+  </div>
+
+  <div>
+    <label>Coordenada Z</label>
+    <input type="number" id="nether-z" placeholder="-800" oninput="calcNether()">
+  </div>
+</div>
+
+<label>Coordenada Y (opcional)</label>
+<input type="number" id="nether-y" placeholder="64" oninput="calcNether()">
+
+<div class="result-box" id="nether-res">
+  Introduce las coordenadas X y Z
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo funcionan las coordenadas del Nether?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Las coordenadas X y Z del Nether están relacionadas con las del Overworld
+    mediante una proporción de 8 a 1. Por eso, recorrer 1 bloque en el Nether
+    puede representar aproximadamente 8 bloques de distancia en el Overworld.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Para viajar del Overworld al Nether divide X y Z entre 8. Para hacer la
+    conversión contraria, multiplica ambas coordenadas por 8.
+  </p>
+
+</div>
+
+<script>
+function calcNether() {
+  const x = parseFloat(document.getElementById('nether-x').value);
+  const z = parseFloat(document.getElementById('nether-z').value);
+  const y = document.getElementById('nether-y').value;
+  const dir = document.getElementById('nether-dir').value;
+
+  if (isNaN(x) || isNaN(z)) {
+    document.getElementById('nether-res').textContent =
+      'Introduce las coordenadas X y Z';
+    return;
+  }
+
+  let resultX;
+  let resultZ;
+
+  if (dir === 'overworld-nether') {
+    resultX = x / 8;
+    resultZ = z / 8;
+  } else {
+    resultX = x * 8;
+    resultZ = z * 8;
+  }
+
+  const xFmt = Number.isInteger(resultX)
+    ? resultX.toLocaleString('es-ES')
+    : resultX.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+
+  const zFmt = Number.isInteger(resultZ)
+    ? resultZ.toLocaleString('es-ES')
+    : resultZ.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+
+  document.getElementById('nether-res').innerHTML =
+    `X = ${xFmt} · Z = ${zFmt}
+    <small>${y !== '' ? `Y = ${y} · ` : ''}${dir === 'overworld-nether' ? 'Coordenadas aproximadas del Nether' : 'Coordenadas aproximadas del Overworld'}</small>`;
+}
+</script>

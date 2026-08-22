@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de XP de Minecraft - Experiencia y niveles — CalcFácil</title>
+  <meta name="description" content="Calcula cuánta experiencia necesitas para subir de nivel en Minecraft. Compara niveles, XP necesaria y experiencia acumulada.">
+  
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/videojuegos/experiencia-minecraft/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de XP de Minecraft - Experiencia y niveles — CalcFácil">
+  <meta property="og:description" content="Calcula cuánta experiencia necesitas para subir de nivel en Minecraft. Compara niveles, XP necesaria y experiencia acumulada.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/videojuegos/experiencia-minecraft/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de XP de Minecraft - Experiencia y niveles",
+    "description": "Calcula cuánta experiencia necesitas para subir de nivel en Minecraft. Compara niveles, XP necesaria y experiencia acumulada.",
+    "url": "https://calculadorasgratis.net/calculadoras/videojuegos/experiencia-minecraft/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/videojuegos/">Videojuegos</a>
+      <span>›</span>
+      <span>Calculadora de XP de Minecraft</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>✨ Calculadora de XP de Minecraft</h1>
+        <p class="calc-intro">Calcula la experiencia necesaria para alcanzar un nivel en Minecraft.</p>
+        <div class="card">
+          
+<div class="row-2">
+
+  <div>
+    <label>Nivel actual</label>
+    <input
+      type="number"
+      id="xp-actual"
+      value="0"
+      min="0"
+      oninput="calcXP()"
+    >
+  </div>
+
+  <div>
+    <label>Nivel objetivo</label>
+    <input
+      type="number"
+      id="xp-objetivo"
+      value="30"
+      min="0"
+      oninput="calcXP()"
+    >
+  </div>
+
+</div>
+
+<div class="result-box" id="xp-res">
+  Introduce los niveles
+</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    ¿Cómo funciona la experiencia de Minecraft?
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    La cantidad de experiencia necesaria para subir de nivel no es siempre
+    la misma. Minecraft utiliza diferentes fórmulas según el nivel en el que
+    se encuentre el jugador.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    Por eso subir varios niveles cuando ya tienes un nivel elevado requiere
+    bastante más XP que subir esos mismos niveles al principio del juego.
+  </p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem">
+    Experiencia necesaria por nivel
+  </h2>
+
+  <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li><strong>Niveles 0-15:</strong> 2 × nivel + 7 XP para el siguiente nivel.</li>
+    <li><strong>Niveles 16-30:</strong> 5 × nivel − 38 XP.</li>
+    <li><strong>Nivel 31 o superior:</strong> 9 × nivel − 158 XP.</li>
+  </ul>
+
+</div>
+
+<script>
+function xpTotal(nivel) {
+  if (nivel <= 16) {
+    return nivel * nivel + 6 * nivel;
+  }
+
+  if (nivel <= 31) {
+    return 2.5 * nivel * nivel - 40.5 * nivel + 360;
+  }
+
+  return 4.5 * nivel * nivel - 162.5 * nivel + 2220;
+}
+
+function calcXP() {
+  const actual = parseInt(document.getElementById('xp-actual').value);
+  const objetivo = parseInt(document.getElementById('xp-objetivo').value);
+
+  if (
+    isNaN(actual) ||
+    isNaN(objetivo) ||
+    actual < 0 ||
+    objetivo < 0
+  ) {
+    document.getElementById('xp-res').textContent =
+      'Introduce niveles válidos';
+    return;
+  }
+
+  if (objetivo < actual) {
+    document.getElementById('xp-res').textContent =
+      'El nivel objetivo debe ser igual o superior al actual';
+    return;
+  }
+
+  const xpActual = xpTotal(actual);
+  const xpObjetivo = xpTotal(objetivo);
+  const necesaria = xpObjetivo - xpActual;
+
+  document.getElementById('xp-res').innerHTML =
+    `${necesaria.toLocaleString('es-ES')} XP
+    <small>
+      XP total en nivel ${objetivo}: ${xpObjetivo.toLocaleString('es-ES')}
+    </small>`;
+}
+
+calcXP();
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la XP de Minecraft?</h2>
+          <p>La experiencia de Minecraft utiliza una curva de niveles que aumenta progresivamente. Esta calculadora permite saber cuánta XP total corresponde a un nivel y cuánta experiencia necesitas para pasar de un nivel a otro.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/videojuegos/portal-nether/">🟣 Calculadora de coordenadas Nether</a></li>
+            
+            <li><a href="/calculadoras/videojuegos/stacks/">🧱 Calculadora de stacks de Minecraft</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánta XP necesito para subir de nivel en Minecraft?</summary>
+              <p>Depende del nivel actual. La cantidad de experiencia necesaria aumenta a medida que sube el nivel.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánta XP necesito para llegar al nivel 30?</summary>
+              <p>Necesitas 1395 puntos de experiencia acumulada para alcanzar el nivel 30 desde el nivel 0.</p>
+            </details>
+            
+            <details>
+              <summary>¿La XP necesaria aumenta con el nivel?</summary>
+              <p>Sí. Minecraft utiliza diferentes fórmulas según el rango de nivel, por lo que subir niveles altos requiere progresivamente más experiencia.</p>
+            </details>
+            
+            <details>
+              <summary>¿Esta calculadora muestra la XP entre dos niveles?</summary>
+              <p>Sí. Introduce el nivel actual y el nivel objetivo para calcular la experiencia adicional necesaria.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de XP de Minecraft",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta XP necesito para subir de nivel en Minecraft?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del nivel actual. La cantidad de experiencia necesaria aumenta a medida que sube el nivel."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta XP necesito para llegar al nivel 30?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Necesitas 1395 puntos de experiencia acumulada para alcanzar el nivel 30 desde el nivel 0."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La XP necesaria aumenta con el nivel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Minecraft utiliza diferentes fórmulas según el rango de nivel, por lo que subir niveles altos requiere progresivamente más experiencia."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Esta calculadora muestra la XP entre dos niveles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Introduce el nivel actual y el nivel objetivo para calcular la experiencia adicional necesaria."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,29 +1,25 @@
 ---
 layout: calculadora.njk
 title: Calculadora sueldo neto 2026 — cuánto cobro neto desde mi bruto
-description: Calcula cuánto cobrarás neto cada mes desde tu salario bruto anual. IRPF y Seguridad Social 2026 incluidos. Resultado inmediato. Gratis.
+description: Calcula cuánto cobrarás neto cada mes desde tu salario bruto anual. IRPF y Seguridad Social 2026 incluidos.
 keywords: sueldo neto, calculadora sueldo neto, calcular sueldo neto, salario neto, calcular salario bruto a neto, sueldo neto mensual, calcular sueldo bruto a neto, calcula tu sueldo, calculadora salario neto, cuanto cobro neto, cuanto me queda neto
 categoria: finanzas
 categoriaLabel: Finanzas
 titulo: Calculadora de sueldo neto
 icono: 💼
 tituloCorto: el sueldo neto
-descripcion: Calcula tu sueldo neto mensual a partir del bruto anual al instante. Incluye IRPF y Seguridad Social 2026.
-explicacion: Calcula al instante cuánto cobrarás neto cada mes a partir de tu salario bruto anual, con las retenciones de IRPF y Seguridad Social vigentes en 2026.
+descripcion: Calcula tu sueldo neto mensual a partir del bruto anual. Incluye IRPF y Seguridad Social 2026.
+explicacion: Con esta herramienta podrás calcular cuánto cobrarás neto cada mes a partir de tu salario bruto anual, con las retenciones de IRPF y Seguridad Social vigentes en 2026.
 faq:
   - q: ¿Cómo calculo mi sueldo neto desde el bruto?
-    a: Para calcular el sueldo neto desde el bruto debes restar dos conceptos — las cotizaciones a la Seguridad Social (6,35% del salario bruto) y la retención de IRPF (entre el 10% y el 45% según el tramo). Esta calculadora lo hace automáticamente.
-  - q: ¿Cuánto me queda neto con 20.000€ brutos?
-    a: Con 20.000€ brutos anuales el sueldo neto mensual aproximado es de 1.400-1.480€, dependiendo de tu situación personal. El neto anual ronda los 16.800-17.800€.
+    a: Para calcular el sueldo neto desde el bruto debes restar dos conceptos — las cotizaciones a la Seguridad Social (6,50% del salario bruto en 2026) y la retención de IRPF (entre el 10% y el 45% según el tramo).
   - q: ¿Cuánto me queda neto con 30.000€ brutos?
-    a: Con 30.000€ brutos anuales el sueldo neto mensual aproximado es de 1.850-1.950€. La retención de IRPF suele rondar el 15-17% a ese nivel salarial.
-  - q: ¿Cuánto me queda neto con 40.000€ brutos?
-    a: Con 40.000€ brutos anuales el sueldo neto mensual aproximado es de 2.200-2.350€. El tipo de IRPF efectivo suele estar entre el 20% y el 23%.
+    a: Con 30.000€ brutos anuales el sueldo neto mensual aproximado es de 1.850-1.950€.
   - q: ¿Qué diferencia hay entre salario bruto y neto?
     a: El salario bruto es el total acordado en el contrato antes de impuestos. El salario neto es lo que realmente recibes en tu cuenta bancaria después de descontar IRPF y cotizaciones a la Seguridad Social.
   - q: ¿Puedo cambiar mi retención de IRPF?
-    a: Sí, puedes solicitar a tu empresa que aplique un porcentaje mayor o menor usando el modelo 145 de la Agencia Tributaria. Si tienes hijos, discapacidad u otras circunstancias, tu retención puede ser menor.
-  - q: ¿El cálculo es exacto?
+    a: Sí, puedes solicitar a tu empresa que aplique un porcentaje mayor o menor. Si tienes hijos, discapacidad u otras circunstancias, tu retención puede ser menor.
+  - q: ¿El cálculo del sueldo neto es exacto?
     a: Es una estimación muy aproximada. El IRPF exacto depende de tu comunidad autónoma, deducciones personales y otros ingresos. Para el cálculo oficial usa el simulador de la Agencia Tributaria.
 relacionadas:
   - slug: irpf
@@ -38,10 +34,6 @@ relacionadas:
     categoria: finanzas
     titulo: Calculadora de interes compuesto
     icono: 📈
-  - slug: euros-pesetas
-    categoria: finanzas
-    titulo: Conversor de Euros a pesetas
-    icono: 💶
   - slug: ahorro
     categoria: finanzas
     titulo: Calculadora de ahorro
@@ -60,22 +52,13 @@ relacionadas:
   <option value="4">Con 3 o más hijos</option>
 </select>
 
-<div class="result-box" id="sn-res">Introduce tu salario bruto anual</div>
-
-<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-  <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem">¿Qué significa cada concepto?</h3>
-  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Cotización Seguridad Social:</strong> El trabajador cotiza un 6,35% de su base de cotización (contingencias comunes 4,70%, desempleo 1,55%, formación 0,10%).</p>
-  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Retención IRPF:</strong> Impuesto progresivo que va del 19% al 47% según el tramo de renta. La retención en nómina es un anticipo de lo que pagarás en la declaración anual.</p>
-  <p style="font-size:0.875rem;color:var(--muted)"><strong>Salario neto:</strong> Lo que realmente recibes en tu cuenta bancaria cada mes tras todas las deducciones.</p>
-</div>
-
 <script>
 function calcSueldoNeto() {
   const bruto = parseFloat(document.getElementById('sn-bruto').value);
   const sit = parseInt(document.getElementById('sn-situacion').value);
   if (!bruto) return;
 
-  const ss = bruto * 0.0635;
+  const ss = bruto * 0.065; // Actualizado a 6,50% para 2026 (incluye MEI 0,15%)
   const baseIRPF = bruto - ss;
 
   // Mínimo personal y familiar aproximado
@@ -116,13 +99,24 @@ function calcSueldoNeto() {
 }
 </script>
 
+<div class="result-box" id="sn-res">Introduce tu salario bruto anual</div>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">Como usar la calculadora de sueldo neto</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para calcular el sueldo neto, simplemente tendremos que introducir el <strong>salario bruto anual</strong> en la casilla de arriba. El salario bruto se puede encontrar tanto en nóminas como en el contrato de trabajo.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Es fundamental indicar cual es la situación personal, soltero, casado y la cantidad de hijos. Este factor determina la cuantía del <strong>Mínimo Personal y Familiar</strong>, una parte del sueldo bruto.</p>
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">¿Qué significa cada concepto?</h3>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Cotización Seguridad Social:</strong> El trabajador cotiza un 6,50% de su base de cotización en contratos indefinidos (contingencias comunes 4,70%, desempleo 1,55%, formación 0,10% y MEI 0,15%).</p>
+  <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem"><strong>Retención IRPF:</strong> Impuesto progresivo que va del 19% al 47% según el tramo de renta. La retención en nómina es un anticipo de lo que pagarás en la declaración anual.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Salario neto:</strong> Lo que realmente recibes en tu cuenta bancaria cada mes tras todas las deducciones.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"><strong>Salario bruto:</strong> El salario bruto es la cantidad total de dinero que cobrará el trabajador, antes de aplicar deducción.</p>
+  <p style="font-size:0.875rem;color:var(--muted)"> En el próximo punto, se muestra una table con las aproximaciones de los sueldos brutos anuales</p>
+
+</div>
+
 <div class="card" style="margin-top:1.5rem">
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
-    ¿Cuánto me queda neto según mi sueldo bruto? — Tabla 2026
-  </h2>
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
-    Esta tabla muestra el sueldo neto mensual aproximado para los sueldos brutos anuales más habituales en España en 2026, para una persona soltera sin hijos y sin otras deducciones.
-  </p>
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">¿Cuánto me queda neto según mi sueldo bruto?</h3>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Esta tabla muestra el sueldo neto mensual aproximado para los sueldos brutos anuales más habituales en España en 2026, para una persona soltera sin hijos y sin otras deducciones.</p>
   <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
     <tr style="background:var(--accent-light)">
       <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Bruto anual</th>
@@ -147,8 +141,6 @@ function calcSueldoNeto() {
     <tr><td style="padding:0.5rem 0.75rem">80.000 €</td><td style="text-align:right">3.750 €</td><td style="text-align:right">45.000 €</td><td style="text-align:right">36%</td></tr>
     <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">100.000 €</td><td style="text-align:right">4.300 €</td><td style="text-align:right">51.600 €</td><td style="text-align:right">40%</td></tr>
   </table>
-  <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
-    * Estimaciones orientativas para 2026 para persona soltera sin hijos en territorio común. 
-    Usa la calculadora de arriba para un cálculo personalizado.
-  </p>
+  
+  <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">* Estimaciones orientativas para 2026 para persona soltera sin hijos. Usa la calculadora de arriba para un cálculo personalizado.</p>
 </div>

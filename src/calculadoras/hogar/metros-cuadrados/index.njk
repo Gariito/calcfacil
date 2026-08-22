@@ -2,7 +2,7 @@
 layout: calculadora.njk
 title: Calculadora de metros cuadrados de una habitación
 description: Calcula los metros cuadrados de una habitación, pared o superficie rectangular o circular al instante.
-keywords: calcular metros cuadrados, m2 habitacion, metros cuadrados pared, superficie rectangular
+keywords: calcular metros cuadrados, m2 habitacion, metros cuadrados pared, superficie rectangular, calcular los metros cuadrados de una habitacion, como calcular metros cuadrados de una habitación
 categoria: hogar
 categoriaLabel: Hogar
 titulo: Calculadora de metros cuadrados
@@ -17,6 +17,10 @@ faq:
     a: Multiplica el ancho de la pared por su altura. Si la pared mide 4m de ancho y 2,5m de alto, tiene 10 m².
   - q: ¿Puedo calcular superficies irregulares?
     a: Para superficies irregulares, divídelas en rectángulos o triángulos, calcula el área de cada parte y súmalas.
+  - q: ¿Afecta la altura del techo a los metros cuadrados?
+    a: No, los metros cuadrados solo tiene en cuenta el largo y el ancho del suelo. En cambio, la altura sí es importante a la hora de calcular los metros cúbicos.
+  - q: ¿Cual es el signo o simbolo de los metros cuadrados?
+    a: El signo de los metros cuadrados es m².
 relacionadas:
   - slug: pintura
     categoria: hogar
@@ -102,3 +106,19 @@ function calcMC() {
     `${area.toFixed(4)} m²<small>${area.toFixed(2)} m² · ${(area*10000).toFixed(0)} cm²</small>`;
 }
 </script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          
+          <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">Cómo usar la calculadora de metros cuadrados</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La calculadora contiene tres campos que son obligatorios de rellenar. Lo principal es indicar la forma de la superficie, ya que el resultado de los metros cuadrados de la habitación o casa puede variar dependiendo del tipo de superficie.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Una vez indiquemos la forma del suelo, tendremos que medir el ancho y el largo del cuarto o de la pared.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Al introducir los datos obligatorios, la herramienta calculará los m2 correspondientes a los datos indicados y también los calculará en cm2.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Cómo calcular los metros cuadrados de una habitación</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para calcular los metros cuadrados de una habitación, es necesario medir el largo y el ancho del cuarto y multiplicar ambas medidas.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Por ejemplo, un cuarto de 5 metros de largo por 4 metros de ancho, equivale a 20 m2.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El resultado puede variar dependiendo del tipo de superficie, ya que una superficie rectangular, no se calcula de la misma manera que una triangular o circular.</p>
+
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Pará que personas es recomendable calcular los metros cuadrados?</h3>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La importancia del cálculo de los m2 depende de la situación. En las ventas o reformas de casas, es sumamente importante conocer el tamaño de la propiedad en m2, ya que el precio de la vivienda puede aumentar o disminuir.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">A la hora de comprar material de hogares, como pintura, suelos o azulejos, también es indispensable conocer esta medida. De esta manera evitarás el gasto excesivo en la compra de estos materiales.</p>
+</div>
