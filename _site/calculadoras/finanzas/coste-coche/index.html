@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora coste real de tener un coche al mes y al año — CalcFácil</title>
+  <meta name="description" content="Calcula cuánto te cuesta realmente tener un coche al mes y al año en España. Gasolina, seguro, ITV, mantenimiento, parking y amortización incluidos.">
+  <meta name="keywords" content="cuanto cuesta tener un coche al mes, coste real coche españa, gastos coche al año, calculadora gastos coche, cuanto gasto en mi coche, coste mantenimiento coche, gastos fijos coche">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/finanzas/coste-coche/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora coste real de tener un coche al mes y al año — CalcFácil">
+  <meta property="og:description" content="Calcula cuánto te cuesta realmente tener un coche al mes y al año en España. Gasolina, seguro, ITV, mantenimiento, parking y amortización incluidos.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/finanzas/coste-coche/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora coste real de tener un coche al mes y al año",
+    "description": "Calcula cuánto te cuesta realmente tener un coche al mes y al año en España. Gasolina, seguro, ITV, mantenimiento, parking y amortización incluidos.",
+    "url": "https://calculadorasgratis.net/calculadoras/finanzas/coste-coche/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+      <span>›</span>
+      <span>Calculadora de coste real de un coche</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🚗 Calculadora de coste real de un coche</h1>
+        <p class="calc-intro">Calcula cuánto te cuesta tu coche al mes y al año incluyendo todos los gastos — gasolina, seguro, ITV, mantenimiento, parking y amortización.</p>
+        <div class="card">
+          
+<style>
+.coche-seccion {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--accent);
+}
+.coche-seccion-titulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.coche-resumen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.coche-resumen-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+}
+.coche-resumen-item .valor {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.coche-resumen-item .etiqueta {
+  font-size: 0.73rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+.coche-barra-wrap {
+  margin-top: 1rem;
+}
+.coche-barra-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+}
+.coche-barra-item .nombre {
+  width: 130px;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.coche-barra-item .barra {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.coche-barra-item .barra-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.coche-barra-item .cantidad {
+  width: 65px;
+  text-align: right;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+</style>
+
+<!-- SECCIÓN 1 — Datos del vehículo -->
+<div class="coche-seccion">
+  <div class="coche-seccion-titulo">🚗 Datos del vehículo</div>
+  <div class="row-2">
+    <div>
+      <label>Tipo de combustible</label>
+      <select id="co-combustible" onchange="calcCoche()">
+        <option value="gasolina">Gasolina</option>
+        <option value="diesel">Diésel</option>
+        <option value="hibrido">Híbrido</option>
+        <option value="electrico">Eléctrico</option>
+        <option value="glp">GLP / Gas</option>
+      </select>
+    </div>
+    <div>
+      <label>Antigüedad del coche</label>
+      <select id="co-antig" onchange="calcCoche()">
+        <option value="nuevo">Nuevo (0-2 años)</option>
+        <option value="reciente">Reciente (3-5 años)</option>
+        <option value="medio" selected>Medio (6-10 años)</option>
+        <option value="viejo">Antiguo (más de 10 años)</option>
+      </select>
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Precio de compra del coche (€)</label>
+      <input type="number" id="co-precio" placeholder="15000" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>Años que piensas usarlo</label>
+      <input type="number" id="co-anos-uso" placeholder="8" value="8" oninput="calcCoche()">
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 2 — Combustible -->
+<div class="coche-seccion" id="co-sec-combustible">
+  <div class="coche-seccion-titulo">⛽ Combustible</div>
+  <div class="row-2">
+    <div>
+      <label>Kilómetros al mes</label>
+      <input type="number" id="co-km" placeholder="1000" value="1000" oninput="calcCoche()">
+    </div>
+    <div>
+      <label id="co-consumo-label">Consumo (L/100km)</label>
+      <input type="number" id="co-consumo" placeholder="6.5" value="6.5" oninput="calcCoche()">
+    </div>
+  </div>
+  <div>
+    <label id="co-precio-comb-label">Precio gasolina/diésel (€/litro)</label>
+    <input type="number" id="co-precio-comb" placeholder="1.65" value="1.65" oninput="calcCoche()">
+  </div>
+</div>
+
+<!-- SECCIÓN 3 — Seguro e impuestos -->
+<div class="coche-seccion">
+  <div class="coche-seccion-titulo">🛡️ Seguro e impuestos</div>
+  <div class="row-2">
+    <div>
+      <label>Tipo de seguro</label>
+      <select id="co-seguro-tipo" onchange="toggleSeguro()">
+        <option value="manual">Introducir importe manualmente</option>
+        <option value="terceros">Estimar — Terceros básico</option>
+        <option value="terceros_plus">Estimar — Terceros ampliado</option>
+        <option value="todo_riesgo">Estimar — Todo riesgo</option>
+      </select>
+    </div>
+    <div>
+      <label>Coste seguro (€/año)</label>
+      <input type="number" id="co-seguro" placeholder="500" oninput="calcCoche()">
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Impuesto circulación IVTM (€/año)</label>
+      <input type="number" id="co-ivtm" placeholder="80" value="80" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>ITV (€/año — prorrateado)</label>
+      <input type="number" id="co-itv" placeholder="35" value="35" oninput="calcCoche()">
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 4 — Mantenimiento -->
+<div class="coche-seccion">
+  <div class="coche-seccion-titulo">🔧 Mantenimiento</div>
+  <div class="row-2">
+    <div>
+      <label>Cambio de aceite y filtros (€/año)</label>
+      <input type="number" id="co-aceite" placeholder="150" value="150" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>Neumáticos (€/año — prorrateado)</label>
+      <input type="number" id="co-neumaticos" placeholder="100" value="100" oninput="calcCoche()">
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Revisiones y reparaciones (€/año)</label>
+      <input type="number" id="co-reparaciones" placeholder="200" value="200" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>Lavados y limpieza (€/año)</label>
+      <input type="number" id="co-limpieza" placeholder="60" value="60" oninput="calcCoche()">
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 5 — Otros gastos -->
+<div class="coche-seccion">
+  <div class="coche-seccion-titulo">🅿️ Otros gastos</div>
+  <div class="row-2">
+    <div>
+      <label>Parking / garaje (€/mes)</label>
+      <input type="number" id="co-parking" placeholder="0" value="0" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>Peajes (€/mes)</label>
+      <input type="number" id="co-peajes" placeholder="0" value="0" oninput="calcCoche()">
+    </div>
+  </div>
+  <div class="row-2">
+    <div>
+      <label>Multas (€/año — estimación)</label>
+      <input type="number" id="co-multas" placeholder="0" value="0" oninput="calcCoche()">
+    </div>
+    <div>
+      <label>Préstamo del coche (€/mes)</label>
+      <input type="number" id="co-prestamo" placeholder="0" value="0" oninput="calcCoche()">
+    </div>
+  </div>
+</div>
+
+<div class="result-box" id="co-res">Introduce los datos de tu coche</div>
+
+<!-- Desglose visual -->
+<div id="co-desglose" style="display:none;margin-top:1rem">
+  <div class="coche-resumen" id="co-resumen-cards"></div>
+  <div class="coche-barra-wrap" id="co-barras"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánto cuesta realmente un coche en España?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La mayoría de conductores solo piensa en la gasolina cuando calcula el coste de su coche. Sin embargo, el gasto en combustible suele representar menos del 30% del coste total. Los gastos fijos — seguro, impuesto de circulación, amortización — son los que realmente marcan la diferencia.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Según estudios del sector del automóvil en España, el coste medio de tener un turismo en 2026 es de aproximadamente <strong>450-550€ al mes</strong> incluyendo todos los conceptos. Esto equivale a entre <strong>5.400€ y 6.600€ al año</strong>.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.5rem">Desglose de gastos por tipo de coche</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tipo de coche</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Coste mensual</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Coste anual</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Utilitario pequeño (Seat Ibiza, Renault Clio...)</td><td style="text-align:right">250–350 €</td><td style="text-align:right">3.000–4.200 €</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Compacto familiar (Golf, Megane...)</td><td style="text-align:right">350–500 €</td><td style="text-align:right">4.200–6.000 €</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">SUV mediano (Tucson, Qashqai...)</td><td style="text-align:right">500–700 €</td><td style="text-align:right">6.000–8.400 €</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">SUV grande / Premium (BMW, Audi...)</td><td style="text-align:right">700–1.200 €</td><td style="text-align:right">8.400–14.400 €</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Eléctrico (Zoe, ID.3, Tesla Model 3)</td><td style="text-align:right">300–600 €</td><td style="text-align:right">3.600–7.200 €</td></tr>
+  </table>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.5rem">¿Coche propio o transporte público?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">En ciudades con buena red de transporte público, la comparativa económica rara vez sale a favor del coche privado:</p>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Opción de transporte</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Coste mensual aprox.</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Coche propio (gama media, ciudad)</td><td style="text-align:right">400–600 €</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Abono transporte público (Madrid/Barcelona)</td><td style="text-align:right">20–55 €</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Transporte público + taxis ocasionales</td><td style="text-align:right">80–150 €</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Carsharing (BlaBlaCar, Getaround...)</td><td style="text-align:right">100–200 €</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Moto / scooter 125cc</td><td style="text-align:right">150–250 €</td></tr>
+  </table>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.5rem">Consejos para reducir el coste de tu coche</h2>
+  <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li><strong>Compara seguros cada año:</strong> Cambiar de aseguradora puede ahorrarte 100-300€ anuales. Compara en comparadores online antes de renovar.</li>
+    <li><strong>Conduce de forma eficiente:</strong> Conducir suavemente, sin aceleraciones bruscas y manteniendo presión correcta en los neumáticos puede reducir el consumo un 10-15%.</li>
+    <li><strong>Mantenimiento preventivo:</strong> Un mantenimiento regular es mucho más barato que las reparaciones imprevistas. Seguir el plan de mantenimiento del fabricante ahorra dinero a largo plazo.</li>
+    <li><strong>Revisa el IVTM:</strong> El impuesto de circulación varía mucho según el municipio. En algunos ayuntamientos hay bonificaciones para coches ecológicos de hasta el 75%.</li>
+    <li><strong>Considera un coche de segunda mano:</strong> Un coche de 3-5 años ya ha perdido el mayor salto de depreciación. El mismo coche puede costar un 40-50% menos que nuevo.</li>
+  </ul>
+</div>
+
+<script>
+const COLORES_BARRAS = {
+  combustible: '#3B82F6',
+  seguro: '#8B5CF6',
+  impuestos: '#F59E0B',
+  mantenimiento: '#22C55E',
+  parking: '#EF4444',
+  amortizacion: '#EC4899',
+  prestamo: '#14B8A6',
+  otros: '#6B7280'
+};
+
+function toggleSeguro() {
+  const tipo = document.getElementById('co-seguro-tipo').value;
+  const estimaciones = {
+    terceros: 280,
+    terceros_plus: 420,
+    todo_riesgo: 650,
+    manual: null
+  };
+  if (estimaciones[tipo] !== null) {
+    document.getElementById('co-seguro').value = estimaciones[tipo];
+  }
+  calcCoche();
+}
+
+function calcCoche() {
+  const combustible = document.getElementById('co-combustible').value;
+  const km = parseFloat(document.getElementById('co-km').value)||0;
+  const consumo = parseFloat(document.getElementById('co-consumo').value)||0;
+  const precioComb = parseFloat(document.getElementById('co-precio-comb').value)||0;
+  const seguro = parseFloat(document.getElementById('co-seguro').value)||0;
+  const ivtm = parseFloat(document.getElementById('co-ivtm').value)||0;
+  const itv = parseFloat(document.getElementById('co-itv').value)||0;
+  const aceite = parseFloat(document.getElementById('co-aceite').value)||0;
+  const neumaticos = parseFloat(document.getElementById('co-neumaticos').value)||0;
+  const reparaciones = parseFloat(document.getElementById('co-reparaciones').value)||0;
+  const limpieza = parseFloat(document.getElementById('co-limpieza').value)||0;
+  const parking = parseFloat(document.getElementById('co-parking').value)||0;
+  const peajes = parseFloat(document.getElementById('co-peajes').value)||0;
+  const multas = parseFloat(document.getElementById('co-multas').value)||0;
+  const prestamo = parseFloat(document.getElementById('co-prestamo').value)||0;
+  const precioCoche = parseFloat(document.getElementById('co-precio').value)||0;
+  const anosUso = parseFloat(document.getElementById('co-anos-uso').value)||8;
+
+  // Cálculo combustible mensual
+  let gastoCombMensual = 0;
+  if (combustible === 'electrico') {
+    gastoCombMensual = km * 0.18 * precioComb;
+    document.getElementById('co-consumo-label').textContent = 'Consumo (kWh/100km)';
+    document.getElementById('co-precio-comb-label').textContent = 'Precio electricidad (€/kWh)';
+    document.getElementById('co-consumo').placeholder = '15';
+    document.getElementById('co-precio-comb').placeholder = '0.18';
+  } else {
+    gastoCombMensual = (km * consumo / 100) * precioComb;
+    document.getElementById('co-consumo-label').textContent = 'Consumo (L/100km)';
+    document.getElementById('co-precio-comb-label').textContent = 'Precio combustible (€/litro)';
+  }
+
+  // Amortización mensual
+  const amortizacionMensual = precioCoche > 0 ? precioCoche / (anosUso * 12) : 0;
+
+  // Gastos anuales convertidos a mensuales
+  const seguroMensual = seguro / 12;
+  const ivtmMensual = ivtm / 12;
+  const itvMensual = itv / 12;
+  const aceiteM = aceite / 12;
+  const neumaticoM = neumaticos / 12;
+  const reparacionM = reparaciones / 12;
+  const limpiezaM = limpieza / 12;
+  const multasM = multas / 12;
+
+  const gastos = {
+    combustible: gastoCombMensual,
+    seguro: seguroMensual,
+    impuestos: ivtmMensual + itvMensual,
+    mantenimiento: aceiteM + neumaticoM + reparacionM + limpiezaM,
+    parking: parking + peajes,
+    amortizacion: amortizacionMensual,
+    prestamo: prestamo,
+    otros: multasM
+  };
+
+  const totalMensual = Object.values(gastos).reduce((a, b) => a + b, 0);
+  const totalAnual = totalMensual * 12;
+
+  if (totalMensual === 0) return;
+
+  const fmt = n => n.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' €';
+  const fmt2 = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+
+  document.getElementById('co-res').innerHTML =
+    `Tu coche te cuesta ${fmt(totalMensual)}/mes — ${fmt(totalAnual)}/año
+    <small>Coste por km: ${(totalMensual / (km||1)).toFixed(3).replace('.', ',')} €/km · Solo combustible: ${fmt2(gastoCombMensual)}/mes</small>`;
+
+  document.getElementById('co-desglose').style.display = 'block';
+
+  // Cards de resumen
+  const etiquetas = {
+    combustible: '⛽ Combustible',
+    seguro: '🛡️ Seguro',
+    impuestos: '📋 Impuestos',
+    mantenimiento: '🔧 Mantenimiento',
+    parking: '🅿️ Parking/peajes',
+    amortizacion: '📉 Amortización',
+    prestamo: '💳 Préstamo',
+    otros: '📌 Otros'
+  };
+
+  document.getElementById('co-resumen-cards').innerHTML = `
+    <div class="coche-resumen-item" style="grid-column:span 2;background:var(--accent-light);border-color:var(--accent)">
+      <div class="valor" style="font-size:1.5rem">${fmt(totalMensual)}/mes</div>
+      <div class="etiqueta" style="color:var(--accent)">Coste total mensual</div>
+    </div>
+    <div class="coche-resumen-item">
+      <div class="valor">${fmt(totalAnual)}</div>
+      <div class="etiqueta">Coste anual</div>
+    </div>
+    <div class="coche-resumen-item">
+      <div class="valor">${(totalMensual/(km||1)).toFixed(3).replace('.',',')} €</div>
+      <div class="etiqueta">Coste por km</div>
+    </div>`;
+
+  // Barras de desglose
+  const gastosOrdenados = Object.entries(gastos)
+    .filter(([, v]) => v > 0)
+    .sort(([, a], [, b]) => b - a);
+
+  const maximo = gastosOrdenados[0]?.[1] || 1;
+
+  document.getElementById('co-barras').innerHTML = `
+    <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:0.75rem;margin-top:0.5rem">Desglose mensual</h3>
+    ${gastosOrdenados.map(([key, val]) => `
+      <div class="coche-barra-item">
+        <div class="nombre">${etiquetas[key] || key}</div>
+        <div class="barra">
+          <div class="barra-fill" style="width:${(val/maximo*100).toFixed(1)}%;background:${COLORES_BARRAS[key]}"></div>
+        </div>
+        <div class="cantidad" style="color:${COLORES_BARRAS[key]}">${fmt2(val)}</div>
+      </div>`).join('')}
+    <div class="coche-barra-item" style="border-top:1px solid var(--border);padding-top:0.4rem;margin-top:0.2rem">
+      <div class="nombre" style="font-weight:700;color:var(--text)">TOTAL</div>
+      <div class="barra"></div>
+      <div class="cantidad" style="color:var(--accent);font-weight:700">${fmt2(totalMensual)}</div>
+    </div>`;
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el coste real de tu coche?</h2>
+          <p>El coste real de un coche no es solamente la gasolina o el diesel. La mayoría de conductores subestima lo que gasta en su vehículo porque no tienen en cuenta todos los gastos juntos. La calculadora suma todos los costes fijos y variables para darte el coste real mensual y anual de tener un coche en España.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/viajes/combustible/">⛽ Calculadora de combustible</a></li>
+            
+            <li><a href="/calculadoras/finanzas/hipoteca/">🏠 Calculadora de hipoteca</a></li>
+            
+            <li><a href="/calculadoras/finanzas/sueldo-neto/">💼 Calculadora de sueldo neto</a></li>
+            
+            <li><a href="/calculadoras/finanzas/prestamo/">💳 Calculadora de préstamo</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánto cuesta tener un coche de media en España?</summary>
+              <p>El coste medio de tener un coche en España ronda los 400-600€ al mes incluyendo todos los gastos. Un coche pequeño puede costar 250-350€/mes y un coche grande o de gama alta puede superar los 800€/mes.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué gastos fijos tiene un coche?</summary>
+              <p>Los gastos fijos son los que pagas independientemente de si usas el coche o no — seguro, impuesto de circulación (IVTM), amortización del préstamo si lo tienes, y parking si es mensual.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo calculo la amortización de mi coche?</summary>
+              <p>La amortización es la pérdida de valor del coche con el tiempo. Un coche nuevo pierde aproximadamente el 20% de su valor el primer año y entre el 10-15% los años siguientes. Divide el precio de compra entre los años que piensas usarlo para tener una referencia mensual.</p>
+            </details>
+            
+            <details>
+              <summary>¿Merece la pena tener coche en ciudad?</summary>
+              <p>En ciudades grandes con buen transporte público, el coste de un coche puede superar los 500€/mes. Comparado con un abono de transporte público de 20-40€/mes más taxis o VTC ocasionales, muchas veces no compensa económicamente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto cuesta el seguro de coche de media en España?</summary>
+              <p>El seguro de coche medio en España cuesta entre 400-800€ al año (33-67€/mes) para un seguro a todo riesgo. El seguro a terceros puede costar entre 200-400€ al año. Depende mucho del perfil del conductor, el vehículo y la provincia.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánto gasta de gasolina un coche al mes?</summary>
+              <p>Con un consumo medio de 6-7 litros/100km y una gasolina a 1,65€/litro, recorriendo 1.000 km al mes el gasto es de unos 100-115€. Con 1.500 km al mes sube a 150-170€.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de coste real de un coche",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta tener un coche de media en España?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El coste medio de tener un coche en España ronda los 400-600€ al mes incluyendo todos los gastos. Un coche pequeño puede costar 250-350€/mes y un coche grande o de gama alta puede superar los 800€/mes."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué gastos fijos tiene un coche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los gastos fijos son los que pagas independientemente de si usas el coche o no — seguro, impuesto de circulación (IVTM), amortización del préstamo si lo tienes, y parking si es mensual."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo calculo la amortización de mi coche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La amortización es la pérdida de valor del coche con el tiempo. Un coche nuevo pierde aproximadamente el 20% de su valor el primer año y entre el 10-15% los años siguientes. Divide el precio de compra entre los años que piensas usarlo para tener una referencia mensual."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Merece la pena tener coche en ciudad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En ciudades grandes con buen transporte público, el coste de un coche puede superar los 500€/mes. Comparado con un abono de transporte público de 20-40€/mes más taxis o VTC ocasionales, muchas veces no compensa económicamente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta el seguro de coche de media en España?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El seguro de coche medio en España cuesta entre 400-800€ al año (33-67€/mes) para un seguro a todo riesgo. El seguro a terceros puede costar entre 200-400€ al año. Depende mucho del perfil del conductor, el vehículo y la provincia."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánto gasta de gasolina un coche al mes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con un consumo medio de 6-7 litros/100km y una gasolina a 1,65€/litro, recorriendo 1.000 km al mes el gasto es de unos 100-115€. Con 1.500 km al mes sube a 150-170€."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>
