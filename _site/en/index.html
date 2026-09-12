@@ -117,20 +117,6 @@
     <h1>Free Calculators<br>for Everything</h1>
     <p>Fast, free and ad-free. Find the one you need.</p>
   </div>
-
-  <div>
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input
-        type="text"
-        class="search-input"
-        id="main-search"
-        placeholder="Search for calculators... Tips, Net salary, BMI..."
-        oninput="searchMain(this.value)"
-        autocomplete="off">
-      <div class="search-count" id="main-count"></div>
-    </div>
-  </div>
 </section>
 
   <!-- Acceso Rápido / Calculadoras Más Buscadas -->
@@ -251,45 +237,6 @@
     </p>
   </div>
 </div>
-
-<script>
-function searchMain(q) {
-  const term = q.toLowerCase().trim();
-  const cards = document.querySelectorAll('#main-grid .category-card');
-  const empty = document.getElementById('main-empty');
-  const count = document.getElementById('main-count');
-  let visible = 0;
-
-  cards.forEach(card => {
-    const searchData = (card.dataset.search || '').toLowerCase();
-    const title = (card.querySelector('h2')?.textContent || '').toLowerCase();
-    const searchText = searchData + ' ' + title;
-
-    if (!term || searchText.includes(term)) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-
-  if (term) {
-    count.textContent = visible + ' categoría' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
-    document.getElementById('main-empty-term').textContent = q;
-    empty.style.display = visible === 0 ? 'block' : 'none';
-  } else {
-    count.textContent = '';
-    empty.style.display = 'none';
-  }
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
-    e.preventDefault();
-    document.getElementById('main-search').focus();
-  }
-});
-</script>
 </main>
 
 

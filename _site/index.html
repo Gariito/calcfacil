@@ -116,18 +116,6 @@
   <div class="container">
     <h1>Calculadoras<br>para todo</h1>
     <p>Rápidas, gratuitas y sin anuncios. Encuentra la que necesitas.</p>
-
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input
-        type="text"
-        class="search-input"
-        id="main-search"
-        placeholder="Buscar calculadora... IMC, hipoteca, euros..."
-        oninput="searchMain(this.value)"
-        autocomplete="off">
-      <div class="search-count" id="main-count"></div>
-    </div>
   </div>
 </section>
 
@@ -144,11 +132,6 @@
 </div>
 
 <div class="container">
-  <div class="search-empty" id="main-empty">
-    <div class="empty-icon">🔍</div>
-    <p>No se encontraron calculadoras para "<span id="main-empty-term"></span>"</p>
-    <p style="margin-top:0.5rem;font-size:0.85rem">Prueba con otras palabras clave</p>
-  </div>
 
   <div class="category-grid" id="main-grid">
 
@@ -314,45 +297,6 @@
     </p>
   </div>
 </div>
-
-<script>
-function searchMain(q) {
-  const term = q.toLowerCase().trim();
-  const cards = document.querySelectorAll('#main-grid .category-card');
-  const empty = document.getElementById('main-empty');
-  const count = document.getElementById('main-count');
-  let visible = 0;
-
-  cards.forEach(card => {
-    const searchData = (card.dataset.search || '').toLowerCase();
-    const title = (card.querySelector('h2')?.textContent || '').toLowerCase();
-    const searchText = searchData + ' ' + title;
-
-    if (!term || searchText.includes(term)) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-
-  if (term) {
-    count.textContent = visible + ' categoría' + (visible !== 1 ? 's' : '') + ' encontrada' + (visible !== 1 ? 's' : '');
-    document.getElementById('main-empty-term').textContent = q;
-    empty.style.display = visible === 0 ? 'block' : 'none';
-  } else {
-    count.textContent = '';
-    empty.style.display = 'none';
-  }
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
-    e.preventDefault();
-    document.getElementById('main-search').focus();
-  }
-});
-</script>
 </main>
 
 
