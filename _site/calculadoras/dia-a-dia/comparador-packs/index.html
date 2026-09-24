@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador de packs y precios por unidad — CalcFácil</title>
+  <meta name="description" content="Compara dos packs y descubre cuál sale más barato por unidad. Calcula el precio unitario de cada opción de forma rápida y sencilla.">
+  <meta name="keywords" content="comparador de packs, comparar packs, comparar precios, precio por unidad, comparar productos, calculadora packs, precio unitario">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/dia-a-dia/comparador-packs/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Comparador de packs y precios por unidad — CalcFácil">
+  <meta property="og:description" content="Compara dos packs y descubre cuál sale más barato por unidad. Calcula el precio unitario de cada opción de forma rápida y sencilla.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/dia-a-dia/comparador-packs/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Comparador de packs y precios por unidad",
+    "description": "Compara dos packs y descubre cuál sale más barato por unidad. Calcula el precio unitario de cada opción de forma rápida y sencilla.",
+    "url": "https://calculadorasgratis.net/calculadoras/dia-a-dia/comparador-packs/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <span>›</span>
+      <span>Comparador de packs</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🛒 Comparador de packs</h1>
+        <p class="calc-intro">Compara dos paquetes según su cantidad y precio para saber cuál ofrece un precio más bajo por unidad.</p>
+        <div class="card">
+          
+<div style="display:grid;gap:1.25rem">
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 1</h3>
+
+    <label for="cp-precio1" style="display:block;margin-bottom:.4rem;font-weight:600">Precio (€)</label>
+    <input id="cp-precio1" type="number" step="0.01" min="0" placeholder="Ej. 4,99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="cp-cantidad1" style="display:block;margin-bottom:.4rem;font-weight:600">Unidades</label>
+    <input id="cp-cantidad1" type="number" step="1" min="1" placeholder="Ej. 6"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 2</h3>
+
+    <label for="cp-precio2" style="display:block;margin-bottom:.4rem;font-weight:600">Precio (€)</label>
+    <input id="cp-precio2" type="number" step="0.01" min="0" placeholder="Ej. 6,99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="cp-cantidad2" style="display:block;margin-bottom:.4rem;font-weight:600">Unidades</label>
+    <input id="cp-cantidad2" type="number" step="1" min="1" placeholder="Ej. 10"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <button onclick="compararPacks()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Comparar packs
+  </button>
+
+  <div id="cp-resultado" style="display:none">
+    <table style="width:100%;font-size:.9rem;border-collapse:collapse">
+      <tr style="background:var(--accent-light)">
+        <th style="padding:.7rem;text-align:left">Pack</th>
+        <th style="padding:.7rem;text-align:right">Precio/unidad</th>
+      </tr>
+      <tr>
+        <td style="padding:.7rem;border-bottom:1px solid var(--border)">Pack 1</td>
+        <td id="cp-r1" style="padding:.7rem;text-align:right;border-bottom:1px solid var(--border)"></td>
+      </tr>
+      <tr>
+        <td style="padding:.7rem">Pack 2</td>
+        <td id="cp-r2" style="padding:.7rem;text-align:right"></td>
+      </tr>
+    </table>
+
+    <div id="cp-mejor" style="margin-top:1rem;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center;font-weight:700"></div>
+  </div>
+</div>
+
+<script>
+function compararPacks() {
+  const p1 = parseFloat(document.getElementById('cp-precio1').value);
+  const c1 = parseFloat(document.getElementById('cp-cantidad1').value);
+  const p2 = parseFloat(document.getElementById('cp-precio2').value);
+  const c2 = parseFloat(document.getElementById('cp-cantidad2').value);
+
+  if (![p1,c1,p2,c2].every(Number.isFinite) || p1 < 0 || p2 < 0 || c1 <= 0 || c2 <= 0) {
+    document.getElementById('cp-resultado').style.display = 'none';
+    return;
+  }
+
+  const r1 = p1 / c1;
+  const r2 = p2 / c2;
+
+  document.getElementById('cp-r1').textContent =
+    r1.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:4}) + ' €';
+
+  document.getElementById('cp-r2').textContent =
+    r2.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:4}) + ' €';
+
+  const mejor = document.getElementById('cp-mejor');
+
+  if (Math.abs(r1-r2) < 0.000001) {
+    mejor.textContent = 'Los dos packs tienen el mismo precio por unidad.';
+  } else if (r1 < r2) {
+    mejor.textContent = 'El Pack 1 tiene un precio por unidad más bajo.';
+  } else {
+    mejor.textContent = 'El Pack 2 tiene un precio por unidad más bajo.';
+  }
+
+  document.getElementById('cp-resultado').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Cómo comparar dos packs</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Cuando dos productos tienen diferentes cantidades, comparar únicamente el precio del paquete puede llevar a una conclusión equivocada. Un pack de mayor tamaño no tiene por qué ser más barato por unidad.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Para comparar correctamente dos packs hay que dividir el precio de cada uno entre el número de unidades que contiene. De esta manera obtenemos un precio unitario que podemos comparar directamente.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplo de comparación</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Si un paquete de 6 unidades cuesta 4,80 €, cada unidad cuesta 0,80 €. Si otro paquete de 10 unidades cuesta 7 €, su precio unitario es de 0,70 €. Aunque el segundo paquete cuesta más en total, cada unidad resulta más económica.</p>
+</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es el comparador de packs?</h2>
+          <p>Introduce el precio y la cantidad de dos packs diferentes y compara automáticamente cuánto cuesta cada unidad en cada opción.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/precio-100g/">⚖️ Precio por 100g</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/descuento/">🏷️ Calculadora de descuentos</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-basica/">🔢 Calculadora básica</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cómo funciona el comparador de packs?</summary>
+              <p>Introduce el precio y la cantidad de unidades del primer pack y del segundo. La calculadora obtiene el precio por unidad de ambos y muestra cuál tiene el coste unitario más bajo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué significa precio por unidad?</summary>
+              <p>Es el resultado de dividir el precio total de un paquete entre el número de unidades que contiene. Permite comparar productos independientemente del tamaño del pack.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo comparar packs con cantidades diferentes?</summary>
+              <p>Sí. Precisamente una de las principales utilidades de esta calculadora es comparar paquetes que contienen diferentes cantidades.</p>
+            </details>
+            
+            <details>
+              <summary>¿Es mejor siempre el pack con más unidades?</summary>
+              <p>No necesariamente. Un paquete grande puede tener un precio unitario superior. Lo recomendable es calcular cuánto cuesta cada unidad antes de decidir.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo utilizarla para alimentos?</summary>
+              <p>Sí. Puedes comparar cualquier producto vendido en unidades, como alimentos, bebidas, productos de limpieza o artículos de uso diario.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Comparador de packs",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona el comparador de packs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Introduce el precio y la cantidad de unidades del primer pack y del segundo. La calculadora obtiene el precio por unidad de ambos y muestra cuál tiene el coste unitario más bajo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué significa precio por unidad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es el resultado de dividir el precio total de un paquete entre el número de unidades que contiene. Permite comparar productos independientemente del tamaño del pack."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo comparar packs con cantidades diferentes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Precisamente una de las principales utilidades de esta calculadora es comparar paquetes que contienen diferentes cantidades."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Es mejor siempre el pack con más unidades?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No necesariamente. Un paquete grande puede tener un precio unitario superior. Lo recomendable es calcular cuánto cuesta cada unidad antes de decidir."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo utilizarla para alimentos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes comparar cualquier producto vendido en unidades, como alimentos, bebidas, productos de limpieza o artículos de uso diario."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

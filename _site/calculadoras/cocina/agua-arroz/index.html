@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de agua para arroz — CalcFácil</title>
+  <meta name="description" content="Calcula cuánta agua necesitas para cocinar arroz según la cantidad de arroz que vayas a preparar.">
+  <meta name="keywords" content="calculadora agua para arroz, cuanta agua para arroz, agua arroz, cantidad agua arroz, proporción arroz agua, calculadora arroz, gramos arroz agua">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/cocina/agua-arroz/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de agua para arroz — CalcFácil">
+  <meta property="og:description" content="Calcula cuánta agua necesitas para cocinar arroz según la cantidad de arroz que vayas a preparar.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/cocina/agua-arroz/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de agua para arroz",
+    "description": "Calcula cuánta agua necesitas para cocinar arroz según la cantidad de arroz que vayas a preparar.",
+    "url": "https://calculadorasgratis.net/calculadoras/cocina/agua-arroz/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/cocina/">Cocina</a>
+      <span>›</span>
+      <span>Calculadora de agua para arroz</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍚 Calculadora de agua para arroz</h1>
+        <p class="calc-intro">Calcula rápidamente la cantidad de agua necesaria según los gramos de arroz que quieras cocinar.</p>
+        <div class="card">
+          
+<div style="display:grid;gap:1rem">
+  <div>
+    <label for="arroz-gramos" style="display:block;margin-bottom:.4rem;font-weight:600">Cantidad de arroz (g)</label>
+    <input id="arroz-gramos" type="number" step="1" min="1" placeholder="Ej. 200"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+  </div>
+
+  <div>
+    <label for="arroz-proporcion" style="display:block;margin-bottom:.4rem;font-weight:600">Agua por cada parte de arroz</label>
+    <select id="arroz-proporcion"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+      <option value="1.5">1,5 partes de agua</option>
+      <option value="1.75">1,75 partes de agua</option>
+      <option value="2" selected>2 partes de agua</option>
+      <option value="2.5">2,5 partes de agua</option>
+    </select>
+  </div>
+
+  <button onclick="calcularAguaArroz()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Calcular agua
+  </button>
+
+  <div id="arroz-resultado" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
+    <div style="font-size:.85rem;color:var(--muted)">Agua aproximada</div>
+    <div id="arroz-valor" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
+  </div>
+</div>
+
+<script>
+function calcularAguaArroz() {
+  const gramos = parseFloat(document.getElementById('arroz-gramos').value);
+  const proporcion = parseFloat(document.getElementById('arroz-proporcion').value);
+
+  if (!Number.isFinite(gramos) || !Number.isFinite(proporcion) || gramos <= 0 || proporcion <= 0) {
+    document.getElementById('arroz-resultado').style.display = 'none';
+    return;
+  }
+
+  const agua = gramos * proporcion;
+
+  document.getElementById('arroz-valor').textContent =
+    agua.toLocaleString('es-ES', {maximumFractionDigits:0}) + ' ml';
+
+  document.getElementById('arroz-resultado').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánta agua necesita el arroz?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">La cantidad de agua necesaria para cocinar arroz depende principalmente de la variedad utilizada y del método de cocción. Por eso no existe una única proporción válida para todos los tipos de arroz.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Como referencia sencilla, una proporción de 2 partes de agua por cada parte de arroz puede utilizarse como punto de partida para determinados arroces blancos cocinados por absorción.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de cantidades</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Con una proporción de 2 a 1, 100 gramos de arroz necesitarían aproximadamente 200 ml de agua. Para 200 gramos serían unos 400 ml y para 300 gramos, unos 600 ml.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Estas cantidades son orientativas. Para conseguir el resultado adecuado, es recomendable tener en cuenta las instrucciones específicas del tipo de arroz utilizado.</p>
+</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora de agua para arroz?</h2>
+          <p>Introduce la cantidad de arroz y selecciona la proporción de agua para obtener la cantidad aproximada de agua necesaria para cocinarlo.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/dia-a-dia/precio-100g/">⚖️ Precio por 100 g</a></li>
+            
+            <li><a href="/calculadoras/matematicas/raciones/">🍽️ Calculadora de raciones</a></li>
+            
+            <li><a href="/calculadoras/cocina/temperatura-horno/">🌡️ Temperatura del horno</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánta agua necesito para cocinar arroz?</summary>
+              <p>La cantidad depende del tipo de arroz y del método de cocción. Como referencia, una proporción habitual para arroz blanco es aproximadamente 2 partes de agua por 1 de arroz, aunque algunas variedades necesitan menos agua.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánta agua necesito para 100 gramos de arroz?</summary>
+              <p>Con una proporción de 2 a 1, necesitarías aproximadamente 200 ml de agua para 100 g de arroz.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánta agua necesito para 200 gramos de arroz?</summary>
+              <p>Utilizando una proporción de 2 partes de agua por 1 de arroz, serían aproximadamente 400 ml de agua.</p>
+            </details>
+            
+            <details>
+              <summary>¿La cantidad de agua es igual para todos los tipos de arroz?</summary>
+              <p>No. El arroz basmati, jazmín, integral, redondo y otras variedades pueden necesitar cantidades diferentes de agua. Consulta las indicaciones del envase cuando estén disponibles.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo calcular el agua para cualquier cantidad de arroz?</summary>
+              <p>Sí. Introduce los gramos de arroz y ajusta la proporción de agua según el tipo de arroz y el método de cocción que utilices.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de agua para arroz",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua necesito para cocinar arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La cantidad depende del tipo de arroz y del método de cocción. Como referencia, una proporción habitual para arroz blanco es aproximadamente 2 partes de agua por 1 de arroz, aunque algunas variedades necesitan menos agua."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua necesito para 100 gramos de arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con una proporción de 2 a 1, necesitarías aproximadamente 200 ml de agua para 100 g de arroz."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua necesito para 200 gramos de arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utilizando una proporción de 2 partes de agua por 1 de arroz, serían aproximadamente 400 ml de agua."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La cantidad de agua es igual para todos los tipos de arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El arroz basmati, jazmín, integral, redondo y otras variedades pueden necesitar cantidades diferentes de agua. Consulta las indicaciones del envase cuando estén disponibles."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo calcular el agua para cualquier cantidad de arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Introduce los gramos de arroz y ajusta la proporción de agua según el tipo de arroz y el método de cocción que utilices."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

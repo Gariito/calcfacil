@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de agua para perros - ¿Cuánta agua necesita? — CalcFácil</title>
+  <meta name="description" content="Calcula cuánta agua necesita beber tu perro al día según su peso. Estimación orientativa de las necesidades diarias de agua para perros.">
+  <meta name="keywords" content="calculadora agua perros, cuanta agua necesita un perro, agua para perros, cuanta agua debe beber un perro, calculadora agua perro, agua diaria perro, litros agua perro">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/dia-a-dia/agua-perro/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de agua para perros - ¿Cuánta agua necesita? — CalcFácil">
+  <meta property="og:description" content="Calcula cuánta agua necesita beber tu perro al día según su peso. Estimación orientativa de las necesidades diarias de agua para perros.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/dia-a-dia/agua-perro/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de agua para perros - ¿Cuánta agua necesita?",
+    "description": "Calcula cuánta agua necesita beber tu perro al día según su peso. Estimación orientativa de las necesidades diarias de agua para perros.",
+    "url": "https://calculadorasgratis.net/calculadoras/dia-a-dia/agua-perro/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPZFQTQCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RPZFQTQCL');
+  </script>
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Calculadora de agua para perros</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🐶 Calculadora de agua para perros</h1>
+        <p class="calc-intro">Calcula una cantidad orientativa de agua que tu perro puede necesitar beber al día según su peso.</p>
+        <div class="card">
+          
+<div style="display:grid;gap:1rem">
+  <div>
+    <label for="agua-perro-peso" style="display:block;margin-bottom:.4rem;font-weight:600">Peso del perro (kg)</label>
+    <input id="agua-perro-peso" type="number" step="0.1" min="0.1" placeholder="Ej. 15"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+  </div>
+
+  <button onclick="calcularAguaPerro()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Calcular agua diaria
+  </button>
+
+  <div id="agua-perro-resultado" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
+    <div style="font-size:.85rem;color:var(--muted)">Agua diaria orientativa</div>
+    <div id="agua-perro-valor" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
+    <div id="agua-perro-litros" style="font-size:.85rem;color:var(--muted);margin-top:.35rem"></div>
+  </div>
+</div>
+
+<script>
+function calcularAguaPerro() {
+  const peso = parseFloat(document.getElementById('agua-perro-peso').value);
+
+  if (!Number.isFinite(peso) || peso <= 0) {
+    document.getElementById('agua-perro-resultado').style.display = 'none';
+    return;
+  }
+
+  const minimo = peso * 50;
+  const maximo = peso * 60;
+
+  document.getElementById('agua-perro-valor').textContent =
+    minimo.toLocaleString('es-ES', {maximumFractionDigits:0}) +
+    ' - ' +
+    maximo.toLocaleString('es-ES', {maximumFractionDigits:0}) +
+    ' ml';
+
+  document.getElementById('agua-perro-litros').textContent =
+    '(' +
+    (minimo / 1000).toLocaleString('es-ES', {maximumFractionDigits:2}) +
+    ' - ' +
+    (maximo / 1000).toLocaleString('es-ES', {maximumFractionDigits:2}) +
+    ' litros aproximadamente)';
+
+  document.getElementById('agua-perro-resultado').style.display = 'block';
+}
+
+document.getElementById('agua-perro-peso').addEventListener('keydown', e => {
+  if (e.key === 'Enter') calcularAguaPerro();
+});
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánta agua necesita un perro al día?</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">La cantidad de agua que necesita un perro depende de diferentes factores, por lo que no existe una cantidad idéntica para todos. El peso es uno de los datos que puede utilizarse para realizar una estimación inicial.</p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Como referencia orientativa, se pueden utilizar aproximadamente 50-60 ml de agua por cada kilogramo de peso corporal al día. Por ejemplo, para un perro de 10 kg serían unos 500-600 ml diarios.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Factores que pueden aumentar las necesidades de agua</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">El calor, el ejercicio y una alimentación basada principalmente en pienso seco pueden hacer que un perro necesite beber más agua. Por el contrario, la comida húmeda aporta una cantidad importante de líquido.</p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Esta calculadora proporciona únicamente una estimación. Si tu perro empieza a beber mucho más o mucho menos de lo habitual, conviene prestar atención al cambio y consultar con un veterinario si persiste.</p>
+</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora de agua para perros?</h2>
+          <p>Introduce el peso de tu perro para obtener una estimación de sus necesidades diarias de agua. El resultado es orientativo y puede variar según la alimentación, actividad, temperatura y estado de salud.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/agua/">💧 Calculadora de agua</a></li>
+            
+            <li><a href="/calculadoras/salud/peso-ideal/">⚖️ Calculadora de peso ideal</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuánta agua debe beber un perro al día?</summary>
+              <p>Como referencia general, un perro puede necesitar aproximadamente entre 50 y 60 ml de agua por cada kilogramo de peso al día. Las necesidades pueden variar según el tamaño, alimentación, actividad, temperatura y otros factores.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánta agua necesita un perro de 10 kg?</summary>
+              <p>Como estimación orientativa, un perro de 10 kg puede necesitar alrededor de 500 a 600 ml de agua al día. Esta cantidad puede aumentar con el calor, el ejercicio o determinadas dietas.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuánta agua necesita un perro de 20 kg?</summary>
+              <p>Un perro de 20 kg puede necesitar aproximadamente entre 1 y 1,2 litros de agua al día como referencia general. Las necesidades individuales pueden ser diferentes.</p>
+            </details>
+            
+            <details>
+              <summary>¿Un perro que come pienso necesita más agua?</summary>
+              <p>El pienso seco contiene mucha menos agua que la comida húmeda, por lo que los perros que comen principalmente pienso suelen obtener una mayor proporción de sus necesidades de agua bebiendo directamente.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué ocurre si mi perro bebe mucha más agua de lo habitual?</summary>
+              <p>Un aumento importante y persistente de la sed puede tener diferentes causas. Si notas un cambio llamativo en el consumo de agua de tu perro, especialmente si se mantiene durante varios días, es recomendable consultar con un veterinario.</p>
+            </details>
+            
+            <details>
+              <summary>¿Esta calculadora indica exactamente cuánta agua debe beber mi perro?</summary>
+              <p>No. El resultado es una estimación orientativa y no sustituye la valoración de un veterinario. La cantidad necesaria puede cambiar según las características y circunstancias de cada perro.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de agua para perros",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua debe beber un perro al día?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Como referencia general, un perro puede necesitar aproximadamente entre 50 y 60 ml de agua por cada kilogramo de peso al día. Las necesidades pueden variar según el tamaño, alimentación, actividad, temperatura y otros factores."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua necesita un perro de 10 kg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Como estimación orientativa, un perro de 10 kg puede necesitar alrededor de 500 a 600 ml de agua al día. Esta cantidad puede aumentar con el calor, el ejercicio o determinadas dietas."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuánta agua necesita un perro de 20 kg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un perro de 20 kg puede necesitar aproximadamente entre 1 y 1,2 litros de agua al día como referencia general. Las necesidades individuales pueden ser diferentes."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Un perro que come pienso necesita más agua?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El pienso seco contiene mucha menos agua que la comida húmeda, por lo que los perros que comen principalmente pienso suelen obtener una mayor proporción de sus necesidades de agua bebiendo directamente."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué ocurre si mi perro bebe mucha más agua de lo habitual?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un aumento importante y persistente de la sed puede tener diferentes causas. Si notas un cambio llamativo en el consumo de agua de tu perro, especialmente si se mantiene durante varios días, es recomendable consultar con un veterinario."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Esta calculadora indica exactamente cuánta agua debe beber mi perro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El resultado es una estimación orientativa y no sustituye la valoración de un veterinario. La cantidad necesaria puede cambiar según las características y circunstancias de cada perro."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+---
+layout: calculadora.njk
+title: Comparador de packs y precios por unidad
+description: Compara dos packs y descubre cuál sale más barato por unidad. Calcula el precio unitario de cada opción de forma rápida y sencilla.
+keywords: comparador de packs, comparar packs, comparar precios, precio por unidad, comparar productos, calculadora packs, precio unitario
+categoria: dia-a-dia
+categoriaLabel: Día a día
+titulo: Comparador de packs
+icono: 🛒
+tituloCorto: el comparador de packs
+descripcion: Compara dos paquetes según su cantidad y precio para saber cuál ofrece un precio más bajo por unidad.
+explicacion: Introduce el precio y la cantidad de dos packs diferentes y compara automáticamente cuánto cuesta cada unidad en cada opción.
+faq:
+  - q: ¿Cómo funciona el comparador de packs?
+    a: Introduce el precio y la cantidad de unidades del primer pack y del segundo. La calculadora obtiene el precio por unidad de ambos y muestra cuál tiene el coste unitario más bajo.
+  - q: ¿Qué significa precio por unidad?
+    a: Es el resultado de dividir el precio total de un paquete entre el número de unidades que contiene. Permite comparar productos independientemente del tamaño del pack.
+  - q: ¿Puedo comparar packs con cantidades diferentes?
+    a: Sí. Precisamente una de las principales utilidades de esta calculadora es comparar paquetes que contienen diferentes cantidades.
+  - q: ¿Es mejor siempre el pack con más unidades?
+    a: No necesariamente. Un paquete grande puede tener un precio unitario superior. Lo recomendable es calcular cuánto cuesta cada unidad antes de decidir.
+  - q: ¿Puedo utilizarla para alimentos?
+    a: Sí. Puedes comparar cualquier producto vendido en unidades, como alimentos, bebidas, productos de limpieza o artículos de uso diario.
+
+relacionadas:
+  - slug: precio-100g
+    categoria: dia-a-dia
+    titulo: Precio por 100g
+    icono: ⚖️
+  - slug: porcentaje
+    categoria: dia-a-dia
+    titulo: Porcentajes
+    icono: "%"
+  - slug: descuento
+    categoria: dia-a-dia
+    titulo: Calculadora de descuentos
+    icono: 🏷️
+  - slug: calculadora-basica
+    categoria: dia-a-dia
+    titulo: Calculadora básica
+    icono: 🔢
+---
+
+<div style="display:grid;gap:1.25rem">
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 1</h3>
+
+    <label for="cp-precio1" style="display:block;margin-bottom:.4rem;font-weight:600">Precio (€)</label>
+    <input id="cp-precio1" type="number" step="0.01" min="0" placeholder="Ej. 4,99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="cp-cantidad1" style="display:block;margin-bottom:.4rem;font-weight:600">Unidades</label>
+    <input id="cp-cantidad1" type="number" step="1" min="1" placeholder="Ej. 6"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 2</h3>
+
+    <label for="cp-precio2" style="display:block;margin-bottom:.4rem;font-weight:600">Precio (€)</label>
+    <input id="cp-precio2" type="number" step="0.01" min="0" placeholder="Ej. 6,99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="cp-cantidad2" style="display:block;margin-bottom:.4rem;font-weight:600">Unidades</label>
+    <input id="cp-cantidad2" type="number" step="1" min="1" placeholder="Ej. 10"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <button onclick="compararPacks()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Comparar packs
+  </button>
+
+  <div id="cp-resultado" style="display:none">
+    <table style="width:100%;font-size:.9rem;border-collapse:collapse">
+      <tr style="background:var(--accent-light)">
+        <th style="padding:.7rem;text-align:left">Pack</th>
+        <th style="padding:.7rem;text-align:right">Precio/unidad</th>
+      </tr>
+      <tr>
+        <td style="padding:.7rem;border-bottom:1px solid var(--border)">Pack 1</td>
+        <td id="cp-r1" style="padding:.7rem;text-align:right;border-bottom:1px solid var(--border)"></td>
+      </tr>
+      <tr>
+        <td style="padding:.7rem">Pack 2</td>
+        <td id="cp-r2" style="padding:.7rem;text-align:right"></td>
+      </tr>
+    </table>
+
+    <div id="cp-mejor" style="margin-top:1rem;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center;font-weight:700"></div>
+  </div>
+</div>
+
+<script>
+function compararPacks() {
+  const p1 = parseFloat(document.getElementById('cp-precio1').value);
+  const c1 = parseFloat(document.getElementById('cp-cantidad1').value);
+  const p2 = parseFloat(document.getElementById('cp-precio2').value);
+  const c2 = parseFloat(document.getElementById('cp-cantidad2').value);
+
+  if (![p1,c1,p2,c2].every(Number.isFinite) || p1 < 0 || p2 < 0 || c1 <= 0 || c2 <= 0) {
+    document.getElementById('cp-resultado').style.display = 'none';
+    return;
+  }
+
+  const r1 = p1 / c1;
+  const r2 = p2 / c2;
+
+  document.getElementById('cp-r1').textContent =
+    r1.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:4}) + ' €';
+
+  document.getElementById('cp-r2').textContent =
+    r2.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:4}) + ' €';
+
+  const mejor = document.getElementById('cp-mejor');
+
+  if (Math.abs(r1-r2) < 0.000001) {
+    mejor.textContent = 'Los dos packs tienen el mismo precio por unidad.';
+  } else if (r1 < r2) {
+    mejor.textContent = 'El Pack 1 tiene un precio por unidad más bajo.';
+  } else {
+    mejor.textContent = 'El Pack 2 tiene un precio por unidad más bajo.';
+  }
+
+  document.getElementById('cp-resultado').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Cómo comparar dos packs</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Cuando dos productos tienen diferentes cantidades, comparar únicamente el precio del paquete puede llevar a una conclusión equivocada. Un pack de mayor tamaño no tiene por qué ser más barato por unidad.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Para comparar correctamente dos packs hay que dividir el precio de cada uno entre el número de unidades que contiene. De esta manera obtenemos un precio unitario que podemos comparar directamente.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplo de comparación</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Si un paquete de 6 unidades cuesta 4,80 €, cada unidad cuesta 0,80 €. Si otro paquete de 10 unidades cuesta 7 €, su precio unitario es de 0,70 €. Aunque el segundo paquete cuesta más en total, cada unidad resulta más económica.</p>
+</div>

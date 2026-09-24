@@ -1,0 +1,96 @@
+---
+layout: calculadora.njk
+title: Calculadora de agua para arroz
+description: Calcula cuánta agua necesitas para cocinar arroz según la cantidad de arroz que vayas a preparar.
+keywords: calculadora agua para arroz, cuanta agua para arroz, agua arroz, cantidad agua arroz, proporción arroz agua, calculadora arroz, gramos arroz agua
+categoria: cocina
+categoriaLabel: Cocina
+titulo: Calculadora de agua para arroz
+icono: 🍚
+tituloCorto: la calculadora de agua para arroz
+descripcion: Calcula rápidamente la cantidad de agua necesaria según los gramos de arroz que quieras cocinar.
+explicacion: Introduce la cantidad de arroz y selecciona la proporción de agua para obtener la cantidad aproximada de agua necesaria para cocinarlo.
+faq:
+  - q: ¿Cuánta agua necesito para cocinar arroz?
+    a: La cantidad depende del tipo de arroz y del método de cocción. Como referencia, una proporción habitual para arroz blanco es aproximadamente 2 partes de agua por 1 de arroz, aunque algunas variedades necesitan menos agua.
+  - q: ¿Cuánta agua necesito para 100 gramos de arroz?
+    a: Con una proporción de 2 a 1, necesitarías aproximadamente 200 ml de agua para 100 g de arroz.
+  - q: ¿Cuánta agua necesito para 200 gramos de arroz?
+    a: Utilizando una proporción de 2 partes de agua por 1 de arroz, serían aproximadamente 400 ml de agua.
+  - q: ¿La cantidad de agua es igual para todos los tipos de arroz?
+    a: No. El arroz basmati, jazmín, integral, redondo y otras variedades pueden necesitar cantidades diferentes de agua. Consulta las indicaciones del envase cuando estén disponibles.
+  - q: ¿Puedo calcular el agua para cualquier cantidad de arroz?
+    a: Sí. Introduce los gramos de arroz y ajusta la proporción de agua según el tipo de arroz y el método de cocción que utilices.
+
+relacionadas:
+  - slug: precio-100g
+    categoria: dia-a-dia
+    titulo: Precio por 100 g
+    icono: ⚖️
+  - slug: raciones
+    categoria: matematicas
+    titulo: Calculadora de raciones
+    icono: 🍽️
+  - slug: temperatura-horno
+    categoria: cocina
+    titulo: Temperatura del horno
+    icono: 🌡️
+---
+
+<div style="display:grid;gap:1rem">
+  <div>
+    <label for="arroz-gramos" style="display:block;margin-bottom:.4rem;font-weight:600">Cantidad de arroz (g)</label>
+    <input id="arroz-gramos" type="number" step="1" min="1" placeholder="Ej. 200"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+  </div>
+
+  <div>
+    <label for="arroz-proporcion" style="display:block;margin-bottom:.4rem;font-weight:600">Agua por cada parte de arroz</label>
+    <select id="arroz-proporcion"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+      <option value="1.5">1,5 partes de agua</option>
+      <option value="1.75">1,75 partes de agua</option>
+      <option value="2" selected>2 partes de agua</option>
+      <option value="2.5">2,5 partes de agua</option>
+    </select>
+  </div>
+
+  <button onclick="calcularAguaArroz()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Calcular agua
+  </button>
+
+  <div id="arroz-resultado" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
+    <div style="font-size:.85rem;color:var(--muted)">Agua aproximada</div>
+    <div id="arroz-valor" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
+  </div>
+</div>
+
+<script>
+function calcularAguaArroz() {
+  const gramos = parseFloat(document.getElementById('arroz-gramos').value);
+  const proporcion = parseFloat(document.getElementById('arroz-proporcion').value);
+
+  if (!Number.isFinite(gramos) || !Number.isFinite(proporcion) || gramos <= 0 || proporcion <= 0) {
+    document.getElementById('arroz-resultado').style.display = 'none';
+    return;
+  }
+
+  const agua = gramos * proporcion;
+
+  document.getElementById('arroz-valor').textContent =
+    agua.toLocaleString('es-ES', {maximumFractionDigits:0}) + ' ml';
+
+  document.getElementById('arroz-resultado').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánta agua necesita el arroz?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">La cantidad de agua necesaria para cocinar arroz depende principalmente de la variedad utilizada y del método de cocción. Por eso no existe una única proporción válida para todos los tipos de arroz.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Como referencia sencilla, una proporción de 2 partes de agua por cada parte de arroz puede utilizarse como punto de partida para determinados arroces blancos cocinados por absorción.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de cantidades</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Con una proporción de 2 a 1, 100 gramos de arroz necesitarían aproximadamente 200 ml de agua. Para 200 gramos serían unos 400 ml y para 300 gramos, unos 600 ml.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Estas cantidades son orientativas. Para conseguir el resultado adecuado, es recomendable tener en cuenta las instrucciones específicas del tipo de arroz utilizado.</p>
+</div>
