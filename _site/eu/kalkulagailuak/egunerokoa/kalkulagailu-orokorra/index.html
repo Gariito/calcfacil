@@ -10,14 +10,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalkulagailua euskaraz online — CalcFácil</title>
-  <meta name="description" content="Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatu laguntza barne. Erregistrorik gabe.">
-  <meta name="keywords" content="kalkulagailua euskaraz, kalkulagailu orokorra, kalkulagailua online euskaraz, kalkulagailu doakoa, calculadora en euskera, kalkulagailua, kalkulagailu normala, euskerazko kalkulagailua, kenketa online, biderketa online, zatiketa online, gehiketa online, euskera, euskeraz web orrialdea">
+  <meta name="description" content="Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatua ere erabil daiteke. Erregistrorik gabe.">
+  <meta name="keywords" content="kalkulagailua euskaraz, kalkulagailu orokorra, kalkulagailua online euskaraz, kalkulagailu doakoa, kalkulagailu normala, euskarazko kalkulagailua, kenketa online, biderketa online, zatiketa online, gehiketa online">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Kalkulagailua euskaraz online — CalcFácil">
-  <meta property="og:description" content="Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatu laguntza barne. Erregistrorik gabe.">
+  <meta property="og:description" content="Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatua ere erabil daiteke. Erregistrorik gabe.">
   <meta property="og:url" content="https://calculadorasgratis.net/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -28,7 +28,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Kalkulagailua euskaraz online",
-    "description": "Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatu laguntza barne. Erregistrorik gabe.",
+    "description": "Kalkulagailu normala euskaraz eta online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatua ere erabil daiteke. Erregistrorik gabe.",
     "url": "https://calculadorasgratis.net/eu/kalkulagailuak/egunerokoa/kalkulagailu-orokorra/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -122,32 +122,42 @@
     </nav>
 
     <div class="calc-layout">
+
       <div class="calc-main">
-        <h1>🔢 Kalkulagailua orokorra</h1>
-        <p class="calc-intro">Doako kalkulagailu orokorra online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan. Teklatua onartzen du.</p>
+
+        <h1>🔢 Kalkulagailu orokorra</h1>
+
+        <p class="calc-intro">
+          Doako kalkulagailu orokorra online. Batuketa, kenketa, biderketa eta zatiketa berehalakoan egin ditzakezu. Teklatua ere erabil dezakezu.
+        </p>
 
         <div class="card">
           <div class="calc-display">
             <div class="expr" id="calc-expr"></div>
             <div class="val" id="calc-val">0</div>
           </div>
+
           <div class="kbd-grid">
             <button class="clr" onclick="cbAc()">AC</button>
             <button class="op" onclick="cbOp('+/-')">+/-</button>
             <button class="op" onclick="cbOp('%')">%</button>
             <button class="op" onclick="cbOp('÷')">÷</button>
+
             <button onclick="cbNum('7')">7</button>
             <button onclick="cbNum('8')">8</button>
             <button onclick="cbNum('9')">9</button>
             <button class="op" onclick="cbOp('×')">×</button>
+
             <button onclick="cbNum('4')">4</button>
             <button onclick="cbNum('5')">5</button>
             <button onclick="cbNum('6')">6</button>
             <button class="op" onclick="cbOp('−')">−</button>
+
             <button onclick="cbNum('1')">1</button>
             <button onclick="cbNum('2')">2</button>
             <button onclick="cbNum('3')">3</button>
             <button class="op" onclick="cbOp('+')">+</button>
+
             <button style="grid-column:span 2" onclick="cbNum('0')">0</button>
             <button onclick="cbDot()">,</button>
             <button class="eq" onclick="cbEq()">=</button>
@@ -155,129 +165,320 @@
         </div>
 
         <div class="card" style="margin-top:1.5rem">
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Kalkulagailua-ren teklatu lasterbideak</h2>
+
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            Kalkulagailuaren teklatu-lasterbideak
+          </h2>
+
           <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
             <tr style="background:var(--accent-light)">
-              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tekla</th>
-              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Funtzioa</th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">
+                Tekla
+              </th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">
+                Funtzioa
+              </th>
             </tr>
-            <tr><td style="padding:0.5rem 0.75rem">0–9</td><td>Zenbakiak sartu</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ − * /</td><td>Eragiketak</td></tr>
-            <tr><td style="padding:0.5rem 0.75rem">Enter edo =</td><td>Emaitza kalkulatu</td></tr>
-            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Escape</td><td>Dena ezabatu (AC)</td></tr>
-            <tr><td style="padding:0.5rem 0.75rem">Atzera</td><td>Azken zifra ezabatu</td></tr>
-            
-          </table>
-          <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-            <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">Nola erabili kalkulagailua euskaraz</h2>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Kalkulagailua erabiltzeko, ez duzu teklatua erabili behar. Tresnako botoiak sakatu besterik ez duzu egin behar, benetako kalkulagailu bat balitz bezala.</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Goiko taulan, botoi bakoitzak egiten duenaren azalpen txiki bat aurkitu dezakezue. Kalkulagailu estandar baten aurkitu ditzakezuen botoi berdinak dira.</p>
-            
-            <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Kalkulagailuaren ikurren itzulpena</h3>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Puntu honetan, kalkulagailuan aurkitu ditzakegun ikurren deitzeko moduak eta hauen itzulpena adierazten dira.</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>+ (Gehiketa)</strong>: Suma</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>- (Kenketa)</strong>: Resta</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>/ (Zatiketa)</strong>: División</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>* (Biderketa)</strong>: Multiplicación</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>= (Berdinketa)</strong>: Igual</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>% (Ehunekoa)</strong>: Porcentaje</p>
-            <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Kalkulagailuaren eragiketa adibidea</h3>
-            <h4 style="font-family:var(--font-display);font-size:1.0rem;font-weight:600;margin-bottom:1rem">Nola atera daiteke %20a edozein kalkulagailutan?</h4>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Edozein zenbakiren %20a atera nahi ezkero, lehenengo nahi dezun zenbaki hori sartu beharko dezu kalkulagailuan. Behin zenbakia izatean, %aren zenbakia sartu eta ondoren "%" botoia sakatu.</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Kasu honetan hau izango litzake ordena:</p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>100 -> "x" -> 20 -> "=" -> "%" </strong></p>
-              <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Aurreko eragiketa eginez, aterako den emaitza <strong>20</strong> izango da.</p>
 
-</div>      
-          
+            <tr>
+              <td style="padding:0.5rem 0.75rem">0–9</td>
+              <td>Zenbakiak sartu</td>
+            </tr>
+
+            <tr style="background:var(--bg)">
+              <td style="padding:0.5rem 0.75rem">+ − * /</td>
+              <td>Eragiketak egin</td>
+            </tr>
+
+            <tr>
+              <td style="padding:0.5rem 0.75rem">Enter edo =</td>
+              <td>Emaitza kalkulatu</td>
+            </tr>
+
+            <tr style="background:var(--bg)">
+              <td style="padding:0.5rem 0.75rem">Escape</td>
+              <td>Dena ezabatu (AC)</td>
+            </tr>
+
+            <tr>
+              <td style="padding:0.5rem 0.75rem">Atzera</td>
+              <td>Azken zifra ezabatu</td>
+            </tr>
+          </table>
+
+          <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+
+            <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">
+              Nola erabili kalkulagailua euskaraz
+            </h2>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Kalkulagailua erabiltzeko, tresnaren botoiak sakatu edo teklatua erabil dezakezu. Zenbakiak eta eragiketak zuzenean teklatutik sar ditzakezu.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Goiko taulan, tekla bakoitzaren funtzioaren azalpen labur bat aurkitu dezakezu. Kalkulagailu estandar batean aurki ditzakezun eragiketak egiteko aukera ematen du.
+            </p>
+
+            <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">
+              Kalkulagailuaren ikurren esanahia
+            </h3>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Atal honetan, kalkulagailuan erabiltzen diren ikurren izenak eta haien esanahia azaltzen dira.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>+ (Gehiketa)</strong>: Bi zenbaki edo gehiago batu.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>− (Kenketa)</strong>: Zenbaki batetik beste bat kendu.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>/ (Zatiketa)</strong>: Zenbaki bat beste batez zatitu.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>× (Biderketa)</strong>: Bi zenbaki edo gehiago biderkatu.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>= (Berdintza)</strong>: Eragiketaren emaitza erakutsi.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>% (Ehunekoa)</strong>: Zenbaki bat ehuneko bihurtu.
+            </p>
+
+            <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">
+              Kalkulagailuaren eragiketa-adibidea
+            </h3>
+
+            <h4 style="font-family:var(--font-display);font-size:1rem;font-weight:600;margin-bottom:1rem">
+              Nola kalkulatu %20?
+            </h4>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Kalkulagailuaren % botoiak zenbaki bat ehuneko bihurtzen du. Adibidez, %20 lortzeko, idatzi <strong>20</strong> eta sakatu <strong>%</strong> botoia.
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Kasu honetan, ordena hau izango litzateke:
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              <strong>20 → % → 0,2</strong>
+            </p>
+
+            <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+              Eragiketa eginez, emaitza <strong>0,2</strong> izango da. Hau %20ren balio hamartarra da.
+            </p>
+
+          </div>
+
         </div>
+
       </div>
 
       <aside class="calc-sidebar">
+
         <div class="card sidebar-card">
           <h2>Zer da kalkulagailua?</h2>
-          <p>Kalkulagailu orokor doako bat da eguneroko aritmetikarako — batuketa, kenketa, biderketa eta zatiketa. Zuzenean nabigatzailean funtzionatzen du, deskargatu beharrik gabe. Sagua zein teklatua erabil dezakezu.</p>
+
+          <p>
+            Doako kalkulagailu orokorra da, eguneroko aritmetikarako erabil daitekeena: batuketa, kenketa, biderketa eta zatiketa egiteko. Zuzenean nabigatzailean funtzionatzen du, ezer deskargatu beharrik gabe. Sagua zein teklatua erabil dezakezu.
+          </p>
         </div>
-      <div class="card sidebar-card">
+
+        <div class="card sidebar-card">
           <h3>Erlazionatutako kalkulagailuak</h3>
+
           <ul class="related-list">
-            <li><a href="/eu/kalkulagailuak/egunerokoa/ehunekoa/">% Ehuneko kalkulagailua</a></li>
-            <li><a href="/eu/kalkulagailuak/matematika/erro-karratua/">√ Erro karratua eta berreturak</a></li>
-            <li><a href="/eu/kalkulagailuak/egunerokoa/deskontua/">🏷️ Deskontu kalkulagailua</a></li>
-            <li><a href="/eu/kalkulagailuak/matematika/hiruko-erregela/">📏 Hiruko erregela</a></li>
-            <li><a href="/eu/kalkulagailuak/matematika/batez-bestekoa/">📊 Batez Bestekoa</a></li>
+            <li>
+              <a href="/eu/kalkulagailuak/egunerokoa/ehunekoa/">% Ehuneko kalkulagailua</a>
+            </li>
+
+            <li>
+              <a href="/eu/kalkulagailuak/matematika/erro-karratua/">√ Erro karratua eta berreturak</a>
+            </li>
+
+            <li>
+              <a href="/eu/kalkulagailuak/egunerokoa/deskontua/">🏷️ Deskontu kalkulagailua</a>
+            </li>
+
+            <li>
+              <a href="/eu/kalkulagailuak/matematika/hiruko-erregela/">📏 Hiruko erregela</a>
+            </li>
+
+            <li>
+              <a href="/eu/kalkulagailuak/matematika/batez-bestekoa/">📊 Batez bestekoa</a>
+            </li>
           </ul>
         </div>
+
         <div class="card sidebar-card">
           <h3>Maiz egiten diren galderak</h3>
+
           <details>
             <summary>Teklatua erabil al dezaket?</summary>
-            <p>Bai. Idatz ditzazu zenbakiak eta eragiketak zuzenean teklatutik. Sakatu Enter edo = emaitza lortzeko, Escape dena ezabatzeko eta Atzera azken zifra kentzeko.</p>
+            <p>
+              Bai. Zenbakiak eta eragiketak zuzenean teklatutik sar ditzakezu. Sakatu Enter edo = emaitza lortzeko, Escape dena ezabatzeko eta Atzera azken zifra kentzeko.
+            </p>
           </details>
+
           <details>
             <summary>Mugikorrean funtzionatzen du?</summary>
-            <p>Bai, kalkulagailu honek edozein mugikor, tablet edo ordenagailutan funtzionatzen du nabigatzaile batekin, aplikaziorik deskargatu gabe.</p>
+            <p>
+              Bai, kalkulagailu honek edozein mugikor, tablet edo ordenagailutan funtzionatzen du nabigatzailearen bidez, aplikaziorik deskargatu gabe.
+            </p>
           </details>
+
           <details>
             <summary>Nola erabiltzen da % botoia?</summary>
-            <p>% botoiak sartutako zenbakia ehunekoan bihurtzen du. Adibidez, 50 sartu eta % sakatu → 0,5 lortzen da.</p>
+            <p>
+              % botoiak sartutako zenbakia ehuneko bihurtzen du. Adibidez, 50 sartu eta % sakatu → 0,5 lortzen da.
+            </p>
           </details>
+
         </div>
+
       </aside>
+
     </div>
   </div>
 </div>
 
 <script>
 let cb = { v:'0', expr:'', op:null, newN:true };
+
 function cbDisp() {
   document.getElementById('calc-val').textContent = cb.v;
   document.getElementById('calc-expr').textContent = cb.expr;
 }
+
 function cbNum(d) {
-  if (cb.newN) { cb.v = d; cb.newN = false; }
-  else cb.v = cb.v === '0' ? d : cb.v + d;
+  if (cb.newN) {
+    cb.v = d;
+    cb.newN = false;
+  } else {
+    cb.v = cb.v === '0' ? d : cb.v + d;
+  }
+
   cbDisp();
 }
+
 function cbDot() {
   if (!cb.v.includes('.') && !cb.v.includes(',')) {
-    cb.v += ','; cb.newN = false;
+    cb.v += ',';
+    cb.newN = false;
   }
+
   cbDisp();
 }
-function cbAc() { cb = {v:'0',expr:'',op:null,newN:true}; cbDisp(); }
-function cbOp(o) {
-  if (o==='+/-') { cb.v = String(-(parseFloat(cb.v.replace(',','.'))||0)).replace('.',','); cbDisp(); return; }
-  if (o==='%') { cb.v = String(parseFloat(cb.v.replace(',','.'))/100).replace('.',','); cbDisp(); return; }
-  cbEq();
-  cb.op = o; cb.expr = cb.v+' '+o; cb.newN = true; cbDisp();
+
+function cbAc() {
+  cb = {
+    v:'0',
+    expr:'',
+    op:null,
+    newN:true
+  };
+
+  cbDisp();
 }
+
+function cbOp(o) {
+  if (o === '+/-') {
+    cb.v = String(
+      -(parseFloat(cb.v.replace(',','.')) || 0)
+    ).replace('.',',');
+
+    cbDisp();
+    return;
+  }
+
+  if (o === '%') {
+    cb.v = String(
+      parseFloat(cb.v.replace(',','.')) / 100
+    ).replace('.',',');
+
+    cbDisp();
+    return;
+  }
+
+  cbEq();
+  cb.op = o;
+  cb.expr = cb.v + ' ' + o;
+  cb.newN = true;
+
+  cbDisp();
+}
+
 function cbEq() {
   if (!cb.op) return;
+
   const a = parseFloat(cb.expr.replace(',','.'));
   const b = parseFloat(cb.v.replace(',','.'));
+
   let r;
-  if (cb.op==='+') r=a+b;
-  else if (cb.op==='−') r=a-b;
-  else if (cb.op==='×') r=a*b;
-  else r=b!==0?a/b:'Errorea';
-  cb.expr = cb.expr+' '+cb.v+' =';
-  cb.v = typeof r==='number'
+
+  if (cb.op === '+') {
+    r = a + b;
+  } else if (cb.op === '−') {
+    r = a - b;
+  } else if (cb.op === '×') {
+    r = a * b;
+  } else {
+    r = b !== 0 ? a / b : 'Errorea';
+  }
+
+  cb.expr = cb.expr + ' ' + cb.v + ' =';
+
+  cb.v = typeof r === 'number'
     ? String(parseFloat(r.toFixed(10))).replace('.',',')
     : r;
-  cb.op=null; cb.newN=true; cbDisp();
+
+  cb.op = null;
+  cb.newN = true;
+
+  cbDisp();
 }
+
 document.addEventListener('keydown', e => {
-  if ('0123456789'.includes(e.key)) cbNum(e.key);
-  else if (e.key==='.' || e.key===',') cbDot();
-  else if (e.key==='Enter'||e.key==='=') cbEq();
-  else if (e.key==='+') cbOp('+');
-  else if (e.key==='-') cbOp('−');
-  else if (e.key==='*') cbOp('×');
-  else if (e.key==='/') { e.preventDefault(); cbOp('÷'); }
-  else if (e.key==='Escape') cbAc();
-  else if (e.key==='Backspace') {
-    cb.v=cb.v.length>1?cb.v.slice(0,-1):'0'; cbDisp();
+
+  if ('0123456789'.includes(e.key)) {
+    cbNum(e.key);
+
+  } else if (e.key === '.' || e.key === ',') {
+    cbDot();
+
+  } else if (e.key === 'Enter' || e.key === '=') {
+    cbEq();
+
+  } else if (e.key === '+') {
+    cbOp('+');
+
+  } else if (e.key === '-') {
+    cbOp('−');
+
+  } else if (e.key === '*') {
+    cbOp('×');
+
+  } else if (e.key === '/') {
+    e.preventDefault();
+    cbOp('÷');
+
+  } else if (e.key === 'Escape') {
+    cbAc();
+
+  } else if (e.key === 'Backspace') {
+    cb.v = cb.v.length > 1
+      ? cb.v.slice(0,-1)
+      : '0';
+
+    cbDisp();
   }
 });
 </script>
