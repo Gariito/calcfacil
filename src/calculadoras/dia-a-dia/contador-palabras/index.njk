@@ -5,22 +5,26 @@ description: Cuenta palabras, caracteres, frases y párrafos de cualquier texto 
 keywords: contador palabras, contar palabras online, contador caracteres, word count online, contar palabras, contar palabras de un texto, contar cuantas palabras hay en un texto
 categoria: dia-a-dia
 categoriaLabel: Día a día
-titulo: Contador de palabras y letras
+titulo: Contador de palabras y caracteres
 icono: 📝
 tituloCorto: el contador de palabras
 descripcion: Cuenta palabras, caracteres, frases y párrafos de cualquier texto al instante.
-explicacion: Esta herramienta te permite contar el número de palabras y caracteres que contiene un texto. Adicionalmente, el contador te da más información a cerca del texto que introduzcas, como la cantidad de frases, párrafos y una aproximación del tiempo que necesitas para leer el texto.
+explicacion: Esta herramienta permite contar las palabras y los caracteres de cualquier texto. También muestra el número de frases y párrafos, además de una estimación del tiempo de lectura.
 faq:
   - q: ¿Cuántas palabras tiene una página?
-    a: Una página estándar en formato A4 con fuente Times New Roman 12pt tiene aproximadamente 250-300 palabras a doble espacio, o 500-600 palabras a espacio simple.
+    a: El número de palabras de una página depende del contenido y del formato. Como referencia, una página A4 puede contener alrededor de 500 palabras con un interlineado normal, aunque la cantidad puede variar bastante según el tamaño de letra, los márgenes y el espaciado.
+
   - q: ¿Cuántas palabras debe tener un trabajo universitario?
-    a: Depende del tipo de trabajo. Un TFG suele pedir entre 10.000 y 15.000 palabras, un TFM entre 15.000 y 30.000, y un artículo académico entre 4.000 y 8.000.
-  - q: ¿Como contar palabras en un texto online?
-    a: Solo tienes que pegar o escribir tu texto en la casilla superior. La herramienta analizará el contenido y te mostrará el número exacto de palabras, caracteres (con y sin espacios), frases, párrafos y una aproximación del tiempo de lectura.
+    a: Depende del tipo de trabajo y de los requisitos de cada centro educativo. Un TFG, TFM o trabajo académico puede tener una extensión muy diferente, por lo que lo recomendable es comprobar las indicaciones de tu universidad o profesor.
+
+  - q: ¿Cómo contar palabras en un texto online?
+    a: Solo tienes que escribir o pegar el texto en el cuadro superior. El contador mostrará automáticamente el número de palabras, caracteres con y sin espacios, frases, párrafos y una estimación del tiempo de lectura.
+
   - q: ¿Se guardan o almacenan los textos que pego en la herramienta?
-    a: No. El procesamiento del texto se realiza de manera 100% local en tu navegador mediante JavaScript.
+    a: No. El texto se procesa directamente en tu navegador mediante JavaScript, por lo que no es necesario enviarlo a un servidor para realizar el recuento.
+
   - q: ¿Los números y símbolos cuentan como palabras?
-    a: En esta calculadora, cualquier secuencia de caracteres delimitada por espacios se contabiliza como una palabra. Por ejemplo, una cifra como "2026" contará como una única palabra.
+    a: En este contador, cualquier conjunto de caracteres separado por espacios se cuenta como una palabra. Por ejemplo, un número como "2026" cuenta como una palabra.
 
 relacionadas:
   - slug: calculadora-basica
@@ -38,73 +42,184 @@ relacionadas:
 ---
 
 <label>Pega o escribe tu texto aquí</label>
-<textarea id="cp-texto" placeholder="Escribe o pega tu texto aquí..." oninput="calcPalabras()"
-  style="width:100%;min-height:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;background:var(--bg);resize:vertical;margin-bottom:1rem;line-height:1.6"></textarea>
 
-<div class="result-box" id="cp-res">Empieza a escribir para ver el recuento</div>
+<textarea
+  id="cp-texto"
+  placeholder="Escribe o pega tu texto aquí..."
+  oninput="calcPalabras()"
+  style="width:100%;min-height:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-family:var(--font-body);font-size:0.95rem;background:var(--bg);resize:vertical;margin-bottom:1rem;line-height:1.6"
+></textarea>
 
-<div style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="cp-stats"></div>
+<div class="result-box" id="cp-res">
+  Empieza a escribir para ver el recuento
+</div>
+
+<div
+  style="margin-top:1rem;display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem"
+  id="cp-stats"
+></div>
 
 <script>
 function calcPalabras() {
   const txt = document.getElementById('cp-texto').value;
+
   if (!txt.trim()) {
-    document.getElementById('cp-res').textContent = 'Empieza a escribir para ver el recuento';
+    document.getElementById('cp-res').textContent =
+      'Empieza a escribir para ver el recuento';
+
     document.getElementById('cp-stats').innerHTML = '';
     return;
   }
 
-  const palabras = txt.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const palabras = txt.trim().split(/\s+/).length;
   const chars = txt.length;
-  const charsSinEsp = txt.replace(/\s/g,'').length;
-  const frases = txt.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-  const parrafos = txt.split(/\n+/).filter(p => p.trim().length > 0).length;
-  const tiempoLectura = Math.ceil(palabras / 200);
+  const charsSinEsp = txt.replace(/\s/g, '').length;
+
+  const frases = txt
+    .split(/[.!?]+/)
+    .filter(s => s.trim().length > 0).length;
+
+  const parrafos = txt
+    .split(/\n+/)
+    .filter(p => p.trim().length > 0).length;
+
+  // Velocidad media de lectura: 200 palabras por minuto
+  const segundosLectura = Math.ceil((palabras / 200) * 60);
+
+  let tiempoLectura;
+
+  if (segundosLectura < 60) {
+    tiempoLectura = `< 1 min`;
+  } else {
+    const minutos = Math.floor(segundosLectura / 60);
+    const segundos = segundosLectura % 60;
+
+    if (minutos >= 60) {
+      const horas = Math.floor(minutos / 60);
+      const minutosRestantes = minutos % 60;
+
+      if (minutosRestantes === 0) {
+        tiempoLectura = `${horas} h`;
+      } else {
+        tiempoLectura = `${horas} h ${minutosRestantes} min`;
+      }
+    } else if (segundos === 0) {
+      tiempoLectura = `${minutos} min`;
+    } else {
+      tiempoLectura = `${minutos} min ${segundos} s`;
+    }
+  }
 
   document.getElementById('cp-res').innerHTML =
     `${palabras.toLocaleString('es-ES')} palabras · ${chars.toLocaleString('es-ES')} caracteres
-    <small>Tiempo de lectura estimado: ~${tiempoLectura} min</small>`;
+    <small>Tiempo de lectura estimado: ${tiempoLectura}</small>`;
 
   document.getElementById('cp-stats').innerHTML = `
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${palabras.toLocaleString('es-ES')}</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Palabras</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${palabras.toLocaleString('es-ES')}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Palabras
+      </div>
     </div>
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${chars.toLocaleString('es-ES')}</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (con espacios)</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${chars.toLocaleString('es-ES')}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Caracteres (con espacios)
+      </div>
     </div>
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${charsSinEsp.toLocaleString('es-ES')}</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Caracteres (sin espacios)</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${charsSinEsp.toLocaleString('es-ES')}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Caracteres (sin espacios)
+      </div>
     </div>
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${frases}</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Frases</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${frases}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Frases
+      </div>
     </div>
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${parrafos}</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Párrafos</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${parrafos}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Párrafos
+      </div>
     </div>
+
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${tiempoLectura} min</div>
-      <div style="font-size:0.8rem;color:var(--muted)">Lectura</div>
-    </div>`;
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">
+        ${tiempoLectura}
+      </div>
+      <div style="font-size:0.8rem;color:var(--muted)">
+        Tiempo de lectura
+      </div>
+    </div>
+  `;
 }
 </script>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          
-          <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">Como usar el contador de palabras y contador de caracteres online</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para contar las palabras y los caracteres, simplemente tienes que hacer clic en el cuadro de texto que se encuentra encima del bloque azul y empezar a escribir o pegar el texto copiado.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Una vez que empezamos a escribir, justo debajo del cuadro de texto, aparecerán las características de texto escrito.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">En el próximo punto os dejamos un escrito para que podáis copiar y pegar el texto y comprobar la funcionalidad del contador.</p>
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Ejemplo de texto para copiar en el contador y ver su funcionamiento (copia y pega)</h3>
-          <h4 style="font-family:var(--font-display);font-size:1.0rem;font-weight:600;margin-bottom:1rem">👋 Sobre CalculadorasGratis.net</h4>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Esta plataforma nace con el objetivo de ofrecer una alternativa limpia, rápida y sin publicidad invasiva para resolver cálculos cotidianos. Ya sea para calcular la nota media de tus exámenes, planificar una hipoteca o ajustar una receta de cocina, aquí encontrarás la herramienta adecuada en un par de clics.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><Nuestra herramienta analiza de forma automática la estructura gramatical del contenido, ofreciéndote métricas detalladas sobre el número de palabras, los caracteres (tanto con espacios como sin ellos), las oraciones, los párrafos e incluso una estimación del tiempo necesario para leerlo.</p>
-          <h style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">Motivos por los que usar el contador de palabras</h3>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Saber la cantidad de números y caracteres que contiene un documento puede ser de mucha utilidad. Por ejemplo, muchos profesores exigen que los documentos que realizan los estudiantes, tienen que tener un mínimo de palabras para poder entregarlo.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Gracias a esta calculadora de palabras, cualquier persona podrá conocer la cifra exacta de palabras que tiene su documento</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Por otro lado, también existen otras alternativas que tienen esta funcionalidad. Por ejemplo, Microsoft Word y Notepad cumplen esta función entre muchos otros.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:1rem">
+    Cómo usar el contador de palabras y caracteres online
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Para contar las palabras y los caracteres de un texto, solo tienes que escribir o pegar el contenido en el cuadro superior. El recuento se actualiza automáticamente mientras escribes.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Además del número de palabras, el contador muestra los caracteres con y sin espacios, el número de frases y párrafos y una estimación del tiempo de lectura.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    No necesitas instalar ningún programa ni registrarte. Puedes utilizar el contador de palabras desde el móvil, la tablet o el ordenador.
+  </p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">
+    Ejemplo de texto para probar el contador
+  </h3>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Puedes copiar y pegar el siguiente texto en el contador para comprobar cómo funciona:
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Contar las palabras de un texto puede ser útil cuando necesitas cumplir una extensión determinada. Por ejemplo, algunos trabajos académicos, artículos, redacciones o publicaciones tienen un número mínimo o máximo de palabras.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Con este contador puedes comprobar rápidamente la extensión de cualquier texto. Solo tienes que pegarlo en el cuadro y consultar el resultado. También puedes conocer cuántos caracteres contiene, tanto incluyendo los espacios como sin ellos.
+  </p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;margin-bottom:1rem">
+    ¿Para qué sirve contar palabras?
+  </h3>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Saber cuántas palabras tiene un texto puede ser útil para estudiantes, escritores, profesores y personas que trabajan habitualmente con contenido escrito. Muchos trabajos y documentos tienen una extensión determinada que hay que respetar.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    También puede resultar práctico para preparar artículos para blogs, descripciones, publicaciones en redes sociales o cualquier otro contenido en el que exista un límite de palabras o caracteres.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    El contador funciona directamente desde el navegador, por lo que puedes pegar un texto y obtener el resultado al instante sin tener que subir el documento a ningún sitio.
+  </p>
+
 </div>
