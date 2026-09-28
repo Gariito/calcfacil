@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora normal gratis online — CalcFácil</title>
   <meta name="description" content="Calculadora online gratuita para operaciones básicas. Suma, resta, multiplicación y división al instante desde el navegador.">
-  <meta name="keywords" content="calculadora online, calculadora gratis, calculadora basica, calculadora web, calculadora sin descargar, calculadora estandar gratis, calculadora basica online, calculadora normal, calculadora facil, calculadoras en linea, calculadora normal gratis, calculadora tradicional, calculadora simple">
+  <meta name="keywords" content="calculadora normal gratis, calculadora normal, calculadora normal online, calculadora básica, calculadora básica online, calculadora sencilla, calculadora sencilla gratis, calculadora online gratis">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/dia-a-dia/calculadora-basica/">
 
@@ -120,15 +120,15 @@
       <span>›</span>
       <a href="/calculadoras/dia-a-dia/">Día a día</a>
       <span>›</span>
-      <span>Calculadora normal gratis online</span>
+      <span>Calculadora normal online</span>
     </nav>
 
     <div class="calc-layout">
 
       <!-- Calculadora principal -->
       <div class="calc-main">
-        <h1>🔢 Calculadora normal gratis online</h1>
-        <p class="calc-intro">La calculadora normal online más sencilla. Suma, resta, multiplica y divide al instante, gratis y sin registro.</p>
+        <h1>🔢 Calculadora normal online</h1>
+        <p class="calc-intro">Calculadora normal online para realizar operaciones básicas de forma rápida y sencilla. Suma, resta, multiplica, divide y calcula porcentajes desde el navegador.</p>
         <div class="card">
           
 <div class="calc-display">
@@ -163,57 +163,267 @@
 </div>
 
 <script>
-let cb = { v:'0', expr:'', op:null, newN:true };
+let cb = {
+  v: '0',
+  expr: '',
+  op: null,
+  newN: true,
+  first: null
+};
+
 function cbDisp() {
   document.getElementById('cb-val').textContent = cb.v;
   document.getElementById('cb-expr').textContent = cb.expr;
 }
+
 function cbNum(d) {
-  if (cb.newN) { cb.v = d; cb.newN = false; }
-  else cb.v = cb.v === '0' ? d : cb.v + d;
+  if (cb.newN) {
+    cb.v = d;
+    cb.newN = false;
+  } else {
+    cb.v = cb.v === '0' ? d : cb.v + d;
+  }
+
   cbDisp();
 }
+
 function cbDot() {
-  if (!cb.v.includes('.')) { cb.v += '.'; cb.newN = false; }
+  if (cb.newN) {
+    cb.v = '0.';
+    cb.newN = false;
+  } else if (!cb.v.includes('.')) {
+    cb.v += '.';
+  }
+
   cbDisp();
 }
-function cbAc() { cb = {v:'0',expr:'',op:null,newN:true}; cbDisp(); }
+
+function cbAc() {
+  cb = {
+    v: '0',
+    expr: '',
+    op: null,
+    newN: true,
+    first: null
+  };
+
+  cbDisp();
+}
+
 function cbOp(o) {
-  if (o==='+/-') { cb.v = String(-(parseFloat(cb.v)||0)); cbDisp(); return; }
-  if (o==='%') { cb.v = String(parseFloat(cb.v)/100); cbDisp(); return; }
+
+  if (o === '+/-') {
+    const n = parseFloat(cb.v);
+
+    if (!isNaN(n)) {
+      cb.v = String(-n);
+    }
+
+    cbDisp();
+    return;
+  }
+
+  if (o === '%') {
+
+    const percentage = parseFloat(cb.v);
+
+    if (isNaN(percentage)) return;
+
+    /*
+     * Si existe una operación pendiente:
+     *
+     * 200 × 15 %  → 30
+     * 100 + 21 %  → 121
+     * 100 − 21 %  → 79
+     *
+     * Si no existe una operación:
+     *
+     * 20 % → 0.2
+     */
+
+    if (cb.op && cb.first !== null) {
+
+      if (cb.op === '×' || cb.op === '÷') {
+        cb.v = String(cb.first * (percentage / 100));
+
+      } else if (cb.op === '+' || cb.op === '−') {
+        cb.v = String(cb.first * (percentage / 100));
+      }
+
+    } else {
+      cb.v = String(percentage / 100);
+    }
+
+    cb.newN = false;
+    cbDisp();
+    return;
+  }
+
+  if (!cb.newN) {
+    cb.first = parseFloat(cb.v);
+  }
+
   cbEq();
-  cb.op = o; cb.expr = cb.v+' '+o; cb.newN = true; cbDisp();
-}
-function cbEq() {
-  if (!cb.op) return;
-  const a = parseFloat(cb.expr), b = parseFloat(cb.v);
-  const r = cb.op==='+'?a+b:cb.op==='−'?a-b:cb.op==='×'?a*b:b!==0?a/b:'Error';
-  cb = {v:typeof r==='number'?String(parseFloat(r.toFixed(10))):r,expr:'',op:null,newN:true};
+
+  cb.op = o;
+  cb.first = parseFloat(cb.v);
+  cb.expr = cb.v + ' ' + o;
+  cb.newN = true;
+
   cbDisp();
 }
+
+function cbEq() {
+
+  if (!cb.op) return;
+
+  const a = cb.first !== null
+    ? cb.first
+    : parseFloat(cb.expr);
+
+  const b = parseFloat(cb.v);
+
+  let r;
+
+  if (cb.op === '+') {
+    r = a + b;
+
+  } else if (cb.op === '−') {
+    r = a - b;
+
+  } else if (cb.op === '×') {
+    r = a * b;
+
+  } else if (cb.op === '÷') {
+    r = b !== 0 ? a / b : 'Error';
+  }
+
+  cb.expr = cb.expr + ' ' + cb.v + ' =';
+
+  cb.v = typeof r === 'number'
+    ? String(parseFloat(r.toFixed(10)))
+    : r;
+
+  cb.op = null;
+  cb.first = null;
+  cb.newN = true;
+
+  cbDisp();
+}
+
 document.addEventListener('keydown', e => {
-  if ('0123456789'.includes(e.key)) cbNum(e.key);
-  else if (e.key==='.') cbDot();
-  else if (e.key==='Enter'||e.key==='=') cbEq();
-  else if (e.key==='+') cbOp('+');
-  else if (e.key==='-') cbOp('−');
-  else if (e.key==='*') cbOp('×');
-  else if (e.key==='/') { e.preventDefault(); cbOp('÷'); }
-  else if (e.key==='Escape') cbAc();
-  else if (e.key==='Backspace') { cb.v=cb.v.length>1?cb.v.slice(0,-1):'0'; cbDisp(); }
+
+  if ('0123456789'.includes(e.key)) {
+    cbNum(e.key);
+
+  } else if (e.key === '.') {
+    cbDot();
+
+  } else if (e.key === 'Enter' || e.key === '=') {
+    cbEq();
+
+  } else if (e.key === '+') {
+    cbOp('+');
+
+  } else if (e.key === '-') {
+    cbOp('−');
+
+  } else if (e.key === '*') {
+    cbOp('×');
+
+  } else if (e.key === '/') {
+    e.preventDefault();
+    cbOp('÷');
+
+  } else if (e.key === 'Escape') {
+    cbAc();
+
+  } else if (e.key === 'Backspace') {
+
+    if (!cb.newN) {
+      cb.v = cb.v.length > 1
+        ? cb.v.slice(0, -1)
+        : '0';
+
+      cbDisp();
+    }
+  }
 });
 </script>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Guía y funciones de la calculadora normal gratis</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La calculadora básica estándar es la herramienta matemática indispensable para realizar cuentas rápidas, presupuestos diarios, comprobación de facturas o tareas escolares. Su diseño limpio y sin distracciones permite ejecutar operaciones de aritmética elemental con absoluta rapidez.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Esta versión web funciona como una calculadora física tradicional: procesa sumas, restas, multiplicaciones y divisiones al instante sin necesidad de instalar software. Además, está optimizada tanto para su uso táctil en móviles como para la entrada rápida de datos mediante el teclado numérico del ordenador.</p>
 
-          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Teclas especiales y atajos prácticos de la calculadora simple</h2>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Botón AC (All Clear):</strong> Borra la pantalla actual y reinicia la memoria de la operación en curso para comenzar una nueva cuenta desde cero (en el teclado corresponde a la tecla Escape).</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Cambio de signo (+/−):</strong> Invierte el signo del valor visible en pantalla, transformando un número positivo en negativo o viceversa sin alterar las cifras introducidas.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Cálculo directo de porcentajes (%):</strong> Convierte la cifra en pantalla en su equivalente decimal dividido entre 100 o calcula la proporción exacta en operaciones combinadas.</p>
-          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem"><strong>Tecla Backspace (Retroceso):</strong> Si te equivocas de dígito al escribir en el teclado, puedes usar la tecla de borrar para eliminar únicamente el último número introducido sin perder la operación previa.</p>
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+    Cómo utilizar la calculadora normal
+  </h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Esta calculadora normal permite realizar las operaciones matemáticas más habituales directamente desde el navegador. Puedes utilizar los botones de la pantalla o introducir las operaciones desde el teclado del ordenador.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Para empezar, introduce un número y selecciona la operación que quieras realizar. Después, escribe el segundo número y pulsa el botón <strong>=</strong> para obtener el resultado.
+  </p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:1rem">
+    Operaciones básicas
+  </h3>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    Puedes utilizar la calculadora para hacer sumas, restas, multiplicaciones y divisiones. Por ejemplo:
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>25 + 37 = 62</strong><br>
+    <strong>150 − 48 = 102</strong><br>
+    <strong>12 × 8 = 96</strong><br>
+    <strong>144 ÷ 12 = 12</strong>
+  </p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:1rem">
+    Cómo utilizar el porcentaje
+  </h3>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    El botón <strong>%</strong> permite calcular porcentajes de forma rápida. Por ejemplo, para saber cuánto es el 15 % de 200, introduce:
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>200 × 15 % = 30</strong>
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    También puedes utilizar el porcentaje para aumentar o reducir una cantidad. Por ejemplo, para añadir un 21 % a 100:
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>100 + 21 % = 121</strong>
+  </p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:1rem">
+    Teclas y funciones especiales
+  </h3>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>AC:</strong> Borra la operación actual y permite empezar una nueva cuenta desde cero.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>+/-:</strong> Cambia el signo del número que aparece en pantalla.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>%:</strong> Permite trabajar con porcentajes directamente desde la calculadora.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Retroceso:</strong> Elimina el último dígito introducido cuando utilizas el teclado.
+  </p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+    <strong>Escape:</strong> Funciona como el botón AC y borra la operación actual.
+  </p>
+
 </div>
         </div>
       </div>
@@ -221,8 +431,8 @@ document.addEventListener('keydown', e => {
       <!-- Sidebar -->
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
-          <h2>¿Qué es la calculadora básica?</h2>
-          <p>Una calculadora online siempre disponible desde el navegador, sin descargas ni instalaciones. Perfecta para operaciones cotidianas rápidas desde el móvil o el ordenador. Puedes usarla tanto con el ratón como con el teclado numérico.</p>
+          <h2>¿Qué es la calculadora normal?</h2>
+          <p>Una calculadora normal online para realizar las operaciones matemáticas más habituales. Puedes utilizarla gratis desde el móvil, tablet u ordenador, sin instalar ninguna aplicación ni registrarte.</p>
         </div>
 
         
@@ -230,15 +440,15 @@ document.addEventListener('keydown', e => {
           <h3>Calculadoras relacionadas</h3>
           <ul class="related-list">
             
-            <li><a href="/calculadoras/dia-a-dia/calculadora-cientifica/">🔬 Calculadora científica</a></li>
-            
-            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Porcentajes</a></li>
+            <li><a href="/calculadoras/dia-a-dia/porcentaje/">% Calculadora de porcentajes</a></li>
             
             <li><a href="/calculadoras/matematicas/fracciones/">½ Calculadora de fracciones</a></li>
             
-            <li><a href="/calculadoras/matematicas/raiz-potencia/">√ Calculadora de Raiz-Potencia</a></li>
+            <li><a href="/calculadoras/matematicas/raiz-potencia/">√ Calculadora de raíz y potencias</a></li>
             
-            <li><a href="/calculadoras/matematicas/regla-de-tres/">⚖️ Regla de tres</a></li>
+            <li><a href="/calculadoras/matematicas/regla-de-tres/">⚖️ Calculadora de regla de tres</a></li>
+            
+            <li><a href="/calculadoras/dia-a-dia/calculadora-cientifica/">🔬 Calculadora científica</a></li>
             
           </ul>
         </div>
@@ -250,32 +460,32 @@ document.addEventListener('keydown', e => {
             
             <details>
               <summary>¿Puedo usar el teclado con esta calculadora?</summary>
-              <p>Sí. Puedes escribir números y operaciones directamente con el teclado numérico. Pulsa Enter para obtener el resultado.</p>
+              <p>Sí. Puedes introducir los números y las operaciones directamente desde el teclado. Pulsa Enter para obtener el resultado, Escape para borrar la operación y Retroceso para eliminar el último dígito.</p>
             </details>
             
             <details>
-              <summary>¿Guarda el historial de operaciones?</summary>
-              <p>Muestra la operación actual en la pantalla. Para operaciones largas, te recomendamos anotar los resultados intermedios.</p>
+              <summary>¿Funciona la calculadora normal en el móvil?</summary>
+              <p>Sí. La calculadora está adaptada para utilizarse desde móviles y tablets, además de ordenadores. No necesitas instalar ninguna aplicación.</p>
             </details>
             
             <details>
-              <summary>¿Funciona en el móvil?</summary>
-              <p>Sí, está completamente adaptada para pantallas táctiles.</p>
+              <summary>¿Qué operaciones puedo hacer con esta calculadora?</summary>
+              <p>Puedes realizar sumas, restas, multiplicaciones, divisiones y cálculos con porcentajes. También puedes utilizar números decimales y cambiar el signo de un número.</p>
             </details>
             
             <details>
-              <summary>¿Como sacar porcentaje en calculadora?</summary>
-              <p>Para obtener el porcentaje de una cifra, escribe la cantidad total, pulsa el botón de multiplicar (×), introduce el porcentaje deseado y presiona el botón %. Por ejemplo, para calcular el 15% de 200, escribe 200 × 15 % y la calculadora mostrará 30.</p>
+              <summary>¿Cómo sacar un porcentaje en una calculadora?</summary>
+              <p>Para calcular un porcentaje, introduce primero la cantidad, pulsa multiplicar (×), escribe el porcentaje y pulsa %. Por ejemplo, para calcular el 15 % de 200, introduce 200 × 15 % y obtendrás 30.</p>
             </details>
             
             <details>
-              <summary>¿Como sacar el iva en calculadora?</summary>
-              <p>Para añadir el IVA (21% en España) a un precio base, escribe el importe, pulsa sumar (+), escribe 21 y presiona el botón %. El resultado sumará el impuesto automáticamente. Para calcular solo la cuota de IVA de un importe, multiplica el número por 0,21.</p>
+              <summary>¿Cómo sacar el IVA con una calculadora?</summary>
+              <p>Para añadir un 21 % de IVA a un precio, introduce el importe y pulsa sumar (+), escribe 21 y pulsa %. Por ejemplo, 100 + 21 % da como resultado 121. También puedes calcular solamente el IVA multiplicando el importe por 0,21.</p>
             </details>
             
             <details>
-              <summary>¿Como sacar el 20 por ciento en calculadora?</summary>
-              <p>Para calcular el 20% de cualquier número, escribe la cifra inicial, presiona multiplicar (×), teclea 20 y pulsa la tecla %. Si tu calculadora no tiene botón de porcentaje, simplemente multiplica la cifra inicial por 0,2.</p>
+              <summary>¿Cómo calcular el 20 % de una cantidad?</summary>
+              <p>Introduce la cantidad, pulsa multiplicar (×), escribe 20 y pulsa %. Por ejemplo, 200 × 20 % da como resultado 40.</p>
             </details>
             
           
@@ -294,7 +504,7 @@ document.addEventListener('keydown', e => {
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Calculadora normal gratis online",
+      "name": "Calculadora normal online",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
       "offers": {
@@ -312,52 +522,52 @@ document.addEventListener('keydown', e => {
           "name": "¿Puedo usar el teclado con esta calculadora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Puedes escribir números y operaciones directamente con el teclado numérico. Pulsa Enter para obtener el resultado."
+            "text": "Sí. Puedes introducir los números y las operaciones directamente desde el teclado. Pulsa Enter para obtener el resultado, Escape para borrar la operación y Retroceso para eliminar el último dígito."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Guarda el historial de operaciones?",
+          "name": "¿Funciona la calculadora normal en el móvil?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Muestra la operación actual en la pantalla. Para operaciones largas, te recomendamos anotar los resultados intermedios."
+            "text": "Sí. La calculadora está adaptada para utilizarse desde móviles y tablets, además de ordenadores. No necesitas instalar ninguna aplicación."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Funciona en el móvil?",
+          "name": "¿Qué operaciones puedo hacer con esta calculadora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí, está completamente adaptada para pantallas táctiles."
+            "text": "Puedes realizar sumas, restas, multiplicaciones, divisiones y cálculos con porcentajes. También puedes utilizar números decimales y cambiar el signo de un número."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Como sacar porcentaje en calculadora?",
+          "name": "¿Cómo sacar un porcentaje en una calculadora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para obtener el porcentaje de una cifra, escribe la cantidad total, pulsa el botón de multiplicar (×), introduce el porcentaje deseado y presiona el botón %. Por ejemplo, para calcular el 15% de 200, escribe 200 × 15 % y la calculadora mostrará 30."
+            "text": "Para calcular un porcentaje, introduce primero la cantidad, pulsa multiplicar (×), escribe el porcentaje y pulsa %. Por ejemplo, para calcular el 15 % de 200, introduce 200 × 15 % y obtendrás 30."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Como sacar el iva en calculadora?",
+          "name": "¿Cómo sacar el IVA con una calculadora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para añadir el IVA (21% en España) a un precio base, escribe el importe, pulsa sumar (+), escribe 21 y presiona el botón %. El resultado sumará el impuesto automáticamente. Para calcular solo la cuota de IVA de un importe, multiplica el número por 0,21."
+            "text": "Para añadir un 21 % de IVA a un precio, introduce el importe y pulsa sumar (+), escribe 21 y pulsa %. Por ejemplo, 100 + 21 % da como resultado 121. También puedes calcular solamente el IVA multiplicando el importe por 0,21."
           }
         },
         
         {
           "@type": "Question",
-          "name": "¿Como sacar el 20 por ciento en calculadora?",
+          "name": "¿Cómo calcular el 20 % de una cantidad?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para calcular el 20% de cualquier número, escribe la cifra inicial, presiona multiplicar (×), teclea 20 y pulsa la tecla %. Si tu calculadora no tiene botón de porcentaje, simplemente multiplica la cifra inicial por 0,2."
+            "text": "Introduce la cantidad, pulsa multiplicar (×), escribe 20 y pulsa %. Por ejemplo, 200 × 20 % da como resultado 40."
           }
         }
         
