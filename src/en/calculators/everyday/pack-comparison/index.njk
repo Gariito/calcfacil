@@ -1,0 +1,146 @@
+---
+layout: calculadora.njk
+title: Product Pack Comparison Calculator - Compare Prices
+description: Compare two product packs and find out which one has the lower price per unit. A simple way to compare different pack sizes.
+keywords: pack comparison calculator, compare packs, compare prices, price per unit calculator, compare product prices, pack price calculator, price comparison calculator
+categoria: day-to-day
+categoriaLabel: Day to day
+titulo: Pack Comparison Calculator
+icono: 📦
+tituloCorto: the pack comparison calculator
+descripcion: Compare two different packs by price and quantity to find out which one offers the lower price per unit.
+explicacion: Enter the price and quantity of two packs to calculate their price per unit and compare them instantly.
+faq:
+  - q: How does the pack comparison calculator work?
+    a: Enter the price and number of units in each pack. The calculator divides the price by the number of units and compares the resulting unit prices.
+  - q: What is the price per unit?
+    a: The price per unit is the total price of a pack divided by the number of units it contains. It allows you to compare products sold in different pack sizes.
+  - q: Can I compare packs with different quantities?
+    a: Yes. Comparing different pack sizes is one of the main purposes of this calculator.
+  - q: Is the larger pack always cheaper?
+    a: No. A larger pack may have a higher or lower price per unit. Comparing the unit price is a simple way to check which option offers better value.
+  - q: Can I use it for food and groceries?
+    a: Yes. You can compare food, drinks, cleaning products, toiletries or any other products sold in packs or multiple units.
+
+relacionadas:
+  - slug: price-per-unit
+    categoria: day-to-day
+    titulo: Price per Unit
+    icono: 🛒
+  - slug: price-per-100g
+    categoria: day-to-day
+    titulo: Price per 100g
+    icono: ⚖️
+  - slug: price-per-100ml
+    categoria: day-to-day
+    titulo: Price per 100ml
+    icono: 🧴
+  - slug: percentage
+    categoria: day-to-day
+    titulo: Percentage Calculator
+    icono: "%"
+---
+
+<div style="display:grid;gap:1.25rem">
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 1</h3>
+
+    <label for="pc-price1" style="display:block;margin-bottom:.4rem;font-weight:600">Price</label>
+    <input id="pc-price1" type="number" step="0.01" min="0" placeholder="e.g. 4.99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="pc-quantity1" style="display:block;margin-bottom:.4rem;font-weight:600">Number of units</label>
+    <input id="pc-quantity1" type="number" step="1" min="1" placeholder="e.g. 6"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <div style="padding:1rem;border:1px solid var(--border);border-radius:8px">
+    <h3 style="font-size:1rem;margin:0 0 1rem">Pack 2</h3>
+
+    <label for="pc-price2" style="display:block;margin-bottom:.4rem;font-weight:600">Price</label>
+    <input id="pc-price2" type="number" step="0.01" min="0" placeholder="e.g. 6.99"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem">
+
+    <label for="pc-quantity2" style="display:block;margin-bottom:.4rem;font-weight:600">Number of units</label>
+    <input id="pc-quantity2" type="number" step="1" min="1" placeholder="e.g. 10"
+      style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px">
+  </div>
+
+  <button onclick="comparePacks()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Compare packs
+  </button>
+
+  <div id="pc-result" style="display:none">
+    <table style="width:100%;font-size:.9rem;border-collapse:collapse">
+      <tr style="background:var(--accent-light)">
+        <th style="padding:.7rem;text-align:left">Pack</th>
+        <th style="padding:.7rem;text-align:right">Price per unit</th>
+      </tr>
+      <tr>
+        <td style="padding:.7rem;border-bottom:1px solid var(--border)">Pack 1</td>
+        <td id="pc-r1" style="padding:.7rem;text-align:right;border-bottom:1px solid var(--border)"></td>
+      </tr>
+      <tr>
+        <td style="padding:.7rem">Pack 2</td>
+        <td id="pc-r2" style="padding:.7rem;text-align:right"></td>
+      </tr>
+    </table>
+
+    <div id="pc-best" style="margin-top:1rem;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center;font-weight:700"></div>
+  </div>
+</div>
+
+<script>
+function comparePacks() {
+  const price1 = parseFloat(document.getElementById('pc-price1').value);
+  const quantity1 = parseFloat(document.getElementById('pc-quantity1').value);
+  const price2 = parseFloat(document.getElementById('pc-price2').value);
+  const quantity2 = parseFloat(document.getElementById('pc-quantity2').value);
+
+  if (![price1, quantity1, price2, quantity2].every(Number.isFinite) ||
+      price1 < 0 || price2 < 0 || quantity1 <= 0 || quantity2 <= 0) {
+    document.getElementById('pc-result').style.display = 'none';
+    return;
+  }
+
+  const result1 = price1 / quantity1;
+  const result2 = price2 / quantity2;
+
+  document.getElementById('pc-r1').textContent =
+    result1.toLocaleString('en-GB', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 4
+    });
+
+  document.getElementById('pc-r2').textContent =
+    result2.toLocaleString('en-GB', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 4
+    });
+
+  const best = document.getElementById('pc-best');
+
+  if (Math.abs(result1 - result2) < 0.000001) {
+    best.textContent = 'Both packs have the same price per unit.';
+  } else if (result1 < result2) {
+    best.textContent = 'Pack 1 has the lower price per unit.';
+  } else {
+    best.textContent = 'Pack 2 has the lower price per unit.';
+  }
+
+  document.getElementById('pc-result').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to compare two packs</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">When two products contain different quantities, comparing only the total price can be misleading. A larger pack is not necessarily cheaper per unit.</p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">To compare two packs fairly, divide the price of each pack by the number of units it contains. The resulting unit prices can then be compared directly.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Pack comparison example</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">If a pack of 6 costs $4.80, each unit costs $0.80. If another pack contains 10 units and costs $7, each unit costs $0.70. The second pack costs more overall, but its price per unit is lower.</p>
+</div>

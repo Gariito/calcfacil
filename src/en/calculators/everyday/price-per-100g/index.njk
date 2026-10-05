@@ -1,0 +1,100 @@
+---
+layout: calculadora.njk
+title: Price per 100g Calculator
+description: Calculate the price per 100 grams of any product. Compare food prices and different package sizes quickly and easily.
+keywords: price per 100g calculator, price per 100 grams, calculate price per 100g, price per 100g, cost per 100 grams, food price calculator, compare food prices
+categoria: day-to-day
+categoriaLabel: Day to day
+titulo: Price per 100g Calculator
+icono: ⚖️
+tituloCorto: the price per 100g calculator
+descripcion: Find out how much a product costs per 100 grams and easily compare different sizes and brands.
+explicacion: Enter the product price and weight to calculate the cost per 100 grams. Useful for comparing food products with different package sizes.
+faq:
+  - q: How do you calculate the price per 100 grams?
+    a: Divide the product price by its weight in grams and multiply the result by 100. For example, a 500 g product costing £4 has a price of £0.80 per 100 g.
+  - q: Why calculate the price per 100g?
+    a: It gives you a common measurement for comparing products with different weights and package sizes.
+  - q: Can I enter the weight in kilograms?
+    a: The calculator uses grams. If the product weighs 1 kilogram, enter 1000 grams.
+  - q: Can I use this calculator for food?
+    a: Yes. It is useful for comparing products such as coffee, cheese, cereals, chocolate, nuts, meat and many other foods sold by weight.
+  - q: Is price per gram the same as price per 100 grams?
+    a: No. Price per gram tells you the cost of one gram, while price per 100 grams multiplies that amount by 100 to provide a more convenient comparison.
+
+relacionadas:
+  - slug: price-per-unit
+    categoria: day-to-day
+    titulo: Price per Unit
+    icono: 🛒
+  - slug: price-per-100ml
+    categoria: day-to-day
+    titulo: Price per 100ml
+    icono: 🧴
+  - slug: pack-comparison
+    categoria: day-to-day
+    titulo: Pack Comparison
+    icono: 📦
+  - slug: percentage
+    categoria: day-to-day
+    titulo: Percentage Calculator
+    icono: "%"
+---
+
+<div style="display:grid;gap:1rem">
+  <div>
+    <label for="p100g-price" style="display:block;margin-bottom:.4rem;font-weight:600">Product price</label>
+    <input id="p100g-price" type="number" step="0.01" min="0" placeholder="e.g. 4.50"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+  </div>
+
+  <div>
+    <label for="p100g-weight" style="display:block;margin-bottom:.4rem;font-weight:600">Product weight (g)</label>
+    <input id="p100g-weight" type="number" step="0.01" min="0" placeholder="e.g. 500"
+      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
+  </div>
+
+  <button onclick="calculate100g()"
+    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
+    Calculate price per 100g
+  </button>
+
+  <div id="p100g-result" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
+    <div style="font-size:.85rem;color:var(--muted)">Price per 100g</div>
+    <div id="p100g-value" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
+  </div>
+</div>
+
+<script>
+function calculate100g() {
+  const price = parseFloat(document.getElementById('p100g-price').value);
+  const weight = parseFloat(document.getElementById('p100g-weight').value);
+
+  if (!Number.isFinite(price) || !Number.isFinite(weight) || price < 0 || weight <= 0) {
+    document.getElementById('p100g-result').style.display = 'none';
+    return;
+  }
+
+  const result = (price / weight) * 100;
+
+  document.getElementById('p100g-value').textContent =
+    result.toLocaleString('en-GB', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 4
+    }) + '';
+
+  document.getElementById('p100g-result').style.display = 'block';
+}
+</script>
+
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate the price per 100g</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">The price per 100 grams calculator makes it easier to compare products sold in different package sizes. Instead of looking only at the total price, you can use the same 100 g reference for every product.</p>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">The formula is simple: divide the product price by its weight in grams and multiply the result by 100.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Price per 100g example</h2>
+
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">If a 400 g product costs £3.20, divide 3.20 by 400 and multiply the result by 100. The result is £0.80 per 100 grams.</p>
+</div>

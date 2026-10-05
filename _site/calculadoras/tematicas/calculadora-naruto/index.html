@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora con temática de Naruto — CalcFácil</title>
+  <meta name="description" content="Calculadora de Naruto online para realizar operaciones matemáticas con un diseño inspirado en el anime y manga Naruto.">
+  <meta name="keywords" content="calculadora naruto, calculadora de naruto, calculadora online naruto, calculadora normal naruto">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/tematicas/calculadora-naruto/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora con temática de Naruto — CalcFácil">
+  <meta property="og:description" content="Calculadora de Naruto online para realizar operaciones matemáticas con un diseño inspirado en el anime y manga Naruto.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/tematicas/calculadora-naruto/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora con temática de Naruto",
+    "description": "Calculadora de Naruto online para realizar operaciones matemáticas con un diseño inspirado en el anime y manga Naruto.",
+    "url": "https://calculadorasgratis.net/calculadoras/tematicas/calculadora-naruto/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/tematicas/">Temáticas</a>
+      <span>›</span>
+      <span>Calculadora de Naruto</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>⛩️ Calculadora de Naruto</h1>
+        <p class="calc-intro">Una calculadora normal con una interfaz inspirada en Naruto.</p>
+        <div class="card">
+          
+<style>
+
+/* ==========================================
+   CALCULADORA NARUTO
+========================================== */
+
+.naruto-calculator {
+
+    position: relative;
+
+    max-width: 430px;
+
+    margin: 28px auto;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            rgba(20, 12, 9, 0.15),
+            rgba(15, 10, 8, 0.35)
+        ),
+        url("/img/naruto/naruto-background.png")
+        center center / cover no-repeat;
+
+    border: 4px solid #25201d;
+
+    box-shadow:
+        0 9px 24px rgba(0,0,0,0.38),
+        inset 0 0 0 2px rgba(255,255,255,0.15);
+
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   TEXTURA
+========================================== */
+
+.naruto-calculator::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(255,255,255,0.025) 75%
+        );
+
+    background-size: 10px 10px;
+
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.naruto-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* ==========================================
+   CABECERA
+========================================== */
+
+.naruto-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+}
+
+
+/* Título */
+
+.naruto-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #fff4dc;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.18rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 #17120f,
+        3px 3px 0 rgba(0,0,0,0.45);
+
+}
+
+
+/* Icono */
+
+.naruto-logo-icon {
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f2a329,
+            #c45c18
+        );
+
+    border: 3px solid #352017;
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.30),
+        inset -3px -3px 0 rgba(0,0,0,0.40),
+        0 2px 0 #111;
+
+    font-size: 1.45rem;
+
+}
+
+
+/* Etiqueta */
+
+.naruto-version {
+
+    padding: 7px 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9552d,
+            #962c1c
+        );
+
+    border: 2px solid #431b14;
+
+    border-radius: 4px;
+
+    color: #fff4df;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.68rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.6px;
+
+    text-shadow:
+        1px 1px 0 #40130e;
+
+    box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.25),
+        inset -2px -2px 0 rgba(0,0,0,0.35);
+
+}
+
+
+/* ==========================================
+   PANTALLA
+========================================== */
+
+.naruto-screen {
+
+    padding: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b6533,
+            #57351e
+        );
+
+    border: 3px solid #241811;
+
+    border-radius: 6px;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.25),
+        inset -3px -3px 0 rgba(0,0,0,0.55),
+        0 2px 0 #111;
+
+    margin-bottom: 9px;
+
+}
+
+
+/* Interior */
+
+.naruto-screen-inner {
+
+    min-height: 76px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 9px 13px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #201b18,
+            #100e0d
+        );
+
+    border: 2px solid #0a0807;
+
+    border-radius: 3px;
+
+    text-align: right;
+
+}
+
+
+/* Operación */
+
+.naruto-operation {
+
+    min-height: 17px;
+
+    color: #d99a3e;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.75rem;
+
+    font-weight: bold;
+
+}
+
+
+/* Resultado */
+
+.naruto-display {
+
+    color: #fff0d0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 2rem;
+
+    font-weight: 900;
+
+    line-height: 1.15;
+
+    overflow-wrap: anywhere;
+
+    text-shadow:
+        2px 2px 0 #0b0806;
+
+}
+
+
+/* ==========================================
+   DECORACIÓN
+========================================== */
+
+.naruto-items {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 6px 5px 11px;
+
+    color: #fff0d0;
+
+    font-size: 1rem;
+
+    opacity: 0.95;
+
+}
+
+
+/* ==========================================
+   TECLADO
+========================================== */
+
+.naruto-keyboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 7px;
+
+}
+
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.naruto-button {
+
+    position: relative;
+
+    min-height: 59px;
+
+    padding: 0;
+
+    border: 3px solid #29201b;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.15rem;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    background-color: #655044;
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.25),
+        inset -3px -3px 0 rgba(0,0,0,0.50),
+        0 2px 0 #16110e;
+
+    transition:
+        transform 0.08s ease,
+        filter 0.08s ease;
+
+}
+
+
+/* Capa sobre los personajes */
+
+.naruto-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(10,7,6,0.18),
+            rgba(10,7,6,0.30)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* Texto */
+
+.naruto-button span {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #fffaf0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px 0 #17100c,
+        -1px -1px 0 rgba(0,0,0,0.45);
+
+}
+
+
+/* Hover */
+
+.naruto-button:hover {
+
+    filter: brightness(1.12);
+
+}
+
+
+/* Pulsación */
+
+.naruto-button:active {
+
+    transform: translateY(2px);
+
+    box-shadow:
+        inset 2px 2px 0 rgba(0,0,0,0.40),
+        inset -2px -2px 0 rgba(255,255,255,0.12);
+
+}
+
+
+/* ==========================================
+   NÚMEROS
+========================================== */
+
+.naruto-number {
+
+    /*
+       Apariencia de madera oscura
+    */
+
+    background:
+        linear-gradient(
+            135deg,
+            #765139 0%,
+            #60402d 45%,
+            #422a1c 100%
+        );
+
+}
+
+
+/* ==========================================
+   OPERADORES
+========================================== */
+
+
+/* + Sasuke */
+
+.naruto-plus {
+
+    background-image:
+        url("/img/naruto/sasuke.png");
+
+}
+
+
+/* - Sakura */
+
+.naruto-minus {
+
+    background-image:
+        url("/img/naruto/sakura.png");
+
+}
+
+
+/* × Kakashi */
+
+.naruto-multiply {
+
+    background-image:
+        url("/img/naruto/kakashi.png");
+
+}
+
+
+/* ÷ Jiraiya */
+
+.naruto-divide {
+
+    background-image:
+        url("/img/naruto/jiraiya.png");
+
+}
+
+
+/* = Gaara */
+
+.naruto-equals {
+
+    background-image:
+        url("/img/naruto/gaara.png");
+
+}
+
+
+/* % Kyubi */
+
+.naruto-percent {
+
+    background-image:
+        url("/img/naruto/kyubi.png");
+
+}
+
+
+/* C Pain */
+
+.naruto-clear {
+
+    background-image:
+        url("/img/naruto/pain.png");
+
+}
+
+
+/* borrar Naruto */
+
+.naruto-delete {
+
+    background-image:
+        url("/img/naruto/naruto.png");
+
+}
+
+
+/* ==========================================
+   CERO
+========================================== */
+
+.naruto-zero {
+
+    grid-column: span 2;
+
+}
+
+
+/* ==========================================
+   PIE
+========================================== */
+
+.naruto-footer {
+
+    margin-top: 11px;
+
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            rgba(35,22,14,0.92),
+            rgba(18,12,9,0.92)
+        );
+
+    border:
+        2px solid rgba(213,143,48,0.45);
+
+    border-radius: 4px;
+
+    color: #ead3a3;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.72rem;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    text-shadow:
+        1px 1px 0 #111;
+
+}
+
+
+/* ==========================================
+   MÓVIL
+========================================== */
+
+@media (max-width: 480px) {
+
+    .naruto-calculator {
+
+        margin: 20px 5px;
+
+        padding: 13px;
+
+    }
+
+
+    .naruto-button {
+
+        min-height: 54px;
+
+    }
+
+
+    .naruto-display {
+
+        font-size: 1.7rem;
+
+    }
+
+
+    .naruto-logo {
+
+        font-size: 1rem;
+
+    }
+
+}
+
+</style>
+
+
+<!-- ==========================================
+     CALCULADORA
+========================================== -->
+
+<div class="naruto-calculator">
+
+    <div class="naruto-content">
+
+
+        <!-- CABECERA -->
+
+        <div class="naruto-header">
+
+            <div class="naruto-logo">
+
+                <div class="naruto-logo-icon">
+                    ⛩️
+                </div>
+
+                <span>
+                    CALCULADORA
+                </span>
+
+            </div>
+
+
+            <div class="naruto-version">
+                NARUTO
+            </div>
+
+        </div>
+
+
+        <!-- PANTALLA -->
+
+        <div class="naruto-screen">
+
+            <div class="naruto-screen-inner">
+
+                <div
+                    id="naruto-operation"
+                    class="naruto-operation">
+                </div>
+
+                <div
+                    id="naruto-display"
+                    class="naruto-display">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DECORACIÓN -->
+
+<br>
+<br>
+
+
+        <!-- =====================================
+             BOTONES
+        ====================================== -->
+
+        <div class="naruto-keyboard">
+
+
+            <!-- FILA 1 -->
+
+            <button
+                type="button"
+                class="naruto-button naruto-clear"
+                onclick="narutoClear()">
+
+                <span>C</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-delete"
+                onclick="narutoDelete()">
+
+                <span>⌫</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-percent"
+                onclick="narutoPercent()">
+
+                <span>%</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-divide"
+                onclick="narutoOperator('/')">
+
+                <span>÷</span>
+
+            </button>
+
+
+            <!-- FILA 2 -->
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('7')">
+
+                <span>7</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('8')">
+
+                <span>8</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('9')">
+
+                <span>9</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-multiply"
+                onclick="narutoOperator('*')">
+
+                <span>×</span>
+
+            </button>
+
+
+            <!-- FILA 3 -->
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('4')">
+
+                <span>4</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('5')">
+
+                <span>5</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('6')">
+
+                <span>6</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-minus"
+                onclick="narutoOperator('-')">
+
+                <span>−</span>
+
+            </button>
+
+
+            <!-- FILA 4 -->
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('1')">
+
+                <span>1</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('2')">
+
+                <span>2</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoNumber('3')">
+
+                <span>3</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-plus"
+                onclick="narutoOperator('+')">
+
+                <span>+</span>
+
+            </button>
+
+
+            <!-- FILA 5 -->
+
+            <button
+                type="button"
+                class="naruto-button naruto-number naruto-zero"
+                onclick="narutoNumber('0')">
+
+                <span>0</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-number"
+                onclick="narutoDecimal()">
+
+                <span>.</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="naruto-button naruto-equals"
+                onclick="narutoCalculate()">
+
+                <span>=</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="naruto-footer">
+
+            🍃 Calculadora de Naruto
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function() {
+
+    let current = "0";
+
+    let previous = null;
+
+    let operator = null;
+
+    let waitingForNumber = false;
+
+
+    const display =
+        document.getElementById(
+            "naruto-display"
+        );
+
+
+    const operation =
+        document.getElementById(
+            "naruto-operation"
+        );
+
+
+    /* ==========================================
+       ACTUALIZAR PANTALLA
+    ========================================== */
+
+    function updateDisplay() {
+
+        display.textContent = current;
+
+    }
+
+
+    /* ==========================================
+       CALCULAR
+    ========================================== */
+
+    function calculateValues(a, b, op) {
+
+        a = Number(a);
+
+        b = Number(b);
+
+
+        if (op === "+") {
+
+            return a + b;
+
+        }
+
+
+        if (op === "-") {
+
+            return a - b;
+
+        }
+
+
+        if (op === "*") {
+
+            return a * b;
+
+        }
+
+
+        if (op === "/") {
+
+            if (b === 0) {
+
+                return null;
+
+            }
+
+            return a / b;
+
+        }
+
+
+        return b;
+
+    }
+
+
+    /* ==========================================
+       SÍMBOLO
+    ========================================== */
+
+    function getOperatorSymbol(op) {
+
+        if (op === "+") return "+";
+
+        if (op === "-") return "−";
+
+        if (op === "*") return "×";
+
+        if (op === "/") return "÷";
+
+        return op;
+
+    }
+
+
+    /* ==========================================
+       NÚMEROS
+    ========================================== */
+
+    window.narutoNumber = function(number) {
+
+        if (
+            current === "Error" ||
+            waitingForNumber
+        ) {
+
+            current = number;
+
+            waitingForNumber = false;
+
+        } else if (current === "0") {
+
+            current = number;
+
+        } else {
+
+            current += number;
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       DECIMAL
+    ========================================== */
+
+    window.narutoDecimal = function() {
+
+        if (current === "Error") {
+
+            current = "0.";
+
+            waitingForNumber = false;
+
+        } else if (waitingForNumber) {
+
+            current = "0.";
+
+            waitingForNumber = false;
+
+        } else if (
+            !current.includes(".")
+        ) {
+
+            current += ".";
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       OPERADORES
+    ========================================== */
+
+    window.narutoOperator = function(op) {
+
+        if (current === "Error") {
+
+            return;
+
+        }
+
+
+        if (
+            operator !== null &&
+            !waitingForNumber
+        ) {
+
+            const result =
+                calculateValues(
+                    previous,
+                    current,
+                    operator
+                );
+
+
+            if (result === null) {
+
+                current = "Error";
+
+                previous = null;
+
+                operator = null;
+
+                operation.textContent = "";
+
+                updateDisplay();
+
+                return;
+
+            }
+
+
+            current = String(result);
+
+        }
+
+
+        previous = current;
+
+        operator = op;
+
+        waitingForNumber = true;
+
+
+        operation.textContent =
+            previous +
+            " " +
+            getOperatorSymbol(op);
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       IGUAL
+    ========================================== */
+
+    window.narutoCalculate = function() {
+
+        if (
+            operator === null ||
+            previous === null
+        ) {
+
+            return;
+
+        }
+
+
+        const result =
+            calculateValues(
+                previous,
+                current,
+                operator
+            );
+
+
+        if (result === null) {
+
+            current = "Error";
+
+        } else {
+
+            current = String(result);
+
+        }
+
+
+        previous = null;
+
+        operator = null;
+
+        waitingForNumber = true;
+
+        operation.textContent = "";
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       BORRAR TODO
+    ========================================== */
+
+    window.narutoClear = function() {
+
+        current = "0";
+
+        previous = null;
+
+        operator = null;
+
+        waitingForNumber = false;
+
+        operation.textContent = "";
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       BORRAR ÚLTIMO
+    ========================================== */
+
+    window.narutoDelete = function() {
+
+        if (
+            current === "Error" ||
+            current.length <= 1
+        ) {
+
+            current = "0";
+
+        } else {
+
+            current =
+                current.slice(
+                    0,
+                    -1
+                );
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       PORCENTAJE
+    ========================================== */
+
+    window.narutoPercent = function() {
+
+        if (current === "Error") {
+
+            return;
+
+        }
+
+
+        const value =
+            Number(current);
+
+
+        if (!isNaN(value)) {
+
+            current =
+                String(value / 100);
+
+            updateDisplay();
+
+        }
+
+    };
+
+
+})();
+
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora Naruto?</h2>
+          <p>Realiza sumas, restas, multiplicaciones y divisiones con una calculadora online inspirada en Naruto.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/tematicas/calculadora-minecraft/">⛏️ Calculadora de Minecraft</a></li>
+            
+            <li><a href="/calculadoras/tematicas/calculadora-one-piece/">☠️ Calculadora de One Piece</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

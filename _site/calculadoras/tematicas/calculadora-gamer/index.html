@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora gamer online - Calculadora para videojuegos — CalcFácil</title>
+  <meta name="description" content="Calculadora gamer online con diseño inspirado en videojuegos. Realiza operaciones matemáticas con una interfaz estilo gaming.">
+  <meta name="keywords" content="calculadora gamer, calculadora gaming, calculadora videojuegos, calculadora gamer online, calculadora para gamers">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/tematicas/calculadora-gamer/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora gamer online - Calculadora para videojuegos — CalcFácil">
+  <meta property="og:description" content="Calculadora gamer online con diseño inspirado en videojuegos. Realiza operaciones matemáticas con una interfaz estilo gaming.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/tematicas/calculadora-gamer/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora gamer online - Calculadora para videojuegos",
+    "description": "Calculadora gamer online con diseño inspirado en videojuegos. Realiza operaciones matemáticas con una interfaz estilo gaming.",
+    "url": "https://calculadorasgratis.net/calculadoras/tematicas/calculadora-gamer/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/tematicas/">Temáticas</a>
+      <span>›</span>
+      <span>Calculadora Gamer</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🎮 Calculadora Gamer</h1>
+        <p class="calc-intro">Una calculadora online con una interfaz inspirada en el mundo de los videojuegos.</p>
+        <div class="card">
+          
+<style>
+.gamer-calculator {
+    max-width: 390px;
+    margin: 25px auto;
+    padding: 18px;
+    border-radius: 18px;
+    background:
+        linear-gradient(rgba(8, 10, 18, 0.92), rgba(8, 10, 18, 0.96)),
+        url('/img/gamer/gamer-background.png') center/cover;
+    border: 2px solid #343cff;
+    box-shadow:
+        0 0 18px rgba(52, 60, 255, 0.45),
+        inset 0 0 25px rgba(52, 60, 255, 0.12);
+    font-family: Arial, sans-serif;
+}
+
+.gamer-display {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 75px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: #080a12;
+    border: 2px solid #2428a8;
+    color: #66f7ff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: right;
+    overflow: hidden;
+    word-break: break-all;
+    box-shadow:
+        inset 0 0 15px rgba(0, 229, 255, 0.12),
+        0 0 10px rgba(0, 229, 255, 0.12);
+}
+
+.gamer-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+}
+
+.gamer-button {
+    position: relative;
+    height: 72px;
+    padding: 0;
+    border: 2px solid #292d5f;
+    border-radius: 11px;
+    overflow: hidden;
+    background: #101321;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow:
+        0 4px 0 #070810,
+        inset 0 0 15px rgba(255,255,255,0.025);
+}
+
+.gamer-button:hover {
+    transform: translateY(-2px);
+    border-color: #454cff;
+    box-shadow:
+        0 6px 0 #070810,
+        0 0 12px rgba(69, 76, 255, 0.35);
+}
+
+.gamer-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #070810;
+}
+
+.gamer-button img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.34;
+    pointer-events: none;
+}
+
+.gamer-button span {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-shadow:
+        0 2px 3px #000,
+        0 0 8px rgba(0,0,0,0.8);
+}
+
+.gamer-operator {
+    border-color: #454cff;
+    background: #171a38;
+}
+
+.gamer-operator span {
+    color: #66f7ff;
+    font-size: 1.7rem;
+}
+
+.gamer-clear {
+    border-color: #ff3864;
+    background: #35121d;
+}
+
+.gamer-clear span {
+    color: #ff718e;
+}
+
+.gamer-delete {
+    border-color: #ff9d2e;
+    background: #34200d;
+}
+
+.gamer-delete span {
+    color: #ffbd66;
+}
+
+.gamer-equals {
+    border-color: #20e0a0;
+    background: #0c3027;
+}
+
+.gamer-equals span {
+    color: #53ffc5;
+    font-size: 1.7rem;
+}
+
+.gamer-zero {
+    grid-column: span 2;
+}
+
+.gamer-info {
+    margin-top: 14px;
+    text-align: center;
+    color: #9297b8;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 480px) {
+    .gamer-calculator {
+        margin: 15px auto;
+        padding: 12px;
+    }
+
+    .gamer-button {
+        height: 64px;
+    }
+
+    .gamer-display {
+        min-height: 68px;
+        font-size: 1.7rem;
+    }
+}
+</style>
+
+<div class="gamer-calculator">
+
+    <div id="gamer-display" class="gamer-display">0</div>
+
+    <div class="gamer-keypad">
+
+        <!-- FILA 1 -->
+
+        <button class="gamer-button gamer-clear" onclick="gamerClear()">
+            <span>AC</span>
+            <img src="/img/gamer/keyboard.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-delete" onclick="gamerDelete()">
+            <span>⌫</span>
+            <img src="/img/gamer/mouse.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-operator" onclick="gamerPercent()">
+            <span>%</span>
+            <img src="/img/gamer/coin.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-operator" onclick="gamerOperator('/')">
+            <span>÷</span>
+            <img src="/img/gamer/headset.png" alt="">
+        </button>
+
+
+        <!-- FILA 2 -->
+
+        <button class="gamer-button" onclick="gamerNumber(7)">
+            <span>7</span>
+            <img src="/img/gamer/controller.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(8)">
+            <span>8</span>
+            <img src="/img/gamer/joystick.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(9)">
+            <span>9</span>
+            <img src="/img/gamer/keyboard.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-operator" onclick="gamerOperator('*')">
+            <span>×</span>
+            <img src="/img/gamer/lightning.png" alt="">
+        </button>
+
+
+        <!-- FILA 3 -->
+
+        <button class="gamer-button" onclick="gamerNumber(4)">
+            <span>4</span>
+            <img src="/img/gamer/coin.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(5)">
+            <span>5</span>
+            <img src="/img/gamer/controller.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(6)">
+            <span>6</span>
+            <img src="/img/gamer/mouse.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-operator" onclick="gamerOperator('-')">
+            <span>−</span>
+            <img src="/img/gamer/heart.png" alt="">
+        </button>
+
+
+        <!-- FILA 4 -->
+
+        <button class="gamer-button" onclick="gamerNumber(1)">
+            <span>1</span>
+            <img src="/img/gamer/joystick.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(2)">
+            <span>2</span>
+            <img src="/img/gamer/headset.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerNumber(3)">
+            <span>3</span>
+            <img src="/img/gamer/controller.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-operator" onclick="gamerOperator('+')">
+            <span>+</span>
+            <img src="/img/gamer/lightning.png" alt="">
+        </button>
+
+
+        <!-- FILA 5 -->
+
+        <button class="gamer-button gamer-zero" onclick="gamerNumber(0)">
+            <span>0</span>
+            <img src="/img/gamer/keyboard.png" alt="">
+        </button>
+
+        <button class="gamer-button" onclick="gamerDecimal()">
+            <span>.</span>
+            <img src="/img/gamer/coin.png" alt="">
+        </button>
+
+        <button class="gamer-button gamer-equals" onclick="gamerCalculate()">
+            <span>=</span>
+            <img src="/img/gamer/lightning.png" alt="">
+        </button>
+
+    </div>
+
+    <div class="gamer-info">
+        🎮 Calculadora gamer online
+    </div>
+
+</div>
+
+<script>
+let gamerCurrent = "";
+let gamerPrevious = "";
+let gamerOperatorValue = null;
+
+function gamerUpdateDisplay() {
+    const display = document.getElementById("gamer-display");
+
+    let value = gamerCurrent || "0";
+
+    if (value.length > 15) {
+        value = value.substring(0, 15);
+    }
+
+    display.textContent = value;
+}
+
+function gamerNumber(num) {
+    if (gamerCurrent === "Error") {
+        gamerCurrent = "";
+    }
+
+    if (gamerCurrent.length >= 15) return;
+
+    gamerCurrent += num;
+    gamerUpdateDisplay();
+}
+
+function gamerDecimal() {
+    if (gamerCurrent === "Error") {
+        gamerCurrent = "";
+    }
+
+    if (!gamerCurrent) {
+        gamerCurrent = "0.";
+    } else if (!gamerCurrent.includes(".")) {
+        gamerCurrent += ".";
+    }
+
+    gamerUpdateDisplay();
+}
+
+function gamerOperator(op) {
+    if (gamerCurrent === "Error") return;
+
+    if (gamerCurrent === "" && gamerPrevious === "") return;
+
+    if (gamerPrevious !== "" && gamerCurrent !== "") {
+        gamerCalculate();
+    }
+
+    if (gamerCurrent !== "") {
+        gamerPrevious = gamerCurrent;
+        gamerCurrent = "";
+    }
+
+    gamerOperatorValue = op;
+}
+
+function gamerCalculate() {
+    if (
+        gamerPrevious === "" ||
+        gamerCurrent === "" ||
+        !gamerOperatorValue
+    ) {
+        return;
+    }
+
+    const a = parseFloat(gamerPrevious);
+    const b = parseFloat(gamerCurrent);
+
+    let result;
+
+    switch (gamerOperatorValue) {
+
+        case "+":
+            result = a + b;
+            break;
+
+        case "-":
+            result = a - b;
+            break;
+
+        case "*":
+            result = a * b;
+            break;
+
+        case "/":
+            if (b === 0) {
+                gamerCurrent = "Error";
+                gamerPrevious = "";
+                gamerOperatorValue = null;
+                gamerUpdateDisplay();
+                return;
+            }
+
+            result = a / b;
+            break;
+    }
+
+    if (!Number.isFinite(result)) {
+        gamerCurrent = "Error";
+    } else {
+        gamerCurrent = String(
+            Math.round((result + Number.EPSILON) * 100000000) / 100000000
+        );
+    }
+
+    gamerPrevious = "";
+    gamerOperatorValue = null;
+
+    gamerUpdateDisplay();
+}
+
+function gamerPercent() {
+    if (gamerCurrent === "" || gamerCurrent === "Error") return;
+
+    const value = parseFloat(gamerCurrent);
+
+    if (isNaN(value)) return;
+
+    gamerCurrent = String(value / 100);
+
+    gamerUpdateDisplay();
+}
+
+function gamerClear() {
+    gamerCurrent = "";
+    gamerPrevious = "";
+    gamerOperatorValue = null;
+
+    gamerUpdateDisplay();
+}
+
+function gamerDelete() {
+    if (gamerCurrent === "Error") {
+        gamerClear();
+        return;
+    }
+
+    gamerCurrent = gamerCurrent.slice(0, -1);
+
+    gamerUpdateDisplay();
+}
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora gamer?</h2>
+          <p>Realiza operaciones matemáticas habituales con una calculadora gamer diseñada con una estética inspirada en las interfaces y HUD de los videojuegos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/tematicas/calculadora-minecraft/">⛏️ Calculadora de Minecraft</a></li>
+            
+            <li><a href="/calculadoras/tematicas/calculadora-one-piece/">☠️ Calculadora de One Piece</a></li>
+            
+            <li><a href="/calculadoras/tematicas/calculadora-naruto/">⛩️ Calculadora de Naruto</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Qué es esta calculadora gamer?</summary>
+              <p>Es una calculadora online normal, pero con una interfaz inspirada en los videojuegos. Puedes utilizarla para realizar operaciones matemáticas directamente desde el navegador.</p>
+            </details>
+            
+            <details>
+              <summary>¿Qué operaciones puedo realizar?</summary>
+              <p>Puedes hacer sumas, restas, multiplicaciones y divisiones, además de utilizar porcentajes y números decimales.</p>
+            </details>
+            
+            <details>
+              <summary>¿La calculadora está pensada para videojuegos?</summary>
+              <p>El diseño está inspirado en el mundo gaming, pero la calculadora sirve para cualquier operación matemática cotidiana.</p>
+            </details>
+            
+            <details>
+              <summary>¿Tengo que instalar algún programa?</summary>
+              <p>No. La calculadora funciona directamente desde el navegador y no necesitas instalar ningún programa.</p>
+            </details>
+            
+            <details>
+              <summary>¿Puedo utilizarla desde el móvil?</summary>
+              <p>Sí. La interfaz está adaptada para utilizar la calculadora tanto desde ordenador como desde dispositivos móviles.</p>
+            </details>
+            
+            <details>
+              <summary>¿La calculadora gamer es gratuita?</summary>
+              <p>Sí. Puedes utilizarla gratis desde el navegador.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora Gamer",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué es esta calculadora gamer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es una calculadora online normal, pero con una interfaz inspirada en los videojuegos. Puedes utilizarla para realizar operaciones matemáticas directamente desde el navegador."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Qué operaciones puedo realizar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puedes hacer sumas, restas, multiplicaciones y divisiones, además de utilizar porcentajes y números decimales."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La calculadora está pensada para videojuegos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El diseño está inspirado en el mundo gaming, pero la calculadora sirve para cualquier operación matemática cotidiana."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Tengo que instalar algún programa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. La calculadora funciona directamente desde el navegador y no necesitas instalar ningún programa."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Puedo utilizarla desde el móvil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La interfaz está adaptada para utilizar la calculadora tanto desde ordenador como desde dispositivos móviles."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿La calculadora gamer es gratuita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes utilizarla gratis desde el navegador."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1354 @@
+---
+layout: calculadora.njk
+title: Calculadora con temática de One Piece
+description: Calculadora One Piece online para realizar operaciones matemáticas con un diseño inspirado en el anime y manga One Piece.
+keywords: calculadora one piece, calculadora de one piece, calculadora online one piece, calculadora normal one piece
+categoria: tematicas
+categoriaLabel: Temáticas
+titulo: Calculadora de One Piece
+icono: ☠️
+tituloCorto: la calculadora One Piece
+descripcion: Una calculadora normal con una interfaz inspirada en One Piece.
+explicacion: Realiza sumas, restas, multiplicaciones y divisiones con una calculadora online inspirada en One Piece.
+
+
+relacionadas:
+  - slug: calculadora-minecraft
+    categoria: tematicas
+    titulo: Calculadora de Minecraft
+    icono: ⛏️
+  - slug: calculadora-naruto
+    categoria: tematicas
+    titulo: Calculadora de Naruto
+    icono: ⛩️
+---
+
+<style>
+
+/* ==========================================
+   CALCULADORA ONE PIECE
+========================================== */
+
+.onepiece-calculator {
+
+    position: relative;
+
+    max-width: 430px;
+
+    margin: 28px auto;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    /*
+       Fondo de One Piece
+    */
+
+    background:
+        linear-gradient(
+            rgba(18, 27, 37, 0.18),
+            rgba(18, 20, 25, 0.38)
+        ),
+        url("/img/one-piece/one-piece-background.png")
+        center center / cover no-repeat;
+
+    border: 4px solid #20242a;
+
+    box-shadow:
+        0 9px 24px rgba(0,0,0,0.38),
+        inset 0 0 0 2px rgba(255,255,255,0.20);
+
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   TEXTURA GENERAL
+========================================== */
+
+.onepiece-calculator::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.025),
+            rgba(0,0,0,0.06)
+        );
+
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.onepiece-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* ==========================================
+   CABECERA
+========================================== */
+
+.onepiece-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+}
+
+
+/*
+   Título
+*/
+
+.onepiece-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #fff7dc;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.4px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 #1b1b1b,
+        3px 3px 0 rgba(0,0,0,0.45);
+
+}
+
+
+/*
+   Icono de la cabecera
+*/
+
+.onepiece-logo-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c99543,
+            #805522
+        );
+
+    border: 3px solid #292929;
+
+    border-radius: 7px;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.30),
+        inset -3px -3px 0 rgba(0,0,0,0.45),
+        0 2px 0 #111;
+
+    font-size: 1.55rem;
+
+}
+
+
+/*
+   Etiqueta ONE PIECE
+*/
+
+.onepiece-version {
+
+    padding: 7px 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b92e2e,
+            #791d1d
+        );
+
+    border: 2px solid #301515;
+
+    border-radius: 4px;
+
+    color: #fff5d7;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.68rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        1px 1px 0 #401010;
+
+    box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.25),
+        inset -2px -2px 0 rgba(0,0,0,0.30);
+
+}
+
+
+/* ==========================================
+   PANTALLA
+========================================== */
+
+.onepiece-screen {
+
+    padding: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b6a35,
+            #5d391e
+        );
+
+    border: 3px solid #2a1b11;
+
+    border-radius: 7px;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.25),
+        inset -3px -3px 0 rgba(0,0,0,0.55),
+        0 2px 0 #111;
+
+    margin-bottom: 9px;
+
+}
+
+
+/*
+   Interior tipo pergamino oscuro
+*/
+
+.onepiece-screen-inner {
+
+    min-height: 76px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 9px 13px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #302518,
+            #171310
+        );
+
+    border: 2px solid #120d09;
+
+    border-radius: 3px;
+
+    text-align: right;
+
+}
+
+
+/*
+   Operación anterior
+*/
+
+.onepiece-operation {
+
+    min-height: 17px;
+
+    color: #c7a65b;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.75rem;
+
+    font-weight: bold;
+
+}
+
+
+/*
+   Resultado
+*/
+
+.onepiece-display {
+
+    color: #fff1c7;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 2rem;
+
+    font-weight: 900;
+
+    line-height: 1.15;
+
+    overflow-wrap: anywhere;
+
+    text-shadow:
+        2px 2px 0 #17110c;
+
+}
+
+
+/* ==========================================
+   DECORACIÓN
+========================================== */
+
+.onepiece-items {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 6px 5px 11px;
+
+    color: #fff4d2;
+
+    font-size: 1.05rem;
+
+    opacity: 0.95;
+
+}
+
+
+/* ==========================================
+   TECLADO
+========================================== */
+
+.onepiece-keyboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 7px;
+
+}
+
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.onepiece-button {
+
+    position: relative;
+
+    min-height: 59px;
+
+    padding: 0;
+
+    border: 3px solid #29211b;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.15rem;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    background-color: #795431;
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,0.28),
+        inset -3px -3px 0 rgba(0,0,0,0.50),
+        0 2px 0 #17120e;
+
+    transition:
+        transform 0.08s ease,
+        filter 0.08s ease;
+
+}
+
+
+/*
+   Oscurecimiento sobre las imágenes
+*/
+
+.onepiece-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(15,10,8,0.20),
+            rgba(15,10,8,0.30)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/*
+   Texto de los botones
+*/
+
+.onepiece-button span {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #fffaf0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px 0 #1a120c,
+        -1px -1px 0 rgba(0,0,0,0.45);
+
+}
+
+
+/*
+   Hover
+*/
+
+.onepiece-button:hover {
+
+    filter: brightness(1.12);
+
+}
+
+
+/*
+   Pulsación
+*/
+
+.onepiece-button:active {
+
+    transform: translateY(2px);
+
+    box-shadow:
+        inset 2px 2px 0 rgba(0,0,0,0.40),
+        inset -2px -2px 0 rgba(255,255,255,0.12);
+
+}
+
+
+/* ==========================================
+   BOTONES NUMÉRICOS
+========================================== */
+
+.onepiece-number {
+
+    /*
+       Apariencia de madera/pirata
+       sin necesitar otra imagen.
+    */
+
+    background:
+        linear-gradient(
+            135deg,
+            #79502f 0%,
+            #5f3b23 45%,
+            #432818 100%
+        );
+
+}
+
+
+/* ==========================================
+   OPERADORES CON PERSONAJES
+========================================== */
+
+
+/* + Nami */
+
+.onepiece-plus {
+
+    background-image:
+        url("/img/one-piece/nami.png");
+
+}
+
+
+/* - Zoro */
+
+.onepiece-minus {
+
+    background-image:
+        url("/img/one-piece/zoro.png");
+
+}
+
+
+/* × Chopper */
+
+.onepiece-multiply {
+
+    background-image:
+        url("/img/one-piece/chopper.png");
+
+}
+
+
+/* ÷ Usopp */
+
+.onepiece-divide {
+
+    background-image:
+        url("/img/one-piece/uspp.png");
+
+}
+
+
+/* = Luffy */
+
+.onepiece-equals {
+
+    background-image:
+        url("/img/one-piece/luffy.png");
+
+}
+
+
+/* % Sanji */
+
+.onepiece-percent {
+
+    background-image:
+        url("/img/one-piece/sanji.png");
+
+}
+
+
+/* AC Robin */
+
+.onepiece-clear {
+
+    background-image:
+        url("/img/one-piece/robin.png");
+
+}
+
+
+/* Borrar Ace */
+
+.onepiece-delete {
+
+    background-image:
+        url("/img/one-piece/ace.png");
+
+}
+
+
+/* ==========================================
+   CERO
+========================================== */
+
+.onepiece-zero {
+
+    grid-column: span 2;
+
+}
+
+
+/* ==========================================
+   PIE
+========================================== */
+
+.onepiece-footer {
+
+    margin-top: 11px;
+
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            rgba(35,22,14,0.90),
+            rgba(20,14,10,0.90)
+        );
+
+    border:
+        2px solid rgba(201,157,77,0.45);
+
+    border-radius: 4px;
+
+    color: #ead5a2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.72rem;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    text-shadow:
+        1px 1px 0 #111;
+
+}
+
+
+/* ==========================================
+   MÓVIL
+========================================== */
+
+@media (max-width: 480px) {
+
+    .onepiece-calculator {
+
+        margin: 20px 5px;
+
+        padding: 13px;
+
+    }
+
+
+    .onepiece-button {
+
+        min-height: 54px;
+
+    }
+
+
+    .onepiece-display {
+
+        font-size: 1.7rem;
+
+    }
+
+
+    .onepiece-logo {
+
+        font-size: 1rem;
+
+    }
+
+}
+
+</style>
+
+
+<!-- ==========================================
+     CALCULADORA
+========================================== -->
+
+<div class="onepiece-calculator">
+
+    <div class="onepiece-content">
+
+
+        <!-- CABECERA -->
+
+        <div class="onepiece-header">
+
+            <div class="onepiece-logo">
+
+                <div class="onepiece-logo-icon">
+                    ☠️
+                </div>
+
+                <span>
+                    CALCULADORA
+                </span>
+
+            </div>
+
+
+            <div class="onepiece-version">
+                ONE PIECE
+            </div>
+
+        </div>
+
+
+        <!-- PANTALLA -->
+
+        <div class="onepiece-screen">
+
+            <div class="onepiece-screen-inner">
+
+                <div
+                    id="onepiece-operation"
+                    class="onepiece-operation">
+                </div>
+
+                <div
+                    id="onepiece-display"
+                    class="onepiece-display">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+<br>
+<br>
+
+        <!-- =====================================
+             BOTONES
+        ====================================== -->
+
+        <div class="onepiece-keyboard">
+
+
+            <!-- FILA 1 -->
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-clear"
+                onclick="onepieceClear()">
+
+                <span>AC</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-delete"
+                onclick="onepieceDelete()">
+
+                <span>⌫</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-percent"
+                onclick="onepiecePercent()">
+
+                <span>%</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-divide"
+                onclick="onepieceOperator('/')">
+
+                <span>÷</span>
+
+            </button>
+
+
+            <!-- FILA 2 -->
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('7')">
+
+                <span>7</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('8')">
+
+                <span>8</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('9')">
+
+                <span>9</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-multiply"
+                onclick="onepieceOperator('*')">
+
+                <span>×</span>
+
+            </button>
+
+
+            <!-- FILA 3 -->
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('4')">
+
+                <span>4</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('5')">
+
+                <span>5</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('6')">
+
+                <span>6</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-minus"
+                onclick="onepieceOperator('-')">
+
+                <span>−</span>
+
+            </button>
+
+
+            <!-- FILA 4 -->
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('1')">
+
+                <span>1</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('2')">
+
+                <span>2</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceNumber('3')">
+
+                <span>3</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-plus"
+                onclick="onepieceOperator('+')">
+
+                <span>+</span>
+
+            </button>
+
+
+            <!-- FILA 5 -->
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number onepiece-zero"
+                onclick="onepieceNumber('0')">
+
+                <span>0</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-number"
+                onclick="onepieceDecimal()">
+
+                <span>.</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="onepiece-button onepiece-equals"
+                onclick="onepieceCalculate()">
+
+                <span>=</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="onepiece-footer">
+
+            ☠️ Calculadora de One Piece
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function() {
+
+    let current = "0";
+
+    let previous = null;
+
+    let operator = null;
+
+    let waitingForNumber = false;
+
+
+    const display =
+        document.getElementById(
+            "onepiece-display"
+        );
+
+
+    const operation =
+        document.getElementById(
+            "onepiece-operation"
+        );
+
+
+    /* ==========================================
+       ACTUALIZAR PANTALLA
+    ========================================== */
+
+    function updateDisplay() {
+
+        display.textContent = current;
+
+    }
+
+
+    /* ==========================================
+       CALCULAR
+    ========================================== */
+
+    function calculateValues(a, b, op) {
+
+        a = Number(a);
+
+        b = Number(b);
+
+
+        if (op === "+") {
+
+            return a + b;
+
+        }
+
+
+        if (op === "-") {
+
+            return a - b;
+
+        }
+
+
+        if (op === "*") {
+
+            return a * b;
+
+        }
+
+
+        if (op === "/") {
+
+            if (b === 0) {
+
+                return null;
+
+            }
+
+            return a / b;
+
+        }
+
+
+        return b;
+
+    }
+
+
+    /* ==========================================
+       SÍMBOLO
+    ========================================== */
+
+    function getOperatorSymbol(op) {
+
+        if (op === "+") return "+";
+
+        if (op === "-") return "−";
+
+        if (op === "*") return "×";
+
+        if (op === "/") return "÷";
+
+        return op;
+
+    }
+
+
+    /* ==========================================
+       NÚMEROS
+    ========================================== */
+
+    window.onepieceNumber = function(number) {
+
+        if (
+            current === "Error" ||
+            waitingForNumber
+        ) {
+
+            current = number;
+
+            waitingForNumber = false;
+
+        } else if (current === "0") {
+
+            current = number;
+
+        } else {
+
+            current += number;
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       DECIMAL
+    ========================================== */
+
+    window.onepieceDecimal = function() {
+
+        if (current === "Error") {
+
+            current = "0.";
+
+            waitingForNumber = false;
+
+        } else if (waitingForNumber) {
+
+            current = "0.";
+
+            waitingForNumber = false;
+
+        } else if (
+            !current.includes(".")
+        ) {
+
+            current += ".";
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       OPERADORES
+    ========================================== */
+
+    window.onepieceOperator = function(op) {
+
+        if (current === "Error") {
+
+            return;
+
+        }
+
+
+        if (
+            operator !== null &&
+            !waitingForNumber
+        ) {
+
+            const result =
+                calculateValues(
+                    previous,
+                    current,
+                    operator
+                );
+
+
+            if (result === null) {
+
+                current = "Error";
+
+                previous = null;
+
+                operator = null;
+
+                operation.textContent = "";
+
+                updateDisplay();
+
+                return;
+
+            }
+
+
+            current = String(result);
+
+        }
+
+
+        previous = current;
+
+        operator = op;
+
+        waitingForNumber = true;
+
+
+        operation.textContent =
+            previous +
+            " " +
+            getOperatorSymbol(op);
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       IGUAL
+    ========================================== */
+
+    window.onepieceCalculate = function() {
+
+        if (
+            operator === null ||
+            previous === null
+        ) {
+
+            return;
+
+        }
+
+
+        const result =
+            calculateValues(
+                previous,
+                current,
+                operator
+            );
+
+
+        if (result === null) {
+
+            current = "Error";
+
+        } else {
+
+            current = String(result);
+
+        }
+
+
+        previous = null;
+
+        operator = null;
+
+        waitingForNumber = true;
+
+        operation.textContent = "";
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       BORRAR TODO
+    ========================================== */
+
+    window.onepieceClear = function() {
+
+        current = "0";
+
+        previous = null;
+
+        operator = null;
+
+        waitingForNumber = false;
+
+        operation.textContent = "";
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       BORRAR ÚLTIMO
+    ========================================== */
+
+    window.onepieceDelete = function() {
+
+        if (
+            current === "Error" ||
+            current.length <= 1
+        ) {
+
+            current = "0";
+
+        } else {
+
+            current =
+                current.slice(
+                    0,
+                    -1
+                );
+
+        }
+
+
+        updateDisplay();
+
+    };
+
+
+    /* ==========================================
+       PORCENTAJE
+    ========================================== */
+
+    window.onepiecePercent = function() {
+
+        if (current === "Error") {
+
+            return;
+
+        }
+
+
+        const value =
+            Number(current);
+
+
+        if (!isNaN(value)) {
+
+            current =
+                String(value / 100);
+
+            updateDisplay();
+
+        }
+
+    };
+
+
+})();
+
+</script>
