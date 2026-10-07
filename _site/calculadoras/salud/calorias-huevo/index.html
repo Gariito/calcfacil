@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de calorías del huevo - cuántas calorías tiene un huevo — CalcFácil</title>
+  <meta name="description" content="Calcula las calorías de un huevo según su tamaño y método de cocción. Huevo cocido, frito, revuelto o pasado por agua. Incluye valor nutricional.">
+  <meta name="keywords" content="calorías huevo, cuántas calorías tiene un huevo, calorías huevo cocido, calorías huevo frito, valor nutricional huevo, calorías clara huevo, calorías yema huevo">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/calorias-huevo/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de calorías del huevo - cuántas calorías tiene un huevo — CalcFácil">
+  <meta property="og:description" content="Calcula las calorías de un huevo según su tamaño y método de cocción. Huevo cocido, frito, revuelto o pasado por agua. Incluye valor nutricional.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/calorias-huevo/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías del huevo - cuántas calorías tiene un huevo",
+    "description": "Calcula las calorías de un huevo según su tamaño y método de cocción. Huevo cocido, frito, revuelto o pasado por agua. Incluye valor nutricional.",
+    "url": "https://calculadorasgratis.net/calculadoras/salud/calorias-huevo/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de calorías del huevo</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🥚 Calculadora de calorías del huevo</h1>
+        <p class="calc-intro">Calcula las calorías aproximadas de un huevo según su tamaño y la forma de cocinarlo. Consulta también las calorías de la clara y la yema y su valor nutricional.</p>
+        <div class="card">
+          
+<label>Tamaño del huevo</label>
+<select id="hv-tamano" onchange="calcHv()">
+  <option value="43">S - Pequeño (menos de 53g con cáscara)</option>
+  <option value="53" selected>M - Mediano (53-63g con cáscara)</option>
+  <option value="63">L - Grande (63-73g con cáscara)</option>
+  <option value="73">XL - Extra grande (más de 73g con cáscara)</option>
+</select>
+
+<label>Método de cocción</label>
+<select id="hv-coccion" onchange="calcHv()">
+  <option value="cocido">Cocido / Duro</option>
+  <option value="pasado">Pasado por agua / Mollet</option>
+  <option value="revuelto">Revuelto (sin aceite)</option>
+  <option value="frito_poco">Frito (poco aceite)</option>
+  <option value="frito_normal">Frito (cantidad normal de aceite)</option>
+  <option value="pochado">Pochado / Escalfado</option>
+  <option value="crudo">Crudo</option>
+</select>
+
+<label>Número de huevos</label>
+<input type="number" id="hv-cantidad" placeholder="1" value="1" min="1" oninput="calcHv()">
+
+<div class="result-box" id="hv-res">Selecciona el tamaño y el método de cocción</div>
+
+<div id="hv-nutri" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="hv-cards"></div>
+</div>
+
+<div style="margin-top:1rem" id="hv-partes-wrap" style="display:none">
+  <p style="font-size:0.8rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.04em">Desglose clara y yema</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem" id="hv-partes"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calorías del huevo según tamaño y cocción</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Método</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Huevo S</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Huevo M</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Huevo L</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Huevo XL</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Cocido / Duro</td><td style="text-align:right">62 kcal</td><td style="text-align:right">77 kcal</td><td style="text-align:right">91 kcal</td><td style="text-align:right">106 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pasado por agua</td><td style="text-align:right">62 kcal</td><td style="text-align:right">77 kcal</td><td style="text-align:right">91 kcal</td><td style="text-align:right">106 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pochado / Escalfado</td><td style="text-align:right">63 kcal</td><td style="text-align:right">78 kcal</td><td style="text-align:right">93 kcal</td><td style="text-align:right">108 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Revuelto (sin aceite)</td><td style="text-align:right">68 kcal</td><td style="text-align:right">84 kcal</td><td style="text-align:right">100 kcal</td><td style="text-align:right">116 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Frito (poco aceite)</td><td style="text-align:right">90 kcal</td><td style="text-align:right">112 kcal</td><td style="text-align:right">133 kcal</td><td style="text-align:right">155 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Frito (aceite normal)</td><td style="text-align:right">110 kcal</td><td style="text-align:right">137 kcal</td><td style="text-align:right">163 kcal</td><td style="text-align:right">190 kcal</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Valor nutricional del huevo mediano (M) por parte</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutriente</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Huevo entero</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Clara (~33g)</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Yema (~17g)</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Calorías</td><td style="text-align:right">77 kcal</td><td style="text-align:right">17 kcal</td><td style="text-align:right">55 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Proteínas</td><td style="text-align:right">6,5g</td><td style="text-align:right">3,6g</td><td style="text-align:right">2,7g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Grasas totales</td><td style="text-align:right">5,3g</td><td style="text-align:right">0,1g</td><td style="text-align:right">4,5g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">- Grasas saturadas</td><td style="text-align:right">1,6g</td><td style="text-align:right">0g</td><td style="text-align:right">1,6g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Carbohidratos</td><td style="text-align:right">0,6g</td><td style="text-align:right">0,3g</td><td style="text-align:right">0,3g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Colesterol</td><td style="text-align:right">186 mg</td><td style="text-align:right">0 mg</td><td style="text-align:right">186 mg</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Vitamina D</td><td style="text-align:right">1,1 µg</td><td style="text-align:right">0 µg</td><td style="text-align:right">1,1 µg</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Vitamina B12</td><td style="text-align:right">0,6 µg</td><td style="text-align:right">0,1 µg</td><td style="text-align:right">0,5 µg</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Hierro</td><td style="text-align:right">0,9 mg</td><td style="text-align:right">0,1 mg</td><td style="text-align:right">0,8 mg</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Qué método de cocción tiene menos calorías?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Si buscas la opción con menos calorías, lo más sencillo es cocinar el huevo sin añadir aceite. Un huevo cocido, pasado por agua o pochado apenas cambia sus calorías respecto al huevo en sí. En cambio, al freírlo hay que tener en cuenta el aceite que se utiliza.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El revuelto también puede ser una opción bastante ligera si se prepara sin aceite o con muy poca cantidad. En este caso, las calorías dependerán sobre todo de lo que añadas al huevo durante la preparación.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Con el huevo frito ocurre algo diferente. El aceite aporta calorías adicionales y una parte puede quedarse en el huevo. Por eso dos huevos del mismo tamaño pueden tener un número de calorías bastante distinto dependiendo de cómo se hayan cocinado.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">Clara vs yema - ¿cuál elegir?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La clara es la parte más ligera del huevo. Tiene unas 17 calorías en un huevo mediano y aporta alrededor de 3,6 g de proteína. Por eso es habitual verla en recetas o dietas en las que se busca aumentar la proteína sin añadir demasiadas calorías.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La yema tiene más calorías, unas 55 en un huevo mediano, pero también es donde se encuentran buena parte de las vitaminas, minerales y grasas del huevo. Quitarla reduce las calorías, aunque también estás dejando fuera una parte importante de sus nutrientes.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Por eso, salvo que tengas un motivo concreto para separar las dos partes, comer el huevo entero es una opción sencilla para aprovechar tanto la proteína de la clara como los nutrientes de la yema.</p>
+</div>
+
+<script>
+const HV_BASE = {
+  S:  { peso: 43, kcal: 62,  prot: 5.3, grasas: 4.2, carbs: 0.4, clara_kcal: 13, yema_kcal: 42 },
+  M:  { peso: 53, kcal: 77,  prot: 6.5, grasas: 5.3, carbs: 0.6, clara_kcal: 17, yema_kcal: 55 },
+  L:  { peso: 63, kcal: 91,  prot: 7.7, grasas: 6.2, carbs: 0.7, clara_kcal: 20, yema_kcal: 65 },
+  XL: { peso: 73, kcal: 106, prot: 9.0, grasas: 7.3, carbs: 0.8, clara_kcal: 24, yema_kcal: 76 }
+};
+
+const HV_COCCION = {
+  cocido:      { factor: 1.00, extra: 0,  label: 'Cocido / Duro' },
+  pasado:      { factor: 1.00, extra: 0,  label: 'Pasado por agua' },
+  revuelto:    { factor: 1.00, extra: 9,  label: 'Revuelto sin aceite' },
+  frito_poco:  { factor: 1.00, extra: 35, label: 'Frito con poco aceite' },
+  frito_normal:{ factor: 1.00, extra: 60, label: 'Frito con aceite normal' },
+  pochado:     { factor: 1.00, extra: 2,  label: 'Pochado / Escalfado' },
+  crudo:       { factor: 1.00, extra: 0,  label: 'Crudo' }
+};
+
+const HV_TAMANO_KEY = { '43': 'S', '53': 'M', '63': 'L', '73': 'XL' };
+
+function calcHv() {
+  const tamanoVal = document.getElementById('hv-tamano').value;
+  const coccion   = document.getElementById('hv-coccion').value;
+  const cantidad  = parseInt(document.getElementById('hv-cantidad').value) || 1;
+  const key       = HV_TAMANO_KEY[tamanoVal];
+  const base      = HV_BASE[key];
+  const coc       = HV_COCCION[coccion];
+
+  if (!base || !coc) return;
+
+  const kcalUno   = Math.round(base.kcal * coc.factor + coc.extra);
+  const kcalTotal = kcalUno * cantidad;
+  const protTotal = (base.prot * cantidad).toFixed(1);
+  const grasTotal = (base.grasas * cantidad).toFixed(1);
+  const carbTotal = (base.carbs * cantidad).toFixed(1);
+  const huevosStr = cantidad === 1 ? '1 huevo' : `${cantidad} huevos`;
+
+  document.getElementById('hv-res').innerHTML =
+    `${kcalTotal} kcal - ${huevosStr} ${key} ${coc.label}
+    <small>Proteínas: ${protTotal}g · Grasas: ${grasTotal}g · Carbohidratos: ${carbTotal}g</small>`;
+
+  document.getElementById('hv-nutri').style.display = 'block';
+  document.getElementById('hv-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcalTotal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">${kcalUno} kcal/huevo</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Proteínas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${protTotal}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${base.prot}g/huevo</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Grasas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${grasTotal}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${base.grasas}g/huevo</div>
+    </div>`;
+
+  document.getElementById('hv-partes-wrap').style.display = 'block';
+  document.getElementById('hv-partes').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Solo la clara</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${base.clara_kcal * cantidad} kcal</div>
+      <div style="font-size:0.78rem;color:var(--muted)">~${(base.prot * 0.55 * cantidad).toFixed(1)}g proteína</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Solo la yema</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--accent)">${base.yema_kcal * cantidad} kcal</div>
+      <div style="font-size:0.78rem;color:var(--muted)">~${(base.prot * 0.42 * cantidad).toFixed(1)}g proteína</div>
+    </div>`;
+}
+
+calcHv();
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es la calculadora de calorías del huevo?</h2>
+          <p>¿Cuántas calorías tiene un huevo? Depende principalmente de su tamaño y de cómo lo prepares. Aquí puedes calcular las calorías de uno o varios huevos y comparar distintas formas de cocinarlos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias-aguacate/">🥑 Calorías del aguacate</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias-alimentos/">🥗 Calorías de alimentos</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+            <li><a href="/calculadoras/salud/proteinas/">🥩 Calculadora de proteínas</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas calorías tiene un huevo?</summary>
+              <p>Un huevo mediano (tamaño M) tiene alrededor de 75-80 calorías si está cocido o pasado por agua. Si lo haces frito, las calorías aumentan por el aceite y puede rondar las 120-140 calorías.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene un huevo cocido?</summary>
+              <p>Un huevo cocido de tamaño M tiene unas 77 calorías. Al cocinarlo en agua no se añade aceite ni otra grasa, por lo que las calorías son prácticamente las mismas que las del huevo sin cocinar.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene un huevo frito?</summary>
+              <p>Depende de cuánto aceite utilices. Un huevo frito mediano suele estar entre 110 y 140 calorías. Cuanto más aceite quede en el huevo, mayor será su aporte calórico.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene la clara del huevo?</summary>
+              <p>La clara de un huevo mediano aporta unas 17 calorías y alrededor de 3,6 g de proteína. También tiene muy poca grasa, por lo que es una parte del huevo bastante baja en calorías.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene la yema del huevo?</summary>
+              <p>Una yema de tamaño mediano tiene aproximadamente 55 calorías. Es la parte del huevo que concentra la mayor cantidad de grasa, pero también buena parte de sus vitaminas y minerales.</p>
+            </details>
+            
+            <details>
+              <summary>¿El huevo es bueno para adelgazar?</summary>
+              <p>Puede encajar perfectamente en una dieta para perder peso. Un huevo cocido aporta unas 77 calorías y alrededor de 6,5 g de proteína, además de resultar bastante saciante. Lo importante, como con cualquier alimento, es la cantidad total que se consume.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de calorías del huevo",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene un huevo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un huevo mediano (tamaño M) tiene alrededor de 75-80 calorías si está cocido o pasado por agua. Si lo haces frito, las calorías aumentan por el aceite y puede rondar las 120-140 calorías."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene un huevo cocido?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un huevo cocido de tamaño M tiene unas 77 calorías. Al cocinarlo en agua no se añade aceite ni otra grasa, por lo que las calorías son prácticamente las mismas que las del huevo sin cocinar."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene un huevo frito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de cuánto aceite utilices. Un huevo frito mediano suele estar entre 110 y 140 calorías. Cuanto más aceite quede en el huevo, mayor será su aporte calórico."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene la clara del huevo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La clara de un huevo mediano aporta unas 17 calorías y alrededor de 3,6 g de proteína. También tiene muy poca grasa, por lo que es una parte del huevo bastante baja en calorías."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene la yema del huevo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una yema de tamaño mediano tiene aproximadamente 55 calorías. Es la parte del huevo que concentra la mayor cantidad de grasa, pero también buena parte de sus vitaminas y minerales."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿El huevo es bueno para adelgazar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puede encajar perfectamente en una dieta para perder peso. Un huevo cocido aporta unas 77 calorías y alrededor de 6,5 g de proteína, además de resultar bastante saciante. Lo importante, como con cualquier alimento, es la cantidad total que se consume."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

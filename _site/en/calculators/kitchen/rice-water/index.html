@@ -9,15 +9,15 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rice Water Calculator - How Much Water for Rice? — CalcFácil</title>
-  <meta name="description" content="Calculate how much water you need to cook rice based on the amount of rice you are preparing and your preferred water-to-rice ratio.">
-  <meta name="keywords" content="rice water calculator, how much water for rice, rice to water ratio calculator, water for rice, how much water for 100g rice, rice cooking calculator, rice water ratio">
+  <title>Rice Water Calculator — How Much Water for Rice? — CalcFácil</title>
+  <meta name="description" content="Calculate exactly how much water you need to cook rice based on the amount of rice and your preferred water-to-rice ratio. Free online rice calculator.">
+  <meta name="keywords" content="rice water calculator, how much water for rice, rice to water ratio calculator, water for rice, how much water for 100g rice, rice cooking calculator">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/kitchen/rice-water/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Rice Water Calculator - How Much Water for Rice? — CalcFácil">
-  <meta property="og:description" content="Calculate how much water you need to cook rice based on the amount of rice you are preparing and your preferred water-to-rice ratio.">
+  <meta property="og:title" content="Rice Water Calculator — How Much Water for Rice? — CalcFácil">
+  <meta property="og:description" content="Calculate exactly how much water you need to cook rice based on the amount of rice and your preferred water-to-rice ratio. Free online rice calculator.">
   <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/kitchen/rice-water/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -27,8 +27,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Rice Water Calculator - How Much Water for Rice?",
-    "description": "Calculate how much water you need to cook rice based on the amount of rice you are preparing and your preferred water-to-rice ratio.",
+    "name": "Rice Water Calculator — How Much Water for Rice?",
+    "description": "Calculate exactly how much water you need to cook rice based on the amount of rice and your preferred water-to-rice ratio. Free online rice calculator.",
     "url": "https://calculadorasgratis.net/en/calculators/kitchen/rice-water/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
@@ -102,225 +102,152 @@
 </header>
 
 <main>
-  <div class="calc-page">
+  
+<div class="calc-page">
   <div class="container calc-container">
 
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="Ruta">
-      <a href="/">Inicio</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
       <span>›</span>
-      <a href="/calculadoras/cooking/">Cooking</a>
+      <a href="/en/calculators/everyday/">Everyday</a>
       <span>›</span>
       <span>Rice Water Calculator</span>
     </nav>
 
     <div class="calc-layout">
-
-      <!-- Calculadora principal -->
       <div class="calc-main">
         <h1>🍚 Rice Water Calculator</h1>
-        <p class="calc-intro">Calculate the approximate amount of water needed to cook rice based on the amount of rice you are preparing.</p>
+        <p class="calc-intro">Calculate exactly how much water you need to cook rice based on the amount of rice and your preferred ratio.</p>
+
         <div class="card">
-          
-<div style="display:grid;gap:1rem">
-  <div>
-    <label for="rice-grams" style="display:block;margin-bottom:.4rem;font-weight:600">Amount of rice (g)</label>
-    <input id="rice-grams" type="number" step="1" min="1" placeholder="e.g. 200"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-  </div>
+          <label>Amount of rice (g)</label>
+          <input type="number" id="rice-grams" placeholder="200" min="1" oninput="calcRice()">
 
-  <div>
-    <label for="rice-ratio" style="display:block;margin-bottom:.4rem;font-weight:600">Water per part of rice</label>
-    <select id="rice-ratio"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-      <option value="1.5">1.5 parts of water</option>
-      <option value="1.75">1.75 parts of water</option>
-      <option value="2" selected>2 parts of water</option>
-      <option value="2.5">2.5 parts of water</option>
-    </select>
-  </div>
+          <label>Water-to-rice ratio</label>
+          <select id="rice-ratio" onchange="calcRice()">
+            <option value="1.5">1.5:1 — Less water (firm rice, some basmati)</option>
+            <option value="1.75">1.75:1 — Standard (jasmine, long-grain)</option>
+            <option value="2" selected>2:1 — Common (white rice, absorption method)</option>
+            <option value="2.5">2.5:1 — More water (brown rice, wholegrain)</option>
+          </select>
 
-  <button onclick="calculateRiceWater()"
-    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
-    Calculate water
-  </button>
+          <div class="result-box" id="rice-res">Enter the amount of rice</div>
+        </div>
 
-  <div id="rice-result" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
-    <div style="font-size:.85rem;color:var(--muted)">Approximate amount of water</div>
-    <div id="rice-value" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
-  </div>
-</div>
+        <div id="rice-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="rice-cards"></div>
+        </div>
 
-<script>
-function calculateRiceWater() {
-  const grams = parseFloat(document.getElementById('rice-grams').value);
-  const ratio = parseFloat(document.getElementById('rice-ratio').value);
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How much water does rice need?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">The amount of water needed to cook rice depends on the variety of rice and the cooking method. There is no single ratio that works perfectly for every type of rice — the best approach is always to check the packet instructions for the specific variety you are using.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">As a general starting point, a ratio of 2 parts water to 1 part rice works well for most white rice varieties cooked by the absorption method. This means that for every gram of rice, you add approximately 2 ml of water.</p>
 
-  if (!Number.isFinite(grams) || !Number.isFinite(ratio) || grams <= 0 || ratio <= 0) {
-    document.getElementById('rice-result').style.display = 'none';
-    return;
-  }
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Water-to-rice ratio by rice type</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Rice type</th>
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Ratio (water:rice)</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Water for 100g</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">Basmati (rinsed)</td><td style="text-align:center">1.5:1</td><td style="text-align:right">150 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Jasmine</td><td style="text-align:center">1.75:1</td><td style="text-align:right">175 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Long-grain white rice</td><td style="text-align:center">2:1</td><td style="text-align:right">200 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Short-grain white rice</td><td style="text-align:center">1.5:1</td><td style="text-align:right">150 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Brown rice</td><td style="text-align:center">2.5:1</td><td style="text-align:right">250 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Wholegrain rice</td><td style="text-align:center">2.5:1</td><td style="text-align:right">250 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Arborio (risotto)</td><td style="text-align:center">3:1+</td><td style="text-align:right">300 ml+</td></tr>
+          </table>
 
-  const water = grams * ratio;
-
-  document.getElementById('rice-value').textContent =
-    water.toLocaleString('en-GB', {maximumFractionDigits:0}) + ' ml';
-
-  document.getElementById('rice-result').style.display = 'block';
-}
-
-document.getElementById('rice-grams').addEventListener('keydown', e => {
-  if (e.key === 'Enter') calculateRiceWater();
-});
-</script>
-
-<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How much water does rice need?</h2>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">The amount of water needed to cook rice depends on the variety of rice and the cooking method. Because of this, there is no single ratio that works perfectly for every type of rice.</p>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">As a simple starting point, a ratio of around 2 parts water to 1 part rice can be used for some white rice cooked by absorption.</p>
-
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Rice and water examples</h2>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">With a 2:1 ratio, 100 g of rice requires approximately 200 ml of water. For 200 g of rice, this would be around 400 ml, while 300 g would require approximately 600 ml.</p>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">These amounts are only a starting point. For the best results, check the cooking instructions provided for the specific type of rice you are using.</p>
-</div>
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Rice and water quick reference</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Amount of rice</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">1.5:1 ratio</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">2:1 ratio</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">2.5:1 ratio</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">50g</td><td style="text-align:right">75 ml</td><td style="text-align:right">100 ml</td><td style="text-align:right">125 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">100g</td><td style="text-align:right">150 ml</td><td style="text-align:right">200 ml</td><td style="text-align:right">250 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">150g</td><td style="text-align:right">225 ml</td><td style="text-align:right">300 ml</td><td style="text-align:right">375 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">200g</td><td style="text-align:right">300 ml</td><td style="text-align:right">400 ml</td><td style="text-align:right">500 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">250g</td><td style="text-align:right">375 ml</td><td style="text-align:right">500 ml</td><td style="text-align:right">625 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">300g</td><td style="text-align:right">450 ml</td><td style="text-align:right">600 ml</td><td style="text-align:right">750 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">500g</td><td style="text-align:right">750 ml</td><td style="text-align:right">1.000 ml</td><td style="text-align:right">1.250 ml</td></tr>
+          </table>
         </div>
       </div>
 
-      <!-- Sidebar -->
       <aside class="calc-sidebar">
         <div class="card sidebar-card">
-          <h2>¿Qué es the rice water calculator?</h2>
-          <p>Enter the amount of rice and choose a water-to-rice ratio to calculate the approximate amount of water needed.</p>
+          <h2>Absorption vs boiling method</h2>
+          <p>The absorption method uses a measured amount of water that the rice absorbs completely during cooking — this is what this calculator is designed for. The boiling method uses a large pot of water that is drained afterwards, similar to cooking pasta, and does not require precise measurement.</p>
         </div>
-
-        
         <div class="card sidebar-card">
-          <h3>Calculadoras relacionadas</h3>
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>Should I rinse rice before cooking?</summary>
+            <p>Rinsing rice removes excess surface starch, which can make the rice less sticky and more separate. If you rinse, you may need slightly less water as the rice absorbs some during rinsing. Basmati and jasmine rice are commonly rinsed before cooking.</p>
+          </details>
+          <details>
+            <summary>Does soaking rice affect how much water I need?</summary>
+            <p>Yes. Soaking rice before cooking allows it to absorb water in advance, so you may need less water during cooking. Basmati rice is often soaked for 20-30 minutes before cooking, which can reduce the cooking water needed.</p>
+          </details>
+          <details>
+            <summary>Why does my rice come out too wet or too dry?</summary>
+            <p>The ratio is a starting point — altitude, pot size, heat level and whether the lid fits tightly all affect the result. If your rice is consistently too wet, reduce water by 10-15%. If it is too dry or burns at the bottom, add a little more water next time.</p>
+          </details>
+          <details>
+            <summary>How much rice should I cook per person?</summary>
+            <p>As a side dish, around 60-75g of uncooked rice per person is typical. As a main dish, 100-125g per person. Rice roughly doubles in weight when cooked, so 100g of dry rice yields approximately 200g of cooked rice.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
           <ul class="related-list">
-            
-            <li><a href="/calculadoras/day-to-day/price-per-100g/">⚖️ Price per 100g</a></li>
-            
-            <li><a href="/calculadoras/day-to-day/percentage/">% Percentage Calculator</a></li>
-            
-            <li><a href="/calculadoras/day-to-day/basic-calculator/">🔢 Basic Calculator</a></li>
-            
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/everyday/basic-calculator/">🔢 Basic Calculator</a></li>
           </ul>
         </div>
-        
-
-        <div class="card sidebar-card faq-card">
-          <h3>Preguntas frecuentes</h3>
-          
-            
-            <details>
-              <summary>How much water do I need for rice?</summary>
-              <p>The amount of water depends on the type of rice and cooking method. As a simple starting point, a ratio of around 2 parts water to 1 part rice can be used for some types of white rice.</p>
-            </details>
-            
-            <details>
-              <summary>How much water do I need for 100g of rice?</summary>
-              <p>With a 2:1 water-to-rice ratio, you would use approximately 200 ml of water for 100 g of rice.</p>
-            </details>
-            
-            <details>
-              <summary>How much water do I need for 200g of rice?</summary>
-              <p>With a 2:1 ratio, 200 g of rice would require approximately 400 ml of water.</p>
-            </details>
-            
-            <details>
-              <summary>Is the rice-to-water ratio the same for every type of rice?</summary>
-              <p>No. Different varieties such as basmati, jasmine, brown and short-grain rice can require different amounts of water. When available, follow the cooking instructions on the package.</p>
-            </details>
-            
-            <details>
-              <summary>Can I calculate water for any amount of rice?</summary>
-              <p>Yes. Enter the amount of rice and select the water-to-rice ratio that best matches the rice and cooking method you are using.</p>
-            </details>
-            
-          
-        </div>
       </aside>
-
     </div>
   </div>
 </div>
 
-<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+<script>
+function calcRice() {
+  const grams = parseFloat(document.getElementById('rice-grams').value);
+  const ratio = parseFloat(document.getElementById('rice-ratio').value);
+  if (!grams || grams <= 0) return;
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Rice Water Calculator",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        
-        {
-          "@type": "Question",
-          "name": "How much water do I need for rice?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The amount of water depends on the type of rice and cooking method. As a simple starting point, a ratio of around 2 parts water to 1 part rice can be used for some types of white rice."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "How much water do I need for 100g of rice?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "With a 2:1 water-to-rice ratio, you would use approximately 200 ml of water for 100 g of rice."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "How much water do I need for 200g of rice?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "With a 2:1 ratio, 200 g of rice would require approximately 400 ml of water."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "Is the rice-to-water ratio the same for every type of rice?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Different varieties such as basmati, jasmine, brown and short-grain rice can require different amounts of water. When available, follow the cooking instructions on the package."
-          }
-        },
-        
-        {
-          "@type": "Question",
-          "name": "Can I calculate water for any amount of rice?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Enter the amount of rice and select the water-to-rice ratio that best matches the rice and cooking method you are using."
-          }
-        }
-        
-      ]
-    }
-  ]
+  const water = Math.round(grams * ratio);
+  const cups = (grams / 185).toFixed(1);
+  const waterCups = (water / 240).toFixed(1);
+
+  document.getElementById('rice-res').innerHTML =
+    `${water.toLocaleString('en-GB')} ml of water
+    <small>For ${grams}g of rice · Ratio ${ratio}:1 · ~${waterCups} cups of water for ~${cups} cups of rice</small>`;
+
+  document.getElementById('rice-desglose').style.display = 'block';
+  document.getElementById('rice-cards').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Rice</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--muted)">${grams}g</div>
+      <div style="font-size:0.75rem;color:var(--muted)">~${cups} cups</div>
+    </div>
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Water needed</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${water} ml</div>
+      <div style="font-size:0.75rem;color:var(--accent)">~${waterCups} cups</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Cooked yield</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--muted)">~${Math.round(grams*2.5)}g</div>
+      <div style="font-size:0.75rem;color:var(--muted)">approx. cooked weight</div>
+    </div>`;
 }
 </script>
-
 </main>
 
 

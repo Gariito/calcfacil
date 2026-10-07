@@ -1,0 +1,227 @@
+---
+layout: calculadora.njk
+title: Calculadora de calorías del aguacate - cuántas calorías tiene un aguacate
+description: Calcula las calorías de un aguacate según su tamaño o los gramos que vayas a comer. Incluye tabla nutricional completa con grasas, proteínas y carbohidratos.
+keywords: calorías aguacate, cuántas calorías tiene un aguacate, aguacate calorías, calorías aguacate 100g, valor nutricional aguacate
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de calorías del aguacate
+icono: 🥑
+tituloCorto: la calculadora de calorías del aguacate
+descripcion: Calcula las calorías aproximadas de un aguacate según su tamaño o la cantidad que vayas a comer, junto con sus principales valores nutricionales.
+explicacion: ¿Cuántas calorías tiene un aguacate? Depende sobre todo de su tamaño y de la cantidad que comas. Con esta calculadora puedes calcular las calorías de un aguacate entero, medio aguacate o cualquier cantidad en gramos.
+faq:
+  - q: ¿Cuántas calorías tiene un aguacate entero?
+    a: Depende del tamaño. Un aguacate mediano, con unos 150 g de parte comestible, tiene alrededor de 240 calorías. Uno grande de unos 200 g ronda las 320 calorías.
+  - q: ¿Cuántas calorías tiene el aguacate por 100 g?
+    a: El aguacate tiene unas 160 calorías por cada 100 g. Es bastante más calórico que la mayoría de frutas porque contiene una cantidad importante de grasa.
+  - q: ¿El aguacate engorda?
+    a: El aguacate tiene más calorías que muchas otras frutas, pero eso no significa que por sí solo haga engordar. Puede formar parte perfectamente de una dieta equilibrada, teniendo en cuenta la cantidad que se consume.
+  - q: ¿Cuántas calorías tiene medio aguacate?
+    a: Medio aguacate puede tener unas 120 calorías si pesa alrededor de 75 g, o unas 160 calorías si se trata de medio aguacate mediano de unos 100 g. El peso es lo que marca principalmente la diferencia.
+  - q: ¿Cuántas calorías tiene el aguacate en tostada?
+    a: Una tostada con medio aguacate puede rondar las 250-300 calorías. La cantidad final depende tanto del tamaño del aguacate como del tipo y cantidad de pan que utilices.
+  - q: ¿El aguacate tiene muchas proteínas?
+    a: No especialmente. El aguacate aporta alrededor de 2 g de proteína por cada 100 g. Su valor nutricional destaca más por las grasas, la fibra y otros nutrientes que contiene.
+relacionadas:
+  - slug: calorias-alimentos
+    categoria: salud
+    titulo: Calorías de alimentos
+    icono: 🥗
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+  - slug: calorias-platano
+    categoria: salud
+    titulo: Calorías del platano
+    icono: 🍌
+  - slug: calorias-arroz
+    categoria: salud
+    titulo: Calorías del arroz
+    icono: 🍚
+  - slug: calorias-huevo
+    categoria: salud
+    titulo: Calorías del huevo
+    icono: 🥚
+---
+
+<label>Modo de cálculo</label>
+<select id="ag-modo" onchange="toggleModo()">
+  <option value="gramos">Por gramos</option>
+  <option value="tamano">Por tamaño del aguacate</option>
+  <option value="porcion">Por porción habitual</option>
+</select>
+
+<div id="ag-wrap-gramos">
+  <label>Cantidad (gramos)</label>
+  <input type="number" id="ag-gramos" placeholder="100" oninput="calcAg()">
+</div>
+
+<div id="ag-wrap-tamano" style="display:none">
+  <label>Tamaño del aguacate</label>
+  <select id="ag-tamano" onchange="calcAg()">
+    <option value="100">Pequeño (~100g sin hueso ni piel)</option>
+    <option value="150" selected>Mediano (~150g sin hueso ni piel)</option>
+    <option value="200">Grande (~200g sin hueso ni piel)</option>
+    <option value="250">Muy grande (~250g sin hueso ni piel)</option>
+  </select>
+</div>
+
+<div id="ag-wrap-porcion" style="display:none">
+  <label>Porción</label>
+  <select id="ag-porcion" onchange="calcAg()">
+    <option value="50">¼ de aguacate (~50g)</option>
+    <option value="75">½ aguacate pequeño (~75g)</option>
+    <option value="100">½ aguacate mediano (~100g)</option>
+    <option value="30">1 cucharada de guacamole (~30g)</option>
+    <option value="20">1 loncha fina (~20g)</option>
+  </select>
+</div>
+
+<div class="result-box" id="ag-res">Introduce los gramos o selecciona el tamaño</div>
+
+<div id="ag-nutri" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="ag-cards"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calorías del aguacate según tamaño</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tamaño / Cantidad</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Gramos</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calorías</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">¼ de aguacate</td><td style="text-align:right">~50g</td><td style="text-align:right"><strong>80 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">½ aguacate pequeño</td><td style="text-align:right">~75g</td><td style="text-align:right"><strong>120 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">½ aguacate mediano</td><td style="text-align:right">~100g</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Aguacate pequeño entero</td><td style="text-align:right">~100g</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Aguacate mediano entero</td><td style="text-align:right">~150g</td><td style="text-align:right"><strong>240 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Aguacate grande entero</td><td style="text-align:right">~200g</td><td style="text-align:right"><strong>320 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Aguacate muy grande entero</td><td style="text-align:right">~250g</td><td style="text-align:right"><strong>400 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">1 cucharada de guacamole</td><td style="text-align:right">~30g</td><td style="text-align:right"><strong>48 kcal</strong></td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Valor nutricional del aguacate por 100g</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutriente</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Por 100g</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Por aguacate mediano (150g)</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Calorías</td><td style="text-align:right">160 kcal</td><td style="text-align:right">240 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Grasas totales</td><td style="text-align:right">14,7g</td><td style="text-align:right">22g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">- Grasas saturadas</td><td style="text-align:right">2,1g</td><td style="text-align:right">3,2g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">- Grasas monoinsaturadas</td><td style="text-align:right">9,8g</td><td style="text-align:right">14,7g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Carbohidratos</td><td style="text-align:right">8,5g</td><td style="text-align:right">12,8g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">- Fibra</td><td style="text-align:right">6,7g</td><td style="text-align:right">10g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">- Azúcares</td><td style="text-align:right">0,7g</td><td style="text-align:right">1g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Proteínas</td><td style="text-align:right">2g</td><td style="text-align:right">3g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Potasio</td><td style="text-align:right">485 mg</td><td style="text-align:right">728 mg</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Vitamina K</td><td style="text-align:right">21 µg</td><td style="text-align:right">32 µg</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Folato (B9)</td><td style="text-align:right">81 µg</td><td style="text-align:right">122 µg</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Valores medios de referencia para aguacate Hass, la variedad más consumida en España. Pueden variar según la variedad y el grado de madurez.</p>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Por qué el aguacate tiene tantas calorías?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El aguacate tiene más calorías que la mayoría de frutas porque contiene bastante grasa. Aproximadamente un 15% de su peso corresponde a grasa, y cada gramo de grasa aporta unas 9 calorías. Por eso, aunque sea una fruta, tiene una densidad calórica bastante alta.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Gran parte de esta grasa es ácido oleico, una grasa monoinsaturada que también encontramos en alimentos como el aceite de oliva. Además, el aguacate aporta fibra, vitaminas y minerales, por lo que sus calorías vienen acompañadas de otros nutrientes.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">¿Cuánto aguacate es recomendable comer?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">No hay una cantidad que sirva para todo el mundo. Como referencia, medio aguacate suele ser una porción bastante habitual y aporta aproximadamente entre 120 y 160 calorías, dependiendo de su peso.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Si estás intentando perder peso, también puedes comer aguacate. Simplemente conviene tener en cuenta sus calorías y la cantidad que añades a las comidas, especialmente si además utilizas otros alimentos ricos en grasa.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">Comparativa calórica del aguacate con otras frutas</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Fruta</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calorías por 100g</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">🥑 Aguacate</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍌 Plátano</td><td style="text-align:right">89 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍇 Uva</td><td style="text-align:right">67 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍎 Manzana</td><td style="text-align:right">52 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍊 Naranja</td><td style="text-align:right">47 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍓 Fresa</td><td style="text-align:right">32 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍉 Sandía</td><td style="text-align:right">30 kcal</td></tr>
+  </table>
+</div>
+
+<script>
+const AG_KCAL = 160;
+const AG_GRASAS = 14.7;
+const AG_CARBS = 8.5;
+const AG_PROT = 2.0;
+const AG_FIBRA = 6.7;
+
+function toggleModo() {
+  const modo = document.getElementById('ag-modo').value;
+  document.getElementById('ag-wrap-gramos').style.display  = modo === 'gramos'  ? 'block' : 'none';
+  document.getElementById('ag-wrap-tamano').style.display  = modo === 'tamano'  ? 'block' : 'none';
+  document.getElementById('ag-wrap-porcion').style.display = modo === 'porcion' ? 'block' : 'none';
+  calcAg();
+}
+
+function calcAg() {
+  const modo = document.getElementById('ag-modo').value;
+  let g = 0;
+
+  if (modo === 'gramos') {
+    g = parseFloat(document.getElementById('ag-gramos').value);
+  } else if (modo === 'tamano') {
+    g = parseFloat(document.getElementById('ag-tamano').value);
+  } else {
+    g = parseFloat(document.getElementById('ag-porcion').value);
+  }
+
+  if (!g || g <= 0) return;
+
+  const kcal   = (AG_KCAL   * g / 100).toFixed(0);
+  const grasas = (AG_GRASAS * g / 100).toFixed(1);
+  const carbs  = (AG_CARBS  * g / 100).toFixed(1);
+  const prot   = (AG_PROT   * g / 100).toFixed(1);
+  const fibra  = (AG_FIBRA  * g / 100).toFixed(1);
+
+  document.getElementById('ag-res').innerHTML =
+    `${kcal} kcal por ${g}g de aguacate
+    <small>Grasas: ${grasas}g · Carbohidratos: ${carbs}g · Proteínas: ${prot}g · Fibra: ${fibra}g</small>`;
+
+  document.getElementById('ag-nutri').style.display = 'block';
+  document.getElementById('ag-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Grasas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${grasas}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">de las cuales ${(2.1*g/100).toFixed(1)}g saturadas</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohidratos</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carbs}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">de los cuales ${fibra}g fibra</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Proteínas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibra</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibra}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Densidad calórica</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">Alta</div>
+      <div style="font-size:0.78rem;color:var(--muted)">160 kcal/100g</div>
+    </div>`;
+}
+</script>

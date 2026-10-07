@@ -1,0 +1,297 @@
+---
+layout: calculadora.njk
+title: Calculadora de calorías del pan — pan blanco, integral y más
+description: Calcula las calorías del pan según el tipo y la cantidad. Pan blanco, integral, de molde, baguette, centeno y más. Incluye valor nutricional completo.
+keywords: calorías pan, cuántas calorías tiene el pan, calorías pan blanco, calorías pan integral, calorías pan de molde, valor nutricional pan, calorías rebanada de pan
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de calorías del pan
+icono: 🍞
+tituloCorto: calculadora de calorías del pan
+descripcion: Consulta las calorías del pan según el tipo y la cantidad que comas. Compara el pan blanco, integral, de molde, centeno y otras variedades.
+explicacion: ¿Cuántas calorías tiene el pan? No todos los tipos tienen el mismo aporte energético, y también influye la cantidad que te sirvas. Con esta calculadora puedes estimar las calorías por gramos, rebanadas o piezas enteras y consultar sus principales nutrientes.
+faq:
+  - q: ¿Cuántas calorías tiene una rebanada de pan?
+    a: Depende del tipo de pan y de su tamaño. Una rebanada de pan de molde blanco de unos 25 g tiene alrededor de 68 calorías, mientras que una integral de peso similar ronda las 60. Si la rebanada es más gruesa, el aporte será mayor.
+  - q: ¿Cuántas calorías tiene el pan blanco por 100 g?
+    a: El pan blanco de barra aporta aproximadamente 265 calorías por cada 100 g. En el pan de molde blanco la cifra ronda las 270 kcal. Son valores orientativos, ya que pueden variar según la receta y el fabricante.
+  - q: ¿El pan integral tiene menos calorías que el pan blanco?
+    a: No necesariamente. La diferencia suele ser pequeña, el pan integral de barra ronda las 247 kcal por 100 g, frente a unas 265 kcal del blanco. Una de sus principales ventajas es que suele contener más fibra.
+  - q: ¿Cuántas calorías tiene el pan de molde?
+    a: El pan de molde blanco tiene unas 270 kcal por cada 100 g. Una rebanada de 25 g aporta aproximadamente 68 calorías. En las variedades integrales o multicereales, la cantidad puede cambiar según los ingredientes.
+  - q: ¿Se puede comer pan si quiero perder peso?
+    a: Sí. No hace falta eliminar el pan para perder peso; lo importante es la cantidad total que comes y el conjunto de tu alimentación. También conviene tener en cuenta lo que añades, como aceite, mantequilla, queso o mermelada.
+  - q: ¿Cuántas calorías tiene una baguette?
+    a: Una baguette de unos 250 g puede aportar alrededor de 685 calorías en total. Si comes un trozo de 50 g, serían aproximadamente 137 kcal. El resultado cambia según el peso real y la receta del pan.
+
+relacionadas:
+  - slug: calorias-arroz
+    categoria: salud
+    titulo: Calorías del arroz
+    icono: 🍚
+  - slug: calorias-manzana
+    categoria: salud
+    titulo: Calorías de la manzana
+    icono: 🍎
+  - slug: calorias-alimentos
+    categoria: salud
+    titulo: Calorías de alimentos
+    icono: 🥗
+  - slug: calorias-platano
+    categoria: salud
+    titulo: Calorías del platano
+    icono: 🍌
+  - slug: calorias-huevo
+    categoria: salud
+    titulo: Calorías del huevo
+    icono: 🥚
+---
+
+<label>Tipo de pan</label>
+<select id="pan-tipo" onchange="calcPan()">
+  <optgroup label="Pan de barra y tradicional">
+    <option value="265,7.9,52.7,1.2,2.7,1.1">Pan blanco de barra (tradicional)</option>
+    <option value="247,8.5,48.3,2.1,5.6,1.0">Pan integral de barra</option>
+    <option value="274,9.0,54.0,1.5,2.3,1.2">Baguette francesa</option>
+    <option value="252,8.8,49.0,2.0,4.5,1.1">Pan de centeno</option>
+    <option value="258,8.2,51.0,1.8,3.2,1.0">Pan de pueblo / rústico</option>
+    <option value="231,9.5,44.5,2.8,7.0,1.0">Pan de semillas</option>
+  </optgroup>
+  <optgroup label="Pan de molde">
+    <option value="270,8.0,51.0,3.5,2.5,1.3">Pan de molde blanco</option>
+    <option value="241,9.0,44.0,3.0,5.0,1.1">Pan de molde integral</option>
+    <option value="255,8.5,48.0,3.2,3.5,1.2">Pan de molde multicereal</option>
+    <option value="245,7.5,47.0,2.8,4.0,1.1">Pan de molde con avena</option>
+  </optgroup>
+  <optgroup label="Pan especial">
+    <option value="290,8.5,56.0,3.8,2.0,1.5">Pan de pita</option>
+    <option value="305,9.5,56.5,5.0,2.8,1.4">Pan naan</option>
+    <option value="218,7.2,43.0,2.5,3.8,0.9">Pan de espelta</option>
+    <option value="198,8.0,38.5,2.2,5.2,0.8">Pan de masa madre integral</option>
+    <option value="210,7.8,40.0,1.5,3.5,1.0">Pan de masa madre blanco</option>
+    <option value="312,7.5,63.0,2.5,1.5,1.6">Pan de leche / brioche</option>
+    <option value="384,7.0,74.0,6.5,2.0,0.9">Pan tostado</option>
+    <option value="408,10.0,72.0,9.0,4.5,1.0">Tostada crujiente / Wasa</option>
+  </optgroup>
+  <optgroup label="Sin gluten">
+    <option value="245,3.5,52.0,2.8,2.0,1.2">Pan sin gluten (blanco)</option>
+    <option value="228,4.0,47.0,3.2,3.5,1.1">Pan sin gluten (integral)</option>
+  </optgroup>
+</select>
+
+<label>Modo de cálculo</label>
+<select id="pan-modo" onchange="toggleModoPan()">
+  <option value="gramos">Por gramos</option>
+  <option value="rebanadas">Por rebanadas</option>
+  <option value="unidad">Por unidad entera</option>
+</select>
+
+<div id="pan-wrap-gramos">
+  <label>Cantidad (gramos)</label>
+  <input type="number" id="pan-gramos" placeholder="50" oninput="calcPan()">
+</div>
+
+<div id="pan-wrap-rebanadas" style="display:none">
+  <div class="row-2">
+    <div>
+      <label>Número de rebanadas</label>
+      <input type="number" id="pan-rebanadas" placeholder="2" value="1" min="1" oninput="calcPan()">
+    </div>
+    <div>
+      <label>Grosor de la rebanada</label>
+      <select id="pan-grosor" onchange="calcPan()">
+        <option value="20">Fina (~20g)</option>
+        <option value="25" selected>Estándar (~25g)</option>
+        <option value="35">Gruesa (~35g)</option>
+        <option value="45">Muy gruesa (~45g)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="pan-wrap-unidad" style="display:none">
+  <label>Tamaño de la unidad</label>
+  <select id="pan-unidad" onchange="calcPan()">
+    <option value="30">Panecillo pequeño (~30g)</option>
+    <option value="60">Panecillo mediano (~60g)</option>
+    <option value="100">Bollo individual (~100g)</option>
+    <option value="250">Barra pequeña (~250g)</option>
+    <option value="400">Barra normal (~400g)</option>
+    <option value="600">Barra grande (~600g)</option>
+  </select>
+</div>
+
+<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+  <button onclick="setPanRapido(25,'rebanadas')"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">1 rebanada molde</button>
+  <button onclick="setPanRapido(50,'gramos')"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">50g</button>
+  <button onclick="setPanRapido(100,'gramos')" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">100g</button>
+  <button onclick="setPanRapido(200,'gramos')" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">200g</button>
+</div>
+
+<div class="result-box" id="pan-res">Selecciona el tipo de pan e introduce la cantidad</div>
+
+<div id="pan-nutri" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="pan-cards"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calorías del pan por tipo — tabla comparativa</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tipo de pan</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Kcal/100g</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">1 rebanada (25g)</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">100g</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan blanco de barra</td><td style="text-align:right">265</td><td style="text-align:right">66 kcal</td><td style="text-align:right">265 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan integral de barra</td><td style="text-align:right">247</td><td style="text-align:right">62 kcal</td><td style="text-align:right">247 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Baguette francesa</td><td style="text-align:right">274</td><td style="text-align:right">69 kcal</td><td style="text-align:right">274 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan de molde blanco</td><td style="text-align:right">270</td><td style="text-align:right">68 kcal</td><td style="text-align:right">270 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan de molde integral</td><td style="text-align:right">241</td><td style="text-align:right">60 kcal</td><td style="text-align:right">241 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan de centeno</td><td style="text-align:right">252</td><td style="text-align:right">63 kcal</td><td style="text-align:right">252 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan de masa madre integral</td><td style="text-align:right">198</td><td style="text-align:right">50 kcal</td><td style="text-align:right">198 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan de espelta</td><td style="text-align:right">218</td><td style="text-align:right">55 kcal</td><td style="text-align:right">218 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan de semillas</td><td style="text-align:right">231</td><td style="text-align:right">58 kcal</td><td style="text-align:right">231 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan de pita</td><td style="text-align:right">290</td><td style="text-align:right">73 kcal</td><td style="text-align:right">290 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan tostado</td><td style="text-align:right">384</td><td style="text-align:right">96 kcal</td><td style="text-align:right">384 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pan de leche / brioche</td><td style="text-align:right">312</td><td style="text-align:right">78 kcal</td><td style="text-align:right">312 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pan sin gluten</td><td style="text-align:right">245</td><td style="text-align:right">61 kcal</td><td style="text-align:right">245 kcal</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Valor nutricional del pan blanco vs integral por 100g</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutriente</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pan blanco</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pan integral</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pan masa madre</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Calorías</td><td style="text-align:right">265 kcal</td><td style="text-align:right">247 kcal</td><td style="text-align:right">198 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Carbohidratos</td><td style="text-align:right">52,7g</td><td style="text-align:right">48,3g</td><td style="text-align:right">38,5g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Proteínas</td><td style="text-align:right">7,9g</td><td style="text-align:right">8,5g</td><td style="text-align:right">8,0g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Grasas</td><td style="text-align:right">1,2g</td><td style="text-align:right">2,1g</td><td style="text-align:right">2,2g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Fibra</td><td style="text-align:right">2,7g</td><td style="text-align:right">5,6g</td><td style="text-align:right">5,2g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Índice glucémico</td><td style="text-align:right">~70 (alto)</td><td style="text-align:right">~55 (medio)</td><td style="text-align:right">~48 (bajo)</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Qué pan tiene menos calorías?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Entre las variedades de esta tabla, el pan de masa madre integral es el que menos calorías aporta por cada 100 g, con unas 198 kcal. Después aparecen el pan de espelta y el de semillas. En el otro extremo están el pan tostado y el brioche, aunque hay que tener en cuenta que el tostado pierde agua y concentra las calorías por peso.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Si comparas el pan blanco con el integral, la diferencia de calorías no es muy grande. El integral suele destacar por su contenido en fibra, que puede ayudar a sentirse saciado durante más tiempo. Para elegir entre uno y otro, también merece la pena mirar los ingredientes y la información nutricional del producto.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">¿Por qué el pan tostado tiene más calorías?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Al tostar el pan, parte del agua que contiene se evapora. Por eso, 100 g de pan tostado suelen tener más calorías que 100 g de pan fresco, aunque el tostado no genere calorías nuevas. Si partes de la misma rebanada y no añades aceite ni otros ingredientes, su aporte energético total apenas cambia.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">Calorías del pan con acompañamiento</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Combinación</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calorías aprox.</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">1 rebanada pan blanco sola (25g)</td><td style="text-align:right">66 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ 1 cucharadita de aceite de oliva (5g)</td><td style="text-align:right">+44 kcal → 110 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">+ 1 loncha de jamón serrano (20g)</td><td style="text-align:right">+48 kcal → 114 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ 1 cucharada de mantequilla (10g)</td><td style="text-align:right">+72 kcal → 138 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">+ 1 cucharada de mermelada (20g)</td><td style="text-align:right">+50 kcal → 116 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ ¼ aguacate (50g)</td><td style="text-align:right">+80 kcal → 146 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">+ 1 cucharada de Nutella (15g)</td><td style="text-align:right">+81 kcal → 147 kcal</td></tr>
+  </table>
+</div>
+
+<script>
+function toggleModoPan() {
+  const modo = document.getElementById('pan-modo').value;
+  document.getElementById('pan-wrap-gramos').style.display    = modo === 'gramos'    ? 'block' : 'none';
+  document.getElementById('pan-wrap-rebanadas').style.display = modo === 'rebanadas' ? 'block' : 'none';
+  document.getElementById('pan-wrap-unidad').style.display    = modo === 'unidad'    ? 'block' : 'none';
+  calcPan();
+}
+
+function setPanRapido(g, modo) {
+  document.getElementById('pan-modo').value = modo;
+  toggleModoPan();
+  if (modo === 'gramos') {
+    document.getElementById('pan-gramos').value = g;
+  } else if (modo === 'rebanadas') {
+    document.getElementById('pan-rebanadas').value = 1;
+    document.getElementById('pan-grosor').value = g;
+  }
+  calcPan();
+}
+
+function calcPan() {
+  const tipoVal = document.getElementById('pan-tipo').value.split(',');
+  const modo    = document.getElementById('pan-modo').value;
+  let g = 0;
+
+  if (modo === 'gramos') {
+    g = parseFloat(document.getElementById('pan-gramos').value);
+  } else if (modo === 'rebanadas') {
+    const num    = parseInt(document.getElementById('pan-rebanadas').value) || 1;
+    const grosor = parseFloat(document.getElementById('pan-grosor').value);
+    g = num * grosor;
+  } else {
+    g = parseFloat(document.getElementById('pan-unidad').value);
+  }
+
+  if (!g || g <= 0) return;
+
+  const kcal100 = parseFloat(tipoVal[0]);
+  const prot100 = parseFloat(tipoVal[1]);
+  const carb100 = parseFloat(tipoVal[2]);
+  const gras100 = parseFloat(tipoVal[3]);
+  const fibr100 = parseFloat(tipoVal[4]);
+  const sal100  = parseFloat(tipoVal[5]);
+
+  const kcal = Math.round(kcal100 * g / 100);
+  const prot = (prot100 * g / 100).toFixed(1);
+  const carb = (carb100 * g / 100).toFixed(1);
+  const gras = (gras100 * g / 100).toFixed(1);
+  const fibr = (fibr100 * g / 100).toFixed(1);
+  const sal  = (sal100  * g / 100).toFixed(1);
+
+  const tipoNombre = document.getElementById('pan-tipo').options[document.getElementById('pan-tipo').selectedIndex].text;
+
+  document.getElementById('pan-res').innerHTML =
+    `${kcal} kcal — ${g}g de ${tipoNombre}
+    <small>Carbohidratos: ${carb}g · Proteínas: ${prot}g · Grasas: ${gras}g · Fibra: ${fibr}g · Sal: ${sal}g</small>`;
+
+  document.getElementById('pan-nutri').style.display = 'block';
+  document.getElementById('pan-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohidratos</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carb}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Proteínas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Grasas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${gras}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibra</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibr}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Sal</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${sal}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>`;
+}
+
+calcPan();
+</script>
