@@ -1,0 +1,299 @@
+---
+layout: base.njk
+title: Peso y talla del bebé por meses — tabla de 0 a 24 meses
+description: Consulta cuánto pesa y mide un bebé según su edad, desde el nacimiento hasta los 2 años. Incluye tablas de peso, talla y perímetro cefálico para niños y niñas.
+keywords: peso bebe por meses, talla bebe por meses, peso normal bebe, cuanto pesa un bebe, cuanto mide un bebe, percentiles bebe, peso bebe 6 meses, peso bebe 1 año, talla bebe 1 año
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/embarazo/">Embarazo y bebé</a>
+      <span>›</span>
+      <span>Peso y talla del bebé por meses</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>👶 Peso y talla del bebé por meses</h1>
+        <p class="calc-intro">Comprueba cuánto pesa y mide de media un bebé desde el nacimiento hasta los 2 años. Selecciona su edad y consulta los valores orientativos según sea niño o niña.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Edad del bebé en meses</label>
+              <input type="number" id="db-edad" placeholder="6" min="0" max="24" oninput="calcDB()">
+            </div>
+            <div>
+              <label>Sexo del bebé</label>
+              <select id="db-sexo" onchange="calcDB()">
+                <option value="n">Niño</option>
+                <option value="a">Niña</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Peso actual del bebé (kg, opcional)</label>
+          <input type="number" id="db-peso-actual" placeholder="7.5" oninput="calcDB()">
+
+          <label>Talla actual del bebé (cm, opcional)</label>
+          <input type="number" id="db-talla-actual" placeholder="67" oninput="calcDB()">
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+            <button onclick="setDBEdad(0)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">Nacimiento</button>
+            <button onclick="setDBEdad(3)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">3 meses</button>
+            <button onclick="setDBEdad(6)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">6 meses</button>
+            <button onclick="setDBEdad(12)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">1 año</button>
+            <button onclick="setDBEdad(18)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">18 meses</button>
+            <button onclick="setDBEdad(24)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">2 años</button>
+          </div>
+
+          <div class="result-box" id="db-res">Introduce la edad del bebé</div>
+        </div>
+
+        <div id="db-cards-wrap" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="db-cards"></div>
+        </div>
+
+        <div id="db-comparativa" style="display:none;margin-top:1rem">
+          <div class="card" id="db-comp-card"></div>
+        </div>
+
+        <div id="db-hitos-wrap" style="display:none;margin-top:1rem">
+          <div class="card">
+            <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">Desarrollo del bebé a esta edad</h2>
+            <div id="db-hitos" style="font-size:0.875rem;color:var(--muted);line-height:1.8"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Peso, talla y perímetro cefálico de niños</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Edad</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Peso medio</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Talla media</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Perímetro cefálico</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">Nacimiento</td><td style="text-align:right">3,3 kg</td><td style="text-align:right">49,9 cm</td><td style="text-align:right">34,5 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">1 mes</td><td style="text-align:right">4,5 kg</td><td style="text-align:right">54,7 cm</td><td style="text-align:right">37,3 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">2 meses</td><td style="text-align:right">5,6 kg</td><td style="text-align:right">58,4 cm</td><td style="text-align:right">39,1 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">3 meses</td><td style="text-align:right">6,4 kg</td><td style="text-align:right">61,4 cm</td><td style="text-align:right">40,5 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">6 meses</td><td style="text-align:right">7,9 kg</td><td style="text-align:right">67,6 cm</td><td style="text-align:right">43,3 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">9 meses</td><td style="text-align:right">9,0 kg</td><td style="text-align:right">72,3 cm</td><td style="text-align:right">45,0 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">12 meses</td><td style="text-align:right">9,9 kg</td><td style="text-align:right">75,7 cm</td><td style="text-align:right">46,1 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">18 meses</td><td style="text-align:right">11,1 kg</td><td style="text-align:right">82,3 cm</td><td style="text-align:right">47,6 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">24 meses</td><td style="text-align:right">12,2 kg</td><td style="text-align:right">87,8 cm</td><td style="text-align:right">48,3 cm</td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Peso, talla y perímetro cefálico de niñas</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Edad</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Peso medio</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Talla media</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Perímetro cefálico</th>
+            </tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">Nacimiento</td><td style="text-align:right">3,2 kg</td><td style="text-align:right">49,1 cm</td><td style="text-align:right">33,9 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">1 mes</td><td style="text-align:right">4,2 kg</td><td style="text-align:right">53,7 cm</td><td style="text-align:right">36,6 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">2 meses</td><td style="text-align:right">5,1 kg</td><td style="text-align:right">57,1 cm</td><td style="text-align:right">38,3 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">3 meses</td><td style="text-align:right">5,8 kg</td><td style="text-align:right">59,8 cm</td><td style="text-align:right">39,5 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">6 meses</td><td style="text-align:right">7,3 kg</td><td style="text-align:right">65,7 cm</td><td style="text-align:right">42,2 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">9 meses</td><td style="text-align:right">8,2 kg</td><td style="text-align:right">70,1 cm</td><td style="text-align:right">43,8 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">12 meses</td><td style="text-align:right">9,2 kg</td><td style="text-align:right">74,0 cm</td><td style="text-align:right">44,9 cm</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.4rem 0.75rem;text-align:center">18 meses</td><td style="text-align:right">10,2 kg</td><td style="text-align:right">80,7 cm</td><td style="text-align:right">46,2 cm</td></tr>
+            <tr><td style="padding:0.4rem 0.75rem;text-align:center">24 meses</td><td style="text-align:right">11,5 kg</td><td style="text-align:right">86,4 cm</td><td style="text-align:right">47,3 cm</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Valores medios de referencia basados en las tablas de crecimiento indicadas. El crecimiento de cada bebé puede variar; consulta con el pediatra si tienes dudas.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Qué significa el percentil de crecimiento?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El percentil permite comparar el peso o la talla de un bebé con los de otros bebés de la misma edad y sexo. Por ejemplo, si está en el percentil 25 de peso, aproximadamente un 25 % de los bebés de referencia pesa menos y un 75 % pesa más.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Más que fijarse en un dato aislado, conviene observar cómo evoluciona el crecimiento con el paso del tiempo. Un bebé puede estar por debajo o por encima de la media y crecer adecuadamente; el pediatra valorará su evolución y el conjunto de las medidas.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Si el peso o la talla cambian de forma llamativa en poco tiempo, coméntalo con el pediatra. Estar por debajo de la media no indica por sí solo que exista un problema: es importante interpretar las medidas según cada bebé.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Cuál es el peso normal de un bebé?</h2>
+          <p>No hay un único peso que sea el adecuado para todos los bebés de una misma edad. Las cifras de esta página son referencias orientativas; el pediatra tendrá en cuenta el peso, la talla y cómo ha ido creciendo tu bebé.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cuánto suele engordar un bebé cada mes?</summary>
+            <p>Durante los primeros meses, el bebé suele ganar peso con rapidez, pero el ritmo cambia a medida que crece. La ganancia no es igual todas las semanas ni en todos los bebés, por lo que conviene valorar la evolución con el pediatra.</p>
+          </details>
+          <details>
+            <summary>¿Es normal que un recién nacido pierda peso?</summary>
+            <p>Muchos recién nacidos pierden algo de peso durante los primeros días, en parte por la pérdida de líquidos. Después suelen empezar a recuperarlo. El equipo sanitario controlará esa evolución y te indicará si hace falta hacer un seguimiento.</p>
+          </details>
+          <details>
+            <summary>¿A qué edad duplica o triplica el bebé su peso al nacer?</summary>
+            <p>Como orientación general, muchos bebés duplican el peso del nacimiento durante los primeros meses y lo triplican cerca del primer cumpleaños. El momento exacto varía de un bebé a otro, así que estas cifras no deben tomarse como una fecha límite.</p>
+          </details>
+          <details>
+            <summary>¿Hay diferencias de peso y talla entre niños y niñas?</summary>
+            <p>Las medias de peso y talla pueden ser algo diferentes entre niños y niñas. Por eso las tablas de crecimiento suelen presentarse por separado según el sexo. Aun así, cada bebé tiene su propio ritmo y la media no es un objetivo que tenga que alcanzar.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/embarazo/semanas-embarazo/">🗓️ Semanas de embarazo</a></li>
+            <li><a href="/calculadoras/embarazo/peso-bebe/">⚖️ Peso fetal por semanas</a></li>
+            <li><a href="/calculadoras/embarazo/leche-materna/">🍼 Leche materna</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const DB_NINOS = {
+  0:  { peso: 3.3,  talla: 49.9, pc: 34.5 },
+  1:  { peso: 4.5,  talla: 54.7, pc: 37.3 },
+  2:  { peso: 5.6,  talla: 58.4, pc: 39.1 },
+  3:  { peso: 6.4,  talla: 61.4, pc: 40.5 },
+  4:  { peso: 7.0,  talla: 63.9, pc: 41.6 },
+  5:  { peso: 7.5,  talla: 65.9, pc: 42.6 },
+  6:  { peso: 7.9,  talla: 67.6, pc: 43.3 },
+  7:  { peso: 8.3,  talla: 69.2, pc: 44.0 },
+  8:  { peso: 8.6,  talla: 70.6, pc: 44.5 },
+  9:  { peso: 9.0,  talla: 72.3, pc: 45.0 },
+  10: { peso: 9.2,  talla: 73.3, pc: 45.4 },
+  11: { peso: 9.6,  talla: 74.5, pc: 45.8 },
+  12: { peso: 9.9,  talla: 75.7, pc: 46.1 },
+  15: { peso: 10.5, talla: 79.1, pc: 46.9 },
+  18: { peso: 11.1, talla: 82.3, pc: 47.6 },
+  21: { peso: 11.6, talla: 85.1, pc: 48.0 },
+  24: { peso: 12.2, talla: 87.8, pc: 48.3 }
+};
+
+const DB_NINAS = {
+  0:  { peso: 3.2,  talla: 49.1, pc: 33.9 },
+  1:  { peso: 4.2,  talla: 53.7, pc: 36.6 },
+  2:  { peso: 5.1,  talla: 57.1, pc: 38.3 },
+  3:  { peso: 5.8,  talla: 59.8, pc: 39.5 },
+  4:  { peso: 6.4,  talla: 62.1, pc: 40.6 },
+  5:  { peso: 6.9,  talla: 64.0, pc: 41.5 },
+  6:  { peso: 7.3,  talla: 65.7, pc: 42.2 },
+  7:  { peso: 7.6,  talla: 67.3, pc: 42.8 },
+  8:  { peso: 7.9,  talla: 68.7, pc: 43.4 },
+  9:  { peso: 8.2,  talla: 70.1, pc: 43.8 },
+  10: { peso: 8.5,  talla: 71.5, pc: 44.2 },
+  11: { peso: 8.7,  talla: 72.8, pc: 44.6 },
+  12: { peso: 9.2,  talla: 74.0, pc: 44.9 },
+  15: { peso: 9.6,  talla: 77.5, pc: 45.7 },
+  18: { peso: 10.2, talla: 80.7, pc: 46.2 },
+  21: { peso: 10.9, talla: 83.7, pc: 46.8 },
+  24: { peso: 11.5, talla: 86.4, pc: 47.3 }
+};
+
+const DB_HITOS = {
+  0:  'El recién nacido puede seguir objetos con los ojos a corta distancia. Reconoce la voz de su madre. Solo controla el llanto como forma de comunicación.',
+  1:  'Empieza a sonreír de forma social. Sigue objetos con los ojos. Comienza a levantar la cabeza cuando está boca abajo.',
+  2:  'Sonríe espontáneamente. Emite sonidos vocálicos. Levanta la cabeza 45° cuando está boca abajo.',
+  3:  'Ríe en voz alta. Sujeta la cabeza con más firmeza. Empieza a reconocer caras familiares.',
+  4:  'Se da la vuelta de barriga a espalda. Coge objetos con las manos. Balbucea y hace gorgoritos.',
+  5:  'Se da la vuelta en ambos sentidos. Empieza a sentarse con apoyo. Reconoce su nombre.',
+  6:  'Se sienta con apoyo y a veces sin él. Transfiere objetos de una mano a otra. Puede empezar la alimentación complementaria.',
+  7:  'Intenta gatear. Se siente solo de forma más estable. Imita sonidos.',
+  8:  'Gatea o se desplaza. Se pone de pie con apoyo. Dice "mamá" o "papá" sin significado.',
+  9:  'Se pone de pie con apoyo. Hace la pinza con los dedos. Entiende el "no".',
+  10: 'Da pasos con apoyo. Dice una o dos palabras con significado. Señala objetos.',
+  11: 'Algunos bebés dan los primeros pasos solos. Entiende órdenes simples.',
+  12: 'La mayoría camina solo o está a punto. Dice 1-3 palabras con significado. Imita acciones.',
+  15: 'Camina bien solo. Dice 5-10 palabras. Señala partes del cuerpo.',
+  18: 'Corre aunque se cae. Dice 10-20 palabras. Hace torres de 2-3 cubos.',
+  21: 'Sube escaleras con apoyo. Combina dos palabras. Reconoce colores básicos.',
+  24: 'Sube y baja escaleras solo. Dice frases de 2-3 palabras. Puede quitarse la ropa solo.'
+};
+
+function getDBData(edad, sexo) {
+  const tabla = sexo === 'n' ? DB_NINOS : DB_NINAS;
+  const keys  = Object.keys(tabla).map(Number).sort((a,b)=>a-b);
+  let resultado = tabla[0];
+  for (const k of keys) {
+    if (edad >= k) resultado = tabla[k];
+  }
+  return resultado;
+}
+
+function getHitos(edad) {
+  const keys = Object.keys(DB_HITOS).map(Number).sort((a,b)=>a-b);
+  let hito = DB_HITOS[0];
+  for (const k of keys) {
+    if (edad >= k) hito = DB_HITOS[k];
+  }
+  return hito;
+}
+
+function setDBEdad(m) {
+  document.getElementById('db-edad').value = m;
+  calcDB();
+}
+
+function calcDB() {
+  const edad  = parseInt(document.getElementById('db-edad').value);
+  const sexo  = document.getElementById('db-sexo').value;
+  const pesoActual  = parseFloat(document.getElementById('db-peso-actual').value);
+  const tallaActual = parseFloat(document.getElementById('db-talla-actual').value);
+
+  if (isNaN(edad) || edad < 0 || edad > 24) return;
+
+  const d = getDBData(edad, sexo);
+  const sexoLabel = sexo === 'n' ? 'niño' : 'niña';
+  const edadLabel = edad === 0 ? 'al nacer' : edad === 1 ? '1 mes' : `${edad} meses`;
+
+  document.getElementById('db-res').innerHTML =
+    `${sexoLabel === 'niño' ? 'Niño' : 'Niña'} de ${edadLabel} — Peso medio: ${d.peso} kg · Talla media: ${d.talla} cm
+    <small>Percentil 50 OMS · Rango normal: ${(d.peso*0.82).toFixed(1)}–${(d.peso*1.18).toFixed(1)} kg · ${(d.talla-5).toFixed(1)}–${(d.talla+5).toFixed(1)} cm</small>`;
+
+  document.getElementById('db-cards-wrap').style.display = 'block';
+  document.getElementById('db-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Peso medio</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${d.peso} kg</div>
+      <div style="font-size:0.78rem;color:var(--accent)">${(d.peso*1000).toFixed(0)}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Talla media</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${d.talla} cm</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Perímetro cefálico</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${d.pc} cm</div>
+    </div>`;
+
+  if (!isNaN(pesoActual) || !isNaN(tallaActual)) {
+    let compHTML = '<h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">Comparativa con la media</h2>';
+    if (!isNaN(pesoActual)) {
+      const diffPeso = ((pesoActual - d.peso) / d.peso * 100).toFixed(1);
+      const colorPeso = Math.abs(diffPeso) <= 18 ? '#22C55E' : '#EF4444';
+      compHTML += `<p style="font-size:0.875rem;margin-bottom:0.5rem">Peso: <strong style="color:${colorPeso}">${pesoActual} kg</strong> — ${diffPeso > 0 ? '+' : ''}${diffPeso}% respecto a la media (${d.peso} kg)</p>`;
+    }
+    if (!isNaN(tallaActual)) {
+      const diffTalla = (tallaActual - d.talla).toFixed(1);
+      const colorTalla = Math.abs(diffTalla) <= 5 ? '#22C55E' : '#EAB308';
+      compHTML += `<p style="font-size:0.875rem;margin-bottom:0.5rem">Talla: <strong style="color:${colorTalla}">${tallaActual} cm</strong> — ${diffTalla > 0 ? '+' : ''}${diffTalla} cm respecto a la media (${d.talla} cm)</p>`;
+    }
+    compHTML += '<p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem">⚠️ Esta comparativa es orientativa. Consulta siempre a tu pediatra para interpretar el crecimiento de tu bebé.</p>';
+    document.getElementById('db-comparativa').style.display = 'block';
+    document.getElementById('db-comp-card').innerHTML = compHTML;
+  } else {
+    document.getElementById('db-comparativa').style.display = 'none';
+  }
+
+  document.getElementById('db-hitos-wrap').style.display = 'block';
+  document.getElementById('db-hitos').textContent = getHitos(edad);
+}
+</script>

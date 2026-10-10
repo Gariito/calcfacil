@@ -1,0 +1,167 @@
+---
+layout: base.njk
+title: Calculadora de leche para bebés — cantidad y tomas
+description: Calcula de forma orientativa cuánta leche puede necesitar un bebé según su peso y edad. Consulta ml por toma, tomas al día y cantidades aproximadas.
+keywords: calculadora leche materna, cuanta leche necesita mi bebe, cantidad leche bebe, ml leche bebe, leche materna cantidad, calculadora lactancia, cantidad leche por toma
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/embarazo/">Embarazo y bebé</a>
+      <span>›</span>
+      <span>Leche materna</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🍼 Calculadora de leche para bebés</h1>
+          <p class="calc-intro">Calcula de forma orientativa la cantidad de leche que puede tomar tu bebé al día y en cada toma según su peso y edad.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Peso del bebé (kg)</label>
+              <input type="number" id="lm-peso" placeholder="3.5" oninput="calcLM()">
+            </div>
+            <div>
+              <label>Edad del bebé</label>
+              <select id="lm-edad" onchange="calcLM()">
+                <option value="0">Recién nacido (0-2 semanas)</option>
+                <option value="1">1 mes</option>
+                <option value="2">2 meses</option>
+                <option value="3">3 meses</option>
+                <option value="4">4-5 meses</option>
+                <option value="6">6 meses</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Tipo de alimentación</label>
+          <select id="lm-tipo" onchange="calcLM()">
+            <option value="materna">Lactancia materna exclusiva</option>
+            <option value="artificial">Leche de fórmula / artificial</option>
+            <option value="mixta">Lactancia mixta</option>
+          </select>
+
+          <div class="result-box" id="lm-res">Introduce el peso y la edad del bebé</div>
+        </div>
+
+        <div id="lm-cards" style="display:none;margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem"></div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Cantidad de leche y tomas según la edad</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Edad</th>
+              <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Tomas/día</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">ml por toma (aprox.)</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Total/día</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">0-2 semanas</td><td style="text-align:center">8-12</td><td style="text-align:right">30-60 ml</td><td style="text-align:right">~300-500 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">1 mes</td><td style="text-align:center">7-8</td><td style="text-align:right">80-120 ml</td><td style="text-align:right">~500-700 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">2 meses</td><td style="text-align:center">6-7</td><td style="text-align:right">100-150 ml</td><td style="text-align:right">~600-800 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">3 meses</td><td style="text-align:center">5-6</td><td style="text-align:right">140-180 ml</td><td style="text-align:right">~700-850 ml</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">4-5 meses</td><td style="text-align:center">5-6</td><td style="text-align:right">150-200 ml</td><td style="text-align:right">~750-900 ml</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">6 meses</td><td style="text-align:center">4-5</td><td style="text-align:right">180-220 ml</td><td style="text-align:right">~800-1.000 ml</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* La demanda libre es la mejor guía para la lactancia materna. Estas cifras son orientativas y pueden variar según el bebé.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cómo saber si mi bebé toma suficiente leche?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Cuando un bebé toma pecho directamente, no es posible saber con precisión cuántos mililitros ha ingerido en cada toma. Por eso, además de la frecuencia con la que pide comer, hay que fijarse en señales como los pañales mojados, la evolución del peso y su estado general.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">En el caso de la leche de fórmula, sí es más sencillo controlar los mililitros que toma en cada biberón. Como referencia, la cantidad diaria suele calcularse teniendo en cuenta el peso del bebé, aunque las necesidades pueden variar y las indicaciones del pediatra tienen prioridad.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿A demanda o con horarios?</h2>
+          <p>En la lactancia materna, ofrecer el pecho a demanda permite que el bebé regule cuándo y cuánto necesita comer. Por eso, las cantidades calculadas y las tablas de esta página deben tomarse como una orientación y no como una pauta rígida.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+  <summary>¿Cuánta leche necesita un bebé al día?</summary>
+  <p>La cantidad depende de la edad, el peso y la forma de alimentación. En bebés que toman leche de fórmula se pueden utilizar referencias aproximadas en ml al día, mientras que en la lactancia materna directa no suele ser necesario medir una cantidad concreta en cada toma.</p>
+</details>
+
+<details>
+  <summary>¿Cuántos ml de leche toma un bebé por toma?</summary>
+  <p>La cantidad por toma cambia a medida que el bebé crece y también depende de cuántas veces coma durante el día. En la tabla puedes consultar valores orientativos según la edad y utilizar la calculadora para obtener una estimación a partir del peso.</p>
+</details>
+
+<details>
+  <summary>¿Cuántas tomas hace un recién nacido al día?</summary>
+  <p>Durante las primeras semanas es habitual que un recién nacido haga varias tomas repartidas a lo largo del día. La frecuencia puede variar bastante de un bebé a otro y, especialmente con lactancia materna, es normal que pida comer con frecuencia.</p>
+</details>
+
+<details>
+  <summary>¿Se puede calcular cuánta leche materna toma el bebé?</summary>
+  <p>Si el bebé mama directamente del pecho, no se puede saber con exactitud cuántos mililitros ha tomado en cada toma. En estos casos es más útil observar su evolución, los pañales y otras señales de que está recibiendo suficiente alimento.</p>
+</details>
+
+<details>
+  <summary>¿Cómo calcular la cantidad de leche de fórmula?</summary>
+  <p>Para la leche de fórmula se puede hacer una estimación teniendo en cuenta el peso del bebé y repartir la cantidad diaria entre las tomas. Las necesidades no son iguales para todos los bebés, por lo que las instrucciones del producto y las recomendaciones del pediatra deben tenerse en cuenta.</p>
+</details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/embarazo/semanas-embarazo/">🗓️ Semanas de embarazo</a></li>
+            <li><a href="/calculadoras/embarazo/peso-bebe/">⚖️ Peso del bebé</a></li>
+            <li><a href="/calculadoras/embarazo/desarrollo-bebe/">👶 Desarrollo del bebé</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const LM_CONFIG = {
+  0: { tomas: 10, factor: 0.12, minMl: 30,  maxMl: 60  },
+  1: { tomas: 7,  factor: 0.15, minMl: 80,  maxMl: 120 },
+  2: { tomas: 6,  factor: 0.16, minMl: 100, maxMl: 150 },
+  3: { tomas: 6,  factor: 0.16, minMl: 140, maxMl: 180 },
+  4: { tomas: 5,  factor: 0.17, minMl: 150, maxMl: 200 },
+  6: { tomas: 5,  factor: 0.18, minMl: 180, maxMl: 220 }
+};
+
+function calcLM() {
+  const peso  = parseFloat(document.getElementById('lm-peso').value);
+  const edad  = parseInt(document.getElementById('lm-edad').value);
+  const tipo  = document.getElementById('lm-tipo').value;
+  if (!peso || peso <= 0) return;
+
+  const cfg    = LM_CONFIG[edad];
+  const totalDia = Math.round(peso * 1000 * cfg.factor);
+  const porToma  = Math.round(totalDia / cfg.tomas);
+  const tipoLabel = tipo === 'materna' ? 'lactancia materna' : tipo === 'artificial' ? 'leche de fórmula' : 'lactancia mixta';
+
+  document.getElementById('lm-res').innerHTML =
+    `${totalDia} ml al día — ${cfg.tomas} tomas de ~${porToma} ml
+    <small>${tipoLabel} · ${peso}kg · ${porToma}ml por toma cada ${Math.round(24/cfg.tomas)} horas aprox.</small>`;
+
+  const el = document.getElementById('lm-cards');
+  el.style.display = 'grid';
+  el.innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Total al día</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${totalDia} ml</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Por toma</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">~${porToma} ml</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Tomas/día</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${cfg.tomas}</div>
+    </div>`;
+}
+</script>

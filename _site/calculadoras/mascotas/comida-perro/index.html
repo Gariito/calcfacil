@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de comida para perros | Cuánto pienso darle al día — CalcFácil</title>
+  <meta name="description" content="Calcula la cantidad diaria de comida para tu perro según su peso, edad, actividad y condición corporal. Estima las calorías y los gramos de pienso, comida húmeda o dieta mixta.">
+  <meta name="keywords" content="cuanto come mi perro, calculadora comida perro, cantidad comida perro, cuanto pienso dar a mi perro, racion diaria perro, gramos de pienso por peso, comida para perros al dia">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/mascotas/comida-perro/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de comida para perros | Cuánto pienso darle al día — CalcFácil">
+  <meta property="og:description" content="Calcula la cantidad diaria de comida para tu perro según su peso, edad, actividad y condición corporal. Estima las calorías y los gramos de pienso, comida húmeda o dieta mixta.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/mascotas/comida-perro/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de comida para perros | Cuánto pienso darle al día",
+    "description": "Calcula la cantidad diaria de comida para tu perro según su peso, edad, actividad y condición corporal. Estima las calorías y los gramos de pienso, comida húmeda o dieta mixta.",
+    "url": "https://calculadorasgratis.net/calculadoras/mascotas/comida-perro/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Comida para perros</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🐕 Calculadora de comida para perros</h1>
+        <p class="calc-intro">Calcula una cantidad orientativa de comida para tu perro según su peso, edad, actividad y condición corporal. Obtén una estimación de las calorías y los gramos diarios de pienso o comida húmeda.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Peso del perro (kg)</label>
+              <input type="number" id="cp-peso" placeholder="15" oninput="calcCP()">
+            </div>
+            <div>
+              <label>Edad del perro</label>
+              <select id="cp-edad" onchange="calcCP()">
+                <option value="cachorro">Cachorro (menos de 1 año)</option>
+                <option value="adulto" selected>Adulto (1-7 años)</option>
+                <option value="senior">Senior (más de 7 años)</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Nivel de actividad</label>
+          <select id="cp-actividad" onchange="calcCP()">
+            <option value="bajo">Bajo — poco ejercicio, perro tranquilo</option>
+            <option value="normal" selected>Normal — paseos diarios habituales</option>
+            <option value="alto">Alto — muy activo, ejercicio frecuente</option>
+            <option value="trabajo">Trabajo — actividad física intensa</option>
+          </select>
+
+          <label>Tipo de alimentación</label>
+          <select id="cp-tipo" onchange="calcCP()">
+            <option value="seco">Pienso seco (croquetas)</option>
+            <option value="humedo">Comida húmeda (latas o sobres)</option>
+            <option value="mixta">Dieta mixta (pienso + comida húmeda)</option>
+            <option value="barf">Dieta BARF / natural</option>
+          </select>
+
+          <label>Condición corporal</label>
+          <select id="cp-condicion" onchange="calcCP()">
+            <option value="1.1">Delgado — se le notan las costillas fácilmente</option>
+            <option value="1.0" selected>Normal — condición corporal ideal</option>
+            <option value="0.9">Sobrepeso — tiene grasa corporal extra</option>
+            <option value="0.8">Obeso — necesita valorar un plan de pérdida de peso</option>
+          </select>
+
+          <div class="result-box" id="cp-res">Introduce el peso de tu perro</div>
+        </div>
+
+        <div id="cp-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="cp-cards"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánto pienso debe comer un perro al día según su peso?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Esta tabla ofrece una referencia para perros adultos con actividad normal. Los valores se calculan con una estimación energética de 350 kcal por cada 100 g de pienso y un factor orientativo de 1,6 sobre las necesidades energéticas en reposo. La ración real puede variar según el alimento y las características de cada perro.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Peso del perro</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pienso al día (aprox.)</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Comidas</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">2 kg (raza toy)</td><td style="text-align:right">~54 g</td><td style="text-align:right">2-3 veces/día</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">5 kg</td><td style="text-align:right">~107 g</td><td style="text-align:right">2 veces/día</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">10 kg</td><td style="text-align:right">~180 g</td><td style="text-align:right">2 veces/día</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">15 kg</td><td style="text-align:right">~244 g</td><td style="text-align:right">2 veces/día</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">25 kg</td><td style="text-align:right">~357 g</td><td style="text-align:right">2 veces/día</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">35 kg</td><td style="text-align:right">~461 g</td><td style="text-align:right">2 veces/día</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">50 kg</td><td style="text-align:right">~602 g</td><td style="text-align:right">2 veces/día</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Son estimaciones matemáticas, no una ración recomendada para todos los perros de ese peso. Comprueba las kcal por 100 g y la tabla de alimentación del envase de tu pienso. Si tu perro necesita adelgazar o tiene una enfermedad, consulta con el veterinario antes de cambiar su ración.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuántas veces al día hay que dar de comer al perro?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La frecuencia de las comidas depende de la edad, el tamaño y las necesidades del perro. Los cachorros suelen necesitar varias tomas repartidas durante el día, mientras que muchos perros adultos se adaptan bien a dos comidas diarias. Lo importante es repartir la ración total y evitar ofrecer más comida de la que necesita.</p>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>Cachorros de 2-3 meses:</strong> normalmente 4 comidas al día</li>
+            <li><strong>Cachorros de 3-6 meses:</strong> unas 3 comidas al día</li>
+            <li><strong>Cachorros de 6-12 meses:</strong> 2-3 comidas al día, según su desarrollo</li>
+            <li><strong>Adultos:</strong> habitualmente 2 comidas al día</li>
+            <li><strong>Senior:</strong> 2 comidas o más si les resulta conveniente por sus necesidades</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Cómo saber qué cantidad de comida necesita mi perro?</h2>
+          <p>La ración depende de su peso, edad, actividad física, condición corporal y de la energía que aporta su alimento. Las indicaciones del envase son un buen punto de partida, pero conviene comprobar si el perro mantiene un peso saludable y ajustar la cantidad con orientación veterinaria cuando sea necesario.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cómo sé si mi perro está comiendo suficiente?</summary>
+            <p>Observa su peso y condición corporal. En un perro con una condición adecuada, las costillas suelen poder palparse sin una capa excesiva de grasa y la cintura se aprecia al mirarlo desde arriba. Si pierde o gana peso sin querer, consulta con tu veterinario antes de hacer cambios importantes en la ración.</p>
+          </details>
+          <details>
+            <summary>¿Se puede mezclar pienso seco con comida húmeda?</summary>
+            <p>Sí, siempre que ambos alimentos sean adecuados para tu perro. Para calcular la ración mixta, hay que tener en cuenta las calorías de cada producto y sustituir parte de la ración de uno por el otro, en lugar de añadir la comida húmeda sin ajustar el pienso. Las proporciones dependen de la energía que aporte cada alimento.</p>
+          </details>
+          <details>
+            <summary>¿Los perros esterilizados necesitan menos comida?</summary>
+            <p>Después de la esterilización, algunos perros necesitan menos calorías y pueden ganar peso si mantienen la misma ración. No existe una reducción única válida para todos: ajusta la cantidad según su evolución y consulta con el veterinario si empieza a engordar.</p>
+          </details>
+          <details>
+            <summary>¿Qué alimentos no puede comer un perro?</summary>
+            <p>Evita alimentos peligrosos como el chocolate, las uvas y las pasas, la cebolla, el ajo, los productos con xilitol, el alcohol y la cafeína. Si sospechas que tu perro ha ingerido una sustancia tóxica, contacta cuanto antes con un veterinario.</p>
+          </details>
+          <details>
+            <summary>¿La calculadora sirve para perros que necesitan adelgazar?</summary>
+            <p>Solo ofrece una estimación general y no sustituye un plan de pérdida de peso. En perros con sobrepeso u obesidad, la cantidad debe calcularse teniendo en cuenta su condición corporal, su peso objetivo y su estado de salud. Es recomendable acordar la ración con un veterinario.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto pienso debo dar a un perro de 10 kg?</summary>
+            <p>Depende de la energía del pienso y de las necesidades del perro. Como referencia matemática, un perro adulto de 10 kg con actividad normal podría necesitar alrededor de 180 g diarios si el alimento aporta 350 kcal por cada 100 g. Comprueba siempre las indicaciones del envase y ajusta la ración según su condición corporal.</p>
+          </details>
+          <details>
+            <summary>¿Es recomendable la dieta BARF para perros?</summary>
+            <p>Una dieta cruda o natural debe estar formulada para cubrir todas las necesidades nutricionales del perro. No basta con calcular los gramos diarios: una dieta desequilibrada puede provocar carencias o excesos nutricionales y los alimentos crudos pueden presentar riesgos microbiológicos. Consulta con un veterinario especializado en nutrición antes de elegirla.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/mascotas/peso-ideal-perro/">⚖️ Peso ideal del perro</a></li>
+            <li><a href="/calculadoras/mascotas/edad-perro/">🦴 Edad en años humanos</a></li>
+            <li><a href="/calculadoras/mascotas/coste-mascota/">💰 Coste mensual mascota</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcCP() {
+  const peso      = parseFloat(document.getElementById('cp-peso').value);
+  const edad      = document.getElementById('cp-edad').value;
+  const actividad = document.getElementById('cp-actividad').value;
+  const tipo      = document.getElementById('cp-tipo').value;
+  const condicion = parseFloat(document.getElementById('cp-condicion').value);
+  if (!peso || peso <= 0) return;
+
+  // RER (Resting Energy Requirement)
+  const rer = 70 * Math.pow(peso, 0.75);
+
+  // Factores orientativos según edad y actividad.
+  // Las necesidades reales pueden variar entre perros.
+  const factores = {
+    cachorro: { bajo: 2.5, normal: 3.0, alto: 3.5, trabajo: 4.0 },
+    adulto:   { bajo: 1.4, normal: 1.6, alto: 2.0, trabajo: 2.5 },
+    senior:   { bajo: 1.2, normal: 1.4, alto: 1.6, trabajo: 1.8 }
+  };
+
+  const factor = factores[edad][actividad] * condicion;
+  const kcalDia = Math.round(rer * factor);
+
+  // Conversión aproximada a gramos según la energía media del alimento.
+  // Comprueba las kcal reales indicadas en el envase.
+  let gDia, tipoLabel, raciones;
+  if (tipo === 'seco') {
+    gDia = Math.round(kcalDia / 3.5); // ~350 kcal/100 g
+    tipoLabel = 'de pienso seco';
+    raciones = edad === 'cachorro' ? '3-4 raciones' : '2 raciones';
+  } else if (tipo === 'humedo') {
+    gDia = Math.round(kcalDia / 0.9); // ~90 kcal/100 g
+    tipoLabel = 'de comida húmeda';
+    raciones = '2-3 raciones';
+  } else if (tipo === 'mixta') {
+    const gSeco  = Math.round((kcalDia * 0.6) / 3.5);
+    const gHumedo = Math.round((kcalDia * 0.4) / 0.9);
+    tipoLabel = 'mixta';
+    raciones = '2 raciones';
+    document.getElementById('cp-res').innerHTML =
+      `${gSeco} g de pienso + ${gHumedo} g de comida húmeda al día
+      <small>${kcalDia} kcal/día · 60% de las calorías del pienso + 40% de la comida húmeda · ${raciones}</small>`;
+    mostrarCardsCP(kcalDia, gSeco, raciones, peso);
+    return;
+  } else {
+    gDia = Math.round(kcalDia / 1.5); // ~150 kcal/100 g, solo como referencia
+    tipoLabel = 'de dieta BARF / natural';
+    raciones = '2 raciones';
+  }
+
+  document.getElementById('cp-res').innerHTML =
+    `${gDia} g ${tipoLabel} al día
+    <small>${kcalDia} kcal/día · ${raciones} · Factor aplicado: ${factor.toFixed(2)}</small>`;
+
+  mostrarCardsCP(kcalDia, gDia, raciones, peso);
+}
+
+function mostrarCardsCP(kcal, gramos, raciones, peso) {
+  document.getElementById('cp-desglose').style.display = 'block';
+  document.getElementById('cp-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías diarias estimadas</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${kcal} kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Cantidad diaria estimada</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${gramos} g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Raciones</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">${raciones}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">al día</div>
+    </div>`;
+}
+</script>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+---
+layout: base.njk
+title: Calculadora de comida para gatos - cantidad diaria según su peso
+description: Calcula una cantidad orientativa de pienso seco, comida húmeda o alimentación mixta para tu gato según su peso, edad, actividad y estado reproductivo.
+keywords: cuanto come mi gato, calculadora comida gato, cantidad comida gato, cuanto pienso dar a mi gato, racion comida gato según peso, gramos comida gato al día
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Comida para gatos</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🐈 Calculadora de comida para gatos</h1>
+        <p class="calc-intro">
+          Averigua cuántos gramos de pienso o comida húmeda puede necesitar tu gato al día.
+          Introduce su peso y selecciona su edad, actividad y estado reproductivo para obtener
+          una estimación orientativa de sus necesidades diarias.
+        </p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label for="cg-peso">Peso del gato (kg)</label>
+              <input
+                type="number"
+                id="cg-peso"
+                placeholder="Ej. 4"
+                min="0.1"
+                step="0.1"
+                oninput="calcCG()"
+                aria-describedby="cg-ayuda-peso"
+              >
+              <small id="cg-ayuda-peso" style="display:block;color:var(--muted);margin-top:0.3rem">
+                Introduce su peso actual en kilogramos.
+              </small>
+            </div>
+            <div>
+              <label for="cg-edad">Edad del gato</label>
+              <select id="cg-edad" onchange="calcCG()">
+                <option value="cachorro">Gatito (menos de 1 año)</option>
+                <option value="adulto" selected>Adulto (1-10 años)</option>
+                <option value="senior">Senior (más de 10 años)</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="cg-estilo">Estilo de vida</label>
+          <select id="cg-estilo" onchange="calcCG()">
+            <option value="interior">Interior — actividad baja</option>
+            <option value="mixto" selected>Mixto — interior con acceso al exterior</option>
+            <option value="exterior">Exterior — actividad elevada</option>
+          </select>
+
+          <label for="cg-estado">Estado reproductivo</label>
+          <select id="cg-estado" onchange="calcCG()">
+            <option value="esterilizado">Esterilizado/a</option>
+            <option value="entero" selected>No esterilizado/a</option>
+            <option value="gestacion">Gestación o lactancia</option>
+          </select>
+
+          <label for="cg-tipo">Tipo de alimentación</label>
+          <select id="cg-tipo" onchange="calcCG()">
+            <option value="seco">Pienso seco</option>
+            <option value="humedo">Comida húmeda (latas o sobres)</option>
+            <option value="mixta">Alimentación mixta (pienso + húmedo)</option>
+          </select>
+
+          <div class="result-box" id="cg-res" aria-live="polite">
+            Introduce el peso de tu gato para calcular una cantidad orientativa.
+          </div>
+          <p id="cg-aviso" style="display:none;color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.75rem"></p>
+        </div>
+
+        <div id="cg-cards" style="display:none;margin-top:1rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.75rem"></div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            Cantidad diaria de comida para gatos según su peso
+          </h2>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Esta tabla ofrece ejemplos aproximados para gatos adultos. La cantidad real puede variar
+            bastante según las calorías del alimento, la actividad física, la edad y la condición
+            corporal del animal.
+          </p>
+
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Peso del gato</th>
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pienso seco/día</th>
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Comida húmeda/día</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">2 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~30 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~120 g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">3 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~42 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~165 g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">4 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~52 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~205 g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">5 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~62 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~245 g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">6 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~71 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~280 g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">7 kg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~80 g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">~315 g</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="color:var(--muted);font-size:0.78rem;line-height:1.7;margin-top:0.75rem">
+            Importante: estos valores son ejemplos orientativos, no una ración universal.
+            Comprueba las recomendaciones del envase del alimento y adapta la cantidad a la evolución
+            del peso y la condición corporal de tu gato.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            ¿Cuánto tiene que comer un gato al día?
+          </h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            La cantidad de comida que necesita un gato depende de su peso, edad, actividad, estado
+            reproductivo y salud. Dos gatos que pesan lo mismo pueden necesitar raciones diferentes.
+            Por eso, calcular los gramos únicamente a partir del peso sirve como punto de partida,
+            pero no sustituye una valoración individual.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            También importa la densidad energética del alimento. Un pienso seco y una comida húmeda
+            no aportan las mismas calorías por gramo, y las diferencias entre marcas y recetas pueden
+            ser considerables. Consulta las kcal indicadas en el envase y las pautas de alimentación
+            del fabricante.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            Utiliza esta calculadora como una estimación inicial y observa cómo evoluciona el peso
+            de tu gato. Si gana o pierde peso sin que lo hayas previsto, ajusta la ración con ayuda
+            de un veterinario.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            ¿Pienso seco, comida húmeda o alimentación mixta?
+          </h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            La comida húmeda aporta más agua que el pienso seco y puede ayudar a aumentar la ingesta
+            total de líquidos. Es una ventaja para muchos gatos, aunque no garantiza por sí sola que
+            se eviten las enfermedades urinarias o renales.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            El pienso seco suele ser cómodo para almacenar y dosificar. Sin embargo, es importante
+            medir la ración, ya que dejar comida disponible de forma continua puede favorecer un
+            consumo excesivo en algunos gatos.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            La alimentación mixta combina ambos formatos. Para calcular las cantidades, hay que
+            tener en cuenta las calorías de los dos alimentos: repartir la ración a partes iguales
+            por peso no equivale necesariamente a repartir las calorías al 50 %. La estimación de
+            esta herramienta utiliza un reparto calórico aproximado, que conviene comprobar con los
+            datos de los productos elegidos.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            ¿Cuántas veces al día hay que dar de comer a un gato?
+          </h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            Los gatitos suelen necesitar varias tomas pequeñas al día. En los gatos adultos, repartir
+            la ración diaria en dos o más comidas puede funcionar bien. La frecuencia depende de sus
+            hábitos, de la dieta y de las necesidades individuales. Lo importante es controlar la
+            cantidad total que come a lo largo del día y mantener agua fresca siempre disponible.
+          </p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Cómo saber si mi gato come suficiente?</h2>
+          <p>
+            Además de medir la comida, conviene vigilar su peso, su silueta y su condición corporal.
+            Las costillas deberían poder palparse sin una capa gruesa de grasa, aunque no tendrían que
+            sobresalir de forma marcada. Si no sabes valorar su condición corporal, un veterinario
+            puede ayudarte a establecer una ración adecuada.
+          </p>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+
+          <details>
+            <summary>¿Cuántos gramos de pienso debe comer un gato de 4 kg?</summary>
+            <p>
+              Como referencia inicial, la tabla de esta página indica alrededor de 52 g de pienso
+              seco al día para un gato adulto de 4 kg. No es una cantidad universal: las calorías
+              del producto, la actividad, la esterilización y la condición corporal pueden hacer
+              que la ración adecuada sea diferente.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Un gato esterilizado necesita menos comida?</summary>
+            <p>
+              Después de la esterilización, algunos gatos necesitan menos energía y pueden tener
+              más tendencia a ganar peso. La reducción necesaria no es igual para todos; conviene
+              controlar el peso y seguir las recomendaciones del veterinario y del alimento que
+              utilices.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Puedo dejar el pienso siempre disponible?</summary>
+            <p>
+              Algunos gatos regulan bien lo que comen, pero otros ingieren más de lo que necesitan.
+              Si tu gato tiende a ganar peso, medir la ración diaria y repartirla en varias tomas
+              puede ayudar a controlar el consumo.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Puedo darle leche a mi gato?</summary>
+            <p>
+              Muchos gatos adultos digieren mal la lactosa, por lo que la leche de vaca puede
+              provocar molestias digestivas o diarrea. La leche no es necesaria en la alimentación
+              de un gato adulto; el agua fresca debe ser su principal bebida.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Qué alimentos son tóxicos para los gatos?</summary>
+            <p>
+              Entre los alimentos y sustancias peligrosos para los gatos están la cebolla, el ajo,
+              el chocolate, la cafeína y el alcohol. Algunos medicamentos humanos, como el
+              paracetamol, también son muy tóxicos. Si sospechas que tu gato ha ingerido una
+              sustancia peligrosa, contacta cuanto antes con un veterinario.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿La calculadora sirve para gatitos o gatas embarazadas?</summary>
+            <p>
+              La herramienta ofrece únicamente una estimación general. Los gatitos en crecimiento
+              y las gatas durante la gestación o la lactancia tienen necesidades específicas que
+              pueden cambiar rápidamente. Para estos casos, es preferible seguir una pauta
+              individual indicada por un veterinario.
+            </p>
+          </details>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/mascotas/comida-perro/">🐕 Calculadora de comida para perros</a></li>
+            <li><a href="/calculadoras/mascotas/coste-mascota/">💰 Calculadora del coste de una mascota</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcCG() {
+  const pesoInput = document.getElementById('cg-peso');
+  const peso = parseFloat(pesoInput.value);
+  const edad = document.getElementById('cg-edad').value;
+  const estilo = document.getElementById('cg-estilo').value;
+  const estado = document.getElementById('cg-estado').value;
+  const tipo = document.getElementById('cg-tipo').value;
+  const resultado = document.getElementById('cg-res');
+  const aviso = document.getElementById('cg-aviso');
+  const tarjetas = document.getElementById('cg-cards');
+
+  // Ocultar resultados si no hay un peso válido.
+  if (!pesoInput.value.trim() || !Number.isFinite(peso) || peso <= 0) {
+    resultado.textContent = 'Introduce un peso válido para calcular la ración orientativa.';
+    aviso.style.display = 'none';
+    aviso.textContent = '';
+    tarjetas.style.display = 'none';
+    tarjetas.innerHTML = '';
+    return;
+  }
+
+  // Estimación energética general: no equivale a una pauta veterinaria individual.
+  const rer = 70 * Math.pow(peso, 0.75);
+
+  const factoresBase = {
+    cachorro: 2.5,
+    adulto: 1.2,
+    senior: 1.1
+  };
+
+  const factorEstilo = {
+    interior: 0.9,
+    mixto: 1.0,
+    exterior: 1.2
+  };
+
+  const factorEstado = {
+    esterilizado: 0.8,
+    entero: 1.0,
+    gestacion: 1.6
+  };
+
+  const factor = factoresBase[edad] * factorEstilo[estilo] * factorEstado[estado];
+  const kcalDia = Math.round(rer * factor);
+
+  let cantidad;
+  let raciones;
+  let detalle;
+
+  if (tipo === 'seco') {
+    cantidad = Math.round(kcalDia / 3.4);
+    raciones = edad === 'cachorro' ? '3-4 tomas orientativas' : '2 tomas orientativas';
+    detalle = `${cantidad} g de pienso seco al día`;
+  } else if (tipo === 'humedo') {
+    cantidad = Math.round(kcalDia / 0.8);
+    raciones = '2-3 tomas orientativas';
+    detalle = `${cantidad} g de comida húmeda al día`;
+  } else {
+    // Reparto aproximado del 50 % de las calorías de cada tipo de alimento.
+    const gSeco = Math.round((kcalDia * 0.5) / 3.4);
+    const gHumedo = Math.round((kcalDia * 0.5) / 0.8);
+    detalle = `${gSeco} g de pienso + ${gHumedo} g de comida húmeda al día`;
+    raciones = 'Repartir en varias tomas';
+  }
+
+  resultado.innerHTML = `
+    <strong>${detalle}</strong>
+    <small style="display:block;margin-top:0.45rem">
+      Estimación: ${kcalDia} kcal al día · No es una pauta individual
+    </small>
+  `;
+
+  aviso.textContent =
+    'La cantidad real depende de las calorías indicadas en el envase, la condición corporal y las necesidades de tu gato. Comprueba la ración recomendada por el fabricante y consulta con un veterinario si necesita una dieta específica.';
+  aviso.style.display = 'block';
+
+  tarjetas.style.display = 'grid';
+  tarjetas.innerHTML = tarjetasCG(kcalDia, tipo === 'mixta'
+    ? detalle.replace(' al día', '')
+    : `${cantidad} g`,
+    raciones);
+}
+
+function tarjetasCG(kcal, cantidad, raciones) {
+  return `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Energía estimada</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${kcal} kcal</div>
+      <div style="font-size:0.75rem;color:var(--muted)">al día</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Cantidad estimada</div>
+      <div style="font-size:1.05rem;font-weight:700;color:var(--accent)">${cantidad}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Reparto</div>
+      <div style="font-size:0.95rem;font-weight:700;color:var(--accent)">${raciones}</div>
+    </div>`;
+}
+</script>

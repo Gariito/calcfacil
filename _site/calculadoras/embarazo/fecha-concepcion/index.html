@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de fecha de concepción — cuándo pudo ocurrir — CalcFácil</title>
+  <meta name="description" content="Calcula la fecha aproximada de concepción a partir de la fecha probable de parto o de la última regla. Consulta también la ventana fértil y los días más probables.">
+  <meta name="keywords" content="calculadora fecha concepcion, cuando me quede embarazada, fecha probable concepcion, calcular fecha concepcion, dia concepcion embarazo, ventana fertil, fecha concepcion por fecha parto">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/embarazo/fecha-concepcion/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de fecha de concepción — cuándo pudo ocurrir — CalcFácil">
+  <meta property="og:description" content="Calcula la fecha aproximada de concepción a partir de la fecha probable de parto o de la última regla. Consulta también la ventana fértil y los días más probables.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/embarazo/fecha-concepcion/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de fecha de concepción — cuándo pudo ocurrir",
+    "description": "Calcula la fecha aproximada de concepción a partir de la fecha probable de parto o de la última regla. Consulta también la ventana fértil y los días más probables.",
+    "url": "https://calculadorasgratis.net/calculadoras/embarazo/fecha-concepcion/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/embarazo/">Embarazo y bebé</a>
+      <span>›</span>
+      <span>Fecha de concepción</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>📅 Calculadora de fecha de concepción</h1>
+        <p class="calc-intro">¿Quieres saber cuándo pudo producirse la concepción? Introduce la fecha probable de parto o la de tu última regla para obtener una estimación y consultar los días de mayor fertilidad.</p>
+
+        <div class="card">
+          <label>¿Qué fecha conoces?</label>
+          <select id="fc-modo" onchange="toggleModoFC()">
+            <option value="parto">Fecha probable de parto (FPP)</option>
+            <option value="regla">Fecha de última regla (FUR)</option>
+          </select>
+
+          <div id="fc-wrap-parto">
+            <label>Fecha probable de parto</label>
+            <input type="date" id="fc-fpp" oninput="calcFC()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+          </div>
+
+          <div id="fc-wrap-regla" style="display:none">
+            <label>Fecha de tu última regla</label>
+            <input type="date" id="fc-fur" oninput="calcFC()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+            <label>Duración habitual de tu ciclo (días)</label>
+            <input type="number" id="fc-ciclo" placeholder="28" value="28" oninput="calcFC()">
+          </div>
+
+          <div class="result-box" id="fc-res">Introduce una fecha para hacer el cálculo</div>
+        </div>
+
+        <div id="fc-cards-wrap" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem" id="fc-cards"></div>
+        </div>
+
+        <div id="fc-ventana" style="display:none;margin-top:1rem">
+          <div class="card">
+            <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">Ventana fértil estimada</h2>
+            <p style="color:var(--muted);font-size:0.875rem;margin-bottom:0.75rem">Los días fértiles son los que rodean a la ovulación. Durante este período puede producirse la fecundación si hay relaciones sexuales, aunque el cálculo no permite saber con certeza qué día ocurrió.</p>
+            <div id="fc-ventana-content"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cómo se calcula la fecha de concepción?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Una forma de estimar la fecha de concepción es restar 266 días (38 semanas) a la fecha probable de parto. La duración del embarazo suele calcularse en unas 40 semanas desde el primer día de la última regla, aunque el momento de la ovulación puede variar.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Si conoces la fecha de tu última regla, el cálculo también puede orientarte sobre cuándo pudo producirse la ovulación. En un ciclo de 28 días suele ocurrir aproximadamente en el día 14, pero no todas las mujeres tienen ciclos iguales ni ovulan siempre el mismo día.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Ten en cuenta que la fecha obtenida es aproximada. Los espermatozoides pueden sobrevivir varios días en el aparato reproductor femenino, por lo que la relación sexual que dio lugar al embarazo pudo ocurrir antes de la fecundación. Una fecha calculada no permite confirmar el día exacto.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">¿Cuáles son los días más fértiles?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La posibilidad de embarazo suele ser mayor durante los días previos a la ovulación y el propio día de la ovulación. Esto se debe a que los espermatozoides pueden permanecer vivos durante varios días, mientras que el óvulo tiene un tiempo de vida mucho más corto después de ser liberado.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Días respecto a la ovulación</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Probabilidad estimada</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">5 días antes</td><td style="text-align:right">~10%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">4 días antes</td><td style="text-align:right">~15%</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">3 días antes</td><td style="text-align:right">~18%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">2 días antes</td><td style="text-align:right">~25%</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">1 día antes</td><td style="text-align:right">~30%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem"><strong>Día de ovulación</strong></td><td style="text-align:right"><strong>~33%</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">1 día después</td><td style="text-align:right">~12%</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">2 o más días después</td><td style="text-align:right">~0%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Se puede saber el día exacto de la concepción?</h2>
+          <p>No suele ser posible conocer el día exacto únicamente con la fecha de la última regla o la fecha prevista de parto. Los cálculos ofrecen una orientación, ya que la ovulación puede adelantarse o retrasarse. Las ecografías y el seguimiento médico ayudan a estimar la edad gestacional, pero no suelen determinar el día exacto de la fecundación.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿La fecha de concepción influye en el sexo del bebé?</summary>
+            <p>El sexo cromosómico se determina en la fecundación, según el cromosoma sexual que aporte el espermatozoide. No hay pruebas fiables de que el día de la relación sexual o el momento del ciclo permitan elegir o predecir si será niño o niña.</p>
+          </details>
+          <details>
+            <summary>¿Es posible quedarse embarazada durante la regla?</summary>
+            <p>Sí, aunque la probabilidad suele ser menor. Si tienes ciclos cortos o la ovulación se produce pronto, los espermatozoides pueden seguir vivos cuando esta ocurra. Por eso, tener la regla no descarta por completo un embarazo.</p>
+          </details>
+          <details>
+            <summary>¿Por qué la fecha de la ecografía no coincide con mi cálculo?</summary>
+            <p>Puede haber diferencias porque la ovulación no siempre ocurre en el mismo día del ciclo y porque las fechas de la regla pueden no ser exactas. La ecografía, especialmente al principio del embarazo, ayuda al profesional sanitario a estimar la edad gestacional y valorar si conviene ajustar la fecha probable de parto.</p>
+          </details>
+          <details>
+            <summary>¿Qué es la ventana de implantación?</summary>
+            <p>Es el período en el que el endometrio está preparado para que el embrión pueda implantarse en el útero. La implantación suele producirse varios días después de la fecundación. No es lo mismo que la ventana fértil, que corresponde a los días en los que las relaciones sexuales pueden dar lugar a un embarazo.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/embarazo/semanas-embarazo/">🗓️ Semanas de embarazo</a></li>
+            <li><a href="/calculadoras/embarazo/peso-bebe/">⚖️ Peso del bebé</a></li>
+            <li><a href="/calculadoras/embarazo/leche-materna/">🍼 Leche materna</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+function fmtFecha(d) {
+  return `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
+}
+
+function toggleModoFC() {
+  const modo = document.getElementById('fc-modo').value;
+  document.getElementById('fc-wrap-parto').style.display = modo === 'parto' ? 'block' : 'none';
+  document.getElementById('fc-wrap-regla').style.display = modo === 'regla' ? 'block' : 'none';
+  calcFC();
+}
+
+function calcFC() {
+  const modo = document.getElementById('fc-modo').value;
+  let concepcion, fpp, fur;
+
+  if (modo === 'parto') {
+    const fppVal = document.getElementById('fc-fpp').value;
+    if (!fppVal) return;
+    fpp = new Date(fppVal + 'T12:00:00');
+    concepcion = new Date(fpp.getTime() - 266 * 86400000);
+    fur = new Date(fpp.getTime() - 280 * 86400000);
+  } else {
+    const furVal = document.getElementById('fc-fur').value;
+    const ciclo  = parseInt(document.getElementById('fc-ciclo').value) || 28;
+    if (!furVal) return;
+    fur = new Date(furVal + 'T12:00:00');
+    const ajuste = ciclo - 28;
+    fpp = new Date(fur.getTime() + (280 + ajuste) * 86400000);
+    concepcion = new Date(fur.getTime() + (14 + ajuste) * 86400000);
+  }
+
+  const ventanaInicio = new Date(concepcion.getTime() - 5 * 86400000);
+  const ventanaFin    = new Date(concepcion.getTime() + 1 * 86400000);
+  const hoy = new Date();
+  const diasDesde = Math.floor((hoy - concepcion) / 86400000);
+
+  document.getElementById('fc-res').innerHTML =
+    `Fecha probable de concepción: ${fmtFecha(concepcion)}
+    <small>Ventana de fertilidad: ${fmtFecha(ventanaInicio)} – ${fmtFecha(ventanaFin)} · ${diasDesde > 0 ? `Hace ${diasDesde} días` : 'Fecha futura'}</small>`;
+
+  document.getElementById('fc-cards-wrap').style.display = 'block';
+  document.getElementById('fc-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fecha probable de concepción</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--accent)">${fmtFecha(concepcion)}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">${diasDesde > 0 ? `hace ${diasDesde} días` : ''}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fecha probable de parto</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--accent)">${fmtFecha(fpp)}</div>
+    </div>`;
+
+  document.getElementById('fc-ventana').style.display = 'block';
+  document.getElementById('fc-ventana-content').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:0.4rem">
+      ${[-5,-4,-3,-2,-1,0,1].map(d => {
+        const dia = new Date(concepcion.getTime() + d * 86400000);
+        const esOvulacion = d === 0;
+        const prob = d===-5?'10%':d===-4?'15%':d===-3?'18%':d===-2?'25%':d===-1?'30%':d===0?'33%':'12%';
+        const color = esOvulacion ? 'var(--accent)' : d < 0 ? '#22C55E' : '#EAB308';
+        return `<div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-radius:6px;padding:0.4rem 0.75rem;font-size:0.825rem">
+          <span>${fmtFecha(dia)}${esOvulacion ? ' ⭐ Ovulación' : d < 0 ? ` (${Math.abs(d)} día${Math.abs(d)>1?'s':''} antes)` : ' (1 día después)'}</span>
+          <span style="font-weight:700;color:${color}">${prob}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">* Las probabilidades son estimaciones generales. La posibilidad real de embarazo depende de distintos factores y puede variar de una persona a otra.</p>`;
+}
+</script>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

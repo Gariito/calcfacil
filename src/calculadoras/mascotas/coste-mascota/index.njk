@@ -1,0 +1,424 @@
+---
+layout: base.njk
+title: Calculadora de gastos de mascotas - coste mensual de perro y gato
+description: Calcula cuánto cuesta mantener un perro o un gato al mes. Estima gastos de comida, veterinario, seguro, peluquería y accesorios, y descubre el coste anual.
+keywords: cuanto cuesta tener un perro, coste mensual perro, cuanto cuesta tener un gato, gastos mascota al mes, calculadora gastos mascota, coste anual perro, gastos gato al mes
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Coste mensual de mascota</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>💰 Calculadora de gastos de mascotas</h1>
+        <p class="calc-intro">
+          ¿Cuánto cuesta tener un perro o un gato al mes? Calcula tus gastos aproximados de comida,
+          veterinario, seguro, peluquería y accesorios. Personaliza cada importe para conocer el
+          presupuesto mensual y anual que necesitas para cuidar de tu mascota.
+        </p>
+
+        <div class="card">
+          <label for="cm-tipo">Tipo de mascota</label>
+          <select id="cm-tipo" onchange="toggleCM()">
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
+          </select>
+
+          <label for="cm-tamano">Tamaño de la mascota</label>
+          <select id="cm-tamano" onchange="calcCM()">
+            <option value="pequeno">Pequeño (menos de 10 kg)</option>
+            <option value="mediano" selected>Mediano (10-30 kg)</option>
+            <option value="grande">Grande (más de 30 kg)</option>
+          </select>
+
+          <div style="background:var(--bg);border-radius:10px;padding:1rem;margin-bottom:1rem">
+            <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem">
+              Gastos mensuales (puedes modificarlos)
+            </p>
+
+            <label for="cm-comida">Comida (€/mes)</label>
+            <input type="number" id="cm-comida" placeholder="60" min="0" step="1" value="60" oninput="calcCM()">
+
+            <label for="cm-vet">Veterinario (€/mes, prorrateado)</label>
+            <input type="number" id="cm-vet" placeholder="25" min="0" step="1" value="25" oninput="calcCM()">
+
+            <label for="cm-seguro">Seguro de mascota (€/mes)</label>
+            <input type="number" id="cm-seguro" placeholder="15" min="0" step="1" value="15" oninput="calcCM()">
+
+            <div id="cm-wrap-perro">
+              <label for="cm-pelu">Peluquería y baño (€/mes, prorrateado)</label>
+              <input type="number" id="cm-pelu" placeholder="15" min="0" step="1" value="15" oninput="calcCM()">
+
+              <label for="cm-paseador">Paseador o guardería (€/mes)</label>
+              <input type="number" id="cm-paseador" placeholder="0" min="0" step="1" value="0" oninput="calcCM()">
+            </div>
+
+            <label for="cm-juguetes">Juguetes y accesorios (€/mes)</label>
+            <input type="number" id="cm-juguetes" placeholder="10" min="0" step="1" value="10" oninput="calcCM()">
+
+            <label for="cm-otros">Otros gastos (€/mes)</label>
+            <input type="number" id="cm-otros" placeholder="5" min="0" step="1" value="5" oninput="calcCM()">
+          </div>
+
+          <div class="result-box" id="cm-res" aria-live="polite">
+            Ajusta los gastos para calcular el coste de tu mascota.
+          </div>
+          <p id="cm-aviso" style="color:var(--muted);font-size:0.82rem;line-height:1.7;margin-top:0.75rem">
+            Los importes son orientativos. Introduce tus gastos reales para obtener una estimación más ajustada.
+          </p>
+        </div>
+
+        <div id="cm-desglose" style="display:none;margin-top:1rem">
+          <div class="card">
+            <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1rem">
+              Desglose de gastos mensuales
+            </h2>
+            <div style="display:flex;flex-direction:column;gap:0.65rem" id="cm-barras"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            ¿Cuánto cuesta mantener un perro o un gato al mes?
+          </h2>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            El coste de mantener una mascota depende de su tamaño, alimentación, estado de salud
+            y necesidades cotidianas. También influyen la ciudad en la que vives, los servicios
+            que contratas y si tienes un seguro veterinario. Por eso, no existe una única cifra
+            que sirva para todos los animales.
+          </p>
+
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tipo de mascota</th>
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Coste mensual</th>
+                <th scope="col" style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Coste anual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Perro pequeño</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">80–150 €</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">960–1.800 €</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Perro mediano</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">100–200 €</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">1.200–2.400 €</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Perro grande</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">150–300 €</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">1.800–3.600 €</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Gato de interior</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">50–100 €</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">600–1.200 €</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="color:var(--muted);font-size:0.78rem;line-height:1.7;margin-top:0.75rem">
+            Estas cifras son los rangos orientativos de referencia de esta página, no una media
+            estadística verificada. No incluyen necesariamente todos los gastos iniciales,
+            tratamientos extraordinarios o urgencias veterinarias. El coste real puede quedar
+            fuera de estos intervalos.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            ¿Qué gastos tiene una mascota?
+          </h2>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            <strong>Alimentación:</strong> suele ser uno de los gastos recurrentes más importantes.
+            El importe depende del tamaño del animal, la cantidad que come y el tipo de alimento
+            que necesita.
+          </p>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            <strong>Veterinario:</strong> conviene reservar una cantidad mensual para revisiones,
+            vacunas, prevención de parásitos y otros cuidados. Aunque no tengas una visita todos
+            los meses, puedes repartir el gasto anual entre doce para planificar mejor tu presupuesto.
+          </p>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            <strong>Seguro:</strong> puede ayudar a cubrir determinados riesgos, según las
+            coberturas y condiciones de la póliza. Comprueba qué servicios incluye, sus exclusiones
+            y los límites de indemnización.
+          </p>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            <strong>Higiene y accesorios:</strong> champú, peluquería, arena para gatos, juguetes,
+            correas, camas y otros artículos pueden sumar una cantidad considerable a lo largo del año.
+          </p>
+          <p style="font-size:0.9rem;line-height:1.8">
+            <strong>Otros gastos:</strong> guardería, paseadores, transporte, medicación o cuidados
+            especiales pueden aumentar el presupuesto. Es recomendable disponer también de un fondo
+            para imprevistos.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">
+            Cómo calcular el presupuesto anual de tu mascota
+          </h2>
+          <p style="font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            Para obtener una estimación más realista, suma los gastos que pagas cada mes y añade
+            los pagos que solo se producen una o varias veces al año. Por ejemplo, si gastas 30 €
+            al mes en una partida veterinaria prorrateada, estás reservando 360 € al año para ese concepto.
+          </p>
+          <p style="font-size:0.9rem;line-height:1.8">
+            Esta calculadora multiplica por doce la suma mensual. Por tanto, el total anual solo
+            incluirá los gastos que hayas introducido. Si quieres conocer el coste completo,
+            añade una parte mensual para los gastos puntuales y contempla un margen para posibles
+            urgencias.
+          </p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Gastos puntuales que también debes tener en cuenta</h2>
+          <p>
+            Además de los gastos habituales, tener una mascota puede implicar desembolsos iniciales
+            y extraordinarios: adopción o compra, identificación, accesorios, esterilización,
+            tratamientos y urgencias veterinarias. El importe depende de cada caso y algunas
+            intervenciones pueden suponer un gasto importante.
+          </p>
+          <p>
+            Si puedes, crea un fondo de emergencia separado del presupuesto mensual para afrontar
+            gastos inesperados sin depender únicamente de un seguro.
+          </p>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+
+          <details>
+            <summary>¿Cuánto cuesta tener un perro al mes en España?</summary>
+            <p>
+              Depende del tamaño, la comida, los cuidados veterinarios y los servicios que necesite.
+              Como referencia orientativa, esta página contempla entre 80 y 150 € para un perro
+              pequeño, entre 100 y 200 € para uno mediano y entre 150 y 300 € para uno grande.
+              Son rangos aproximados, no tarifas oficiales ni medias verificadas.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Cuánto cuesta mantener un gato al mes?</summary>
+            <p>
+              Como referencia orientativa, el rango de esta página para un gato de interior es de
+              50 a 100 € mensuales. El coste puede variar según la alimentación, la arena, los
+              cuidados veterinarios, el seguro y las necesidades particulares del animal.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Merece la pena contratar un seguro para mascotas?</summary>
+            <p>
+              Depende de tus circunstancias y de las coberturas contratadas. Antes de elegir una
+              póliza, compara el precio, las franquicias, los límites, los periodos de carencia
+              y las exclusiones. Un seguro puede ayudar con determinados gastos, pero no siempre
+              cubre todos los tratamientos ni todas las enfermedades.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Adoptar una mascota es más barato que comprarla?</summary>
+            <p>
+              La adopción puede tener un coste inicial menor que la compra, aunque las condiciones
+              dependen de la protectora y de los cuidados incluidos. En ambos casos, es importante
+              calcular los gastos continuos de alimentación, prevención, atención veterinaria y
+              accesorios antes de tomar la decisión.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Los gatos son más baratos de mantener que los perros?</summary>
+            <p>
+              En muchos casos, un gato puede tener menos gastos relacionados con paseadores,
+              guardería o peluquería. Sin embargo, el coste depende de la salud del animal,
+              la alimentación y los cuidados que necesite. Un gato también puede generar gastos
+              veterinarios elevados o requerir atención especializada.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Qué gastos no incluye esta calculadora?</summary>
+            <p>
+              La calculadora suma los importes mensuales que introduzcas y los multiplica por doce.
+              No añade automáticamente gastos de adopción o compra, equipamiento inicial, tratamientos
+              extraordinarios ni emergencias. Puedes incluir una provisión mensual en «Otros gastos»
+              para contemplar parte de esos costes.
+            </p>
+          </details>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/mascotas/comida-perro/">🐕 Calculadora de comida para perros</a></li>
+            <li><a href="/calculadoras/mascotas/comida-gato/">🐈 Calculadora de comida para gatos</a></li>
+            <li><a href="/calculadoras/finanzas/coste-coche/">🚗 Calculadora del coste de un coche</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const CM_DEFAULTS = {
+  perro: {
+    pequeno: { comida: 40, vet: 20, seguro: 10, pelu: 10, paseador: 0, juguetes: 8, otros: 5 },
+    mediano: { comida: 60, vet: 25, seguro: 15, pelu: 15, paseador: 0, juguetes: 10, otros: 5 },
+    grande:  { comida: 90, vet: 30, seguro: 20, pelu: 20, paseador: 0, juguetes: 12, otros: 8 }
+  },
+  gato: {
+    pequeno: { comida: 30, vet: 15, seguro: 8, pelu: 0, paseador: 0, juguetes: 5, otros: 5 },
+    mediano: { comida: 40, vet: 18, seguro: 10, pelu: 0, paseador: 0, juguetes: 7, otros: 5 },
+    grande:  { comida: 50, vet: 20, seguro: 12, pelu: 0, paseador: 0, juguetes: 8, otros: 5 }
+  }
+};
+
+function toggleCM() {
+  const tipo = document.getElementById('cm-tipo').value;
+  const tamano = document.getElementById('cm-tamano').value;
+  const d = CM_DEFAULTS[tipo][tamano];
+
+  document.getElementById('cm-comida').value = d.comida;
+  document.getElementById('cm-vet').value = d.vet;
+  document.getElementById('cm-seguro').value = d.seguro;
+  document.getElementById('cm-pelu').value = d.pelu;
+  document.getElementById('cm-paseador').value = d.paseador;
+  document.getElementById('cm-juguetes').value = d.juguetes;
+  document.getElementById('cm-otros').value = d.otros;
+
+  document.getElementById('cm-wrap-perro').style.display =
+    tipo === 'perro' ? 'block' : 'none';
+
+  calcCM();
+}
+
+function calcCM() {
+  const tipo = document.getElementById('cm-tipo').value;
+  const campos = {
+    comida: 'cm-comida',
+    vet: 'cm-vet',
+    seguro: 'cm-seguro',
+    pelu: 'cm-pelu',
+    paseador: 'cm-paseador',
+    juguetes: 'cm-juguetes',
+    otros: 'cm-otros'
+  };
+
+  const valores = {};
+  let hayError = false;
+
+  for (const [clave, id] of Object.entries(campos)) {
+    const input = document.getElementById(id);
+    const valorTexto = input.value.trim();
+
+    input.setCustomValidity('');
+
+    if (valorTexto === '') {
+      valores[clave] = 0;
+      continue;
+    }
+
+    const valor = Number(valorTexto);
+
+    if (!Number.isFinite(valor) || valor < 0) {
+      input.setCustomValidity('Introduce un importe igual o superior a 0 €.');
+      hayError = true;
+      valores[clave] = 0;
+    } else {
+      valores[clave] = valor;
+    }
+  }
+
+  const resultado = document.getElementById('cm-res');
+  const desglose = document.getElementById('cm-desglose');
+  const barras = document.getElementById('cm-barras');
+  const aviso = document.getElementById('cm-aviso');
+
+  if (hayError) {
+    resultado.textContent = 'Revisa los importes: no pueden ser negativos.';
+    desglose.style.display = 'none';
+    barras.innerHTML = '';
+    aviso.textContent = 'Introduce cantidades iguales o superiores a 0 € en todos los campos.';
+    return;
+  }
+
+  const { comida, vet, seguro, pelu, paseador, juguetes, otros } = valores;
+
+  const total = comida + vet + seguro + juguetes + otros +
+    (tipo === 'perro' ? pelu + paseador : 0);
+
+  const fmt = n => n.toLocaleString('es-ES', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
+  }) + ' €';
+
+  resultado.innerHTML = `
+    <strong>${fmt(total)}/mes</strong>
+    <small style="display:block;margin-top:0.35rem">
+      Aproximadamente ${fmt(total * 12)}/año
+    </small>
+    <small style="display:block;margin-top:0.5rem">
+      Los resultados se calculan a partir de los importes que has introducido.
+    </small>
+  `;
+
+  const partidas = [
+    ['🍖 Comida', comida],
+    ['🏥 Veterinario', vet],
+    ['🛡️ Seguro', seguro]
+  ];
+
+  if (tipo === 'perro') {
+    partidas.push(['✂️ Peluquería y baño', pelu]);
+    partidas.push(['🦺 Paseador o guardería', paseador]);
+  }
+
+  partidas.push(
+    ['🎾 Juguetes y accesorios', juguetes],
+    ['📌 Otros gastos', otros]
+  );
+
+  const partidasVisibles = partidas.filter(([, valor]) => valor > 0);
+
+  if (total === 0 || partidasVisibles.length === 0) {
+    desglose.style.display = 'none';
+    barras.innerHTML = '';
+  } else {
+    const max = Math.max(...partidasVisibles.map(([, valor]) => valor));
+
+    barras.innerHTML = partidasVisibles.map(([nombre, valor]) => `
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem">
+        <div style="width:140px;flex-shrink:0;color:var(--muted)">${nombre}</div>
+        <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden">
+          <div style="width:${(valor / max * 100).toFixed(1)}%;height:100%;background:var(--accent);border-radius:4px"></div>
+        </div>
+        <div style="width:65px;text-align:right;font-weight:600;color:var(--accent)">${fmt(valor)}</div>
+      </div>
+    `).join('');
+
+    desglose.style.display = 'block';
+  }
+
+  aviso.textContent =
+    'Estimación orientativa: el coste real puede variar según tu mascota y tu lugar de residencia. El cálculo anual multiplica por doce los gastos mensuales y no incorpora automáticamente pagos extraordinarios.';
+}
+
+// Inicializar con valores orientativos según la selección predeterminada.
+toggleCM();
+</script>

@@ -1,0 +1,208 @@
+---
+layout: base.njk
+title: Calculadora de peso ideal del perro por raza
+description: Consulta el rango de peso orientativo de tu perro según su raza y sexo. Compara su peso actual con valores de referencia para razas pequeñas, medianas, grandes y gigantes.
+keywords: peso ideal perro, peso normal perro raza, cuanto debe pesar mi perro, peso perro por raza, peso labrador, peso golden retriever, peso pastor aleman, peso chihuahua
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Peso ideal del perro</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⚖️ Calculadora de peso ideal del perro por raza</h1>
+        <p class="calc-intro">Consulta el rango de peso habitual de tu perro según su raza y sexo. Si conoces su peso actual, también puedes compararlo con estos valores orientativos para saber si está por debajo, dentro o por encima del rango de referencia.</p>
+
+        <div class="card">
+          <label>Raza del perro</label>
+          <select id="pid-raza" onchange="calcPID()">
+            <optgroup label="Razas pequeñas">
+              <option value="chihuahua,1.5,3,1.5,3">Chihuahua</option>
+              <option value="yorkshire,2,3.2,2,3.2">Yorkshire Terrier</option>
+              <option value="pomerania,1.8,3.5,1.8,3.5">Pomerania / Spitz enano</option>
+              <option value="maltés,3,4,3,4">Maltés</option>
+              <option value="shih_tzu,4,7.5,4,7.5">Shih Tzu</option>
+              <option value="pug,6,8,6,8">Pug / Carlino</option>
+              <option value="beagle,10,11,9,10">Beagle</option>
+              <option value="cocker,12,14,11,13">Cocker Spaniel</option>
+              <option value="bichon,5,7,5,7">Bichón Frisé</option>
+              <option value="dachshund,7,14,7,14">Dachshund / Teckel</option>
+            </optgroup>
+            <optgroup label="Razas medianas">
+              <option value="border_collie,14,20,12,19">Border Collie</option>
+              <option value="bulldog_frances,9,13,8,12">Bulldog Francés</option>
+              <option value="bulldog_ingles,23,25,18,23">Bulldog Inglés</option>
+              <option value="springer,20,25,18,23">Springer Spaniel</option>
+              <option value="husky,20,27,16,23">Husky Siberiano</option>
+              <option value="akita,32,39,23,29">Akita Inu</option>
+              <option value="boxer,25,32,21,25">Boxer</option>
+              <option value="shar_pei,18,25,18,25">Shar Pei</option>
+            </optgroup>
+            <optgroup label="Razas grandes">
+              <option value="labrador,29,36,25,32">Labrador Retriever</option>
+              <option value="golden,29,34,25,29">Golden Retriever</option>
+              <option value="pastor_aleman,30,40,22,32">Pastor Alemán</option>
+              <option value="rottweiler,43,61,38,52">Rottweiler</option>
+              <option value="doberman,40,45,32,35">Doberman</option>
+              <option value="pastor_belga,25,30,20,25">Pastor Belga Malinois</option>
+              <option value="dalmata,27,32,24,29">Dálmata</option>
+              <option value="setter_irlandes,27,32,25,29">Setter Irlandés</option>
+              <option value="weimaraner,30,40,25,35">Weimaraner</option>
+            </optgroup>
+            <optgroup label="Razas gigantes">
+              <option value="gran_danes,54,90,45,59">Gran Danés</option>
+              <option value="san_bernardo,64,120,54,91">San Bernardo</option>
+              <option value="terranova,60,70,45,55">Terranova</option>
+              <option value="mastín,77,100,54,77">Mastín Español</option>
+              <option value="braco,25,32,20,27">Braco Alemán</option>
+            </optgroup>
+            <optgroup label="Mestizo / Sin raza definida">
+              <option value="mestizo_mini,3,8,3,8">Mestizo pequeño</option>
+              <option value="mestizo_mediano,10,20,10,20">Mestizo mediano</option>
+              <option value="mestizo_grande,20,35,20,35">Mestizo grande</option>
+            </optgroup>
+          </select>
+
+          <div class="row-2">
+            <div>
+              <label>Sexo</label>
+              <select id="pid-sexo" onchange="calcPID()">
+                <option value="m">Macho</option>
+                <option value="h">Hembra</option>
+              </select>
+            </div>
+            <div>
+              <label>Peso actual (kg) — opcional</label>
+              <input type="number" id="pid-peso-actual" placeholder="28" min="0" step="0.1" oninput="calcPID()">
+            </div>
+          </div>
+
+          <div class="result-box" id="pid-res">Selecciona la raza de tu perro</div>
+        </div>
+
+        <div id="pid-comp" style="display:none;margin-top:1rem">
+          <div class="card" id="pid-comp-card"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Cómo saber si tu perro tiene sobrepeso</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El peso es solo una de las pistas para valorar la condición corporal de un perro. Puedes palpar suavemente sus costillas: en un perro con una condición corporal adecuada, normalmente se notan bajo una fina capa de grasa, sin tener que presionar demasiado. Si cuesta encontrarlas, puede haber exceso de grasa; si se ven muy marcadas, podría tener un peso demasiado bajo.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">También puedes observar su silueta. Desde arriba, debería apreciarse cierta cintura detrás de las costillas y, de perfil, el abdomen suele elevarse ligeramente hacia las patas traseras. Estas señales varían según la constitución y la raza del perro.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">El exceso de peso puede aumentar el riesgo de problemas articulares, diabetes y otras enfermedades. Si sospechas que tu perro tiene sobrepeso o está demasiado delgado, consulta con tu veterinario antes de modificar de forma importante su alimentación.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿El peso ideal es igual para todos los perros de una raza?</h2>
+          <p>No. Los rangos de peso por raza son referencias generales, no límites exactos aplicables a todos los perros. La estructura corporal, la musculatura, la edad y las características individuales pueden influir mucho. Lo importante es valorar el conjunto de su condición corporal y no intentar alcanzar una cifra concreta a toda costa.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cómo sé si mi perro necesita adelgazar?</summary>
+            <p>Que el peso supere el rango habitual de su raza puede ser una señal para revisar su condición corporal, pero no confirma por sí solo que tenga sobrepeso. Observa si puedes palpar las costillas y si tiene cintura visible. Un veterinario puede determinar si necesita adelgazar y cuál sería un objetivo adecuado.</p>
+          </details>
+          <details>
+            <summary>¿Los perros esterilizados tienden a ganar peso?</summary>
+            <p>Algunos perros necesitan menos energía después de la esterilización y pueden ganar peso si siguen comiendo la misma cantidad. No ocurre igual en todos los casos. Ajusta la alimentación según su evolución y consulta con el veterinario si notas que aumenta de peso.</p>
+          </details>
+          <details>
+            <summary>¿A qué ritmo debe adelgazar un perro con sobrepeso?</summary>
+            <p>La velocidad adecuada depende de su peso, estado de salud y cantidad de peso que necesite perder. Es preferible seguir un plan gradual y supervisado por un veterinario, en lugar de reducir mucho la comida por cuenta propia. Así se puede controlar su evolución y evitar una alimentación insuficiente.</p>
+          </details>
+          <details>
+            <summary>¿El peso de referencia cambia según el sexo?</summary>
+            <p>Sí. En muchas razas, los machos suelen tener un rango de peso superior al de las hembras, aunque existe variación entre individuos. Por eso esta calculadora permite seleccionar el sexo, pero el resultado sigue siendo una referencia aproximada.</p>
+          </details>
+          <details>
+            <summary>¿Puedo usar esta calculadora para un perro mestizo?</summary>
+            <p>Sí. Puedes seleccionar la opción de mestizo pequeño, mediano o grande según su tamaño y constitución. Como no hay un estándar único para los mestizos, estos rangos son especialmente aproximados. La condición corporal y la valoración veterinaria son más útiles que una cifra general.</p>
+          </details>
+          <details>
+            <summary>¿Qué hago si mi perro está fuera del rango de peso?</summary>
+            <p>Estar por debajo o por encima del rango no significa necesariamente que exista un problema. Ten en cuenta su edad, musculatura, constitución y evolución del peso. Si la diferencia es importante, ha aparecido de forma repentina o notas otros síntomas, consulta con tu veterinario.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/mascotas/comida-perro/">🐕 Comida para perros</a></li>
+            <li><a href="/calculadoras/mascotas/edad-perro/">🦴 Edad en años humanos</a></li>
+            <li><a href="/calculadoras/mascotas/coste-mascota/">💰 Coste mensual mascota</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcPID() {
+  const razaVal = document.getElementById('pid-raza').value.split(',');
+  const sexo    = document.getElementById('pid-sexo').value;
+  const pesoActual = parseFloat(document.getElementById('pid-peso-actual').value);
+  const razaNombre = document.getElementById('pid-raza').options[document.getElementById('pid-raza').selectedIndex].text;
+
+  const minM = parseFloat(razaVal[1]);
+  const maxM = parseFloat(razaVal[2]);
+  const minH = parseFloat(razaVal[3]);
+  const maxH = parseFloat(razaVal[4]);
+
+  const min = sexo === 'm' ? minM : minH;
+  const max = sexo === 'm' ? maxM : maxH;
+  const media = (min + max) / 2;
+  const sexoLabel = sexo === 'm' ? 'macho' : 'hembra';
+
+  document.getElementById('pid-res').innerHTML =
+    `${razaNombre} (${sexoLabel}): ${min}–${max} kg
+    <small>Rango de peso orientativo · Valor medio de referencia: ${media.toFixed(1)} kg</small>`;
+
+  if (!isNaN(pesoActual) && pesoActual > 0) {
+    let estado, color, consejo;
+    const pct = ((pesoActual - media) / media * 100).toFixed(0);
+
+    if (pesoActual < min * 0.9) {
+      estado = 'Muy por debajo del rango orientativo';
+      color = '#3B82F6';
+      consejo = `El peso está por debajo del rango de referencia de esta raza. Esto no determina por sí solo si existe bajo peso: consulta con tu veterinario para valorar su condición corporal.`;
+    } else if (pesoActual < min) {
+      estado = 'Por debajo del rango orientativo';
+      color = '#EAB308';
+      consejo = 'El peso es algo inferior al rango de referencia. Ten en cuenta su constitución y condición corporal; si tienes dudas, consulta con tu veterinario.';
+    } else if (pesoActual <= max) {
+      estado = 'Dentro del rango orientativo';
+      color = '#22C55E';
+      consejo = 'El peso está dentro del rango de referencia para esta raza y sexo. Esto no garantiza por sí solo una condición corporal ideal: también importan la musculatura y la distribución de la grasa.';
+    } else if (pesoActual <= max * 1.1) {
+      estado = 'Por encima del rango orientativo';
+      color = '#EAB308';
+      consejo = 'El peso supera ligeramente el rango de referencia. Valora su constitución y condición corporal antes de cambiar la alimentación.';
+    } else {
+      estado = 'Bastante por encima del rango orientativo';
+      color = '#EF4444';
+      consejo = 'El peso supera el rango de referencia de esta raza. No confirma por sí solo que tenga sobrepeso; conviene valorar su condición corporal con un veterinario.';
+    }
+
+    document.getElementById('pid-comp').style.display = 'block';
+    document.getElementById('pid-comp-card').innerHTML = `
+      <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">Comparación del peso actual</h2>
+      <p style="font-size:1.1rem;font-weight:700;color:${color};margin-bottom:0.5rem">${estado}</p>
+      <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.5rem">${consejo}</p>
+      <p style="font-size:0.825rem;color:var(--muted)">Peso actual: ${pesoActual} kg · Rango de referencia: ${min}–${max} kg · Diferencia respecto al valor medio: ${pct > 0 ? '+' : ''}${pct}%</p>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem">Esta comparación es orientativa y no sustituye una valoración veterinaria.</p>`;
+  } else {
+    document.getElementById('pid-comp').style.display = 'none';
+  }
+}
+
+calcPID();
+</script>

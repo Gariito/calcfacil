@@ -1,0 +1,225 @@
+---
+layout: base.njk
+title: Calculadora de embarazo — semanas de gestación y fecha de parto
+description: Calcula de cuántas semanas estás, tu fecha probable de parto y el trimestre en el que te encuentras a partir de la última regla. Gratis y sin registro.
+keywords: calculadora embarazo, calculadora semanas embarazo, cuantas semanas de embarazo tengo, semanas de gestacion, fecha probable parto, calculadora fecha parto, semanas embarazo
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/embarazo/">Embarazo y bebé</a>
+      <span>›</span>
+      <span>Semanas de embarazo</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🗓️ Calculadora de embarazo</h1>
+        <p class="calc-intro">Calcula de cuántas semanas estás, la fecha probable de parto y el trimestre del embarazo a partir de la fecha de tu última regla.</p>
+
+        <div class="card">
+          <label>Fecha de tu última regla (FUR)</label>
+          <input type="date" id="emb-fur" oninput="calcEmbarazo()" style="width:100%;padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg);margin-bottom:1rem">
+
+          <label>Duración de tu ciclo menstrual (días)</label>
+          <input type="number" id="emb-ciclo" placeholder="28" value="28" oninput="calcEmbarazo()">
+
+          <div class="result-box" id="emb-res">Introduce la fecha de tu última regla</div>
+        </div>
+
+        <div id="emb-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="emb-cards"></div>
+        </div>
+
+        <div id="emb-progreso-wrap" style="display:none;margin-top:1rem">
+          <div class="card">
+            <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">¿Cuánto llevas de embarazo?</h2>
+            <div style="background:var(--border);border-radius:99px;height:10px;margin-bottom:0.5rem">
+              <div id="emb-barra" style="height:10px;border-radius:99px;background:var(--accent);transition:width 0.4s"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted)">
+              <span>Semana 1</span>
+              <span>Semana 13</span>
+              <span>Semana 27</span>
+              <span>Semana 40</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="emb-semana-info" style="display:none;margin-top:1rem">
+          <div class="card">
+            <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.75rem">Desarrollo del embarazo esta semana</h2>
+            <p style="color:var(--muted);font-size:0.875rem;line-height:1.8" id="emb-semana-texto"></p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Primer, segundo y tercer trimestre del embarazo</h2>
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <div style="background:#EFF6FF;border-left:4px solid #2563EB;border-radius:0 8px 8px 0;padding:0.85rem">
+              <strong style="color:#1d4ed8">Primer trimestre — Semanas 1 a 12</strong>
+              <p style="color:var(--muted);font-size:0.875rem;margin-top:0.3rem">Durante estas primeras semanas se desarrollan las estructuras principales del bebé y se producen muchos cambios hormonales. Las náuseas y el cansancio son frecuentes, aunque no todas las mujeres los experimentan de la misma forma.</p>
+            </div>
+            <div style="background:#F0FDF4;border-left:4px solid #22C55E;border-radius:0 8px 8px 0;padding:0.85rem">
+              <strong style="color:#16A34A">Segundo trimestre — Semanas 13 a 26</strong>
+              <p style="color:var(--muted);font-size:0.875rem;margin-top:0.3rem">El crecimiento continúa y muchas mujeres empiezan a notar los movimientos del bebé durante este período. En bastantes casos también disminuyen las molestias habituales de los primeros meses.</p>
+            </div>
+            <div style="background:#FEF9C3;border-left:4px solid #EAB308;border-radius:0 8px 8px 0;padding:0.85rem">
+              <strong style="color:#854D0E">Tercer trimestre — Semanas 27 a 40</strong>
+              <p style="color:var(--muted);font-size:0.875rem;margin-top:0.3rem">El bebé aumenta de peso y sus órganos continúan madurando. A medida que avanza el tercer trimestre pueden aparecer más molestias debido al tamaño del embarazo y a los cambios que experimenta el cuerpo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cómo se calculan las semanas de embarazo?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para calcular las semanas de gestación se toma como referencia el primer día de la última regla, conocido como FUR. Por eso, las semanas de embarazo no empiezan a contarse desde el momento exacto de la concepción.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La fecha probable de parto suele situarse alrededor de las 40 semanas desde la última menstruación. La calculadora tiene en cuenta también la duración de tu ciclo para hacer una estimación más ajustada de esa fecha.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">Si tus ciclos son irregulares o existe una diferencia importante entre la fecha calculada y la estimada mediante ecografía, el profesional sanitario puede ajustar la edad gestacional y la fecha prevista de parto.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Cuándo suele nacer el bebé?</h2>
+          <p>La fecha probable de parto es una estimación, no un día exacto. El nacimiento puede producirse antes o después de esa fecha, por lo que las semanas de gestación son más útiles para situar el momento del embarazo que para predecir el día exacto del parto.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cuántas semanas de embarazo tengo?</summary>
+            <p>Puedes calcularlo introduciendo el primer día de tu última regla y, si lo sabes, la duración habitual de tu ciclo. La calculadora muestra las semanas y días de gestación que corresponden a esa fecha.</p>
+          </details>
+
+          <details>
+            <summary>¿Cómo se calcula la fecha probable de parto?</summary>
+            <p>La fecha probable de parto se estima tomando como referencia el primer día de la última menstruación y una duración aproximada de 40 semanas. La duración del ciclo también puede modificar ligeramente el resultado.</p>
+          </details>
+
+          <details>
+            <summary>¿Qué pasa si no tengo ciclos de 28 días?</summary>
+            <p>No pasa nada. Puedes introducir la duración habitual de tu ciclo para ajustar la estimación. Si tus ciclos son irregulares, el resultado debe tomarse como orientativo y la ecografía puede ayudar a establecer mejor la edad gestacional.</p>
+          </details>
+
+          <details>
+            <summary>¿Desde qué día se cuentan las semanas de embarazo?</summary>
+            <p>Las semanas se cuentan desde el primer día de la última regla, aunque la fecundación ocurre normalmente unas semanas después. Por este motivo, la edad gestacional es diferente del tiempo transcurrido desde la concepción.</p>
+          </details>
+
+          <details>
+            <summary>¿Cuándo empieza cada trimestre del embarazo?</summary>
+            <p>De forma habitual, el primer trimestre comprende las semanas 1 a 12, el segundo va de la 13 a la 26 y el tercero comienza en la semana 27 y continúa hasta el final del embarazo.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/embarazo/peso-bebe/">⚖️ Peso del bebé por semanas</a></li>
+            <li><a href="/calculadoras/embarazo/fecha-concepcion/">📅 Fecha de concepción</a></li>
+            <li><a href="/calculadoras/embarazo/leche-materna/">🍼 Leche materna</a></li>
+            <li><a href="/calculadoras/embarazo/desarrollo-bebe/">👶 Desarrollo del bebé</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const EMB_SEMANAS = {
+  4:  'El embrión tiene el tamaño de una semilla de amapola (~0,4mm). Se está implantando en el útero.',
+  5:  'El embrión mide unos 2mm. El corazón primitivo empieza a formarse y a latir.',
+  6:  'El embrión mide unos 4-6mm. Se pueden ver los primeros esbozos de brazos y piernas.',
+  7:  'El embrión mide unos 8-10mm. El cerebro y la médula espinal se están formando.',
+  8:  'El embrión mide unos 16mm. Tiene todos los órganos principales en formación.',
+  9:  'El feto mide unos 23mm. Los dedos de manos y pies empiezan a separarse.',
+  10: 'El feto mide unos 31mm. Los órganos vitales están formados y funcionando.',
+  11: 'El feto mide unos 4cm. Puede moverse aunque aún no lo notas.',
+  12: 'El feto mide unos 5,4cm. Es la semana de la ecografía del primer trimestre.',
+  13: 'El feto mide unos 7,4cm. Empieza el segundo trimestre. Los huesos se están endureciendo.',
+  16: 'El feto mide unos 11,6cm. Puede escuchar sonidos. La piel es todavía muy fina.',
+  20: 'El feto mide unos 25cm y pesa unos 300g. Ecografía morfológica de las 20 semanas.',
+  24: 'El feto mide unos 30cm y pesa unos 600g. Los pulmones se están desarrollando.',
+  28: 'El feto mide unos 37cm y pesa unos 1kg. Empieza el tercer trimestre.',
+  32: 'El feto mide unos 42cm y pesa unos 1,7kg. Está adoptando la posición de parto.',
+  36: 'El feto mide unos 47cm y pesa unos 2,6kg. Los pulmones ya están casi maduros.',
+  38: 'El feto mide unos 50cm y pesa unos 3kg. Considerado término temprano.',
+  40: 'El bebé mide unos 51cm y pesa unos 3,4kg. Fecha probable de parto.'
+};
+
+function getSemanaInfo(semanas) {
+  const keys = Object.keys(EMB_SEMANAS).map(Number).sort((a,b)=>a-b);
+  let texto = EMB_SEMANAS[4];
+  for (const k of keys) {
+    if (semanas >= k) texto = EMB_SEMANAS[k];
+  }
+  return texto;
+}
+
+function calcEmbarazo() {
+  const furVal = document.getElementById('emb-fur').value;
+  const ciclo  = parseInt(document.getElementById('emb-ciclo').value) || 28;
+  if (!furVal) return;
+
+  const fur  = new Date(furVal + 'T12:00:00');
+  const hoy  = new Date();
+  const ajuste = ciclo - 28;
+  const fpp  = new Date(fur.getTime() + (280 + ajuste) * 86400000);
+  const diffDias = Math.floor((hoy - fur) / 86400000);
+
+  if (diffDias < 0) {
+    document.getElementById('emb-res').textContent = 'La fecha introducida es futura';
+    return;
+  }
+
+  if (diffDias > 294) {
+    document.getElementById('emb-res').textContent = 'La fecha parece anterior a un embarazo actual';
+    return;
+  }
+
+  const semanas    = Math.floor(diffDias / 7);
+  const diasResto  = diffDias % 7;
+  const diasHastaFpp = Math.ceil((fpp - hoy) / 86400000);
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const fppStr = `${fpp.getDate()} de ${meses[fpp.getMonth()]} de ${fpp.getFullYear()}`;
+  const trimestre = semanas <= 12 ? 'Primer trimestre' : semanas <= 26 ? 'Segundo trimestre' : 'Tercer trimestre';
+  const pct = Math.min((diffDias / 280) * 100, 100).toFixed(1);
+
+  document.getElementById('emb-res').innerHTML =
+    `${semanas} semanas y ${diasResto} días de embarazo
+    <small>Fecha probable de parto: ${fppStr} · ${trimestre} · ${diasHastaFpp > 0 ? `Faltan ${diasHastaFpp} días` : 'En la fecha de parto'}</small>`;
+
+  document.getElementById('emb-desglose').style.display = 'block';
+  document.getElementById('emb-cards').innerHTML = `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Semanas de gestación</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${semanas}+${diasResto}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${semanas} semanas y ${diasResto} días</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fecha probable de parto</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--accent)">${fppStr}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${diasHastaFpp > 0 ? `en ${diasHastaFpp} días` : 'hoy'}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Trimestre</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--accent)">${trimestre}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${diffDias} días desde la FUR</div>
+    </div>
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Progreso</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${pct}%</div>
+      <div style="font-size:0.78rem;color:var(--accent)">del embarazo completado</div>
+    </div>`;
+
+  document.getElementById('emb-progreso-wrap').style.display = 'block';
+  document.getElementById('emb-barra').style.width = pct + '%';
+
+  document.getElementById('emb-semana-info').style.display = 'block';
+  document.getElementById('emb-semana-texto').textContent = getSemanaInfo(semanas);
+}
+</script>

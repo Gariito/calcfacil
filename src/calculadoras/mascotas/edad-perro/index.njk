@@ -1,0 +1,221 @@
+---
+layout: base.njk
+title: Calculadora de edad del perro en años humanos
+description: Calcula cuántos años humanos tiene tu perro según su edad y tamaño. Consulta una equivalencia orientativa para perros pequeños, medianos, grandes y gigantes.
+keywords: edad perro años humanos, cuantos años tiene mi perro en humanos, calculadora edad perro, convertir edad perro a humanos, años humanos perro por tamaño, edad perro equivalente humano
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/mascotas/">Mascotas</a>
+      <span>›</span>
+      <span>Edad del perro en años humanos</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🦴 Calculadora de edad del perro en años humanos</h1>
+        <p class="calc-intro">¿Quieres saber a qué edad humana equivale la de tu perro? Introduce sus años y selecciona su tamaño para obtener una estimación orientativa de su edad y etapa vital.</p>
+
+        <div class="card">
+          <div class="row-2">
+            <div>
+              <label>Edad del perro (años)</label>
+              <input type="number" id="ep-edad" placeholder="5" min="0" max="24" step="1" oninput="calcEP()">
+            </div>
+            <div>
+              <label>Tamaño del perro</label>
+              <select id="ep-tamano" onchange="calcEP()">
+                <option value="mini">Mini / Toy (menos de 10 kg)</option>
+                <option value="pequeno">Pequeño (10-20 kg)</option>
+                <option value="mediano" selected>Mediano (20-30 kg)</option>
+                <option value="grande">Grande (30-45 kg)</option>
+                <option value="gigante">Gigante (más de 45 kg)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="result-box" id="ep-res">Introduce la edad de tu perro</div>
+        </div>
+
+        <div id="ep-cards" style="display:none;margin-top:1rem;grid-template-columns:repeat(3,1fr);gap:0.75rem"></div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Tabla de edad del perro en años humanos según su tamaño</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Consulta esta tabla para comparar la edad de tu perro con una equivalencia aproximada en años humanos. Los valores corresponden al mismo sistema de estimación que utiliza la calculadora. No representan una edad biológica exacta, ya que el envejecimiento varía según la raza, el tamaño y la salud de cada animal.</p>
+          <div style="overflow-x:auto">
+            <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Edad del perro</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Mini/Toy</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Pequeño</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Mediano</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Grande</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Gigante</th>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0.75rem;text-align:center">1 año</td>
+                <td style="text-align:right">15</td>
+                <td style="text-align:right">15</td>
+                <td style="text-align:right">15</td>
+                <td style="text-align:right">15</td>
+                <td style="text-align:right">12</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.4rem 0.75rem;text-align:center">2 años</td>
+                <td style="text-align:right">24</td>
+                <td style="text-align:right">24</td>
+                <td style="text-align:right">24</td>
+                <td style="text-align:right">24</td>
+                <td style="text-align:right">22</td>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0.75rem;text-align:center">3 años</td>
+                <td style="text-align:right">28</td>
+                <td style="text-align:right">28</td>
+                <td style="text-align:right">28</td>
+                <td style="text-align:right">28</td>
+                <td style="text-align:right">31</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.4rem 0.75rem;text-align:center">5 años</td>
+                <td style="text-align:right">36</td>
+                <td style="text-align:right">36</td>
+                <td style="text-align:right">36</td>
+                <td style="text-align:right">38</td>
+                <td style="text-align:right">42</td>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0.75rem;text-align:center">7 años</td>
+                <td style="text-align:right">44</td>
+                <td style="text-align:right">47</td>
+                <td style="text-align:right">50</td>
+                <td style="text-align:right">52</td>
+                <td style="text-align:right">54</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.4rem 0.75rem;text-align:center">10 años</td>
+                <td style="text-align:right">56</td>
+                <td style="text-align:right">60</td>
+                <td style="text-align:right">66</td>
+                <td style="text-align:right">69</td>
+                <td style="text-align:right">72</td>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0.75rem;text-align:center">12 años</td>
+                <td style="text-align:right">64</td>
+                <td style="text-align:right">66</td>
+                <td style="text-align:right">74</td>
+                <td style="text-align:right">77</td>
+                <td style="text-align:right">85</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.4rem 0.75rem;text-align:center">15 años</td>
+                <td style="text-align:right">76</td>
+                <td style="text-align:right">75</td>
+                <td style="text-align:right">86</td>
+                <td style="text-align:right">89</td>
+                <td style="text-align:right">102</td>
+              </tr>
+            </table>
+          </div>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Equivalencias orientativas generadas por el modelo de esta calculadora. No deben interpretarse como una medida clínica de la edad biológica del perro.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Por qué no funciona la regla de multiplicar por 7</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Es habitual calcular la edad humana de un perro multiplicando sus años por siete. Sin embargo, esta regla es demasiado simple: los perros maduran rápidamente durante sus primeros años y después su ritmo de envejecimiento depende, entre otros factores, de su tamaño y raza.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Por ejemplo, un perro de un año ya ha alcanzado una etapa de desarrollo comparable, de forma aproximada, a la adolescencia humana. A partir de ahí, la equivalencia cambia con la edad y las características del animal.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">En general, los perros grandes y gigantes tienden a tener una esperanza de vida menor que los perros pequeños. Por eso, para estimar su edad en años humanos es preferible tener en cuenta algo más que una simple multiplicación.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Cuándo se considera mayor a un perro?</h2>
+          <p>La etapa senior depende del tamaño, la raza y el estado de salud. Los perros pequeños suelen llegar a esta etapa más tarde que los grandes o gigantes. No hay una edad única válida para todos: los cambios en la movilidad, la energía y la salud también ayudan a identificar el envejecimiento.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cuántos años vive un perro de media?</summary>
+            <p>La esperanza de vida varía según el tamaño, la raza, la genética y los cuidados. Muchos perros pequeños viven entre 12 y 16 años, mientras que los medianos y grandes pueden tener una esperanza de vida menor. Estas cifras son orientativas y no permiten predecir cuánto vivirá un perro concreto.</p>
+          </details>
+          <details>
+            <summary>¿A qué edad se considera adulto un perro?</summary>
+            <p>Depende de su tamaño y raza. Muchos perros pequeños alcanzan la madurez física alrededor del primer año, mientras que los grandes y gigantes pueden tardar entre 18 meses y dos años. La madurez física y la conductual no siempre llegan al mismo tiempo.</p>
+          </details>
+          <details>
+            <summary>¿Los perros pequeños viven más que los grandes?</summary>
+            <p>En términos generales, sí. Los perros pequeños suelen vivir más años que los de razas grandes o gigantes, aunque hay diferencias importantes entre razas e individuos. La genética, la alimentación, el ejercicio y la atención veterinaria también influyen en su salud y longevidad.</p>
+          </details>
+          <details>
+            <summary>¿La regla de multiplicar por siete es correcta?</summary>
+            <p>No. Es una regla popular, pero no refleja cómo envejecen realmente los perros. La maduración es más rápida durante los primeros años y la equivalencia posterior depende de factores como el tamaño y la raza.</p>
+          </details>
+          <details>
+            <summary>¿La calculadora indica la edad biológica exacta?</summary>
+            <p>No. Ofrece una equivalencia aproximada para comparar la edad del perro con la humana. No evalúa su estado de salud ni determina su edad biológica real. Para valorar cambios asociados al envejecimiento, consulta con un veterinario.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            <li><a href="/calculadoras/mascotas/peso-ideal-perro/">⚖️ Peso ideal del perro</a></li>
+            <li><a href="/calculadoras/mascotas/comida-perro/">🐕 Comida para perros</a></li>
+            <li><a href="/calculadoras/mascotas/vacunas-perro/">💉 Vacunas del perro</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const EP_TABLA = {
+  mini:    [0,15,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,83,86,89,91,93,95,96,97],
+  pequeno: [0,15,24,28,32,36,41,47,52,57,60,63,66,69,72,75,78,80,82,84,86,88,89,90,91],
+  mediano: [0,15,24,28,32,36,42,50,58,64,66,70,74,77,80,83,86,88,90,92,93,94,95,96,97],
+  grande:  [0,15,24,28,32,38,45,52,58,64,69,73,77,82,86,89,91,93,95,96,97,98,99,100,101],
+  gigante: [0,12,22,31,38,42,48,54,59,64,72,78,85,91,97,102,107,111,115,118,121,123,125,127,129]
+};
+
+function calcEP() {
+  const edad   = parseInt(document.getElementById('ep-edad').value);
+  const tamano = document.getElementById('ep-tamano').value;
+  if (isNaN(edad) || edad < 0 || edad > 24) return;
+
+  const tabla  = EP_TABLA[tamano];
+  const humanos = tabla[Math.min(edad, tabla.length-1)];
+  const tamanoLabel = {
+    mini:'Mini/Toy (<10 kg)', pequeno:'Pequeño (10-20 kg)',
+    mediano:'Mediano (20-30 kg)', grande:'Grande (30-45 kg)', gigante:'Gigante (>45 kg)'
+  }[tamano];
+  const etapa = edad <= 1 ? 'Cachorro' : humanos < 40 ? 'Adulto joven' : humanos < 60 ? 'Adulto maduro' : 'Senior';
+
+  document.getElementById('ep-res').innerHTML =
+    `${humanos} años humanos equivalentes
+    <small>${edad} año${edad!==1?'s':''} de perro (${tamanoLabel}) · Etapa: ${etapa}</small>`;
+
+  const el = document.getElementById('ep-cards');
+  el.style.display = 'grid';
+  el.innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Años humanos estimados</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${humanos}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Regla del 7</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--muted)">${edad*7}</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Cálculo simplificado</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Etapa vital estimada</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--accent)">${etapa}</div>
+    </div>`;
+}
+</script>
