@@ -1,92 +1,215 @@
 ---
-layout: calculadora.njk
-title: Price per 100g Calculator
-description: Calculate the price per 100 grams of any product. Compare food prices and different package sizes quickly and easily.
-keywords: price per 100g calculator, price per 100 grams, calculate price per 100g, price per 100g, cost per 100 grams, food price calculator, compare food prices
-categoria: everyday
-categoriaLabel: Day to day
-titulo: Price per 100g Calculator
-icono: ⚖️
-tituloCorto: the price per 100g calculator
-descripcion: Find out how much a product costs per 100 grams and easily compare different sizes and brands.
-explicacion: Enter the product price and weight to calculate the cost per 100 grams. Useful for comparing food products with different package sizes.
-faq:
-  - q: How do you calculate the price per 100 grams?
-    a: Divide the product price by its weight in grams and multiply the result by 100. For example, a 500 g product costing £4 has a price of £0.80 per 100 g.
-  - q: Why calculate the price per 100g?
-    a: It gives you a common measurement for comparing products with different weights and package sizes.
-  - q: Can I enter the weight in kilograms?
-    a: The calculator uses grams. If the product weighs 1 kilogram, enter 1000 grams.
-  - q: Can I use this calculator for food?
-    a: Yes. It is useful for comparing products such as coffee, cheese, cereals, chocolate, nuts, meat and many other foods sold by weight.
-  - q: Is price per gram the same as price per 100 grams?
-    a: No. Price per gram tells you the cost of one gram, while price per 100 grams multiplies that amount by 100 to provide a more convenient comparison.
-
-relacionadas:
-  - slug: pack-comparison
-    categoria: everyday
-    titulo: Pack Comparison
-    icono: 📦
-  - slug: percentage
-    categoria: everyday
-    titulo: Percentage Calculator
-    icono: "%"
+layout: base.njk
+title: Price per 100g Calculator — Compare Food Prices by Weight
+description: Calculate the price per 100 grams of any product and compare different package sizes instantly. Free price per 100g calculator online.
+keywords: price per 100g calculator, price per 100 grams, calculate price per 100g, cost per 100 grams, food price calculator, compare food prices by weight
 ---
 
-<div style="display:grid;gap:1rem">
-  <div>
-    <label for="p100g-price" style="display:block;margin-bottom:.4rem;font-weight:600">Product price</label>
-    <input id="p100g-price" type="number" step="0.01" min="0" placeholder="e.g. 4.50"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-  </div>
+<div class="calc-page">
+  <div class="container calc-container">
 
-  <div>
-    <label for="p100g-weight" style="display:block;margin-bottom:.4rem;font-weight:600">Product weight (g)</label>
-    <input id="p100g-weight" type="number" step="0.01" min="0" placeholder="e.g. 500"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-  </div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <span>›</span>
+      <span>Price per 100g Calculator</span>
+    </nav>
 
-  <button onclick="calculate100g()"
-    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
-    Calculate price per 100g
-  </button>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>⚖️ Price per 100g Calculator</h1>
+        <p class="calc-intro">Calculate the price per 100 grams of any product and compare different package sizes instantly.</p>
 
-  <div id="p100g-result" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
-    <div style="font-size:.85rem;color:var(--muted)">Price per 100g</div>
-    <div id="p100g-value" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
+        <div class="card">
+          <label>Product price</label>
+          <input type="number" id="p100g-price" placeholder="4.50" step="0.01" min="0" oninput="calc100g()">
+
+          <label>Product weight</label>
+          <div class="row-2">
+            <input type="number" id="p100g-weight" placeholder="500" step="0.01" min="0" oninput="calc100g()">
+            <select id="p100g-unit" onchange="calc100g()">
+              <option value="g">Grams (g)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="ml">Millilitres (ml)</option>
+              <option value="l">Litres (l)</option>
+            </select>
+          </div>
+
+          <label>Currency</label>
+          <select id="p100g-currency" onchange="calc100g()">
+            <option value="£">£ — British pound</option>
+            <option value="€">€ — Euro</option>
+            <option value="$">$ — US dollar</option>
+          </select>
+
+          <div class="result-box" id="p100g-res">Enter the price and weight to calculate</div>
+        </div>
+
+        <div id="p100g-desglose" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="p100g-cards"></div>
+        </div>
+
+        <!-- Compare two products -->
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1rem">Compare two products</h2>
+          <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem">Enter both products to find out which offers better value for money.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <div>
+              <p style="font-size:0.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem">Product A</p>
+              <label>Price</label>
+              <input type="number" id="cmp-a-price" placeholder="3.20" step="0.01" oninput="calcCompare()">
+              <label>Weight (g)</label>
+              <input type="number" id="cmp-a-weight" placeholder="400" oninput="calcCompare()">
+            </div>
+            <div>
+              <p style="font-size:0.8rem;font-weight:700;color:#22C55E;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem">Product B</p>
+              <label>Price</label>
+              <input type="number" id="cmp-b-price" placeholder="4.80" step="0.01" oninput="calcCompare()">
+              <label>Weight (g)</label>
+              <input type="number" id="cmp-b-weight" placeholder="650" oninput="calcCompare()">
+            </div>
+          </div>
+
+          <div class="result-box" id="cmp-res" style="display:none"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate the price per 100g</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">The price per 100 grams calculator makes it easier to compare products sold in different package sizes. Instead of looking only at the total price, you can use the same 100 g reference for every product.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">The formula is simple: divide the product price by its weight in grams and multiply the result by 100:</p>
+          <div style="background:var(--bg);border-radius:8px;padding:1rem;font-size:0.85rem;color:var(--muted);margin-bottom:1rem">
+            <strong style="color:var(--text)">Price per 100g = (Price ÷ Weight in grams) × 100</strong><br>
+            Example: £3.20 ÷ 400g × 100 = <strong>£0.80 per 100g</strong>
+          </div>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Common products and typical price per 100g</h2>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Product</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Typical range per 100g</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">Coffee (ground)</td><td style="text-align:right">£0.60 – £2.50</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Cheddar cheese</td><td style="text-align:right">£0.50 – £1.20</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Breakfast cereal</td><td style="text-align:right">£0.20 – £0.60</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Dark chocolate</td><td style="text-align:right">£0.40 – £2.00</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Mixed nuts</td><td style="text-align:right">£0.80 – £2.00</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Chicken breast</td><td style="text-align:right">£0.50 – £1.00</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Salmon fillet</td><td style="text-align:right">£1.00 – £2.50</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Pasta (dried)</td><td style="text-align:right">£0.10 – £0.40</td></tr>
+          </table>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Tips for comparing prices at the supermarket</h2>
+          <ul style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+            <li><strong>Always compare the same unit:</strong> price per 100g for solids, price per 100ml for liquids.</li>
+            <li><strong>Bigger is not always cheaper:</strong> larger packs usually cost less per 100g but not always — use this calculator to check.</li>
+            <li><strong>Check own-brand vs branded:</strong> own-brand products often have a much lower price per 100g for similar quality.</li>
+            <li><strong>Watch out for "special offers":</strong> multipack deals do not always work out cheaper per 100g than the standard pack.</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Why use price per 100g?</h2>
+          <p>Supermarkets in the UK are legally required to display the unit price (price per 100g or per kg) alongside the selling price for most food products. This makes it easier to compare value without doing mental arithmetic. This calculator automates that comparison for any product.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How do you calculate the price per 100g?</summary>
+            <p>Divide the product price by its weight in grams and multiply by 100. For example, a 500g product costing £4.00 has a price of £0.80 per 100g: (4.00 ÷ 500) × 100 = £0.80.</p>
+          </details>
+          <details>
+            <summary>Can I enter the weight in kilograms?</summary>
+            <p>Yes — select "Kilograms" from the unit dropdown and enter the weight in kg. The calculator converts it automatically to grams before calculating.</p>
+          </details>
+          <details>
+            <summary>Does this work for liquids too?</summary>
+            <p>Yes. Select millilitres or litres from the unit dropdown to calculate the price per 100ml instead. This is useful for comparing drinks, oils, sauces and other liquid products.</p>
+          </details>
+          <details>
+            <summary>Why is the bigger pack sometimes more expensive per 100g?</summary>
+            <p>It does happen — especially with premium or organic products where larger packs are sold at a premium. Promotional pricing can also distort the comparison. Always check the unit price rather than assuming bigger is better value.</p>
+          </details>
+          <details>
+            <summary>Is price per gram the same as price per 100g?</summary>
+            <p>No. Price per gram gives the cost of one gram, while price per 100g multiplies that by 100 for a more practical comparison. Most supermarket shelf labels show price per 100g or per kg rather than per gram.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/everyday/discount/">🏷️ Discount Calculator</a></li>
+            <li><a href="/en/calculators/everyday/tip/">🍽️ Tip Calculator</a></li>
+            <li><a href="/en/calculators/math/percentage/">% Percentage Calculator</a></li>
+            <li><a href="/en/calculators/finance/vat/">🧾 VAT Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </div>
 
 <script>
-function calculate100g() {
-  const price = parseFloat(document.getElementById('p100g-price').value);
-  const weight = parseFloat(document.getElementById('p100g-weight').value);
+function calc100g() {
+  const price    = parseFloat(document.getElementById('p100g-price').value);
+  const weight   = parseFloat(document.getElementById('p100g-weight').value);
+  const unit     = document.getElementById('p100g-unit').value;
+  const currency = document.getElementById('p100g-currency').value;
+  if (isNaN(price) || isNaN(weight) || weight <= 0) return;
 
-  if (!Number.isFinite(price) || !Number.isFinite(weight) || price < 0 || weight <= 0) {
-    document.getElementById('p100g-result').style.display = 'none';
-    return;
-  }
+  const weightG = (unit === 'kg' || unit === 'l') ? weight * 1000 : weight;
+  const per100  = (price / weightG) * 100;
+  const perKg   = (price / weightG) * 1000;
+  const unitLabel = (unit === 'ml' || unit === 'l') ? '100ml' : '100g';
+  const kgLabel   = (unit === 'ml' || unit === 'l') ? 'per litre' : 'per kg';
+  const fmt = n => currency + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
 
-  const result = (price / weight) * 100;
+  document.getElementById('p100g-res').innerHTML =
+    `${fmt(per100)} per ${unitLabel}
+    <small>${fmt(perKg)} ${kgLabel} · Total: ${fmt(price)} for ${weight}${unit}</small>`;
 
-  document.getElementById('p100g-value').textContent =
-    result.toLocaleString('en-GB', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 4
-    }) + '';
+  document.getElementById('p100g-desglose').style.display = 'block';
+  document.getElementById('p100g-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Per ${unitLabel}</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${fmt(per100)}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">${kgLabel.charAt(0).toUpperCase()+kgLabel.slice(1)}</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${fmt(perKg)}</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Per gram</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">${currency}${(price/weightG).toLocaleString('en-GB',{minimumFractionDigits:4,maximumFractionDigits:6})}</div>
+    </div>`;
+}
 
-  document.getElementById('p100g-result').style.display = 'block';
+function calcCompare() {
+  const aPrice  = parseFloat(document.getElementById('cmp-a-price').value);
+  const aWeight = parseFloat(document.getElementById('cmp-a-weight').value);
+  const bPrice  = parseFloat(document.getElementById('cmp-b-price').value);
+  const bWeight = parseFloat(document.getElementById('cmp-b-weight').value);
+  const currency = document.getElementById('p100g-currency').value;
+  if (isNaN(aPrice)||isNaN(aWeight)||isNaN(bPrice)||isNaN(bWeight)||aWeight<=0||bWeight<=0) return;
+
+  const a100 = (aPrice / aWeight) * 100;
+  const b100 = (bPrice / bWeight) * 100;
+  const fmt  = n => currency + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+  const diff = Math.abs(((b100-a100)/a100)*100).toFixed(1);
+
+  const winner  = a100 <= b100 ? 'A' : 'B';
+  const color   = a100 <= b100 ? 'var(--accent)' : '#22C55E';
+  const cheaper = Math.min(a100, b100);
+  const pricier = Math.max(a100, b100);
+  const saving  = (((pricier - cheaper) / pricier) * 100).toFixed(1);
+
+  const el = document.getElementById('cmp-res');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <strong style="color:${color}">Product ${winner} is better value</strong> — ${saving}% cheaper per 100g
+    <small>Product A: ${fmt(a100)}/100g · Product B: ${fmt(b100)}/100g · Difference: ${diff}%</small>`;
 }
 </script>
-
-<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate the price per 100g</h2>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">The price per 100 grams calculator makes it easier to compare products sold in different package sizes. Instead of looking only at the total price, you can use the same 100 g reference for every product.</p>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">The formula is simple: divide the product price by its weight in grams and multiply the result by 100.</p>
-
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Price per 100g example</h2>
-
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">If a 400 g product costs £3.20, divide 3.20 by 400 and multiply the result by 100. The result is £0.80 per 100 grams.</p>
-</div>
