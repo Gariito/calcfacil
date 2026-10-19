@@ -1,0 +1,220 @@
+---
+layout: calculadora.njk
+title: Calculadora de calorías de la manzana — cuántas calorías tiene una manzana
+description: Calcula las calorías de una manzana según su tamaño o los gramos que vayas a comer. Incluye valor nutricional completo con fibra, azúcares y vitaminas.
+keywords: calorías manzana, cuántas calorías tiene una manzana, manzana calorías, calorías manzana 100g, valor nutricional manzana, calorías manzana verde, calorías manzana roja
+categoria: salud
+categoriaLabel: Salud
+titulo: Calculadora de calorías de la manzana
+icono: 🍎
+tituloCorto: las calorías de la manzana
+descripcion: Calcula las calorías exactas de una manzana según su tamaño o los gramos que consumas, con su valor nutricional completo.
+explicacion: La manzana es una de las frutas más consumidas en España y una de las más buscadas en cuanto a calorías. Su contenido calórico varía según el tamaño y la variedad — una manzana pequeña puede tener 60 calorías mientras que una grande puede superar las 120. Esta calculadora te da el valor exacto según el tamaño o los gramos.
+faq:
+  - q: ¿Cuántas calorías tiene una manzana?
+    a: Una manzana mediana de unos 150g tiene aproximadamente 78 calorías. Una pequeña de 100g tiene unas 52 calorías y una grande de 200g tiene unas 104 calorías.
+  - q: ¿Cuántas calorías tiene la manzana por 100g?
+    a: La manzana tiene aproximadamente 52 calorías por cada 100g de pulpa. Es una de las frutas con menos calorías, lo que la convierte en una opción ideal para cualquier dieta.
+  - q: ¿La manzana verde tiene menos calorías que la roja?
+    a: La diferencia es mínima. La manzana verde tipo Granny Smith tiene aproximadamente 58 kcal por 100g frente a las 52 kcal de la manzana roja tipo Fuji o Golden. La diferencia principal está en el sabor y el índice glucémico, no en las calorías.
+  - q: ¿La manzana con piel tiene más calorías?
+    a: Comer la manzana con piel no añade calorías significativas, pero sí añade fibra adicional. La piel contiene una gran parte de los antioxidantes y la quercetina de la manzana, por lo que se recomienda comerla con piel siempre que sea posible.
+  - q: ¿Cuántas calorías tiene el zumo de manzana?
+    a: El zumo de manzana natural tiene aproximadamente 45-50 calorías por 100ml, similar a la fruta entera. Sin embargo, al eliminar la fibra durante el proceso de zumo, el azúcar se absorbe mucho más rápidamente, por lo que nutriccionalmente es preferible comer la manzana entera.
+  - q: ¿La manzana es buena para adelgazar?
+    a: La manzana es una de las mejores opciones para dietas de control calórico. Con unas 52 kcal por 100g, alto contenido en fibra y agua, y gran poder saciante, es el snack ideal para controlar el hambre entre comidas.
+relacionadas:
+  - slug: calorias-platano
+    categoria: salud
+    titulo: Calorías del plátano
+    icono: 🍌
+  - slug: calorias-aguacate
+    categoria: salud
+    titulo: Calorías del aguacate
+    icono: 🥑
+  - slug: calorias-alimentos
+    categoria: salud
+    titulo: Calorías de alimentos
+    icono: 🥗
+  - slug: calorias
+    categoria: salud
+    titulo: Calorías diarias
+    icono: 🔥
+---
+
+<label>Variedad de manzana</label>
+<select id="mz-variedad" onchange="calcMz()">
+  <option value="52,0.2,13.8,10.4,2.4,0.3">Manzana roja — Golden / Fuji / Red Delicious</option>
+  <option value="58,0.4,13.6,9.5,1.3,0.4">Manzana verde — Granny Smith</option>
+  <option value="54,0.2,14.3,11.0,2.1,0.3">Manzana Royal Gala</option>
+  <option value="52,0.2,13.8,10.4,2.4,0.3">Manzana genérica (valor medio)</option>
+</select>
+
+<label>Modo de cálculo</label>
+<select id="mz-modo" onchange="toggleModoMz()">
+  <option value="gramos">Por gramos</option>
+  <option value="tamano">Por tamaño</option>
+</select>
+
+<div id="mz-wrap-gramos">
+  <label>Cantidad (gramos de pulpa)</label>
+  <input type="number" id="mz-gramos" placeholder="150" oninput="calcMz()">
+</div>
+
+<div id="mz-wrap-tamano" style="display:none">
+  <label>Tamaño de la manzana</label>
+  <select id="mz-tamano" onchange="calcMz()">
+    <option value="100">Pequeña (~100g de pulpa)</option>
+    <option value="150" selected>Mediana (~150g de pulpa)</option>
+    <option value="182">Grande (~182g de pulpa)</option>
+    <option value="223">Extra grande (~223g de pulpa)</option>
+  </select>
+</div>
+
+<label>¿Con piel o sin piel?</label>
+<select id="mz-piel" onchange="calcMz()">
+  <option value="1.0">Con piel (recomendado)</option>
+  <option value="0.97">Sin piel</option>
+</select>
+
+<div class="result-box" id="mz-res">Selecciona la variedad e introduce los gramos</div>
+
+<div id="mz-nutri" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="mz-cards"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calorías de la manzana según tamaño</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Tamaño</th>
+      <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Peso pulpa</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calorías</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Pequeña</td><td style="text-align:center">~100g</td><td style="text-align:right"><strong>52 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Mediana</td><td style="text-align:center">~150g</td><td style="text-align:right"><strong>78 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Grande</td><td style="text-align:center">~182g</td><td style="text-align:right"><strong>95 kcal</strong></td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Extra grande</td><td style="text-align:center">~223g</td><td style="text-align:right"><strong>116 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">½ manzana mediana</td><td style="text-align:center">~75g</td><td style="text-align:right"><strong>39 kcal</strong></td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Valor nutricional de la manzana por 100g</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutriente</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Por 100g</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Manzana mediana (150g)</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Calorías</td><td style="text-align:right">52 kcal</td><td style="text-align:right">78 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Carbohidratos</td><td style="text-align:right">13,8g</td><td style="text-align:right">20,7g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">— Azúcares</td><td style="text-align:right">10,4g</td><td style="text-align:right">15,6g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">— Fibra</td><td style="text-align:right">2,4g</td><td style="text-align:right">3,6g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Proteínas</td><td style="text-align:right">0,3g</td><td style="text-align:right">0,5g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Grasas</td><td style="text-align:right">0,2g</td><td style="text-align:right">0,3g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Vitamina C</td><td style="text-align:right">4,6 mg</td><td style="text-align:right">6,9 mg</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Potasio</td><td style="text-align:right">107 mg</td><td style="text-align:right">161 mg</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Agua</td><td style="text-align:right">85,6g</td><td style="text-align:right">128,4g</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Valores medios de referencia para manzana roja con piel. Pueden variar según la variedad y el grado de madurez.</p>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Por qué la manzana es tan buena para adelgazar?</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La manzana tiene tres características que la hacen especialmente adecuada para dietas de control calórico. En primer lugar, su alto contenido en agua — más del 85% — hace que ocupe mucho volumen en el estómago con pocas calorías. En segundo lugar, su fibra soluble (pectina) produce sensación de saciedad duradera. En tercer lugar, su índice glucémico moderado evita los picos de azúcar que generan más hambre.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Con unas 78 calorías por manzana mediana, es uno de los snacks más eficientes para controlar el hambre entre comidas sin disparar la ingesta calórica diaria.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.25rem">Comparativa calórica de la manzana con otras frutas</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Fruta</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calorías por 100g</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">🥑 Aguacate</td><td style="text-align:right">160 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍌 Plátano</td><td style="text-align:right">89 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍇 Uva</td><td style="text-align:right">67 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍎 Manzana</td><td style="text-align:right"><strong>52 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍊 Naranja</td><td style="text-align:right">47 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍓 Fresa</td><td style="text-align:right">32 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">🍉 Sandía</td><td style="text-align:right">30 kcal</td></tr>
+  </table>
+</div>
+
+<script>
+function toggleModoMz() {
+  const modo = document.getElementById('mz-modo').value;
+  document.getElementById('mz-wrap-gramos').style.display = modo === 'gramos' ? 'block' : 'none';
+  document.getElementById('mz-wrap-tamano').style.display = modo === 'tamano' ? 'block' : 'none';
+  calcMz();
+}
+
+function calcMz() {
+  const variedad = document.getElementById('mz-variedad').value.split(',');
+  const modo     = document.getElementById('mz-modo').value;
+  const piel     = parseFloat(document.getElementById('mz-piel').value);
+  let g = 0;
+
+  if (modo === 'gramos') {
+    g = parseFloat(document.getElementById('mz-gramos').value);
+  } else {
+    g = parseFloat(document.getElementById('mz-tamano').value);
+  }
+
+  if (!g || g <= 0) return;
+
+  const kcal100 = parseFloat(variedad[0]) * piel;
+  const gras100 = parseFloat(variedad[1]);
+  const carb100 = parseFloat(variedad[2]);
+  const azuc100 = parseFloat(variedad[3]);
+  const fibr100 = parseFloat(variedad[4]);
+  const prot100 = parseFloat(variedad[5]);
+
+  const kcal = Math.round(kcal100 * g / 100);
+  const carb = (carb100 * g / 100).toFixed(1);
+  const azuc = (azuc100 * g / 100).toFixed(1);
+  const fibr = (fibr100 * g / 100).toFixed(1);
+  const prot = (prot100 * g / 100).toFixed(1);
+  const gras = (gras100 * g / 100).toFixed(1);
+  const pielLabel = piel === 1.0 ? 'con piel' : 'sin piel';
+
+  document.getElementById('mz-res').innerHTML =
+    `${kcal} kcal — ${g}g de manzana ${pielLabel}
+    <small>Carbohidratos: ${carb}g · Azúcares: ${azuc}g · Fibra: ${fibr}g · Proteínas: ${prot}g</small>`;
+
+  document.getElementById('mz-nutri').style.display = 'block';
+  document.getElementById('mz-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohidratos</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carb}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">de los cuales ${azuc}g azúcares</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibra</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibr}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Proteínas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Grasas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${gras}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Densidad calórica</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">Baja</div>
+      <div style="font-size:0.78rem;color:var(--muted)">52 kcal/100g</div>
+    </div>`;
+}
+
+calcMz();
+</script>

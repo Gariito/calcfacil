@@ -1,0 +1,307 @@
+---
+layout: base.njk
+title: Bread Calorie Calculator — Calories per Slice and 100g
+description: Find out how many calories are in bread with this free bread calorie calculator. Compare white, wholemeal, sourdough, rye and seeded bread by weight or slice.
+keywords: bread calorie calculator, calories in bread, calories in a slice of bread, white bread calories, wholemeal bread calories, sourdough bread calories, bread calories per 100g, calories in 2 slices of bread
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Bread Calorie Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🍞 Bread Calorie Calculator</h1>
+        <p class="calc-intro">Calculate the calories in bread by type and serving size. Choose the bread you eat, enter its weight or number of slices, and get an estimate of its calories, carbohydrates, protein, fat and fibre.</p>
+
+        <div class="card">
+          <label>Type of bread</label>
+          <select id="bc-tipo" onchange="calcBC()">
+            <optgroup label="Sliced bread">
+              <option value="270,8.0,51.0,3.5,2.5">White sliced bread</option>
+              <option value="241,9.0,44.0,3.0,5.0">Wholemeal sliced bread</option>
+              <option value="255,8.5,48.0,3.2,3.5">Multigrain sliced bread</option>
+            </optgroup>
+            <optgroup label="Artisan and traditional">
+              <option value="265,7.9,52.7,1.2,2.7">White bread (baguette / crusty)</option>
+              <option value="247,8.5,48.3,2.1,5.6">Wholemeal bread (crusty)</option>
+              <option value="198,8.0,38.5,2.2,5.2">Sourdough — wholemeal</option>
+              <option value="210,7.8,40.0,1.5,3.5">Sourdough — white</option>
+              <option value="252,8.8,49.0,2.0,4.5">Rye bread</option>
+              <option value="231,9.5,44.5,2.8,7.0">Seeded bread</option>
+              <option value="218,7.2,43.0,2.5,3.8">Spelt bread</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option value="290,8.5,56.0,3.8,2.0">Pitta bread</option>
+              <option value="312,7.5,63.0,2.5,1.5">Brioche / milk bread</option>
+              <option value="384,7.0,74.0,6.5,2.0">Toast (toasted bread)</option>
+              <option value="245,3.5,52.0,2.8,2.0">Gluten-free white bread</option>
+            </optgroup>
+          </select>
+
+          <label>Serving size</label>
+          <select id="bc-modo" onchange="toggleModeBC()">
+            <option value="gramos">By grams</option>
+            <option value="rebanadas">By slices</option>
+          </select>
+
+          <div id="bc-wrap-gramos">
+            <label>Amount (grams)</label>
+            <input type="number" id="bc-gramos" placeholder="50" min="1" step="any" oninput="calcBC()">
+          </div>
+
+          <div id="bc-wrap-rebanadas" style="display:none">
+            <div class="row-2">
+              <div>
+                <label>Number of slices</label>
+                <input type="number" id="bc-rebanadas" placeholder="2" value="1" min="1" step="1" oninput="calcBC()">
+              </div>
+              <div>
+                <label>Slice thickness</label>
+                <select id="bc-grosor" onchange="calcBC()">
+                  <option value="20">Thin (~20g)</option>
+                  <option value="25" selected>Standard (~25g)</option>
+                  <option value="35">Thick (~35g)</option>
+                  <option value="45">Very thick (~45g)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+            <button onclick="setBC(25,'gramos')" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">1 slice (25g)</button>
+            <button onclick="setBC(50,'gramos')" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">50g</button>
+            <button onclick="setBC(100,'gramos')" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">100g</button>
+          </div>
+
+          <div class="result-box" id="bc-res">Select the type of bread and enter the amount</div>
+        </div>
+
+        <div id="bc-nutri" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="bc-cards"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calories in bread by type</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">The calories in bread depend on the ingredients, recipe and moisture content. The following table compares approximate values per 100g and per 25g slice. Actual values can vary between brands and bakeries, so check the product label when you need a more precise figure.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Type of bread</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">kcal/100g</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">1 slice (25g)</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">White sliced bread</td><td style="text-align:right">270</td><td style="text-align:right">68 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Wholemeal sliced bread</td><td style="text-align:right">241</td><td style="text-align:right">60 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">White crusty bread</td><td style="text-align:right">265</td><td style="text-align:right">66 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Sourdough wholemeal</td><td style="text-align:right">198</td><td style="text-align:right">50 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Rye bread</td><td style="text-align:right">252</td><td style="text-align:right">63 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Seeded bread</td><td style="text-align:right">231</td><td style="text-align:right">58 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Pitta bread</td><td style="text-align:right">290</td><td style="text-align:right">73 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Toast (toasted)</td><td style="text-align:right">384</td><td style="text-align:right">96 kcal</td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">White bread vs wholemeal vs sourdough</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">White, wholemeal and sourdough bread can have different nutritional profiles. Wholemeal bread is generally a useful source of fibre, while sourdough varies considerably depending on the flour and recipe used. These figures are examples rather than fixed values for every loaf.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutrient (per 100g)</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">White</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Wholemeal</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Sourdough</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">Calories</td><td style="text-align:right">265 kcal</td><td style="text-align:right">247 kcal</td><td style="text-align:right">198 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Carbohydrates</td><td style="text-align:right">52.7g</td><td style="text-align:right">48.3g</td><td style="text-align:right">38.5g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Protein</td><td style="text-align:right">7.9g</td><td style="text-align:right">8.5g</td><td style="text-align:right">8.0g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Fat</td><td style="text-align:right">1.2g</td><td style="text-align:right">2.1g</td><td style="text-align:right">2.2g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Fibre</td><td style="text-align:right">2.7g</td><td style="text-align:right">5.6g</td><td style="text-align:right">5.2g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Glycaemic index</td><td style="text-align:right">~70 (high)</td><td style="text-align:right">~55 (medium)</td><td style="text-align:right">~48 (low)</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.7;margin-top:0.75rem">Nutritional values and glycaemic index can vary by recipe, ingredients and preparation. Glycaemic index is not a fixed value for an entire bread category.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Does bread make you gain weight?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Eating bread does not automatically cause weight gain. Changes in body weight depend on overall energy intake, energy expenditure and other individual factors. Bread can fit into a balanced diet, and its contribution to your daily calorie intake depends on the amount you eat and what you add to it.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">The calorie difference between white and wholemeal bread is not always large. Wholemeal bread often contains more fibre, which can help you feel fuller, but the exact nutritional difference depends on the product. Choosing bread is best based on its ingredients, nutritional information and your preferences rather than calories alone.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Calories in bread with toppings</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Toppings can make a noticeable difference to the total calories in a slice of bread. The examples below show approximate totals for one 25g slice of white bread with common additions.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Combination</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Approx. calories</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">1 slice white bread alone (25g)</td><td style="text-align:right">66 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ 1 tsp butter (5g)</td><td style="text-align:right">+36 kcal → 102 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">+ 1 tbsp peanut butter (15g)</td><td style="text-align:right">+88 kcal → 154 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">+ ¼ avocado (50g)</td><td style="text-align:right">+80 kcal → 146 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">+ 1 tbsp jam (20g)</td><td style="text-align:right">+50 kcal → 116 kcal</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.7;margin-top:0.75rem">These totals are estimates. The actual calories depend on the brand, ingredients and quantity used.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate calories in bread</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">If you know the calories per 100g, you can estimate the calories in any portion using a simple calculation:</p>
+          <p style="font-size:0.95rem;line-height:1.8;margin-bottom:0.75rem"><strong>Calories in your portion = calories per 100g × portion weight ÷ 100</strong></p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">For example, if a bread contains 265 kcal per 100g, a 50g portion contains approximately 133 kcal. The calculator performs this calculation automatically and also estimates carbohydrates, protein, fat and fibre.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">When counting slices, remember that slice weights vary. A thin slice may weigh around 20g, while a thick slice of artisan bread can weigh 40g or more. Weighing your bread gives a more reliable estimate than counting slices alone.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Which bread has the fewest calories?</h2>
+          <p>In the estimates used by this calculator, wholemeal sourdough has the lowest energy value per 100g, at around 198 kcal. Spelt and seeded bread are also relatively low in these example values. However, recipes vary, so the lowest-calorie option for a particular brand may be different. Compare nutrition labels and serving sizes for the most useful comparison.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many calories are in a slice of bread?</summary>
+            <p>A 25g slice of white sliced bread contains approximately 68 calories using the values in this calculator. A similar portion of wholemeal sliced bread contains around 60 calories. Larger or thicker slices can contain considerably more, depending on their weight and ingredients.</p>
+          </details>
+          <details>
+            <summary>How many calories are in 2 slices of bread?</summary>
+            <p>Two standard 25g slices of white sliced bread contain approximately 135 calories, while two slices of wholemeal sliced bread contain around 120 calories using this calculator's estimates. Check the weight of your slices for a more accurate result.</p>
+          </details>
+          <details>
+            <summary>How many calories are in 100g of bread?</summary>
+            <p>It depends on the type of bread. In this calculator, the example values range from around 198 kcal per 100g for wholemeal sourdough to 290 kcal for pitta bread and 384 kcal for toasted bread. The figures are estimates and can differ by product.</p>
+          </details>
+          <details>
+            <summary>Does toasted bread have more calories than fresh bread?</summary>
+            <p>Toasting mainly removes water, which makes bread weigh less. As a result, toasted bread can have more calories per 100g, even though toasting does not add calories by itself. Compare the same slice before and after toasting rather than comparing equal weights.</p>
+          </details>
+          <details>
+            <summary>Is wholemeal bread lower in calories than white bread?</summary>
+            <p>Not necessarily. The calorie difference depends on the recipe and product. Wholemeal bread often contains more fibre than white bread, but it is worth comparing the nutrition labels if calories or fibre are important to you.</p>
+          </details>
+          <details>
+            <summary>Is sourdough bread healthier than white bread?</summary>
+            <p>There is no single answer for every loaf. Sourdough can differ in flour type, fibre content, ingredients and fermentation method. Wholemeal sourdough may contain more fibre than some white breads, but the overall nutritional profile depends on the recipe.</p>
+          </details>
+          <details>
+            <summary>How many calories are in a bread roll?</summary>
+            <p>A small bread roll weighing around 45g may contain roughly 120–140 calories, while a larger burger bun may contain more. The actual value depends on the size, ingredients and recipe, so use the package information where available.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/egg-calories/">🥚 Egg Calorie Calculator</a></li>
+            <li><a href="/en/calculators/health/rice-calories/">🍚 Rice Calorie Calculator</a></li>
+            <li><a href="/en/calculators/health/banana-calories/">🍌 Banana Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/apple-calories/">🍎 Apple Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/avocado-calories/">🥑 Avocado Calories Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleModeBC() {
+  const modo = document.getElementById('bc-modo').value;
+  document.getElementById('bc-wrap-gramos').style.display = modo === 'gramos' ? 'block' : 'none';
+  document.getElementById('bc-wrap-rebanadas').style.display = modo === 'rebanadas' ? 'block' : 'none';
+  calcBC();
+}
+
+function setBC(g, modo) {
+  document.getElementById('bc-modo').value = modo;
+  toggleModeBC();
+  document.getElementById('bc-gramos').value = g;
+  calcBC();
+}
+
+function calcBC() {
+  const tipoVal = document.getElementById('bc-tipo').value.split(',');
+  const modo = document.getElementById('bc-modo').value;
+  let g = 0;
+
+  if (modo === 'gramos') {
+    g = parseFloat(document.getElementById('bc-gramos').value);
+  } else {
+    const num = parseInt(document.getElementById('bc-rebanadas').value, 10);
+    const grosor = parseFloat(document.getElementById('bc-grosor').value);
+
+    if (!Number.isFinite(num) || num <= 0 || !Number.isInteger(num)) {
+      document.getElementById('bc-res').textContent = 'Enter a valid number of slices.';
+      document.getElementById('bc-nutri').style.display = 'none';
+      return;
+    }
+
+    g = num * grosor;
+  }
+
+  if (!Number.isFinite(g) || g <= 0) {
+    document.getElementById('bc-res').textContent = 'Select the type of bread and enter a valid amount.';
+    document.getElementById('bc-nutri').style.display = 'none';
+    return;
+  }
+
+  const kcal100 = parseFloat(tipoVal[0]);
+  const prot100 = parseFloat(tipoVal[1]);
+  const carb100 = parseFloat(tipoVal[2]);
+  const gras100 = parseFloat(tipoVal[3]);
+  const fibr100 = parseFloat(tipoVal[4]);
+
+  const kcal = Math.round(kcal100 * g / 100);
+  const prot = (prot100 * g / 100).toFixed(1);
+  const carb = (carb100 * g / 100).toFixed(1);
+  const gras = (gras100 * g / 100).toFixed(1);
+  const fibr = (fibr100 * g / 100).toFixed(1);
+
+  const tipoNombre = document.getElementById('bc-tipo').options[document.getElementById('bc-tipo').selectedIndex].text;
+  const peso = Number.isInteger(g) ? g : g.toFixed(1);
+
+  document.getElementById('bc-res').innerHTML =
+    `${kcal} kcal — ${peso}g of ${tipoNombre}
+    <small>Carbohydrates: ${carb}g · Protein: ${prot}g · Fat: ${gras}g · Fibre: ${fibr}g</small>`;
+
+  document.getElementById('bc-nutri').style.display = 'block';
+  document.getElementById('bc-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calories</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohydrates</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carb}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Protein</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fat</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${gras}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibre</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibr}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Per 100g</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal100}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">kcal/100g</div>
+    </div>`;
+}
+
+calcBC();
+</script>

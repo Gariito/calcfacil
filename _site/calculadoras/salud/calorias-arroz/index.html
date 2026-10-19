@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de calorías del arroz — arroz cocido y crudo</title>
+  <meta name="description" content="Calcula las calorías del arroz según el tipo, la cantidad y si está cocido o crudo. Arroz blanco, integral, basmati y más. Incluye valor nutricional completo.">
+  <meta name="keywords" content="calorías arroz, calorías arroz cocido, calorías arroz crudo, cuántas calorías tiene el arroz, calorías arroz blanco 100g, valor nutricional arroz">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/calculadoras/salud/calorias-arroz/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de calorías del arroz — arroz cocido y crudo — CalcFácil">
+  <meta property="og:description" content="Calcula las calorías del arroz según el tipo, la cantidad y si está cocido o crudo. Arroz blanco, integral, basmati y más. Incluye valor nutricional completo.">
+  <meta property="og:url" content="https://calculadorasgratis.net/calculadoras/salud/calorias-arroz/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías del arroz — arroz cocido y crudo",
+    "description": "Calcula las calorías del arroz según el tipo, la cantidad y si está cocido o crudo. Arroz blanco, integral, basmati y más. Incluye valor nutricional completo.",
+    "url": "https://calculadorasgratis.net/calculadoras/salud/calorias-arroz/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">ES</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option lang-active">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option ">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="/calculadoras/salud/">🏥 Salud</a>
+      <a href="/calculadoras/fitness/">💪 Fitness</a>
+      <a href="/calculadoras/unidades/">📐 Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">🧮 Día a día</a>
+      <a href="/calculadoras/finanzas/">💶 Finanzas</a>
+      <a href="/calculadoras/matematicas/">🔢 Matemáticas</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="calc-page">
+  <div class="container calc-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Ruta">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/calculadoras/salud/">Salud</a>
+      <span>›</span>
+      <span>Calculadora de calorías del arroz</span>
+    </nav>
+
+    <div class="calc-layout">
+
+      <!-- Calculadora principal -->
+      <div class="calc-main">
+        <h1>🍚 Calculadora de calorías del arroz</h1>
+        <p class="calc-intro">Calcula las calorías del arroz según el tipo, la cantidad y si está cocido o crudo, con su valor nutricional completo.</p>
+        <div class="card">
+          
+<label>Tipo de arroz</label>
+<select id="ar-tipo" onchange="calcAr()">
+  <option value="blanco_cocido,130,2.7,28.2,0.3,0.4">Arroz blanco — cocido</option>
+  <option value="blanco_crudo,360,6.7,79.0,0.6,0.5">Arroz blanco — crudo</option>
+  <option value="integral_cocido,123,2.6,25.6,1.8,0.9">Arroz integral — cocido</option>
+  <option value="integral_crudo,350,7.5,73.0,3.5,2.7">Arroz integral — crudo</option>
+  <option value="basmati_cocido,121,3.5,25.2,0.4,0.4">Arroz basmati — cocido</option>
+  <option value="basmati_crudo,345,9.0,77.0,1.0,0.9">Arroz basmati — crudo</option>
+  <option value="jazmín_cocido,129,2.5,28.7,0.3,0.4">Arroz jazmín — cocido</option>
+  <option value="bomba_cocido,128,2.5,28.0,0.3,0.3">Arroz bomba / paella — cocido</option>
+</select>
+
+<label>Cantidad (gramos)</label>
+<input type="number" id="ar-gramos" placeholder="150" oninput="calcAr()">
+
+<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+  <button onclick="setArRacion(70)"  style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">Ración crudo (70g)</button>
+  <button onclick="setArRacion(150)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">Ración cocido (150g)</button>
+  <button onclick="setArRacion(200)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">Ración grande (200g)</button>
+</div>
+
+<div class="result-box" id="ar-res">Selecciona el tipo de arroz e introduce los gramos</div>
+
+<div id="ar-nutri" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="ar-cards"></div>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Calorías del arroz cocido — tabla de raciones</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Cantidad cocida</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz blanco</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz integral</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz basmati</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">100g cocido</td><td style="text-align:right">130 kcal</td><td style="text-align:right">123 kcal</td><td style="text-align:right">121 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">150g cocido (ración)</td><td style="text-align:right"><strong>195 kcal</strong></td><td style="text-align:right"><strong>185 kcal</strong></td><td style="text-align:right"><strong>182 kcal</strong></td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">200g cocido</td><td style="text-align:right">260 kcal</td><td style="text-align:right">246 kcal</td><td style="text-align:right">242 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">250g cocido</td><td style="text-align:right">325 kcal</td><td style="text-align:right">308 kcal</td><td style="text-align:right">303 kcal</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">300g cocido</td><td style="text-align:right">390 kcal</td><td style="text-align:right">369 kcal</td><td style="text-align:right">363 kcal</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Valor nutricional del arroz por 100g cocido</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutriente</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz blanco</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz integral</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz basmati</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Calorías</td><td style="text-align:right">130 kcal</td><td style="text-align:right">123 kcal</td><td style="text-align:right">121 kcal</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Carbohidratos</td><td style="text-align:right">28,2g</td><td style="text-align:right">25,6g</td><td style="text-align:right">25,2g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Proteínas</td><td style="text-align:right">2,7g</td><td style="text-align:right">2,6g</td><td style="text-align:right">3,5g</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Grasas</td><td style="text-align:right">0,3g</td><td style="text-align:right">0,9g</td><td style="text-align:right">0,4g</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Fibra</td><td style="text-align:right">0,4g</td><td style="text-align:right">1,8g</td><td style="text-align:right">0,4g</td></tr>
+  </table>
+</div>
+
+<div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Arroz crudo vs cocido — cómo afecta al peso y las calorías</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">El error más habitual al calcular las calorías del arroz es confundir los valores en crudo y en cocido. El etiquetado nutricional de los paquetes de arroz siempre indica los valores en crudo, pero nosotros generalmente lo pesamos después de cocinarlo.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Durante la cocción el arroz absorbe agua y multiplica su peso aproximadamente por 3. Esto significa que <strong>100g de arroz crudo (360 kcal) se convierten en unos 300g de arroz cocido (360 kcal)</strong>. Las calorías totales son las mismas — solo cambia el peso.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Para contar calorías con precisión lo más recomendable es pesar el arroz en crudo antes de cocinarlo, ya que la cantidad de agua absorbida puede variar según el tiempo de cocción y la cantidad de agua utilizada.</p>
+</div>
+
+<script>
+function setArRacion(g) {
+  document.getElementById('ar-gramos').value = g;
+  calcAr();
+}
+
+function calcAr() {
+  const tipoVal = document.getElementById('ar-tipo').value;
+  const g       = parseFloat(document.getElementById('ar-gramos').value);
+  if (!g || g <= 0) return;
+
+  const partes  = tipoVal.split(',');
+  const nombre  = partes[0].replace('_', ' ');
+  const kcal100 = parseFloat(partes[1]);
+  const prot100 = parseFloat(partes[2]);
+  const carb100 = parseFloat(partes[3]);
+  const fibr100 = parseFloat(partes[4]);
+  const gras100 = parseFloat(partes[5]);
+
+  const kcal = Math.round(kcal100 * g / 100);
+  const prot = (prot100 * g / 100).toFixed(1);
+  const carb = (carb100 * g / 100).toFixed(1);
+  const fibr = (fibr100 * g / 100).toFixed(1);
+  const gras = (gras100 * g / 100).toFixed(1);
+
+  document.getElementById('ar-res').innerHTML =
+    `${kcal} kcal — ${g}g de arroz ${nombre}
+    <small>Carbohidratos: ${carb}g · Proteínas: ${prot}g · Grasas: ${gras}g · Fibra: ${fibr}g</small>`;
+
+  document.getElementById('ar-nutri').style.display = 'block';
+  document.getElementById('ar-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calorías</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohidratos</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carb}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Proteínas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Grasas</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${gras}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibra</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibr}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">por ${g}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Por 100g</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal100}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">kcal/100g</div>
+    </div>`;
+}
+
+calcAr();
+</script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>¿Qué es las calorías del arroz?</h2>
+          <p>Las calorías del arroz varían significativamente según el tipo de arroz y sobre todo según si está crudo o cocido. El arroz cocido tiene muchas menos calorías por 100g que el crudo porque absorbe agua durante la cocción y aumenta su peso considerablemente. Esta calculadora te permite calcular las calorías correctamente en ambos casos.</p>
+        </div>
+
+        
+        <div class="card sidebar-card">
+          <h3>Calculadoras relacionadas</h3>
+          <ul class="related-list">
+            
+            <li><a href="/calculadoras/salud/calorias-platano/">🍌 Calorías del plátano</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias-aguacate/">🥑 Calorías del aguacate</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias-alimentos/">🥗 Calorías de alimentos</a></li>
+            
+            <li><a href="/calculadoras/salud/calorias/">🔥 Calorías diarias</a></li>
+            
+          </ul>
+        </div>
+        
+
+        <div class="card sidebar-card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          
+            
+            <details>
+              <summary>¿Cuántas calorías tiene el arroz cocido por 100g?</summary>
+              <p>El arroz blanco cocido tiene aproximadamente 130 calorías por 100g. Al cocinarse absorbe agua y triplica su peso, por lo que 100g de arroz crudo se convierten en unos 300g de arroz cocido con las mismas calorías totales.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene el arroz crudo por 100g?</summary>
+              <p>El arroz blanco crudo tiene aproximadamente 360 calorías por 100g. Esta es la cifra que aparece en el etiquetado nutricional de los paquetes, ya que siempre se indica en crudo.</p>
+            </details>
+            
+            <details>
+              <summary>¿El arroz integral tiene menos calorías que el blanco?</summary>
+              <p>Las calorías son muy similares — el arroz integral cocido tiene unas 123 kcal por 100g frente a las 130 kcal del arroz blanco cocido. La diferencia principal no está en las calorías sino en la fibra — el integral tiene el doble de fibra, lo que lo hace más saciante y con un índice glucémico más bajo.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cuántas calorías tiene una ración de arroz?</summary>
+              <p>Una ración habitual de arroz cocido es de 150-200g, lo que equivale a unas 195-260 calorías de arroz blanco. En crudo, una ración de 70-80g (que se convierte en 210-240g cocido) aporta las mismas calorías.</p>
+            </details>
+            
+            <details>
+              <summary>¿Cómo se cuentan las calorías del arroz, en crudo o cocido?</summary>
+              <p>Lo más preciso es pesarlo en crudo antes de cocinarlo, ya que el peso del arroz cocido varía según la cantidad de agua absorbida. Sin embargo, si solo tienes el arroz ya cocinado, puedes pesarlo cocido y usar los valores de arroz cocido.</p>
+            </details>
+            
+            <details>
+              <summary>¿El arroz engorda?</summary>
+              <p>El arroz es un alimento principalmente compuesto de carbohidratos y con muy poca grasa. En el contexto de una dieta equilibrada y con raciones adecuadas, el arroz no engorda más que otros carbohidratos. Una ración de 150g cocido aporta unas 195 calorías, lo que es perfectamente razonable.</p>
+            </details>
+            
+          
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- Datos Estructurados (Schema.org) automáticos para Rich Snippets -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora de calorías del arroz",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene el arroz cocido por 100g?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El arroz blanco cocido tiene aproximadamente 130 calorías por 100g. Al cocinarse absorbe agua y triplica su peso, por lo que 100g de arroz crudo se convierten en unos 300g de arroz cocido con las mismas calorías totales."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene el arroz crudo por 100g?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El arroz blanco crudo tiene aproximadamente 360 calorías por 100g. Esta es la cifra que aparece en el etiquetado nutricional de los paquetes, ya que siempre se indica en crudo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿El arroz integral tiene menos calorías que el blanco?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las calorías son muy similares — el arroz integral cocido tiene unas 123 kcal por 100g frente a las 130 kcal del arroz blanco cocido. La diferencia principal no está en las calorías sino en la fibra — el integral tiene el doble de fibra, lo que lo hace más saciante y con un índice glucémico más bajo."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cuántas calorías tiene una ración de arroz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una ración habitual de arroz cocido es de 150-200g, lo que equivale a unas 195-260 calorías de arroz blanco. En crudo, una ración de 70-80g (que se convierte en 210-240g cocido) aporta las mismas calorías."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿Cómo se cuentan las calorías del arroz, en crudo o cocido?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lo más preciso es pesarlo en crudo antes de cocinarlo, ya que el peso del arroz cocido varía según la cantidad de agua absorbida. Sin embargo, si solo tienes el arroz ya cocinado, puedes pesarlo cocido y usar los valores de arroz cocido."
+          }
+        },
+        
+        {
+          "@type": "Question",
+          "name": "¿El arroz engorda?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El arroz es un alimento principalmente compuesto de carbohidratos y con muy poca grasa. En el contexto de una dieta equilibrada y con raciones adecuadas, el arroz no engorda más que otros carbohidratos. Una ración de 150g cocido aporta unas 195 calorías, lo que es perfectamente razonable."
+          }
+        }
+        
+      ]
+    }
+  ]
+}
+</script>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Calculadoras gratuitas · Sin anuncios</p>
+    <nav aria-label="Pie de página">
+      <a href="/calculadoras/salud/">Salud</a>
+      <a href="/calculadoras/unidades/">Unidades</a>
+      <a href="/calculadoras/dia-a-dia/">Día a día</a>
+      <a href="/calculadoras/finanzas/">Finanzas</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+---
+layout: base.njk
+title: Avocado Calorie Calculator — Calories per 100g and per Avocado
+description: Calculate avocado calories by weight, size or portion. See estimated calories, healthy fats, carbohydrates, protein, fibre and potassium per serving.
+keywords: avocado calorie calculator, calories in avocado, how many calories in an avocado, avocado calories per 100g, calories in half an avocado, avocado nutrition, avocado calories by size
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Avocado Calorie Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🥑 Avocado Calorie Calculator</h1>
+        <p class="calc-intro">Find out how many calories are in an avocado with this free online calculator. Enter the weight, choose an avocado size or select a common portion to estimate calories, fat, carbohydrates, protein and fibre.</p>
+
+        <div class="card">
+          <label>Serving size</label>
+          <select id="av-modo" onchange="toggleModeAV()">
+            <option value="gramos">By grams</option>
+            <option value="tamano">By avocado size</option>
+            <option value="porcion">By common portion</option>
+          </select>
+
+          <div id="av-wrap-gramos">
+            <label>Amount (grams of edible flesh)</label>
+            <input type="number" id="av-gramos" placeholder="100" min="1" step="any" oninput="calcAV()">
+          </div>
+
+          <div id="av-wrap-tamano" style="display:none">
+            <label>Avocado size</label>
+            <select id="av-tamano" onchange="calcAV()">
+              <option value="100">Small (~100g flesh)</option>
+              <option value="150" selected>Medium (~150g flesh)</option>
+              <option value="200">Large (~200g flesh)</option>
+              <option value="250">Extra large (~250g flesh)</option>
+            </select>
+          </div>
+
+          <div id="av-wrap-porcion" style="display:none">
+            <label>Portion</label>
+            <select id="av-porcion" onchange="calcAV()">
+              <option value="50">¼ avocado (~50g)</option>
+              <option value="75">½ small avocado (~75g)</option>
+              <option value="100">½ medium avocado (~100g)</option>
+              <option value="30">Mashed avocado (~30g, about 1 tbsp)</option>
+              <option value="20">1 thin slice (~20g)</option>
+            </select>
+          </div>
+
+          <div class="result-box" id="av-res">Enter an amount or select a serving size</div>
+        </div>
+
+        <div id="av-nutri" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem" id="av-cards"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Avocado calories by size and portion</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">The number of calories in an avocado depends on the amount of edible flesh you eat. Avocado size can vary considerably, so the gram measurements below are estimates rather than fixed serving sizes.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Size / Portion</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Edible weight</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calories</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">Thin slice</td><td style="text-align:right">~20g</td><td style="text-align:right"><strong>32 kcal</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">¼ avocado</td><td style="text-align:right">~50g</td><td style="text-align:right"><strong>80 kcal</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">½ small avocado</td><td style="text-align:right">~75g</td><td style="text-align:right"><strong>120 kcal</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">½ medium avocado</td><td style="text-align:right">~100g</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Small avocado (whole)</td><td style="text-align:right">~100g</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Medium avocado (whole)</td><td style="text-align:right">~150g</td><td style="text-align:right"><strong>240 kcal</strong></td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Large avocado (whole)</td><td style="text-align:right">~200g</td><td style="text-align:right"><strong>320 kcal</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Extra-large avocado (whole)</td><td style="text-align:right">~250g</td><td style="text-align:right"><strong>400 kcal</strong></td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.7;margin-top:0.75rem">Calculations use an approximate value of 160 kcal per 100g of avocado flesh. The weight excludes the skin and stone. Added ingredients, such as oil or salt-based seasonings, are not included.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Avocado nutrition per 100g</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Avocado contains mostly unsaturated fat, along with fibre, carbohydrates and a small amount of protein. The table shows approximate values per 100g and for a medium serving containing 150g of edible flesh.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutrient</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Per 100g</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">150g serving</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">Calories</td><td style="text-align:right">160 kcal</td><td style="text-align:right">240 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Total fat</td><td style="text-align:right">14.7g</td><td style="text-align:right">22.1g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">— Saturated fat</td><td style="text-align:right">2.1g</td><td style="text-align:right">3.2g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">— Monounsaturated fat</td><td style="text-align:right">9.8g</td><td style="text-align:right">14.7g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Carbohydrates</td><td style="text-align:right">8.5g</td><td style="text-align:right">12.8g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">— Fibre</td><td style="text-align:right">6.7g</td><td style="text-align:right">10.1g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">— Sugars</td><td style="text-align:right">0.7g</td><td style="text-align:right">1.1g</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Protein</td><td style="text-align:right">2.0g</td><td style="text-align:right">3.0g</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">Potassium</td><td style="text-align:right">485mg</td><td style="text-align:right">728mg</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Folate (vitamin B9)</td><td style="text-align:right">81µg</td><td style="text-align:right">122µg</td></tr>
+          </table>
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.7;margin-top:0.75rem">These are reference estimates. Nutrient levels can vary with avocado variety, growing conditions and ripeness.</p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Why is avocado relatively high in calories?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Avocado is different from many other fruits because it contains a relatively high proportion of fat. Fat provides around 9 calories per gram, compared with about 4 calories per gram from carbohydrates and protein. This helps explain why avocado has more calories per 100g than fruit such as apples, oranges or strawberries.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">Much of the fat in avocado is monounsaturated fat, including oleic acid, which is also found in foods such as olive oil. Avocado also provides fibre and a range of vitamins and minerals. Its calorie content does not make it inherently unhealthy; the amount you eat and your overall diet matter too.</p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Avocado calories compared with other fruits</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">Comparing calories per 100g is a useful way to see how avocado differs from other common fruits. The values below are approximate and may vary depending on the variety and ripeness.</p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <tr style="background:var(--accent-light)">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Fruit</th>
+              <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calories per 100g</th>
+            </tr>
+            <tr><td style="padding:0.5rem 0.75rem">🥑 Avocado</td><td style="text-align:right"><strong>160 kcal</strong></td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍌 Banana</td><td style="text-align:right">89 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🍇 Grapes</td><td style="text-align:right">67 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍎 Apple</td><td style="text-align:right">52 kcal</td></tr>
+            <tr><td style="padding:0.5rem 0.75rem">🍊 Orange</td><td style="text-align:right">47 kcal</td></tr>
+            <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">🍓 Strawberry</td><td style="text-align:right">32 kcal</td></tr>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate avocado calories</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">If you know the edible weight of your avocado, estimating its calories is straightforward. Using the reference value of 160 kcal per 100g, multiply the weight in grams by 1.6.</p>
+          <p style="font-size:0.95rem;line-height:1.8;margin-bottom:0.75rem"><strong>Calories = avocado weight in grams × 1.6</strong></p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">For example, 75g of avocado contains approximately 120 calories, while 150g contains around 240 calories. This calculation uses the edible flesh only, not the skin or stone.</p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">If you are making guacamole or avocado toast, remember to include the other ingredients separately. Bread, oil, cheese and other additions can significantly increase the total calories in the meal.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>How much avocado should you eat?</h2>
+          <p>There is no single recommended daily amount that suits everyone. A portion of around 50–100g can be a practical starting point, depending on your appetite, energy needs and the rest of your diet. Since avocado is relatively calorie-dense, weighing a portion can help if you are tracking your calorie intake.</p>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many calories are in half an avocado?</summary>
+            <p>It depends on the size. Half a small avocado containing around 75g of flesh provides approximately 120 calories. Half a medium avocado containing 100g provides around 160 calories.</p>
+          </details>
+          <details>
+            <summary>How many calories are in a whole avocado?</summary>
+            <p>A whole avocado provides different amounts depending on its edible weight. Using 160 kcal per 100g, a small avocado with 100g of flesh has around 160 calories, while a medium avocado with 150g has around 240 calories.</p>
+          </details>
+          <details>
+            <summary>Is avocado good for weight loss?</summary>
+            <p>Avocado can fit into a weight-management plan. It contains fibre and unsaturated fats, but it is also relatively high in calories. Whether it supports your goal depends on portion size and your overall eating pattern, rather than on one food alone.</p>
+          </details>
+          <details>
+            <summary>How many calories are in avocado toast?</summary>
+            <p>The total depends on the bread and the amount of avocado. For example, one slice of bread containing 130–150 calories with 50g of avocado containing around 80 calories would provide approximately 210–230 calories before any extra toppings.</p>
+          </details>
+          <details>
+            <summary>Does avocado contain protein?</summary>
+            <p>Yes, but not a large amount compared with foods such as eggs, fish, beans or tofu. Avocado contains approximately 2g of protein per 100g and is better known for its unsaturated fats and fibre.</p>
+          </details>
+          <details>
+            <summary>Is avocado high in carbohydrates?</summary>
+            <p>Avocado contains around 8.5g of total carbohydrates per 100g, including approximately 6.7g of fibre in these reference values. The amount of digestible carbohydrate is therefore lower than the total carbohydrate figure.</p>
+          </details>
+          <details>
+            <summary>Do I weigh an avocado with or without the stone?</summary>
+            <p>For the most accurate estimate, weigh the edible flesh after removing the skin and stone. This calculator uses the weight of the flesh only.</p>
+          </details>
+          <details>
+            <summary>Are avocado calories the same in guacamole?</summary>
+            <p>Not necessarily. Plain mashed avocado has a similar nutritional profile to avocado flesh, but guacamole often contains other ingredients such as tomato, onion, lime juice or oil. Its calories per 100g depend on the recipe.</p>
+          </details>
+        </div>
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/banana-calories/">🍌 Banana Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/apple-calories/">🍎 Apple Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/egg-calories/">🥚 Egg Calorie Calculator</a></li>
+            <li><a href="/en/calculators/health/bread-calories/">🍞 Bread Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/rice-calories/">🍚 Rice Calorie Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const AV_KCAL = 160;
+const AV_GRASAS = 14.7;
+const AV_CARBS = 8.5;
+const AV_PROT = 2.0;
+const AV_FIBRA = 6.7;
+const AV_SAT = 2.1;
+
+function toggleModeAV() {
+  const modo = document.getElementById('av-modo').value;
+
+  document.getElementById('av-wrap-gramos').style.display =
+    modo === 'gramos' ? 'block' : 'none';
+
+  document.getElementById('av-wrap-tamano').style.display =
+    modo === 'tamano' ? 'block' : 'none';
+
+  document.getElementById('av-wrap-porcion').style.display =
+    modo === 'porcion' ? 'block' : 'none';
+
+  calcAV();
+}
+
+function calcAV() {
+  const modo = document.getElementById('av-modo').value;
+  let g = 0;
+
+  if (modo === 'gramos') {
+    g = parseFloat(document.getElementById('av-gramos').value);
+  } else if (modo === 'tamano') {
+    g = parseFloat(document.getElementById('av-tamano').value);
+  } else {
+    g = parseFloat(document.getElementById('av-porcion').value);
+  }
+
+  if (!Number.isFinite(g) || g <= 0) {
+    document.getElementById('av-res').textContent =
+      'Enter a valid amount of avocado to calculate its nutritional values.';
+    document.getElementById('av-nutri').style.display = 'none';
+    return;
+  }
+
+  const kcal = Math.round(AV_KCAL * g / 100);
+  const grasas = (AV_GRASAS * g / 100).toFixed(1);
+  const carbs = (AV_CARBS * g / 100).toFixed(1);
+  const prot = (AV_PROT * g / 100).toFixed(1);
+  const fibra = (AV_FIBRA * g / 100).toFixed(1);
+  const sat = (AV_SAT * g / 100).toFixed(1);
+  const peso = Number.isInteger(g) ? g : g.toFixed(1);
+
+  document.getElementById('av-res').innerHTML =
+    `${kcal} kcal — ${peso}g of avocado flesh
+    <small>Fat: ${grasas}g · Carbohydrates: ${carbs}g · Protein: ${prot}g · Fibre: ${fibra}g</small>`;
+
+  document.getElementById('av-nutri').style.display = 'block';
+
+  document.getElementById('av-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calories</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fat</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${grasas}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${sat}g saturated fat</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohydrates</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carbs}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">${fibra}g fibre</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Protein</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${prot}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibre</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibra}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${peso}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calories per 100g</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${AV_KCAL}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">kcal/100g</div>
+    </div>`;
+}
+
+toggleModeAV();
+</script>

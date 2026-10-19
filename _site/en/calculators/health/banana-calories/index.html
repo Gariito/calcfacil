@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banana Calorie Calculator — Calories per Banana and 100g</title>
+  <meta name="description" content="Find out how many calories are in a banana by weight, size or number of bananas. Calculate carbs, sugars, fibre, protein and potassium.">
+  <meta name="keywords" content="banana calorie calculator, calories in a banana, how many calories in a banana, banana calories per 100g, banana nutrition facts, calories in a small banana, calories in a large banana, calories in half a banana">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadorasgratis.net/en/calculators/health/banana-calories/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Banana Calorie Calculator — Calories per Banana and 100g — CalcFácil">
+  <meta property="og:description" content="Find out how many calories are in a banana by weight, size or number of bananas. Calculate carbs, sugars, fibre, protein and potassium.">
+  <meta property="og:url" content="https://calculadorasgratis.net/en/calculators/health/banana-calories/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Banana Calorie Calculator — Calories per Banana and 100g",
+    "description": "Find out how many calories are in a banana by weight, size or number of bananas. Calculate carbs, sugars, fibre, protein and potassium.",
+    "url": "https://calculadorasgratis.net/en/calculators/health/banana-calories/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+
+  <!-- Preload fuente principal -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuHpVU.woff2" type="font/woff2" crossorigin>
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+</noscript>
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+
+
+
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/en/" class="logo">Calc<span>Fácil</span></a>
+
+<!-- Selector de idioma desplegable -->
+<div class="lang-selector" style="position:relative;flex-shrink:0">
+  <button class="lang-btn" onclick="toggleLang(event)" aria-label="Seleccionar idioma">
+    
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;vertical-align:middle">
+      <span style="font-size:0.78rem;font-weight:600;margin-left:4px">EN</span>
+    
+    <span style="font-size:0.6rem;margin-left:2px">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <a href="/" class="lang-option ">
+      <img src="/img/flags/es.svg" alt="Español" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Español</span>
+    </a>
+    <a href="/en/" class="lang-option lang-active">
+      <img src="/img/flags/en.svg" alt="English" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>English</span>
+    </a>
+    <a href="/eu/" class="lang-option ">
+      <img src="/img/flags/eu.svg" alt="Euskara" width="22" height="15" style="border-radius:2px;flex-shrink:0">
+      <span>Euskara</span>
+    </a>
+  </div>
+</div>
+
+    
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/en/calculators/health/">🏥 Health</a>
+      <a href="/en/calculators/fitness/">💪 Fitness</a>
+      <a href="/en/calculators/math/">🔢 Math</a>
+      <a href="/en/calculators/everyday/">🧮 Everyday</a>
+      <a href="/en/calculators/finance/">💶 Finance</a>
+      <a href="/en/calculators/home/">🏠 Home</a>
+    </nav>
+    
+
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+    <button class="dark-toggle" id="dark-btn" aria-label="Cambiar tema" onclick="toggleDark()">🌙</button>
+
+  </div>
+</header>
+
+<main>
+  
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Banana Calorie Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🍌 Banana Calorie Calculator</h1>
+        <p class="calc-intro">Calculate how many calories are in a banana by weight, size or number of bananas. See estimated carbohydrates, sugars, fibre, protein and potassium for your portion.</p>
+
+        <div class="card">
+          <label for="bn-modo">Serving size</label>
+          <select id="bn-modo" onchange="toggleModeBN()">
+            <option value="gramos">By grams (flesh only)</option>
+            <option value="tamano">By banana size</option>
+            <option value="unidades">By number of bananas</option>
+          </select>
+
+          <div id="bn-wrap-gramos">
+            <label for="bn-gramos">Amount (grams of flesh)</label>
+            <input type="number" id="bn-gramos" placeholder="e.g. 120" min="1" step="any" oninput="calcBN()">
+          </div>
+
+          <div id="bn-wrap-tamano" style="display:none">
+            <label for="bn-tamano">Banana size</label>
+            <select id="bn-tamano" onchange="calcBN()">
+              <option value="81">Small — under 18cm (~81g flesh)</option>
+              <option value="105">Medium — 18–20cm (~105g flesh)</option>
+              <option value="126" selected>Large — 20–22cm (~126g flesh)</option>
+              <option value="152">Extra large — over 22cm (~152g flesh)</option>
+            </select>
+          </div>
+
+          <div id="bn-wrap-unidades" style="display:none">
+            <div class="row-2">
+              <div>
+                <label for="bn-unidades">Number of bananas</label>
+                <input type="number" id="bn-unidades" placeholder="e.g. 2" value="1" min="1" max="100" step="1" oninput="calcBN()">
+              </div>
+              <div>
+                <label for="bn-tamano-uni">Size</label>
+                <select id="bn-tamano-uni" onchange="calcBN()">
+                  <option value="81">Small (~81g)</option>
+                  <option value="105">Medium (~105g)</option>
+                  <option value="126" selected>Large (~126g)</option>
+                  <option value="152">Extra large (~152g)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.6;margin:0.75rem 0">
+            Choose the approximate edible weight without the peel. Ripeness affects texture and sugar composition, but its effect on total calories is not reliably represented by a fixed percentage.
+          </p>
+
+          <div class="result-box" id="bn-res" aria-live="polite">Enter an amount or select a banana size</div>
+        </div>
+
+        <div id="bn-nutri" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.75rem" id="bn-cards"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Banana calories by size</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            The calories in a banana depend mainly on its edible weight. These estimates use approximately 89 calories per 100g of raw banana flesh.
+          </p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Serving</th>
+                <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Edible weight</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Small banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~81g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>72 kcal</strong></td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Medium banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~105g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>93 kcal</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Large banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~126g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>112 kcal</strong></td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Extra-large banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~152g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>135 kcal</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Half a large banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~63g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>56 kcal</strong></td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Two medium bananas</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~210g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>187 kcal</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
+            These are approximate values. Banana length and weight vary, so weighing the peeled fruit gives a more precise estimate.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Banana nutrition per 100g</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Bananas provide carbohydrates for energy, along with fibre, potassium and small amounts of protein and fat. The table below compares typical values per 100g with a large banana weighing approximately 126g without its peel.
+          </p>
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutrient</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Per 100g</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Large banana (126g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Calories</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">89 kcal</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">112 kcal</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Carbohydrates</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">22.8g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">28.7g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">— Sugars</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">12.2g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">15.4g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">— Fibre</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">2.6g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">3.3g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Protein</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">1.1g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">1.4g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Fat</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.3g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.4g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Potassium</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">358mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">451mg</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Magnesium</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">27mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">34mg</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Vitamin B6</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.37mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.47mg</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Vitamin C</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">8.7mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">11mg</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
+            Nutritional values are averages for raw banana flesh and may vary with variety, growing conditions and ripeness.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How many calories are in half a banana?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            Half a banana contains roughly half the calories of a whole banana of the same size. Half a medium banana (about 52g of edible flesh) provides around 47 calories, while half a large banana (about 63g) provides approximately 56 calories.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            If you are tracking your food intake, weigh the portion after peeling it. This avoids including the weight of the peel, which is not normally eaten.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Are bananas good for sport and exercise?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            Bananas are a convenient snack before or after exercise. They provide carbohydrates that the body can use for energy, as well as potassium and vitamin B6. A large banana contains around 112 calories and 29g of carbohydrates, making it a practical option before a workout or as part of a recovery meal.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            As a banana ripens, some of its starch is converted into sugars, changing its sweetness and texture. Green bananas generally contain more resistant starch, while ripe bananas tend to taste sweeter. The exact effect on digestion and blood glucose varies from person to person and with the rest of the meal.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate banana calories</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            The calculator uses an average reference value of 89 calories per 100g of edible banana. Enter the weight of the peeled banana, choose a size, or select the number of bananas to estimate the calories in your portion.
+          </p>
+          <div style="background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:0.75rem">
+            <p style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Formula</p>
+            <p style="font-size:0.9rem;margin:0">Calories = edible weight in grams × 89 ÷ 100</p>
+          </div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            For example, a banana with 120g of edible flesh contains approximately 107 calories. The result is an estimate, not a laboratory measurement of the specific fruit you eat.
+          </p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Do bananas make you gain weight?</h2>
+          <p>Eating bananas does not automatically cause weight gain. A banana provides carbohydrates, fibre and several micronutrients, with around 89 calories per 100g of edible flesh. Weight change depends on overall energy intake and expenditure over time, rather than on one particular food.</p>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+          <details>
+            <summary>How many calories are in a banana?</summary>
+            <p>A small banana (about 81g of edible flesh) contains approximately 72 calories. A medium banana (105g) has around 93 calories, and a large banana (126g) has about 112 calories.</p>
+          </details>
+          <details>
+            <summary>How many calories are in half a banana?</summary>
+            <p>Half a medium banana contains around 47 calories, while half a large banana contains about 56 calories. The exact amount depends on the weight of the edible portion.</p>
+          </details>
+          <details>
+            <summary>Does a green banana have fewer calories than a ripe banana?</summary>
+            <p>The total calorie content is broadly similar for bananas of the same weight. Ripening changes the balance between starch and sugars, so a ripe banana usually tastes sweeter, while a greener banana contains more resistant starch.</p>
+          </details>
+          <details>
+            <summary>How much potassium is in a banana?</summary>
+            <p>A large banana weighing around 126g provides approximately 451mg of potassium. The exact amount varies with the size and composition of the fruit.</p>
+          </details>
+          <details>
+            <summary>Can I eat bananas while trying to lose weight?</summary>
+            <p>Yes. Bananas can fit into a weight-loss diet. They provide fibre and can be a convenient, satisfying snack. Portion size and your overall eating pattern matter more than avoiding one specific fruit.</p>
+          </details>
+          <details>
+            <summary>Should I weigh a banana with or without the peel?</summary>
+            <p>Weigh the banana after peeling it. The calculator uses edible flesh only, so including the peel would overestimate the portion you eat.</p>
+          </details>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/apple-calories/">🍎 Apple Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/avocado-calories/">🥑 Avocado Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/egg-calories/">🥚 Egg Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/bread-calories/">🍞 Bread Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/rice-calories/">🍚 Rice Calorie Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+const BN_KCAL = 89;
+const BN_CARBS = 22.8;
+const BN_AZUCAR = 12.2;
+const BN_FIBRA = 2.6;
+const BN_PROT = 1.1;
+const BN_GRASAS = 0.3;
+const BN_POTASIO = 358;
+
+function toggleModeBN() {
+  const modo = document.getElementById('bn-modo').value;
+
+  document.getElementById('bn-wrap-gramos').style.display =
+    modo === 'gramos' ? 'block' : '
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© CalcFácil 2026 · Free calculators · No ads</p>
+    <nav aria-label="Footer navigation">
+      <a href="/en/calculators/health/">Health</a>
+      <a href="/en/calculators/finance/">Finance</a>
+      <a href="/en/calculators/everyday/">Everyday</a>
+      <a href="/en/calculators/math/">Math</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script src="/js/calculadoras.js"></script>
+
+<script>
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('calcfacil-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-btn').textContent = isDark ? '🌙' : '☀️';
+}
+
+(function() {
+  const saved = localStorage.getItem('calcfacil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('dark-btn');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', () => {
+  const dd = document.getElementById('lang-dropdown');
+  if (dd) dd.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

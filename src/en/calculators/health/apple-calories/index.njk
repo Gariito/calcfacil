@@ -1,0 +1,406 @@
+---
+layout: base.njk
+title: Apple Calorie Calculator — Calories per Apple and 100g
+description: Calculate how many calories are in an apple by weight, size or variety. Compare red and green apples and see estimated carbs, sugars, fibre and nutrition facts.
+keywords: apple calorie calculator, calories in an apple, how many calories in an apple, apple calories per 100g, apple nutrition facts, calories in a green apple, calories in a red apple, calories in half an apple
+---
+
+<div class="calc-page">
+  <div class="container calc-container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a>
+      <span>›</span>
+      <a href="/en/calculators/health/">Health</a>
+      <span>›</span>
+      <span>Apple Calorie Calculator</span>
+    </nav>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <h1>🍎 Apple Calorie Calculator</h1>
+        <p class="calc-intro">Find out how many calories are in an apple by weight, size and variety. Calculate estimated carbohydrates, sugars, fibre, protein and fat for your portion.</p>
+
+        <div class="card">
+          <label for="ap-variedad">Apple variety</label>
+          <select id="ap-variedad" onchange="calcAP()">
+            <option value="52,0.2,13.8,10.4,2.4,0.3">Red apple — Fuji / Gala / Red Delicious</option>
+            <option value="58,0.4,13.6,9.5,1.3,0.4">Green apple — Granny Smith</option>
+            <option value="54,0.2,14.3,11.0,2.1,0.3">Royal Gala</option>
+            <option value="52,0.2,13.8,10.4,2.4,0.3">Average apple (general value)</option>
+          </select>
+
+          <label for="ap-modo">Serving size</label>
+          <select id="ap-modo" onchange="toggleModeAP()">
+            <option value="gramos">By grams</option>
+            <option value="tamano">By size</option>
+          </select>
+
+          <div id="ap-wrap-gramos">
+            <label for="ap-gramos">Amount (grams of edible apple)</label>
+            <input type="number" id="ap-gramos" placeholder="e.g. 150" min="1" max="100000" step="any" oninput="calcAP()">
+          </div>
+
+          <div id="ap-wrap-tamano" style="display:none">
+            <label for="ap-tamano">Apple size</label>
+            <select id="ap-tamano" onchange="calcAP()">
+              <option value="100">Small (~100g edible portion)</option>
+              <option value="150" selected>Medium (~150g edible portion)</option>
+              <option value="182">Large (~182g edible portion)</option>
+              <option value="223">Extra large (~223g edible portion)</option>
+            </select>
+          </div>
+
+          <label for="ap-piel">Apple skin</label>
+          <select id="ap-piel" onchange="calcAP()">
+            <option value="1.0">With skin</option>
+            <option value="0.97">Without skin (rough calorie estimate)</option>
+          </select>
+
+          <p style="color:var(--muted);font-size:0.8rem;line-height:1.6;margin:0.75rem 0">
+            Enter the weight of the edible apple, not the whole fruit including the core. Apple sizes and nutritional values vary, so the results are estimates.
+          </p>
+
+          <div class="result-box" id="ap-res" aria-live="polite">Enter an amount or select an apple size</div>
+        </div>
+
+        <div id="ap-nutri" style="display:none;margin-top:1rem">
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.75rem" id="ap-cards"></div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Apple calories by size</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            The calories in an apple depend mainly on its edible weight. Using an average reference value of 52 calories per 100g, a medium apple contains about 78 calories.
+          </p>
+
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Serving</th>
+                <th style="padding:0.6rem 0.75rem;text-align:center;border-bottom:2px solid var(--accent);color:var(--accent)">Edible weight</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Small apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~100g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>52 kcal</strong></td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Medium apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~150g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>78 kcal</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Large apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~182g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>95 kcal</strong></td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Extra-large apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~223g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>116 kcal</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Half a medium apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:center">~75g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>39 kcal</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
+            These estimates use 52 kcal per 100g. Different varieties may have slightly different calorie values.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Apple nutrition per 100g</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Apples contain mostly water and carbohydrates, along with fibre and small amounts of other nutrients. The table below shows average values for a raw apple with skin.
+          </p>
+
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Nutrient</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Per 100g</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Medium apple (150g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Calories</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">52 kcal</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">78 kcal</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Carbohydrates</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">13.8g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">20.7g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">— Sugars</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">10.4g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">15.6g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">— Fibre</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">2.4g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">3.6g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Protein</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.3g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.5g</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Fat</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.2g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">0.3g</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Vitamin C</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">4.6mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">6.9mg</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">Potassium</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">107mg</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">161mg</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">Water</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">85.6g</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">128.4g</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
+            Values are approximate averages for raw apples with skin. They can vary by variety, growing conditions and ripeness.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Are apples good for weight management?</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            Apples can be a useful option when managing calorie intake. They contain a high proportion of water and provide fibre, while a medium apple has around 78 calories. Their volume and texture may help make a snack feel satisfying.
+          </p>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            However, no single food causes weight loss on its own. Overall eating habits, portion sizes and energy balance are more important than choosing one particular fruit.
+          </p>
+
+          <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;margin-top:1.25rem">Apple calories compared with other fruits</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Comparing calories per 100g is a useful way to understand the differences between fruits. These approximate values refer to edible portions of the raw fruit.
+          </p>
+
+          <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--accent-light)">
+                <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Fruit</th>
+                <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Calories per 100g</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">🥑 Avocado</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">160 kcal</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">🍌 Banana</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">89 kcal</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">🍇 Grapes</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">67 kcal</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">🍎 Apple</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right"><strong>52 kcal</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.75rem">🍊 Orange</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">47 kcal</td>
+              </tr>
+              <tr style="background:var(--bg)">
+                <td style="padding:0.5rem 0.75rem">🍓 Strawberries</td>
+                <td style="padding:0.5rem 0.75rem;text-align:right">32 kcal</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="color:var(--muted);font-size:0.78rem;margin-top:0.75rem">
+            Fruit varieties and reference databases can report slightly different values.
+          </p>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+          <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">How to calculate apple calories</h2>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">
+            The calculator estimates calories using the selected apple variety and the weight of its edible portion. For the general apple reference value, the calculation uses approximately 52 calories per 100g.
+          </p>
+
+          <div style="background:var(--bg);border-radius:8px;padding:1rem;margin-bottom:0.75rem">
+            <p style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Formula</p>
+            <p style="font-size:0.9rem;margin:0">Calories = edible weight in grams × calories per 100g ÷ 100</p>
+          </div>
+
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+            For example, 150g of an apple containing 52 calories per 100g provides approximately 78 calories. Weighing the edible portion is more reliable than estimating calories from size alone.
+          </p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card sidebar-card">
+          <h2>Should you eat apple skin?</h2>
+          <p>Apple skin contributes fibre and contains plant compounds, so keeping it on can be a useful choice. Wash the apple under running water before eating it. If you peel it, remember that the fibre content and nutritional values may change; the calculator's skin adjustment is only a rough estimate.</p>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Frequently asked questions</h3>
+
+          <details>
+            <summary>How many calories are in an apple?</summary>
+            <p>A medium apple with around 150g of edible flesh contains approximately 78 calories. A small apple of 100g has around 52 calories, while a large apple of 182g has about 95 calories using the general reference value.</p>
+          </details>
+
+          <details>
+            <summary>How many calories are in half an apple?</summary>
+            <p>Half a medium apple, weighing around 75g, contains approximately 39 calories. The actual amount depends on the variety and the weight of the portion.</p>
+          </details>
+
+          <details>
+            <summary>Does a green apple have fewer calories than a red apple?</summary>
+            <p>Not necessarily. In this calculator, the reference value for a Granny Smith green apple is 58 calories per 100g, compared with 52 calories for the general red-apple reference. Actual values vary by variety and fruit composition.</p>
+          </details>
+
+          <details>
+            <summary>Does peeling an apple reduce its calories?</summary>
+            <p>Peeling removes some of the edible material, including much of the skin's fibre. The calorie difference depends on how much is removed. The calculator uses only a rough calorie adjustment for peeled apples, so it should not be treated as an exact nutritional measurement.</p>
+          </details>
+
+          <details>
+            <summary>How many calories are in apple juice?</summary>
+            <p>Apple juice commonly contains around 45–50 calories per 100ml, although the amount varies by product. Unlike a whole apple, juice usually contains much less fibre, so the two are not nutritionally identical.</p>
+          </details>
+
+          <details>
+            <summary>Can I eat apples every day?</summary>
+            <p>For most people, apples can be part of a varied, balanced diet. They provide water and fibre, as well as small amounts of vitamins and minerals. The right amount depends on your overall dietary needs and preferences.</p>
+          </details>
+        </div>
+
+        <div class="card sidebar-card">
+          <h3>Related calculators</h3>
+          <ul class="related-list">
+            <li><a href="/en/calculators/health/banana-calories/">🍌 Banana Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/avocado-calories/">🥑 Avocado Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/egg-calories/">🥚 Egg Calories Calculator</a></li>
+            <li><a href="/en/calculators/health/rice-calories/">🍚 Rice Calorie Calculator</a></li>
+            <li><a href="/en/calculators/health/bread-calories/">🍞 Bread Calories Calculator</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleModeAP() {
+  const modo = document.getElementById('ap-modo').value;
+
+  document.getElementById('ap-wrap-gramos').style.display =
+    modo === 'gramos' ? 'block' : 'none';
+
+  document.getElementById('ap-wrap-tamano').style.display =
+    modo === 'tamano' ? 'block' : 'none';
+
+  calcAP();
+}
+
+function calcAP() {
+  const varietyValues = document.getElementById('ap-variedad').value.split(',').map(Number);
+  const modo = document.getElementById('ap-modo').value;
+  const piel = Number(document.getElementById('ap-piel').value);
+
+  let g = 0;
+
+  if (modo === 'gramos') {
+    const rawValue = document.getElementById('ap-gramos').value;
+    g = rawValue === '' ? 0 : Number(rawValue);
+  } else {
+    g = Number(document.getElementById('ap-tamano').value);
+  }
+
+  if (!Number.isFinite(g) || g <= 0 || g > 100000) {
+    showInvalidAP(
+      g > 100000
+        ? 'Please enter a smaller amount.'
+        : 'Enter a valid amount or select an apple size.'
+    );
+    return;
+  }
+
+  const [kcal100, fat100, carbs100, sugar100, fibre100, protein100] = varietyValues;
+
+  const kcal = Math.round(kcal100 * piel * g / 100);
+  const carbs = (carbs100 * g / 100).toFixed(1);
+  const sugar = (sugar100 * g / 100).toFixed(1);
+  const fibre = (fibre100 * g / 100).toFixed(1);
+  const protein = (protein100 * g / 100).toFixed(1);
+  const fat = (fat100 * g / 100).toFixed(1);
+  const skinLabel = piel === 1 ? 'with skin' : 'without skin';
+  const gramsLabel = Number.isInteger(g) ? g : g.toFixed(1);
+
+  document.getElementById('ap-res').innerHTML =
+    `${kcal} kcal — ${gramsLabel}g of apple ${skinLabel}
+    <small>Carbohydrates: ${carbs}g · Sugars: ${sugar}g · Fibre: ${fibre}g · Protein: ${protein}g</small>`;
+
+  document.getElementById('ap-nutri').style.display = 'block';
+
+  document.getElementById('ap-cards').innerHTML = `
+    <div style="background:var(--accent-light);border:2px solid var(--accent);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--accent);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calories</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${kcal}</div>
+      <div style="font-size:0.78rem;color:var(--accent)">kcal</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Carbohydrates</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${carbs}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">Including ${sugar}g sugars</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fibre</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fibre}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${gramsLabel}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Protein</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${protein}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${gramsLabel}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Fat</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${fat}g</div>
+      <div style="font-size:0.78rem;color:var(--muted)">per ${gramsLabel}g</div>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;text-align:center">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">Calories per 100g</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--accent)">${Math.round(kcal100 * piel)}</div>
+      <div style="font-size:0.78rem;color:var(--muted)">kcal, approximate</div>
+    </div>`;
+}
+
+function showInvalidAP(message) {
+  document.getElementById('ap-res').textContent = message;
+  document.getElementById('ap-nutri').style.display = 'none';
+  document.getElementById('ap-cards').innerHTML = '';
+}
+
+calcAP();
+</script>
