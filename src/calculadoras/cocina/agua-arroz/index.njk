@@ -1,98 +1,238 @@
 ---
 layout: calculadora.njk
-title: Calculadora de agua para arroz
-description: Calcula cuánta agua necesitas para cocinar arroz según la cantidad de arroz que vayas a preparar.
-keywords: calculadora agua para arroz, cuanta agua para arroz, agua arroz, cantidad agua arroz, proporción arroz agua, calculadora arroz, gramos arroz agua
+title: Calculadora de agua para arroz según tipo y método de cocción
+description: Calcula el agua, el tiempo y el reposo del arroz según el tipo (basmati, bomba, integral...) y el método (cacerola, arrocera, olla a presión o microondas).
+keywords: calculadora agua arroz, cuánta agua para arroz, proporción agua arroz, agua para 100 g de arroz, cuánta agua para arroz basmati
 categoria: cocina
 categoriaLabel: Cocina
 titulo: Calculadora de agua para arroz
 icono: 🍚
 tituloCorto: la calculadora de agua para arroz
-descripcion: Calcula rápidamente la cantidad de agua necesaria según los gramos de arroz que quieras cocinar.
-explicacion: Introduce la cantidad de arroz y selecciona la proporción de agua para obtener la cantidad aproximada de agua necesaria para cocinarlo.
+descripcion: Calcula cuánta agua necesita tu arroz según el tipo, el método de cocción y la cantidad, con tiempos de cocción y reposo.
+explicacion: La proporción correcta de agua cambia con el tipo de arroz, el método de cocción y la cantidad que cocines. Esta calculadora ajusta el agua, el tiempo y el reposo a tu caso y te ayuda a corregir el resultado si el arroz sale pastoso o duro.
 faq:
-  - q: ¿Cuánta agua necesito para cocinar arroz?
-    a: La cantidad depende del tipo de arroz y del método de cocción. Como referencia, una proporción habitual para arroz blanco es aproximadamente 2 partes de agua por 1 de arroz, aunque algunas variedades necesitan menos agua.
-  - q: ¿Para 100 gramos de arroz cuanto de agua necesito?
-    a: Para 100 gramos de arroz, necesitarías aproximadamente 200ml de agua. Este dato equivale a la proporción 2 a 1.
-  - q: ¿Cuánta agua necesito para 200 gramos de arroz?
-    a: Utilizando una proporción de 2 partes de agua por 1 de arroz, serían aproximadamente 400 ml de agua.
-  - q: ¿La cantidad de agua es igual para todos los tipos de arroz?
-    a: No. El arroz basmati, jazmín, integral, redondo y otras variedades pueden necesitar cantidades diferentes de agua. Consulta las indicaciones del envase cuando estén disponibles.
-  - q: ¿Puedo calcular el agua para cualquier cantidad de arroz?
-    a: Sí. Introduce los gramos de arroz y ajusta la proporción de agua según el tipo de arroz y el método de cocción que utilices.
-
+  - q: ¿Cuánta agua necesito para 100 g de arroz?
+    a: Depende del tipo y del método. Como referencia, 100 g de arroz basmati o jazmín en cacerola necesitan unos 195 ml, y 100 g de arroz blanco de grano largo unos 260 ml. El arroz integral necesita bastante más, alrededor de 290 ml.
+  - q: ¿Por qué la proporción 2 a 1 no siempre funciona?
+    a: Porque es una media. El arroz basmati y jazmín piden menos agua, el integral y el bomba piden más, y una olla a presión o una arrocera evaporan menos que una cacerola. Además, al cocinar mucha cantidad la proporción de agua baja ligeramente.
+  - q: ¿Hay que lavar el arroz antes de cocinarlo?
+    a: Lavar elimina almidón superficial y deja los granos más sueltos, algo recomendable en basmati y jazmín. Para risotto y arroces cremosos no se lava, porque ese almidón es el que da la textura.
+  - q: ¿Hay que remojar el arroz?
+    a: No es obligatorio. En basmati y arroz integral el remojo de 20 a 30 minutos acorta la cocción y permite usar algo menos de agua. Esta calculadora aplica una reducción orientativa del 10 %.
+  - q: ¿Por qué mi arroz sale pastoso o duro?
+    a: Lo habitual es un exceso de agua o de tiempo si sale pastoso, y falta de agua, tapa mal cerrada o poco reposo si sale duro. Abajo tienes una tabla para ajustar la próxima vez.
+  - q: ¿Cuántos gramos de arroz por persona?
+    a: Como guarnición, entre 60 y 75 g de arroz en crudo por persona. Como plato principal, entre 90 y 110 g. El arroz cocido pesa aproximadamente el triple que en crudo.
 relacionadas:
-  - slug: precio-100g
+  - slug: calorias-arroz
+    categoria: salud
+    titulo: Calorías del arroz
+    icono: 🍚
+  - slug: calorias-pan
+    categoria: salud
+    titulo: Calorías del pan
+    icono: 🍞
+  - slug: calculadora-basica
     categoria: dia-a-dia
-    titulo: Precio por 100 g
-    icono: ⚖️
-  - slug: temperatura-horno
-    categoria: cocina
-    titulo: Temperatura del horno
-    icono: 🌡️
-  - slug: conversion-ingredientes
-    categoria: cocina
-    titulo: Conversión de ingredientes
-    icono: ⚖️
+    titulo: Calculadora normal
+    icono: 🔢
 ---
 
-<div style="display:grid;gap:1rem">
-  <div>
-    <label for="arroz-gramos" style="display:block;margin-bottom:.4rem;font-weight:600">Cantidad de arroz (g)</label>
-    <input id="arroz-gramos" type="number" step="1" min="1" placeholder="Ej. 200"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-  </div>
+<label>Tipo de arroz</label>
+<select id="aa-tipo" onchange="calcAA()">
+  <option value="basmati">Basmati</option>
+  <option value="jazmin">Jazmín</option>
+  <option value="largo" selected>Blanco de grano largo</option>
+  <option value="redondo">Redondo / para sushi</option>
+  <option value="bomba">Bomba (paella, en sartén)</option>
+  <option value="vaporizado">Vaporizado (parboiled)</option>
+  <option value="integral">Integral</option>
+  <option value="arborio">Arborio (risotto, con caldo)</option>
+</select>
 
+<label>Método de cocción</label>
+<select id="aa-metodo" onchange="calcAA()">
+  <option value="cacerola">Cacerola tapada (absorción)</option>
+  <option value="arrocera">Olla arrocera</option>
+  <option value="presion">Olla a presión</option>
+  <option value="microondas">Microondas</option>
+</select>
+
+<div class="row-2">
   <div>
-    <label for="arroz-proporcion" style="display:block;margin-bottom:.4rem;font-weight:600">Agua por cada parte de arroz</label>
-    <select id="arroz-proporcion"
-      style="width:100%;padding:.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem">
-      <option value="1.5">1,5 partes de agua</option>
-      <option value="1.75">1,75 partes de agua</option>
-      <option value="2" selected>2 partes de agua</option>
-      <option value="2.5">2,5 partes de agua</option>
+    <label>Cantidad de arroz (g, en crudo)</label>
+    <input type="number" id="aa-gramos" placeholder="200" min="1" oninput="calcAA()">
+  </div>
+  <div>
+    <label>Altitud</label>
+    <select id="aa-altitud" onchange="calcAA()">
+      <option value="0">Menos de 1.000 m</option>
+      <option value="1">Más de 1.000 m</option>
     </select>
-  </div>
-
-  <button onclick="calcularAguaArroz()"
-    style="width:100%;padding:.8rem;border:0;border-radius:8px;background:var(--accent);color:white;font-weight:700;cursor:pointer">
-    Calcular agua
-  </button>
-
-  <div id="arroz-resultado" style="display:none;padding:1rem;background:var(--accent-light);border-radius:8px;text-align:center">
-    <div style="font-size:.85rem;color:var(--muted)">Agua aproximada</div>
-    <div id="arroz-valor" style="font-size:1.7rem;font-weight:700;margin-top:.25rem"></div>
   </div>
 </div>
 
-<script>
-function calcularAguaArroz() {
-  const gramos = parseFloat(document.getElementById('arroz-gramos').value);
-  const proporcion = parseFloat(document.getElementById('arroz-proporcion').value);
+<label>¿Remojas el arroz antes?</label>
+<select id="aa-remojo" onchange="calcAA()">
+  <option value="0">No</option>
+  <option value="1">Sí, 20-30 minutos</option>
+</select>
 
-  if (!Number.isFinite(gramos) || !Number.isFinite(proporcion) || gramos <= 0 || proporcion <= 0) {
-    document.getElementById('arroz-resultado').style.display = 'none';
-    return;
-  }
+<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem">
+  <button onclick="setAA(100)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">100 g</button>
+  <button onclick="setAA(200)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">200 g</button>
+  <button onclick="setAA(300)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">300 g</button>
+  <button onclick="setAA(500)" style="padding:0.3rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;font-size:0.825rem;font-family:var(--font-body)">500 g</button>
+</div>
 
-  const agua = gramos * proporcion;
+<div class="result-box" id="aa-res">Introduce la cantidad de arroz</div>
 
-  document.getElementById('arroz-valor').textContent =
-    agua.toLocaleString('es-ES', {maximumFractionDigits:0}) + ' ml';
-
-  document.getElementById('arroz-resultado').style.display = 'block';
-}
-</script>
+<div id="aa-wrap" style="display:none;margin-top:1rem">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem" id="aa-cards"></div>
+  <p id="aa-nota" style="color:var(--muted);font-size:0.85rem;line-height:1.7;margin-top:0.75rem;padding:0.75rem;background:var(--bg);border-radius:8px"></p>
+</div>
 
 <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
 
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">¿Cuánta agua necesita el arroz?</h2>
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">La cantidad de agua necesaria para cocinar arroz depende principalmente de la variedad utilizada y del método de cocción. Por eso no existe una única proporción válida para todos los tipos de arroz.</p>
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Como referencia sencilla, una proporción de 2 partes de agua por cada parte de arroz puede utilizarse como punto de partida para determinados arroces blancos cocinados por absorción.</p>
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Proporción de agua y tiempos por tipo de arroz</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Arroz</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Agua por 100 g</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Cocción</th>
+      <th style="padding:0.6rem 0.75rem;text-align:right;border-bottom:2px solid var(--accent);color:var(--accent)">Reposo</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem">Basmati</td><td style="text-align:right">~195 ml</td><td style="text-align:right">12 min</td><td style="text-align:right">10 min</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Jazmín</td><td style="text-align:right">~195 ml</td><td style="text-align:right">12 min</td><td style="text-align:right">10 min</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Blanco grano largo</td><td style="text-align:right">~260 ml</td><td style="text-align:right">16 min</td><td style="text-align:right">10 min</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Redondo / sushi</td><td style="text-align:right">~155 ml</td><td style="text-align:right">12 min</td><td style="text-align:right">10 min</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Bomba (paella)</td><td style="text-align:right">~390 ml</td><td style="text-align:right">18 min</td><td style="text-align:right">5 min</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Vaporizado</td><td style="text-align:right">~260 ml</td><td style="text-align:right">20 min</td><td style="text-align:right">5 min</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem">Integral</td><td style="text-align:right">~290 ml</td><td style="text-align:right">40 min</td><td style="text-align:right">10 min</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem">Arborio (risotto)</td><td style="text-align:right">~390 ml (caldo)</td><td style="text-align:right">18 min</td><td style="text-align:right">2 min</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:0.78rem;margin-top:0.5rem">* Valores orientativos para cocción en cacerola, a partir de las proporciones habituales por volumen. El paquete de tu marca manda: los arroces varían según el fabricante y la cosecha.</p>
 
-  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem">Ejemplos de cantidades</h2>
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:.75rem">Con una proporción de 2 a 1, 100 gramos de arroz necesitarían aproximadamente 200 ml de agua. Para 200 gramos serían unos 400 ml y para 300 gramos, unos 600 ml.</p>
-  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0">Estas cantidades son orientativas. Para conseguir el resultado adecuado, es recomendable tener en cuenta las instrucciones específicas del tipo de arroz utilizado.</p>
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.75rem">Cómo cocinar arroz por absorción paso a paso</h2>
+  <ol style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.5rem">
+    <li>Pesa el arroz en crudo y, si es basmati, jazmín o blanco, lávalo hasta que el agua salga casi clara.</li>
+    <li>Mide el agua con esta calculadora y ponla con una pizca de sal en una cacerola con tapa.</li>
+    <li>Cuando hierva, añade el arroz, remueve una vez, baja el fuego al mínimo y tapa.</li>
+    <li>No destapes durante la cocción: el vapor es lo que cuece el arroz.</li>
+    <li>Apaga el fuego, deja reposar tapado el tiempo indicado y suelta los granos con un tenedor.</li>
+  </ol>
 
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.75rem">Por qué cambia el agua según el método</h2>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">En una cacerola parte del agua se evapora, aunque la tapes. En una olla arrocera o a presión el cierre es mucho más hermético, así que se pierde menos agua y hay que echar menos. En el microondas la evaporación es parecida a la de la cacerola, pero conviene un recipiente grande y tapado para que no rebose.</p>
+  <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:0.75rem">La cantidad también influye: cuanto más arroz cocinas a la vez, menor es la proporción de agua necesaria, porque la superficie de evaporación crece menos que el volumen de arroz. Por eso la calculadora la reduce a partir de los 400 g.</p>
+
+  <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1rem;margin-top:1.75rem">Cómo corregir el arroz la próxima vez</h2>
+  <table style="width:100%;font-size:0.825rem;border-collapse:collapse">
+    <tr style="background:var(--accent-light)">
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Problema</th>
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Causa probable</th>
+      <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--accent);color:var(--accent)">Qué ajustar</th>
+    </tr>
+    <tr><td style="padding:0.5rem 0.75rem;vertical-align:top">Pastoso o apelmazado</td><td style="vertical-align:top">Exceso de agua o de tiempo, o sin lavar</td><td style="vertical-align:top">Reduce el agua un 10-15 %, lava el arroz y respeta el tiempo</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem;vertical-align:top">Duro o crudo por dentro</td><td style="vertical-align:top">Falta de agua, tapa que no cierra o poco reposo</td><td style="vertical-align:top">Añade 2-3 cucharadas de agua, tapa y deja reposar 5-10 min más</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem;vertical-align:top">Quemado en el fondo</td><td style="vertical-align:top">Fuego alto o cacerola fina</td><td style="vertical-align:top">Fuego mínimo desde que hierve, usa difusor o cacerola de fondo grueso</td></tr>
+    <tr style="background:var(--bg)"><td style="padding:0.5rem 0.75rem;vertical-align:top">Granos rotos</td><td style="vertical-align:top">Remover demasiado o cocción excesiva</td><td style="vertical-align:top">Remueve solo una vez y no pases del tiempo</td></tr>
+    <tr><td style="padding:0.5rem 0.75rem;vertical-align:top">Queda aguado</td><td style="vertical-align:top">Cantidad grande con la proporción de una pequeña</td><td style="vertical-align:top">Usa la calculadora con la cantidad real, destapa unos minutos al final</td></tr>
+  </table>
 </div>
+
+<script>
+var AA_TIPOS = {
+  basmati:    { n: 'basmati',          vol: 1.5,  t: 12, r: 10, tp: 6,  ti: 0,  tm: 12 },
+  jazmin:     { n: 'jazmín',           vol: 1.5,  t: 12, r: 10, tp: 6,  ti: 0,  tm: 12 },
+  largo:      { n: 'blanco grano largo', vol: 2.0, t: 16, r: 10, tp: 6, ti: 0,  tm: 14 },
+  redondo:    { n: 'redondo / sushi',  vol: 1.2,  t: 12, r: 10, tp: 5,  ti: 0,  tm: 12 },
+  bomba:      { n: 'bomba',            vol: 3.0,  t: 18, r: 5,  tp: 8,  ti: 0,  tm: 18 },
+  vaporizado: { n: 'vaporizado',       vol: 2.0,  t: 20, r: 5,  tp: 8,  ti: 0,  tm: 18 },
+  integral:   { n: 'integral',         vol: 2.25, t: 40, r: 10, tp: 20, ti: 0,  tm: 28 },
+  arborio:    { n: 'arborio (risotto)', vol: 3.0, t: 18, r: 2,  tp: 0,  ti: 0,  tm: 0 }
+};
+var AA_METODO = {
+  cacerola:   { n: 'cacerola tapada',  f: 1.0 },
+  arrocera:   { n: 'olla arrocera',    f: 0.9 },
+  presion:    { n: 'olla a presión',   f: 0.8 },
+  microondas: { n: 'microondas',       f: 1.0 }
+};
+var AA_RHO = 0.77; /* g de arroz por ml (1 taza de 240 ml = ~185 g) */
+
+function setAA(g) {
+  document.getElementById('aa-gramos').value = g;
+  calcAA();
+}
+
+function calcAA() {
+  var g = parseFloat(document.getElementById('aa-gramos').value);
+  if (!g || g <= 0) return;
+
+  var tipo = AA_TIPOS[document.getElementById('aa-tipo').value];
+  var mkey = document.getElementById('aa-metodo').value;
+  var met = AA_METODO[mkey];
+  var alt = document.getElementById('aa-altitud').value === '1';
+  var rem = document.getElementById('aa-remojo').value === '1';
+
+  var volArroz = g / AA_RHO;
+  var factor = met.f;
+  if (g > 800) factor *= 0.85; else if (g > 400) factor *= 0.92;
+  if (rem && tipo.vol < 3) factor *= 0.9;
+  if (alt) factor *= 1.1;
+
+  var agua = Math.round(volArroz * tipo.vol * factor / 5) * 5;
+  var tazas = (agua / 240).toFixed(1).replace('.', ',');
+  var aguaPor100 = Math.round(agua / g * 100);
+  var coc;
+  var notas = [];
+
+  if (tipo.vol === 3.0 && tipo.t === 18 && document.getElementById('aa-tipo').value === 'arborio') {
+    coc = '18 min (añadiendo el caldo poco a poco)';
+    notas.push('El risotto no se cuece por absorción total: añade el caldo caliente por cazos, removiendo, hasta completar la cantidad.');
+  } else if (mkey === 'presion') {
+    coc = tipo.tp + ' min a presión';
+    notas.push('Tras el tiempo, deja que la olla libere la presión sola 10 minutos antes de abrir.');
+  } else if (mkey === 'microondas') {
+    coc = tipo.tm + ' min a máxima potencia, en recipiente grande y tapado';
+    notas.push('Cada microondas es distinto: si queda duro, añade un poco de agua y 2 minutos más.');
+  } else if (mkey === 'arrocera') {
+    coc = 'Automático (según tu arrocera)';
+    notas.push('Sigue la escala de agua de tu arrocera si la trae: esta cifra es solo una referencia.');
+  } else {
+    coc = tipo.t + ' min a fuego mínimo, tapado';
+  }
+  if (alt) { coc += ' (+ 3-5 min por la altitud)'; }
+  if (document.getElementById('aa-tipo').value === 'bomba') {
+    notas.push('En paella se usa caldo, no agua. Con 1 parte de arroz va 3 de caldo, y se cuece sin remover.');
+  }
+  if (g > 400) notas.push('Con esta cantidad se reduce el agua un poco, porque se evapora proporcionalmente menos.');
+  if (rem) notas.push('Con remojo, el tiempo de cocción puede acortarse unos 3-5 minutos.');
+
+  var racionesGuarn = Math.floor(g / 70);
+  var racionesPrinc = Math.floor(g / 100);
+  var cocido = Math.round(g * 2.8 / 10) * 10;
+
+  document.getElementById('aa-res').innerHTML =
+    agua + ' ml de agua para ' + g + ' g de arroz ' + tipo.n +
+    '<small>' + met.n + ' · ~' + tazas + ' tazas · ' + aguaPor100 + ' ml por cada 100 g</small>';
+
+  document.getElementById('aa-wrap').style.display = 'block';
+  document.getElementById('aa-cards').innerHTML =
+    caja('Agua', agua + ' ml', '~' + tazas + ' tazas de 240 ml', true) +
+    caja('Reposo', tipo.r + ' min', 'tapado, sin fuego', false) +
+    caja('Cocción', coc.split(' (')[0].split(',')[0], '', false) +
+    caja('Raciones', racionesGuarn + ' de guarnición', racionesPrinc + ' de plato principal · ~' + cocido + ' g cocido', false);
+  document.getElementById('aa-nota').textContent = notas.join(' ');
+  document.getElementById('aa-nota').style.display = notas.length ? 'block' : 'none';
+}
+
+function caja(titulo, valor, sub, destacada) {
+  var bg = destacada ? 'var(--accent-light)' : 'var(--bg)';
+  var bd = destacada ? '2px solid var(--accent)' : '1px solid var(--border)';
+  return '<div style="background:' + bg + ';border:' + bd + ';border-radius:10px;padding:0.85rem;text-align:center">' +
+    '<div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.04em">' + titulo + '</div>' +
+    '<div style="font-size:1.3rem;font-weight:700;color:var(--accent)">' + valor + '</div>' +
+    '<div style="font-size:0.78rem;color:var(--muted)">' + sub + '</div></div>';
+}
+</script>
